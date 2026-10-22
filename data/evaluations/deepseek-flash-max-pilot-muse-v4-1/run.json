@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "id": "deepseek-flash-max-pilot-muse-v4-1",
+  "source_run_id": "deepseek-flash-max-pilot",
+  "evaluation_id": "deepseek-flash-max-pilot-muse-v4-1",
+  "cohort": "dream-workspace-result-v1",
+  "label": "Muse reading",
+  "title": "The Quiet Orb",
+  "model": "openrouter/meta/muse-spark-1.3-contributor",
+  "model_identity_basis": "requested; upstream identity unverified",
+  "effort": "xhigh",
+  "date": "2026-10-22",
+  "cli_version": "codex-cli 0.163.0",
+  "elapsed_seconds": 184.915,
+  "usage": {
+    "calls": 1,
+    "input_tokens": 55035,
+    "cached_input_tokens": 0,
+    "output_tokens": 23562,
+    "reasoning_output_tokens": 17391,
+    "cost": null
+  },
+  "prompt_sha256": "d48651ca9eafc7db58a1137bd6df8be318779702b48d3bfcc8e4b6208b0a0db4",
+  "corpus_sha256": "9688a3319dff5a17be237843e8e691d907b197159f17e58dd30667f886b68884",
+  "protocol": "session-rubric-dag-v3",
+  "condition": "evaluation",
+  "evidence_scope": "New evaluation run reusing frozen artefact bytes from deepseek-flash-max-pilot"
+}

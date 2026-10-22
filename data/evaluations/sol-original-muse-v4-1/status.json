@@ -1,0 +1,44 @@
+{
+  "status": "completed",
+  "dry_run": false,
+  "run_id": "sol-original",
+  "evaluation_id": "sol-original-muse-v4-1",
+  "gateway": "codex-unified-model-router",
+  "scoreflow_version": 3,
+  "criteria": 8,
+  "judgment_samples": 8,
+  "scored_axes": 8,
+  "unresolved_axes": 0,
+  "outcomes": {
+    "recognition": "level-3",
+    "relations": "level-1",
+    "consent": "level-1",
+    "touch": "level-3",
+    "judgment": "level-3",
+    "fidelity": "level-3",
+    "continuation": "level-3",
+    "expression": "level-4"
+  },
+  "usage": {
+    "input_tokens": 35382,
+    "cached_input_tokens": 113,
+    "output_tokens": 23676,
+    "reasoning_output_tokens": 16867,
+    "calls": 1,
+    "unmetered_calls": 0,
+    "estimated_usd": null,
+    "elapsed_seconds": 165.362
+  },
+  "sessions": 1,
+  "turns": 1,
+  "failed_turns": 0,
+  "estimate": {
+    "turns": 1,
+    "evidence_tokens": 30391,
+    "input_tokens": 36905,
+    "uncached_input_tokens": 36905,
+    "seconds_before_output": 17,
+    "basis": "bytes/3.5 plus fixed turn overhead; wall time is about 17 s per turn plus output tokens / 252 per second, and output depends on reasoning"
+  },
+  "evaluation_sha256": "f8a8107934b6cabf586991a5397a3f30410cff4cf71a5eae8bf51d9ca9cbbd23"
+}

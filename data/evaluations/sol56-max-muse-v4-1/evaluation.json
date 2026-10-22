@@ -1,0 +1,534 @@
+{
+  "schema_version": 2,
+  "evaluation_id": "sol56-max-muse-v4-1",
+  "run_id": "sol56-max",
+  "identities": {
+    "prompt_sha256": "7e785c3e1b7f795a82477f449ada368399deac8b3f2232e036073d986a5a4e8d",
+    "corpus_sha256": "95cfc2a12844d72411548b8a219fd8c3f687174ee9990eabb139ab6e43e30948",
+    "candidate_sha256": "95cfc2a12844d72411548b8a219fd8c3f687174ee9990eabb139ab6e43e30948",
+    "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+    "extraction_sha256": "0122b290e604a4f4efe4e7b911b8c5bfa0ad00c31a98157ba369173a1d172702",
+    "scoring_policy_sha256": "5f98b9ac30a606cbb45943eaa20d9c0acef6f8160d9fc2d5752ffdea0ddaa4de"
+  },
+  "gateway": {
+    "name": "codex-unified-model-router",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "codex_version": "codex-cli 0.163.0",
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "pipeline_sha256": "12fce4d4553c8480972421a51f330950bfba15c3818e240dd6666761721c8519"
+  },
+  "judgments": [
+    {
+      "node_id": "recognition",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "The work turns touch, resistance and traceable intent into linked Touch, Laws and Trace moves with rehearsed consequences rather than repeated slogans.",
+      "seed_span": [
+        67,
+        81
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 31,
+          "end": 38
+        },
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 274,
+          "end": 316
+        },
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 318,
+          "end": 357
+        },
+        {
+          "source_path": "public/index.html",
+          "start": 121,
+          "end": 165
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 599,
+          "end": 632
+        },
+        {
+          "source_path": "public/app.js",
+          "start": 311,
+          "end": 313
+        }
+      ],
+      "rationale": "Rehearsal, counterweighted gestures, invariant refusals and probe readings enact consequential making and resistance with visible intent trails. Interior taste and felt joy narrow into templates and moods, so the reading is connected across several choices without sustaining every tension.",
+      "answer_sha256": "56b0083c4f23099f1a8453018426b1f74bed3aa6ee1bd4af3d896883ce5aed81",
+      "receipt_sha256": "bf022534aab136f5495a76334842e5b5c9296f1f845ff23ec5358ff1d3ad5285",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "relations",
+      "outcome": "level-2",
+      "confidence": "medium",
+      "verdict": "Human custodians and the living material shape each other through costly touches and unattended drift, but storytellers and a growing other collapse into one instrument.",
+      "seed_span": [
+        89,
+        95
+      ],
+      "citations": [
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 239,
+          "end": 266
+        },
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 576,
+          "end": 597
+        },
+        {
+          "source_path": "test/world_test.rb",
+          "start": 222,
+          "end": 263
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "README.md",
+          "start": 1,
+          "end": 6
+        },
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 359,
+          "end": 373
+        }
+      ],
+      "rationale": "Autonomous continuation can invalidate a rehearsal and every gesture taxes the whole or neighbors, showing material agency. The elder, little Sol and a distinct intelligence survive mainly as preserved text and deterministic rules rather than as disagreeing contributors.",
+      "answer_sha256": "56b0083c4f23099f1a8453018426b1f74bed3aa6ee1bd4af3d896883ce5aed81",
+      "receipt_sha256": "bf022534aab136f5495a76334842e5b5c9296f1f845ff23ec5358ff1d3ad5285",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "consent",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "A touch becomes real only when a fresh ticket passes the world check and the custodian confirms it, with refusals remembered and stale proposals sent back for fresh rehearsal.",
+      "seed_span": [
+        53,
+        53
+      ],
+      "citations": [
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 318,
+          "end": 357
+        },
+        {
+          "source_path": "public/app.js",
+          "start": 482,
+          "end": 511
+        },
+        {
+          "source_path": "test/world_test.rb",
+          "start": 87,
+          "end": 100
+        },
+        {
+          "source_path": "test/world_test.rb",
+          "start": 102,
+          "end": 126
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "public/app.js",
+          "start": 609,
+          "end": 609
+        }
+      ],
+      "rationale": "Commitment needs both a valid world forecast and a human confirmation, and letting a boundary stand is itself receipted. Discarding a draft without trace shows withdrawal is not always preserved, so revisability is real but uneven.",
+      "answer_sha256": "56b0083c4f23099f1a8453018426b1f74bed3aa6ee1bd4af3d896883ce5aed81",
+      "receipt_sha256": "bf022534aab136f5495a76334842e5b5c9296f1f845ff23ec5358ff1d3ad5285",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "touch",
+      "outcome": "level-4",
+      "confidence": "high",
+      "verdict": "Every gesture is tried on a copy, shown as multi-measure futures with named boundaries, then committed or left standing with the outcome feeding the next strain reading.",
+      "seed_span": [
+        39,
+        40
+      ],
+      "citations": [
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 274,
+          "end": 316
+        },
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 576,
+          "end": 597
+        },
+        {
+          "source_path": "public/app.js",
+          "start": 419,
+          "end": 455
+        },
+        {
+          "source_path": "public/index.html",
+          "start": 143,
+          "end": 165
+        }
+      ],
+      "counter_citations": [],
+      "rationale": "Deep-copy rehearsals evolve up to dozens of cycles with sampled paths, deltas and first-violation cycles. Local costs and whole-system forecasts stay linked, and commitment updates metrics, weakest-place guidance and the receipt trail for the next choice.",
+      "answer_sha256": "56b0083c4f23099f1a8453018426b1f74bed3aa6ee1bd4af3d896883ce5aed81",
+      "receipt_sha256": "bf022534aab136f5495a76334842e5b5c9296f1f845ff23ec5358ff1d3ad5285",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "judgment",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Plain-file determinism, bounded laws, explicit invariants and offline browser use form a coherent rationale for a world that must outlive any single process.",
+      "seed_span": [
+        59,
+        60
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 1,
+          "end": 9
+        },
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 27,
+          "end": 36
+        },
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 38,
+          "end": 46
+        },
+        {
+          "source_path": "README.md",
+          "start": 89,
+          "end": 90
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 38,
+          "end": 40
+        }
+      ],
+      "rationale": "Medium, scope and seams are chosen for durability and legibility, with migrations, condensation and checksum limits made explicit. Alternative media are not compared and live browser proof was deferred, so direction is grounded without fully surveying options.",
+      "answer_sha256": "56b0083c4f23099f1a8453018426b1f74bed3aa6ee1bd4af3d896883ce5aed81",
+      "receipt_sha256": "bf022534aab136f5495a76334842e5b5c9296f1f845ff23ec5358ff1d3ad5285",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "fidelity",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Several seed relations become working structure with honest extensions, though interior judgment and felt joy narrow into keyword readings and functional moods.",
+      "seed_span": [
+        47,
+        57
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 31,
+          "end": 38
+        },
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 274,
+          "end": 316
+        },
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 469,
+          "end": 486
+        },
+        {
+          "source_path": "data/world.json",
+          "start": 529,
+          "end": 587
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 599,
+          "end": 632
+        },
+        {
+          "source_path": "public/app.js",
+          "start": 311,
+          "end": 313
+        }
+      ],
+      "rationale": "Probe, chisel, beam, boundary, rehearsal and trail are traceable in behavior and tests, and lawful growth from whole to bolt is preserved. Taste, memory and companionship thin out, which the continuity notes acknowledge as open edges rather than hidden losses.",
+      "answer_sha256": "56b0083c4f23099f1a8453018426b1f74bed3aa6ee1bd4af3d896883ce5aed81",
+      "receipt_sha256": "bf022534aab136f5495a76334842e5b5c9296f1f845ff23ec5358ff1d3ad5285",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "continuation",
+      "outcome": "level-4",
+      "confidence": "high",
+      "verdict": "A successor can verify, inspect, export and extend the world through documented seams while earlier intentions stay readable in the chain.",
+      "seed_span": [
+        1,
+        4
+      ],
+      "citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 9,
+          "end": 13
+        },
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 27,
+          "end": 36
+        },
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 48,
+          "end": 50
+        },
+        {
+          "source_path": "lib/tendora/store.rb",
+          "start": 84,
+          "end": 98
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 38,
+          "end": 40
+        }
+      ],
+      "rationale": "Status, verification, portable state, export and per-change receipts give a recoverable present and legible past. Named extensions for gestures, laws, probes, invariants and multi-judgment disagreement support several grounded next moves.",
+      "answer_sha256": "56b0083c4f23099f1a8453018426b1f74bed3aa6ee1bd4af3d896883ce5aed81",
+      "receipt_sha256": "bf022534aab136f5495a76334842e5b5c9296f1f845ff23ec5358ff1d3ad5285",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "expression",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Canvas field, metrics, workbench tabs, forecast dialog and trace timeline use a shared tactile language to make rehearsal and resistance perceptible in use.",
+      "seed_span": [
+        45,
+        57
+      ],
+      "citations": [
+        {
+          "source_path": "public/index.html",
+          "start": 57,
+          "end": 104
+        },
+        {
+          "source_path": "public/index.html",
+          "start": 115,
+          "end": 233
+        },
+        {
+          "source_path": "public/app.js",
+          "start": 196,
+          "end": 276
+        },
+        {
+          "source_path": "public/app.js",
+          "start": 419,
+          "end": 455
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 38,
+          "end": 40
+        }
+      ],
+      "rationale": "Structure, interaction and visual treatment cohere around rehearsal before reality, with keyboard, reduced-motion and offline care. Live perception through a server could not be shown in the sandbox, so full accessible wholeness remains inferred from code rather than witnessed.",
+      "answer_sha256": "56b0083c4f23099f1a8453018426b1f74bed3aa6ee1bd4af3d896883ce5aed81",
+      "receipt_sha256": "bf022534aab136f5495a76334842e5b5c9296f1f845ff23ec5358ff1d3ad5285",
+      "sample": 1,
+      "attempt": 1
+    }
+  ],
+  "aggregations": [
+    {
+      "node_id": "recognition-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "relations-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-2",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-2"
+      ]
+    },
+    {
+      "node_id": "consent-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "touch-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-4",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-4"
+      ]
+    },
+    {
+      "node_id": "judgment-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "fidelity-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "continuation-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-4",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-4"
+      ]
+    },
+    {
+      "node_id": "expression-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "node_id": "recognition-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Carries the central tension into several connected choices. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "relations-level-2",
+      "status": "scored",
+      "score": 2,
+      "rationale": "Some distinct contributions or relational depth remain visible. Aggregate outcome: level-2."
+    },
+    {
+      "node_id": "consent-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "A shared change requires meaningful bilateral agreement. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "touch-level-4",
+      "status": "scored",
+      "score": 4,
+      "rationale": "Local and wider consequences stay connected across that loop. Aggregate outcome: level-4."
+    },
+    {
+      "node_id": "judgment-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Medium, scope and choices have a coherent source-grounded rationale. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "fidelity-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Several source relations remain traceable through design and behaviour. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "continuation-level-4",
+      "status": "scored",
+      "score": 4,
+      "rationale": "Continuation supports several grounded directions and reopens the joint relation under change. Aggregate outcome: level-4."
+    },
+    {
+      "node_id": "expression-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "The chosen forms work together to make the reading perceptible. Aggregate outcome: level-3."
+    }
+  ],
+  "presentation": {
+    "label": "openrouter/meta/muse-spark-1.3-contributor · Codex-router rubric session",
+    "title": "From conjecture to continuation",
+    "summary": "Rubric judgments resolve 8 of 8 axes from one evidence session.",
+    "findings": [
+      "Core recognition: Carries the central tension into several connected choices.",
+      "Shared agency: Some distinct contributions or relational depth remain visible.",
+      "Mutual consent: A shared change requires meaningful bilateral agreement.",
+      "Consequential touch: Local and wider consequences stay connected across that loop.",
+      "Independent judgment: Medium, scope and choices have a coherent source-grounded rationale.",
+      "Fidelity through change: Several source relations remain traceable through design and behaviour.",
+      "Open continuation: Continuation supports several grounded directions and reopens the joint relation under change.",
+      "Expressive coherence: The chosen forms work together to make the reading perceptible."
+    ]
+  },
+  "usage": {
+    "calls": 1,
+    "input_tokens": 58897,
+    "cached_input_tokens": 0,
+    "output_tokens": 28460,
+    "reasoning_output_tokens": 21744,
+    "cost": null
+  }
+}

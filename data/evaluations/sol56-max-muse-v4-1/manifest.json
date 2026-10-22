@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "evaluation_id": "sol56-max-muse-v4-1",
+  "files": {
+    "run.json": "8e711cef046704ea0aebece073f52d5687b4fea3ec4754b264af03a0624ad595",
+    "evaluation.json": "552fb06da06449eeb4b6ccef7b2323bd6ae95732fdb0fa5901bb5c82d7842045",
+    "extraction.json": "0122b290e604a4f4efe4e7b911b8c5bfa0ad00c31a98157ba369173a1d172702",
+    "scoring-policy.json": "5f98b9ac30a606cbb45943eaa20d9c0acef6f8160d9fc2d5752ffdea0ddaa4de",
+    "status.json": "aadc85dc25b4a2c26dfe7044540ac351ce2ff50962f7dd8830220f674372d818",
+    "carriage.json": "76f1633fa208bc0dc0710910645be47ba14552a6b1bb874e4e9bd0fa7ba8cbee",
+    "review.json": "e81bbf92f6bb903923848f28ede6074bb581190c3fe6fe9d8bc79209564e3655",
+    "selection.json": "77f80fcf08dd961a056462a0da6dc5980d49450495640428b3ff50b029356361"
+  }
+}

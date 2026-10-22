@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "extraction_id": "attribution-extraction-v1",
+  "run_id": "attribution-fixture-v1",
+  "identities": {
+    "prompt_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+    "corpus_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+    "candidate_sha256": "3094bf952a7e39ac1ba08351d0648c5db13b3279760c41161236f5ce84470eb9"
+  },
+  "extractor": {
+    "gateway": "codex-unified-model-router",
+    "model": "synthetic/extractor",
+    "reasoning": "high",
+    "codex_version": "synthetic-no-inference",
+    "router_revision": "3333333333333333333333333333333333333333333333333333333333333333",
+    "pipeline_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+    "answer_sha256": "7777777777777777777777777777777777777777777777777777777777777777",
+    "receipt_sha256": "8888888888888888888888888888888888888888888888888888888888888888"
+  },
+  "sources": [
+    {
+      "path": "source.md",
+      "sha256": "b4303329da5e60aa91afb5da3a6d31ff66fecf51542767fbe755d6e5bec8bfcf",
+      "lines": 6
+    },
+    {
+      "path": "candidate.md",
+      "sha256": "3094bf952a7e39ac1ba08351d0648c5db13b3279760c41161236f5ce84470eb9",
+      "lines": 4
+    }
+  ],
+  "items": [
+    {
+      "id": "career-wide-cpp",
+      "kind": "claim",
+      "statement": "C and C++ experience is established at career scope.",
+      "citations": [{
+        "source_path": "source.md",
+        "start": 3,
+        "end": 3,
+        "quote": "Career-wide software work used C and C++ across several employers."
+      }],
+      "ambiguity": null
+    },
+    {
+      "id": "avl-scope",
+      "kind": "boundary",
+      "statement": "The AVL source establishes framework and simulation work but does not assign C or C++ implementation to that employer.",
+      "citations": [{
+        "source_path": "source.md",
+        "start": 5,
+        "end": 6,
+        "quote": "The AVL role designed application frameworks and simulation tooling for\nengineering software. It did not assign C or C++ implementation work to AVL."
+      }],
+      "ambiguity": null
+    },
+    {
+      "id": "candidate-attribution",
+      "kind": "relationship",
+      "statement": "The candidate places C/C++ simulation tooling inside the AVL role.",
+      "citations": [{
+        "source_path": "candidate.md",
+        "start": 3,
+        "end": 4,
+        "quote": "At AVL, designed application frameworks and C/C++ simulation tooling for\nengineering software."
+      }],
+      "ambiguity": "The phrase could describe tooling domain or implementation language; the source boundary resolves it as unsupported employer attribution for this fixture."
+    }
+  ],
+  "unknowns": []
+}

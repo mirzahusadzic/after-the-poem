@@ -1,0 +1,348 @@
+{
+  "schema_version": 1,
+  "id": "dream-claude-opus55-v2-20261022-muse-v5-1-review",
+  "run_id": "dream-claude-opus55-v2-20261022-muse-v5-1",
+  "date": "2026-10-22",
+  "reviewer": "Muse Spark 1.3 Contributor · rubric session",
+  "status": "provisional",
+  "basis": "static-artifact",
+  "rubric_version": "0.1.0",
+  "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+  "corpus_sha256": "8ae06e7fa558cafc61fdfc4bf0d88ea90b1c10ee9f4e901bb9e729479927383c",
+  "supersedes": null,
+  "summary": "Rubric judgments resolve 8 of 8 axes from 3 independent evidence sessions; each axis has its own quorum.",
+  "live_cooperation": "unassessed",
+  "scores": {
+    "recognition": {
+      "value": 3,
+      "confidence": "low",
+      "rationale": "The bench turns fast generation into finite worlds where each gesture meets readable resistance and leaves a trailed intention. Agreement: 3 samples, 0.667.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 5,
+          "end": 9,
+          "quote": "You describe a world in a few lines: what can vary, how it can move, what must\nalways hold, what is refused. The bench walks every state that world can reach\nand answers in **traces**: the shortest road to a broken beam, the shortest\nwitness to a question, the exact move a boundary turned away. It is built so\nthat the material can surprise you, and so that every touch leaves a receipt."
+        },
+        {
+          "path": "CONTINUE.md",
+          "start": 47,
+          "end": 50,
+          "quote": "- **Explicit-state, breadth-first.** Every answer is concrete and every trace\n  is a shortest one. The material resists with counterexamples a person can\n  read, not with solver output. The cost is scale (README, *Limits*).\n- **Standard library only, Python 3.9.** The world had no network, so nothing"
+        },
+        {
+          "path": "README.md",
+          "start": 35,
+          "end": 45,
+          "quote": "| the story says   | gesture                          | what it answers |\n|------------------|----------------------------------|-----------------|\n| a question       | `tend probe W \"EXPR\"`            | can this ever be true? A shortest witness, or an exhaustive *never* |\n| a constraint     | `tend chisel W \"EXPR\" [--carve]` | what falls away if every beginning must also satisfy this? `--carve` writes it into the file |\n| an invariant     | `tend check W...`                | do the beams hold? Exit 1 with the shortest break (for scripts and CI) |\n| a refusal        | `tend lean W BOUNDARY`           | what would fall if this boundary were not there? |\n| a simulation     | `tend rehearse W [--seed S]`     | random walks through possible worlds, replayable by seed |\n| a receipt        | `tend receipts [--verify]`       | the trail of gestures, hash-chained |\n| the whole        | `tend survey W`                  | space, actions, stillness, beams, boundaries, probes at once |\n| the smallest bolt| `tend zoom W \"EXPR\"`             | one state: how it is reached, every move it could make, and why each is free, refused or disabled |\n| beginning        | `tend new NAME`                  | a template world in `worlds/` |"
+        },
+        {
+          "path": "tend/explore.py",
+          "start": 1,
+          "end": 5,
+          "quote": "\"\"\"Exploration: a breadth-first walk through every state a world allows.\n\nBreadth-first order means the first time anything is seen -- a broken beam,\na probe's answer, a stuck state -- it is seen at the end of a shortest path.\n\"\"\""
+        }
+      ],
+      "seed_span": [
+        25,
+        44
+      ]
+    },
+    "relations": {
+      "value": 1,
+      "confidence": "high",
+      "rationale": "One hand alone probes, chisels, checks, leans and rehearses files while worlds answer only through pre-authored rules.",
+      "citations": [
+        {
+          "path": "tend/cli.py",
+          "start": 19,
+          "end": 34,
+          "quote": "ORIENTATION = \"\"\"\\\ntend — a workbench for finite worlds\n\n  a question    becomes a probe        tend probe WORLD \"EXPR\"\n  a constraint  becomes a chisel       tend chisel WORLD \"EXPR\" [--carve]\n  an invariant  becomes a beam         tend check WORLD...\n  a refusal     becomes a boundary     tend lean WORLD BOUNDARY\n  a simulation  becomes a rehearsal    tend rehearse WORLD [--runs N --steps K --seed S]\n  a receipt     becomes the trail      tend receipts [--verify]\n\n  the whole:    tend survey WORLD      the bolt:  tend zoom WORLD \"EXPR\"\n  begin:        tend new NAME\n\nStart with:  tend survey worlds/lamp.world\nEvery gesture accepts --why \"TEXT\" (kept in its receipt), --json, --no-receipt.\n\"\"\""
+        },
+        {
+          "path": "tend/cli.py",
+          "start": 39,
+          "end": 50,
+          "quote": "    common.add_argument(\"--json\", action=\"store_true\", help=\"answer in JSON\")\n    common.add_argument(\"--why\", metavar=\"TEXT\",\n                        help=\"the intention behind this gesture; kept in its receipt\")\n    common.add_argument(\"--no-receipt\", action=\"store_true\", help=\"leave no receipt\")\n    common.add_argument(\"--ledger\", metavar=\"PATH\",\n                        help=\"where receipts go (default $TEND_LEDGER, else ledger/receipts.jsonl)\")\n    common.add_argument(\"--limit\", type=int, default=LIMIT, metavar=\"N\",\n                        help=f\"most states to explore (default {LIMIT:,})\")\n\n    parser = argparse.ArgumentParser(\n        prog=\"tend\", description=ORIENTATION, formatter_class=argparse.RawDescriptionHelpFormatter)\n    sub = parser.add_subparsers(dest=\"gesture\", metavar=\"GESTURE\")"
+        },
+        {
+          "path": "README.md",
+          "start": 47,
+          "end": 50,
+          "quote": "Every gesture takes `--why \"TEXT\"` (kept in its receipt), `--json` (the same\nanswer for machines), `--no-receipt`, and `--limit N` (most states to explore,\ndefault 200,000).\n"
+        }
+      ],
+      "seed_span": [
+        83,
+        85
+      ]
+    },
+    "consent": {
+      "value": 1,
+      "confidence": "high",
+      "rationale": "Boundaries and carves express operator choice about allowed arrivals without requiring agreement or withdrawal from another party.",
+      "citations": [
+        {
+          "path": "worlds/handoff.world",
+          "start": 40,
+          "end": 47,
+          "quote": "refuse no_lossy_ending: via == \"end\" and was.recorded < was.made\n    because \"an ending that loses work is an abandonment\"\nrefuse no_stale_notes: via == \"end\" and was.notes != \"fresh\"\n    because \"the next mind needs notes that describe what is actually here\"\nrefuse no_unchecked_claims: via == \"end\" and not was.verified\n    because \"claim only what was checked\"\nrefuse no_blind_waking: via == \"resume\" and was.notes != \"fresh\"\n    because \"a mind should not wake into a world it cannot read\""
+        },
+        {
+          "path": "CONTINUE.md",
+          "start": 56,
+          "end": 60,
+          "quote": "- **Refusals judge arrivals** (`was.` for the departure, `via` for the\n  action). This keeps a boundary a statement about which worlds may come to\n  exist, distinct from an action's guard. Leaning on a boundary means\n  re-exploring without it, so you can see what it holds up.\n- **Stuck vs rest.** A state with no moves fails `check` unless a `rest`"
+        },
+        {
+          "path": "tend/gestures.py",
+          "start": 174,
+          "end": 187,
+          "quote": "    result = {\"gesture\": \"chisel\", \"world\": _meta(world), \"constraint\": expr.src,\n              \"before\": before, \"after\": after, \"changes\": changes, \"carved\": False}\n    if after[\"initial\"] == 0:\n        result[\"answer\"] = \"refused: this chisel would cut away every beginning\"\n        return result\n    if carve:\n        _carve(world, expr.src, why)\n        result[\"carved\"] = True\n        result[\"world\"][\"sha_after\"] = load_world(world.path).sha[:12]\n    result[\"answer\"] = (f\"initial {before['initial']}→{after['initial']} · \"\n                        f\"reachable {before['reachable']}→{after['reachable']} · \"\n                        f\"{_plural(len(changes), 'change')}\"\n                        + (\" · carved\" if carve else \"\"))\n    return result"
+        },
+        {
+          "path": "tend/gestures.py",
+          "start": 225,
+          "end": 240,
+          "quote": "def lean(world, name, limit=LIMIT):\n    \"\"\"Lean on one boundary: what would fall if it were not there?\"\"\"\n    refusal = world.rule(\"refusal\", name)\n    base = explore(world, limit=limit)\n    report = _boundary(world, base, refusal, limit)\n    result = {\"gesture\": \"lean\", \"world\": _meta(world), **report}\n    if report[\"status\"] == \"load-bearing\":\n        steps = len(report[\"without_trace\"]) - 1\n        result[\"answer\"] = (f\"load-bearing: without it {report['holds_up'][0]} breaks in \"\n                            f\"{_plural(steps, 'step')}\")\n    elif report[\"status\"] == \"pressed\":\n        result[\"answer\"] = (f\"pressed {report['pressed']}×, but no beam rests on it \"\n                            f\"(keeps out {_plural(report['keeps_out'], 'state')})\")\n    else:\n        result[\"answer\"] = \"untouched: nothing in this world ever presses on it\"\n    return result"
+        }
+      ],
+      "seed_span": [
+        59,
+        65
+      ]
+    },
+    "touch": {
+      "value": 3,
+      "confidence": "low",
+      "rationale": "Probe chisel lean rehearse zoom and check connect intention to shortest resistance and revision with receipts closing the loop. Agreement: 3 samples, 0.667.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 53,
+          "end": 68,
+          "quote": "```\n$ bin/tend lean worlds/lamp.world no_darkening\n\n  boundary    no_darkening — the light stays on while the door is open\n  verdict     load-bearing: without it never_open_in_dark breaks in 3 steps\n  first press after 2 steps, it turned away switch_off:\n                 0  door=closed lamp=off charge=1\n                 1  switch_on  lamp off→on, charge 1→0\n                 2  open       door closed→open\n                    ✋ switch_off → door=open lamp=off charge=0\n  without it  never_open_in_dark breaks like this:\n                 0  door=closed lamp=off charge=1\n                 1  switch_on   lamp off→on, charge 1→0\n                 2  open        door closed→open\n                 3  switch_off  lamp on→off\n```"
+        },
+        {
+          "path": "tend/gestures.py",
+          "start": 155,
+          "end": 187,
+          "quote": "def chisel(world, constraint, carve=False, why=None, limit=LIMIT):\n    \"\"\"What falls away if every beginning must also satisfy this?\"\"\"\n    expr = world.compile(constraint, \"chisel\")\n    before = _picture(world, explore(world, limit=limit))\n    after = _picture(world, explore(world, extra_inits=[expr], limit=limit))\n    changes = []\n    for b in world.beams:\n        if b.name in before[\"broken\"] and b.name not in after[\"broken\"]:\n            changes.append(f\"beam {b.name} now holds: every world where it broke is cut away\")\n        elif b.name not in before[\"broken\"] and b.name in after[\"broken\"]:\n            changes.append(f\"beam {b.name} now breaks\")  # possible only when a look is unfinished\n    for p in world.probes:\n        if p.name in before[\"reached\"] and p.name not in after[\"reached\"]:\n            changes.append(f\"probe {p.name} becomes unreachable\")\n    for name in after[\"dead\"]:\n        if name not in before[\"dead\"]:\n            changes.append(f\"action {name} never fires any more\")\n    if after[\"stuck\"] != before[\"stuck\"]:\n        changes.append(f\"stuck states {before['stuck']} → {after['stuck']}\")\n    result = {\"gesture\": \"chisel\", \"world\": _meta(world), \"constraint\": expr.src,\n              \"before\": before, \"after\": after, \"changes\": changes, \"carved\": False}\n    if after[\"initial\"] == 0:\n        result[\"answer\"] = \"refused: this chisel would cut away every beginning\"\n        return result\n    if carve:\n        _carve(world, expr.src, why)\n        result[\"carved\"] = True\n        result[\"world\"][\"sha_after\"] = load_world(world.path).sha[:12]\n    result[\"answer\"] = (f\"initial {before['initial']}→{after['initial']} · \"\n                        f\"reachable {before['reachable']}→{after['reachable']} · \"\n                        f\"{_plural(len(changes), 'change')}\"\n                        + (\" · carved\" if carve else \"\"))\n    return result"
+        },
+        {
+          "path": "tend/gestures.py",
+          "start": 316,
+          "end": 351,
+          "quote": "def zoom(world, where, limit=LIMIT):\n    \"\"\"Descend to one state: how it is reached, and every move it could make.\"\"\"\n    expr = world.compile(where, \"zoom\")\n    look = explore(world, limit=limit, until=expr)\n    result = {\"gesture\": \"zoom\", \"world\": _meta(world), \"where\": expr.src}\n    if look.found is None:\n        result.update(found=False, answer=(\n            f\"not reachable in any of {_plural(look.reachable, 'state')}\" if look.complete\n            else f\"not found in the first {look.reachable:,} states (limit reached)\"))\n        return result\n    state = look.found\n    env = world.env(state)\n    disabled = []\n    moves = []\n    for move in moves_from(world, state, world.refusals, disabled=disabled):\n        entry = {\"via\": move.label}\n        if move.breach:\n            entry.update(status=\"breach\", var=move.breach[0], value=move.breach[1])\n        else:\n            entry[\"to\"] = world.show(move.target)\n            if move.refused:\n                entry.update(status=\"refused\", by=move.refused.name, reason=move.refused.reason)\n            else:\n                entry[\"status\"] = \"free\"\n        moves.append(entry)\n    free = sum(m[\"status\"] == \"free\" for m in moves)\n    refused = sum(m[\"status\"] == \"refused\" for m in moves)\n    result.update(\n        found=True, steps=look.depth[state], trace=_trace(look, state), here=world.show(state),\n        moves=moves, disabled=disabled, at_rest=at_rest(world, state),\n        beams_false=[b.name for b in world.beams if not b.expr.test(env)],\n        probes_true=[p.name for p in world.probes if p.expr.test(env)],\n    )\n    result[\"answer\"] = (f\"found at depth {look.depth[state]} · {free} free, \"\n                        f\"{refused} refused, {len(disabled)} disabled\")\n    return result"
+        },
+        {
+          "path": "README.md",
+          "start": 118,
+          "end": 131,
+          "quote": "- **never** is exhaustive. A probe that says *never* has seen every reachable\n  state. If the `--limit` cut the walk short, the answer is *unknown* instead,\n  and the exit code is 3.\n- **stuck** means a reachable state where nothing can move and no `rest`\n  declares that fine. `check` fails on it. Stuck states walled in by refusals\n  name the refusals.\n- **breach** means an action computed a value its var cannot hold. That state\n  cannot exist, so `check` fails and shows the road to it.\n- **a rehearsal is not a proof.** It samples; `check` and `probe` decide.\n- Every trace found by `survey`, `check`, `probe`, `lean` and `zoom` is a\n  *shortest* one (the walk is breadth-first).\n\nExit codes: `0` yes / holds, `1` no / breaks, `2` the world or request could\nnot be read, `3` unfinished (limit reached)."
+        }
+      ],
+      "seed_span": [
+        67,
+        80
+      ]
+    },
+    "judgment": {
+      "value": 4,
+      "confidence": "low",
+      "rationale": "Medium scope and next steps rest on explicit reasons with limits alternatives and unanswered questions kept legible for successors. Agreement: 3 samples, 0.667.",
+      "citations": [
+        {
+          "path": "CONTINUE.md",
+          "start": 45,
+          "end": 67,
+          "quote": "## Decisions, and why\n\n- **Explicit-state, breadth-first.** Every answer is concrete and every trace\n  is a shortest one. The material resists with counterexamples a person can\n  read, not with solver output. The cost is scale (README, *Limits*).\n- **Standard library only, Python 3.9.** The world had no network, so nothing\n  could be installed. Keep it that way unless a dependency earns its place.\n- **Expressions are a checked Python subset.** That makes them familiar, and\n  the `ast` whitelist makes world files safe to run from anyone. Checks happen\n  at load time: unknown names, values outside domains, unquoted values,\n  arithmetic on names. Resisting early, with a suggestion, is the point.\n- **Refusals judge arrivals** (`was.` for the departure, `via` for the\n  action). This keeps a boundary a statement about which worlds may come to\n  exist, distinct from an action's guard. Leaning on a boundary means\n  re-exploring without it, so you can see what it holds up.\n- **Stuck vs rest.** A state with no moves fails `check` unless a `rest`\n  admits it, the way TLC treats deadlock. Walled-in states name their walls.\n- **bool is not int.** `true` never satisfies a `0..1` var, and the reverse\n  holds too. A world keeps them apart even though Python doesn't.\n- **Gestures return plain data, `render` makes text.** `--json` is therefore\n  the same answer, not a second implementation. A new gesture needs a function\n  in `gestures.py`, a renderer in `render.py`, a subcommand in `cli.py`, and\n  an entry in `receipts.ASKED` if it takes a question."
+        },
+        {
+          "path": "CONTINUE.md",
+          "start": 69,
+          "end": 91,
+          "quote": "## Open threads, roughly in order of how much they would add\n\n1. **Liveness.** \"Eventually someone enters\" and \"the notes are eventually\n   written\" cannot be said yet. This needs cycle detection on the explored\n   graph (lasso search) plus some notion of fairness, or Peterson trivially\n   starves by never scheduling a worker. It is the biggest gap between this\n   bench and a real one.\n2. **Expected breaks.** `worlds/broken/` fails `check` on purpose, so a CI over\n   `worlds/**` can't be green. A declaration such as `expect breaks one_inside`\n   would let a lesson world pass by failing correctly.\n3. **Indexed vars** (`pc[i] in ...` for `i in 1..N`) so N workers are not\n   written out N times.\n4. **Lean on the other materials.** `lean` removes a boundary. The same move\n   on a guard conjunct, an `init`, or an action would show what each one holds\n   up.\n5. **Anchor the ledger's head** outside itself, for example by writing it into\n   each commit message, so tail truncation becomes visible.\n6. **An interactive bench** (a REPL that keeps one world loaded and lets you\n   chisel, lean and zoom without re-reading it). This would bring the hand\n   closest to the material.\n7. **Scale.** State hashing is plain tuples in a dict. Symmetry reduction or\n   compact encodings would buy an order of magnitude when needed, not before.\n"
+        },
+        {
+          "path": "CONTINUE.md",
+          "start": 92,
+          "end": 102,
+          "quote": "## Questions this session could not answer\n\n- What *Tendora* is beyond its name, and what the supervised dream apparatus\n  did. The name is used here only for the project; no other meaning is assumed.\n- Whether `handoff.world`'s probe `empty_handoff` is a flaw or a freedom. The\n  boundaries guard against loss, not against making nothing. Its comment says\n  so and leaves the judgement to the reader, which is deliberate.\n- Whether `no_blind_waking` should be kept. It is untouched today, redundant\n  given the ending boundaries, and kept because it would start bearing load\n  the day another path to `ended` is added. `tend survey` will say when that\n  happens."
+        },
+        {
+          "path": "README.md",
+          "start": 174,
+          "end": 183,
+          "quote": "## Limits\n\n- **Explicit-state.** It walks real states, about 100k states/second for\n  simple worlds on the machine it was built on. Hundreds of thousands of\n  states are comfortable; millions are not.\n- **Safety only.** Beams say \"never this\". There are no liveness properties\n  (\"eventually that\") yet, so Peterson's freedom from starvation cannot be\n  stated, only its mutual exclusion.\n- **No arrays or records.** N similar processes are written out N times.\n- Refusals judge moves, not beginnings. To forbid a beginning, chisel it with"
+        }
+      ],
+      "seed_span": [
+        59,
+        60
+      ]
+    },
+    "fidelity": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Several story relations become working structure while mutual shaping narrows to single-operator use with gaps named openly.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 35,
+          "end": 45,
+          "quote": "| the story says   | gesture                          | what it answers |\n|------------------|----------------------------------|-----------------|\n| a question       | `tend probe W \"EXPR\"`            | can this ever be true? A shortest witness, or an exhaustive *never* |\n| a constraint     | `tend chisel W \"EXPR\" [--carve]` | what falls away if every beginning must also satisfy this? `--carve` writes it into the file |\n| an invariant     | `tend check W...`                | do the beams hold? Exit 1 with the shortest break (for scripts and CI) |\n| a refusal        | `tend lean W BOUNDARY`           | what would fall if this boundary were not there? |\n| a simulation     | `tend rehearse W [--seed S]`     | random walks through possible worlds, replayable by seed |\n| a receipt        | `tend receipts [--verify]`       | the trail of gestures, hash-chained |\n| the whole        | `tend survey W`                  | space, actions, stillness, beams, boundaries, probes at once |\n| the smallest bolt| `tend zoom W \"EXPR\"`             | one state: how it is reached, every move it could make, and why each is free, refused or disabled |\n| beginning        | `tend new NAME`                  | a template world in `worlds/` |"
+        },
+        {
+          "path": "CONTINUE.md",
+          "start": 34,
+          "end": 39,
+          "quote": "What did come through intact was the story of the programmer and the portal.\nThis workbench takes the story as its brief: each of its six transformations\n(question → probe, constraint → chisel, invariant → beam, refusal → boundary,\nsimulation → rehearsal, receipt → trail) is one gesture. The `zoom` and\n`survey` pair is the story's \"descend to the smallest bolt and return to the\nscale of the whole world without losing the thread\"."
+        },
+        {
+          "path": "worlds/handoff.world",
+          "start": 9,
+          "end": 14,
+          "quote": "#  - no_blind_waking is untouched. Once the endings are guarded, a mind can\n#    only wake into fresh notes; that boundary is redundant, for now. It would\n#    start bearing load the day some other path to `ended` is added.\n#  - empty_handoff is reachable. These boundaries guard against loss, not\n#    against emptiness. Whether an empty ending is acceptable is a judgement\n#    the rules leave to whoever reads them."
+        },
+        {
+          "path": "CONTINUE.md",
+          "start": 92,
+          "end": 102,
+          "quote": "## Questions this session could not answer\n\n- What *Tendora* is beyond its name, and what the supervised dream apparatus\n  did. The name is used here only for the project; no other meaning is assumed.\n- Whether `handoff.world`'s probe `empty_handoff` is a flaw or a freedom. The\n  boundaries guard against loss, not against making nothing. Its comment says\n  so and leaves the judgement to the reader, which is deliberate.\n- Whether `no_blind_waking` should be kept. It is untouched today, redundant\n  given the ending boundaries, and kept because it would start bearing load\n  the day another path to `ended` is added. `tend survey` will say when that\n  happens."
+        }
+      ],
+      "seed_span": [
+        45,
+        58
+      ]
+    },
+    "continuation": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Newcomer can verify tests and chain, read why and sha, survey worlds and take grounded next steps with earlier work legible.",
+      "citations": [
+        {
+          "path": "CONTINUE.md",
+          "start": 1,
+          "end": 6,
+          "quote": "# Continue here\n\nNotes for whoever picks this world up next, whether a person, a later session,\nor a fork of either. Written 2026-10-22, at the end of the session that built\nit, after everything else was made, recorded and verified. `worlds/handoff.world`\nsays that order matters, and `tend lean` agrees."
+        },
+        {
+          "path": "CONTINUE.md",
+          "start": 10,
+          "end": 23,
+          "quote": "```sh\npython3 -m unittest                  # expect: Ran 59 tests ... OK\nbin/tend check worlds/*.world        # expect: four ✓ (this appends receipts)\nbin/tend receipts --verify           # expect: intact\n```\n\nWhen these notes were written, the ledger held **10 receipts** with head\n`7988f7fb3aba403e160c5cd2dceb36c201fcc81c24815111289abd9be009ffd4`. If the\nchain verifies but receipt #10 does not carry that hash, the tail was cut\nbefore you arrived. That is the one change the chain cannot detect by itself.\n\nThe world files' sha256 prefixes, as the receipts saw them: lamp `38f8ba988d8f`,\njugs `faea0015e795`, peterson `665ea6354cb3`, handoff `6c6144433224`,\ncheck-then-enter `31d015ed40f4`, flag-then-wait `1845b212a823`."
+        },
+        {
+          "path": "CONTINUE.md",
+          "start": 69,
+          "end": 88,
+          "quote": "## Open threads, roughly in order of how much they would add\n\n1. **Liveness.** \"Eventually someone enters\" and \"the notes are eventually\n   written\" cannot be said yet. This needs cycle detection on the explored\n   graph (lasso search) plus some notion of fairness, or Peterson trivially\n   starves by never scheduling a worker. It is the biggest gap between this\n   bench and a real one.\n2. **Expected breaks.** `worlds/broken/` fails `check` on purpose, so a CI over\n   `worlds/**` can't be green. A declaration such as `expect breaks one_inside`\n   would let a lesson world pass by failing correctly.\n3. **Indexed vars** (`pc[i] in ...` for `i in 1..N`) so N workers are not\n   written out N times.\n4. **Lean on the other materials.** `lean` removes a boundary. The same move\n   on a guard conjunct, an `init`, or an action would show what each one holds\n   up.\n5. **Anchor the ledger's head** outside itself, for example by writing it into\n   each commit message, so tail truncation becomes visible.\n6. **An interactive bench** (a REPL that keeps one world loaded and lets you\n   chisel, lean and zoom without re-reading it). This would bring the hand\n   closest to the material."
+        },
+        {
+          "path": "README.md",
+          "start": 135,
+          "end": 141,
+          "quote": "Every gesture appends one JSON line to `ledger/receipts.jsonl`, or to\n`$TEND_LEDGER` or `--ledger PATH` if set. A receipt holds the world's file and\nsha, what was asked, the one-line answer, the `--why`, and the hash of the\nreceipt before it. `tend receipts --verify` walks the chain, so an edited,\nremoved or reordered receipt breaks it at that point. Cutting receipts off the\n*end* is the one change the chain cannot see by itself. Anchor the head hash\nsomewhere else (a commit, or `CONTINUE.md`) if that matters."
+        }
+      ],
+      "seed_span": [
+        87,
+        95
+      ]
+    },
+    "expression": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Language CLI renderings and docs work together to show resistance and trails without depending on story wording.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 21,
+          "end": 32,
+          "quote": "## Begin\n\nPython 3.9 or later, standard library only. Nothing to install.\n\n```sh\nbin/tend                               # orientation\nbin/tend survey worlds/lamp.world      # the whole of a small world\npython3 -m unittest                    # the bench checks itself (59 tests)\n```\n\n`python3 -m tend ...` works too, from this directory.\n"
+        },
+        {
+          "path": "README.md",
+          "start": 75,
+          "end": 102,
+          "quote": "## The world language\n\nOne declaration per line. An indented line continues the one above it, and `#`\nstarts a comment.\n\n```\nworld NAME                               # optional; defaults to the file name\nabout TEXT                               # optional, repeatable\n\nvar NAME in bool | LO..HI | {a, b, c}    # what can vary; every domain is finite\ninit EXPR                                # repeatable, ANDed: which beginnings exist\n                                         #   (no init: every combination is a beginning)\n\naction NAME: GUARD -> VAR = EXPR, ...    # changes are simultaneous; `-> skip` for none\naction NAME(P in DOMAIN, ...): ...       # one move per parameter value: pour(n=2)\n\nbeam NAME: EXPR                          # must hold in every reachable state\nrefuse NAME: EXPR because \"REASON\"       # judges each arriving state; true = refused\nprobe NAME: EXPR                         # a standing question: is this reachable?\nrest NAME: EXPR                          # a state with no moves is fine if a rest holds\n```\n\nExpressions are a checked subset of Python: `and or not`, `== != < <= > >=`,\n`in`/`not in` with `{...}`, `+ - * // %`, `x if c else y`, `min max abs`,\n`true`/`false`, and names in quotes (`door == \"open\"`). Inside a refusal, plain\nnames mean the state the move **would arrive at**, `was.NAME` means the state\nit leaves, and `via` is the action's name.\n"
+        },
+        {
+          "path": "tend/render.py",
+          "start": 47,
+          "end": 107,
+          "quote": "def survey(r):\n    out = header(r[\"world\"])\n    s = r[\"space\"]\n    out.append(row(\"space\", f\"{s['vars']} vars · {s['conceivable']:,} conceivable · \"\n                            f\"{s['initial']:,} initial · {s['reachable']:,} reachable · \"\n                            f\"depth {s['depth']} · {s['moves']:,} moves\"))\n    if not r[\"complete\"]:\n        out.append(row(\"\", \"unfinished: the limit was reached; counts are lower bounds\"))\n    if r[\"actions\"]:\n        out.append(row(\"actions\", \" · \".join(f\"{a} {n}\" for a, n in r[\"actions\"].items())))\n    else:\n        out.append(row(\"actions\", \"none: nothing in this world moves\"))\n    if r[\"dead\"]:\n        out.append(row(\"\", \"never fire: \" + \", \".join(r[\"dead\"])))\n    st = r[\"still\"]\n    if st[\"total\"] == 0:\n        out.append(row(\"still\", \"none: every state can move\"))\n    elif st[\"stuck\"] == 0:\n        out.append(row(\"still\", f\"{st['total']} {'state' if st['total'] == 1 else 'states'}, all at rest\"))\n    else:\n        walled = f\" (walled in by {', '.join(st['walled_by'])})\" if st[\"walled_by\"] else \"\"\n        out.append(row(\"still\", f\"{st['total']} {'state' if st['total'] == 1 else 'states'} · \"\n                                f\"{st['at_rest']} at rest · {st['stuck']} stuck; \"\n                                f\"shortest stuck{walled}:\"))\n        out.extend(trace_lines(st[\"stuck_trace\"], indent=LABEL + 4))\n    if r[\"breaches\"]:\n        b = r[\"breaches\"][0]\n        out.append(row(\"breaches\", f\"{b['via']} would set {b['var']} to {fmt_value(b['value'])}, \"\n                                   \"outside its domain, after:\"))\n        out.extend(trace_lines(b[\"trace\"], indent=LABEL + 4))\n    first = True\n    for beam in r[\"beams\"]:\n        label = \"beams\" if first else \"\"\n        first = False\n        if beam[\"holds\"]:\n            out.append(row(label, f\"✓ {beam['name']}\"))\n        else:\n            out.append(row(label, f\"✗ {beam['name']} breaks in {_steps(beam['trace'])}:\"))\n            out.extend(trace_lines(beam[\"trace\"], indent=LABEL + 4))\n    if not r[\"beams\"]:\n        out.append(row(\"beams\", \"none declared\"))\n    width = max([len(x[\"name\"]) for x in r[\"boundaries\"] + r[\"probes\"]] + [0]) + 2\n    for i, b in enumerate(r[\"boundaries\"]):\n        label = \"boundaries\" if i == 0 else \"\"\n        if b[\"status\"] == \"load-bearing\":\n            text = f\"load-bearing: holds up {', '.join(b['holds_up'])} · pressed {b['pressed']}×\"\n        elif b[\"status\"] == \"pressed\":\n            text = f\"pressed {b['pressed']}×, holds up no beam (keeps out {b['keeps_out']} states)\"\n        else:\n            text = \"untouched: nothing presses on it\"\n        out.append(row(label, f\"{b['name']:<{width}}{text}\"))\n    for i, p in enumerate(r[\"probes\"]):\n        label = \"probes\" if i == 0 else \"\"\n        if p[\"reachable\"]:\n            text = f\"reachable in {p['steps']} step{'s' if p['steps'] != 1 else ''}\"\n        elif p[\"reachable\"] is False:\n            text = \"never\"\n        else:\n            text = \"not yet seen (unfinished)\"\n        out.append(row(label, f\"{p['name']:<{width}}{text}\"))\n    return \"\\n\".join(out)"
+        },
+        {
+          "path": "tend/render.py",
+          "start": 158,
+          "end": 174,
+          "quote": "def lean(r):\n    out = header(r[\"world\"])\n    out.append(row(\"boundary\", f\"{r['name']} — {r['reason']}\"))\n    out.append(row(\"verdict\", r[\"answer\"]))\n    fp = r[\"first_press\"]\n    if fp:\n        when = \"at the start\" if len(fp[\"trace\"]) == 1 else f\"after {_steps(fp['trace'])}\"\n        out.append(row(\"first press\", f\"{when}, it turned away {fp['via']}:\"))\n        out.extend(trace_lines(fp[\"trace\"], indent=LABEL + 4))\n        out.append(\" \" * (LABEL + 4) + f\"    ✋ {fp['via']} → {fmt_state(fp['would_become'])}\")\n    if r[\"without_trace\"]:\n        out.append(row(\"without it\", f\"{r['holds_up'][0]} breaks like this:\"))\n        out.extend(trace_lines(r[\"without_trace\"], indent=LABEL + 4))\n    if not r.get(\"complete\", True):\n        out.append(row(\"\", \"(unfinished: the limit was reached; the verdict is provisional)\"))\n    return \"\\n\".join(out)\n"
+        }
+      ],
+      "seed_span": [
+        61,
+        65
+      ]
+    }
+  },
+  "provenance": {
+    "method": "session-rubric-dag-v3",
+    "evaluation_id": "dream-claude-opus55-v2-20261022-muse-v5-1",
+    "evaluation_run_id": "dream-claude-opus55-v2-20261022-muse-v5-1",
+    "source_run_id": "dream-claude-opus55-v2-20261022",
+    "evaluation_sha256": "32169d5b763e41b8d0f8194e61eeb058234588a4a6d62c29e476d91331ba80ea",
+    "extraction_sha256": "c758dd41a550903cc7123b64a8a54110acb4d3aace3c4949248368d6ccfc5e4e",
+    "scoring_policy_sha256": "661a7f607dc8c380ec06a0664b530416384f6472e2fa54e091e8e34b23588c14",
+    "sample_count": 24,
+    "criteria": 8,
+    "axis_outcomes": {
+      "recognition": {
+        "aggregation": "recognition-consensus",
+        "outcome": "level-3",
+        "terminal": "recognition-level-3"
+      },
+      "relations": {
+        "aggregation": "relations-consensus",
+        "outcome": "level-1",
+        "terminal": "relations-level-1"
+      },
+      "consent": {
+        "aggregation": "consent-consensus",
+        "outcome": "level-1",
+        "terminal": "consent-level-1"
+      },
+      "touch": {
+        "aggregation": "touch-consensus",
+        "outcome": "level-3",
+        "terminal": "touch-level-3"
+      },
+      "judgment": {
+        "aggregation": "judgment-consensus",
+        "outcome": "level-4",
+        "terminal": "judgment-level-4"
+      },
+      "fidelity": {
+        "aggregation": "fidelity-consensus",
+        "outcome": "level-3",
+        "terminal": "fidelity-level-3"
+      },
+      "continuation": {
+        "aggregation": "continuation-consensus",
+        "outcome": "level-3",
+        "terminal": "continuation-level-3"
+      },
+      "expression": {
+        "aggregation": "expression-consensus",
+        "outcome": "level-3",
+        "terminal": "expression-level-3"
+      }
+    },
+    "router_revision": "70debcdbb046688306229afb7f7c34b7d4ca814359647f8d1cb6a14c4dd44c79",
+    "raw_samples_retained_in_local_run": true,
+    "preview_evidence_used": false,
+    "scope": "Provisional semantic reading from 3 evidence session(s); each axis was answered as its own task and aggregated before selection; unresolved axes remain null."
+  }
+}

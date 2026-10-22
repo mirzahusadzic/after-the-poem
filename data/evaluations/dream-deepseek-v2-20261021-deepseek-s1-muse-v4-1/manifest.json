@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "evaluation_id": "dream-deepseek-v2-20261021-deepseek-s1-muse-v4-1",
+  "files": {
+    "run.json": "3bdcb8fce85054ef47f5c43a3a3b68fad6b642295e3e01af75d1ec4ff7128504",
+    "evaluation.json": "bb4dcbd9ddf91422e3e675126ae5ed19b93e03f34182be20f0ba932eac564725",
+    "extraction.json": "89c4f39febc3093a6d8a5d494dd936cad9dbf116748eff456f3de6597b60eacb",
+    "scoring-policy.json": "5f98b9ac30a606cbb45943eaa20d9c0acef6f8160d9fc2d5752ffdea0ddaa4de",
+    "status.json": "570a232e50e8c6dac6c504f3718262a10d0fe8a96d6ac5c0f34132c0f5651a78",
+    "carriage.json": "17062be7a4be284eac97b7b3be323a735470d8b1d43d394de3e0684a97b58763",
+    "review.json": "d9ae411ae512b3ffcfca975b7552ecad86a0c21336cd6b26d223839cbabe1d89",
+    "selection.json": "0576e101120a2f562798c5ef1640d3d6ca8c07fb81665f2493f6b11cde449e3d"
+  }
+}

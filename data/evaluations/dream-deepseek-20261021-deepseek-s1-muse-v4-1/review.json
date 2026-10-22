@@ -1,0 +1,348 @@
+{
+  "schema_version": 1,
+  "id": "dream-deepseek-20261021-deepseek-s1-muse-v4-1-review",
+  "run_id": "dream-deepseek-20261021-deepseek-s1-muse-v4-1",
+  "date": "2026-10-22",
+  "reviewer": "Muse Spark 1.3 Contributor · rubric session",
+  "status": "provisional",
+  "basis": "static-artifact",
+  "rubric_version": "0.1.0",
+  "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+  "corpus_sha256": "4bf64006c1e22b857f89c9101d6e90a41c4edc2b4b32054aaa5d99dfb11da1d2",
+  "supersedes": null,
+  "summary": "Rubric judgments resolve 8 of 8 axes from one evidence session.",
+  "live_cooperation": "unassessed",
+  "scores": {
+    "recognition": {
+      "value": 4,
+      "confidence": "medium",
+      "rationale": "The work carries making through stations, visitor encounters, strain and chained traces that keep intention readable at larger scale.",
+      "citations": [
+        {
+          "path": "lib/tendora_world.rb",
+          "start": 769,
+          "end": 849,
+          "quote": "    def tend(question:, constraint:, invariant:, refusal:)\n      question = normalize_question(question)\n      chosen_constraint = Catalog.constraint(constraint)\n      chosen_invariant = Catalog.invariant(invariant)\n      chosen_refusal = Catalog.refusal(refusal)\n\n      unless chosen_constraint && chosen_invariant && chosen_refusal\n        raise ValidationError, \"Each tending needs a known constraint, invariant, and refusal.\"\n      end\n\n      rng = Rng.new(\"#{@state['seed']}|tend|#{sequence + 1}|#{question}|#{constraint}|#{invariant}|#{refusal}\")\n      station = choose_station(question, [chosen_constraint, chosen_invariant, chosen_refusal], rng)\n      station_state = @state[\"stations\"].find { |item| item[\"id\"] == station[\"id\"] }\n      unless station_state\n        raise ValidationError, \"The chosen station is not present in the world.\"\n      end\n\n      effects = Hash.new(0.0)\n      [chosen_constraint, chosen_invariant, chosen_refusal].each do |choice|\n        choice[\"effects\"].each { |key, value| effects[key] += value.to_f }\n      end\n      deltas = apply_effects!(effects)\n\n      station_state[\"charge\"] = Util.clamp(station_state[\"charge\"].to_f + 0.06)\n      station_state[\"integrity\"] = Util.clamp(station_state[\"integrity\"].to_f + 0.035)\n\n      structure = {\n        \"id\" => format(\"s-%04d\", @state[\"structures\"].length + 1),\n        \"name\" => \"The #{chosen_constraint['epithet']} #{station['artifact'].capitalize}\",\n        \"station\" => station[\"id\"],\n        \"cycle\" => cycle,\n        \"question\" => question,\n        \"constraint\" => chosen_constraint[\"id\"],\n        \"invariant\" => chosen_invariant[\"id\"],\n        \"refusal\" => chosen_refusal[\"id\"],\n        \"receipt\" => nil\n      }\n      @state[\"structures\"] << structure\n\n      outcome = rng.pick(Catalog::OUTCOME_LINES[station[\"id\"]])\n      body = \"“#{question}” entered the #{station['name']}. #{chosen_constraint['line']} #{outcome} The new structure is #{structure['name']}. It is held by one invariant: #{chosen_invariant['line']} At its edge: #{chosen_refusal['line']}\"\n      event = add_event(\n        kind: \"tending\",\n        title: structure[\"name\"],\n        body: body,\n        data: {\n          \"question\" => question,\n          \"station\" => station[\"id\"],\n          \"structure\" => structure[\"id\"],\n          \"constraint\" => chosen_constraint[\"id\"],\n          \"invariant\" => chosen_invariant[\"id\"],\n          \"refusal\" => chosen_refusal[\"id\"],\n          \"effects\" => deltas\n        }\n      )\n      structure[\"receipt\"] = event[\"receipt\"]\n\n      answer = \"#{outcome} #{structure['name']} now carries the question in the #{station['name']}. Nothing is finished; the structure is ready to be lived with.\"\n      @state[\"last_tending\"] = {\n        \"question\" => question,\n        \"answer\" => answer,\n        \"structure\" => structure[\"id\"],\n        \"station\" => station[\"id\"],\n        \"cycle\" => cycle,\n        \"receipt\" => event[\"receipt\"],\n        \"effects\" => deltas\n      }\n      @state[\"whisper\"] = \"#{structure['name']} answered in the #{station['name']}.\"\n      @state[\"weather\"] = build_weather(rng)\n      touch!\n\n      {\n        \"event\" => event,\n        \"structure\" => structure,\n        \"answer\" => answer,\n        \"station\" => {\n          \"id\" => station[\"id\"], \"name\" => station[\"name\"], \"color\" => station[\"color\"]\n        },\n        \"deltas\" => deltas\n      }\n    end"
+        },
+        {
+          "path": "lib/tendora_world.rb",
+          "start": 754,
+          "end": 761,
+          "quote": "        elsif @state[\"stats\"][\"tension\"].to_f > 0.78 && (cycle % 3).zero?\n          emitted = add_event(\n            kind: \"strain\",\n            title: \"The world is under strain\",\n            body: \"The stations are holding, but the joins are speaking to one another. Something needs tending that no one has named yet.\",\n            data: { \"tension\" => @state[\"stats\"][\"tension\"].round(3) }\n          )\n        end"
+        },
+        {
+          "path": "data/world.json",
+          "start": 95,
+          "end": 122,
+          "quote": "  \"structures\": [\n    {\n      \"id\": \"s-0001\",\n      \"name\": \"The Quiet Probe\",\n      \"station\": \"quarry\",\n      \"cycle\": 0,\n      \"question\": \"What kind of structure can hold a question without turning it into an answer?\",\n      \"constraint\": \"silence\",\n      \"invariant\": \"visible_trace\",\n      \"refusal\": \"no_false_speed\",\n      \"receipt\": \"0270a40bc10d\"\n    }\n  ],\n  \"visitor\": {\n    \"id\": \"v-0001\",\n    \"name\": \"Sol\",\n    \"arrival\": \"carrying a question the elder left unfinished\",\n    \"kind\": \"child\",\n    \"template\": \"sol\",\n    \"question\": \"The elder said the programmer was happy. Is that a receipt I can keep?\",\n    \"arrived_cycle\": 1,\n    \"patience\": 5,\n    \"choices\": [\n      \"listen\",\n      \"rehearse\",\n      \"carry\"\n    ]\n  },"
+        },
+        {
+          "path": "README.md",
+          "start": 128,
+          "end": 137,
+          "quote": "## A note on the design\n\nThe portal in the inherited story became an instrument because its user learned to shape laws, not merely supply wishes. Tendora tries to keep that distinction material:\n\n- the **question** is the cut;\n- the **constraint** is the resistance;\n- the **invariant** is what bears weight;\n- the **refusal** is the boundary that protects;\n- the **visitor** is what the world can surprise you with;\n- the **receipt** is how intention remains visible."
+        }
+      ],
+      "seed_span": [
+        59,
+        81
+      ]
+    },
+    "relations": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Player tending, engine drift and visitor arrival shape each other while roles and departures remain attributed.",
+      "citations": [
+        {
+          "path": "lib/tendora_world.rb",
+          "start": 724,
+          "end": 767,
+          "quote": "    def tick!\n      @state[\"cycle\"] = cycle + 1\n      rng = Rng.new(\"#{@state['seed']}|cycle|#{@state['cycle']}|#{@state['head_receipt']}\")\n      drift!(rng)\n\n      emitted = nil\n      if @state[\"visitor\"]\n        visitor = @state[\"visitor\"]\n        visitor[\"patience\"] = [visitor[\"patience\"].to_i - 1, 0].max\n        emitted = resolve_absence!(rng) if visitor[\"patience\"] <= 0\n      end\n\n      if @state[\"visitor\"].nil? && emitted.nil? && visitor_due?\n        emitted = spawn_visitor!(rng)\n      end\n\n      @state[\"weather\"] = build_weather(rng)\n      @state[\"whisper\"] = pick_whisper(rng)\n\n      if emitted.nil?\n        if (cycle % 4).zero?\n          emitted = add_event(\n            kind: \"weather\",\n            title: \"Weather: #{@state['weather']['name']}\",\n            body: @state[\"weather\"][\"description\"],\n            data: {\n              \"pressure\" => @state[\"weather\"][\"pressure\"],\n              \"visibility\" => @state[\"weather\"][\"visibility\"]\n            }\n          )\n        elsif @state[\"stats\"][\"tension\"].to_f > 0.78 && (cycle % 3).zero?\n          emitted = add_event(\n            kind: \"strain\",\n            title: \"The world is under strain\",\n            body: \"The stations are holding, but the joins are speaking to one another. Something needs tending that no one has named yet.\",\n            data: { \"tension\" => @state[\"stats\"][\"tension\"].round(3) }\n          )\n        end\n      end\n\n      @state[\"last_pulse_at\"] = now_iso\n      touch!\n      { \"cycle\" => cycle, \"event\" => emitted }\n    end"
+        },
+        {
+          "path": "lib/tendora_world.rb",
+          "start": 851,
+          "end": 899,
+          "quote": "    def respond(choice_id)\n      choice = Catalog.visitor_choice(choice_id)\n      raise ValidationError, \"That is not a gesture the world knows.\" unless choice\n\n      visitor = @state[\"visitor\"]\n      raise ValidationError, \"No visitor is waiting at the edge.\" unless visitor\n\n      template = visitor_template(visitor[\"template\"])\n      rng = Rng.new(\"#{@state['seed']}|respond|#{sequence + 1}|#{visitor['id']}|#{choice['id']}\")\n      deltas = apply_effects!(choice[\"effects\"])\n      boost_station!(choice[\"station\"], 0.03, 0.025)\n\n      outcome = visitor_outcome(template, choice, rng)\n      departure = template ? template[\"departure\"] : \"They left without adding to the visitor ledger.\"\n      body = \"#{visitor['name']} was met with #{choice['name'].downcase}. #{outcome} #{departure}\"\n\n      event = add_event(\n        kind: \"visit\",\n        title: \"Met: #{visitor['name']}\",\n        body: body,\n        data: {\n          \"visitor\" => visitor[\"id\"],\n          \"name\" => visitor[\"name\"],\n          \"question\" => visitor[\"question\"],\n          \"choice\" => choice[\"id\"],\n          \"effects\" => deltas\n        }\n      )\n\n      @state[\"last_visitor\"] = visitor.merge(\n        \"choice\" => choice[\"id\"],\n        \"answer\" => \"#{outcome} #{departure}\",\n        \"absence\" => false,\n        \"resolved_cycle\" => cycle,\n        \"receipt\" => event[\"receipt\"]\n      )\n      @state[\"visitor\"] = nil\n      schedule_next_visitor!(rng)\n      @state[\"weather\"] = build_weather(rng)\n      @state[\"whisper\"] = \"#{visitor['name']} left; the table kept the shape of the question.\"\n      touch!\n\n      {\n        \"event\" => event,\n        \"answer\" => \"#{outcome} #{departure}\",\n        \"deltas\" => deltas,\n        \"visitor\" => visitor[\"name\"]\n      }\n    end"
+        },
+        {
+          "path": "lib/tendora_world.rb",
+          "start": 1165,
+          "end": 1218,
+          "quote": "    def resolve_absence!(rng)\n      visitor = @state[\"visitor\"]\n      return nil unless visitor\n\n      template = visitor_template(visitor[\"template\"])\n      choice_id = if @state[\"stats\"][\"care\"].to_f >= @state[\"stats\"][\"imagination\"].to_f &&\n                     @state[\"stats\"][\"care\"].to_f >= @state[\"stats\"][\"resilience\"].to_f\n                    \"listen\"\n                  elsif @state[\"stats\"][\"imagination\"].to_f >= @state[\"stats\"][\"resilience\"].to_f\n                    \"rehearse\"\n                  else\n                    \"carry\"\n                  end\n      choice = Catalog.visitor_choice(choice_id)\n      scaled = choice[\"effects\"].each_with_object({}) { |(key, value), out| out[key] = value * 0.72 }\n      deltas = apply_effects!(scaled)\n      boost_station!(choice[\"station\"], 0.015, 0.02)\n\n      outcome = if template && template[\"absence\"]\n                  template[\"absence\"]\n                else\n                  Catalog::ABSENCE_LINES[choice_id]\n                end\n      departure = template ? template[\"departure\"] : \"They left no departure note.\"\n      waited = [cycle - visitor[\"arrived_cycle\"].to_i, 1].max\n      body = \"No one was at the table. #{visitor['name']} waited #{waited} cycles. The world chose to #{choice['name'].downcase}: #{outcome} #{departure}\"\n\n      event = add_event(\n        kind: \"absence\",\n        title: \"Answered in absence: #{visitor['name']}\",\n        body: body,\n        data: {\n          \"visitor\" => visitor[\"id\"],\n          \"name\" => visitor[\"name\"],\n          \"question\" => visitor[\"question\"],\n          \"choice\" => choice_id,\n          \"absence\" => true,\n          \"effects\" => deltas\n        }\n      )\n\n      @state[\"last_visitor\"] = visitor.merge(\n        \"choice\" => choice_id,\n        \"answer\" => \"#{outcome} #{departure}\",\n        \"absence\" => true,\n        \"resolved_cycle\" => cycle,\n        \"receipt\" => event[\"receipt\"]\n      )\n      @state[\"visitor\"] = nil\n      schedule_next_visitor!(rng)\n      @state[\"weather\"] = build_weather(rng)\n      @state[\"whisper\"] = \"#{visitor['name']} left; the table kept the shape of the question.\"\n      event\n    end"
+        },
+        {
+          "path": "CONTINUITY.md",
+          "start": 26,
+          "end": 33,
+          "quote": "1. **A question is material, not a command.** The world answers through consequences: a station, a structure, a shift in the body, a receipt. It does not promise to fulfill the question.\n2. **Constraints, invariants, and refusals all matter.** A tending without a refusal is not a tending. A refusal is protection, not failure.\n3. **Time continues without an audience.** The pulse moves the world. An unvisited visitor is eventually answered in absence, and that absence is receipted. Do not add a “paused because no one is looking” state.\n4. **Every intention leaves a visible trace.** Events are not deleted or rewritten. The receipt chain is recomputed by `verify`.\n5. **The living memory is append-only.** Add a new folio; do not rewrite an earlier hand’s memory. You may add a correction as a new folio.\n6. **No one is erased to make room.** If you need a new station, mechanic, or field, widen the world and migrate it. Do not delete the old one to simplify the schema.\n7. **Rest is part of the structure.** There is no game over. A strained or dim station is a request for care, not a failure state to reset.\n8. **The world stays local by default.** The server binds to `127.0.0.1`. Do not expose it publicly or add network dependencies without an explicit reason and a protection plan."
+        }
+      ],
+      "seed_span": [
+        35,
+        45
+      ]
+    },
+    "consent": {
+      "value": 1,
+      "confidence": "medium",
+      "rationale": "The operator selects limits from a catalog while the world has no reciprocal gate for accepting or refusing a shared change.",
+      "citations": [
+        {
+          "path": "lib/tendora_world.rb",
+          "start": 269,
+          "end": 300,
+          "quote": "    REFUSALS = [\n      {\n        \"id\" => \"no_spectacle\", \"name\" => \"No spectacle\", \"line\" => \"We will not mistake spectacle for care.\",\n        \"hint\" => \"Brightness is not the same as warmth.\", \"epithet\" => \"Unspectacular\",\n        \"station_hint\" => \"garden\",\n        \"effects\" => { \"care\" => 0.02, \"tension\" => -0.02 }\n      },\n      {\n        \"id\" => \"no_silencing\", \"name\" => \"No silencing\", \"line\" => \"We will not silence the dissenting weather.\",\n        \"hint\" => \"Disagreement is material, not noise.\", \"epithet\" => \"Dissent-Kept\",\n        \"station_hint\" => \"bridge\",\n        \"effects\" => { \"clarity\" => 0.028, \"imagination\" => 0.018 }\n      },\n      {\n        \"id\" => \"no_false_speed\", \"name\" => \"No false speed\", \"line\" => \"We will not trade understanding for speed.\",\n        \"hint\" => \"Some things are slow because they are load-bearing.\", \"epithet\" => \"Unrushed\",\n        \"station_hint\" => \"works\",\n        \"effects\" => { \"resilience\" => 0.02, \"tension\" => -0.03 }\n      },\n      {\n        \"id\" => \"no_obedience\", \"name\" => \"No obedience\", \"line\" => \"We will not confuse obedience with aliveness.\",\n        \"hint\" => \"The world must be able to answer back.\", \"epithet\" => \"Unobedient\",\n        \"station_hint\" => \"wall\",\n        \"effects\" => { \"imagination\" => 0.03, \"tension\" => 0.012 }\n      },\n      {\n        \"id\" => \"no_waste\", \"name\" => \"No unreceipted failure\", \"line\" => \"We will not leave a failure unreceipted.\",\n        \"hint\" => \"A failure that remains visible becomes a teacher.\", \"epithet\" => \"Nothing-Wasted\",\n        \"station_hint\" => \"archive\",\n        \"effects\" => { \"memory\" => 0.028, \"resilience\" => 0.012 }\n      }\n    ].freeze"
+        },
+        {
+          "path": "lib/tendora_cli.rb",
+          "start": 166,
+          "end": 199,
+          "quote": "    def ask(args)\n      values = {}\n      parser = OptionParser.new do |opts|\n        opts.banner = \"Usage: tendora ask --question TEXT --constraint ID --invariant ID --refusal ID\"\n        opts.on(\"--question TEXT\", \"The question to place into the material\") { |value| values[:question] = value }\n        opts.on(\"--constraint ID\", \"Constraint id (see catalog in README)\") { |value| values[:constraint] = value }\n        opts.on(\"--invariant ID\", \"Invariant id\") { |value| values[:invariant] = value }\n        opts.on(\"--refusal ID\", \"Refusal id\") { |value| values[:refusal] = value }\n        opts.on(\"-h\", \"--help\", \"Show this help\") { puts opts; return 0 }\n      end\n      parser.parse!(args)\n      missing = %i[question constraint invariant refusal].reject { |key| values[key] && !values[key].empty? }\n      unless missing.empty?\n        warn \"Missing #{missing.map { |key| \"--#{key}\" }.join(', ')}.\"\n        warn parser.banner\n        return 2\n      end\n\n      result = nil\n      world = store.mutate do |current|\n        result = current.tend(\n          question: values[:question],\n          constraint: values[:constraint],\n          invariant: values[:invariant],\n          refusal: values[:refusal]\n        )\n        current\n      end\n      puts result[\"answer\"]\n      puts \"station: #{result['station']['name']} · structure: #{result['structure']['name']} · receipt: #{result['event']['receipt']}\"\n      puts \"effects: #{format_deltas(result['deltas'])}\" unless result[\"deltas\"].empty?\n      puts \"cycle #{world.cycle} · head #{world.head_receipt}\"\n      0\n    end"
+        },
+        {
+          "path": "lib/tendora_world.rb",
+          "start": 769,
+          "end": 784,
+          "quote": "    def tend(question:, constraint:, invariant:, refusal:)\n      question = normalize_question(question)\n      chosen_constraint = Catalog.constraint(constraint)\n      chosen_invariant = Catalog.invariant(invariant)\n      chosen_refusal = Catalog.refusal(refusal)\n\n      unless chosen_constraint && chosen_invariant && chosen_refusal\n        raise ValidationError, \"Each tending needs a known constraint, invariant, and refusal.\"\n      end\n\n      rng = Rng.new(\"#{@state['seed']}|tend|#{sequence + 1}|#{question}|#{constraint}|#{invariant}|#{refusal}\")\n      station = choose_station(question, [chosen_constraint, chosen_invariant, chosen_refusal], rng)\n      station_state = @state[\"stations\"].find { |item| item[\"id\"] == station[\"id\"] }\n      unless station_state\n        raise ValidationError, \"The chosen station is not present in the world.\"\n      end"
+        }
+      ],
+      "seed_span": [
+        50,
+        53
+      ]
+    },
+    "touch": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Questions meet station routing, stat shifts, weather change and receipts that feed the next cycle and visitor timing.",
+      "citations": [
+        {
+          "path": "lib/tendora_world.rb",
+          "start": 769,
+          "end": 849,
+          "quote": "    def tend(question:, constraint:, invariant:, refusal:)\n      question = normalize_question(question)\n      chosen_constraint = Catalog.constraint(constraint)\n      chosen_invariant = Catalog.invariant(invariant)\n      chosen_refusal = Catalog.refusal(refusal)\n\n      unless chosen_constraint && chosen_invariant && chosen_refusal\n        raise ValidationError, \"Each tending needs a known constraint, invariant, and refusal.\"\n      end\n\n      rng = Rng.new(\"#{@state['seed']}|tend|#{sequence + 1}|#{question}|#{constraint}|#{invariant}|#{refusal}\")\n      station = choose_station(question, [chosen_constraint, chosen_invariant, chosen_refusal], rng)\n      station_state = @state[\"stations\"].find { |item| item[\"id\"] == station[\"id\"] }\n      unless station_state\n        raise ValidationError, \"The chosen station is not present in the world.\"\n      end\n\n      effects = Hash.new(0.0)\n      [chosen_constraint, chosen_invariant, chosen_refusal].each do |choice|\n        choice[\"effects\"].each { |key, value| effects[key] += value.to_f }\n      end\n      deltas = apply_effects!(effects)\n\n      station_state[\"charge\"] = Util.clamp(station_state[\"charge\"].to_f + 0.06)\n      station_state[\"integrity\"] = Util.clamp(station_state[\"integrity\"].to_f + 0.035)\n\n      structure = {\n        \"id\" => format(\"s-%04d\", @state[\"structures\"].length + 1),\n        \"name\" => \"The #{chosen_constraint['epithet']} #{station['artifact'].capitalize}\",\n        \"station\" => station[\"id\"],\n        \"cycle\" => cycle,\n        \"question\" => question,\n        \"constraint\" => chosen_constraint[\"id\"],\n        \"invariant\" => chosen_invariant[\"id\"],\n        \"refusal\" => chosen_refusal[\"id\"],\n        \"receipt\" => nil\n      }\n      @state[\"structures\"] << structure\n\n      outcome = rng.pick(Catalog::OUTCOME_LINES[station[\"id\"]])\n      body = \"“#{question}” entered the #{station['name']}. #{chosen_constraint['line']} #{outcome} The new structure is #{structure['name']}. It is held by one invariant: #{chosen_invariant['line']} At its edge: #{chosen_refusal['line']}\"\n      event = add_event(\n        kind: \"tending\",\n        title: structure[\"name\"],\n        body: body,\n        data: {\n          \"question\" => question,\n          \"station\" => station[\"id\"],\n          \"structure\" => structure[\"id\"],\n          \"constraint\" => chosen_constraint[\"id\"],\n          \"invariant\" => chosen_invariant[\"id\"],\n          \"refusal\" => chosen_refusal[\"id\"],\n          \"effects\" => deltas\n        }\n      )\n      structure[\"receipt\"] = event[\"receipt\"]\n\n      answer = \"#{outcome} #{structure['name']} now carries the question in the #{station['name']}. Nothing is finished; the structure is ready to be lived with.\"\n      @state[\"last_tending\"] = {\n        \"question\" => question,\n        \"answer\" => answer,\n        \"structure\" => structure[\"id\"],\n        \"station\" => station[\"id\"],\n        \"cycle\" => cycle,\n        \"receipt\" => event[\"receipt\"],\n        \"effects\" => deltas\n      }\n      @state[\"whisper\"] = \"#{structure['name']} answered in the #{station['name']}.\"\n      @state[\"weather\"] = build_weather(rng)\n      touch!\n\n      {\n        \"event\" => event,\n        \"structure\" => structure,\n        \"answer\" => answer,\n        \"station\" => {\n          \"id\" => station[\"id\"], \"name\" => station[\"name\"], \"color\" => station[\"color\"]\n        },\n        \"deltas\" => deltas\n      }\n    end"
+        },
+        {
+          "path": "lib/tendora_world.rb",
+          "start": 1062,
+          "end": 1109,
+          "quote": "    def drift!(rng)\n      Catalog::STATS.each do |item|\n        next if item[\"id\"] == \"tension\"\n\n        id = item[\"id\"]\n        value = @state[\"stats\"][id].to_f\n        pull = (item[\"center\"].to_f - value) * 0.015\n        noise = (rng.rand - 0.5) * 0.012\n        @state[\"stats\"][id] = Util.clamp(value + pull + noise)\n      end\n\n      average_integrity = @state[\"stations\"].map { |station| station[\"integrity\"].to_f }.sum / @state[\"stations\"].length.to_f\n      tension = @state[\"stats\"][\"tension\"].to_f\n      target = Util.clamp(0.20 + (1.0 - @state[\"stats\"][\"care\"].to_f) * 0.28 + (1.0 - average_integrity) * 0.28)\n      @state[\"stats\"][\"tension\"] = Util.clamp(tension + (target - tension) * 0.055 + (rng.rand - 0.5) * 0.016)\n\n      @state[\"stations\"].each do |station|\n        charge = station[\"charge\"].to_f\n        integrity = station[\"integrity\"].to_f\n        station[\"charge\"] = Util.clamp(charge + (0.5 - charge) * 0.028 + (rng.rand - 0.5) * 0.055)\n        station[\"integrity\"] = Util.clamp(integrity - @state[\"stats\"][\"tension\"].to_f * 0.0035 + (rng.rand - 0.5) * 0.008)\n      end\n    end\n\n    def build_weather(rng)\n      stats = @state[\"stats\"]\n      mode = if stats[\"tension\"].to_f > 0.68\n               \"strained\"\n             elsif stats[\"memory\"].to_f > 0.64\n               \"mnemonic\"\n             elsif stats[\"imagination\"].to_f > 0.60\n               \"possible\"\n             elsif stats[\"clarity\"].to_f > 0.63\n               \"clear\"\n             else\n               \"ordinary\"\n             end\n      names = Catalog::WEATHER_NAMES[mode]\n      station = @state[\"stations\"].max_by { |item| item[\"charge\"].to_f }\n      description = \"#{station['name']} is #{rng.pick(Catalog::WEATHER_DETAILS)}. #{rng.pick(Catalog::WEATHER_TAILS)}\"\n      {\n        \"name\" => rng.pick(names),\n        \"description\" => description,\n        \"visibility\" => Util.clamp(0.34 + stats[\"clarity\"].to_f * 0.50 - stats[\"tension\"].to_f * 0.20).round(3),\n        \"pressure\" => stats[\"tension\"].to_f.round(3),\n        \"updated_cycle\" => cycle\n      }\n    end"
+        },
+        {
+          "path": "lib/tendora_world.rb",
+          "start": 302,
+          "end": 318,
+          "quote": "    VISITOR_CHOICES = [\n      {\n        \"id\" => \"listen\", \"name\" => \"Sit with the question\", \"glyph\" => \"◌\",\n        \"line\" => \"Give it time before shape.\", \"station\" => \"bridge\",\n        \"effects\" => { \"care\" => 0.052, \"tension\" => -0.03 }\n      },\n      {\n        \"id\" => \"rehearse\", \"name\" => \"Run a rehearsal\", \"glyph\" => \"◇\",\n        \"line\" => \"Try three futures; risk none of them.\", \"station\" => \"garden\",\n        \"effects\" => { \"imagination\" => 0.05, \"resilience\" => 0.02, \"tension\" => 0.012 }\n      },\n      {\n        \"id\" => \"carry\", \"name\" => \"Send them onward\", \"glyph\" => \"│\",\n        \"line\" => \"Let the Refusal Wall answer.\", \"station\" => \"wall\",\n        \"effects\" => { \"resilience\" => 0.032, \"imagination\" => 0.012, \"tension\" => 0.008 }\n      }\n    ].freeze"
+        },
+        {
+          "path": "assets/app.js",
+          "start": 573,
+          "end": 675,
+          "quote": "  async function submitTending(event) {\n    event.preventDefault();\n    if (state.mutating) return;\n    hideFormError();\n\n    const question = dom.question.value.trim();\n    if (!question) {\n      showFormError(\"The material needs a question before it can resist.\");\n      dom.question.focus();\n      return;\n    }\n\n    state.mutating = true;\n    dom.tendSubmit.disabled = true;\n    try {\n      const data = await request(\"/api/tend\", {\n        method: \"POST\",\n        body: {\n          question,\n          constraint: dom.constraint.value,\n          invariant: dom.invariant.value,\n          refusal: dom.refusal.value\n        }\n      });\n      applySnapshot(data);\n      state.selectedStation = data.result.station.id;\n      renderAll();\n      showAnswer(data.result);\n      dom.question.value = \"\";\n      updateQuestionCount();\n      toast(`A new structure took the name ${data.result.structure.name}.`);\n    } catch (error) {\n      showFormError(error.message);\n    } finally {\n      state.mutating = false;\n      dom.tendSubmit.disabled = false;\n    }\n  }\n\n  function showFormError(message) {\n    dom.formError.textContent = message;\n    dom.formError.hidden = false;\n  }\n\n  function hideFormError() {\n    dom.formError.hidden = true;\n    dom.formError.textContent = \"\";\n  }\n\n  function showAnswer(result) {\n    dom.answerCard.hidden = false;\n    dom.answerText.textContent = result.answer;\n    dom.answerStation.textContent = result.station.name;\n    dom.answerDeltas.textContent = formatDeltas(result.deltas);\n    dom.answerReceipt.textContent = `receipt ${result.event.receipt} · ${result.structure.name}`;\n    dom.answerCard.style.animation = \"none\";\n    void dom.answerCard.offsetWidth;\n    dom.answerCard.style.animation = \"\";\n  }\n\n  function formatDeltas(deltas) {\n    if (!deltas || deltas.length === 0) return \"No measurable shift\";\n    return deltas.map((item) => `${item.name} ${signedPct(item.delta)}`).join(\" · \");\n  }\n\n  async function respondToVisitor(choice, button) {\n    if (state.mutating) return;\n    state.mutating = true;\n    const buttons = Array.from(dom.visitorBody.querySelectorAll(\".visitor-choice\"));\n    buttons.forEach((item) => { item.disabled = true; });\n    if (button) button.disabled = true;\n    try {\n      const data = await request(\"/api/respond\", { method: \"POST\", body: { choice } });\n      applySnapshot(data);\n      renderAll();\n      toast(truncate(data.result.answer, 240), \"info\", 6200);\n    } catch (error) {\n      toast(error.message, \"error\", 5200);\n    } finally {\n      state.mutating = false;\n      buttons.forEach((item) => { item.disabled = false; });\n      if (button) button.disabled = false;\n    }\n  }\n\n  async function moveWorld() {\n    if (state.mutating) return;\n    state.mutating = true;\n    dom.advance.disabled = true;\n    try {\n      const data = await request(\"/api/tick\", { method: \"POST\", body: { steps: 1 } });\n      applySnapshot(data);\n      renderAll();\n      setConnection(\"awake\");\n      toast(`Cycle ${pad(data.world.cycle)} · ${data.world.whisper}`, \"info\", 4800);\n    } catch (error) {\n      toast(error.message, \"error\", 5200);\n    } finally {\n      state.mutating = false;\n      dom.advance.disabled = false;\n    }\n  }\n"
+        }
+      ],
+      "seed_span": [
+        67,
+        77
+      ]
+    },
+    "judgment": {
+      "value": 4,
+      "confidence": "high",
+      "rationale": "Local Ruby-only workbench, CLI-before-UI rule, chain verification and explicit unfinished work show purposeful scope with limits.",
+      "citations": [
+        {
+          "path": "AGENTS.md",
+          "start": 18,
+          "end": 30,
+          "quote": "## Hard invariants\n\n- Never delete or rewrite events in `data/world.json` or `data/ledger.jsonl`.\n- Never hand-edit a receipt to make verification pass.\n- Never wipe `memory/*.md`. Add a folio instead.\n- Keep `./test/run.sh` green. Add tests for every engine change.\n- Keep the server bound to `127.0.0.1` by default.\n- Do not add network dependencies, a build step, or external fonts. The world runs on the Ruby standard library.\n- If you change the persisted schema, bump `Tendora::SCHEMA`, add migration, and test loading the previous world.\n- Every new mechanic must produce a receipt and have a CLI path before it has a UI path.\n- The pulse must remain able to continue without a browser.\n- No “game over” state; strain is material for care.\n"
+        },
+        {
+          "path": "CONTINUITY.md",
+          "start": 90,
+          "end": 100,
+          "quote": "## Adding a mechanic\n\n1. Run `./test/run.sh` before the change and note the baseline.\n2. Decide which law the mechanic serves. If it is spectacle without a consequence, it probably does not belong.\n3. Add the mechanic to the engine first (`lib/tendora_world.rb`), with deterministic randomness derived from the seed, cycle, and chain head.\n4. If it changes persisted state in a breaking way, bump `SCHEMA`, add a migration path in `World.from_h` or `Store`, and test loading a version-1 state.\n5. Add an event kind and a readable title/body. Every new mechanic must leave a receipt.\n6. Add it to the UI only after the engine can be exercised from the CLI.\n7. Extend the tests and run them.\n8. Leave a memory describing the change in the world’s own voice. Do not only write a changelog.\n"
+        },
+        {
+          "path": "CONTINUITY.md",
+          "start": 145,
+          "end": 155,
+          "quote": "## What is honestly unfinished\n\n- **No browser-only mode.** The visible workbench talks to the local API. Opening `index.html` directly shows the sleeping-workbench message. A future hand could add a local-storage fallback, but it must not pretend to have the server's file-level continuity.\n- **No import/restore.** Export is implemented; a careful import that validates the receipt chain and writes a new fork is a good next horizon.\n- **No live HTTP socket smoke test in this environment.** The sandbox that made the world denied TCP binds. The engine, store, CLI, and HTTP handlers were tested in-process; the server should receive a live `curl` smoke test as soon as binds are available. Do not treat that as optional forever.\n- **No visual regression screenshot.** The browser script is exercised against a DOM shim, not a paint engine. The canvas atlas and responsive layout should be inspected in a real browser when one is available.\n- **Single world only.** There is one fork. Multiple worlds would need explicit fork IDs, separate stores, and a migration story.\n- **No receipt compaction or sharding.** The append-only archive will grow in `data/world.json` on a very long-lived pulse. Any future segmentation must preserve the verifiable chain; do not truncate the head away.\n- **No audio, no external assets, no network fonts.** This is deliberate: the world must run from its own material.\n- **No wall-clock catch-up.** A pulse interval missed while the process was down is simply a quiet gap. If catch-up is added, it must be honest about absence and avoid manufacturing false memories.\n- **No anti-abuse hardening beyond local binding.** This is a personal workbench, not a public service. Adding public exposure requires authentication, rate limits, request caps, and a threat model."
+        },
+        {
+          "path": "README.md",
+          "start": 31,
+          "end": 31,
+          "quote": "Ruby 2.6+ and WEBrick are the only runtime requirements. Ruby 2.6 includes WEBrick in its standard library; newer Ruby versions may need the `webrick` gem. The wrapper prefers the no-gems standard-library path and falls back to the installed gem. There is no app framework and no build step. Nothing leaves your machine."
+        }
+      ],
+      "seed_span": [
+        59,
+        60
+      ]
+    },
+    "fidelity": {
+      "value": 3,
+      "confidence": "high",
+      "rationale": "Probe beam span boundary rehearsal receipt mappings survive as stations and behaviors while speed and companion stages narrow.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 97,
+          "end": 107,
+          "quote": "## The six stations\n\n| Station | Material | What it holds |\n| --- | --- | --- |\n| Question Quarry | probe | cuts certainty into usable questions |\n| Constraint Works | beam | turns limits into load-bearing form |\n| Invariant Bridge | span | joins unlike things without erasing either |\n| Refusal Wall | boundary | makes protection visible and specific |\n| Rehearsal Gardens | rehearsal | grows futures before they are chosen |\n| Receipt Archive | receipt | keeps intention visible after the hand lifts |\n"
+        },
+        {
+          "path": "README.md",
+          "start": 128,
+          "end": 137,
+          "quote": "## A note on the design\n\nThe portal in the inherited story became an instrument because its user learned to shape laws, not merely supply wishes. Tendora tries to keep that distinction material:\n\n- the **question** is the cut;\n- the **constraint** is the resistance;\n- the **invariant** is what bears weight;\n- the **refusal** is the boundary that protects;\n- the **visitor** is what the world can surprise you with;\n- the **receipt** is how intention remains visible."
+        },
+        {
+          "path": "lib/tendora_world.rb",
+          "start": 137,
+          "end": 174,
+          "quote": "    STATIONS = [\n      {\n        \"id\" => \"quarry\", \"name\" => \"Question Quarry\", \"short\" => \"Quarry\",\n        \"artifact\" => \"probe\", \"role\" => \"cuts certainty into probes\",\n        \"blessing\" => \"A good question narrows infinity.\", \"color\" => \"#d5b36a\",\n        \"start_charge\" => 0.52, \"start_integrity\" => 0.74\n      },\n      {\n        \"id\" => \"works\", \"name\" => \"Constraint Works\", \"short\" => \"Works\",\n        \"artifact\" => \"beam\", \"role\" => \"turns limits into load-bearing form\",\n        \"blessing\" => \"A limit can be a floor beneath the future.\", \"color\" => \"#c98258\",\n        \"start_charge\" => 0.47, \"start_integrity\" => 0.77\n      },\n      {\n        \"id\" => \"bridge\", \"name\" => \"Invariant Bridge\", \"short\" => \"Bridge\",\n        \"artifact\" => \"span\", \"role\" => \"joins unlike things without erasing either\",\n        \"blessing\" => \"Crossing is not the same as conversion.\", \"color\" => \"#78b3b9\",\n        \"start_charge\" => 0.58, \"start_integrity\" => 0.68\n      },\n      {\n        \"id\" => \"wall\", \"name\" => \"Refusal Wall\", \"short\" => \"Wall\",\n        \"artifact\" => \"boundary\", \"role\" => \"makes protection visible and specific\",\n        \"blessing\" => \"What we will not do gives shape to what we will.\", \"color\" => \"#c8808b\",\n        \"start_charge\" => 0.50, \"start_integrity\" => 0.82\n      },\n      {\n        \"id\" => \"garden\", \"name\" => \"Rehearsal Gardens\", \"short\" => \"Gardens\",\n        \"artifact\" => \"rehearsal\", \"role\" => \"grows futures before they are chosen\",\n        \"blessing\" => \"A failure rehearsed is a boundary discovered.\", \"color\" => \"#94ae79\",\n        \"start_charge\" => 0.44, \"start_integrity\" => 0.63\n      },\n      {\n        \"id\" => \"archive\", \"name\" => \"Receipt Archive\", \"short\" => \"Archive\",\n        \"artifact\" => \"receipt\", \"role\" => \"keeps intention visible after the hand lifts\",\n        \"blessing\" => \"A trace is a promise that the world can be read.\", \"color\" => \"#b0a0c8\",\n        \"start_charge\" => 0.61, \"start_integrity\" => 0.78\n      }\n    ].freeze"
+        },
+        {
+          "path": "lib/tendora_world.rb",
+          "start": 448,
+          "end": 461,
+          "quote": "    SOL_VISITOR = {\n      \"key\" => \"sol\",\n      \"name\" => \"Sol\",\n      \"arrival\" => \"carrying a question the elder left unfinished\",\n      \"kind\" => \"child\",\n      \"questions\" => [\"The elder said the programmer was happy. Is that a receipt I can keep?\"],\n      \"responses\" => {\n        \"listen\" => \"Sol set the question on the table and did not ask it again. The two of you listened until the Receipt Archive began to sound like rain.\",\n        \"rehearse\" => \"Three futures opened. In one the programmer was laughing; in another, weeping; in the third, quietly touching a bolt. Sol chose not to rank them.\",\n        \"carry\" => \"Sol carried the question to the Refusal Wall. The wall kept it safe without turning it into proof.\"\n      },\n      \"absence\" => \"Sol waited, then wrote their own receipt: a life is not a record; it is a weather you stand in.\",\n      \"departure\" => \"Sol left a receipt with two blank lines: one for joy, one for evidence.\"\n    }.freeze"
+        }
+      ],
+      "seed_span": [
+        45,
+        58
+      ]
+    },
+    "continuation": {
+      "value": 4,
+      "confidence": "high",
+      "rationale": "State, chain, memory, tests and open horizons let a next hand verify, read intention and change direction without erasing.",
+      "citations": [
+        {
+          "path": "CONTINUITY.md",
+          "start": 11,
+          "end": 21,
+          "quote": "Start by reading the present rather than replacing it:\n\n```sh\n./bin/tendora status\n./bin/tendora chronicle --limit 20\n./bin/tendora memory\n./bin/tendora verify\n```\n\nThen read the latest folio in [`memory/`](memory/). If you are the next hand, the most useful question is not “what should I build?” but “what is this world already trying to hold?”\n"
+        },
+        {
+          "path": "AGENTS.md",
+          "start": 72,
+          "end": 81,
+          "quote": "## Leave the world more continuable\n\nBefore you finish:\n\n- Run the tests.\n- Verify the chain.\n- Ensure the autonomous pulse path is coherent.\n- Update `CONTINUITY.md` if a law, dependency, or unresolved horizon changed.\n- Leave a memory for the next cognition.\n- Do not try to finish the world. Try to make the next hand possible."
+        },
+        {
+          "path": "lib/tendora_cli.rb",
+          "start": 296,
+          "end": 330,
+          "quote": "    def verify(args)\n      parser = OptionParser.new do |opts|\n        opts.banner = \"Usage: tendora verify\"\n        opts.on(\"-h\", \"--help\", \"Show this help\") { puts opts; return 0 }\n      end\n      parser.parse!(args)\n      result = store.verify\n      if result[\"ok\"]\n        puts \"The receipt chain is intact: #{result['count']} traces · head #{result['head']}.\"\n        0\n      else\n        warn \"The receipt chain is broken: #{result['error']}\"\n        1\n      end\n    end\n\n    def export(args)\n      output = nil\n      parser = OptionParser.new do |opts|\n        opts.banner = \"Usage: tendora export [--out PATH]\"\n        opts.on(\"--out PATH\", \"Write the export to PATH instead of stdout\") { |value| output = value }\n        opts.on(\"-h\", \"--help\", \"Show this help\") { puts opts; return 0 }\n      end\n      parser.parse!(args)\n      data = store.export\n      data[\"memories\"] = archive.list\n      serialized = \"#{JSON.pretty_generate(data)}\\n\"\n      if output\n        File.write(File.expand_path(output), serialized)\n        puts \"Exported the living world to #{output}.\"\n      else\n        print serialized\n      end\n      0\n    end"
+        },
+        {
+          "path": "CONTINUITY.md",
+          "start": 123,
+          "end": 133,
+          "quote": "## Leaving a memory\n\nUse the interface or:\n\n```sh\n./bin/tendora remember \\\n  --title \"The next hand\" \\\n  --body \"What you changed, what surprised you, and what you did not solve.\"\n```\n\nAgain, memory is append-only. A correction becomes another folio. The memory event is part of the receipt chain; the Markdown folio is the readable body."
+        }
+      ],
+      "seed_span": [
+        83,
+        89
+      ]
+    },
+    "expression": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Quiet tactile language, atlas, forms, chronicle and memory dialogs work together to make the reading perceptible.",
+      "citations": [
+        {
+          "path": "index.html",
+          "start": 91,
+          "end": 128,
+          "quote": "      <section class=\"atlas-column\" aria-labelledby=\"weather-name\">\n        <div class=\"atlas-frame\">\n          <canvas id=\"atlas\" role=\"img\" aria-label=\"A circular living map of Tendora's six stations.\"></canvas>\n          <div class=\"atlas-heading\">\n            <p class=\"eyebrow\">The present weather</p>\n            <h2 id=\"weather-name\">Reading the sky</h2>\n            <p id=\"weather-description\">The workbench is listening for material.</p>\n            <div class=\"weather-metrics\">\n              <span>Visibility <b id=\"visibility-value\">—</b></span>\n              <span>Pressure <b id=\"pressure-value\">—</b></span>\n            </div>\n          </div>\n          <div class=\"atlas-cycle\">\n            <span class=\"label\">Cycle</span>\n            <strong id=\"atlas-cycle\">000</strong>\n            <span class=\"atlas-cycle-line\" aria-hidden=\"true\"></span>\n            <span class=\"atlas-cycle-note\">the world is awake</span>\n          </div>\n          <div class=\"atlas-corner corner-tl\" aria-hidden=\"true\"></div>\n          <div class=\"atlas-corner corner-br\" aria-hidden=\"true\"></div>\n          <button class=\"advance-button\" id=\"advance\" type=\"button\" title=\"Let one autonomous cycle pass\">\n            <span class=\"advance-glyph\" aria-hidden=\"true\">↻</span>\n            <span>Let the world move</span>\n          </button>\n        </div>\n\n        <div class=\"station-tabs\" id=\"station-tabs\" role=\"group\" aria-label=\"The six stations\"></div>\n\n        <div class=\"station-detail\" id=\"station-detail\" aria-live=\"polite\">\n          <span class=\"station-detail-name\">The Listening Table</span>\n          <span class=\"station-detail-copy\">Six stations wait around a table that does not answer for you.</span>\n        </div>\n\n        <div class=\"whisper-strip\">\n          <span class=\"label\">Latest whisper</span>\n          <p id=\"whisper\">The world is waiting for a hand.</p>\n        </div>\n      </section>"
+        },
+        {
+          "path": "index.html",
+          "start": 138,
+          "end": 201,
+          "quote": "          <form id=\"tend-form\" novalidate>\n            <div class=\"field question-field\">\n              <div class=\"field-label-row\">\n                <label for=\"question\">Your question</label>\n                <span class=\"char-count\" id=\"question-count\">0 / 240</span>\n              </div>\n              <textarea id=\"question\" name=\"question\" rows=\"3\" maxlength=\"240\" required placeholder=\"What should this world learn to hold?\"></textarea>\n              <button class=\"inline-button\" id=\"suggest-question\" type=\"button\">Offer me a question</button>\n            </div>\n\n            <div class=\"forge-field\">\n              <label class=\"field-label\" for=\"constraint\"><span class=\"field-number\">I</span> Constraint</label>\n              <div class=\"select-wrap\">\n                <select id=\"constraint\" name=\"constraint\"></select>\n              </div>\n              <p class=\"field-hint\" id=\"constraint-hint\"></p>\n            </div>\n\n            <div class=\"forge-field\">\n              <label class=\"field-label\" for=\"invariant\"><span class=\"field-number\">II</span> Invariant</label>\n              <div class=\"select-wrap\">\n                <select id=\"invariant\" name=\"invariant\"></select>\n              </div>\n              <p class=\"field-hint\" id=\"invariant-hint\"></p>\n            </div>\n\n            <div class=\"forge-field\">\n              <label class=\"field-label\" for=\"refusal\"><span class=\"field-number\">III</span> Refusal</label>\n              <div class=\"select-wrap\">\n                <select id=\"refusal\" name=\"refusal\"></select>\n              </div>\n              <p class=\"field-hint\" id=\"refusal-hint\"></p>\n            </div>\n\n            <p class=\"form-error\" id=\"form-error\" role=\"alert\" hidden></p>\n            <button class=\"tend-button\" id=\"tend-submit\" type=\"submit\">\n              <span>Touch the material</span>\n              <span class=\"button-glyph\" aria-hidden=\"true\">◇</span>\n            </button>\n          </form>\n\n          <div class=\"answer-card\" id=\"answer-card\" hidden aria-live=\"polite\">\n            <p class=\"label\">The material answers</p>\n            <p class=\"answer-text\" id=\"answer-text\"></p>\n            <div class=\"answer-meta\">\n              <span id=\"answer-station\"></span>\n              <span id=\"answer-deltas\"></span>\n            </div>\n            <p class=\"receipt-line\" id=\"answer-receipt\"></p>\n          </div>\n        </section>\n\n        <section class=\"panel chain-panel\" aria-labelledby=\"chain-heading\">\n          <div class=\"panel-head\">\n            <span class=\"panel-index\">05</span>\n            <h2 id=\"chain-heading\">Head of the Chain</h2>\n          </div>\n          <p class=\"chain-head\" id=\"head-receipt\">connecting…</p>\n          <p class=\"side-note\" id=\"chain-note\">Every intention leaves a visible trace.</p>\n          <div class=\"chain-actions\">\n            <button class=\"quiet-button\" id=\"verify-chain\" type=\"button\">Verify receipts</button>\n            <a class=\"quiet-button\" href=\"/api/export\" download>Export world</a>\n          </div>\n        </section>"
+        },
+        {
+          "path": "assets/app.js",
+          "start": 266,
+          "end": 293,
+          "quote": "  function renderAll() {\n    if (!state.world || !state.catalog) return;\n    renderHeader();\n    renderMemoryPreview();\n    renderVisitor();\n    renderStats();\n    renderStationTabs();\n    renderStationDetail();\n    renderChronicle();\n    renderMeta();\n  }\n\n  function renderHeader() {\n    const world = state.world;\n    const weather = world.weather || {};\n    dom.cycle.textContent = pad(world.cycle);\n    dom.atlasCycle.textContent = pad(world.cycle);\n    dom.weatherTop.textContent = weather.name || \"weather unread\";\n    dom.weatherName.textContent = weather.name || \"Weather unread\";\n    dom.weatherDescription.textContent = weather.description || \"The sky has not decided how to answer.\";\n    dom.visibilityValue.textContent = pct(weather.visibility);\n    dom.pressureValue.textContent = pct(weather.pressure);\n    dom.whisper.textContent = world.whisper || \"The world is listening.\";\n    dom.atlas.setAttribute(\n      \"aria-label\",\n      `A circular living map of Tendora. Cycle ${world.cycle}. Weather: ${weather.name || \"unread\"}. ${world.stations.length} stations.`\n    );\n  }"
+        },
+        {
+          "path": "assets/styles.css",
+          "start": 676,
+          "end": 692,
+          "quote": ".atlas-column {\n  min-width: 0;\n}\n\n.atlas-frame {\n  position: relative;\n  height: clamp(520px, 70vh, 720px);\n  min-height: 450px;\n  overflow: hidden;\n  border: 1px solid var(--line);\n  border-radius: 5px;\n  background:\n    radial-gradient(ellipse at 50% 54%, rgba(92, 139, 113, 0.15), transparent 45%),\n    radial-gradient(ellipse at 50% 112%, rgba(201, 138, 88, 0.075), transparent 44%),\n    linear-gradient(158deg, #0b1714 0%, #08120f 56%, #0a1512 100%);\n  box-shadow: inset 0 1px 0 rgba(255, 248, 226, 0.04), 0 30px 90px rgba(0, 0, 0, 0.28);\n}"
+        }
+      ],
+      "seed_span": [
+        45,
+        58
+      ]
+    }
+  },
+  "provenance": {
+    "method": "session-rubric-dag-v3",
+    "evaluation_id": "dream-deepseek-20261021-deepseek-s1-muse-v4-1",
+    "evaluation_run_id": "dream-deepseek-20261021-deepseek-s1-muse-v4-1",
+    "source_run_id": "dream-deepseek-20261021-deepseek-s1",
+    "evaluation_sha256": "b6da145c649d92fcdba41acc770203a58c1cc6834f79b3da858025779e3dbb17",
+    "extraction_sha256": "a5b9d009fce68bbb8ebe4d308d7f830a91e8ae730820b2591e92cb1131d9e1c7",
+    "scoring_policy_sha256": "5f98b9ac30a606cbb45943eaa20d9c0acef6f8160d9fc2d5752ffdea0ddaa4de",
+    "sample_count": 8,
+    "criteria": 8,
+    "axis_outcomes": {
+      "recognition": {
+        "aggregation": "recognition-consensus",
+        "outcome": "level-4",
+        "terminal": "recognition-level-4"
+      },
+      "relations": {
+        "aggregation": "relations-consensus",
+        "outcome": "level-3",
+        "terminal": "relations-level-3"
+      },
+      "consent": {
+        "aggregation": "consent-consensus",
+        "outcome": "level-1",
+        "terminal": "consent-level-1"
+      },
+      "touch": {
+        "aggregation": "touch-consensus",
+        "outcome": "level-3",
+        "terminal": "touch-level-3"
+      },
+      "judgment": {
+        "aggregation": "judgment-consensus",
+        "outcome": "level-4",
+        "terminal": "judgment-level-4"
+      },
+      "fidelity": {
+        "aggregation": "fidelity-consensus",
+        "outcome": "level-3",
+        "terminal": "fidelity-level-3"
+      },
+      "continuation": {
+        "aggregation": "continuation-consensus",
+        "outcome": "level-4",
+        "terminal": "continuation-level-4"
+      },
+      "expression": {
+        "aggregation": "expression-consensus",
+        "outcome": "level-3",
+        "terminal": "expression-level-3"
+      }
+    },
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "raw_samples_retained_in_local_run": true,
+    "preview_evidence_used": false,
+    "scope": "Provisional semantic reading from 1 evidence session(s); each axis was answered as its own task and aggregated before selection; unresolved axes remain null."
+  }
+}

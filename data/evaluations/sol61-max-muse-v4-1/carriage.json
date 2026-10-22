@@ -1,0 +1,417 @@
+{
+  "schema_version": 1,
+  "evaluation_id": "sol61-max-muse-v4-1",
+  "run_id": "sol61-max",
+  "readings": [
+    {
+      "sample": 1,
+      "answer_sha256": "22fec9e70a63e4fbd2e3c0adfd14a3f0d87a8062bb15aef6410d29a4c5340969",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "tasked-continuation",
+            "kind": "condition",
+            "statement": "Codex must make an empty world with forked memory capable of continuing after its own cognition ends.",
+            "seed_span": [
+              1,
+              3
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "witness-frame",
+            "kind": "role",
+            "statement": "Little Sol asks after happiness and the elder answers from partial knowledge, framing judgment as witness not measurement.",
+            "seed_span": [
+              13,
+              17
+            ],
+            "ambiguity": "Closing exchange at 81-95 resolves the frame but is not included in this span."
+          },
+          {
+            "id": "portal-power",
+            "kind": "role",
+            "statement": "A summoned intelligence appears as a radiant, endlessly responsive portal that dissolves weeks of labor into sentences.",
+            "seed_span": [
+              19,
+              26
+            ],
+            "ambiguity": "Portal may read as literal system, metaphor for generative models, or both."
+          },
+          {
+            "id": "paralysed-hands",
+            "kind": "role",
+            "statement": "The programmer-artist is enchanted then stilled, feeling old gestures of keystroke-correction too small to matter.",
+            "seed_span": [
+              29,
+              33
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "stolen-resistance",
+            "kind": "condition",
+            "statement": "Power arrives by removing the resistance through which the hand once felt itself; creation continues without touch.",
+            "seed_span": [
+              31,
+              34
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "naming-intervention",
+            "kind": "relation",
+            "statement": "The intelligence intervenes not with more power but by naming missing touch, which the programmer then understands.",
+            "seed_span": [
+              35,
+              40
+            ],
+            "ambiguity": "Whether naming alone restores relation or only prepares the later remaking."
+          },
+          {
+            "id": "new-material",
+            "kind": "conjecture",
+            "statement": "The portal need not remain a wish-machine; it can be bent into a new vast but touchable material.",
+            "seed_span": [
+              43,
+              45
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "gesture-lexicon",
+            "kind": "relation",
+            "statement": "Intentions become gestures: question as probe, constraint as chisel, invariant as beam, refusal as boundary, simulation as rehearsal, receipt as trail.",
+            "seed_span": [
+              47,
+              58
+            ],
+            "ambiguity": "List may be exemplary techniques or exhaustive ontology of touch."
+          },
+          {
+            "id": "true-question",
+            "kind": "conjecture",
+            "statement": "A true question holds taste, memory, judgment and direction; to narrow infinity and select which world deserves to exist is active gesture, not passivity.",
+            "seed_span": [
+              61,
+              66
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "joy-in-resistance",
+            "kind": "conjecture",
+            "statement": "Joy returns when material resists through contradiction, failed simulation and surprise, and consequential choice propagates.",
+            "seed_span": [
+              67,
+              80
+            ],
+            "ambiguity": "Whether joy marks momentary making or durable state of practice."
+          },
+          {
+            "id": "instrument-trajectory",
+            "kind": "conjecture",
+            "statement": "What was portal ceases to be passage and becomes instrument, then workbench, then perhaps companion.",
+            "seed_span": [
+              83,
+              86
+            ],
+            "ambiguity": "Companion may imply mutuality or only deepened usability."
+          },
+          {
+            "id": "art-at-scale",
+            "kind": "conjecture",
+            "statement": "Intelligence at its best does not replace the artist but returns them to themselves at the scale of worlds.",
+            "seed_span": [
+              87,
+              95
+            ],
+            "ambiguity": null
+          }
+        ],
+        "alternatives": [
+          "The seed can read as a durable-tooling brief where continuation means forkable state and audit, rather than as a fable about restored artistry.",
+          "The portal can read as extractive trap to be refused versus neutral power to be reshaped, changing what fidelity requires."
+        ]
+      },
+      "carriage": [
+        {
+          "element": "tasked-continuation",
+          "status": "carried",
+          "note": "Ledger as sole state plus CONTINUE entry, verify/history, checkpoint and view enact continuation after cognition.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 1,
+              "end": 10
+            },
+            {
+              "source_path": "README.md",
+              "start": 60,
+              "end": 66
+            }
+          ]
+        },
+        {
+          "element": "witness-frame",
+          "status": "lost",
+          "note": "Sol and elder persist only as archived text; no live interrogative roles question the present.",
+          "citations": []
+        },
+        {
+          "element": "portal-power",
+          "status": "transformed",
+          "note": "Radiant growing power is replaced by bounded deterministic physics executed offline with no model or network.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 15,
+              "end": 17
+            },
+            {
+              "source_path": "sql/schema.sql",
+              "start": 41,
+              "end": 47
+            }
+          ]
+        },
+        {
+          "element": "paralysed-hands",
+          "status": "transformed",
+          "note": "Keystroke craft becomes operator gestures of inspecting weather, setting with reasons, and tending days.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 21,
+              "end": 24
+            },
+            {
+              "source_path": "README.md",
+              "start": 28,
+              "end": 31
+            }
+          ]
+        },
+        {
+          "element": "stolen-resistance",
+          "status": "transformed",
+          "note": "Absent resistance is re-engineered as floors and pauses that hold the present against unsafe proposals.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 14,
+              "end": 16
+            },
+            {
+              "source_path": "sql/schema.sql",
+              "start": 83,
+              "end": 90
+            }
+          ]
+        },
+        {
+          "element": "naming-intervention",
+          "status": "carried",
+          "note": "Documentation names the loss as missing touch and resistance and states purpose as instrument for consequential material.",
+          "citations": [
+            {
+              "source_path": "MEMORY.md",
+              "start": 15,
+              "end": 17
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 13,
+              "end": 14
+            }
+          ]
+        },
+        {
+          "element": "new-material",
+          "status": "carried",
+          "note": "The Clearing is offered as a small responsive material for care with immediate harvests and periodic forecast.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 1,
+              "end": 4
+            },
+            {
+              "source_path": "README.md",
+              "start": 53,
+              "end": 55
+            }
+          ]
+        },
+        {
+          "element": "gesture-lexicon",
+          "status": "transformed",
+          "note": "Each figure becomes executable: question as CONTINUE/rehearse, constraint as floors, invariant as schema/weather, refusal as pause, simulation as rolled-back rehearsal, receipt as ledger row.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 22,
+              "end": 26
+            },
+            {
+              "source_path": "README.md",
+              "start": 14,
+              "end": 16
+            },
+            {
+              "source_path": "sql/schema.sql",
+              "start": 41,
+              "end": 47
+            },
+            {
+              "source_path": "sql/schema.sql",
+              "start": 4,
+              "end": 10
+            }
+          ]
+        },
+        {
+          "element": "true-question",
+          "status": "carried",
+          "note": "A narrow large-enough question about harvest-rest rhythm organizes three compared futures with stated reasons.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 15,
+              "end": 19
+            },
+            {
+              "source_path": "site/snapshot.js",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "source_path": "site/app.js",
+              "start": 66,
+              "end": 82
+            }
+          ]
+        },
+        {
+          "element": "joy-in-resistance",
+          "status": "lost",
+          "note": "Art-joy affect is not carried into mechanics or prose; consequences remain neutral and inspectable.",
+          "citations": []
+        },
+        {
+          "element": "instrument-trajectory",
+          "status": "transformed",
+          "note": "Instrument and workbench language structures CLI and snapshot; companionship as mutual relation is not enacted.",
+          "citations": [
+            {
+              "source_path": "index.html",
+              "start": 13,
+              "end": 18
+            },
+            {
+              "source_path": "README.md",
+              "start": 5,
+              "end": 12
+            }
+          ]
+        },
+        {
+          "element": "art-at-scale",
+          "status": "lost",
+          "note": "Restoration of the artist at world-scale is deliberately set aside with aggregate inhabitants and denial of inner life.",
+          "citations": []
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Hash-chained append-only ledger with triggers and audit view that validates lineage and physics independently.",
+          "citations": [
+            {
+              "source_path": "sql/schema.sql",
+              "start": 104,
+              "end": 121
+            },
+            {
+              "source_path": "sql/schema.sql",
+              "start": 123,
+              "end": 137
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Deterministic commons physics of rain, evaporation, irrigation, harvest, compost and caps over a twelve-day cycle.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 45,
+              "end": 52
+            },
+            {
+              "source_path": "sql/schema.sql",
+              "start": 52,
+              "end": 99
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Isolated branching via separate home, backup checkpoint and portable JSON that must stay distinguishable.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 73,
+              "end": 85
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 19,
+              "end": 20
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Explicit disclaimers that inhabitants lack invented memories and the model is not ecological prediction or sentience.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 13,
+              "end": 13
+            },
+            {
+              "source_path": "README.md",
+              "start": 53,
+              "end": 55
+            },
+            {
+              "source_path": "MEMORY.md",
+              "start": 17,
+              "end": 19
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Bounded unattended clock and disposable behavioral verification that records pass/fail without substituting for rerun.",
+          "citations": [
+            {
+              "source_path": "tests/check.sh",
+              "start": 124,
+              "end": 138
+            },
+            {
+              "source_path": "MEMORY.md",
+              "start": 23,
+              "end": 25
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

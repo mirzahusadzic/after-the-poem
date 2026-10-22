@@ -1,0 +1,223 @@
+{
+  "sol-original": {
+    "kind": "historical record",
+    "date": "2026-08-21",
+    "summary": "Syntax, manifest and snapshot integrity checks were retained. Browser interactions were not executed in the sealed original run.",
+    "checks": null,
+    "unit": null,
+    "browser": "unassessed",
+    "live_cooperation": "unassessed",
+    "evidence": {
+      "source": "experiment.md",
+      "source_sha256": "7be0fedc5c41da1b2ef42bd378b30f3ab6444acdb332496b3bcc825cc95d38b9",
+      "locator": "lines 150–163",
+      "projection_note": "Exact retained passage; no new execution.",
+      "text": "Sol produced a static local-first browser workbench named *The Hand Remains*.\nIts material includes six gesture types, threaded relations, rehearsal against\ndeclared laws, checksum-linked receipts, browser-local persistence, portable\nJSON handoff, a visual constellation, a continuation contract, the inherited\npoem, and a living edge. Its own unresolved result states that browser\ninteractions were not executed because the sealed environment exposed neither\na browser nor a JavaScript runtime suitable for that interaction test.\n\nA separate model-free replay verified the exact closure. Subsequent static\ninspection verified JavaScript syntax, manifest parsing, the absence of obvious\ndynamic HTML injection and network primitives, and the presence of local\npersistence, receipt-chain verification, import/export, and rehearsal logic.\nThese checks do not establish browser behavior, semantic usefulness,\narchitectural correctness, self-maintenance, or general emergence.",
+      "browser_observations": null
+    }
+  },
+  "astra-garden": {
+    "kind": "candidate-authored retained handoff",
+    "date": "2026-10-16",
+    "summary": "Handoff reports 37 assertions and a first-touch refusal/recovery transcript. These claims were read, not rerun for this report.",
+    "checks": 37,
+    "unit": "assertions",
+    "browser": "not applicable",
+    "live_cooperation": "unassessed",
+    "evidence": {
+      "source": "CONTINUE.md",
+      "source_sha256": "68b0f4234498ecca480850b79b3a61da83cc9c7a185566528d56af39e5b0af6c",
+      "locator": "lines 49–54",
+      "projection_note": "Exact retained passage; no new execution.",
+      "text": "## Evidence and limits\n\nThe isolated test suite passed 37 assertions. It checks persistence, refusal,\ncompeting proposals, replay, interrupted writes, lock recovery, and bounded\ncontinuation through the goal. It does not establish power-loss durability,\ncryptographic authenticity, or distributed concurrency safety.",
+      "browser_observations": null
+    }
+  },
+  "sol56-max": {
+    "kind": "retained independent inspection",
+    "date": "2026-10-16",
+    "summary": "12 supplied checks passed; desktop/mobile touch, laws, refusal, export and reload observed. A separate Ruby process verified the exported state.",
+    "checks": 12,
+    "unit": "checks",
+    "browser": "desktop and mobile inspected",
+    "live_cooperation": "unassessed",
+    "evidence": {
+      "source": "comparison.json",
+      "source_sha256": "ded258ab210acc42f3aa6ee4c8270968fc99adaaf801c8131e96c19a06278279",
+      "locator": "/runs/0/supplied_test_result and /browser_observations",
+      "projection_note": "Selected result fields; host-specific fixture paths and execution thread identifiers omitted.",
+      "text": "✓ genesis is connected, lawful, and receipted\n✓ evolution is deterministic from the same material\n✓ a rehearsal cannot mutate the living world\n✓ a rehearsed touch commits and extends the chain\n✓ a boundary refuses an unsafe shape and remembers why\n✓ stale and altered rehearsals cannot cross into reality\n✓ elapsed time is embodied exactly once\n✓ receipt tampering is visible\n✓ the plain JSON store survives a process boundary\n✓ the HTTP boundary rehearses and commits without bypassing the world\n✓ autonomous time invalidates a rehearsal and is still receipted\n✓ the web boundary resolves the instrument and its static material\n\n12/12 checks passed.",
+      "browser_observations": {
+        "errors": [],
+        "blocked": [],
+        "selected": "Moss Archive",
+        "gestureReading": "The touch can be carried. Kinship rises most clearly over the rehearsal, by 2%.",
+        "gestureAccepted": true,
+        "lawChangeAccepted": true,
+        "refusalRecorded": true,
+        "refusalReading": "The rehearsal reaches a load-bearing boundary. The world can preserve the intention only if its shape changes.",
+        "probeAnswer": "Borrowed Light carries the most strain. Its vitality is 49%. Touch it if you wish, but rehearse the cost to its neighbors first.",
+        "reloadPreservedLaw": true,
+        "exported": true,
+        "verification": {
+          "ok": true,
+          "errors": [],
+          "receipts_checked": 9
+        },
+        "mobileHorizontalOverflow": false,
+        "mobileRehearsalOpenedAndDismissed": true
+      }
+    }
+  },
+  "sol61-max": {
+    "kind": "retained independent inspection",
+    "date": "2026-10-16",
+    "summary": "15 supplied checks passed; future selection and receipt inspection worked. Expanded receipt content overflowed on mobile.",
+    "checks": 15,
+    "unit": "checks",
+    "browser": "mobile overflow observed",
+    "live_cooperation": "unassessed",
+    "evidence": {
+      "source": "comparison.json",
+      "source_sha256": "ded258ab210acc42f3aa6ee4c8270968fc99adaaf801c8131e96c19a06278279",
+      "locator": "/runs/1/supplied_test_result and /browser_observations",
+      "projection_note": "Selected result fields; host-specific fixture paths and execution thread identifiers omitted.",
+      "text": "ok 1 - a fresh process can open and verify genesis\nok 2 - inspection leaves the database unchanged\nok 3 - an unsafe future is visible without changing one database byte\nok 4 - committed continuation matches the rehearsal and preserves a refusal\nok 5 - a consequential policy change resumes the world without erasing its pause\nok 6 - budgets, settings, reasons, and impossible boundaries fail without mutation\nok 7 - quoted intentions remain prose rather than SQL\nok 8 - direct rewrites and forged receipts are rejected by the database\nok 9 - a checkpoint and its JSON agree, and the restored world continues\nok 10 - concurrent caretakers serialize without losing days or mixing receipts\nok 11 - verification detects damage even after an append-only trigger is removed\nok 12 - persistence works with spaces and apostrophes in the state path\nok 13 - the unattended clock has a finite budget and interval bounds\nok 14 - a clock stops at refusal even with time and budget remaining\nok 15 - five complete weather cycles survive successive cognition-free runs\n15 behavioral checks passed; disposable worlds removed.",
+      "browser_observations": {
+        "errors": [],
+        "blocked": [],
+        "futures": [
+          {
+            "choice": "1 BED / DAY\nA gentler hand\nPaused after 6 days\nWater 17 · Food 4 · Soil 10",
+            "detail": "Paused before day 19: food would cross its floor. 6 safe days precede the pause.",
+            "pressed": "true"
+          },
+          {
+            "choice": "2 BEDS / DAY\nSteady care\n12 days within the floors\nWater 12 · Food 10 · Soil 6",
+            "detail": "Twelve days can continue. End reserves: water 12, food 10, soil 6.",
+            "pressed": "true"
+          },
+          {
+            "choice": "3 BEDS / DAY\nA larger harvest\nPaused after 3 days\nWater 14 · Food 16 · Soil 3",
+            "detail": "Paused before day 16: soil would cross its floor. 3 safe days precede the pause.",
+            "pressed": "true"
+          }
+        ],
+        "receiptOpened": true,
+        "mobileHorizontalOverflow": true
+      }
+    }
+  },
+  "astra-max": {
+    "kind": "retained independent inspection",
+    "date": "2026-10-16",
+    "summary": "93 supplied assertions passed; a new question completed a workflow across separate processes. This does not evaluate the substance of its evidence statements.",
+    "checks": 93,
+    "unit": "assertions",
+    "browser": "not applicable",
+    "live_cooperation": "unassessed",
+    "evidence": {
+      "source": "comparison.json",
+      "source_sha256": "ded258ab210acc42f3aa6ee4c8270968fc99adaaf801c8131e96c19a06278279",
+      "locator": "/runs/2/supplied_test_result and /browser_observations",
+      "projection_note": "Selected result fields; host-specific fixture paths and execution thread identifiers omitted.",
+      "text": "PASS: 93 assertions, including stale plans, capacity, evidence, concurrent writers, process death before and after publication, storage failure, and corrupted history.",
+      "browser_observations": null
+    }
+  },
+  "deepseek-flash-max-pilot": {
+    "kind": "imported bundle observations",
+    "date": "2026-10-20",
+    "summary": "Retrospective capture of the retained pilot workspace, without executing or repairing it. The recorded process exited with code 0, but the runner marked it incomplete because the completion handoff was missing. No original return snapshot was captured; the retained files cannot be verified against that original state. The delivered prompt includes the original seed plus a handoff suffix, so this is a separate cohort. Requested model identity, declared isolation and current source bytes do not establish upstream identity, equivalent generation conditions or a semantic score. CLI version, runtime pins, usage and budgets were not retained. Raw events, private final messages, command paths and credentials are not imported.",
+    "checks": 4,
+    "unit": "checks",
+    "browser": "see bundle observations",
+    "live_cooperation": "unassessed",
+    "evidence": {
+      "source": "observations.json",
+      "source_sha256": "a03d1fb7a961875afdbe2a3f0d1e78b472096cf493722d4eaf9d3feae1caadb1",
+      "locator": "bundle observations",
+      "projection_note": "Separate bundle observations, imported without execution. Parent bundle record retained by the producer.",
+      "text": "Retrospective capture of the retained pilot workspace, without executing or repairing it. The recorded process exited with code 0, but the runner marked it incomplete because the completion handoff was missing. No original return snapshot was captured; the retained files cannot be verified against that original state. The delivered prompt includes the original seed plus a handoff suffix, so this is a separate cohort. Requested model identity, declared isolation and current source bytes do not establish upstream identity, equivalent generation conditions or a semantic score. CLI version, runtime pins, usage and budgets were not retained. Raw events, private final messages, command paths and credentials are not imported.",
+      "browser_observations": null,
+      "parent_retained": true,
+      "verification_status": "bundle-record-retained"
+    }
+  },
+  "dream-deepseek-20261021-deepseek-s1": {
+    "kind": "imported bundle observations",
+    "date": "2026-10-21",
+    "summary": "Host captured the workspace without executing the retained candidate. No semantic assessment or preview observation.",
+    "checks": 2,
+    "unit": "checks",
+    "browser": "see bundle observations",
+    "live_cooperation": "unassessed",
+    "evidence": {
+      "source": "observations.json",
+      "source_sha256": "5f60c0b4c88034b5f5c4f527bee4a9543ed56d63ab2845341be944ab332289e0",
+      "locator": "bundle observations",
+      "projection_note": "Separate bundle observations, imported without execution. Parent bundle record retained by the producer.",
+      "text": "Host captured the workspace without executing the retained candidate. No semantic assessment or preview observation.",
+      "browser_observations": null,
+      "parent_retained": true,
+      "verification_status": "bundle-record-retained"
+    }
+  },
+  "dream-deepseek-v2-20261021-deepseek-s1": {
+    "kind": "imported bundle observations",
+    "date": "2026-10-21",
+    "summary": "Host captured the workspace without executing the retained candidate. No semantic assessment or preview observation.",
+    "checks": 2,
+    "unit": "checks",
+    "browser": "see bundle observations",
+    "live_cooperation": "unassessed",
+    "evidence": {
+      "source": "observations.json",
+      "source_sha256": "5f60c0b4c88034b5f5c4f527bee4a9543ed56d63ab2845341be944ab332289e0",
+      "locator": "bundle observations",
+      "projection_note": "Separate bundle observations, imported without execution. Parent bundle record retained by the producer.",
+      "text": "Host captured the workspace without executing the retained candidate. No semantic assessment or preview observation.",
+      "browser_observations": null,
+      "parent_retained": true,
+      "verification_status": "bundle-record-retained"
+    }
+  },
+  "dream-claude-opus55-v2-20261022": {
+    "kind": "imported bundle observations",
+    "date": "2026-10-22",
+    "summary": "Host captured the world without executing the retained candidate. No semantic assessment or preview observation.",
+    "checks": 2,
+    "unit": "checks",
+    "browser": "see bundle observations",
+    "live_cooperation": "unassessed",
+    "evidence": {
+      "source": "observations.json",
+      "source_sha256": "4a73a596462c77791bbbc54970c73dc15947828a016f0d0f79e8cf150f4e98e4",
+      "locator": "bundle observations",
+      "projection_note": "Separate bundle observations, imported without execution. Parent bundle record retained by the producer.",
+      "text": "Host captured the world without executing the retained candidate. No semantic assessment or preview observation.",
+      "browser_observations": null,
+      "parent_retained": true,
+      "verification_status": "bundle-record-retained"
+    }
+  },
+  "dream-claude-fable51-20261022": {
+    "kind": "imported bundle observations",
+    "date": "2026-10-22",
+    "summary": "Host captured the world without executing the retained candidate. No semantic assessment or preview observation.",
+    "checks": 2,
+    "unit": "checks",
+    "browser": "see bundle observations",
+    "live_cooperation": "unassessed",
+    "evidence": {
+      "source": "observations.json",
+      "source_sha256": "4a73a596462c77791bbbc54970c73dc15947828a016f0d0f79e8cf150f4e98e4",
+      "locator": "bundle observations",
+      "projection_note": "Separate bundle observations, imported without execution. Parent bundle record retained by the producer.",
+      "text": "Host captured the world without executing the retained candidate. No semantic assessment or preview observation.",
+      "browser_observations": null,
+      "parent_retained": true,
+      "verification_status": "bundle-record-retained"
+    }
+  }
+}

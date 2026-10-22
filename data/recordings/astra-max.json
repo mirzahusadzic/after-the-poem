@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "run_id": "astra-max",
+  "corpus_sha256": "a63cf4aaabf904e8b4a07a3d0bec82285f69d13c07d4dde8655f788abafe335a",
+  "recorded_on": "2026-10-23",
+  "runner": "isolated local runner (macOS sandbox, disposable copy)",
+  "entries": [
+    {
+      "command": "help",
+      "output": "status | verify | log\nask ID \"Question\"\npropose PROPOSAL QUESTION STATUS \"Reason\" [\"Evidence\"]\nrehearse PROPOSAL | enact PROPOSAL\nobserve QUESTION \"Observation\"\nStatuses: open, active, parked, resolved. Start fresh resets this copy.",
+      "exit_code": 0
+    },
+    {
+      "command": "status",
+      "output": "Keep this workbench understandable, testable, and resumable.\nReceipts: 19 | Material revision: 7\nActive place: first-contact (capacity 1)\n\nQuestions:\n  resolved   continuity             Can a later invocation recover a coherent board after its writer disappears?\n  active     first-contact          Can this workbench help the programmer feel an intention meet the material?\n  open       memory-correction      How can inherited statements be corrected without erasing their origin?\n\nUnenacted proposals:\n  explore-memory: memory-correction -> active [blocked]\n\nRead CONTINUE.md for the next human-sized step. This workbench starts no background worker.",
+      "exit_code": 0
+    },
+    {
+      "command": "verify",
+      "output": "Verified 19 receipts; material revision 7.\n0 uncommitted staging files ignored. Verification checks structure and laws, not authenticity.",
+      "exit_code": 0
+    },
+    {
+      "command": "log",
+      "output": "#1 @1792172780 genesis world -> - (1)\n  Keep this workbench understandable, testable, and resumable.\n  Evidence / provenance: Inherited reference c986990; its contents were not available in this world.\n#2 @1792172780 observation world -> world (note)\n  Bootstrap began in an empty material directory. The supplied story is preserved in memory/inherited.md; the referenced commit and any separate living-memory store were unavailable here.\n#3 @1792172780 question continuity -> - (open)\n  Can a later invocation recover a coherent board after its writer disappears?\n#4 @1792172780 proposal begin-continuity -> continuity (active)\n  Build and test a durable entrance, a replayable ledger, and explicit laws.\n#5 @1792172780 rehearsal begin-continuity -> continuity (pass)\n  Allowed: continuity moves from open to active.\n#6 @1792172780 enactment begin-continuity -> continuity (active)\n  Build and test a durable entrance, a replayable ledger, and explicit laws.\n#7 @1792172780 observation world -> continuity (note)\n  The interruption test exposed a staging filename collision in zsh subshells. The smoke test exposed a lock cleanup scope error. Both were repaired; the final suite passes 89 assertions.\n#8 @1792172780 proposal finish-continuity -> continuity (resolved)\n  The local process-interruption and replay behavior has been observed and documented.\n  Evidence / provenance: evidence/tests.txt records the passing suite; evidence/bootstrap.md explains its scope; FORMAT.md states the storage limits; CONTINUE.md gives the next entrance.\n#9 @1792172780 rehearsal finish-continuity -> continuity (pass)\n  Allowed: continuity moves from active to resolved.\n#10 @1792172780 enactment finish-continuity -> continuity (resolved)\n  The local process-interruption and replay behavior has been observed and documented.\n  Evidence / provenance: evidence/tests.txt records the passing suite; evidence/bootstrap.md explains its scope; FORMAT.md states the storage limits; CONTINUE.md gives the next entrance.\n#11 @1792172780 question first-contact -> - (open)\n  Can this workbench help the programmer feel an intention meet the material?\n#12 @1792172780 question memory-correction -> - (open)\n  How can inherited statements be corrected without erasing their origin?\n#13 @1792172780 proposal begin-first-contact -> first-contact (active)\n  Leave one bounded encounter for the programmer: a real question, a rehearsed choice, and one observed result.\n#14 @1792172780 rehearsal begin-first-contact -> first-contact (pass)\n  Allowed: first-contact moves from open to active.\n#15 @1792172780 enactment begin-first-contact -> first-contact (active)\n  Leave one bounded encounter for the programmer: a real question, a rehearsed choice, and one observed result.\n#16 @1792172780 proposal explore-memory -> memory-correction (active)\n  Try one attributed correction and inspect the inherited statement and correction side by side.\n#17 @1792172780 rehearsal explore-memory -> memory-correction (blocked)\n  The active place belongs to first-contact; finish or park it first.\n#18 @1792172780 observation world -> world (note)\n  The durable entrance is CONTINUE.md and continuity.json. The next encounter should use one real question from the programmer. No future invocation has been scheduled; the world waits in its files for a person or supervisor.\n#19 @1792172922 observation world -> world (note)\n  The final suite now passes 93 assertions, adding a test for missing disposable staging directories. A separate file-only copy resumed all 18 preceding receipts and recreated its runtime files; evidence/resume-copy.txt records the observed result.",
+      "exit_code": 0
+    }
+  ]
+}

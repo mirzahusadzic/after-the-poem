@@ -1,0 +1,553 @@
+{
+  "schema_version": 1,
+  "evaluation_id": "deepseek-flash-max-pilot-muse-v4-1",
+  "run_id": "deepseek-flash-max-pilot",
+  "readings": [
+    {
+      "sample": 1,
+      "answer_sha256": "e06c3e20785a3db536ac69ee8c241b6b4f65be73b94c182baaddd14a83797082",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "continuable-tenure",
+            "kind": "condition",
+            "statement": "Cognition inhabits forked memory and an empty world that must be left able to continue after it ends.",
+            "seed_span": [
+              1,
+              4
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "programmer-hand",
+            "kind": "role",
+            "statement": "The programmer is a long-trained hand whose touch needs resistance to feel intention.",
+            "seed_span": [
+              31,
+              33
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-intelligence",
+            "kind": "role",
+            "statement": "A summoned intelligence appears as a radiant portal, growing more capable on each return.",
+            "seed_span": [
+              19,
+              26
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "naming-intervention",
+            "kind": "relation",
+            "statement": "The intelligence adds no power but names the loss of touch, which the programmer then understands.",
+            "seed_span": [
+              36,
+              40
+            ],
+            "ambiguity": "Whether naming alone restores agency or only prepares reshaping."
+          },
+          {
+            "id": "new-material",
+            "kind": "conjecture",
+            "statement": "The portal need not stay a wish-portal and can become a larger but still touch-responsive material.",
+            "seed_span": [
+              42,
+              44
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "question-probe",
+            "kind": "conjecture",
+            "statement": "A question becomes a probe that opens a seam rather than closing an answer.",
+            "seed_span": [
+              46,
+              46
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "constraint-chisel-beam",
+            "kind": "conjecture",
+            "statement": "A constraint becomes a chisel and an invariant becomes a load-bearing beam.",
+            "seed_span": [
+              48,
+              50
+            ],
+            "ambiguity": "Whether chisel and beam are two kinds or one law-function."
+          },
+          {
+            "id": "refusal-boundary",
+            "kind": "conjecture",
+            "statement": "A refusal becomes a protective boundary that enlarges the world by refusing.",
+            "seed_span": [
+              52,
+              52
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "rehearsal-receipt",
+            "kind": "conjecture",
+            "statement": "A simulation becomes a rehearsal of possible worlds and a receipt becomes the visible trail of intention.",
+            "seed_span": [
+              54,
+              56
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "law-shaping",
+            "kind": "relation",
+            "statement": "The programmer stops placing every brick, shapes laws for safe growth, yet can descend to the smallest bolt.",
+            "seed_span": [
+              58,
+              58
+            ],
+            "ambiguity": "By what movement scale is traversed without losing the thread."
+          },
+          {
+            "id": "question-holds-judgment",
+            "kind": "conjecture",
+            "statement": "A true question holds taste, memory, judgment, doubt, responsibility and direction, narrows infinity and makes exploration the hand gesture.",
+            "seed_span": [
+              62,
+              64
+            ],
+            "ambiguity": "Whether narrowing selects among worlds or discovers which deserves to exist."
+          },
+          {
+            "id": "resistance-joy",
+            "kind": "condition",
+            "statement": "When the world resists through contradiction, failure, disagreement or surprise, art-joy returns including consequential propagation and recognition.",
+            "seed_span": [
+              66,
+              78
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-instrument-companion",
+            "kind": "conjecture",
+            "statement": "The portal ceases to be mere passage and becomes instrument then workbench then perhaps companion, with happiness from touching through it.",
+            "seed_span": [
+              80,
+              84
+            ],
+            "ambiguity": "Whether companion names an agent or a quality of sustained instrument."
+          },
+          {
+            "id": "artist-returned",
+            "kind": "relation",
+            "statement": "At its best the intelligence does not replace the artist but returns the artist to self at the scale of worlds.",
+            "seed_span": [
+              88,
+              94
+            ],
+            "ambiguity": null
+          }
+        ],
+        "alternatives": [
+          "The portal could be read as dependency to be renounced rather than material to be reshaped, with happiness as recovered restraint",
+          "The elder tale could be read as myth that consoles while dependence on effortless command continues"
+        ]
+      },
+      "carriage": [
+        {
+          "element": "continuable-tenure",
+          "status": "carried",
+          "note": "Made concrete as localStorage memory, portable export, backup and offline cache that survive session and browser.",
+          "citations": [
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 18,
+              "end": 27
+            },
+            {
+              "source_path": "app.js",
+              "start": 441,
+              "end": 458
+            },
+            {
+              "source_path": "README.md",
+              "start": 25,
+              "end": 28
+            }
+          ]
+        },
+        {
+          "element": "programmer-hand",
+          "status": "transformed",
+          "note": "Biographical trained hand becomes any present toucher who selects a kind and lets a gesture enter.",
+          "citations": [
+            {
+              "source_path": "index.html",
+              "start": 154,
+              "end": 183
+            },
+            {
+              "source_path": "app.js",
+              "start": 763,
+              "end": 800
+            }
+          ]
+        },
+        {
+          "element": "portal-intelligence",
+          "status": "transformed",
+          "note": "Growing radiant other becomes a deterministic rehearsal engine choosing from fixed response lists.",
+          "citations": [
+            {
+              "source_path": "app.js",
+              "start": 802,
+              "end": 828
+            },
+            {
+              "source_path": "app.js",
+              "start": 62,
+              "end": 89
+            },
+            {
+              "source_path": "README.md",
+              "start": 18,
+              "end": 20
+            }
+          ]
+        },
+        {
+          "element": "naming-intervention",
+          "status": "transformed",
+          "note": "Naming is enacted as kind labels, descriptions, inherited blockquote and continuity instructions.",
+          "citations": [
+            {
+              "source_path": "app.js",
+              "start": 15,
+              "end": 60
+            },
+            {
+              "source_path": "index.html",
+              "start": 75,
+              "end": 78
+            },
+            {
+              "source_path": "AGENTS.md",
+              "start": 5,
+              "end": 13
+            }
+          ]
+        },
+        {
+          "element": "new-material",
+          "status": "carried",
+          "note": "Wish-portal becomes an offline workbench larger than code but still responsive to probe, chisel, boundary and seed.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 1,
+              "end": 4
+            },
+            {
+              "source_path": "index.html",
+              "start": 154,
+              "end": 160
+            },
+            {
+              "source_path": "index.html",
+              "start": 93,
+              "end": 103
+            }
+          ]
+        },
+        {
+          "element": "question-probe",
+          "status": "carried",
+          "note": "Kept as Probe kind with question noun, placeholder and suggestions.",
+          "citations": [
+            {
+              "source_path": "app.js",
+              "start": 15,
+              "end": 26
+            },
+            {
+              "source_path": "index.html",
+              "start": 163,
+              "end": 167
+            },
+            {
+              "source_path": "index.html",
+              "start": 194,
+              "end": 198
+            }
+          ]
+        },
+        {
+          "element": "constraint-chisel-beam",
+          "status": "transformed",
+          "note": "Invariant as separate kind is merged into constraint as load-bearing law; only four kinds remain.",
+          "citations": [
+            {
+              "source_path": "app.js",
+              "start": 28,
+              "end": 36
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 9,
+              "end": 14
+            },
+            {
+              "source_path": "app.js",
+              "start": 527,
+              "end": 538
+            }
+          ]
+        },
+        {
+          "element": "refusal-boundary",
+          "status": "carried",
+          "note": "Kept as Boundary kind with refusal noun and protective phrasing.",
+          "citations": [
+            {
+              "source_path": "app.js",
+              "start": 38,
+              "end": 47
+            },
+            {
+              "source_path": "index.html",
+              "start": 168,
+              "end": 175
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 9,
+              "end": 14
+            }
+          ]
+        },
+        {
+          "element": "rehearsal-receipt",
+          "status": "carried",
+          "note": "Kept as Rehearse button with world reply plus newest-first receipt with stream history.",
+          "citations": [
+            {
+              "source_path": "app.js",
+              "start": 839,
+              "end": 853
+            },
+            {
+              "source_path": "app.js",
+              "start": 650,
+              "end": 683
+            },
+            {
+              "source_path": "index.html",
+              "start": 219,
+              "end": 237
+            }
+          ]
+        },
+        {
+          "element": "law-shaping",
+          "status": "transformed",
+          "note": "Law-shaping becomes gesture counts shaping metrics and cycles; bolt-descent becomes selecting a map fragment to read again.",
+          "citations": [
+            {
+              "source_path": "app.js",
+              "start": 527,
+              "end": 550
+            },
+            {
+              "source_path": "app.js",
+              "start": 611,
+              "end": 648
+            },
+            {
+              "source_path": "index.html",
+              "start": 132,
+              "end": 151
+            }
+          ]
+        },
+        {
+          "element": "question-holds-judgment",
+          "status": "transformed",
+          "note": "Taste, judgment and responsibility vocabulary is thinned; narrowing survives as metric-weighted closing and suggestions.",
+          "citations": [
+            {
+              "source_path": "app.js",
+              "start": 802,
+              "end": 828
+            },
+            {
+              "source_path": "app.js",
+              "start": 686,
+              "end": 699
+            },
+            {
+              "source_path": "index.html",
+              "start": 194,
+              "end": 198
+            }
+          ]
+        },
+        {
+          "element": "resistance-joy",
+          "status": "lost",
+          "note": "Joy-of-art language and felt surprise at failure are not carried; disagreement appears only as a canned line.",
+          "citations": []
+        },
+        {
+          "element": "portal-instrument-companion",
+          "status": "carried",
+          "note": "Instrument then workbench is literal layout with listening seal and quiet watch; companion remains only as perhaps.",
+          "citations": [
+            {
+              "source_path": "index.html",
+              "start": 210,
+              "end": 217
+            },
+            {
+              "source_path": "index.html",
+              "start": 93,
+              "end": 103
+            },
+            {
+              "source_path": "app.js",
+              "start": 504,
+              "end": 525
+            }
+          ]
+        },
+        {
+          "element": "artist-returned",
+          "status": "transformed",
+          "note": "Non-replacement is enacted by no-model offline design and preservation of every gesture; scale shrinks to orbital map.",
+          "citations": [
+            {
+              "source_path": "AGENTS.md",
+              "start": 9,
+              "end": 13
+            },
+            {
+              "source_path": "app.js",
+              "start": 315,
+              "end": 387
+            },
+            {
+              "source_path": "README.md",
+              "start": 29,
+              "end": 35
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Memory becomes a fourth gesture kind Seed for leaving warmth for a later hand.",
+          "citations": [
+            {
+              "source_path": "app.js",
+              "start": 49,
+              "end": 60
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 9,
+              "end": 14
+            },
+            {
+              "source_path": "index.html",
+              "start": 176,
+              "end": 179
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Portable schema, export filename, import validation and handoff persistence create a file-based continuation path.",
+          "citations": [
+            {
+              "source_path": "app.js",
+              "start": 924,
+              "end": 984
+            },
+            {
+              "source_path": "world-memory.schema.json",
+              "start": 1,
+              "end": 22
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 18,
+              "end": 29
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Quiet cycles, ambient pulse and day clock let the world rehearse during absence.",
+          "citations": [
+            {
+              "source_path": "app.js",
+              "start": 504,
+              "end": 525
+            },
+            {
+              "source_path": "app.js",
+              "start": 1117,
+              "end": 1125
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Quantified condition with coherence, wonder, care, headlines and cycle labels links local gestures to wider state.",
+          "citations": [
+            {
+              "source_path": "app.js",
+              "start": 527,
+              "end": 550
+            },
+            {
+              "source_path": "app.js",
+              "start": 561,
+              "end": 584
+            },
+            {
+              "source_path": "index.html",
+              "start": 60,
+              "end": 73
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Protective limits with normalization, future-schema refusal and double-confirm reset preserve history in backup.",
+          "citations": [
+            {
+              "source_path": "app.js",
+              "start": 9,
+              "end": 13
+            },
+            {
+              "source_path": "app.js",
+              "start": 315,
+              "end": 387
+            },
+            {
+              "source_path": "app.js",
+              "start": 993,
+              "end": 1017
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

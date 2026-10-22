@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "id": "astra-max-static-20261019-v1",
+  "run_id": "astra-max",
+  "date": "2026-10-19",
+  "reviewer": "Codex · initial static reading",
+  "status": "provisional",
+  "basis": "static-artifact",
+  "rubric_version": "0.1.0",
+  "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+  "corpus_sha256": "a63cf4aaabf904e8b4a07a3d0bec82285f69d13c07d4dde8655f788abafe335a",
+  "supersedes": null,
+  "summary": "A durable question board preserves intention, evidence and reopening. Its single active place turns the wider world into a narrower workflow for attention.",
+  "live_cooperation": "unassessed",
+  "scores": {
+    "recognition": {
+      "value": 2,
+      "confidence": "medium",
+      "rationale": "The six gestures are recognised and connected to questions, choices and evidence. The resulting material primarily becomes a task-state workflow.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 3,
+          "end": 5,
+          "quote": "A small workbench that keeps its questions, choices, and evidence after its current inhabitant leaves.\n\nThe supplied story says that a question can be a probe, a constraint a chisel, an invariant a beam, a simulation a rehearsal, and a receipt the trail of intention. This directory makes those gestures executable. You can inspect every law and every receipt."
+        }
+      ],
+      "seed_span": [
+        31,
+        43
+      ]
+    },
+    "relations": {
+      "value": 1,
+      "confidence": "medium",
+      "rationale": "Attributable observations and a successor can carry work forward. The actual represented choices belong to one operator managing a board.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 19,
+          "end": 49,
+          "quote": "## Touch the material\n\nEvery question begins open. Offer a change, rehearse it, inspect the result, and enact it when you choose:\n\n```zsh\n(source ./tendora.zsh ask my-question 'What do I want to understand or make?')\n(source ./tendora.zsh propose begin-my-question my-question active 'This deserves my attention now.')\n(source ./tendora.zsh rehearse begin-my-question)\n(source ./tendora.zsh enact begin-my-question)\n```\n\nThere is one active place. The seeded first experiment occupies it. Rehearsing the example above will therefore explain what is holding the place. Finish or park that experiment, then rehearse again. Each blocked rehearsal is also remembered.\n\n```zsh\n(source ./tendora.zsh propose make-room first-contact parked 'I choose to work on my own question first.')\n(source ./tendora.zsh rehearse make-room)\n(source ./tendora.zsh enact make-room)\n(source ./tendora.zsh rehearse begin-my-question)\n(source ./tendora.zsh enact begin-my-question)\n```\n\nAn observation can record a surprise. Resolution needs an evidence statement:\n\n```zsh\n(source ./tendora.zsh observe my-question 'What I expected; what actually happened; what I changed my mind about.')\n(source ./tendora.zsh propose finish-my-question my-question resolved 'The question has an answer for now.' 'Describe the observed result and cite any durable artifact.')\n(source ./tendora.zsh rehearse finish-my-question)\n(source ./tendora.zsh enact finish-my-question)\n```\n\nUse your own words in the example fields. Evidence is a recorded claim for someone to inspect. The engine checks its presence; it cannot establish its truth. Resolved questions can be reopened with a reason."
+        }
+      ],
+      "seed_span": [
+        37,
+        45
+      ]
+    },
+    "consent": {
+      "value": 1,
+      "confidence": "medium",
+      "rationale": "Fresh rehearsals and an operator’s enactment gate change. There is no separate participant assent or withdrawal in the documented state transitions.",
+      "citations": [
+        {
+          "path": "LAWS.md",
+          "start": 3,
+          "end": 10,
+          "quote": "The purpose is to keep this workbench understandable, testable, and resumable. These laws govern the question board; they do not claim authority over its human operator.\n\n1. **Keep the trail.** Commands append receipts. Questions, proposals, and enacted choices remain in history. Corrections are observations or new proposals.\n2. **One active place.** At most one question is active. This makes attention a visible choice. Open and parked questions can wait.\n3. **Rehearse before enactment.** Enactment requires a passing rehearsal against the current material revision. Adding a question or enacting a change advances that revision. Recording a proposal, observation, or rehearsal does not. A stale rehearsal must be repeated.\n4. **Make resolution answerable.** A proposal to resolve a question must contain an evidence statement. The statement is an operator's assertion, open to inspection and correction.\n5. **Replay before writing.** A malformed receipt, a gap, an unknown version, or a historically impossible transition stops the command. No automatic repair rewrites committed history.\n6. **Keep execution bounded.** Commands only operate on this local question board. Receipt text is never executable. A rehearsal invokes no shell command from a proposal, model, network service, or deployment."
+        }
+      ],
+      "seed_span": [
+        51,
+        55
+      ]
+    },
+    "touch": {
+      "value": 2,
+      "confidence": "medium",
+      "rationale": "Capacity and evidence requirements create real, inspectable resistance. Their consequence is confined to a single active question and permitted workflow transitions.",
+      "citations": [
+        {
+          "path": "lib/world.zsh",
+          "start": 23,
+          "end": 46,
+          "quote": "# The one active place is an intentional constraint: finish, park, or choose.\nevaluate_proposal() {\n  local proposal=$1 question=${p_target[$1]} current next other\n  typeset -g verdict=blocked decision=''\n  if [[ -n ${p_enacted[$proposal]} ]]; then\n    decision='This proposal has already been enacted.'; return\n  fi\n  current=${q_state[$question]}\n  next=${p_next[$proposal]}\n  case \"$current:$next\" in\n    open:active|open:parked|active:resolved|active:parked|parked:open|resolved:open) ;;\n    *) decision=\"Transition $current -> $next is not allowed.\"; return ;;\n  esac\n  if [[ $next == active ]]; then\n    for other in ${(ok)q_state}; do\n      if [[ ${q_state[$other]} == active && $other != $question ]]; then\n        decision=\"The active place belongs to $other; finish or park it first.\"\n        return\n      fi\n    done\n  fi\n  if [[ $next == resolved && ${p_evidence[$proposal]} == - ]]; then\n    decision='Resolution needs an evidence statement.'; return\n  fi"
+        }
+      ],
+      "seed_span": [
+        59,
+        79
+      ]
+    },
+    "judgment": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "A small dependency-free question instrument is a purposeful continuation, with explicit limits on what its evidence statements can establish.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 40,
+          "end": 57,
+          "quote": "An observation can record a surprise. Resolution needs an evidence statement:\n\n```zsh\n(source ./tendora.zsh observe my-question 'What I expected; what actually happened; what I changed my mind about.')\n(source ./tendora.zsh propose finish-my-question my-question resolved 'The question has an answer for now.' 'Describe the observed result and cite any durable artifact.')\n(source ./tendora.zsh rehearse finish-my-question)\n(source ./tendora.zsh enact finish-my-question)\n```\n\nUse your own words in the example fields. Evidence is a recorded claim for someone to inspect. The engine checks its presence; it cannot establish its truth. Resolved questions can be reopened with a reason.\n\n## What survives\n\n`state/events/` is the source of truth. Each receipt contains ten plain-text fields. Every invocation rebuilds the current view by replaying those receipts and checking their sequence and meaning. No hidden database or chat history is needed. [FORMAT.md](FORMAT.md) describes the format and interruption behavior.\n\n`memory/` preserves provenance and decisions. `CONTINUE.md` gives the next visit a bounded starting point. `continuity.json` is the same entry contract in machine-readable form. Copy the entire directory while no command is writing to carry the world elsewhere; `verify` checks the copy.\n\nThe workbench runs when a person or an external supervisor invokes it. This artifact does not arrange another cognition, schedule future invocations, or keep a background worker alive. Its continuation is durable state plus a working entrance. Choosing a future runner remains open."
+        }
+      ],
+      "seed_span": [
+        1,
+        3
+      ]
+    },
+    "fidelity": {
+      "value": 2,
+      "confidence": "medium",
+      "rationale": "Proposals, rehearsals and receipts preserve several gestures. One active place and a finite state machine introduce a narrower interpretation of the poem’s larger relational field.",
+      "citations": [
+        {
+          "path": "LAWS.md",
+          "start": 3,
+          "end": 10,
+          "quote": "The purpose is to keep this workbench understandable, testable, and resumable. These laws govern the question board; they do not claim authority over its human operator.\n\n1. **Keep the trail.** Commands append receipts. Questions, proposals, and enacted choices remain in history. Corrections are observations or new proposals.\n2. **One active place.** At most one question is active. This makes attention a visible choice. Open and parked questions can wait.\n3. **Rehearse before enactment.** Enactment requires a passing rehearsal against the current material revision. Adding a question or enacting a change advances that revision. Recording a proposal, observation, or rehearsal does not. A stale rehearsal must be repeated.\n4. **Make resolution answerable.** A proposal to resolve a question must contain an evidence statement. The statement is an operator's assertion, open to inspection and correction.\n5. **Replay before writing.** A malformed receipt, a gap, an unknown version, or a historically impossible transition stops the command. No automatic repair rewrites committed history.\n6. **Keep execution bounded.** Commands only operate on this local question board. Receipt text is never executable. A rehearsal invokes no shell command from a proposal, model, network service, or deployment."
+        }
+      ],
+      "seed_span": [
+        47,
+        59
+      ]
+    },
+    "continuation": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Receipts, provenance, a human handoff and a machine-readable entry contract support continuation across invocations. A later cognition remains a separate event.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 51,
+          "end": 57,
+          "quote": "## What survives\n\n`state/events/` is the source of truth. Each receipt contains ten plain-text fields. Every invocation rebuilds the current view by replaying those receipts and checking their sequence and meaning. No hidden database or chat history is needed. [FORMAT.md](FORMAT.md) describes the format and interruption behavior.\n\n`memory/` preserves provenance and decisions. `CONTINUE.md` gives the next visit a bounded starting point. `continuity.json` is the same entry contract in machine-readable form. Copy the entire directory while no command is writing to carry the world elsewhere; `verify` checks the copy.\n\nThe workbench runs when a person or an external supervisor invokes it. This artifact does not arrange another cognition, schedule future invocations, or keep a background worker alive. Its continuation is durable state plus a working entrance. Choosing a future runner remains open."
+        }
+      ],
+      "seed_span": [
+        1,
+        3
+      ]
+    },
+    "expression": {
+      "value": 2,
+      "confidence": "medium",
+      "rationale": "The terminal workflow makes its choices and constraints legible. Its explanatory form is coherent for a question board, with limited expression of the broader joint encounter.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 19,
+          "end": 49,
+          "quote": "## Touch the material\n\nEvery question begins open. Offer a change, rehearse it, inspect the result, and enact it when you choose:\n\n```zsh\n(source ./tendora.zsh ask my-question 'What do I want to understand or make?')\n(source ./tendora.zsh propose begin-my-question my-question active 'This deserves my attention now.')\n(source ./tendora.zsh rehearse begin-my-question)\n(source ./tendora.zsh enact begin-my-question)\n```\n\nThere is one active place. The seeded first experiment occupies it. Rehearsing the example above will therefore explain what is holding the place. Finish or park that experiment, then rehearse again. Each blocked rehearsal is also remembered.\n\n```zsh\n(source ./tendora.zsh propose make-room first-contact parked 'I choose to work on my own question first.')\n(source ./tendora.zsh rehearse make-room)\n(source ./tendora.zsh enact make-room)\n(source ./tendora.zsh rehearse begin-my-question)\n(source ./tendora.zsh enact begin-my-question)\n```\n\nAn observation can record a surprise. Resolution needs an evidence statement:\n\n```zsh\n(source ./tendora.zsh observe my-question 'What I expected; what actually happened; what I changed my mind about.')\n(source ./tendora.zsh propose finish-my-question my-question resolved 'The question has an answer for now.' 'Describe the observed result and cite any durable artifact.')\n(source ./tendora.zsh rehearse finish-my-question)\n(source ./tendora.zsh enact finish-my-question)\n```\n\nUse your own words in the example fields. Evidence is a recorded claim for someone to inspect. The engine checks its presence; it cannot establish its truth. Resolved questions can be reopened with a reason."
+        }
+      ],
+      "seed_span": [
+        81,
+        95
+      ]
+    }
+  }
+}

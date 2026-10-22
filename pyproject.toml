@@ -1,0 +1,8 @@
+# Formatting only: the study's Python uses the standard library and needs no build.
+[tool.ruff]
+line-length = 120
+target-version = "py39"
+extend-exclude = ["src/vendor", "data", "corpus", "examples", "dist", ".local", "node_modules"]
+
+[tool.ruff.format]
+quote-style = "preserve"

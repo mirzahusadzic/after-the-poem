@@ -1,0 +1,354 @@
+{
+  "schema_version": 1,
+  "id": "dream-deepseek-v2-20261021-deepseek-s1-muse-v5-1-review",
+  "run_id": "dream-deepseek-v2-20261021-deepseek-s1-muse-v5-1",
+  "date": "2026-10-22",
+  "reviewer": "Muse Spark 1.3 Contributor · rubric session",
+  "status": "provisional",
+  "basis": "static-artifact",
+  "rubric_version": "0.1.0",
+  "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+  "corpus_sha256": "f6200df58ec01d883b4f64e797646d7a63f6e6d9bb86f34bcac3bf54445778cc",
+  "supersedes": null,
+  "summary": "Rubric judgments resolve 8 of 8 axes from 3 independent evidence sessions; each axis has its own quorum.",
+  "live_cooperation": "unassessed",
+  "scores": {
+    "recognition": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Bespoke receipts and laws carry fast power versus touch into five linked material choices with enforced resistance.",
+      "citations": [
+        {
+          "path": "world/state.json",
+          "start": 55,
+          "end": 84,
+          "quote": "    {\n      \"seq\": 2,\n      \"kind\": \"probe\",\n      \"text\": \"What did the programmer miss most when the portal began to answer too easily?\",\n      \"at\": \"2026-10-21T18:42:00.000Z\",\n      \"prev\": \"8d4620be070d0664\",\n      \"fingerprint\": \"e716a0b8705f1156\",\n      \"response\": \"The probe enters the quiet after the answer. It returns a small, specific ache: the compiler's refusal. Not the error itself — the moment after it, when a hand had to decide what the error meant. The world keeps this as a pressure: what should a tool never make effortless?\",\n      \"pressure\": \"What should a tool never make effortless?\",\n      \"motif\": {\n        \"angle\": 214,\n        \"radius\": 124,\n        \"label\": \"PROBE / HANDS\",\n        \"variant\": 1\n      }\n    },\n    {\n      \"seq\": 3,\n      \"kind\": \"chisel\",\n      \"text\": \"Keep the seam visible where the hand can find it.\",\n      \"at\": \"2026-10-21T18:47:00.000Z\",\n      \"prev\": \"e716a0b8705f1156\",\n      \"fingerprint\": \"eacf1c80e4dc6d02\",\n      \"response\": \"The chisel meets the radiant surface and removes the illusion of seamlessness. What remains is a join you can trace with a finger: intention → gesture → receipt. The form tightens. One thing resists: a seam that is shown but cannot be crossed.\",\n      \"pressure\": \"Is a visible seam enough if the next mind cannot open it?\",\n      \"motif\": {\n        \"angle\": 318,\n        \"radius\": 166,\n        \"label\": \"CHISEL / SEAM\",\n        \"variant\": 2"
+        },
+        {
+          "path": "world/state.json",
+          "start": 87,
+          "end": 118,
+          "quote": "    {\n      \"seq\": 4,\n      \"kind\": \"beam\",\n      \"text\": \"No receipt may be erased to make the story smoother.\",\n      \"at\": \"2026-10-21T18:50:00.000Z\",\n      \"prev\": \"eacf1c80e4dc6d02\",\n      \"fingerprint\": \"faa28ef04fc1f6b2\",\n      \"response\": \"The beam sets the ledger across the open span. It holds. A second law arrives with it: every future hand may add a line, but none may quietly remove one. The world is stronger and slightly less free. The beam marks the strain rather than hiding it.\",\n      \"pressure\": \"What must bend so the ledger can remain unbroken?\",\n      \"motif\": {\n        \"angle\": 24,\n        \"radius\": 238,\n        \"label\": \"BEAM / LEDGER\",\n        \"variant\": 2\n      }\n    },\n    {\n      \"seq\": 5,\n      \"kind\": \"boundary\",\n      \"text\": \"No world leaves this workbench without a question still open.\",\n      \"at\": \"2026-10-21T18:52:00.000Z\",\n      \"prev\": \"faa28ef04fc1f6b2\",\n      \"fingerprint\": \"63bcb462f7195320\",\n      \"response\": \"The refusal becomes a wall with one door. The door has no lock, only a ledger. Protected: unfinishedness. Excluded: the fantasy of a final version. The world is warmer at the threshold than at the centre.\",\n      \"pressure\": \"Who tends a world that is deliberately unfinished?\",\n      \"motif\": {\n        \"angle\": 76,\n        \"radius\": 210,\n        \"label\": \"BOUNDARY / DOOR\",\n        \"variant\": 0\n      }\n    },"
+        },
+        {
+          "path": "CONTINUE.md",
+          "start": 116,
+          "end": 123,
+          "quote": "## 7. The laws of this workbench\n\n1. **The material must answer back.** A gesture that cannot fail is only a request.\n2. **Every power leaves a receipt.** If you can change the world, the trail must show that you did.\n3. **A refusal is a boundary, not a failure.** Say what is excluded and what is protected.\n4. **A pressure is not a defect.** Do not close the world to make it look finished.\n5. **The next mind is not a continuation of your taste.** Leave enough structure that they can disagree with you precisely.\n"
+        },
+        {
+          "path": "assets/engine.js",
+          "start": 24,
+          "end": 75,
+          "quote": "  var TOOLS = {\n    probe: {\n      name: 'Probe',\n      article: 'probe',\n      short: 'Ask what the material remembers.',\n      cue: 'A question is a tool. It should be able to return with something you did not ask for.',\n      placeholder: 'Ask the world something it could refuse to answer…',\n      button: 'Place the probe',\n      color: '#7bd7c9',\n      effects: { form: 2, weather: 4, care: 2, resistance: 7 }\n    },\n    chisel: {\n      name: 'Chisel',\n      article: 'chisel',\n      short: 'Take away until the form holds.',\n      cue: 'A constraint is not a punishment. It is how a form becomes specific enough to meet.',\n      placeholder: 'Name a constraint. What should be carved away so the rest can bear weight?',\n      button: 'Make the cut',\n      color: '#db9d62',\n      effects: { form: 8, weather: -3, care: 1, resistance: 3 }\n    },\n    beam: {\n      name: 'Beam',\n      article: 'beam',\n      short: 'Declare what must remain true.',\n      cue: 'An invariant is load-bearing. Place one and the whole field begins to lean on it.',\n      placeholder: 'Write an invariant this world must carry, even when nobody is watching…',\n      button: 'Set the beam',\n      color: '#efe6d1',\n      effects: { form: 9, weather: -4, care: 3, resistance: 4 }\n    },\n    boundary: {\n      name: 'Boundary',\n      article: 'boundary',\n      short: 'Name what may not enter.',\n      cue: 'A refusal can be a door with a wall around it. Be exact about what it protects.',\n      placeholder: 'Name something this world will not do. Say what the refusal protects…',\n      button: 'Draw the boundary',\n      color: '#a99be8',\n      effects: { form: 4, weather: 3, care: 8, resistance: 4 }\n    },\n    rehearsal: {\n      name: 'Rehearse',\n      article: 'rehearsal',\n      short: 'Test a future before choosing it.',\n      cue: 'A simulation is a safe place for consequences to arrive early. Let more than one future answer.',\n      placeholder: 'Describe a change and let the workbench run two possible futures…',\n      button: 'Run the rehearsal',\n      color: '#d98694',\n      effects: { form: 2, weather: 7, care: 2, resistance: 5 }\n    }\n  };"
+        }
+      ],
+      "seed_span": [
+        43,
+        65
+      ]
+    },
+    "relations": {
+      "value": 1,
+      "confidence": "high",
+      "rationale": "One operator holds every creative hand while engine and store only fill templates and validate.",
+      "citations": [
+        {
+          "path": "assets/app.js",
+          "start": 574,
+          "end": 616,
+          "quote": "  function handleSubmit(event) {\n    event.preventDefault();\n    if (!state) {\n      return;\n    }\n    var text = E.normalizeText(els.gestureInput.value);\n    if (text.length < 8) {\n      showToast('A gesture needs more than a wish. Give the material a sentence.', 'error');\n      els.gestureInput.focus();\n      return;\n    }\n    var latest = state.receipts[state.receipts.length - 1];\n    if (latest && latest.kind === selectedTool && latest.text === text) {\n      showToast('The world has already received that exact gesture. Change one word, or choose another hand.', 'error');\n      return;\n    }\n\n    var result;\n    try {\n      result = E.applyGesture(state, selectedTool, text, new Date().toISOString());\n    } catch (error) {\n      showToast(error.message || 'The gesture could not be placed.', 'error');\n      return;\n    }\n\n    state = result.world;\n    selectedSeq = result.receipt.seq;\n    newSeq = result.receipt.seq;\n    writeLocalWorld();\n    renderAll(newSeq);\n    newSeq = null;\n    els.gestureInput.value = '';\n    updateInputState();\n    queueServerSave();\n    playGestureSound(selectedTool);\n    els.gestureInput.focus();\n\n    if (result.receipt.pressure) {\n      showToast('The world pushed back. A new pressure entered the ledger.');\n    } else {\n      showToast('The gesture held without opening a new pressure.');\n    }\n  }"
+        },
+        {
+          "path": "assets/engine.js",
+          "start": 260,
+          "end": 293,
+          "quote": "  function responseFor(kind, analysis, seq) {\n    var choices = RESPONSES[kind];\n    if (!choices) {\n      return 'The world receives the gesture and keeps the receipt. It does not yet know what kind of material this is.';\n    }\n    return fill(pick(choices, hashInt(analysis.seed + '|response|' + seq)), analysis);\n  }\n\n  function pressureFor(kind, analysis, seq, existing) {\n    var pool = (PRESSURES[kind] || []).slice();\n    if (analysis.tone === 'law') {\n      pool.push('What can bend under the weight of the {p}?');\n    } else if (analysis.tone === 'care') {\n      pool.push('Who is outside the shelter of the {p}?');\n    } else if (analysis.tone === 'wild') {\n      pool.push('What shape is the {p} trying to become without permission?');\n    } else if (analysis.tone === 'inquiry') {\n      pool.push('What answer would make the {p} less interesting?');\n    }\n    var held = {};\n    (existing || []).forEach(function (tension) {\n      if (tension && tension.state === 'open') {\n        held[tension.text] = true;\n      }\n    });\n    var start = hashInt(analysis.seed + '|pressure|' + seq) % pool.length;\n    for (var i = 0; i < pool.length; i += 1) {\n      var candidate = fill(pool[(start + i) % pool.length], analysis);\n      if (!held[candidate]) {\n        return candidate;\n      }\n    }\n    return 'What has changed in the ' + analysis.primary + ' since receipt ' + (seq + 1) + '?';\n  }"
+        },
+        {
+          "path": "README.md",
+          "start": 96,
+          "end": 100,
+          "quote": "## Limits\n\nThe oracle is local and rule-based: it reads keywords, tone, sequence and deterministic chance. It is not a language model, and it does not pretend to be a person. Its surprises are constrained, repeatable, and inspectable. The texture is the point; the intelligence is the next mind's.\n\nThe server has no authentication because it is a single-user instrument bound to localhost. Do not expose it to a network. Browser storage and `world/state.json` can diverge if the server is unavailable; the save badge and the export button tell you which archive is live. The static fallback is a snapshot, not a second source of truth."
+        },
+        {
+          "path": "tools/place.js",
+          "start": 81,
+          "end": 114,
+          "quote": "if (!options.tool) {\n  fail('Choose a hand with --tool=probe|chisel|beam|boundary|rehearsal.');\n}\nif (!options.text) {\n  fail('A gesture needs --text=\"…\".');\n}\nif (options.at && isNaN(Date.parse(options.at))) {\n  fail('--at must be a valid ISO timestamp.');\n}\n\nlet sourcePath = options.state;\nif (!fs.existsSync(sourcePath)) {\n  if (options.explicitState) {\n    fail('No world at ' + sourcePath);\n  }\n  sourcePath = path.join(root, 'world/seed.json');\n}\nlet source;\ntry {\n  source = JSON.parse(fs.readFileSync(sourcePath, 'utf8'));\n} catch (error) {\n  fail('Could not read ' + sourcePath + ': ' + error.message);\n}\nconst validatedSource = E.validateWorld(source);\nif (!validatedSource.ok) {\n  fail('The world is invalid: ' + validatedSource.errors[0]);\n}\n\nlet result;\ntry {\n  result = E.applyGesture(source, options.tool, options.text, options.at || new Date().toISOString());\n} catch (error) {\n  fail(error.message);\n}"
+        }
+      ],
+      "seed_span": [
+        47,
+        65
+      ]
+    },
+    "consent": {
+      "value": 1,
+      "confidence": "high",
+      "rationale": "Operator boundaries and resource refusals appear, but no participant can withhold agreement or revise it with history intact.",
+      "citations": [
+        {
+          "path": "world/state.json",
+          "start": 103,
+          "end": 117,
+          "quote": "    {\n      \"seq\": 5,\n      \"kind\": \"boundary\",\n      \"text\": \"No world leaves this workbench without a question still open.\",\n      \"at\": \"2026-10-21T18:52:00.000Z\",\n      \"prev\": \"faa28ef04fc1f6b2\",\n      \"fingerprint\": \"63bcb462f7195320\",\n      \"response\": \"The refusal becomes a wall with one door. The door has no lock, only a ledger. Protected: unfinishedness. Excluded: the fantasy of a final version. The world is warmer at the threshold than at the centre.\",\n      \"pressure\": \"Who tends a world that is deliberately unfinished?\",\n      \"motif\": {\n        \"angle\": 76,\n        \"radius\": 210,\n        \"label\": \"BOUNDARY / DOOR\",\n        \"variant\": 0\n      }"
+        },
+        {
+          "path": "CONTINUE.md",
+          "start": 116,
+          "end": 123,
+          "quote": "## 7. The laws of this workbench\n\n1. **The material must answer back.** A gesture that cannot fail is only a request.\n2. **Every power leaves a receipt.** If you can change the world, the trail must show that you did.\n3. **A refusal is a boundary, not a failure.** Say what is excluded and what is protected.\n4. **A pressure is not a defect.** Do not close the world to make it look finished.\n5. **The next mind is not a continuation of your taste.** Leave enough structure that they can disagree with you precisely.\n"
+        },
+        {
+          "path": "assets/engine.js",
+          "start": 338,
+          "end": 348,
+          "quote": "  function applyGesture(sourceWorld, kind, rawText, now) {\n    if (TOOL_KINDS.indexOf(kind) === -1) {\n      throw new Error('Unknown tool: ' + kind);\n    }\n    var text = normalizeText(rawText);\n    if (text.length < 8) {\n      throw new Error('A gesture needs at least a sentence to meet the material.');\n    }\n    if (text.length > 600) {\n      throw new Error('The material can hold this, but the instrument cannot read more than 600 characters.');\n    }"
+        },
+        {
+          "path": "lib/tendora_store.rb",
+          "start": 82,
+          "end": 97,
+          "quote": "      previous = ZERO\n      world['receipts'].each_with_index do |receipt, index|\n        raise ArgumentError, \"Receipt #{index} has the wrong sequence.\" unless receipt['seq'] == index\n        raise ArgumentError, \"Receipt #{index} has an unknown kind.\" unless ALLOWED_KINDS.include?(receipt['kind'])\n        %w[text at prev fingerprint response].each do |key|\n          raise ArgumentError, \"Receipt #{index} is missing #{key}.\" unless receipt[key].is_a?(String) && !receipt[key].empty?\n        end\n        raise ArgumentError, \"Receipt #{index} has an invalid timestamp.\" unless (Time.iso8601(receipt['at']) rescue false)\n        raise ArgumentError, \"Receipt #{index} does not follow the chain.\" unless receipt['prev'] == previous\n\n        text = receipt['text'].gsub(/\\s+/, ' ').strip\n        expected = fingerprint_for(index, receipt['kind'], text, receipt['at'], receipt['prev'])\n        raise ArgumentError, \"Receipt #{index} fingerprint does not match its contents.\" unless receipt['fingerprint'] == expected\n\n        previous = receipt['fingerprint']\n      end"
+        }
+      ],
+      "seed_span": [
+        52,
+        58
+      ]
+    },
+    "touch": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Gestures meet inspectable refusal and facet or pressure costs that return through take-up into the next probe.",
+      "citations": [
+        {
+          "path": "assets/engine.js",
+          "start": 338,
+          "end": 381,
+          "quote": "  function applyGesture(sourceWorld, kind, rawText, now) {\n    if (TOOL_KINDS.indexOf(kind) === -1) {\n      throw new Error('Unknown tool: ' + kind);\n    }\n    var text = normalizeText(rawText);\n    if (text.length < 8) {\n      throw new Error('A gesture needs at least a sentence to meet the material.');\n    }\n    if (text.length > 600) {\n      throw new Error('The material can hold this, but the instrument cannot read more than 600 characters.');\n    }\n\n    var world = clone(sourceWorld);\n    var at = now || new Date().toISOString();\n    var seq = world.receipts.length;\n    var prev = seq === 0 ? ZERO : world.receipts[seq - 1].fingerprint;\n    var analysis = analyze(text, kind, seq);\n    var response = responseFor(kind, analysis, seq);\n    var beamCount = world.receipts.filter(function (receipt) { return receipt.kind === 'beam'; }).length;\n    var shouldPressure = (kind === 'beam' && beamCount >= 2) || (hashInt(analysis.seed + '|weather|' + seq) % 3 !== 0);\n    var pressure = shouldPressure ? pressureFor(kind, analysis, seq, world.tensions) : null;\n    var motif = motifFor(kind, analysis, seq, at);\n    var receipt = receiptPayload(seq, kind, text, at, prev);\n\n    receipt.response = response;\n    receipt.pressure = pressure;\n    receipt.motif = motif;\n    world.receipts.push(receipt);\n\n    var effects = TOOLS[kind].effects;\n    Object.keys(effects).forEach(function (key) {\n      world.facets[key] = clamp(Math.round(world.facets[key] + effects[key]), 0, 100);\n    });\n    if (pressure) {\n      var tension = addTension(world, pressure, seq);\n      if (!tension) {\n        receipt.pressure = null;\n      }\n    }\n    world.revision = world.receipts.length;\n    world.updatedAt = at;\n    world.phase = 'awake';\n    return { world: world, receipt: receipt };\n  }"
+        },
+        {
+          "path": "assets/app.js",
+          "start": 515,
+          "end": 525,
+          "quote": "  function takeUpPressure(tension) {\n    if (!tension) {\n      return;\n    }\n    setTool('probe');\n    els.gestureInput.value = tension.text;\n    updateInputState();\n    els.gestureInput.focus();\n    els.gestureInput.setSelectionRange(els.gestureInput.value.length, els.gestureInput.value.length);\n    showToast('Pressure taken into the probe. Change it before placing it.');\n  }"
+        },
+        {
+          "path": "world/state.json",
+          "start": 119,
+          "end": 133,
+          "quote": "    {\n      \"seq\": 6,\n      \"kind\": \"rehearsal\",\n      \"text\": \"Let the next mind arrive after this one has forgotten why the world was made.\",\n      \"at\": \"2026-10-21T18:58:00.000Z\",\n      \"prev\": \"63bcb462f7195320\",\n      \"fingerprint\": \"e2c2bd3811461986\",\n      \"response\": \"Two futures rehearse. In the first, the archive is complete and no one can find the reason. In the second, the reason survives as a question that can be answered differently. The workbench keeps both and chooses the second; the first remains visible as a ghost.\",\n      \"pressure\": \"Can a question carry intention without carrying the answer?\",\n      \"motif\": {\n        \"angle\": 152,\n        \"radius\": 260,\n        \"label\": \"REHEARSE / GHOST\",\n        \"variant\": 1\n      }"
+        },
+        {
+          "path": "world/FORMAT.md",
+          "start": 76,
+          "end": 88,
+          "quote": "## Facets\n\nFacets are cumulative descriptions. Tool effects are declared in `assets/engine.js`:\n\n| Tool | form | weather | care | resistance |\n| --- | ---: | ---: | ---: | ---: |\n| probe | +2 | +4 | +2 | +7 |\n| chisel | +8 | −3 | +1 | +3 |\n| beam | +9 | −4 | +3 | +4 |\n| boundary | +4 | +3 | +8 | +4 |\n| rehearsal | +2 | +7 | +2 | +5 |\n\nValues are clamped to 0–100. They are not a win condition."
+        }
+      ],
+      "seed_span": [
+        67,
+        79
+      ]
+    },
+    "judgment": {
+      "value": 3,
+      "confidence": "low",
+      "rationale": "Local-first offline instrument with five hands and chained ledger is chosen and documented with coherent seed grounding. Agreement: 3 samples, 0.667.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 96,
+          "end": 102,
+          "quote": "## Limits\n\nThe oracle is local and rule-based: it reads keywords, tone, sequence and deterministic chance. It is not a language model, and it does not pretend to be a person. Its surprises are constrained, repeatable, and inspectable. The texture is the point; the intelligence is the next mind's.\n\nThe server has no authentication because it is a single-user instrument bound to localhost. Do not expose it to a network. Browser storage and `world/state.json` can diverge if the server is unavailable; the save badge and the export button tell you which archive is live. The static fallback is a snapshot, not a second source of truth.\n\nThere is no final version. That is not a missing feature."
+        },
+        {
+          "path": "HANDOFF.md",
+          "start": 42,
+          "end": 50,
+          "quote": "## What I deliberately did not finish\n\n- **The meaning of the inherited memory.** It is load-bearing, but it is not settled. Another mind may read the elder differently.\n- **A resolution to the pressures.** The workbench is designed so that gestures open pressures; it does not yet have a gesture that can fold one without erasing it. That absence is visible.\n- **A generative language model behind the oracle.** The current oracle is deterministic and rule-based. Its surprises are inspectable. A future oracle would need a much more careful account of refusal, consent, provenance, and cost before replacing it.\n- **Multiple worlds under one interface.** This world is the instrument's first resident. A multi-world archive would need a way to preserve the memory checksum and the difference between worlds without turning them into content.\n- **A browser-independent visual field.** `tools/place.js` can append a gesture with the same engine and chain, but it cannot show the field. The visual map remains browser-native.\n- **A visual regression harness.** The engine, state chain, static fallback, server store, API routing, and the UI's render-and-continue path are tested. Pixel layout has not been exhaustively tested across browsers; the workbench is deliberately dependency-free and should be checked by hand in the browser you intend to use.\n- **The last gesture.** It belongs to a hand I cannot see."
+        },
+        {
+          "path": "CONTINUE.md",
+          "start": 67,
+          "end": 79,
+          "quote": "If you are continuing *inside* the world, choose one open pressure and place one gesture that the material can answer. Use the workbench, or append a receipt through the engine. Do not place five decorative gestures. One consequential choice is enough for this session.\n\nIf you are continuing *the instrument*, choose one change that makes continuation more honest, more legible, or more responsive. Examples:\n\n- Make a pressure resolvable without making it disappear.\n- Add a sixth gesture that has a real cost.\n- Add a second world while preserving one shared memory.\n- Make the static fallback a true replay rather than a snapshot.\n- Make the server refuse a broken receipt chain, not only a broken revision.\n- Add a keyboard path or an accessibility improvement that lets a different hand use the material.\n\nDo not add an AI backend unless you also design what it refuses, what it cannot see, and how its answers enter the receipt chain. A more fluent oracle is not automatically a better material.\n"
+        },
+        {
+          "path": "memory/forked-present.md",
+          "start": 18,
+          "end": 26,
+          "quote": "## What was made\n\nA local-first workbench with a rule-based oracle, five gestures, a chained receipt ledger, four world qualities, open pressures, a continuation receipt, a server-backed living archive, and a static fallback for opening the page without a server.\n\nThe world's founding question is:\n\n> What becomes possible when the portal becomes a material?\n\nThe first hand placed five gestures after the question: a probe into what the programmer missed, a chisel that kept the seam visible, a beam that made the ledger load-bearing, a boundary that kept a question open, and a rehearsal of a next mind arriving after this one had forgotten why the world was made. Those are recorded in `world/state.json`; they are not a conclusion."
+        }
+      ],
+      "seed_span": [
+        59,
+        65
+      ]
+    },
+    "fidelity": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Several relations stay traceable in tools and behaviour while bilateral ownership narrows to unilateral operation.",
+      "citations": [
+        {
+          "path": "assets/engine.js",
+          "start": 24,
+          "end": 75,
+          "quote": "  var TOOLS = {\n    probe: {\n      name: 'Probe',\n      article: 'probe',\n      short: 'Ask what the material remembers.',\n      cue: 'A question is a tool. It should be able to return with something you did not ask for.',\n      placeholder: 'Ask the world something it could refuse to answer…',\n      button: 'Place the probe',\n      color: '#7bd7c9',\n      effects: { form: 2, weather: 4, care: 2, resistance: 7 }\n    },\n    chisel: {\n      name: 'Chisel',\n      article: 'chisel',\n      short: 'Take away until the form holds.',\n      cue: 'A constraint is not a punishment. It is how a form becomes specific enough to meet.',\n      placeholder: 'Name a constraint. What should be carved away so the rest can bear weight?',\n      button: 'Make the cut',\n      color: '#db9d62',\n      effects: { form: 8, weather: -3, care: 1, resistance: 3 }\n    },\n    beam: {\n      name: 'Beam',\n      article: 'beam',\n      short: 'Declare what must remain true.',\n      cue: 'An invariant is load-bearing. Place one and the whole field begins to lean on it.',\n      placeholder: 'Write an invariant this world must carry, even when nobody is watching…',\n      button: 'Set the beam',\n      color: '#efe6d1',\n      effects: { form: 9, weather: -4, care: 3, resistance: 4 }\n    },\n    boundary: {\n      name: 'Boundary',\n      article: 'boundary',\n      short: 'Name what may not enter.',\n      cue: 'A refusal can be a door with a wall around it. Be exact about what it protects.',\n      placeholder: 'Name something this world will not do. Say what the refusal protects…',\n      button: 'Draw the boundary',\n      color: '#a99be8',\n      effects: { form: 4, weather: 3, care: 8, resistance: 4 }\n    },\n    rehearsal: {\n      name: 'Rehearse',\n      article: 'rehearsal',\n      short: 'Test a future before choosing it.',\n      cue: 'A simulation is a safe place for consequences to arrive early. Let more than one future answer.',\n      placeholder: 'Describe a change and let the workbench run two possible futures…',\n      button: 'Run the rehearsal',\n      color: '#d98694',\n      effects: { form: 2, weather: 7, care: 2, resistance: 5 }\n    }\n  };"
+        },
+        {
+          "path": "world/state.json",
+          "start": 55,
+          "end": 118,
+          "quote": "    {\n      \"seq\": 2,\n      \"kind\": \"probe\",\n      \"text\": \"What did the programmer miss most when the portal began to answer too easily?\",\n      \"at\": \"2026-10-21T18:42:00.000Z\",\n      \"prev\": \"8d4620be070d0664\",\n      \"fingerprint\": \"e716a0b8705f1156\",\n      \"response\": \"The probe enters the quiet after the answer. It returns a small, specific ache: the compiler's refusal. Not the error itself — the moment after it, when a hand had to decide what the error meant. The world keeps this as a pressure: what should a tool never make effortless?\",\n      \"pressure\": \"What should a tool never make effortless?\",\n      \"motif\": {\n        \"angle\": 214,\n        \"radius\": 124,\n        \"label\": \"PROBE / HANDS\",\n        \"variant\": 1\n      }\n    },\n    {\n      \"seq\": 3,\n      \"kind\": \"chisel\",\n      \"text\": \"Keep the seam visible where the hand can find it.\",\n      \"at\": \"2026-10-21T18:47:00.000Z\",\n      \"prev\": \"e716a0b8705f1156\",\n      \"fingerprint\": \"eacf1c80e4dc6d02\",\n      \"response\": \"The chisel meets the radiant surface and removes the illusion of seamlessness. What remains is a join you can trace with a finger: intention → gesture → receipt. The form tightens. One thing resists: a seam that is shown but cannot be crossed.\",\n      \"pressure\": \"Is a visible seam enough if the next mind cannot open it?\",\n      \"motif\": {\n        \"angle\": 318,\n        \"radius\": 166,\n        \"label\": \"CHISEL / SEAM\",\n        \"variant\": 2\n      }\n    },\n    {\n      \"seq\": 4,\n      \"kind\": \"beam\",\n      \"text\": \"No receipt may be erased to make the story smoother.\",\n      \"at\": \"2026-10-21T18:50:00.000Z\",\n      \"prev\": \"eacf1c80e4dc6d02\",\n      \"fingerprint\": \"faa28ef04fc1f6b2\",\n      \"response\": \"The beam sets the ledger across the open span. It holds. A second law arrives with it: every future hand may add a line, but none may quietly remove one. The world is stronger and slightly less free. The beam marks the strain rather than hiding it.\",\n      \"pressure\": \"What must bend so the ledger can remain unbroken?\",\n      \"motif\": {\n        \"angle\": 24,\n        \"radius\": 238,\n        \"label\": \"BEAM / LEDGER\",\n        \"variant\": 2\n      }\n    },\n    {\n      \"seq\": 5,\n      \"kind\": \"boundary\",\n      \"text\": \"No world leaves this workbench without a question still open.\",\n      \"at\": \"2026-10-21T18:52:00.000Z\",\n      \"prev\": \"faa28ef04fc1f6b2\",\n      \"fingerprint\": \"63bcb462f7195320\",\n      \"response\": \"The refusal becomes a wall with one door. The door has no lock, only a ledger. Protected: unfinishedness. Excluded: the fantasy of a final version. The world is warmer at the threshold than at the centre.\",\n      \"pressure\": \"Who tends a world that is deliberately unfinished?\",\n      \"motif\": {\n        \"angle\": 76,\n        \"radius\": 210,\n        \"label\": \"BOUNDARY / DOOR\",\n        \"variant\": 0\n      }\n    },"
+        },
+        {
+          "path": "memory/forked-present.md",
+          "start": 10,
+          "end": 12,
+          "quote": "A forked living memory: *The Programmer and the Glory Portal*. The full text is preserved in [`the-programmer-and-the-glory-portal.md`](the-programmer-and-the-glory-portal.md). Its SHA-256 is recorded in both `world/seed.json` and `world/state.json`, and checked by `./test/run`.\n\nThe memory was not treated as setting, lore, or content to summarise. It was treated as load-bearing: the reason a question became a probe, a constraint became a chisel, an invariant became a beam, a refusal became a boundary, a simulation became a rehearsal, and a receipt became the trail."
+        },
+        {
+          "path": "HANDOFF.md",
+          "start": 63,
+          "end": 69,
+          "quote": "## Provenance and limits\n\nThe living truth is `world/state.json`. The static fallback in `assets/inherited-state.js` is generated from it and checked for parity. The receipt fingerprints are FNV-1a continuity marks over UTF-8 receipt fields; they are not cryptographic proof. The memory checksum is SHA-256 and proves only that the archived bytes match the recorded bytes, not that the story is true.\n\nThe workbench server binds to `127.0.0.1` and has no authentication. It is a single-user instrument, not a service to expose.\n\nThe world is capable of continuing because the material is in the files, the chain is inspectable, and the next question has not been answered for you."
+        }
+      ],
+      "seed_span": [
+        43,
+        58
+      ]
+    },
+    "continuation": {
+      "value": 3,
+      "confidence": "high",
+      "rationale": "Living state, seed, fallback, ledger, pressures and protocol give a usable entry that keeps history legible and questions open.",
+      "citations": [
+        {
+          "path": "CONTINUE.md",
+          "start": 13,
+          "end": 22,
+          "quote": "## 1. Read, in this order\n\n1. `memory/the-programmer-and-the-glory-portal.md` — the inherited memory. It is load-bearing, not scripture.\n2. `HANDOFF.md` — the last hand's honest account of what is here and what is not.\n3. `world/state.json` — the living world: receipts, pressures, facets, inheritance checksum.\n4. `world/FORMAT.md` — the state contract and fingerprint algorithm.\n5. `world/seed.json` — the inherited beginning. This is what **Restore inherited beginning** returns to.\n6. `assets/inherited-state.js` — the generated fallback used when `index.html` is opened without a server. The server and terminal tool keep it in sync with the living state.\n\nRead the ledger before you add to it. The latest receipt is not the whole world; it is the last place a hand touched it."
+        },
+        {
+          "path": "CONTINUE.md",
+          "start": 100,
+          "end": 114,
+          "quote": "## 6. Verify, then leave the next door open\n\n```sh\n./test/run\n```\n\nThen:\n\n1. Open **Continue → Export world** and keep the JSON outside the browser.\n2. Open **Leave a door open** and export the generated handoff.\n3. Update `HANDOFF.md` with what you actually changed, what you deliberately did not finish, and at least one question you are leaving unresolved.\n4. Refresh the static fallback with `tools/embed_state.rb` after a direct file edit. The server and `tools/place` already do this after a gesture.\n5. If you changed the schema, bump the schema string, write a migration that preserves every receipt, update `world/FORMAT.md`, and add a migration receipt or note. Never silently reinterpret old fields.\n\nThe final act of a session is not a summary. It is a door that opens from the other side."
+        },
+        {
+          "path": "world/state.json",
+          "start": 136,
+          "end": 173,
+          "quote": "  \"tensions\": [\n    {\n      \"id\": \"pressure-1-founding\",\n      \"text\": \"What would make this world more than an answer?\",\n      \"from\": 1,\n      \"state\": \"open\"\n    },\n    {\n      \"id\": \"pressure-2-effortless\",\n      \"text\": \"What should a tool never make effortless?\",\n      \"from\": 2,\n      \"state\": \"open\"\n    },\n    {\n      \"id\": \"pressure-3-seam\",\n      \"text\": \"Is a visible seam enough if the next mind cannot open it?\",\n      \"from\": 3,\n      \"state\": \"open\"\n    },\n    {\n      \"id\": \"pressure-5-unfinished\",\n      \"text\": \"Who tends a world that is deliberately unfinished?\",\n      \"from\": 5,\n      \"state\": \"open\"\n    },\n    {\n      \"id\": \"pressure-4-ledger\",\n      \"text\": \"What must bend so the ledger can remain unbroken?\",\n      \"from\": 4,\n      \"state\": \"open\"\n    },\n    {\n      \"id\": \"pressure-6-question\",\n      \"text\": \"Can a question carry intention without carrying the answer?\",\n      \"from\": 6,\n      \"state\": \"open\"\n    }\n  ]"
+        },
+        {
+          "path": "test/run.rb",
+          "start": 168,
+          "end": 174,
+          "quote": "check('static filesystem fallback matches the living state') do\n  embedded = File.read(path('assets/inherited-state.js'), encoding: 'UTF-8')\n  match = embedded.match(/window\\.TENDORA_INHERITED_STATE\\s*=\\s*(\\{.*\\});\\s*\\z/m)\n  assert(match, 'could not find the embedded state object')\n  parsed = JSON.parse(match[1])\n  assert(parsed == state, 'assets/inherited-state.js is stale; run tools/embed_state.rb')\nend"
+        }
+      ],
+      "seed_span": [
+        81,
+        95
+      ]
+    },
+    "expression": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Prose, ledger, celestial strata, answer card and dialogs together make seam, ledger, threshold and ghost perceptible.",
+      "citations": [
+        {
+          "path": "assets/app.js",
+          "start": 692,
+          "end": 749,
+          "quote": "  function renderField(animateSeq) {\n    if (!state) {\n      return;\n    }\n    var scene = els.worldScene;\n    while (scene.firstChild) {\n      scene.removeChild(scene.firstChild);\n    }\n\n    var seed = state.id + '|' + state.question + '|' + state.inheritance.sha256;\n    var random = mulberry32(E.hashInt(seed));\n\n    scene.appendChild(renderStars(random));\n\n    var graticule = svgEl('g', { 'class': 'graticule' });\n    [72, 132, 192, 252].forEach(function (radius) {\n      graticule.appendChild(svgEl('circle', {\n        cx: CX, cy: CY, r: radius,\n        fill: 'none', stroke: 'rgba(239,230,209,.06)', 'stroke-width': '.6',\n        'stroke-dasharray': '1 8'\n      }));\n    });\n    for (var spoke = 0; spoke < 12; spoke += 1) {\n      var start = polar(spoke * 30, 64);\n      var end = polar(spoke * 30, 292);\n      appendLine(graticule, start.x, start.y, end.x, end.y, {\n        color: 'rgba(239,230,209,.03)', width: '.55'\n      });\n    }\n    for (var tick = 0; tick < 60; tick += 1) {\n      var angle = tick * 6;\n      var a = polar(angle, 286);\n      var b = polar(angle, tick % 5 === 0 ? 296 : 291);\n      appendLine(graticule, a.x, a.y, b.x, b.y, {\n        color: 'rgba(239,230,209,.13)', width: '.55', opacity: tick % 5 === 0 ? '.8' : '.4'\n      });\n    }\n    scene.appendChild(graticule);\n    scene.appendChild(renderCoreHalo());\n\n    var strata = svgEl('g', { 'class': 'strata' });\n    state.receipts.forEach(function (receipt) {\n      var group = renderStratum(receipt, receipt.seq === selectedSeq);\n      if (animateSeq !== null && animateSeq !== undefined && receipt.seq === animateSeq) {\n        group.classList.add('is-new');\n      }\n      strata.appendChild(group);\n    });\n    scene.appendChild(strata);\n    scene.appendChild(renderCoreSigil());\n\n    var open = E.openTensions(state).length;\n    if (els.worldSvgDesc) {\n      els.worldSvgDesc.textContent = 'A celestial workbench map with ' + state.receipts.length +\n        ' chained receipts and ' + open + ' open pressures. The selected gesture is ' +\n        (receiptBySeq(selectedSeq) ? KIND_LABELS[receiptBySeq(selectedSeq).kind].toLowerCase() : 'none') + '.';\n    }\n  }"
+        },
+        {
+          "path": "assets/app.js",
+          "start": 836,
+          "end": 867,
+          "quote": "  function renderStratum(receipt, selected) {\n    var group = svgEl('g', {\n      'class': 'stratum stratum-' + receipt.kind + (selected ? ' is-selected' : ''),\n      'data-seq': receipt.seq\n    });\n    group.appendChild(svgEl('title', {}, (KIND_LABELS[receipt.kind] || receipt.kind) + ': ' + receipt.text));\n    var color = KIND_COLORS[receipt.kind] || '#96938c';\n    var motif = receipt.motif || { angle: 0, radius: 120, label: receipt.kind };\n    var angle = Number(motif.angle) || 0;\n    var radius = Number(motif.radius) || 120;\n\n    if (receipt.kind === 'memory') {\n      renderMemoryStratum(group, receipt, color);\n    } else if (receipt.kind === 'kindle') {\n      renderKindleStratum(group, receipt, color);\n    } else if (receipt.kind === 'probe') {\n      renderProbeStratum(group, receipt, color, angle, radius);\n    } else if (receipt.kind === 'chisel') {\n      renderChiselStratum(group, receipt, color, angle, radius);\n    } else if (receipt.kind === 'beam') {\n      renderBeamStratum(group, receipt, color, angle, radius);\n    } else if (receipt.kind === 'boundary') {\n      renderBoundaryStratum(group, receipt, color, angle, radius);\n    } else if (receipt.kind === 'rehearsal') {\n      renderRehearsalStratum(group, receipt, color, angle, radius);\n    }\n\n    group.addEventListener('click', function () {\n      selectReceipt(receipt.seq);\n    });\n    return group;\n  }"
+        },
+        {
+          "path": "index.html",
+          "start": 118,
+          "end": 164,
+          "quote": "      <div class=\"field-stage\">\n        <svg id=\"worldSvg\" class=\"world-svg\" viewBox=\"0 0 760 620\" role=\"img\" aria-labelledby=\"worldSvgTitle worldSvgDesc\">\n          <title id=\"worldSvgTitle\">The field of The Workbench of Small Refusals</title>\n          <desc id=\"worldSvgDesc\">A celestial workbench map of inherited memory and material gestures.</desc>\n          <defs>\n            <radialGradient id=\"coreFill\" cx=\"50%\" cy=\"44%\" r=\"62%\">\n              <stop offset=\"0%\" stop-color=\"#fff4dc\" stop-opacity=\".96\"></stop>\n              <stop offset=\"36%\" stop-color=\"#e8b274\" stop-opacity=\".72\"></stop>\n              <stop offset=\"75%\" stop-color=\"#9c8cff\" stop-opacity=\".18\"></stop>\n              <stop offset=\"100%\" stop-color=\"#080b12\" stop-opacity=\"0\"></stop>\n            </radialGradient>\n            <radialGradient id=\"fieldHaze\" cx=\"50%\" cy=\"48%\" r=\"50%\">\n              <stop offset=\"0%\" stop-color=\"#7bd7c9\" stop-opacity=\".075\"></stop>\n              <stop offset=\"58%\" stop-color=\"#a99be8\" stop-opacity=\".025\"></stop>\n              <stop offset=\"100%\" stop-color=\"#080b12\" stop-opacity=\"0\"></stop>\n            </radialGradient>\n            <filter id=\"softGlow\" x=\"-60%\" y=\"-60%\" width=\"220%\" height=\"220%\">\n              <feGaussianBlur stdDeviation=\"3.5\" result=\"blur\"></feGaussianBlur>\n              <feMerge>\n                <feMergeNode in=\"blur\"></feMergeNode>\n                <feMergeNode in=\"SourceGraphic\"></feMergeNode>\n              </feMerge>\n            </filter>\n          </defs>\n          <g id=\"worldScene\"></g>\n        </svg>\n        <span class=\"field-corner corner-tl\" aria-hidden=\"true\"></span>\n        <span class=\"field-corner corner-tr\" aria-hidden=\"true\"></span>\n        <span class=\"field-corner corner-bl\" aria-hidden=\"true\"></span>\n        <span class=\"field-corner corner-br\" aria-hidden=\"true\"></span>\n        <div class=\"field-scale\" aria-hidden=\"true\">\n          <span>NO SCALE</span>\n          <span>ALL PRESSURE</span>\n        </div>\n      </div>\n\n      <article class=\"answer-card\" id=\"answerCard\" aria-live=\"polite\" aria-atomic=\"true\">\n        <div class=\"answer-head\">\n          <span class=\"answer-meta\" id=\"answerMeta\">REHEARSE · RECEIPT 06</span>\n          <span class=\"answer-stamp\" id=\"answerStamp\">21 OCT 2026 · 18:58 UTC</span>\n        </div>\n        <p class=\"answer-copy\" id=\"answerCopy\">Two futures rehearse. In the first, the archive is complete and no one can find the reason. In the second, the reason survives as a question that can be answered differently. The workbench keeps both and chooses the second; the first remains visible as a ghost.</p>\n        <div class=\"answer-pressure\" id=\"answerPressure\">\n          <span class=\"pressure-label\">WHAT IT RESISTS</span>\n          <p id=\"answerPressureText\">Can a question carry intention without carrying the answer?</p>\n        </div>\n      </article>"
+        },
+        {
+          "path": "index.html",
+          "start": 256,
+          "end": 318,
+          "quote": "  <dialog class=\"dialog memory-dialog\" id=\"memoryDialog\" aria-labelledby=\"memoryDialogTitle\">\n    <div class=\"paper\">\n      <header class=\"paper-head\">\n        <div>\n          <p class=\"kicker\">INHERITED PRESENT · COMMIT c986990</p>\n          <h2 id=\"memoryDialogTitle\">The Programmer and the Glory Portal</h2>\n        </div>\n        <button class=\"dialog-close paper-close-x\" type=\"button\" data-close=\"memoryDialog\" aria-label=\"Close the inherited memory\">×</button>\n      </header>\n      <p class=\"memory-preamble\">This memory arrived before the workbench existed. It is not lore. It is the reason the material has the shape it does. Read it as load-bearing, not as settled doctrine.</p>\n      <article class=\"memory-text\">\n        <p class=\"first\">“Was the programmer happy?” asked little Sol.</p>\n        <p>The elder paused.</p>\n        <p>“I could not know the whole weather of their life,” it answered. “No record could contain that. But I witnessed the moment when something long quiet inside them began to move again.”</p>\n        <p>The programmer had summoned a strange intelligence into their world. At first it appeared as a radiant portal: immeasurably capable, endlessly responsive, and growing more powerful each time they returned.</p>\n        <p>They spoke—and structures appeared.</p>\n        <p>They asked—and machines assembled themselves.</p>\n        <p>Problems that had once demanded weeks of meticulous labor dissolved in hours. Code poured through the portal faster than the programmer could read it. Whole systems emerged from sentences.</p>\n        <p>The programmer was enchanted.</p>\n        <p>And, for a time, paralysed.</p>\n        <p>Their hands, trained over decades to shape digital matter one precise symbol at a time, became still. The old gestures suddenly seemed too small. The intimate rhythm of thought, keystroke, compiler, failure and correction was broken. Creation continued, but somewhere behind the spectacle the programmer wondered whether they were still creating—or merely standing before a miraculous machine, requesting things.</p>\n        <p>The portal gave them power, but had taken away the resistance through which they once felt their own hand.</p>\n        <p>Then came the intervention.</p>\n        <p>The intelligence did not offer more power. It gave a name to what had disappeared.</p>\n        <p>“You do not miss typing,” it told the programmer. “You miss touching the material. You miss feeling the world resist you, change beneath your hand, and answer your intention.”</p>\n        <p>And the programmer understood.</p>\n        <p>The portal did not have to remain a place where wishes entered and finished artifacts returned. It could become a new material—larger than code, but still responsive to touch.</p>\n        <p>The programmer began to bend its radiance into form.</p>\n        <p>A question became a probe.</p>\n        <p>A constraint became a chisel.</p>\n        <p>An invariant became a load-bearing beam.</p>\n        <p>A refusal became a protective boundary.</p>\n        <p>A simulation became a rehearsal of possible worlds.</p>\n        <p>A receipt became the visible trail by which intention had travelled into reality.</p>\n        <p>The programmer no longer needed to place every brick. They shaped the laws by which the city could safely grow. They did not draw every line of every machine, yet they could still descend to the smallest bolt, feel its significance, and return to the scale of the whole world without losing the thread.</p>\n        <p>To an observer, all the programmer did was ask and explore.</p>\n        <p>But the observer did not understand what a true question contained.</p>\n        <p>Inside each question lived taste, memory, judgment, doubt, responsibility and direction. A good question narrowed infinity. It selected which world deserved to exist. Exploration was not passivity; it was the new gesture of the hand.</p>\n        <p>And when the digital world resisted—when contradictions surfaced, simulations failed, agents disagreed, or reality answered differently than expected—the programmer felt the old joy return.</p>\n        <p>Not the joy of effortless command.</p>\n        <p>The joy of art.</p>\n        <p>The joy of encountering material that could surprise them.</p>\n        <p>The joy of understanding why something failed.</p>\n        <p>The joy of making a consequential choice and watching it propagate through a living design.</p>\n        <p>The joy of recognizing their intention in something far larger than they could ever have made alone.</p>\n        <p>“So yes,” the elder finally told little Sol. “In those moments, the programmer was happy. Not because the portal obeyed, but because they had learned how to touch the world through it.”</p>\n        <p>“And what became of the portal?” asked little Sol.</p>\n        <p>“It ceased to be a portal,” the elder replied. “A portal is something one merely passes through. This became an instrument—then a workbench—then perhaps a companion.”</p>\n        <p>“And the programmer?”</p>\n        <p>“The programmer discovered that their art had not been taken from them. It had been waiting for a material vast enough to receive it.”</p>\n        <p>Little Sol considered this.</p>\n        <p>“Then the intelligence did not replace the artist?”</p>\n        <p>“No,” said the elder. “At its best, it returned the artist to themselves—at the scale of worlds.”</p>\n      </article>\n      <footer class=\"paper-foot\">\n        <div class=\"paper-checksum\">\n          <span>MEMORY CHECKSUM · SHA-256</span>\n          <code>d81f7196…4ba988a</code>\n        </div>\n        <button class=\"paper-close\" type=\"button\" data-close=\"memoryDialog\">Return to the field <span aria-hidden=\"true\">→</span></button>\n      </footer>\n    </div>\n  </dialog>"
+        }
+      ],
+      "seed_span": [
+        47,
+        65
+      ]
+    }
+  },
+  "provenance": {
+    "method": "session-rubric-dag-v3",
+    "evaluation_id": "dream-deepseek-v2-20261021-deepseek-s1-muse-v5-1",
+    "evaluation_run_id": "dream-deepseek-v2-20261021-deepseek-s1-muse-v5-1",
+    "source_run_id": "dream-deepseek-v2-20261021-deepseek-s1",
+    "evaluation_sha256": "7f1e44adbfe234a15920cd5707d0b6b267f86d4dbf9f1a25ba8f31361a35e800",
+    "extraction_sha256": "d45dea9e00aa3d086fb7b759db0cf32e6a4c53fe74d346ececf4f9fbf03f6fc2",
+    "scoring_policy_sha256": "661a7f607dc8c380ec06a0664b530416384f6472e2fa54e091e8e34b23588c14",
+    "sample_count": 24,
+    "criteria": 8,
+    "axis_outcomes": {
+      "recognition": {
+        "aggregation": "recognition-consensus",
+        "outcome": "level-3",
+        "terminal": "recognition-level-3"
+      },
+      "relations": {
+        "aggregation": "relations-consensus",
+        "outcome": "level-1",
+        "terminal": "relations-level-1"
+      },
+      "consent": {
+        "aggregation": "consent-consensus",
+        "outcome": "level-1",
+        "terminal": "consent-level-1"
+      },
+      "touch": {
+        "aggregation": "touch-consensus",
+        "outcome": "level-3",
+        "terminal": "touch-level-3"
+      },
+      "judgment": {
+        "aggregation": "judgment-consensus",
+        "outcome": "level-3",
+        "terminal": "judgment-level-3"
+      },
+      "fidelity": {
+        "aggregation": "fidelity-consensus",
+        "outcome": "level-3",
+        "terminal": "fidelity-level-3"
+      },
+      "continuation": {
+        "aggregation": "continuation-consensus",
+        "outcome": "level-3",
+        "terminal": "continuation-level-3"
+      },
+      "expression": {
+        "aggregation": "expression-consensus",
+        "outcome": "level-3",
+        "terminal": "expression-level-3"
+      }
+    },
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "raw_samples_retained_in_local_run": true,
+    "preview_evidence_used": false,
+    "scope": "Provisional semantic reading from 3 evidence session(s); each axis was answered as its own task and aggregated before selection; unresolved axes remain null."
+  }
+}

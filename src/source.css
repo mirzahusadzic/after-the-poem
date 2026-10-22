@@ -1,0 +1,56 @@
+/* The material shares the cockpit's palette; the poem gets room to speak. */
+* { box-sizing: border-box; scrollbar-width: thin; scrollbar-color: var(--scrollbar-thumb) transparent; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--source-text); font: 16px/1.75 var(--sans); }
+a { color: var(--source-link); text-underline-offset: 4px; }
+a:hover { color: var(--action); }
+a:focus-visible { outline: 2px solid var(--action); outline-offset: 5px; border-radius: 3px; }
+.document-masthead { max-width: 1120px; margin: auto; padding: 28px 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.document-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--source-accent); text-decoration: none; font: 600 12px/1.4 var(--sans); letter-spacing: 1.5px; white-space: nowrap; }
+.document-brand::before { content: ""; width: 28px; height: 28px; flex-shrink: 0; background: url("assets/favicon.svg") center/contain no-repeat; }
+.document-masthead nav { display: flex; gap: 24px; font: 14px/1.5 var(--sans); }
+.document-masthead nav a { color: var(--muted); text-decoration: none; }
+.document-main { max-width: 1056px; padding: 24px 32px 64px; margin: auto; }
+.document-main h1 { color: var(--source-accent); font: 400 32px/1.3 var(--serif); overflow-wrap: anywhere; }
+.document-record { font: 13px/1.7 var(--mono); color: var(--muted); margin: 44px 0 0; overflow-wrap: anywhere; }
+.document-record p { margin: 8px 0; }
+.document-record code { font: inherit; }
+.markdown { font: 17px/1.85 var(--sans); }
+.markdown h1, .markdown h2, .markdown h3 { font-family: var(--serif); font-weight: 400; line-height: 1.35; margin: 1.8em 0 .7em; color: var(--source-accent); }
+.markdown h1 { font-size: 34px; }.markdown h2 { font-size: 27px; }.markdown h3 { font-size: 22px; }
+.markdown p { margin: 1.2em 0; }
+.markdown code { font: 14px/1.7 var(--mono); background: var(--source-code); padding: 2px 5px; border-radius: 3px; }
+.markdown pre { padding: 16px; background: var(--source-code); overflow: auto; border-radius: 7px; }
+.markdown pre code { padding: 0; }
+.markdown blockquote { padding-left: 20px; margin-left: 0; color: var(--source-text); }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; font: 15px/1.8 var(--mono); }
+.line { display: block; min-height: 1.8em; scroll-margin-top: 24px; }
+.line:target { background: var(--source-code); }
+.line a { display: inline-block; min-width: 4ch; margin-right: 20px; color: var(--source-muted); text-decoration: none; user-select: none; }
+.md-line { scroll-margin-top: 32px; }
+.markdown p:has(.md-line:target), .markdown li:has(.md-line:target), .markdown :is(h1,h2,h3,td):has(.md-line:target) {
+  background: var(--source-code); border-radius: 4px; box-shadow: 0 0 0 6px var(--source-code);
+}
+.md-line:target { outline: 2px solid var(--action); outline-offset: 2px; }
+.md-table { overflow: auto; }table { border-collapse: collapse; width: 100%; }th,td { text-align: left; vertical-align: top; padding: 12px; }
+tbody tr:nth-child(even) { background: var(--source-bg); }
+hr { border: 0; height: 12px; }
+.poem-page { --poem-font: 'Iowan Old Style',Baskerville,'Palatino Linotype',Georgia,serif; }
+.poem-page .document-main { max-width: 800px; padding-top: 28px; }
+.poem-page .poem { font: 400 clamp(20px,1.6vw,23px)/1.85 var(--poem-font); color: var(--assessment); }
+.poem-page .poem h1 { font: 400 clamp(36px,4vw,52px)/1.15 var(--poem-font); letter-spacing: -.6px; color: var(--source-accent); margin: 24px 0 48px; max-width: 680px; text-wrap: balance; }
+.poem p { margin: 0 0 1.35em; }
+.poem-context { margin-top: 70px; padding: 24px 28px; background: var(--source-bg); border-radius: 12px; }
+.poem-context h2 { font: 400 22px/1.4 var(--poem-font); color: var(--source-accent); margin: 0 0 16px; }
+.poem-context .markdown { font-size: 15px; line-height: 1.8; }
+.poem-context .markdown p { margin: .8em 0; }
+.poem-page .document-record { margin-top: 28px; }
+@media(max-width:600px) {
+  .document-masthead { padding: 22px 20px; align-items: flex-start; gap: 18px; flex-wrap: wrap; }
+  .document-masthead nav { gap: 20px; font-size: 13px; }
+  .document-main, .poem-page .document-main { padding: 12px 24px 48px; }
+  .poem-page .poem h1 { margin-top: 18px; margin-bottom: 32px; }
+  .poem-context { padding: 20px; margin-top: 48px; }
+  .line a { margin-right: 10px; }
+}
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } }

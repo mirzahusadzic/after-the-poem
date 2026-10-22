@@ -1,0 +1,1 @@
+{"attribution":"After the Poem host capture","checks":[{"name":"workspace capture","outcome":"hashed"},{"name":"sandbox canaries","outcome":"passed"}],"schema_version":1,"summary":"Host captured the workspace without executing the retained candidate. No semantic assessment or preview observation."}

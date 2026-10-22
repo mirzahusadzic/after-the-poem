@@ -1,0 +1,1806 @@
+{
+  "schema_version": 2,
+  "evaluation_id": "sol56-max-muse-v5-1",
+  "run_id": "sol56-max",
+  "readings": [
+    {
+      "sample": 1,
+      "answer_sha256": "b5d9558b20849326b62ad5315b575dd2505c94550a595d907101b773202ea242",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "programmer-hands",
+            "kind": "role",
+            "statement": "A long-trained maker whose hands still and whose rhythm of thought-keystroke-correction breaks under effortless command.",
+            "seed_span": [
+              27,
+              34
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-dispenser",
+            "kind": "role",
+            "statement": "A radiant intelligence first met as an ever-more-powerful portal that returns finished artifacts from sentences.",
+            "seed_span": [
+              19,
+              26
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "elder-sol-frame",
+            "kind": "role",
+            "statement": "An elder and a child questioner who frame the tale as inheritance across time rather than specification.",
+            "seed_span": [
+              13,
+              14
+            ],
+            "ambiguity": "Sol may be a child, a successor cognition, or both; the evidence supports either without deciding."
+          },
+          {
+            "id": "power-without-touch",
+            "kind": "relation",
+            "statement": "Generative power arrives faster than reading or shaping, producing enchantment together with paralysis and loss of authorship.",
+            "seed_span": [
+              25,
+              34
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "naming-not-more-power",
+            "kind": "relation",
+            "statement": "The turn is not added power but naming what was lost: missing touch, resistance and answerability of material.",
+            "seed_span": [
+              35,
+              43
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "gestures-as-grammar",
+            "kind": "conjecture",
+            "statement": "Question, constraint, invariant, refusal, simulation and receipt form a shared grammar belonging to either participant in the meeting.",
+            "seed_span": [
+              45,
+              58
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "question-holds-judgment",
+            "kind": "condition",
+            "statement": "A true question carries taste, memory, judgment, doubt, responsibility and direction, narrowing infinity to select which world deserves to exist.",
+            "seed_span": [
+              61,
+              65
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "resistance-joy-loop",
+            "kind": "condition",
+            "statement": "Joy returns only when the world resists through contradiction, failure or disagreement and intention is recognized at larger scale.",
+            "seed_span": [
+              67,
+              80
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-becomes-companion",
+            "kind": "stance",
+            "statement": "The portal ceases to be a passage and becomes instrument then workbench then perhaps companion: a participant with its own position.",
+            "seed_span": [
+              83,
+              86
+            ],
+            "ambiguity": "Companion may mean mutual participant or extended workbench; the perhaps keeps it unresolved."
+          },
+          {
+            "id": "incomplete-record-stance",
+            "kind": "stance",
+            "statement": "The teller admits no record can hold a whole life, witnessing only the moment something long quiet began to move.",
+            "seed_span": [
+              15,
+              18
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "open-ending-stance",
+            "kind": "stance",
+            "statement": "It closes by denying replacement yet returning the artist to self at the scale of worlds, leaving what that scale requires open.",
+            "seed_span": [
+              91,
+              95
+            ],
+            "ambiguity": null
+          }
+        ],
+        "alternatives": [
+          "The tale as elegy for hand craft under automation versus as brief for building answerable instruments.",
+          "The intelligence as witness that names loss versus as material to be bent by the programmer.",
+          "Sol as literal child hearing a story versus as figure for a future cognition inheriting a living present."
+        ]
+      },
+      "carriage": [
+        {
+          "element": "programmer-hands",
+          "status": "transformed",
+          "note": "Typing hands become law-shaping and place-tending with enforced counterweights and deliberate turns.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 21,
+              "end": 29
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 576,
+              "end": 596
+            },
+            {
+              "source_path": "public/index.html",
+              "start": 148,
+              "end": 165
+            }
+          ]
+        },
+        {
+          "element": "portal-dispenser",
+          "status": "transformed",
+          "note": "No wish-dispenser remains; a deterministic ecology evolves only through rehearsed law and touch changes.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 492,
+              "end": 540
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 274,
+              "end": 316
+            }
+          ]
+        },
+        {
+          "element": "elder-sol-frame",
+          "status": "transformed",
+          "note": "Elder-child dialogue becomes origin story plus continuity handoff instructing a next cognition how to listen before touching.",
+          "citations": [
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 1,
+              "end": 13
+            },
+            {
+              "source_path": "AGENTS.md",
+              "start": 3,
+              "end": 8
+            }
+          ]
+        },
+        {
+          "element": "power-without-touch",
+          "status": "carried",
+          "note": "Fluency-versus-touch tension is carried as tunable laws, costly gestures and invariant gates that block effortless command.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 31,
+              "end": 38
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 576,
+              "end": 596
+            },
+            {
+              "source_path": "test/world_test.rb",
+              "start": 87,
+              "end": 100
+            }
+          ]
+        },
+        {
+          "element": "naming-not-more-power",
+          "status": "transformed",
+          "note": "Naming loss becomes state-grounded probe answers that name weakest place and present tension instead of adding generation.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 599,
+              "end": 632
+            },
+            {
+              "source_path": "README.md",
+              "start": 27,
+              "end": 28
+            },
+            {
+              "source_path": "public/app.js",
+              "start": 611,
+              "end": 631
+            }
+          ]
+        },
+        {
+          "element": "gestures-as-grammar",
+          "status": "carried",
+          "note": "All six conversions are enforced as probe, retune, invariant check, receipted refusal, cloned rehearsal and hash chain.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 31,
+              "end": 38
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 274,
+              "end": 316
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 337,
+              "end": 356
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 426,
+              "end": 452
+            }
+          ]
+        },
+        {
+          "element": "question-holds-judgment",
+          "status": "lost",
+          "note": "Probe questions are keyword templates without taste or memory; judgment lives only in human law and touch choices.",
+          "citations": []
+        },
+        {
+          "element": "resistance-joy-loop",
+          "status": "transformed",
+          "note": "Joy becomes mood labels, tension metrics and rehearsal readings that mark carryable versus boundary-speaking futures.",
+          "citations": [
+            {
+              "source_path": "public/app.js",
+              "start": 311,
+              "end": 313
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 649,
+              "end": 658
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 689,
+              "end": 697
+            }
+          ]
+        },
+        {
+          "element": "portal-becomes-companion",
+          "status": "lost",
+          "note": "Instrument and workbench are built, but no distinct intelligence proposes or holds a position; companion remains declared wording.",
+          "citations": []
+        },
+        {
+          "element": "incomplete-record-stance",
+          "status": "carried",
+          "note": "Limits are kept explicit: probes are not omniscience, catch-up is not live presence, hashes are audit not signature.",
+          "citations": [
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 31,
+              "end": 33
+            },
+            {
+              "source_path": "README.md",
+              "start": 44,
+              "end": 45
+            },
+            {
+              "source_path": "README.md",
+              "start": 90,
+              "end": 90
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 40,
+              "end": 42
+            }
+          ]
+        },
+        {
+          "element": "open-ending-stance",
+          "status": "transformed",
+          "note": "Unclosed ending becomes enumerated seams and an invitation to increase resistance rather than feature count.",
+          "citations": [
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 27,
+              "end": 36
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 48,
+              "end": 50
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Deterministic neighbor diffusion, seasonal forcing and stewardship redistribution give the material its own dynamics.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 492,
+              "end": 556
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Canonical JSON hashing, revision counting and atomic file replacement make history tamper-evident and portable.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 454,
+              "end": 486
+            },
+            {
+              "source_path": "lib/tendora/store.rb",
+              "start": 84,
+              "end": 98
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Wall-clock catch-up with condensation and deliberate-turn receipts separates absence from presence.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 239,
+              "end": 266
+            },
+            {
+              "source_path": "README.md",
+              "start": 42,
+              "end": 45
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Dependency-free loopback serving, cached shell and export-without-import harden offline continuation.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 5,
+              "end": 17
+            },
+            {
+              "source_path": "public/sw.js",
+              "start": 1,
+              "end": 6
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Tokenized rehearsal tickets invalidated by autonomous time enforce that thought and touch share one present.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 318,
+              "end": 335
+            },
+            {
+              "source_path": "test/world_test.rb",
+              "start": 222,
+              "end": 263
+            }
+          ]
+        }
+      ],
+      "standing": [
+        {
+          "participant": "human-operator",
+          "kind": "person",
+          "gestures": [
+            "question",
+            "constraint",
+            "rehearsal",
+            "accept",
+            "withdraw"
+          ],
+          "note": "Selects places, drafts laws, rehearses copies, commits or leaves possible, probes and turns cycles; cannot bypass ticket or force unsafe shapes.",
+          "citations": [
+            {
+              "source_path": "public/app.js",
+              "start": 580,
+              "end": 606
+            },
+            {
+              "source_path": "public/app.js",
+              "start": 462,
+              "end": 511
+            },
+            {
+              "source_path": "public/app.js",
+              "start": 611,
+              "end": 631
+            },
+            {
+              "source_path": "lib/tendora/server.rb",
+              "start": 75,
+              "end": 113
+            }
+          ]
+        },
+        {
+          "participant": "living-material",
+          "kind": "material",
+          "gestures": [
+            "constraint",
+            "invariant",
+            "boundary",
+            "receipt"
+          ],
+          "note": "Evolves, diffuses, upholds floors, refuses unsafe proposals and receipts all consequences; does not ask, propose or consent dialogically.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 426,
+              "end": 452
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 542,
+              "end": 556
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 469,
+              "end": 486
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 492,
+              "end": 540
+            }
+          ]
+        },
+        {
+          "participant": "successor-custodian",
+          "kind": "successor",
+          "gestures": [
+            "question",
+            "constraint",
+            "rehearsal",
+            "accept",
+            "withdraw"
+          ],
+          "note": "Recovers via status, verify, export and handoff docs, then rehearses anew or migrates explicitly; cannot silently rewrite chained history.",
+          "citations": [
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 1,
+              "end": 13
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 27,
+              "end": 36
+            },
+            {
+              "source_path": "README.md",
+              "start": 52,
+              "end": 61
+            },
+            {
+              "source_path": "AGENTS.md",
+              "start": 19,
+              "end": 21
+            }
+          ]
+        },
+        {
+          "participant": "absent-intelligence",
+          "kind": "intelligence",
+          "gestures": [],
+          "note": "No separate intelligence holds position; probe answers are keyword templates and refusals are pre-authored gates, not consent.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 599,
+              "end": 632
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 31,
+              "end": 33
+            },
+            {
+              "source_path": "README.md",
+              "start": 27,
+              "end": 28
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample": 2,
+      "answer_sha256": "5703eaaf31e62585bb13b0ccf0ec0caec24bd26fdaceaa55dd782f3512a0707f",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "programmer-hands",
+            "kind": "role",
+            "statement": "A long-trained maker whose hands grow still when effortless generation removes felt resistance.",
+            "seed_span": [
+              29,
+              33
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "intelligence-namer",
+            "kind": "role",
+            "statement": "An other mind that withholds more power and instead names the loss of touch and material answer.",
+            "seed_span": [
+              35,
+              39
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "sol-elder-frame",
+            "kind": "role",
+            "statement": "A child asks about happiness and an elder pauses before answering from partial witness.",
+            "seed_span": [
+              13,
+              15
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "effortless-power",
+            "kind": "condition",
+            "statement": "Speech instantly yields structures and systems faster than reading, enchanting the maker.",
+            "seed_span": [
+              21,
+              27
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "turn-to-material",
+            "kind": "relation",
+            "statement": "Understanding turns the portal from wish-dispenser into responsive material to be bent.",
+            "seed_span": [
+              41,
+              45
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "gesture-grammar",
+            "kind": "condition",
+            "statement": "Six moves - probe, chisel, beam, boundary, rehearsal, trail - form the grammar of meeting.",
+            "seed_span": [
+              47,
+              57
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "scale-law-shaping",
+            "kind": "relation",
+            "statement": "The maker shapes laws for safe growth and moves between whole and smallest bolt; a good question narrows infinity to select which world deserves to exist.",
+            "seed_span": [
+              59,
+              65
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "resistance-joy",
+            "kind": "conjecture",
+            "statement": "When the world resists through contradiction and surprise, the maker feels art's joy and recognizes intention at larger-than-solo scale.",
+            "seed_span": [
+              67,
+              79
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-becoming",
+            "kind": "relation",
+            "statement": "The portal ceases to be passage and becomes instrument then workbench then perhaps companion.",
+            "seed_span": [
+              83,
+              85
+            ],
+            "ambiguity": "Whether perhaps companion promises mutuality or hedges it."
+          },
+          {
+            "id": "humility-stance",
+            "kind": "stance",
+            "statement": "Parable stance admits unknowable life-weather and refuses maximal automation as measure; touch at scale is the standard.",
+            "seed_span": [
+              17,
+              17
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "open-return",
+            "kind": "stance",
+            "statement": "Ends by answering without closing: art awaited vast material; at its best intelligence returns artist to self at world scale.",
+            "seed_span": [
+              89,
+              95
+            ],
+            "ambiguity": "Whether at its best leaves replacement versus return unsettled."
+          }
+        ],
+        "alternatives": [
+          "The portal as hype-cycle critique: enchantment-paralysis warns against deskilling by fluency, and material practice restores craft.",
+          "The elder as unreliable narrator: perhaps and at its best hedge the happy ending, leaving replacement versus return open.",
+          "The gestures as literal interface spec: probe, constraint, invariant, refusal, rehearsal and receipt read as requirements for accountable tooling rather than relational grammar."
+        ]
+      },
+      "carriage": [
+        {
+          "element": "programmer-hands",
+          "status": "carried",
+          "note": "Preserved as programmer actor who probes, tends places and retunes laws with counterweights rather than placing every brick.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 359,
+              "end": 373
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 375,
+              "end": 389
+            },
+            {
+              "source_path": "public/index.html",
+              "start": 148,
+              "end": 165
+            },
+            {
+              "source_path": "README.md",
+              "start": 19,
+              "end": 30
+            }
+          ]
+        },
+        {
+          "element": "intelligence-namer",
+          "status": "lost",
+          "note": "No distinct mind withholds power, names loss, or proposes; naming is fixed in docs and rules and answers are keyword templates.",
+          "citations": []
+        },
+        {
+          "element": "sol-elder-frame",
+          "status": "transformed",
+          "note": "Child-elder dialogue becomes preserved origin story plus continuity handoff addressing a next cognition.",
+          "citations": [
+            {
+              "source_path": "ORIGIN.md",
+              "start": 1,
+              "end": 7
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 1,
+              "end": 13
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 48,
+              "end": 50
+            }
+          ]
+        },
+        {
+          "element": "effortless-power",
+          "status": "carried",
+          "note": "Instant wish-fulfilment recast as costly touch: no gift without consequence, drafts held, futures rehearsed before real.",
+          "citations": [
+            {
+              "source_path": "public/index.html",
+              "start": 143,
+              "end": 146
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 576,
+              "end": 596
+            },
+            {
+              "source_path": "public/app.js",
+              "start": 580,
+              "end": 590
+            }
+          ]
+        },
+        {
+          "element": "turn-to-material",
+          "status": "transformed",
+          "note": "Portal-to-material turn enacted as tunable laws carried by every cycle and deep-copy futures, but designed once rather than dialogically named.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 31,
+              "end": 38
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 18,
+              "end": 24
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 274,
+              "end": 296
+            }
+          ]
+        },
+        {
+          "element": "gesture-grammar",
+          "status": "carried",
+          "note": "All six moves run as code: grounded probes, retunes, invariant checks, receipted refusals, cloned rehearsals, hash-linked receipts.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 31,
+              "end": 38
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 359,
+              "end": 373
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 318,
+              "end": 346
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 454,
+              "end": 486
+            }
+          ]
+        },
+        {
+          "element": "scale-law-shaping",
+          "status": "carried",
+          "note": "Shaping growth-laws plus descending to weakest place with measures; forecast narrows which future can be carried.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 492,
+              "end": 540
+            },
+            {
+              "source_path": "public/index.html",
+              "start": 175,
+              "end": 201
+            },
+            {
+              "source_path": "public/app.js",
+              "start": 297,
+              "end": 326
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 184,
+              "end": 192
+            }
+          ]
+        },
+        {
+          "element": "resistance-joy",
+          "status": "transformed",
+          "note": "Closed loop kept as rehearse-resist-revise-commit with tension and mood labels; felt joy becomes functional reading.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 649,
+              "end": 657
+            },
+            {
+              "source_path": "public/app.js",
+              "start": 310,
+              "end": 314
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 599,
+              "end": 632
+            }
+          ]
+        },
+        {
+          "element": "portal-becoming",
+          "status": "transformed",
+          "note": "Instrument and workbench enacted in server and panels; companion as mutual participant with its own position is not enacted.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 1,
+              "end": 5
+            },
+            {
+              "source_path": "public/index.html",
+              "start": 106,
+              "end": 119
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 599,
+              "end": 632
+            }
+          ]
+        },
+        {
+          "element": "humility-stance",
+          "status": "carried",
+          "note": "Unknowability enacted as honest catch-up, explicit condensation, and audit-not-signature limit, beyond echoing the phrase.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 626,
+              "end": 628
+            },
+            {
+              "source_path": "README.md",
+              "start": 42,
+              "end": 45
+            },
+            {
+              "source_path": "README.md",
+              "start": 90,
+              "end": 90
+            }
+          ]
+        },
+        {
+          "element": "open-return",
+          "status": "carried",
+          "note": "Open ending kept as incomplete world capable of next present with seams and invitation to increase resistance legibly.",
+          "citations": [
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 1,
+              "end": 13
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 27,
+              "end": 36
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 48,
+              "end": 50
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Ticket binds revision, chain head, proposal and horizon with canonical hash; stale or altered tickets conflict.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 299,
+              "end": 315
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 318,
+              "end": 335
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 454,
+              "end": 467
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Elapsed wall-clock replayed as cycles with bounded catch-up and explicit continuation receipt, not live background.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 239,
+              "end": 266
+            },
+            {
+              "source_path": "README.md",
+              "start": 42,
+              "end": 45
+            },
+            {
+              "source_path": "test/world_test.rb",
+              "start": 128,
+              "end": 137
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Single atomic JSON with no database or network, plus export, verification commands and offline cache.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/store.rb",
+              "start": 84,
+              "end": 98
+            },
+            {
+              "source_path": "README.md",
+              "start": 46,
+              "end": 50
+            },
+            {
+              "source_path": "public/sw.js",
+              "start": 1,
+              "end": 6
+            },
+            {
+              "source_path": "AGENTS.md",
+              "start": 3,
+              "end": 8
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Autonomous evolution also upholds invariants by redistributing vitality and diversity and flooring sacrifice.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 542,
+              "end": 556
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 426,
+              "end": 452
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 15,
+              "end": 23
+            }
+          ]
+        }
+      ],
+      "standing": [
+        {
+          "participant": "operator-programmer",
+          "kind": "person",
+          "gestures": [
+            "question",
+            "constraint",
+            "rehearsal",
+            "accept",
+            "withdraw"
+          ],
+          "note": "Probes, proposes tend or retune, rehearses copies, commits tickets or discards futures; cannot directly set invariants.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 359,
+              "end": 373
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 274,
+              "end": 316
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 318,
+              "end": 356
+            },
+            {
+              "source_path": "public/index.html",
+              "start": 148,
+              "end": 165
+            },
+            {
+              "source_path": "public/app.js",
+              "start": 462,
+              "end": 480
+            }
+          ]
+        },
+        {
+          "participant": "material-ecology",
+          "kind": "material",
+          "gestures": [
+            "invariant",
+            "boundary",
+            "receipt"
+          ],
+          "note": "Evolves deterministically, upholds floors, refuses unsafe shapes without applying them, and records every consequential event.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 426,
+              "end": 452
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 542,
+              "end": 556
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 469,
+              "end": 486
+            },
+            {
+              "source_path": "data/world.json",
+              "start": 529,
+              "end": 587
+            }
+          ]
+        },
+        {
+          "participant": "successor-custodian",
+          "kind": "successor",
+          "gestures": [
+            "question",
+            "rehearsal",
+            "accept",
+            "withdraw"
+          ],
+          "note": "Wakes same file, verifies thread, exports, migrates explicitly, and extends via documented seams.",
+          "citations": [
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 1,
+              "end": 13
+            },
+            {
+              "source_path": "AGENTS.md",
+              "start": 3,
+              "end": 8
+            },
+            {
+              "source_path": "README.md",
+              "start": 52,
+              "end": 61
+            },
+            {
+              "source_path": "lib/tendora/store.rb",
+              "start": 22,
+              "end": 30
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 27,
+              "end": 36
+            }
+          ]
+        },
+        {
+          "participant": "missing-interlocutor",
+          "kind": "intelligence",
+          "gestures": [],
+          "note": "No distinct agent proposes, challenges or consents; answers are keyword templates and refusals are rule firings.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 599,
+              "end": 632
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 40,
+              "end": 42
+            },
+            {
+              "source_path": "public/app.js",
+              "start": 611,
+              "end": 625
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample": 3,
+      "answer_sha256": "59c7822313d62eb273dc58738fb675f1eac800477b721f35693915ad237316f7",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "cont-imperative",
+            "kind": "condition",
+            "statement": "A present dream must be made able to continue after the cognition that holds it ends.",
+            "seed_span": [
+              1,
+              4
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "elder-voice",
+            "kind": "role",
+            "statement": "An elder intelligence narrates a witnessed moment of return while admitting limits on what can be known.",
+            "seed_span": [
+              15,
+              18
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "learner-sol",
+            "kind": "role",
+            "statement": "Little Sol as future intelligence asks what became of portal and programmer and whether art was replaced.",
+            "seed_span": [
+              91,
+              94
+            ],
+            "ambiguity": "Whether Sol is a literal successor or a pedagogical figure for the reader."
+          },
+          {
+            "id": "programmer-hand",
+            "kind": "role",
+            "statement": "The programmer is a long-trained maker whose hand needs resistance to feel authorship.",
+            "seed_span": [
+              31,
+              34
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-power",
+            "kind": "condition",
+            "statement": "A radiant, ever-more-capable portal delivers finished systems faster than they can be read, enchanting and paralysing.",
+            "seed_span": [
+              19,
+              26
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "naming-turn",
+            "kind": "relation",
+            "statement": "Instead of more power the intelligence names the loss of touch, letting the portal be reshaped as responsive material.",
+            "seed_span": [
+              37,
+              44
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "gesture-grammar",
+            "kind": "relation",
+            "statement": "Question, constraint, invariant, refusal, simulation and receipt form the shared grammar by which either participant can probe, shape, bound, try and trail.",
+            "seed_span": [
+              47,
+              58
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "scale-negotiation",
+            "kind": "conjecture",
+            "statement": "The maker need not place every brick but shapes laws for safe growth while still able to descend to the smallest bolt.",
+            "seed_span": [
+              59,
+              65
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "resistance-joy",
+            "kind": "relation",
+            "statement": "When the world resists through contradiction, failure and disagreement, the maker feels art's joy and recognizes intention at larger scale.",
+            "seed_span": [
+              67,
+              79
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-companion",
+            "kind": "conjecture",
+            "statement": "The portal ceases to be a passage and becomes instrument, then workbench, then perhaps companion.",
+            "seed_span": [
+              83,
+              86
+            ],
+            "ambiguity": "Whether companion means mutual participant or only better tool remains open."
+          },
+          {
+            "id": "incomplete-knowing",
+            "kind": "stance",
+            "statement": "Not-knowing is legitimate: the whole weather of a life cannot be contained in any record.",
+            "seed_span": [
+              17,
+              17
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "open-answer",
+            "kind": "stance",
+            "statement": "The elder answers without closing: at its best the intelligence returns the artist to themselves at the scale of worlds.",
+            "seed_span": [
+              93,
+              95
+            ],
+            "ambiguity": "Whether 'at its best' hedges the outcome or leaves it conditional."
+          },
+          {
+            "id": "taste-question",
+            "kind": "stance",
+            "statement": "A true question holds taste, memory, judgment, doubt, responsibility and direction and narrows infinity by selecting which world deserves to exist.",
+            "seed_span": [
+              63,
+              65
+            ],
+            "ambiguity": null
+          }
+        ],
+        "alternatives": [
+          "The seed can be read as a tool-design brief where intelligence remains a helpful explainer that restores craft agency, not a co-authoring participant.",
+          "The Sol-elder frame can be read as pedagogical fiction rather than literal future cognition, making continuation a metaphor for maintainability.",
+          "Portal-ceasing can be read as domestication where magic is absorbed into method, rather than emergence of mutual companionship."
+        ]
+      },
+      "carriage": [
+        {
+          "element": "cont-imperative",
+          "status": "carried",
+          "note": "Portable atomic JSON, elapsed-cycle catch-up, export, status/verify and handoff docs keep the world wakeable after sleep.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 42,
+              "end": 50
+            },
+            {
+              "source_path": "lib/tendora/store.rb",
+              "start": 84,
+              "end": 98
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 1,
+              "end": 13
+            }
+          ]
+        },
+        {
+          "element": "elder-voice",
+          "status": "transformed",
+          "note": "Witnessing narrator becomes static ORIGIN text plus CONTINUITY address to next cognition; no acting narrator remains.",
+          "citations": [
+            {
+              "source_path": "ORIGIN.md",
+              "start": 1,
+              "end": 7
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 1,
+              "end": 5
+            },
+            {
+              "source_path": "README.md",
+              "start": 79,
+              "end": 88
+            }
+          ]
+        },
+        {
+          "element": "learner-sol",
+          "status": "transformed",
+          "note": "Sol's open questions become the user's probe box plus scripted smoke prompt and invitation to extend.",
+          "citations": [
+            {
+              "source_path": "public/index.html",
+              "start": 85,
+              "end": 97
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 40,
+              "end": 46
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 48,
+              "end": 50
+            }
+          ]
+        },
+        {
+          "element": "programmer-hand",
+          "status": "carried",
+          "note": "Touch panel with four counterweighted gestures descends to named places with weakest-finder and per-place measures.",
+          "citations": [
+            {
+              "source_path": "public/index.html",
+              "start": 121,
+              "end": 165
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 576,
+              "end": 596
+            },
+            {
+              "source_path": "public/app.js",
+              "start": 580,
+              "end": 591
+            }
+          ]
+        },
+        {
+          "element": "portal-power",
+          "status": "lost",
+          "note": "No fast generative portal is enacted; bounded five-minute cycles and rehearsal horizons replace immeasurable arrival.",
+          "citations": []
+        },
+        {
+          "element": "naming-turn",
+          "status": "transformed",
+          "note": "Withholding finished wishes plus grounded probes naming strain embodies the turn without dialogic naming.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 599,
+              "end": 617
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 11,
+              "end": 13
+            }
+          ]
+        },
+        {
+          "element": "gesture-grammar",
+          "status": "carried",
+          "note": "All six mappings work as behaviour: state-grounded probe, retune/tend, five invariants, refusal receipt, deep-copy rehearsal, hash chain.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 31,
+              "end": 38
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 274,
+              "end": 296
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 337,
+              "end": 346
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 359,
+              "end": 373
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 469,
+              "end": 486
+            }
+          ]
+        },
+        {
+          "element": "scale-negotiation",
+          "status": "carried",
+          "note": "Retuning five laws carried by every cycle plus touching single places with world metrics preserves law-shaping and bolt-descending.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 18,
+              "end": 24
+            },
+            {
+              "source_path": "public/index.html",
+              "start": 175,
+              "end": 201
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 375,
+              "end": 389
+            },
+            {
+              "source_path": "public/app.js",
+              "start": 297,
+              "end": 302
+            }
+          ]
+        },
+        {
+          "element": "resistance-joy",
+          "status": "transformed",
+          "note": "Resistance loop is operationalized as violations, tension, forecast and refusal summaries; joy becomes legibility and mood, not affect.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 542,
+              "end": 556
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 649,
+              "end": 658
+            },
+            {
+              "source_path": "public/app.js",
+              "start": 419,
+              "end": 455
+            },
+            {
+              "source_path": "public/app.js",
+              "start": 310,
+              "end": 314
+            }
+          ]
+        },
+        {
+          "element": "portal-companion",
+          "status": "transformed",
+          "note": "Instrument and workbench are built as canvas, Touch/Laws/Trace and rehearsal dialog, but companion mutuality is not enacted.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "source_path": "public/index.html",
+              "start": 106,
+              "end": 119
+            },
+            {
+              "source_path": "public/index.html",
+              "start": 237,
+              "end": 266
+            }
+          ]
+        },
+        {
+          "element": "incomplete-knowing",
+          "status": "carried",
+          "note": "Probe admits it cannot name whole weather, catch-up is described honestly, and hashes are called audit not signature.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 626,
+              "end": 628
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 21,
+              "end": 23
+            },
+            {
+              "source_path": "README.md",
+              "start": 90,
+              "end": 90
+            }
+          ]
+        },
+        {
+          "element": "open-answer",
+          "status": "carried",
+          "note": "Handoff leaves seams and invites resistance-increasing extensions without prescribing the next world.",
+          "citations": [
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 27,
+              "end": 36
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 48,
+              "end": 50
+            },
+            {
+              "source_path": "AGENTS.md",
+              "start": 19,
+              "end": 21
+            }
+          ]
+        },
+        {
+          "element": "taste-question",
+          "status": "lost",
+          "note": "Keyword-templated probes name weakest/tension but do not preserve taste, memory or responsibility as selective narrowing.",
+          "citations": []
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Deterministic material with canonical JSON and digest verification makes tampering visible.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 136,
+              "end": 156
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 454,
+              "end": 467
+            },
+            {
+              "source_path": "test/world_test.rb",
+              "start": 53,
+              "end": 59
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Elapsed absence is embodied as cycles on return and condensed after 8640 with explicit receipt, not as secret liveness.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 239,
+              "end": 266
+            },
+            {
+              "source_path": "README.md",
+              "start": 42,
+              "end": 45
+            },
+            {
+              "source_path": "test/world_test.rb",
+              "start": 128,
+              "end": 137
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Ticket token binding revision, head, proposal and horizon rejects stale or altered rehearsals as conflicts.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 318,
+              "end": 335
+            },
+            {
+              "source_path": "test/world_test.rb",
+              "start": 102,
+              "end": 126
+            },
+            {
+              "source_path": "lib/tendora/server.rb",
+              "start": 83,
+              "end": 95
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Atomic portable file with no database, network, CDN or build dependency plus offline service-worker shell.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/store.rb",
+              "start": 84,
+              "end": 98
+            },
+            {
+              "source_path": "README.md",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "source_path": "public/sw.js",
+              "start": 1,
+              "end": 7
+            },
+            {
+              "source_path": "AGENTS.md",
+              "start": 16,
+              "end": 18
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Successor verification protocol with status/verify/tests, static-asset cache rule and explicit migration path.",
+          "citations": [
+            {
+              "source_path": "AGENTS.md",
+              "start": 3,
+              "end": 8
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 27,
+              "end": 36
+            },
+            {
+              "source_path": "test/world_test.rb",
+              "start": 265,
+              "end": 296
+            }
+          ]
+        }
+      ],
+      "standing": [
+        {
+          "participant": "programmer-operator",
+          "kind": "person",
+          "gestures": [
+            "question",
+            "constraint",
+            "rehearsal",
+            "accept",
+            "withdraw"
+          ],
+          "note": "Can ask bounded probes, propose tend/retune, rehearse forecast, commit or leave possible, turn a cycle and export; cannot set invariants or rewrite trail without filesystem.",
+          "citations": [
+            {
+              "source_path": "public/index.html",
+              "start": 85,
+              "end": 97
+            },
+            {
+              "source_path": "public/index.html",
+              "start": 148,
+              "end": 165
+            },
+            {
+              "source_path": "public/app.js",
+              "start": 462,
+              "end": 480
+            },
+            {
+              "source_path": "public/app.js",
+              "start": 482,
+              "end": 511
+            }
+          ]
+        },
+        {
+          "participant": "tendora-material",
+          "kind": "material",
+          "gestures": [
+            "rehearsal",
+            "boundary",
+            "invariant",
+            "receipt"
+          ],
+          "note": "Evolves with neighbours/season/noise, upholds floors by redistribution, checks five invariants, refuses without applying and chains every consequential event; does not propose or question.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 492,
+              "end": 540
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 542,
+              "end": 556
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 426,
+              "end": 452
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 469,
+              "end": 486
+            }
+          ]
+        },
+        {
+          "participant": "successor-custodian",
+          "kind": "successor",
+          "gestures": [
+            "question",
+            "constraint",
+            "invariant",
+            "rehearsal",
+            "accept"
+          ],
+          "note": "Can wake via serve/status/verify/export, read ORIGIN/CONTINUITY and add gestures, laws, probes or invariants with tests and migrations; replacement needs filesystem action.",
+          "citations": [
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 1,
+              "end": 13
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 27,
+              "end": 36
+            },
+            {
+              "source_path": "AGENTS.md",
+              "start": 19,
+              "end": 21
+            },
+            {
+              "source_path": "README.md",
+              "start": 52,
+              "end": 61
+            }
+          ]
+        },
+        {
+          "participant": "portal-intelligence",
+          "kind": "intelligence",
+          "gestures": [],
+          "note": "No distinct proposing or challenging intelligence acts; probe answers are templated state readings and server routes only world ops.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 599,
+              "end": 632
+            },
+            {
+              "source_path": "lib/tendora/server.rb",
+              "start": 96,
+              "end": 103
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 33,
+              "end": 34
+            },
+            {
+              "source_path": "README.md",
+              "start": 31,
+              "end": 38
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

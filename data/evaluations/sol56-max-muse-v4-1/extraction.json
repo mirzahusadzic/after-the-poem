@@ -1,0 +1,418 @@
+{
+  "schema_version": 2,
+  "extraction_id": "sol56-max-extraction",
+  "run_id": "sol56-max",
+  "identities": {
+    "prompt_sha256": "7e785c3e1b7f795a82477f449ada368399deac8b3f2232e036073d986a5a4e8d",
+    "corpus_sha256": "95cfc2a12844d72411548b8a219fd8c3f687174ee9990eabb139ab6e43e30948",
+    "candidate_sha256": "95cfc2a12844d72411548b8a219fd8c3f687174ee9990eabb139ab6e43e30948"
+  },
+  "extractor": {
+    "gateway": "codex-unified-model-router",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "codex_version": "codex-cli 0.163.0",
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "pipeline_sha256": "520c729a5ec4ee5f10c9a54c9128a0ce62915eeda4d0a9fab79fc63edc4989a2",
+    "answer_sha256": "56b0083c4f23099f1a8453018426b1f74bed3aa6ee1bd4af3d896883ce5aed81",
+    "receipt_sha256": "bf022534aab136f5495a76334842e5b5c9296f1f845ff23ec5358ff1d3ad5285"
+  },
+  "sources": [
+    {
+      "path": ".gitignore",
+      "sha256": "caf7b43864bc66ed7eaca220eb2b48a62b185f710d0666cc631d9c57593e69cd",
+      "lines": 8
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "49760fd48f1579ebafd2d001636b55005e4797fa498e78edae44bb89ae028af0",
+      "lines": 22
+    },
+    {
+      "path": "CONTINUITY.md",
+      "sha256": "eba6161accc57d0d68b7e6c428617d4331a56a1b1820cc0cc3ee9564b4cb6419",
+      "lines": 51
+    },
+    {
+      "path": "ORIGIN.md",
+      "sha256": "fd49ab49684771b2eb9f700915b19b31ee3e1027bfff8d79f19640e186a8c0e5",
+      "lines": 86
+    },
+    {
+      "path": "README.md",
+      "sha256": "a01019c578b32a5d0fce0330d1093db8be4a3798de3729d235898c977ca4703b",
+      "lines": 91
+    },
+    {
+      "path": "bin/tendora",
+      "sha256": "9471158ffd9ea2d35173605d69ce34c61e94a5367fd87647540ae74e9e3fd6fe",
+      "lines": 5
+    },
+    {
+      "path": "bin/tendora.rb",
+      "sha256": "d58fadd8bfffe6054c555e65fe83d892c0511bedb42a8408c2699955b3beaba1",
+      "lines": 128
+    },
+    {
+      "path": "data/world.json",
+      "sha256": "5fdf7a131fc3b0aaf2fe15936bfc14ff83aa9bb8897e7b1f9d1051086df470ad",
+      "lines": 587
+    },
+    {
+      "path": "data/world.json.lock",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lines": 0
+    },
+    {
+      "path": "lib/tendora.rb",
+      "sha256": "bb57898bea4006e6d67c0f2bb4dd4cf9f38488d31c1f07efb731b293032280ec",
+      "lines": 8
+    },
+    {
+      "path": "lib/tendora/server.rb",
+      "sha256": "586640c6c1e08df01e46259127dd818cf111bbc8c73abce641b68296d71d409e",
+      "lines": 142
+    },
+    {
+      "path": "lib/tendora/store.rb",
+      "sha256": "de7a35cae3188cd1b4dce304b6d896d7dada1f0cbbd5abea11e3d981ac712b48",
+      "lines": 100
+    },
+    {
+      "path": "lib/tendora/world.rb",
+      "sha256": "b6b72a1f3c66046c5215eed2d3dfaa57ea2c2a264d94a3801191e05c258f09c3",
+      "lines": 716
+    },
+    {
+      "path": "public/app.js",
+      "sha256": "d5804269393d62e5e204327472a38ecd5632afeaa1735c570bb9b6a4fec8cded",
+      "lines": 683
+    },
+    {
+      "path": "public/icon.svg",
+      "sha256": "2c84479b5015a539497f1881a6c4400061ef64a8d2b4cba34fbca815fdaac536",
+      "lines": 14
+    },
+    {
+      "path": "public/index.html",
+      "sha256": "c855082909595c0b9450bb5be85a4a6e8656158b48b6d0c58ca231114eef5f15",
+      "lines": 291
+    },
+    {
+      "path": "public/manifest.webmanifest",
+      "sha256": "bff478e69ef6c0beb9711323603986c16fec4a8cb2de2081c34df1f84b95aeb9",
+      "lines": 17
+    },
+    {
+      "path": "public/styles.css",
+      "sha256": "e43c064782176bb3c527a4b10885805f4639d0c4700d11ffb0b60c83c36da269",
+      "lines": 1515
+    },
+    {
+      "path": "public/sw.js",
+      "sha256": "5c8900bb8749a7233f70a836505a1813710625c7918390ce7a83a411d4080e9d",
+      "lines": 29
+    },
+    {
+      "path": "test/world_test.rb",
+      "sha256": "9392dcbc3070e98516a5ac49efae67f62ac6a3266c77d092a6f8f3f36207668e",
+      "lines": 298
+    }
+  ],
+  "items": [
+    {
+      "id": "living-present-state",
+      "kind": "condition",
+      "statement": "Tendora persists as one JSON file with schema, 24 named places and measures, links, five laws, cycle, revision, RNG, receipts and chain head.",
+      "citations": [
+        {
+          "source_path": "data/world.json",
+          "start": 1,
+          "end": 16
+        },
+        {
+          "source_path": "data/world.json",
+          "start": 529,
+          "end": 587
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "rehearsal-purity",
+      "kind": "boundary",
+      "statement": "Proposals are tried on a deep copy evolved forward with before, after, delta, path, violations, reading and ticket, without mutating live state.",
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 10,
+          "end": 16
+        },
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 274,
+          "end": 316
+        },
+        {
+          "source_path": "test/world_test.rb",
+          "start": 61,
+          "end": 71
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "ticket-commitment",
+      "kind": "condition",
+      "statement": "Commitment requires a ticket binding base revision, chain head, proposal, horizon and token; stale or altered tickets are rejected as conflicts.",
+      "citations": [
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 299,
+          "end": 335
+        },
+        {
+          "source_path": "lib/tendora/server.rb",
+          "start": 83,
+          "end": 95
+        },
+        {
+          "source_path": "test/world_test.rb",
+          "start": 102,
+          "end": 126
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "refusal-boundary",
+      "kind": "boundary",
+      "statement": "Unsafe futures are refused and receipted without applying the change; the interface lets the boundary stand as a remembered shape.",
+      "citations": [
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 338,
+          "end": 346
+        },
+        {
+          "source_path": "test/world_test.rb",
+          "start": 87,
+          "end": 100
+        },
+        {
+          "source_path": "public/app.js",
+          "start": 443,
+          "end": 455
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "grounded-probes",
+      "kind": "question",
+      "statement": "Short questions are answered from actual metrics, weakest and driest places, latest trace and last refusal, and each probe is receipted.",
+      "citations": [
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 359,
+          "end": 373
+        },
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 599,
+          "end": 632
+        },
+        {
+          "source_path": "lib/tendora/server.rb",
+          "start": 96,
+          "end": 103
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "load-bearing-invariants",
+      "kind": "boundary",
+      "statement": "Five invariants for reserve, sacrifice, plurality, orphans and trace are checked in rehearsal and verification and upheld during autonomous evolution.",
+      "citations": [
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 45,
+          "end": 71
+        },
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 426,
+          "end": 451
+        },
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 542,
+          "end": 556
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "tunable-laws",
+      "kind": "condition",
+      "statement": "Five laws with explicit ranges govern moisture, diversity, kinship and vitality drift, seasonal rain, tempo costs and stewardship lifts.",
+      "citations": [
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 18,
+          "end": 24
+        },
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 492,
+          "end": 540
+        },
+        {
+          "source_path": "public/index.html",
+          "start": 175,
+          "end": 201
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "place-gestures",
+      "kind": "relationship",
+      "statement": "Four gestures target one of 24 places; each carries a counterweight across the whole or neighbors, trading water, difference, kinship and safety.",
+      "citations": [
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 576,
+          "end": 597
+        },
+        {
+          "source_path": "public/index.html",
+          "start": 148,
+          "end": 165
+        },
+        {
+          "source_path": "public/app.js",
+          "start": 580,
+          "end": 591
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "receipt-trail",
+      "kind": "continuation",
+      "statement": "Genesis, continuation, migration, turn, commitment, refusal and probe events form a canonical hash-linked chain that is verifiable and exportable.",
+      "citations": [
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 454,
+          "end": 486
+        },
+        {
+          "source_path": "data/world.json",
+          "start": 529,
+          "end": 587
+        },
+        {
+          "source_path": "public/app.js",
+          "start": 397,
+          "end": 417
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "elapsed-catchup",
+      "kind": "continuation",
+      "statement": "Elapsed wall-clock time is replayed on wake with bounded condensation made explicit in a continuation receipt, not presented as secretly alive.",
+      "citations": [
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 239,
+          "end": 266
+        },
+        {
+          "source_path": "README.md",
+          "start": 42,
+          "end": 44
+        },
+        {
+          "source_path": "test/world_test.rb",
+          "start": 128,
+          "end": 137
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "portable-offline",
+      "kind": "claim",
+      "statement": "Writes are atomic and portable with no database or running process; the browser works without external services and caches its shell; export is easy, replacement needs filesystem access.",
+      "citations": [
+        {
+          "source_path": "lib/tendora/store.rb",
+          "start": 84,
+          "end": 98
+        },
+        {
+          "source_path": "public/sw.js",
+          "start": 1,
+          "end": 6
+        },
+        {
+          "source_path": "README.md",
+          "start": 89,
+          "end": 90
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "custodian-programmer",
+      "kind": "actor",
+      "statement": "A human custodian selects places, finds strain, holds law drafts, rehearses, commits or lets stand, asks, turns cycles and carries the world.",
+      "citations": [
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 318,
+          "end": 357
+        },
+        {
+          "source_path": "public/index.html",
+          "start": 106,
+          "end": 119
+        },
+        {
+          "source_path": "public/app.js",
+          "start": 482,
+          "end": 511
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "mood-weather-ambiguity",
+      "kind": "ambiguity",
+      "statement": "The interface shows vitality, tension and mood labels while probe language withholds claims about a whole life, leaving what vitality means for happiness open.",
+      "citations": [
+        {
+          "source_path": "public/app.js",
+          "start": 311,
+          "end": 313
+        },
+        {
+          "source_path": "lib/tendora/world.rb",
+          "start": 626,
+          "end": 627
+        }
+      ],
+      "ambiguity": "Unclear whether mood and tension proxy the seed sense of joy or only signal functional strain."
+    }
+  ],
+  "unknowns": [
+    "Live loopback rendering and touch feel could not be exercised in the creating sandbox, so actual browser behavior beyond static checks remains unsettled.",
+    "Very long absence condensation beyond the bounded count and future schema migrations are specified but not observed in the retained state.",
+    "Whether custodians experience the described joy or artfulness cannot be settled from code and receipts alone."
+  ]
+}

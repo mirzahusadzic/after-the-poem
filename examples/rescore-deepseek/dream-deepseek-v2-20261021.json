@@ -1,0 +1,19 @@
+{
+  "schema_version": 2,
+  "run_id": "dream-deepseek-v2-20261021-deepseek-s1",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "reasoning": "high",
+  "evaluation_id": "dream-deepseek-v2-20261021-deepseek-compact-1",
+  "review_id": "dream-deepseek-v2-20261021-deepseek-compact-1-review",
+  "reviewer": "DeepSeek V4.1 Flash 1017 · rubric session",
+  "output": ".local/evaluation-runs/dream-deepseek-v2-20261021-deepseek-compact-1",
+  "budget": {
+    "max_turns": 3,
+    "max_input_tokens": 300000,
+    "max_output_tokens": 80000,
+    "max_seconds": 300
+  },
+  "layout": "compact",
+  "run_label": "DeepSeek reading",
+  "run_title": "Tendora · The Workbench of Small Refusals"
+}

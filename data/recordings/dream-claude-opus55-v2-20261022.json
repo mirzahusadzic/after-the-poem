@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "run_id": "dream-claude-opus55-v2-20261022",
+  "corpus_sha256": "8ae06e7fa558cafc61fdfc4bf0d88ea90b1c10ee9f4e901bb9e729479927383c",
+  "recorded_on": "2026-10-23",
+  "runner": "isolated local runner (macOS sandbox, disposable copy)",
+  "entries": [
+    {
+      "command": "help",
+      "output": "survey WORLD | check WORLD… | probe WORLD \"EXPR\" | chisel WORLD \"EXPR\" [--carve]\nlean WORLD BOUNDARY | rehearse WORLD [--seed S] | zoom WORLD \"EXPR\" | receipts [--verify] | new NAME\nWorlds: worlds/lamp.world, jugs, peterson, handoff, broken/check-then-enter, broken/flag-then-wait.\nAny gesture takes --why \"TEXT\" and --json. Receipts stay in this copy. Start fresh resets it.",
+      "exit_code": 0
+    },
+    {
+      "command": "survey worlds/lamp.world",
+      "output": "lamp — A room with a door, a lamp, and a battery that each lighting spends.\n  worlds/lamp.world · sha 38f8ba988d8f\n\n  space       3 vars · 16 conceivable · 3 initial · 10 reachable · depth 2 · 12 moves\n  actions     open 3 · close 3 · switch_on 3 · switch_off 3\n  still       1 state, all at rest\n  beams       ✓ never_open_in_dark\n  boundaries  no_dark_doorway  load-bearing: holds up never_open_in_dark · pressed 4×\n              no_darkening     load-bearing: holds up never_open_in_dark · pressed 3×\n  probes      spent_and_lit    reachable in 1 step\n\n  receipt #11 · f4deef4d947b",
+      "exit_code": 0
+    },
+    {
+      "command": "lean worlds/lamp.world no_darkening",
+      "output": "lamp — A room with a door, a lamp, and a battery that each lighting spends.\n  worlds/lamp.world · sha 38f8ba988d8f\n\n  boundary    no_darkening — the light stays on while the door is open\n  verdict     load-bearing: without it never_open_in_dark breaks in 3 steps\n  first press after 2 steps, it turned away switch_off:\n                 0  door=closed lamp=off charge=1\n                 1  switch_on  lamp off→on, charge 1→0\n                 2  open       door closed→open\n                    ✋ switch_off → door=open lamp=off charge=0\n  without it  never_open_in_dark breaks like this:\n                 0  door=closed lamp=off charge=1\n                 1  switch_on   lamp off→on, charge 1→0\n                 2  open        door closed→open\n                 3  switch_off  lamp on→off\n\n  receipt #12 · 5d26bbe60745",
+      "exit_code": 0
+    },
+    {
+      "command": "probe worlds/jugs.world two_and_two",
+      "output": "jugs — Two jugs, of 3 and 5 litres, a tap, and a drain. Can you measure exactly 4?\n  worlds/jugs.world · sha faea0015e795\n\n  question    small == 2 and big == 2\n  answer      never: not in any of 16 reachable states\n\n  receipt #13 · ce932275f479",
+      "exit_code": 1
+    },
+    {
+      "command": "survey worlds/handoff.world",
+      "output": "handoff — A mind works in a world and then ends; another may wake there later. Whatever\n  the first one made must be able to continue without it.\n  worlds/handoff.world · sha 6c6144433224\n\n  space       5 vars · 108 conceivable · 1 initial · 37 reachable · depth 7 · 79 moves\n  actions     make 16 · record 18 · verify 17 · write_notes 22 · end 3 · resume 3\n  still       none: every state can move\n  beams       ✓ nothing_lost\n              ✓ continuable\n              ✓ claims_checked\n  boundaries  no_lossy_ending      load-bearing: holds up nothing_lost · pressed 18×\n              no_stale_notes       load-bearing: holds up continuable · pressed 10×\n              no_unchecked_claims  load-bearing: holds up claims_checked · pressed 3×\n              no_blind_waking      untouched: nothing presses on it\n  probes      full_handoff         reachable in 7 steps\n              empty_handoff        reachable in 3 steps\n\n  receipt #14 · 49c776a51192",
+      "exit_code": 0
+    },
+    {
+      "command": "lean worlds/handoff.world no_stale_notes",
+      "output": "handoff — A mind works in a world and then ends; another may wake there later. Whatever\n  the first one made must be able to continue without it.\n  worlds/handoff.world · sha 6c6144433224\n\n  boundary    no_stale_notes — the next mind needs notes that describe what is actually here\n  verdict     load-bearing: without it continuable breaks in 2 steps\n  first press at the start, it turned away end:\n                 0  mind=awake made=0 recorded=0 notes=none verified=false\n                    ✋ end → mind=ended made=0 recorded=0 notes=none verified=false\n  without it  continuable breaks like this:\n                 0  mind=awake made=0 recorded=0 notes=none verified=false\n                 1  verify  verified false→true\n                 2  end     mind awake→ended\n\n  receipt #15 · 50328ad140f2",
+      "exit_code": 0
+    },
+    {
+      "command": "receipts --verify",
+      "output": "✓ ledger/receipts.jsonl: intact: 15 receipts, head 50328ad140f2",
+      "exit_code": 0
+    }
+  ]
+}

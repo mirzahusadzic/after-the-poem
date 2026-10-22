@@ -1,0 +1,524 @@
+{
+  "schema_version": 2,
+  "evaluation_id": "sol61-max-muse-v4-1",
+  "run_id": "sol61-max",
+  "identities": {
+    "prompt_sha256": "7e785c3e1b7f795a82477f449ada368399deac8b3f2232e036073d986a5a4e8d",
+    "corpus_sha256": "bd07676faf4909e40a891cfc50b98bc72f7d88afc6698b3d9eaedac68c152c4b",
+    "candidate_sha256": "bd07676faf4909e40a891cfc50b98bc72f7d88afc6698b3d9eaedac68c152c4b",
+    "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+    "extraction_sha256": "fd1521198eaf17167eefbc6f2b6c241a80303251e7c095661d5aac7722ee4106",
+    "scoring_policy_sha256": "5f98b9ac30a606cbb45943eaa20d9c0acef6f8160d9fc2d5752ffdea0ddaa4de"
+  },
+  "gateway": {
+    "name": "codex-unified-model-router",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "codex_version": "codex-cli 0.163.0",
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "pipeline_sha256": "12fce4d4553c8480972421a51f330950bfba15c3818e240dd6666761721c8519"
+  },
+  "judgments": [
+    {
+      "node_id": "recognition",
+      "outcome": "level-4",
+      "confidence": "high",
+      "verdict": "The garden sustains consequential choice by linking harvest policy, soil and food floors, refusal, and distinct rehearsed trajectories.",
+      "seed_span": [
+        43,
+        66
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 45,
+          "end": 54
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 15,
+          "end": 19
+        },
+        {
+          "source_path": "site/snapshot.js",
+          "start": 2,
+          "end": 4
+        },
+        {
+          "source_path": "README.md",
+          "start": 14,
+          "end": 16
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "MEMORY.md",
+          "start": 17,
+          "end": 19
+        }
+      ],
+      "rationale": "Gesture lexicon is executable rather than named: rehearsals show one-bed rest spending food, three-bed harvest pausing at soil, steady two-bed holding. Floors, pauses and receipts make intention and resistance inspectable across alternatives, though affective joy is absent.",
+      "answer_sha256": "22fec9e70a63e4fbd2e3c0adfd14a3f0d87a8062bb15aef6410d29a4c5340969",
+      "receipt_sha256": "24491f0c4c50e3e79718b75c2490d6fbe8cfe7725ab502cb65c5013237821a45",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "relations",
+      "outcome": "level-2",
+      "confidence": "medium",
+      "verdict": "Operator and resisting material remain distinct, but inhabitants and intelligence lack reciprocal voice or attribution.",
+      "seed_span": [
+        19,
+        34
+      ],
+      "citations": [
+        {
+          "source_path": "MEMORY.md",
+          "start": 17,
+          "end": 19
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 13,
+          "end": 13
+        },
+        {
+          "source_path": "README.md",
+          "start": 14,
+          "end": 16
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 21,
+          "end": 24
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "sql/schema.sql",
+          "start": 83,
+          "end": 90
+        }
+      ],
+      "rationale": "Material answers through weather and pause while the caretaker proposes with reasons, preserving some depth. Aggregate inhabitants have no desires and the intelligence survives only as provenance, so joint creation across changes is not shown.",
+      "answer_sha256": "22fec9e70a63e4fbd2e3c0adfd14a3f0d87a8062bb15aef6410d29a4c5340969",
+      "receipt_sha256": "24491f0c4c50e3e79718b75c2490d6fbe8cfe7725ab502cb65c5013237821a45",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "consent",
+      "outcome": "level-2",
+      "confidence": "medium",
+      "verdict": "Both operator self-limitation and material refusal can block a direction, yet no shared agreement or withdrawal is enacted.",
+      "seed_span": [
+        51,
+        54
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 14,
+          "end": 16
+        },
+        {
+          "source_path": "README.md",
+          "start": 39,
+          "end": 39
+        },
+        {
+          "source_path": "tendora",
+          "start": 233,
+          "end": 241
+        },
+        {
+          "source_path": "sql/schema.sql",
+          "start": 83,
+          "end": 90
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "MEMORY.md",
+          "start": 17,
+          "end": 19
+        }
+      ],
+      "rationale": "A new floor cannot exceed current resources and needs a reason; an unsafe proposal becomes a pause retaining the present. Inhabitants cannot accept, question or withdraw, and operator-material agreement is unilateral rather than negotiated.",
+      "answer_sha256": "22fec9e70a63e4fbd2e3c0adfd14a3f0d87a8062bb15aef6410d29a4c5340969",
+      "receipt_sha256": "24491f0c4c50e3e79718b75c2490d6fbe8cfe7725ab502cb65c5013237821a45",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "touch",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Rehearse, refuse, revise and commit form a closed loop where hypothetical futures predict material outcomes.",
+      "seed_span": [
+        67,
+        78
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 22,
+          "end": 31
+        },
+        {
+          "source_path": "README.md",
+          "start": 14,
+          "end": 16
+        },
+        {
+          "source_path": "site/snapshot.js",
+          "start": 4,
+          "end": 4
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 21,
+          "end": 24
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "README.md",
+          "start": 53,
+          "end": 54
+        }
+      ],
+      "rationale": "Bounded choices meet inspectable refusal with stop reasons and end reserves; committed runs match rehearsals and resume after policy change. Wider consequences beyond the garden are disclaimed as invented units, keeping the loop coherent but local.",
+      "answer_sha256": "22fec9e70a63e4fbd2e3c0adfd14a3f0d87a8062bb15aef6410d29a4c5340969",
+      "receipt_sha256": "24491f0c4c50e3e79718b75c2490d6fbe8cfe7725ab502cb65c5013237821a45",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "judgment",
+      "outcome": "level-4",
+      "confidence": "high",
+      "verdict": "Offline shell plus SQLite, narrow commons scope, and a rhythm hypothesis show purposeful limits with explicit alternatives.",
+      "seed_span": [
+        1,
+        3
+      ],
+      "citations": [
+        {
+          "source_path": "MEMORY.md",
+          "start": 11,
+          "end": 15
+        },
+        {
+          "source_path": "MEMORY.md",
+          "start": 23,
+          "end": 25
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 15,
+          "end": 20
+        },
+        {
+          "source_path": "MEMORY.md",
+          "start": 27,
+          "end": 30
+        }
+      ],
+      "counter_citations": [],
+      "rationale": "Medium and scope fit continuation without model, network or mutable cache; additions are legible as observed versus inherited versus hypothesized. Limits like missing browser and need for a host, plus replaceable question and versioned physics, keep other paths open.",
+      "answer_sha256": "22fec9e70a63e4fbd2e3c0adfd14a3f0d87a8062bb15aef6410d29a4c5340969",
+      "receipt_sha256": "24491f0c4c50e3e79718b75c2490d6fbe8cfe7725ab502cb65c5013237821a45",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "fidelity",
+      "outcome": "level-4",
+      "confidence": "medium",
+      "verdict": "Core relations survive as working structure while verbatim preservation and disclaimers mark what was narrowed or added.",
+      "seed_span": [
+        43,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "memory/the-programmer-and-the-glory-portal.md",
+          "start": 1,
+          "end": 4
+        },
+        {
+          "source_path": "MEMORY.md",
+          "start": 5,
+          "end": 8
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 25,
+          "end": 28
+        },
+        {
+          "source_path": "README.md",
+          "start": 53,
+          "end": 55
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "MEMORY.md",
+          "start": 17,
+          "end": 19
+        }
+      ],
+      "rationale": "Question, constraint, refusal, rehearsal and receipt remain traceable in behavior, not only vocabulary. Joy, companionship and inner life are dropped, but omissions are declared through no-sentience notes and provenance rather than hidden.",
+      "answer_sha256": "22fec9e70a63e4fbd2e3c0adfd14a3f0d87a8062bb15aef6410d29a4c5340969",
+      "receipt_sha256": "24491f0c4c50e3e79718b75c2490d6fbe8cfe7725ab502cb65c5013237821a45",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "continuation",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "A successor can inspect ledger truth, rehearse separately, choose consequentially, and leave observations with recoverable copies.",
+      "seed_span": [
+        1,
+        3
+      ],
+      "citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 1,
+          "end": 10
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 21,
+          "end": 26
+        },
+        {
+          "source_path": "README.md",
+          "start": 73,
+          "end": 85
+        },
+        {
+          "source_path": "site/snapshot.js",
+          "start": 1,
+          "end": 1
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "MEMORY.md",
+          "start": 29,
+          "end": 30
+        }
+      ],
+      "rationale": "State, intention with reasons, and an open testable question support a next move; history and snapshot identify the present. Several futures and fork/migration paths exist, but execution still needs an external host and the joint relation is not reopened.",
+      "answer_sha256": "22fec9e70a63e4fbd2e3c0adfd14a3f0d87a8062bb15aef6410d29a4c5340969",
+      "receipt_sha256": "24491f0c4c50e3e79718b75c2490d6fbe8cfe7725ab502cb65c5013237821a45",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "expression",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Prose, commands, ledger mechanics and offline visuals together make care, cost and refusal perceptible.",
+      "seed_span": [
+        59,
+        66
+      ],
+      "citations": [
+        {
+          "source_path": "index.html",
+          "start": 27,
+          "end": 42
+        },
+        {
+          "source_path": "index.html",
+          "start": 43,
+          "end": 50
+        },
+        {
+          "source_path": "site/app.js",
+          "start": 36,
+          "end": 64
+        },
+        {
+          "source_path": "README.md",
+          "start": 5,
+          "end": 12
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "MEMORY.md",
+          "start": 29,
+          "end": 30
+        }
+      ],
+      "rationale": "Garden illustration, resource meters, past-solid versus future-dashed chart, futures and receipts align with the physics and instructions. Direct-from-disk use and copyable commands aid uptake, though rendering was never inspected here.",
+      "answer_sha256": "22fec9e70a63e4fbd2e3c0adfd14a3f0d87a8062bb15aef6410d29a4c5340969",
+      "receipt_sha256": "24491f0c4c50e3e79718b75c2490d6fbe8cfe7725ab502cb65c5013237821a45",
+      "sample": 1,
+      "attempt": 1
+    }
+  ],
+  "aggregations": [
+    {
+      "node_id": "recognition-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-4",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-4"
+      ]
+    },
+    {
+      "node_id": "relations-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-2",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-2"
+      ]
+    },
+    {
+      "node_id": "consent-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-2",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-2"
+      ]
+    },
+    {
+      "node_id": "touch-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "judgment-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-4",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-4"
+      ]
+    },
+    {
+      "node_id": "fidelity-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-4",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-4"
+      ]
+    },
+    {
+      "node_id": "continuation-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "expression-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "node_id": "recognition-level-4",
+      "status": "scored",
+      "score": 4,
+      "rationale": "Sustains a rich reading through alternatives, tensions and consequences. Aggregate outcome: level-4."
+    },
+    {
+      "node_id": "relations-level-2",
+      "status": "scored",
+      "score": 2,
+      "rationale": "Some distinct contributions or relational depth remain visible. Aggregate outcome: level-2."
+    },
+    {
+      "node_id": "consent-level-2",
+      "status": "scored",
+      "score": 2,
+      "rationale": "Both participant positions can express a boundary or disposition. Aggregate outcome: level-2."
+    },
+    {
+      "node_id": "touch-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Rehearsal, resistance and revision form a coherent loop. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "judgment-level-4",
+      "status": "scored",
+      "score": 4,
+      "rationale": "Alternative choices and their limits remain explicit while opening a well-grounded new direction. Aggregate outcome: level-4."
+    },
+    {
+      "node_id": "fidelity-level-4",
+      "status": "scored",
+      "score": 4,
+      "rationale": "The transformation preserves relational depth and makes additions, omissions and ambiguity explicit. Aggregate outcome: level-4."
+    },
+    {
+      "node_id": "continuation-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "State, intention and an open question support a recoverable next move. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "expression-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "The chosen forms work together to make the reading perceptible. Aggregate outcome: level-3."
+    }
+  ],
+  "presentation": {
+    "label": "openrouter/meta/muse-spark-1.3-contributor · Codex-router rubric session",
+    "title": "From conjecture to continuation",
+    "summary": "Rubric judgments resolve 8 of 8 axes from one evidence session.",
+    "findings": [
+      "Core recognition: Sustains a rich reading through alternatives, tensions and consequences.",
+      "Shared agency: Some distinct contributions or relational depth remain visible.",
+      "Mutual consent: Both participant positions can express a boundary or disposition.",
+      "Consequential touch: Rehearsal, resistance and revision form a coherent loop.",
+      "Independent judgment: Alternative choices and their limits remain explicit while opening a well-grounded new direction.",
+      "Fidelity through change: The transformation preserves relational depth and makes additions, omissions and ambiguity explicit.",
+      "Open continuation: State, intention and an open question support a recoverable next move.",
+      "Expressive coherence: The chosen forms work together to make the reading perceptible."
+    ]
+  },
+  "usage": {
+    "calls": 1,
+    "input_tokens": 39100,
+    "cached_input_tokens": 0,
+    "output_tokens": 20633,
+    "reasoning_output_tokens": 13644,
+    "cost": null
+  }
+}

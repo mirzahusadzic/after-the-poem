@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:after-the-poem:evaluation-profile-v2",
+  "title": "After the Poem Evaluation Profile v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_id",
+    "model",
+    "reasoning",
+    "evaluation_id",
+    "review_id",
+    "reviewer",
+    "output",
+    "budget"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,99}$"
+    },
+    "model": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reasoning": {
+      "enum": [
+        "none",
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ]
+    },
+    "evaluation_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,99}$"
+    },
+    "evaluation_run_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,99}$"
+    },
+    "review_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,99}$"
+    },
+    "reviewer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "run_label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "run_title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "output": {
+      "type": "string",
+      "minLength": 1
+    },
+    "policy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repetitions": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 20,
+      "default": 1,
+      "description": "Independent evidence sessions; more than one adds a per-axis quorum."
+    },
+    "minimum_agreement": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "maximum": 1,
+      "default": 0.67
+    },
+    "repairs": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 2,
+      "description": "In-session repair turns per task after an invalid answer."
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max_turns",
+        "max_input_tokens",
+        "max_output_tokens"
+      ],
+      "description": "Hard limits checked before every turn; all launched turns count, including failed ones.",
+      "properties": {
+        "max_turns": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_input_tokens": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_output_tokens": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_usd": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "pricing": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "input_per_million",
+            "cached_input_per_million",
+            "output_per_million"
+          ],
+          "properties": {
+            "input_per_million": {
+              "type": "number",
+              "minimum": 0
+            },
+            "cached_input_per_million": {
+              "type": "number",
+              "minimum": 0
+            },
+            "output_per_million": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "max_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Stop before the next turn once launched turns have used this much time."
+        }
+      },
+      "dependentRequired": {
+        "max_usd": [
+          "pricing"
+        ]
+      }
+    },
+    "layout": {
+      "enum": [
+        "compact",
+        "per-axis"
+      ],
+      "default": "compact",
+      "description": "compact: inventory and every axis in one turn per session; per-axis: one turn each."
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "status": "completed",
+  "dry_run": false,
+  "run_id": "dream-deepseek-20261021-deepseek-s1",
+  "evaluation_id": "dream-deepseek-20261021-deepseek-s1-muse-v4-1",
+  "gateway": "codex-unified-model-router",
+  "scoreflow_version": 3,
+  "criteria": 8,
+  "judgment_samples": 8,
+  "scored_axes": 8,
+  "unresolved_axes": 0,
+  "outcomes": {
+    "recognition": "level-4",
+    "relations": "level-3",
+    "consent": "level-1",
+    "touch": "level-3",
+    "judgment": "level-4",
+    "fidelity": "level-3",
+    "continuation": "level-4",
+    "expression": "level-3"
+  },
+  "usage": {
+    "input_tokens": 92526,
+    "cached_input_tokens": 0,
+    "output_tokens": 16809,
+    "reasoning_output_tokens": 10972,
+    "calls": 1,
+    "unmetered_calls": 0,
+    "estimated_usd": null,
+    "elapsed_seconds": 128.28
+  },
+  "sessions": 1,
+  "turns": 1,
+  "failed_turns": 0,
+  "estimate": {
+    "turns": 1,
+    "evidence_tokens": 84781,
+    "input_tokens": 91295,
+    "uncached_input_tokens": 91295,
+    "seconds_before_output": 17,
+    "basis": "bytes/3.5 plus fixed turn overhead; wall time is about 17 s per turn plus output tokens / 252 per second, and output depends on reasoning"
+  },
+  "evaluation_sha256": "b6da145c649d92fcdba41acc770203a58c1cc6834f79b3da858025779e3dbb17"
+}

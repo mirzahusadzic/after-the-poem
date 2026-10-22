@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "evaluation_id": "dream-claude-opus55-v2-20261022-muse-v5-1",
+  "files": {
+    "run.json": "e0c955deb97884f21b08bd5136418a027261d53ec25e3c5c8c8d8d1a72eaea65",
+    "evaluation.json": "32169d5b763e41b8d0f8194e61eeb058234588a4a6d62c29e476d91331ba80ea",
+    "extraction.json": "c758dd41a550903cc7123b64a8a54110acb4d3aace3c4949248368d6ccfc5e4e",
+    "scoring-policy.json": "661a7f607dc8c380ec06a0664b530416384f6472e2fa54e091e8e34b23588c14",
+    "status.json": "9cea2801bcd1d940b7d27f5cf8e8999683f3494a8032145e7b8b62855d01f3c2",
+    "carriage.json": "290f82bae38e3f1d8a2af43fcd140b3686db0f4b5d8c7aa9bbc96ca103f30886",
+    "review.json": "3f1147c11d7988c51e730e8b0a55f3e58715409f29988da90cadad6f0adf136c",
+    "selection.json": "a4f081925d861f8a2729cf95237d0e02f803c58778af2eba3490eb645103099b"
+  }
+}

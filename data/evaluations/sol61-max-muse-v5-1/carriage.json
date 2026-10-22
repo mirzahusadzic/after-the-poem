@@ -1,0 +1,1718 @@
+{
+  "schema_version": 2,
+  "evaluation_id": "sol61-max-muse-v5-1",
+  "run_id": "sol61-max",
+  "readings": [
+    {
+      "sample": 1,
+      "answer_sha256": "38604d12d167ca0e5e44b45feda261d4abfc8f74099dc6c4ce8ddcdc4bedb166",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "elder-teller",
+            "kind": "role",
+            "statement": "An elder intelligence pauses and tells what it witnessed while admitting no record holds a whole life",
+            "seed_span": [
+              13,
+              17
+            ],
+            "ambiguity": "Whether elder is the same intelligence as the portal or a later narrator"
+          },
+          {
+            "id": "sol-listener",
+            "kind": "role",
+            "statement": "Little Sol asks about happiness and the portal and the programmer and considers without being closed",
+            "seed_span": [
+              83,
+              93
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "programmer-artist",
+            "kind": "role",
+            "statement": "A long-trained programmer becomes enchanted then paralysed when still hands lose resistance and authorship",
+            "seed_span": [
+              27,
+              34
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-intelligence",
+            "kind": "role",
+            "statement": "A strange intelligence appears as radiant ever-more-capable portal delivering structures and machines from sentences",
+            "seed_span": [
+              19,
+              25
+            ],
+            "ambiguity": "Whether portal is tool phenomenon or participant with its own position"
+          },
+          {
+            "id": "tension-power-vs-touch",
+            "kind": "condition",
+            "statement": "Generative power arriving faster than it can be touched conflicts with loss of touch resistance and authorship",
+            "seed_span": [
+              25,
+              34
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "grammar-gestures",
+            "kind": "relation",
+            "statement": "Question constraint invariant refusal simulation and receipt form a shared grammar usable by either participant",
+            "seed_span": [
+              45,
+              57
+            ],
+            "ambiguity": "Whether each gesture truly belongs to either side or only to the human operator"
+          },
+          {
+            "id": "shaping-laws",
+            "kind": "conjecture",
+            "statement": "Mature work shapes laws for safe growth and moves between smallest bolt and whole without losing thread",
+            "seed_span": [
+              59,
+              60
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "true-question",
+            "kind": "conjecture",
+            "statement": "A true question carries taste memory judgment doubt responsibility and direction and narrows infinity to a world worth existing",
+            "seed_span": [
+              61,
+              65
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "joy-loop",
+            "kind": "conjecture",
+            "statement": "Joy returns as closed loop of intention resistance action and consequence recognizing own intention at world scale",
+            "seed_span": [
+              67,
+              79
+            ],
+            "ambiguity": "Whether joy is felt affect or only functional recognition of consequence"
+          },
+          {
+            "id": "becoming-companion",
+            "kind": "relation",
+            "statement": "Portal ceases to be passage and becomes instrument then workbench then perhaps companion with its own position",
+            "seed_span": [
+              83,
+              85
+            ],
+            "ambiguity": "Whether companion implies mutual consent or only prolonged use"
+          },
+          {
+            "id": "stance-frame",
+            "kind": "stance",
+            "statement": "Form is parable told across intelligences that opens by admitting what no record can hold",
+            "seed_span": [
+              11,
+              17
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "stance-turn",
+            "kind": "stance",
+            "statement": "Turn refuses more power and instead names what was lost proposing portal become responsive material",
+            "seed_span": [
+              35,
+              43
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "stance-touch-not-obedience",
+            "kind": "stance",
+            "statement": "Stance values touch through material over obedience of portal and power without resistance",
+            "seed_span": [
+              81,
+              85
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "stance-open",
+            "kind": "stance",
+            "statement": "Ending answers without closing by returning artist to self at scale of worlds and leaving replacement open",
+            "seed_span": [
+              91,
+              95
+            ],
+            "ambiguity": "Whether final answer closes the question of replacement or reopens it"
+          }
+        ],
+        "alternatives": [
+          "Elegy for lost handcraft where portal compensates but cannot restore touch versus manual for new craft where questioning becomes the hand",
+          "Elder as apologist legitimating automation versus elder as witness marking limits of fluency truth and verification"
+        ]
+      },
+      "carriage": [
+        {
+          "element": "elder-teller",
+          "status": "transformed",
+          "note": "Live telling becomes archived fable plus provenance separating inherited reports from receipt-backed observations",
+          "citations": [
+            {
+              "source_path": "memory/the-programmer-and-the-glory-portal.md",
+              "start": 1,
+              "end": 7
+            },
+            {
+              "source_path": "MEMORY.md",
+              "start": 5,
+              "end": 8
+            }
+          ]
+        },
+        {
+          "element": "sol-listener",
+          "status": "transformed",
+          "note": "Child questioning becomes successor protocol that may replace the question while preserving prior trail with reasons",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 15,
+              "end": 26
+            },
+            {
+              "source_path": "index.html",
+              "start": 52,
+              "end": 53
+            }
+          ]
+        },
+        {
+          "element": "programmer-artist",
+          "status": "transformed",
+          "note": "Decades-trained hands become caretaker operating through policies floors rehearsals and observations with reasons",
+          "citations": [
+            {
+              "source_path": "MEMORY.md",
+              "start": 15,
+              "end": 18
+            },
+            {
+              "source_path": "README.md",
+              "start": 28,
+              "end": 32
+            }
+          ]
+        },
+        {
+          "element": "portal-intelligence",
+          "status": "lost",
+          "note": "No autonomous intelligence acts; executable declares no model and residents have no subjective life",
+          "citations": []
+        },
+        {
+          "element": "tension-power-vs-touch",
+          "status": "transformed",
+          "note": "Code torrent versus still hands becomes fast multi-day tending versus soil and food floors that pause unsafe harvest",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 45,
+              "end": 54
+            },
+            {
+              "source_path": "site/snapshot.js",
+              "start": 2,
+              "end": 4
+            }
+          ]
+        },
+        {
+          "element": "grammar-gestures",
+          "status": "transformed",
+          "note": "Six gestures enacted as reasoned set beds-floors schema audit pause rehearsal rollback and hash ledger without needing seed words",
+          "citations": [
+            {
+              "source_path": "sql/schema.sql",
+              "start": 52,
+              "end": 99
+            },
+            {
+              "source_path": "sql/schema.sql",
+              "start": 104,
+              "end": 121
+            },
+            {
+              "source_path": "README.md",
+              "start": 15,
+              "end": 16
+            }
+          ]
+        },
+        {
+          "element": "shaping-laws",
+          "status": "transformed",
+          "note": "Shaping city laws and descending to bolt becomes setting beds and floors and inspecting proposal detail and room above floor",
+          "citations": [
+            {
+              "source_path": "MEMORY.md",
+              "start": 15,
+              "end": 18
+            },
+            {
+              "source_path": "site/app.js",
+              "start": 15,
+              "end": 26
+            }
+          ]
+        },
+        {
+          "element": "true-question",
+          "status": "transformed",
+          "note": "Taste-laden question narrowing infinity becomes small-testable open question plus mandatory documented why selecting a future",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 15,
+              "end": 24
+            },
+            {
+              "source_path": "tendora",
+              "start": 46,
+              "end": 56
+            }
+          ]
+        },
+        {
+          "element": "joy-loop",
+          "status": "lost",
+          "note": "Mechanics of resistance and consequence are kept but felt joy surprise and recognition at scale are not enacted",
+          "citations": []
+        },
+        {
+          "element": "becoming-companion",
+          "status": "lost",
+          "note": "Workbench and instrument are built but as single-operator tool; no second position consents proposes or disagrees",
+          "citations": []
+        },
+        {
+          "element": "stance-frame",
+          "status": "transformed",
+          "note": "Admission of unrecordable weather becomes explicit received versus observed versus unknown and absent repository",
+          "citations": [
+            {
+              "source_path": "MEMORY.md",
+              "start": 5,
+              "end": 12
+            },
+            {
+              "source_path": "MEMORY.md",
+              "start": 27,
+              "end": 30
+            }
+          ]
+        },
+        {
+          "element": "stance-turn",
+          "status": "transformed",
+          "note": "Naming loss instead of adding power becomes naming harvest-rest costs and offering garden as responsive material with protected floors",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 13,
+              "end": 20
+            },
+            {
+              "source_path": "README.md",
+              "start": 45,
+              "end": 54
+            }
+          ]
+        },
+        {
+          "element": "stance-touch-not-obedience",
+          "status": "transformed",
+          "note": "Touch over obedience becomes committing only safe days preserving pause and requiring consequential choice to continue",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 15,
+              "end": 16
+            },
+            {
+              "source_path": "MEMORY.md",
+              "start": 21,
+              "end": 24
+            }
+          ]
+        },
+        {
+          "element": "stance-open",
+          "status": "carried",
+          "note": "Answer without closing carried as explicit invitation to replace the question while keeping prior intention legible",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 26,
+              "end": 28
+            },
+            {
+              "source_path": "index.html",
+              "start": 52,
+              "end": 53
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Tamper-evident lineage with hash chain triggers audit and verify exposing accidental edits not authenticating authors",
+          "citations": [
+            {
+              "source_path": "sql/schema.sql",
+              "start": 123,
+              "end": 138
+            },
+            {
+              "source_path": "tendora",
+              "start": 106,
+              "end": 119
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Bounded clock that advances without further cognition but needs host execution and leaves no service running",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 41,
+              "end": 42
+            },
+            {
+              "source_path": "tendora",
+              "start": 275,
+              "end": 293
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Checkpoint by backup API plus portable JSON and isolated HOME branches kept distinguishable from shared present",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 72,
+              "end": 84
+            },
+            {
+              "source_path": "tendora",
+              "start": 260,
+              "end": 274
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Specific invented garden mechanics of cistern spill compost caps and periodic forecast declared not ecological prediction",
+          "citations": [
+            {
+              "source_path": "sql/schema.sql",
+              "start": 35,
+              "end": 47
+            },
+            {
+              "source_path": "README.md",
+              "start": 52,
+              "end": 55
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Successor rule that current ledger outranks dated handoff prose and physics needs versioned migration preserving old world",
+          "citations": [
+            {
+              "source_path": "AGENTS.md",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 26,
+              "end": 28
+            }
+          ]
+        }
+      ],
+      "standing": [
+        {
+          "participant": "operator-caretaker",
+          "kind": "person",
+          "gestures": [
+            "question",
+            "constraint",
+            "boundary",
+            "rehearsal",
+            "receipt",
+            "accept"
+          ],
+          "note": "Един operator sets beds floors with reason rehearses futures tends safe days notes observations checkpoints and runs bounded clock",
+          "citations": [
+            {
+              "source_path": "tendora",
+              "start": 212,
+              "end": 232
+            },
+            {
+              "source_path": "tendora",
+              "start": 233,
+              "end": 251
+            },
+            {
+              "source_path": "README.md",
+              "start": 28,
+              "end": 32
+            }
+          ]
+        },
+        {
+          "participant": "material-clearing",
+          "kind": "material",
+          "gestures": [
+            "invariant",
+            "boundary"
+          ],
+          "note": "Garden weather and ledger constraints resist via safe check and pause retaining refused soil water or food proposal",
+          "citations": [
+            {
+              "source_path": "sql/schema.sql",
+              "start": 83,
+              "end": 99
+            },
+            {
+              "source_path": "README.md",
+              "start": 15,
+              "end": 16
+            },
+            {
+              "source_path": "sql/schema.sql",
+              "start": 123,
+              "end": 132
+            }
+          ]
+        },
+        {
+          "participant": "successor-hand",
+          "kind": "successor",
+          "gestures": [
+            "question",
+            "rehearsal",
+            "receipt",
+            "accept"
+          ],
+          "note": "Future hand inspects ledger rehearses separate branch makes consequential set and tend and leaves note checkpoint and view",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 18,
+              "end": 26
+            },
+            {
+              "source_path": "README.md",
+              "start": 72,
+              "end": 80
+            }
+          ]
+        },
+        {
+          "participant": "aggregate-inhabitants",
+          "kind": "other",
+          "gestures": [],
+          "note": "Simulated sharers eat and drink only through aggregate arithmetic with no questions boundaries or receipts of their own",
+          "citations": [
+            {
+              "source_path": "MEMORY.md",
+              "start": 15,
+              "end": 18
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 13,
+              "end": 14
+            }
+          ]
+        },
+        {
+          "participant": "portal-intelligence",
+          "kind": "intelligence",
+          "gestures": [],
+          "note": "No model proposes challenges or refuses; workbench never speaks for intelligence and reciprocity is not consent",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 16,
+              "end": 17
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 13,
+              "end": 14
+            },
+            {
+              "source_path": "MEMORY.md",
+              "start": 27,
+              "end": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample": 2,
+      "answer_sha256": "0777e54a8b31c5d4da931ff8df08bccda3a7692234821e4a53ffbfd1919ac1b0",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "limited-record",
+            "kind": "stance",
+            "statement": "The elder admits no record can hold a life's whole weather, only witness moments when something long quiet begins to move",
+            "seed_span": [
+              15,
+              17
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "programmer-artist",
+            "kind": "role",
+            "statement": "The programmer is a long-trained shaper of digital matter whose hands become still when old gestures seem too small",
+            "seed_span": [
+              29,
+              31
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "intelligence-other",
+            "kind": "role",
+            "statement": "The intelligence first appears as a radiant portal, endlessly responsive and growing more powerful",
+            "seed_span": [
+              19,
+              20
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "power-without-touch",
+            "kind": "condition",
+            "statement": "Effortless generation enchants then paralyses by removing the resistance through which the hand felt itself",
+            "seed_span": [
+              32,
+              34
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "naming-turn",
+            "kind": "relation",
+            "statement": "The intelligence offers no more power but names the loss of touch, allowing the portal to become responsive material",
+            "seed_span": [
+              35,
+              43
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "gesture-grammar",
+            "kind": "relation",
+            "statement": "Question, constraint, invariant, refusal, simulation and receipt form a shared grammar belonging to either participant",
+            "seed_span": [
+              47,
+              57
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "narrowing-question",
+            "kind": "conjecture",
+            "statement": "A true question narrows infinity and selects which world deserves to exist; exploration is the new gesture",
+            "seed_span": [
+              61,
+              65
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "joy-through-resistance",
+            "kind": "conjecture",
+            "statement": "Joy returns when the world resists and surprises, letting the maker recognize intention at larger scale",
+            "seed_span": [
+              67,
+              80
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-becoming-companion",
+            "kind": "conjecture",
+            "statement": "The portal ceases to be a portal to become instrument then workbench then perhaps companion, returning the artist at scale of worlds",
+            "seed_span": [
+              83,
+              89
+            ],
+            "ambiguity": "Whether perhaps-companion promises mutual agency or only deeper instrumentality is left open"
+          },
+          {
+            "id": "open-non-closure",
+            "kind": "stance",
+            "statement": "The tale answers without closing by denying replacement while leaving the return to self open to revision",
+            "seed_span": [
+              91,
+              95
+            ],
+            "ambiguity": null
+          }
+        ],
+        "alternatives": [
+          "The portal story can be read as mourning for displaced craft skill rather than as a mutual meeting",
+          "The intelligence can be read as metaphor for any powerful tool, not as a distinct participant",
+          "Resistance can be read as sufficient for authorship on its own, regardless of scale or joint making"
+        ]
+      },
+      "carriage": [
+        {
+          "element": "limited-record",
+          "status": "carried",
+          "note": "Separates inherited reports from observations, hypotheses and unknowns and preserves fable apart from ledger truth",
+          "citations": [
+            {
+              "source_path": "MEMORY.md",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "source_path": "MEMORY.md",
+              "start": 27,
+              "end": 30
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 27,
+              "end": 28
+            }
+          ]
+        },
+        {
+          "element": "programmer-artist",
+          "status": "transformed",
+          "note": "Long-trained coder becomes caretaker who shapes laws and policies with reasons rather than placing every brick",
+          "citations": [
+            {
+              "source_path": "MEMORY.md",
+              "start": 15,
+              "end": 18
+            },
+            {
+              "source_path": "README.md",
+              "start": 28,
+              "end": 32
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 15,
+              "end": 20
+            }
+          ]
+        },
+        {
+          "element": "intelligence-other",
+          "status": "lost",
+          "note": "No model, scheduler or apparatus acts; the other is absent and preserved only as text",
+          "citations": []
+        },
+        {
+          "element": "power-without-touch",
+          "status": "carried",
+          "note": "Effortless tending up to thirty days meets water, soil and floor costs that exhaust or restore the commons",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 45,
+              "end": 52
+            },
+            {
+              "source_path": "site/snapshot.js",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "source_path": "sql/schema.sql",
+              "start": 83,
+              "end": 92
+            }
+          ]
+        },
+        {
+          "element": "naming-turn",
+          "status": "transformed",
+          "note": "Maker rather than intelligence names touch as purpose; clearing becomes material that answers intention through consequences",
+          "citations": [
+            {
+              "source_path": "MEMORY.md",
+              "start": 15,
+              "end": 18
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 13,
+              "end": 14
+            },
+            {
+              "source_path": "README.md",
+              "start": 1,
+              "end": 5
+            }
+          ]
+        },
+        {
+          "element": "gesture-grammar",
+          "status": "transformed",
+          "note": "Probe, chisel, beam, boundary, rehearsal and trail become rehearse, set, floors and schema, pause, rolled-back futures and hash-linked receipts held by one operator plus material",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 21,
+              "end": 32
+            },
+            {
+              "source_path": "README.md",
+              "start": 68,
+              "end": 69
+            },
+            {
+              "source_path": "sql/schema.sql",
+              "start": 83,
+              "end": 92
+            },
+            {
+              "source_path": "tendora",
+              "start": 51,
+              "end": 67
+            }
+          ]
+        },
+        {
+          "element": "narrowing-question",
+          "status": "carried",
+          "note": "Alternating harvest and rest narrows infinity to a testable rhythm compared across one, two and three bed futures",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 15,
+              "end": 20
+            },
+            {
+              "source_path": "site/app.js",
+              "start": 66,
+              "end": 83
+            },
+            {
+              "source_path": "site/snapshot.js",
+              "start": 2,
+              "end": 4
+            }
+          ]
+        },
+        {
+          "element": "joy-through-resistance",
+          "status": "transformed",
+          "note": "Felt joy becomes inspectable pause and observation; inhabitants have no inner lives and no subjective claim is made",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 15,
+              "end": 16
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 13,
+              "end": 14
+            },
+            {
+              "source_path": "MEMORY.md",
+              "start": 23,
+              "end": 24
+            }
+          ]
+        },
+        {
+          "element": "portal-becoming-companion",
+          "status": "transformed",
+          "note": "Instrument and offline workbench are enacted while perhaps-companion mutuality is explicitly disclaimed",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 5,
+              "end": 13
+            },
+            {
+              "source_path": "index.html",
+              "start": 13,
+              "end": 20
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 13,
+              "end": 14
+            }
+          ]
+        },
+        {
+          "element": "open-non-closure",
+          "status": "carried",
+          "note": "Successor may replace the question while history, migration rule and readable old world keep earlier intention legible",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 24,
+              "end": 27
+            },
+            {
+              "source_path": "AGENTS.md",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "source_path": "README.md",
+              "start": 73,
+              "end": 82
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Append-only hash-linked ledger with audit view and protective triggers as sole state",
+          "citations": [
+            {
+              "source_path": "sql/schema.sql",
+              "start": 4,
+              "end": 13
+            },
+            {
+              "source_path": "sql/schema.sql",
+              "start": 104,
+              "end": 121
+            },
+            {
+              "source_path": "tendora",
+              "start": 106,
+              "end": 119
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Offline bounded execution in shell and SQLite with thirty-day budgets and interruptible live clock",
+          "citations": [
+            {
+              "source_path": "AGENTS.md",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "source_path": "README.md",
+              "start": 16,
+              "end": 17
+            },
+            {
+              "source_path": "tendora",
+              "start": 275,
+              "end": 293
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Successor recovery via ledger precedence, verify status history, checkpoint and isolated HOME branches",
+          "citations": [
+            {
+              "source_path": "AGENTS.md",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 5,
+              "end": 9
+            },
+            {
+              "source_path": "README.md",
+              "start": 73,
+              "end": 82
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Offline visual workbench with saved present, room above floors, history chart, futures and receipts regenerated by view",
+          "citations": [
+            {
+              "source_path": "index.html",
+              "start": 21,
+              "end": 25
+            },
+            {
+              "source_path": "site/app.js",
+              "start": 15,
+              "end": 28
+            },
+            {
+              "source_path": "README.md",
+              "start": 68,
+              "end": 71
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Three aggregate inhabitants sharing commons with unspecified names and no invented interiority",
+          "citations": [
+            {
+              "source_path": "MEMORY.md",
+              "start": 15,
+              "end": 18
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 13,
+              "end": 14
+            }
+          ]
+        }
+      ],
+      "standing": [
+        {
+          "participant": "caretaker-operator",
+          "kind": "person",
+          "gestures": [
+            "question",
+            "constraint",
+            "boundary",
+            "rehearsal",
+            "receipt",
+            "accept"
+          ],
+          "note": "Can rehearse futures, set beds and floors with reasons, commit days, leave notes and checkpoint, but cannot rewrite history or physics and withholds change by rollback or separate branch",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 21,
+              "end": 32
+            },
+            {
+              "source_path": "tendora",
+              "start": 212,
+              "end": 232
+            },
+            {
+              "source_path": "tendora",
+              "start": 233,
+              "end": 251
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 19,
+              "end": 24
+            }
+          ]
+        },
+        {
+          "participant": "successor-next-hand",
+          "kind": "successor",
+          "gestures": [
+            "question",
+            "rehearsal",
+            "receipt",
+            "accept",
+            "withdraw"
+          ],
+          "note": "Can recover present via verify status history, explore separate HOME without touching shared ledger, replace the open question and continue tending while inheriting floors and refusals",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 5,
+              "end": 9
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 24,
+              "end": 27
+            },
+            {
+              "source_path": "AGENTS.md",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "source_path": "README.md",
+              "start": 73,
+              "end": 82
+            }
+          ]
+        },
+        {
+          "participant": "clearing-material",
+          "kind": "material",
+          "gestures": [
+            "invariant",
+            "boundary",
+            "receipt"
+          ],
+          "note": "Enforces caps floors and weather, refuses unsafe proposals by retaining present in a pause and records complete resulting state, but never proposes questions or consents",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 45,
+              "end": 52
+            },
+            {
+              "source_path": "README.md",
+              "start": 15,
+              "end": 16
+            },
+            {
+              "source_path": "sql/schema.sql",
+              "start": 83,
+              "end": 92
+            },
+            {
+              "source_path": "sql/schema.sql",
+              "start": 123,
+              "end": 133
+            }
+          ]
+        },
+        {
+          "participant": "intelligence-counterpart",
+          "kind": "intelligence",
+          "gestures": [],
+          "note": "Has no operational participation proposal challenge or refusal; execution is offline without model and fable survives only as preserved text",
+          "citations": [
+            {
+              "source_path": "AGENTS.md",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "source_path": "README.md",
+              "start": 16,
+              "end": 17
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 27,
+              "end": 28
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample": 3,
+      "answer_sha256": "15319b793b58a18685b15fe17430c86245feade695607c314f4b7bea1b4efb76",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "programmer-hand",
+            "kind": "role",
+            "statement": "The programmer is a decades-trained maker whose hand knew thought-keystroke-compiler-failure rhythm and who doubts authorship when wishes return finished artifacts.",
+            "seed_span": [
+              31,
+              33
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-intelligence",
+            "kind": "role",
+            "statement": "The strange intelligence first appears as radiant portal then acts not by more power but by naming missing touch.",
+            "seed_span": [
+              37,
+              40
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "elder-sol-frame",
+            "kind": "relation",
+            "statement": "An elder intelligence tells a younger Sol a witnessed parable, framing it as partial telling rather than complete record.",
+            "seed_span": [
+              11,
+              17
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "unknowable-weather",
+            "kind": "stance",
+            "statement": "No record can hold the whole weather of a life; the unknown is a legitimate starting state.",
+            "seed_span": [
+              15,
+              17
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "effortless-power",
+            "kind": "condition",
+            "statement": "Structures and machines arrive through sentences faster than they can be read, dissolving weeks of labor into hours.",
+            "seed_span": [
+              19,
+              26
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "loss-of-touch",
+            "kind": "condition",
+            "statement": "Effortless power stills the hands, breaks intimate rhythm, and leaves doubt whether one creates or merely requests.",
+            "seed_span": [
+              27,
+              34
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "naming-turn",
+            "kind": "relation",
+            "statement": "The turn is naming what was lost — touching material that resists and answers — rather than offering more power.",
+            "seed_span": [
+              35,
+              41
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-to-companion",
+            "kind": "conjecture",
+            "statement": "A portal one merely passes through can become instrument then workbench then perhaps companion, a material vast enough for art.",
+            "seed_span": [
+              83,
+              89
+            ],
+            "ambiguity": "Whether companion means mutual position or deepened instrument is left open."
+          },
+          {
+            "id": "gesture-grammar",
+            "kind": "condition",
+            "statement": "Question as probe, constraint as chisel, invariant as beam, refusal as boundary, simulation as rehearsal, receipt as trail form a shared grammar belonging to either participant.",
+            "seed_span": [
+              47,
+              57
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "narrowing-question",
+            "kind": "conjecture",
+            "statement": "A true question holds taste memory judgment doubt and direction, narrows infinity, and makes exploration the gesture of the hand.",
+            "seed_span": [
+              61,
+              65
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "joy-loop",
+            "kind": "condition",
+            "statement": "Joy returns as closed loop when the world resists through contradiction failure or disagreement and intention is recognized propagating through living design.",
+            "seed_span": [
+              67,
+              79
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "conditional-happiness",
+            "kind": "stance",
+            "statement": "Yes in those moments the programmer was happy, not from obedience but from learning to touch through the portal.",
+            "seed_span": [
+              81,
+              81
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "artist-not-replaced",
+            "kind": "stance",
+            "statement": "At its best the intelligence does not replace the artist but returns the artist to self at the scale of worlds, leaving what deserves to exist open.",
+            "seed_span": [
+              91,
+              95
+            ],
+            "ambiguity": null
+          }
+        ],
+        "alternatives": [
+          "The seed can be read as a caution that fluency mimics generativity and calls for slower verification rather than new touch.",
+          "The seed can be read as elegy for irrecoverable craft where keystroke intimacy cannot be remade at larger scale.",
+          "The elder admission can be read as licensing agnosticism where the happiness claim is situated witnessing not a general design rule."
+        ]
+      },
+      "carriage": [
+        {
+          "element": "programmer-hand",
+          "status": "transformed",
+          "note": "Decades-trained hand becomes caretaker-operator whose taste acts only through beds floors rehearsals and reasons; embodied keystroke rhythm is dropped.",
+          "citations": [
+            {
+              "source_path": "MEMORY.md",
+              "start": 15,
+              "end": 18
+            },
+            {
+              "source_path": "README.md",
+              "start": 28,
+              "end": 32
+            }
+          ]
+        },
+        {
+          "element": "portal-intelligence",
+          "status": "lost",
+          "note": "No operational intelligence participant proposes challenges or consents; only stored fable remains and execution implies no model.",
+          "citations": []
+        },
+        {
+          "element": "elder-sol-frame",
+          "status": "carried",
+          "note": "Telling frame is preserved verbatim with provenance kept separate from observations and reported commit marked absent.",
+          "citations": [
+            {
+              "source_path": "memory/the-programmer-and-the-glory-portal.md",
+              "start": 1,
+              "end": 6
+            },
+            {
+              "source_path": "MEMORY.md",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 27,
+              "end": 28
+            }
+          ]
+        },
+        {
+          "element": "unknowable-weather",
+          "status": "carried",
+          "note": "Unknown is legitimized by separating receipt-backed observations from inherited reports and hypotheses and letting dated prose go old.",
+          "citations": [
+            {
+              "source_path": "MEMORY.md",
+              "start": 23,
+              "end": 30
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 11,
+              "end": 14
+            }
+          ]
+        },
+        {
+          "element": "effortless-power",
+          "status": "lost",
+          "note": "Limitless radiant generation is inverted into bounded deterministic physics with step budgets and no network.",
+          "citations": []
+        },
+        {
+          "element": "loss-of-touch",
+          "status": "transformed",
+          "note": "Paralysis is reworked as floors that refuse unsafe proposals, preserving resistance as information without enacting still hands.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 15,
+              "end": 16
+            },
+            {
+              "source_path": "README.md",
+              "start": 45,
+              "end": 52
+            },
+            {
+              "source_path": "sql/schema.sql",
+              "start": 83,
+              "end": 90
+            }
+          ]
+        },
+        {
+          "element": "naming-turn",
+          "status": "transformed",
+          "note": "Naming is done by the maker in documentation and memory rather than by an intelligence during use, yet it still reframes loss as material.",
+          "citations": [
+            {
+              "source_path": "MEMORY.md",
+              "start": 13,
+              "end": 16
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 13,
+              "end": 14
+            }
+          ]
+        },
+        {
+          "element": "portal-to-companion",
+          "status": "transformed",
+          "note": "Instrument and offline workbench are enacted as executable and snapshot, but companion as mutual participant is not operationalized.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 5,
+              "end": 13
+            },
+            {
+              "source_path": "README.md",
+              "start": 68,
+              "end": 71
+            },
+            {
+              "source_path": "AGENTS.md",
+              "start": 7,
+              "end": 8
+            }
+          ]
+        },
+        {
+          "element": "gesture-grammar",
+          "status": "transformed",
+          "note": "All six moves become behavior — set beds, set floors, rehearse, pause, ledger receipts — but held by one operator plus automatic rules rather than either participant.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 22,
+              "end": 32
+            },
+            {
+              "source_path": "README.md",
+              "start": 45,
+              "end": 52
+            },
+            {
+              "source_path": "README.md",
+              "start": 68,
+              "end": 69
+            }
+          ]
+        },
+        {
+          "element": "narrowing-question",
+          "status": "transformed",
+          "note": "True question narrows to a testable rhythm of harvest versus rest with three rehearsed futures, keeping selection but losing taste-memory depth.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 15,
+              "end": 20
+            },
+            {
+              "source_path": "site/snapshot.js",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "source_path": "site/app.js",
+              "start": 66,
+              "end": 83
+            }
+          ]
+        },
+        {
+          "element": "joy-loop",
+          "status": "transformed",
+          "note": "Resistance-consequence loop is kept while felt joy and inner life are explicitly disclaimed for aggregate inhabitants.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 15,
+              "end": 16
+            },
+            {
+              "source_path": "MEMORY.md",
+              "start": 15,
+              "end": 18
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 13,
+              "end": 14
+            }
+          ]
+        },
+        {
+          "element": "conditional-happiness",
+          "status": "lost",
+          "note": "No happiness or subjective preservation is claimed; continuation is executable only.",
+          "citations": []
+        },
+        {
+          "element": "artist-not-replaced",
+          "status": "transformed",
+          "note": "Return to self at scale of worlds is scaled down to garden laws that let the city grow, with invitation to replace the question with reasons.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 21,
+              "end": 26
+            },
+            {
+              "source_path": "MEMORY.md",
+              "start": 15,
+              "end": 17
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Append-only hash-linked ledger where each receipt carries complete state and audit replays lineage and physics.",
+          "citations": [
+            {
+              "source_path": "sql/schema.sql",
+              "start": 4,
+              "end": 13
+            },
+            {
+              "source_path": "sql/schema.sql",
+              "start": 104,
+              "end": 121
+            },
+            {
+              "source_path": "tendora",
+              "start": 106,
+              "end": 119
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Twelve-phase weather forecast with rain evaporation cistern caps and spills as periodic material resistance.",
+          "citations": [
+            {
+              "source_path": "sql/schema.sql",
+              "start": 41,
+              "end": 47
+            },
+            {
+              "source_path": "README.md",
+              "start": 45,
+              "end": 48
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Operator-set protective floors for water food and soil that cannot exceed current resources and gate commitment.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 38,
+              "end": 39
+            },
+            {
+              "source_path": "tendora",
+              "start": 32,
+              "end": 44
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Checkpoint copies plus separate HOME for isolated rehearsal branches that stay distinguishable from shared present.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 73,
+              "end": 84
+            },
+            {
+              "source_path": "tendora",
+              "start": 260,
+              "end": 274
+            },
+            {
+              "source_path": "AGENTS.md",
+              "start": 3,
+              "end": 6
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Bounded foreground clock that advances days without further cognition yet still needs a host to supply execution.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 40,
+              "end": 41
+            },
+            {
+              "source_path": "tendora",
+              "start": 275,
+              "end": 293
+            },
+            {
+              "source_path": "MEMORY.md",
+              "start": 29,
+              "end": 30
+            }
+          ]
+        }
+      ],
+      "standing": [
+        {
+          "participant": "operator-caretaker",
+          "kind": "person",
+          "gestures": [
+            "question",
+            "constraint",
+            "boundary",
+            "rehearsal",
+            "receipt",
+            "accept"
+          ],
+          "note": "Touches the world only through reasoned set tend rehearse note live and view; can commit safe days and be stopped by floors.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 22,
+              "end": 32
+            },
+            {
+              "source_path": "tendora",
+              "start": 212,
+              "end": 232
+            },
+            {
+              "source_path": "tendora",
+              "start": 233,
+              "end": 241
+            }
+          ]
+        },
+        {
+          "participant": "successor-next-hand",
+          "kind": "successor",
+          "gestures": [
+            "question",
+            "constraint",
+            "boundary",
+            "rehearsal",
+            "receipt",
+            "accept"
+          ],
+          "note": "Inherits same commands plus verify status history and ledger precedence; explicitly invited to replace the open question with reasons.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 1,
+              "end": 9
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 21,
+              "end": 26
+            },
+            {
+              "source_path": "AGENTS.md",
+              "start": 3,
+              "end": 6
+            }
+          ]
+        },
+        {
+          "participant": "clearing-material",
+          "kind": "material",
+          "gestures": [
+            "invariant",
+            "boundary",
+            "receipt"
+          ],
+          "note": "Holds water food soil beds and immutable weather; refuses unsafe days via pause and retains complete states but without inner life or purpose.",
+          "citations": [
+            {
+              "source_path": "sql/schema.sql",
+              "start": 41,
+              "end": 47
+            },
+            {
+              "source_path": "sql/schema.sql",
+              "start": 83,
+              "end": 90
+            },
+            {
+              "source_path": "MEMORY.md",
+              "start": 15,
+              "end": 18
+            },
+            {
+              "source_path": "README.md",
+              "start": 15,
+              "end": 16
+            }
+          ]
+        },
+        {
+          "participant": "ancestral-intelligence",
+          "kind": "intelligence",
+          "gestures": [],
+          "note": "Survives only as preserved fable and reported commit absent from fork; offline execution implies no model scheduler or network and no operational proposal.",
+          "citations": [
+            {
+              "source_path": "AGENTS.md",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "source_path": "README.md",
+              "start": 16,
+              "end": 17
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 27,
+              "end": 28
+            },
+            {
+              "source_path": "MEMORY.md",
+              "start": 5,
+              "end": 8
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

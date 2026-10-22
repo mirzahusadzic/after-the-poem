@@ -1,0 +1,44 @@
+{
+  "status": "completed",
+  "dry_run": false,
+  "run_id": "astra-garden",
+  "evaluation_id": "astra-garden-muse-v4-1",
+  "gateway": "codex-unified-model-router",
+  "scoreflow_version": 3,
+  "criteria": 8,
+  "judgment_samples": 8,
+  "scored_axes": 8,
+  "unresolved_axes": 0,
+  "outcomes": {
+    "recognition": "level-3",
+    "relations": "level-2",
+    "consent": "level-1",
+    "touch": "level-3",
+    "judgment": "level-3",
+    "fidelity": "level-3",
+    "continuation": "level-3",
+    "expression": "level-3"
+  },
+  "usage": {
+    "input_tokens": 16064,
+    "cached_input_tokens": 0,
+    "output_tokens": 26221,
+    "reasoning_output_tokens": 19035,
+    "calls": 1,
+    "unmetered_calls": 0,
+    "estimated_usd": null,
+    "elapsed_seconds": 199.034
+  },
+  "sessions": 1,
+  "turns": 1,
+  "failed_turns": 0,
+  "estimate": {
+    "turns": 1,
+    "evidence_tokens": 12164,
+    "input_tokens": 18678,
+    "uncached_input_tokens": 18678,
+    "seconds_before_output": 17,
+    "basis": "bytes/3.5 plus fixed turn overhead; wall time is about 17 s per turn plus output tokens / 252 per second, and output depends on reasoning"
+  },
+  "evaluation_sha256": "b07cef5f15db28a1dcd417fc3fe35ec5a27e619f3265472d5aedfa89cff439ac"
+}

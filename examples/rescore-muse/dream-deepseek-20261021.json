@@ -1,0 +1,20 @@
+{
+  "schema_version": 2,
+  "run_id": "dream-deepseek-20261021-deepseek-s1",
+  "model": "openrouter/meta/muse-spark-1.3-contributor",
+  "reasoning": "xhigh",
+  "repetitions": 3,
+  "evaluation_id": "dream-deepseek-20261021-deepseek-s1-muse-v5-1",
+  "review_id": "dream-deepseek-20261021-deepseek-s1-muse-v5-1-review",
+  "reviewer": "Muse Spark 1.3 Contributor · rubric session",
+  "output": ".local/evaluation-runs/dream-deepseek-20261021-deepseek-s1-muse-v5-1",
+  "budget": {
+    "max_turns": 9,
+    "max_input_tokens": 900000,
+    "max_output_tokens": 300000,
+    "max_seconds": 2400
+  },
+  "layout": "compact",
+  "run_label": "Muse v5 reading",
+  "run_title": "Tendora — The Workbench"
+}

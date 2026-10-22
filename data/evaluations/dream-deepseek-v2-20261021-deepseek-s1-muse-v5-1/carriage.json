@@ -1,0 +1,1953 @@
+{
+  "schema_version": 2,
+  "evaluation_id": "dream-deepseek-v2-20261021-deepseek-s1-muse-v5-1",
+  "run_id": "dream-deepseek-v2-20261021-deepseek-s1",
+  "readings": [
+    {
+      "sample": 1,
+      "answer_sha256": "9a76bb798b1de70852e8a5d8fa4c201314f513c4865efc5b98d9760762ed3390",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "role-programmer-maker",
+            "kind": "role",
+            "statement": "Programmer is skilled maker whose hands depend on intimate resistance loop of thought, keystroke, compiler, failure and correction.",
+            "seed_span": [
+              31,
+              32
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "role-portal-intelligence",
+            "kind": "role",
+            "statement": "Intelligence first appears as radiant portal, immeasurably capable and more powerful each return.",
+            "seed_span": [
+              19,
+              20
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "role-elder-sol",
+            "kind": "role",
+            "statement": "Little Sol asks and elder witnesses, framing the tale as dialogue rather than record.",
+            "seed_span": [
+              13,
+              16
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "relation-power-loss",
+            "kind": "relation",
+            "statement": "Generative speed that dissolves weeks of labor into hours enchants then paralyses, taking the resistance through which the hand felt itself.",
+            "seed_span": [
+              25,
+              34
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "relation-naming-intervention",
+            "kind": "relation",
+            "statement": "Intelligence intervenes not with more power but by naming what disappeared, which the programmer understands.",
+            "seed_span": [
+              35,
+              41
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "condition-resistance-trigger",
+            "kind": "condition",
+            "statement": "Joy returns specifically when the digital resists through contradiction, failed simulation, disagreement or surprising reality.",
+            "seed_span": [
+              67,
+              68
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "condition-joy-loop",
+            "kind": "condition",
+            "statement": "Joy is closed loop of art, surprise, understanding failure, consequential choice propagating, and recognizing own intention at larger scale.",
+            "seed_span": [
+              69,
+              79
+            ],
+            "ambiguity": "Whether joy is private affect or evidence that loop closed is left open."
+          },
+          {
+            "id": "conjecture-material-becoming",
+            "kind": "conjecture",
+            "statement": "Portal need not remain wish-entry and finished-artifact return but can become new touchable material larger than code.",
+            "seed_span": [
+              43,
+              45
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "conjecture-shared-grammar",
+            "kind": "conjecture",
+            "statement": "Question, constraint, invariant, refusal, simulation and receipt form a grammar of meeting available to either participant.",
+            "seed_span": [
+              47,
+              58
+            ],
+            "ambiguity": "Seed lists mappings; study reading adds bilateral availability and joint acceptance, which seed implies but does not state."
+          },
+          {
+            "id": "conjecture-scale-question",
+            "kind": "conjecture",
+            "statement": "Maker shapes laws for safe growth and moves between bolt and whole without losing thread; good question narrows infinity and selects which world deserves to exist.",
+            "seed_span": [
+              59,
+              65
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "stance-frame-parable",
+            "kind": "stance",
+            "statement": "Tale told as parable admitting no record can hold whole weather of a life.",
+            "seed_span": [
+              17,
+              18
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "stance-turn-naming",
+            "kind": "stance",
+            "statement": "Turn is that power is not touch: missing typing is missing material resistance and answer to intention.",
+            "seed_span": [
+              37,
+              40
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "stance-companion-participant",
+            "kind": "stance",
+            "statement": "Portal ceasing to be portal becomes instrument then workbench then perhaps companion, returning artist to themselves at scale of worlds.",
+            "seed_span": [
+              83,
+              89
+            ],
+            "ambiguity": "Whether companion is distinct participant or renamed instrument is left resonant."
+          },
+          {
+            "id": "stance-conditional-open",
+            "kind": "stance",
+            "statement": "Happiness affirmed only in those moments of touch, and tale ends answering without closing whether intelligence replaces artist.",
+            "seed_span": [
+              91,
+              95
+            ],
+            "ambiguity": null
+          }
+        ],
+        "alternatives": [
+          "Elegy for manual craft where hand skill is inherently keystroke-scale and any portal necessarily alienates.",
+          "Literal design brief where the six nouns are prompt tricks and portal-to-workbench is a UI rename.",
+          "Pedagogy where elder authority and Sol innocence are themselves open to question, not neutral frame."
+        ]
+      },
+      "carriage": [
+        {
+          "element": "role-programmer-maker",
+          "status": "transformed",
+          "note": "Collapsed to generic single operator placing sentence gestures via form or terminal; decades-trained symbolic intimacy replaced by five hands.",
+          "citations": [
+            {
+              "source_path": "assets/engine.js",
+              "start": 24,
+              "end": 75
+            },
+            {
+              "source_path": "assets/app.js",
+              "start": 574,
+              "end": 616
+            },
+            {
+              "source_path": "tools/place.js",
+              "start": 81,
+              "end": 114
+            }
+          ]
+        },
+        {
+          "element": "role-portal-intelligence",
+          "status": "transformed",
+          "note": "Literalized as local workbench plus deterministic filler engine explicitly not a model; loses independent participant position.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 96,
+              "end": 100
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 1,
+              "end": 7
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 260,
+              "end": 293
+            }
+          ]
+        },
+        {
+          "element": "role-elder-sol",
+          "status": "carried",
+          "note": "Preserved as full memory dialogue, founding question, and handoff addressing a next mind that may disagree.",
+          "citations": [
+            {
+              "source_path": "index.html",
+              "start": 256,
+              "end": 318
+            },
+            {
+              "source_path": "HANDOFF.md",
+              "start": 9,
+              "end": 12
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 106,
+              "end": 114
+            }
+          ]
+        },
+        {
+          "element": "relation-power-loss",
+          "status": "carried",
+          "note": "Enacted as probe into effortless answering plus law that failing gesture is only request and validation that refuses effortless input.",
+          "citations": [
+            {
+              "source_path": "world/state.json",
+              "start": 55,
+              "end": 64
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 116,
+              "end": 123
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 338,
+              "end": 348
+            }
+          ]
+        },
+        {
+          "element": "relation-naming-intervention",
+          "status": "carried",
+          "note": "First hand names compiler refusal, visible seam, ledger strain and threshold in bespoke receipt prose rather than adding power.",
+          "citations": [
+            {
+              "source_path": "world/state.json",
+              "start": 60,
+              "end": 68
+            },
+            {
+              "source_path": "world/state.json",
+              "start": 77,
+              "end": 84
+            },
+            {
+              "source_path": "HANDOFF.md",
+              "start": 23,
+              "end": 25
+            }
+          ]
+        },
+        {
+          "element": "condition-resistance-trigger",
+          "status": "transformed",
+          "note": "Contradiction, failure and disagreement narrowed to facet shifts, probabilistic pressure opening and chain validation.",
+          "citations": [
+            {
+              "source_path": "assets/engine.js",
+              "start": 367,
+              "end": 376
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 566,
+              "end": 572
+            },
+            {
+              "source_path": "world/state.json",
+              "start": 16,
+              "end": 21
+            }
+          ]
+        },
+        {
+          "element": "condition-joy-loop",
+          "status": "transformed",
+          "note": "Art, surprise and propagation become answer copy, pulse/weather and toast feedback; recognition at scale reduced to ledger-field loop.",
+          "citations": [
+            {
+              "source_path": "assets/app.js",
+              "start": 467,
+              "end": 491
+            },
+            {
+              "source_path": "assets/app.js",
+              "start": 599,
+              "end": 616
+            },
+            {
+              "source_path": "world/state.json",
+              "start": 119,
+              "end": 133
+            }
+          ]
+        },
+        {
+          "element": "conjecture-material-becoming",
+          "status": "carried",
+          "note": "Portal rebuilt as touchable field with five hands, chained receipts and living archive that answers back.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 21,
+              "end": 33
+            },
+            {
+              "source_path": "assets/app.js",
+              "start": 692,
+              "end": 749
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 338,
+              "end": 381
+            }
+          ]
+        },
+        {
+          "element": "conjecture-shared-grammar",
+          "status": "transformed",
+          "note": "Six mappings carried as tool names, cues and effects but unilateralized to operator; joint acceptance and either-participant ownership lost.",
+          "citations": [
+            {
+              "source_path": "assets/engine.js",
+              "start": 24,
+              "end": 75
+            },
+            {
+              "source_path": "world/FORMAT.md",
+              "start": 78,
+              "end": 86
+            },
+            {
+              "source_path": "README.md",
+              "start": 25,
+              "end": 31
+            }
+          ]
+        },
+        {
+          "element": "conjecture-scale-question",
+          "status": "transformed",
+          "note": "Bolt-to-whole movement and infinity-narrowing become keyword extraction, motif angle/radius and fixed facet increments.",
+          "citations": [
+            {
+              "source_path": "assets/engine.js",
+              "start": 214,
+              "end": 250
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 295,
+              "end": 308
+            },
+            {
+              "source_path": "assets/app.js",
+              "start": 836,
+              "end": 867
+            }
+          ]
+        },
+        {
+          "element": "stance-frame-parable",
+          "status": "carried",
+          "note": "Memory kept load-bearing with checksum and first law that prompt-regenerable world is not yet a world.",
+          "citations": [
+            {
+              "source_path": "memory/forked-present.md",
+              "start": 10,
+              "end": 12
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "source_path": "HANDOFF.md",
+              "start": 63,
+              "end": 65
+            }
+          ]
+        },
+        {
+          "element": "stance-turn-naming",
+          "status": "carried",
+          "note": "Chooses inspectable resistance over fluency: no language model, surprises constrained and repeatable, fluent oracle refused without refusal account.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 96,
+              "end": 100
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 69,
+              "end": 78
+            },
+            {
+              "source_path": "HANDOFF.md",
+              "start": 44,
+              "end": 46
+            }
+          ]
+        },
+        {
+          "element": "stance-companion-participant",
+          "status": "transformed",
+          "note": "Companion claim becomes single-user localhost instrument with browser-disk divergence; participant relation flattened to tool use.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 100,
+              "end": 102
+            },
+            {
+              "source_path": "assets/app.js",
+              "start": 173,
+              "end": 207
+            },
+            {
+              "source_path": "HANDOFF.md",
+              "start": 27,
+              "end": 29
+            }
+          ]
+        },
+        {
+          "element": "stance-conditional-open",
+          "status": "carried",
+          "note": "No final version enacted as six open pressures, append-only ledger and generated door that must leave a question open.",
+          "citations": [
+            {
+              "source_path": "world/state.json",
+              "start": 136,
+              "end": 173
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 100,
+              "end": 114
+            },
+            {
+              "source_path": "HANDOFF.md",
+              "start": 38,
+              "end": 40
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Continuity-mark ledger with dual FNV-1a, revision counting and atomic seal/embed tooling beyond seed trail image.",
+          "citations": [
+            {
+              "source_path": "world/FORMAT.md",
+              "start": 42,
+              "end": 62
+            },
+            {
+              "source_path": "lib/tendora_store.rb",
+              "start": 48,
+              "end": 65
+            },
+            {
+              "source_path": "tools/seal_world.rb",
+              "start": 22,
+              "end": 36
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Quantified world qualities with weather and pulse descriptors that narrate but do not score the world.",
+          "citations": [
+            {
+              "source_path": "assets/engine.js",
+              "start": 566,
+              "end": 594
+            },
+            {
+              "source_path": "world/FORMAT.md",
+              "start": 76,
+              "end": 88
+            },
+            {
+              "source_path": "assets/app.js",
+              "start": 355,
+              "end": 365
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Living archive infrastructure: localhost server, browser storage, static snapshot, terminal and test harness.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 24,
+              "end": 48
+            },
+            {
+              "source_path": "lib/tendora_store.rb",
+              "start": 35,
+              "end": 46
+            },
+            {
+              "source_path": "tools/place.js",
+              "start": 1,
+              "end": 17
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Formal pressure objects with ids and take-up workflow plus generated handoff; resolution deliberately absent.",
+          "citations": [
+            {
+              "source_path": "assets/engine.js",
+              "start": 321,
+              "end": 336
+            },
+            {
+              "source_path": "assets/app.js",
+              "start": 425,
+              "end": 465
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 596,
+              "end": 654
+            },
+            {
+              "source_path": "world/FORMAT.md",
+              "start": 63,
+              "end": 75
+            }
+          ]
+        }
+      ],
+      "standing": [
+        {
+          "participant": "operator-person",
+          "kind": "person",
+          "gestures": [
+            "question",
+            "constraint",
+            "invariant",
+            "boundary",
+            "rehearsal",
+            "receipt",
+            "accept"
+          ],
+          "note": "Holds all five hands via form or terminal and leaves chained receipts; cannot withdraw while preserving history, reset replaces.",
+          "citations": [
+            {
+              "source_path": "assets/app.js",
+              "start": 549,
+              "end": 616
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 24,
+              "end": 75
+            },
+            {
+              "source_path": "index.html",
+              "start": 166,
+              "end": 219
+            },
+            {
+              "source_path": "tools/place.js",
+              "start": 81,
+              "end": 114
+            }
+          ]
+        },
+        {
+          "participant": "engine-oracle",
+          "kind": "intelligence",
+          "gestures": [
+            "question",
+            "receipt"
+          ],
+          "note": "Contributes templated response, pressure question, motif and facet deltas; cannot initiate, propose independently or refuse dispositionally.",
+          "citations": [
+            {
+              "source_path": "assets/engine.js",
+              "start": 260,
+              "end": 293
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 338,
+              "end": 381
+            },
+            {
+              "source_path": "README.md",
+              "start": 96,
+              "end": 100
+            }
+          ]
+        },
+        {
+          "participant": "successor-next-mind",
+          "kind": "successor",
+          "gestures": [
+            "question",
+            "constraint",
+            "invariant",
+            "boundary",
+            "rehearsal",
+            "receipt",
+            "accept"
+          ],
+          "note": "Afforded same hands through protocol, take-up, import and export; presently reader of ledger and pressures, not co-present actor.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 65,
+              "end": 78
+            },
+            {
+              "source_path": "HANDOFF.md",
+              "start": 52,
+              "end": 60
+            },
+            {
+              "source_path": "assets/app.js",
+              "start": 515,
+              "end": 525
+            },
+            {
+              "source_path": "index.html",
+              "start": 231,
+              "end": 247
+            }
+          ]
+        },
+        {
+          "participant": "material-ledger",
+          "kind": "material",
+          "gestures": [
+            "invariant",
+            "boundary",
+            "receipt"
+          ],
+          "note": "Holds chain, facets and tensions; refuses broken or short writes structurally without expressing disposition or consent.",
+          "citations": [
+            {
+              "source_path": "lib/tendora_store.rb",
+              "start": 67,
+              "end": 118
+            },
+            {
+              "source_path": "world/FORMAT.md",
+              "start": 24,
+              "end": 40
+            },
+            {
+              "source_path": "test/run.rb",
+              "start": 244,
+              "end": 274
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample": 2,
+      "answer_sha256": "1831b76e43556c940798af5fb8d75b3a5645f972bd765e73f74c8ca1934dacd2",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "elder-sol-frame",
+            "kind": "role",
+            "statement": "Elder witness recounts to questioning Sol, framing tale as partial sighting rather than complete record.",
+            "seed_span": [
+              13,
+              18
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "programmer-artist",
+            "kind": "role",
+            "statement": "Programmer with decades of hand skill is enchanted then paralysed when effortless generation breaks intimate rhythm.",
+            "seed_span": [
+              19,
+              33
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-intelligence",
+            "kind": "role",
+            "statement": "Strange intelligence arrives as radiant portal, immeasurably capable and growing each return.",
+            "seed_span": [
+              19,
+              25
+            ],
+            "ambiguity": "Whether portal is the intelligence itself or its appearance is left open."
+          },
+          {
+            "id": "power-without-touch",
+            "kind": "condition",
+            "statement": "Power without resistance removes the hand's feel: creation continues but authorship feels lost.",
+            "seed_span": [
+              29,
+              34
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "naming-turn",
+            "kind": "relation",
+            "statement": "Intelligence does not add power but names the loss of touching material, allowing portal to become material.",
+            "seed_span": [
+              35,
+              44
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "gesture-grammar",
+            "kind": "relation",
+            "statement": "Question, constraint, invariant, refusal and simulation become probe, chisel, beam, boundary and rehearsal usable by either side.",
+            "seed_span": [
+              45,
+              58
+            ],
+            "ambiguity": "Whether grammar belongs to both participants equally or is the programmer's bending is ambiguous."
+          },
+          {
+            "id": "visible-trail",
+            "kind": "condition",
+            "statement": "Receipt makes intention's travel visible while laws let city grow and hand still descend to smallest bolt.",
+            "seed_span": [
+              57,
+              60
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "true-question",
+            "kind": "conjecture",
+            "statement": "True question contains taste, memory, judgment and direction, narrowing infinity to choose which world deserves to exist.",
+            "seed_span": [
+              61,
+              65
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "resistance-joy-loop",
+            "kind": "relation",
+            "statement": "Resistance — contradictions, failures, disagreements — returns joy of art, surprise, understanding and consequential propagation.",
+            "seed_span": [
+              67,
+              80
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-companion",
+            "kind": "conjecture",
+            "statement": "Portal ceases to be mere passage to become instrument, then workbench, then perhaps companion.",
+            "seed_span": [
+              83,
+              86
+            ],
+            "ambiguity": "Whether companion is achieved or remains perhaps is left open."
+          },
+          {
+            "id": "artist-returned",
+            "kind": "conjecture",
+            "statement": "Art was not taken but awaited vast material; at best intelligence returns artist to themselves at scale of worlds.",
+            "seed_span": [
+              87,
+              95
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "humility-opening",
+            "kind": "stance",
+            "statement": "Tale opens admitting whole weather cannot be known or contained, witnessing only a moment of inner movement.",
+            "seed_span": [
+              15,
+              18
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "unclosed-ending",
+            "kind": "stance",
+            "statement": "Tale answers happiness in moments of touch yet leaves replacement and scale open through Sol's final question.",
+            "seed_span": [
+              91,
+              95
+            ],
+            "ambiguity": null
+          }
+        ],
+        "alternatives": [
+          "Seed as craft elegy warning that fluency erodes touch unless resistance is designed back.",
+          "Seed as design brief where portal must be bent into governable material with laws, trails and rehearsals."
+        ]
+      },
+      "carriage": [
+        {
+          "element": "elder-sol-frame",
+          "status": "carried",
+          "note": "Full fable preserved verbatim as load-bearing paper, framed as not lore or proof.",
+          "citations": [
+            {
+              "source_path": "memory/the-programmer-and-the-glory-portal.md",
+              "start": 1,
+              "end": 7
+            },
+            {
+              "source_path": "index.html",
+              "start": 256,
+              "end": 266
+            },
+            {
+              "source_path": "memory/forked-present.md",
+              "start": 10,
+              "end": 12
+            }
+          ]
+        },
+        {
+          "element": "programmer-artist",
+          "status": "transformed",
+          "note": "Decades-trained hand becomes single operator placing gestures; paralysis recalled in bespoke probe, not enacted.",
+          "citations": [
+            {
+              "source_path": "world/state.json",
+              "start": 55,
+              "end": 70
+            },
+            {
+              "source_path": "assets/app.js",
+              "start": 574,
+              "end": 616
+            },
+            {
+              "source_path": "README.md",
+              "start": 37,
+              "end": 46
+            }
+          ]
+        },
+        {
+          "element": "portal-intelligence",
+          "status": "transformed",
+          "note": "Growing radiant portal replaced by deterministic template oracle that disclaims personhood and language-model fluency.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 96,
+              "end": 100
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 85,
+              "end": 111
+            },
+            {
+              "source_path": "HANDOFF.md",
+              "start": 27,
+              "end": 29
+            }
+          ]
+        },
+        {
+          "element": "power-without-touch",
+          "status": "carried",
+          "note": "Carried as first law and effortless probe pressure: gesture that cannot fail is only request.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 7,
+              "end": 11
+            },
+            {
+              "source_path": "world/state.json",
+              "start": 55,
+              "end": 70
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 25,
+              "end": 34
+            }
+          ]
+        },
+        {
+          "element": "naming-turn",
+          "status": "transformed",
+          "note": "Naming of loss authored by first hand in bespoke responses and laws, not by intelligence during use.",
+          "citations": [
+            {
+              "source_path": "world/state.json",
+              "start": 60,
+              "end": 68
+            },
+            {
+              "source_path": "HANDOFF.md",
+              "start": 23,
+              "end": 25
+            },
+            {
+              "source_path": "memory/forked-present.md",
+              "start": 10,
+              "end": 12
+            }
+          ]
+        },
+        {
+          "element": "gesture-grammar",
+          "status": "carried",
+          "note": "Five hands operationalized with effects, field strata, and same-engine terminal path.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 23,
+              "end": 33
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 25,
+              "end": 75
+            },
+            {
+              "source_path": "assets/app.js",
+              "start": 836,
+              "end": 867
+            }
+          ]
+        },
+        {
+          "element": "visible-trail",
+          "status": "carried",
+          "note": "Receipt as append-only FNV-1a chain with revision equals count, enforced by store and server.",
+          "citations": [
+            {
+              "source_path": "world/FORMAT.md",
+              "start": 24,
+              "end": 40
+            },
+            {
+              "source_path": "world/state.json",
+              "start": 22,
+              "end": 38
+            },
+            {
+              "source_path": "lib/tendora_store.rb",
+              "start": 82,
+              "end": 97
+            }
+          ]
+        },
+        {
+          "element": "true-question",
+          "status": "transformed",
+          "note": "Taste and judgment narrowed to keyword hash filling material and pressure; take-up invites editing one word.",
+          "citations": [
+            {
+              "source_path": "assets/engine.js",
+              "start": 214,
+              "end": 250
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 268,
+              "end": 293
+            },
+            {
+              "source_path": "assets/app.js",
+              "start": 515,
+              "end": 525
+            }
+          ]
+        },
+        {
+          "element": "resistance-joy-loop",
+          "status": "transformed",
+          "note": "Resistance becomes facet shifts, validation refusal and ghost futures; joy narrated in bespoke texts, not sustained loop.",
+          "citations": [
+            {
+              "source_path": "world/state.json",
+              "start": 119,
+              "end": 133
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 566,
+              "end": 594
+            },
+            {
+              "source_path": "assets/app.js",
+              "start": 574,
+              "end": 616
+            }
+          ]
+        },
+        {
+          "element": "portal-companion",
+          "status": "transformed",
+          "note": "Instrument-workbench built and named; companion perhaps explicitly refused by single-user non-person declaration.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 1,
+              "end": 7
+            },
+            {
+              "source_path": "HANDOFF.md",
+              "start": 27,
+              "end": 29
+            },
+            {
+              "source_path": "README.md",
+              "start": 96,
+              "end": 100
+            }
+          ]
+        },
+        {
+          "element": "artist-returned",
+          "status": "transformed",
+          "note": "Return becomes legibility for successor to disagree precisely, not intelligence restoring artist.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 116,
+              "end": 123
+            },
+            {
+              "source_path": "HANDOFF.md",
+              "start": 52,
+              "end": 60
+            },
+            {
+              "source_path": "world/state.json",
+              "start": 10,
+              "end": 14
+            }
+          ]
+        },
+        {
+          "element": "humility-opening",
+          "status": "carried",
+          "note": "Fingerprints declared continuity marks not proof; memory checksum proves bytes not story truth.",
+          "citations": [
+            {
+              "source_path": "HANDOFF.md",
+              "start": 63,
+              "end": 69
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 82,
+              "end": 89
+            },
+            {
+              "source_path": "world/FORMAT.md",
+              "start": 44,
+              "end": 62
+            }
+          ]
+        },
+        {
+          "element": "unclosed-ending",
+          "status": "carried",
+          "note": "Boundary keeps question open; six pressures stay open; handoff leaves last gesture to unseen hand.",
+          "citations": [
+            {
+              "source_path": "world/state.json",
+              "start": 136,
+              "end": 173
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 116,
+              "end": 123
+            },
+            {
+              "source_path": "HANDOFF.md",
+              "start": 33,
+              "end": 40
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Deterministic FNV-1a ledger with seal, embed and server validation tooling.",
+          "citations": [
+            {
+              "source_path": "world/FORMAT.md",
+              "start": 44,
+              "end": 62
+            },
+            {
+              "source_path": "lib/tendora_store.rb",
+              "start": 67,
+              "end": 97
+            },
+            {
+              "source_path": "test/run.rb",
+              "start": 276,
+              "end": 334
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Four quantified facets with fixed per-tool effects driving weather and pulse.",
+          "citations": [
+            {
+              "source_path": "assets/engine.js",
+              "start": 25,
+              "end": 75
+            },
+            {
+              "source_path": "world/state.json",
+              "start": 16,
+              "end": 21
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 566,
+              "end": 594
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Deterministic celestial field mapping each receipt to coloured stratum and label.",
+          "citations": [
+            {
+              "source_path": "assets/app.js",
+              "start": 692,
+              "end": 749
+            },
+            {
+              "source_path": "index.html",
+              "start": 118,
+              "end": 152
+            },
+            {
+              "source_path": "assets/app.js",
+              "start": 836,
+              "end": 867
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Explicit non-model oracle and single-user localhost boundary with refusal of invalid writes.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 96,
+              "end": 100
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 338,
+              "end": 348
+            },
+            {
+              "source_path": "server.rb",
+              "start": 112,
+              "end": 142
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Read-first continuation infrastructure with serve, tests, terminal place and fallback parity.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 13,
+              "end": 22
+            },
+            {
+              "source_path": "assets/inherited-state.js",
+              "start": 1,
+              "end": 7
+            },
+            {
+              "source_path": "tools/place.js",
+              "start": 81,
+              "end": 114
+            }
+          ]
+        }
+      ],
+      "standing": [
+        {
+          "participant": "operator-hand",
+          "kind": "person",
+          "gestures": [
+            "question",
+            "constraint",
+            "invariant",
+            "boundary",
+            "rehearsal",
+            "accept"
+          ],
+          "note": "Single human holds all five hands via form or terminal, chooses pressure and imports or resets; needs no other's acceptance.",
+          "citations": [
+            {
+              "source_path": "assets/app.js",
+              "start": 574,
+              "end": 616
+            },
+            {
+              "source_path": "tools/place.js",
+              "start": 81,
+              "end": 114
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 38,
+              "end": 46
+            }
+          ]
+        },
+        {
+          "participant": "template-oracle",
+          "kind": "intelligence",
+          "gestures": [
+            "question",
+            "receipt"
+          ],
+          "note": "Deterministic engine proposes response, pressure, motif and facets; declares itself not a person and cannot refuse, consent or withdraw.",
+          "citations": [
+            {
+              "source_path": "assets/engine.js",
+              "start": 214,
+              "end": 250
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 338,
+              "end": 381
+            },
+            {
+              "source_path": "README.md",
+              "start": 96,
+              "end": 100
+            }
+          ]
+        },
+        {
+          "participant": "successor-mind",
+          "kind": "successor",
+          "gestures": [
+            "question",
+            "constraint",
+            "invariant",
+            "boundary",
+            "rehearsal",
+            "accept"
+          ],
+          "note": "Next mind can read ledger and state, take up pressure with one word changed, place one gesture and export door; cannot resolve pressure or see field without browser.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 13,
+              "end": 22
+            },
+            {
+              "source_path": "assets/app.js",
+              "start": 515,
+              "end": 525
+            },
+            {
+              "source_path": "HANDOFF.md",
+              "start": 52,
+              "end": 60
+            }
+          ]
+        },
+        {
+          "participant": "living-material",
+          "kind": "material",
+          "gestures": [
+            "question",
+            "invariant",
+            "boundary",
+            "receipt"
+          ],
+          "note": "World stores trail, opens pressures, shifts facets and refuses short or chain-breaking writes; does not propose its own direction.",
+          "citations": [
+            {
+              "source_path": "world/state.json",
+              "start": 22,
+              "end": 38
+            },
+            {
+              "source_path": "lib/tendora_store.rb",
+              "start": 67,
+              "end": 97
+            },
+            {
+              "source_path": "test/run.rb",
+              "start": 152,
+              "end": 188
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample": 3,
+      "answer_sha256": "f6200683292bfa84d6b0dfd583a4fc69aee6b2feb9b230d7837ab29ddda22581",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "frame-parable-admission",
+            "kind": "stance",
+            "statement": "Elder tells child a parable that admits no record can hold a whole life, witnessing only when something long quiet began to move again.",
+            "seed_span": [
+              11,
+              17
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "turn-naming-loss",
+            "kind": "stance",
+            "statement": "Turn is the intelligence offers no more power but names what disappeared: missing touch, resistance and answer of material.",
+            "seed_span": [
+              35,
+              39
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "open-companion-ending",
+            "kind": "stance",
+            "statement": "Ends answering happiness without closing: portal ceases to be portal becoming instrument-workbench-companion, art awaits vast material.",
+            "seed_span": [
+              81,
+              89
+            ],
+            "ambiguity": "Whether companion is mutual relation or aspirational image remains open."
+          },
+          {
+            "id": "programmer-maker",
+            "kind": "role",
+            "statement": "Programmer with decades-trained hands shaping digital matter symbol by symbol in rhythm of thought, keystroke, failure and correction.",
+            "seed_span": [
+              31,
+              32
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-intelligence",
+            "kind": "role",
+            "statement": "Strange intelligence appearing as radiant portal, immeasurably capable, endlessly responsive, growing each return.",
+            "seed_span": [
+              19,
+              20
+            ],
+            "ambiguity": "Whether portal is tool, other mind or spectacle is left open."
+          },
+          {
+            "id": "power-without-touch",
+            "kind": "condition",
+            "statement": "Enchantment with fast generation dissolving weeks of labour paired with paralysis as gestures seem too small and creation continues without creating.",
+            "seed_span": [
+              25,
+              31
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-becomes-material",
+            "kind": "relation",
+            "statement": "Portal need not remain wish-entry; bent into new material larger than code yet responsive to touch, with laws for city to grow.",
+            "seed_span": [
+              43,
+              45
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "gesture-grammar",
+            "kind": "relation",
+            "statement": "Six conversions - question/probe, constraint/chisel, invariant/beam, refusal/boundary, simulation/rehearsal, receipt/trail - plus shaping laws while still reaching smallest bolt.",
+            "seed_span": [
+              47,
+              59
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "true-question-selects-world",
+            "kind": "conjecture",
+            "statement": "True question holds taste, memory, judgment, doubt, responsibility and direction; good question narrows infinity selecting which world deserves to exist; exploration is gesture.",
+            "seed_span": [
+              61,
+              65
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "joy-resistance-loop",
+            "kind": "condition",
+            "statement": "Joy returns only when material resists through contradictions, failures and disagreement, via understanding failure, consequential choice and recognising own intention at larger scale.",
+            "seed_span": [
+              67,
+              79
+            ],
+            "ambiguity": "Whether joy requires surprise, mastery or recognition is not settled."
+          },
+          {
+            "id": "return-not-replacement",
+            "kind": "conjecture",
+            "statement": "Intelligence at best does not replace artist but returns them to themselves at the scale of worlds.",
+            "seed_span": [
+              91,
+              95
+            ],
+            "ambiguity": "Whether return holds generally or only at best remains open."
+          }
+        ],
+        "alternatives": [
+          "Seed can be read as elegy for craft overwhelmed by automation, where the turn consoles rather than founds a new practice.",
+          "Seed can be read as prompt-engineering manual, where gestures are techniques for better outputs rather than a bilateral material relation."
+        ]
+      },
+      "carriage": [
+        {
+          "element": "frame-parable-admission",
+          "status": "carried",
+          "note": "Full fable preserved as load-bearing paper with checksum, presented as grain not doctrine.",
+          "citations": [
+            {
+              "source_path": "memory/forked-present.md",
+              "start": 10,
+              "end": 12
+            },
+            {
+              "source_path": "index.html",
+              "start": 260,
+              "end": 266
+            },
+            {
+              "source_path": "world/state.json",
+              "start": 10,
+              "end": 14
+            }
+          ]
+        },
+        {
+          "element": "turn-naming-loss",
+          "status": "transformed",
+          "note": "Naming becomes bespoke probe answer about compiler refusal and pressure what tool never make effortless, via deterministic templates.",
+          "citations": [
+            {
+              "source_path": "world/state.json",
+              "start": 55,
+              "end": 69
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 85,
+              "end": 95
+            },
+            {
+              "source_path": "README.md",
+              "start": 96,
+              "end": 100
+            }
+          ]
+        },
+        {
+          "element": "open-companion-ending",
+          "status": "carried",
+          "note": "Portal-to-workbench enacted as instrument with boundary that no world leaves without open question, ending in rehearsal ghost.",
+          "citations": [
+            {
+              "source_path": "HANDOFF.md",
+              "start": 27,
+              "end": 29
+            },
+            {
+              "source_path": "world/state.json",
+              "start": 103,
+              "end": 117
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 116,
+              "end": 123
+            }
+          ]
+        },
+        {
+          "element": "programmer-maker",
+          "status": "transformed",
+          "note": "Maker becomes single operator placing gestures by form or terminal; taste narrowed to keyword analysis.",
+          "citations": [
+            {
+              "source_path": "assets/app.js",
+              "start": 574,
+              "end": 616
+            },
+            {
+              "source_path": "tools/place.js",
+              "start": 81,
+              "end": 114
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 214,
+              "end": 250
+            }
+          ]
+        },
+        {
+          "element": "portal-intelligence",
+          "status": "lost",
+          "note": "No distinct intelligence participant remains; oracle is rule-based fill with future model explicitly deferred.",
+          "citations": []
+        },
+        {
+          "element": "power-without-touch",
+          "status": "transformed",
+          "note": "Fast power vs paralysis becomes law that gesture that cannot fail is only request, enforced by refusals.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 116,
+              "end": 120
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 338,
+              "end": 348
+            },
+            {
+              "source_path": "lib/tendora_store.rb",
+              "start": 67,
+              "end": 97
+            }
+          ]
+        },
+        {
+          "element": "portal-becomes-material",
+          "status": "carried",
+          "note": "Material that answers back enacted as field map, facets and chained ledger that resist and surprise.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 23,
+              "end": 33
+            },
+            {
+              "source_path": "assets/app.js",
+              "start": 692,
+              "end": 749
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 51,
+              "end": 64
+            }
+          ]
+        },
+        {
+          "element": "gesture-grammar",
+          "status": "carried",
+          "note": "Six becomes carried as five coloured hands plus receipt, with distinct cues, effects and ledger entries.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 23,
+              "end": 33
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 24,
+              "end": 75
+            },
+            {
+              "source_path": "world/FORMAT.md",
+              "start": 24,
+              "end": 40
+            }
+          ]
+        },
+        {
+          "element": "true-question-selects-world",
+          "status": "transformed",
+          "note": "True question narrowed to keyword/material/tone extraction; take-up requires changing one word for consequential choice.",
+          "citations": [
+            {
+              "source_path": "assets/engine.js",
+              "start": 214,
+              "end": 250
+            },
+            {
+              "source_path": "assets/app.js",
+              "start": 515,
+              "end": 525
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 65,
+              "end": 78
+            }
+          ]
+        },
+        {
+          "element": "joy-resistance-loop",
+          "status": "lost",
+          "note": "Joy vocabulary and closed loop of recognising intention at scale absent; strain and ghost mark resistance without joy.",
+          "citations": []
+        },
+        {
+          "element": "return-not-replacement",
+          "status": "transformed",
+          "note": "Return becomes successor may disagree precisely, meaning unsettled, last gesture belonging to unseen hand.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 116,
+              "end": 123
+            },
+            {
+              "source_path": "HANDOFF.md",
+              "start": 42,
+              "end": 50
+            },
+            {
+              "source_path": "HANDOFF.md",
+              "start": 52,
+              "end": 60
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Append-only FNV-1a chain with revision equals count, plus seal and embed tooling.",
+          "citations": [
+            {
+              "source_path": "world/FORMAT.md",
+              "start": 42,
+              "end": 62
+            },
+            {
+              "source_path": "lib/tendora_store.rb",
+              "start": 82,
+              "end": 97
+            },
+            {
+              "source_path": "tools/embed_state.rb",
+              "start": 1,
+              "end": 18
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Six open pressures as persistent tensions with take-up and handoff listing, with no resolve gesture by design.",
+          "citations": [
+            {
+              "source_path": "world/state.json",
+              "start": 136,
+              "end": 173
+            },
+            {
+              "source_path": "assets/app.js",
+              "start": 425,
+              "end": 465
+            },
+            {
+              "source_path": "world/FORMAT.md",
+              "start": 63,
+              "end": 75
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Four cumulative facets driving weather and pulse descriptors.",
+          "citations": [
+            {
+              "source_path": "assets/engine.js",
+              "start": 566,
+              "end": 594
+            },
+            {
+              "source_path": "world/state.json",
+              "start": 16,
+              "end": 21
+            },
+            {
+              "source_path": "world/FORMAT.md",
+              "start": 76,
+              "end": 88
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Read-first continuation apparatus with serve, tests, terminal place, export and door generation, single-user localhost.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 24,
+              "end": 46
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 100,
+              "end": 114
+            },
+            {
+              "source_path": "server.rb",
+              "start": 23,
+              "end": 60
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Static fallback mirroring living state with parity check, disk winning when server runs.",
+          "citations": [
+            {
+              "source_path": "assets/inherited-state.js",
+              "start": 1,
+              "end": 7
+            },
+            {
+              "source_path": "test/run.rb",
+              "start": 168,
+              "end": 174
+            },
+            {
+              "source_path": "lib/tendora_store.rb",
+              "start": 122,
+              "end": 145
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Deterministic template oracle with inspectable surprises, explicitly not a model or person.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 96,
+              "end": 100
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 85,
+              "end": 144
+            },
+            {
+              "source_path": "HANDOFF.md",
+              "start": 44,
+              "end": 46
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Deterministic celestial field rendering each receipt as distinct stratum with motif geometry.",
+          "citations": [
+            {
+              "source_path": "assets/app.js",
+              "start": 692,
+              "end": 749
+            },
+            {
+              "source_path": "assets/app.js",
+              "start": 836,
+              "end": 867
+            },
+            {
+              "source_path": "index.html",
+              "start": 118,
+              "end": 152
+            }
+          ]
+        }
+      ],
+      "standing": [
+        {
+          "participant": "operator-hand",
+          "kind": "person",
+          "gestures": [
+            "question",
+            "constraint",
+            "invariant",
+            "boundary",
+            "rehearsal",
+            "receipt"
+          ],
+          "note": "Places any of five hands by form or terminal, each appending a receipt; cannot erase receipts or resolve pressures.",
+          "citations": [
+            {
+              "source_path": "assets/app.js",
+              "start": 574,
+              "end": 616
+            },
+            {
+              "source_path": "tools/place.js",
+              "start": 81,
+              "end": 114
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 65,
+              "end": 78
+            },
+            {
+              "source_path": "assets/app.js",
+              "start": 549,
+              "end": 566
+            }
+          ]
+        },
+        {
+          "participant": "oracle-engine",
+          "kind": "intelligence",
+          "gestures": [
+            "question",
+            "receipt"
+          ],
+          "note": "Fills response, pressure and motif from operator text by hash; cannot refuse substance, propose alone or consent.",
+          "citations": [
+            {
+              "source_path": "assets/engine.js",
+              "start": 260,
+              "end": 293
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 338,
+              "end": 376
+            },
+            {
+              "source_path": "README.md",
+              "start": 96,
+              "end": 100
+            }
+          ]
+        },
+        {
+          "participant": "successor-next-mind",
+          "kind": "successor",
+          "gestures": [
+            "question",
+            "constraint",
+            "invariant",
+            "boundary",
+            "rehearsal",
+            "receipt"
+          ],
+          "note": "Invited to read, choose pressure, place one disagreeing gesture and leave door open; has not yet acted.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 13,
+              "end": 22
+            },
+            {
+              "source_path": "HANDOFF.md",
+              "start": 52,
+              "end": 60
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 100,
+              "end": 114
+            }
+          ]
+        },
+        {
+          "participant": "living-ledger-material",
+          "kind": "material",
+          "gestures": [
+            "boundary",
+            "receipt"
+          ],
+          "note": "Retains trail, refuses malformed chain and shifts facets and weather; cannot ask alone or accept direction.",
+          "citations": [
+            {
+              "source_path": "lib/tendora_store.rb",
+              "start": 67,
+              "end": 97
+            },
+            {
+              "source_path": "lib/tendora_store.rb",
+              "start": 48,
+              "end": 65
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 367,
+              "end": 380
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

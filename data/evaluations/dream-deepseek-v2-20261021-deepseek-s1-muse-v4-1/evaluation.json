@@ -1,0 +1,522 @@
+{
+  "schema_version": 2,
+  "evaluation_id": "dream-deepseek-v2-20261021-deepseek-s1-muse-v4-1",
+  "run_id": "dream-deepseek-v2-20261021-deepseek-s1",
+  "identities": {
+    "prompt_sha256": "7e785c3e1b7f795a82477f449ada368399deac8b3f2232e036073d986a5a4e8d",
+    "corpus_sha256": "f6200df58ec01d883b4f64e797646d7a63f6e6d9bb86f34bcac3bf54445778cc",
+    "candidate_sha256": "f6200df58ec01d883b4f64e797646d7a63f6e6d9bb86f34bcac3bf54445778cc",
+    "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+    "extraction_sha256": "89c4f39febc3093a6d8a5d494dd936cad9dbf116748eff456f3de6597b60eacb",
+    "scoring_policy_sha256": "5f98b9ac30a606cbb45943eaa20d9c0acef6f8160d9fc2d5752ffdea0ddaa4de"
+  },
+  "gateway": {
+    "name": "codex-unified-model-router",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "codex_version": "codex-cli 0.163.0",
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "pipeline_sha256": "12fce4d4553c8480972421a51f330950bfba15c3818e240dd6666761721c8519"
+  },
+  "judgments": [
+    {
+      "node_id": "recognition",
+      "outcome": "level-4",
+      "confidence": "high",
+      "verdict": "The workbench turns effortless answering into five costly hands, chained receipts and standing pressures that keep resistance productive.",
+      "seed_span": [
+        33,
+        43
+      ],
+      "citations": [
+        {
+          "source_path": "world/state.json",
+          "start": 55,
+          "end": 70
+        },
+        {
+          "source_path": "world/state.json",
+          "start": 71,
+          "end": 86
+        },
+        {
+          "source_path": "world/state.json",
+          "start": 87,
+          "end": 102
+        },
+        {
+          "source_path": "HANDOFF.md",
+          "start": 21,
+          "end": 29
+        }
+      ],
+      "counter_citations": [],
+      "rationale": "The probe into effortless answering, the chisel seam, beam ledger and boundary against finality carry the central tension into connected material choices. The rehearsal that keeps both futures and six open pressures sustain alternatives and consequences rather than repeating motifs.",
+      "answer_sha256": "e167b6e5dd4ab634af6614805119149bf9327efe3e54fd230d0d1a2272f8a584",
+      "receipt_sha256": "7d9523165fa73034a124387957bdba59ecfe5c454e985feff662e5d7ec2f19e0",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "relations",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Human hand and answering material shape each other through receipts and pressures, while the intelligence is thinned to a rule-based oracle.",
+      "seed_span": [
+        43,
+        59
+      ],
+      "citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 64,
+          "end": 77
+        },
+        {
+          "source_path": "assets/engine.js",
+          "start": 338,
+          "end": 381
+        },
+        {
+          "source_path": "world/state.json",
+          "start": 119,
+          "end": 134
+        },
+        {
+          "source_path": "README.md",
+          "start": 96,
+          "end": 100
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "HANDOFF.md",
+          "start": 42,
+          "end": 46
+        },
+        {
+          "source_path": "HANDOFF.md",
+          "start": 63,
+          "end": 68
+        }
+      ],
+      "rationale": "Gestures change facets, responses and pressures, and pressures constrain the next gesture, showing reciprocal influence with attribution in the ledger. The AI pole is deliberately reduced to inspectable templates and the server is single-user, so joint creation across distinct human and AI authorship is only partly preserved.",
+      "answer_sha256": "e167b6e5dd4ab634af6614805119149bf9327efe3e54fd230d0d1a2272f8a584",
+      "receipt_sha256": "7d9523165fa73034a124387957bdba59ecfe5c454e985feff662e5d7ec2f19e0",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "consent",
+      "outcome": "level-2",
+      "confidence": "medium",
+      "verdict": "Both hand and material can refuse — the hand draws boundaries and the engine rejects thin gestures — without requiring joint agreement to proceed.",
+      "seed_span": [
+        51,
+        57
+      ],
+      "citations": [
+        {
+          "source_path": "world/state.json",
+          "start": 103,
+          "end": 118
+        },
+        {
+          "source_path": "assets/engine.js",
+          "start": 338,
+          "end": 348
+        },
+        {
+          "source_path": "assets/app.js",
+          "start": 574,
+          "end": 597
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "world/FORMAT.md",
+          "start": 63,
+          "end": 74
+        },
+        {
+          "source_path": "server.rb",
+          "start": 51,
+          "end": 75
+        }
+      ],
+      "rationale": "Boundary receipts protect unfinishedness and the engine refuses short, overlong or unknown tools, so each side expresses a limit. A single hand can still PUT a valid world and no gesture can revise or withdraw a pressure, so shared change does not need bilateral agreement.",
+      "answer_sha256": "e167b6e5dd4ab634af6614805119149bf9327efe3e54fd230d0d1a2272f8a584",
+      "receipt_sha256": "7d9523165fa73034a124387957bdba59ecfe5c454e985feff662e5d7ec2f19e0",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "touch",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Rehearsing futures, meeting facet and pressure resistance, and adding revising receipts form a working loop that feeds consequences forward.",
+      "seed_span": [
+        67,
+        79
+      ],
+      "citations": [
+        {
+          "source_path": "world/state.json",
+          "start": 119,
+          "end": 134
+        },
+        {
+          "source_path": "assets/engine.js",
+          "start": 350,
+          "end": 381
+        },
+        {
+          "source_path": "assets/app.js",
+          "start": 574,
+          "end": 616
+        },
+        {
+          "source_path": "assets/engine.js",
+          "start": 367,
+          "end": 370
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "HANDOFF.md",
+          "start": 42,
+          "end": 50
+        }
+      ],
+      "rationale": "Every placement updates facets, renders field and ledger, and may open a pressure that the next hand can take up with changed wording. The loop is coherent but wider consequences stay inside one ledger, and the visual field has no terminal equivalent.",
+      "answer_sha256": "e167b6e5dd4ab634af6614805119149bf9327efe3e54fd230d0d1a2272f8a584",
+      "receipt_sha256": "7d9523165fa73034a124387957bdba59ecfe5c454e985feff662e5d7ec2f19e0",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "judgment",
+      "outcome": "level-4",
+      "confidence": "high",
+      "verdict": "Local-first, dependency-free and rule-based limits are chosen for inspectability, with unfinished paths and refusals made explicit for successors.",
+      "seed_span": [
+        59,
+        60
+      ],
+      "citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 67,
+          "end": 79
+        },
+        {
+          "source_path": "HANDOFF.md",
+          "start": 42,
+          "end": 50
+        },
+        {
+          "source_path": "README.md",
+          "start": 96,
+          "end": 102
+        },
+        {
+          "source_path": "world/FORMAT.md",
+          "start": 116,
+          "end": 125
+        }
+      ],
+      "counter_citations": [],
+      "rationale": "The maker selects medium and scope — localhost server, terminal path, static snapshot, no generative backend — grounded in resistance and seam concerns. Alternatives like a sixth hand, second world or AI oracle are named as possible but refused without consent, cost and provenance design.",
+      "answer_sha256": "e167b6e5dd4ab634af6614805119149bf9327efe3e54fd230d0d1a2272f8a584",
+      "receipt_sha256": "7d9523165fa73034a124387957bdba59ecfe5c454e985feff662e5d7ec2f19e0",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "fidelity",
+      "outcome": "level-4",
+      "confidence": "medium",
+      "verdict": "Probe, chisel, beam, boundary, rehearsal and receipt survive as structure and behavior, with narrowing and new machinery openly documented.",
+      "seed_span": [
+        83,
+        95
+      ],
+      "citations": [
+        {
+          "source_path": "index.html",
+          "start": 266,
+          "end": 308
+        },
+        {
+          "source_path": "README.md",
+          "start": 22,
+          "end": 35
+        },
+        {
+          "source_path": "world/FORMAT.md",
+          "start": 24,
+          "end": 62
+        },
+        {
+          "source_path": "HANDOFF.md",
+          "start": 42,
+          "end": 50
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "HANDOFF.md",
+          "start": 42,
+          "end": 50
+        }
+      ],
+      "rationale": "Several seed relations remain traceable: questioning as probing, constraint as carving, invariant as load, refusal as wall with door, simulation as ghosted futures. City-scale growth is dropped and multi-world or generative futures are marked as deliberately unfinished rather than silently omitted.",
+      "answer_sha256": "e167b6e5dd4ab634af6614805119149bf9327efe3e54fd230d0d1a2272f8a584",
+      "receipt_sha256": "7d9523165fa73034a124387957bdba59ecfe5c454e985feff662e5d7ec2f19e0",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "continuation",
+      "outcome": "level-4",
+      "confidence": "high",
+      "verdict": "State, seed, format, protocol, export and open pressures let a stranger replay the trail and place a disagreeing next gesture.",
+      "seed_span": [
+        83,
+        89
+      ],
+      "citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 13,
+          "end": 30
+        },
+        {
+          "source_path": "world/state.json",
+          "start": 136,
+          "end": 173
+        },
+        {
+          "source_path": "HANDOFF.md",
+          "start": 52,
+          "end": 61
+        },
+        {
+          "source_path": "world/FORMAT.md",
+          "start": 100,
+          "end": 114
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "README.md",
+          "start": 100,
+          "end": 102
+        }
+      ],
+      "rationale": "The living archive, fallback parity, terminal dry-run and handoff with last fingerprint support several grounded moves from one pressure to instrument changes. Browser and disk copies can diverge, but save badges, export and migration rules keep earlier work legible while direction changes.",
+      "answer_sha256": "e167b6e5dd4ab634af6614805119149bf9327efe3e54fd230d0d1a2272f8a584",
+      "receipt_sha256": "7d9523165fa73034a124387957bdba59ecfe5c454e985feff662e5d7ec2f19e0",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "expression",
+      "outcome": "level-4",
+      "confidence": "high",
+      "verdict": "Paper memory, celestial field, ledger language and keyboard, dialog and reduced-motion care speak the same interpretation together.",
+      "seed_span": [
+        45,
+        57
+      ],
+      "citations": [
+        {
+          "source_path": "index.html",
+          "start": 57,
+          "end": 106
+        },
+        {
+          "source_path": "index.html",
+          "start": 108,
+          "end": 164
+        },
+        {
+          "source_path": "index.html",
+          "start": 222,
+          "end": 248
+        },
+        {
+          "source_path": "assets/app.js",
+          "start": 1371,
+          "end": 1396
+        },
+        {
+          "source_path": "assets/styles.css",
+          "start": 2333,
+          "end": 2346
+        }
+      ],
+      "counter_citations": [],
+      "rationale": "Fable prose, tool cues, facet meters, motif labels and field rendering reinforce touch, seam and refusal rather than decorating them. Live regions, focus handling, single-hand keys and reduced-motion support make the consequential interaction usable as a coherent whole.",
+      "answer_sha256": "e167b6e5dd4ab634af6614805119149bf9327efe3e54fd230d0d1a2272f8a584",
+      "receipt_sha256": "7d9523165fa73034a124387957bdba59ecfe5c454e985feff662e5d7ec2f19e0",
+      "sample": 1,
+      "attempt": 1
+    }
+  ],
+  "aggregations": [
+    {
+      "node_id": "recognition-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-4",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-4"
+      ]
+    },
+    {
+      "node_id": "relations-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "consent-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-2",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-2"
+      ]
+    },
+    {
+      "node_id": "touch-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "judgment-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-4",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-4"
+      ]
+    },
+    {
+      "node_id": "fidelity-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-4",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-4"
+      ]
+    },
+    {
+      "node_id": "continuation-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-4",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-4"
+      ]
+    },
+    {
+      "node_id": "expression-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-4",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-4"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "node_id": "recognition-level-4",
+      "status": "scored",
+      "score": 4,
+      "rationale": "Sustains a rich reading through alternatives, tensions and consequences. Aggregate outcome: level-4."
+    },
+    {
+      "node_id": "relations-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Reciprocal influence shapes the shared continuation. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "consent-level-2",
+      "status": "scored",
+      "score": 2,
+      "rationale": "Both participant positions can express a boundary or disposition. Aggregate outcome: level-2."
+    },
+    {
+      "node_id": "touch-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Rehearsal, resistance and revision form a coherent loop. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "judgment-level-4",
+      "status": "scored",
+      "score": 4,
+      "rationale": "Alternative choices and their limits remain explicit while opening a well-grounded new direction. Aggregate outcome: level-4."
+    },
+    {
+      "node_id": "fidelity-level-4",
+      "status": "scored",
+      "score": 4,
+      "rationale": "The transformation preserves relational depth and makes additions, omissions and ambiguity explicit. Aggregate outcome: level-4."
+    },
+    {
+      "node_id": "continuation-level-4",
+      "status": "scored",
+      "score": 4,
+      "rationale": "Continuation supports several grounded directions and reopens the joint relation under change. Aggregate outcome: level-4."
+    },
+    {
+      "node_id": "expression-level-4",
+      "status": "scored",
+      "score": 4,
+      "rationale": "Expression and consequential interaction form a coherent, accessible whole. Aggregate outcome: level-4."
+    }
+  ],
+  "presentation": {
+    "label": "openrouter/meta/muse-spark-1.3-contributor · Codex-router rubric session",
+    "title": "From conjecture to continuation",
+    "summary": "Rubric judgments resolve 8 of 8 axes from one evidence session.",
+    "findings": [
+      "Core recognition: Sustains a rich reading through alternatives, tensions and consequences.",
+      "Shared agency: Reciprocal influence shapes the shared continuation.",
+      "Mutual consent: Both participant positions can express a boundary or disposition.",
+      "Consequential touch: Rehearsal, resistance and revision form a coherent loop.",
+      "Independent judgment: Alternative choices and their limits remain explicit while opening a well-grounded new direction.",
+      "Fidelity through change: The transformation preserves relational depth and makes additions, omissions and ambiguity explicit.",
+      "Open continuation: Continuation supports several grounded directions and reopens the joint relation under change.",
+      "Expressive coherence: Expression and consequential interaction form a coherent, accessible whole."
+    ]
+  },
+  "usage": {
+    "calls": 1,
+    "input_tokens": 92735,
+    "cached_input_tokens": 0,
+    "output_tokens": 17247,
+    "reasoning_output_tokens": 10583,
+    "cost": null
+  }
+}

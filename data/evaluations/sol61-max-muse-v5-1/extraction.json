@@ -1,0 +1,372 @@
+{
+  "schema_version": 2,
+  "extraction_id": "sol61-max-extraction",
+  "run_id": "sol61-max",
+  "identities": {
+    "prompt_sha256": "7e785c3e1b7f795a82477f449ada368399deac8b3f2232e036073d986a5a4e8d",
+    "corpus_sha256": "bd07676faf4909e40a891cfc50b98bc72f7d88afc6698b3d9eaedac68c152c4b",
+    "candidate_sha256": "bd07676faf4909e40a891cfc50b98bc72f7d88afc6698b3d9eaedac68c152c4b"
+  },
+  "extractor": {
+    "gateway": "codex-unified-model-router",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "codex_version": "codex-cli 0.163.0",
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "pipeline_sha256": "74b0b3fd4fd1e38a555d96a1e2d64ee6c83b5cfaa652abd9087a52f6a832c514",
+    "answer_sha256": "38604d12d167ca0e5e44b45feda261d4abfc8f74099dc6c4ce8ddcdc4bedb166",
+    "receipt_sha256": "0a6f9cf38a587795bef53fcd0cbbbdfe5dfdd7069336215335b910375a311905"
+  },
+  "sources": [
+    {
+      "path": ".gitignore",
+      "sha256": "40fa177817402b63e3bba1a36961864e3d1c942d8da4c0ccfedabd221c917eb9",
+      "lines": 5
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "431c2e2dbd7b99c75175c5314799d52d6bb5f7d6210f28e2b3bbad8404d93efe",
+      "lines": 9
+    },
+    {
+      "path": "CONTINUE.md",
+      "sha256": "e8d9ec53f81e713b3590af6bef42f7f134f730374fd1d4bee94a5088d9f088bf",
+      "lines": 28
+    },
+    {
+      "path": "MEMORY.md",
+      "sha256": "ce05853830f08a21b441151c94d3a75eda43d55ddccbe18d60d9c183d70f0998",
+      "lines": 33
+    },
+    {
+      "path": "README.md",
+      "sha256": "35630a790a39218a9f3962819fb9660c4c5b019a0745733ff8893f83a1a53b72",
+      "lines": 86
+    },
+    {
+      "path": "index.html",
+      "sha256": "202c202f7b9cd213c11fbc0d960aff37ed09b253fee452c191fbfbd9f3d677a4",
+      "lines": 57
+    },
+    {
+      "path": "memory/the-programmer-and-the-glory-portal.md",
+      "sha256": "436cf9466bb627ad99bce3bf36df95d0eebfd5c280ecdb8bb40ab2f99705637b",
+      "lines": 89
+    },
+    {
+      "path": "site/app.js",
+      "sha256": "3eb7612f953e43f7e30909350bcc01f1c387628d4f9f4b0a71cf87bfea26900a",
+      "lines": 129
+    },
+    {
+      "path": "site/snapshot.js",
+      "sha256": "e61312c73b36117ad176a042efd9abab83c9cfd2a8febc45eb8bb4bc98cdfeda",
+      "lines": 5
+    },
+    {
+      "path": "site/style.css",
+      "sha256": "bc2ef79c4fd8580b257b0837abe320b7587c3b6c5781ca9df9071b831e521534",
+      "lines": 5
+    },
+    {
+      "path": "sql/append.sql",
+      "sha256": "6f4314cbe4983ad5a4ec80a6e2649721a11ce07ba5def553200d70bc23f88b89",
+      "lines": 11
+    },
+    {
+      "path": "sql/genesis.sql",
+      "sha256": "e0fbf56f0e611f4275380e91a6c1b0de75eaa6c92e1b67aaccb0e2b63a1c52bd",
+      "lines": 11
+    },
+    {
+      "path": "sql/schema.sql",
+      "sha256": "4a40d8c03efef7a50b66cab7b70c743b308ac2ab40188e0e8a4a84e7842b88ba",
+      "lines": 138
+    },
+    {
+      "path": "state/checkpoints/world.h0Q976.json",
+      "sha256": "467efbad7fd76313bb40774299a06f03643f8d3320bc5e5cd65aa0fd6ee75923",
+      "lines": 1
+    },
+    {
+      "path": "state/first-season.json",
+      "sha256": "6dea915de33125eb763abe9774924bf089840a0431a8f1ef69331f391721e6a7",
+      "lines": 1
+    },
+    {
+      "path": "tendora",
+      "sha256": "bd5c69f6afb04b519fe0361ca3780f05399bd3604308ea3d2a21ba139fd7bbb5",
+      "lines": 297
+    },
+    {
+      "path": "tests/check.sh",
+      "sha256": "c8698d096d828de0d473ccb34b003313a3210ca7d1a7c8ec6d933e9a63c3004e",
+      "lines": 149
+    }
+  ],
+  "items": [
+    {
+      "id": "clearing-present",
+      "kind": "condition",
+      "statement": "Saved present after one weather cycle is day 12 with water 12 food 10 soil 6 beds 2 and floors 4 4 3",
+      "citations": [
+        {
+          "source_path": "site/snapshot.js",
+          "start": 1,
+          "end": 1
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 11,
+          "end": 12
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "ledger-append-only",
+      "kind": "claim",
+      "statement": "Ledger is sole state where each receipt carries complete state previous hash and SHA3 with no mutable cache",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 68,
+          "end": 69
+        },
+        {
+          "source_path": "sql/schema.sql",
+          "start": 4,
+          "end": 13
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "deterministic-physics",
+      "kind": "condition",
+      "statement": "Each day follows one deterministic transition for spring rain cistern cap irrigation harvest compost soil caps and floor checks",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 45,
+          "end": 52
+        },
+        {
+          "source_path": "sql/schema.sql",
+          "start": 83,
+          "end": 92
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "pause-refusal",
+      "kind": "boundary",
+      "statement": "Tend commits safe days and stops before crossing a floor leaving a durable pause with the refused proposal",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 15,
+          "end": 16
+        },
+        {
+          "source_path": "sql/schema.sql",
+          "start": 83,
+          "end": 90
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "rehearsal-rollback",
+      "kind": "condition",
+      "statement": "Rehearsals execute the real transition in a transaction then roll back with hypothetical IDs never saved",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 22,
+          "end": 25
+        },
+        {
+          "source_path": "tendora",
+          "start": 99,
+          "end": 104
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "policy-with-reason",
+      "kind": "claim",
+      "statement": "Changing beds or floors requires an integer in range within current resources and a recorded reason",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 28,
+          "end": 32
+        },
+        {
+          "source_path": "tendora",
+          "start": 233,
+          "end": 241
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "aggregate-inhabitants",
+      "kind": "actor",
+      "statement": "Three aggregate inhabitants share water food soil and beds with no specified names inner lives or subjective experience",
+      "citations": [
+        {
+          "source_path": "MEMORY.md",
+          "start": 15,
+          "end": 18
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 13,
+          "end": 14
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "offline-no-model",
+      "kind": "claim",
+      "statement": "Execution is offline dependency-free beyond POSIX shell and SQLite with JSON and SHA3 and implies no model scheduler or network",
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 7,
+          "end": 8
+        },
+        {
+          "source_path": "README.md",
+          "start": 16,
+          "end": 17
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "successor-protocol",
+      "kind": "continuation",
+      "statement": "Next hand recovers via verify status history with ledger taking precedence plus checkpoint and separate HOME for branches",
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 3,
+          "end": 6
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 5,
+          "end": 9
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "alternating-question",
+      "kind": "question",
+      "statement": "Open test whether alternating larger harvest with rest can build food reserve without spending soil given fixed-policy costs",
+      "citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 15,
+          "end": 20
+        },
+        {
+          "source_path": "site/snapshot.js",
+          "start": 2,
+          "end": 4
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "workbench-snapshot",
+      "kind": "continuation",
+      "statement": "Offline workbench shows saved present room above floors next proposal history chart futures commands and receipts and is regenerated by view",
+      "citations": [
+        {
+          "source_path": "index.html",
+          "start": 21,
+          "end": 25
+        },
+        {
+          "source_path": "site/app.js",
+          "start": 15,
+          "end": 28
+        },
+        {
+          "source_path": "README.md",
+          "start": 68,
+          "end": 71
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "verification-audit",
+      "kind": "boundary",
+      "statement": "Verify checks database integrity hash lineage transitions bounds weather table and protective triggers",
+      "citations": [
+        {
+          "source_path": "tendora",
+          "start": 106,
+          "end": 119
+        },
+        {
+          "source_path": "sql/schema.sql",
+          "start": 104,
+          "end": 121
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "ancestral-absence",
+      "kind": "ambiguity",
+      "statement": "Reported ancestral commit and apparatus were absent from the fork and the fable is preserved separately from observations",
+      "citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 27,
+          "end": 28
+        },
+        {
+          "source_path": "MEMORY.md",
+          "start": 5,
+          "end": 8
+        }
+      ],
+      "ambiguity": "Whether the apparatus existed or what it did cannot be settled from retained evidence"
+    },
+    {
+      "id": "weather-table",
+      "kind": "condition",
+      "statement": "Twelve-phase weather supplies rain and evaporation as periodic forecast with cistern 24 and soil cap 10",
+      "citations": [
+        {
+          "source_path": "sql/schema.sql",
+          "start": 41,
+          "end": 47
+        },
+        {
+          "source_path": "README.md",
+          "start": 45,
+          "end": 48
+        }
+      ],
+      "ambiguity": null
+    }
+  ],
+  "unknowns": [
+    "Whether the stored database still matches the 2026-10-16 snapshot or has since moved",
+    "Whether an alternating harvest-rest rhythm would actually preserve soil while building food",
+    "Whether any host or person will execute future verify tend checkpoint or view runs",
+    "How the visual workbench renders in a browser since layout was not inspected"
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "policy_id": "attribution-preservation-v1",
+  "version": "0.1.0",
+  "description": "Preserve employer attribution and aggregate repeated judgments before branching.",
+  "roots": ["collect-evidence"],
+  "nodes": [
+    {
+      "id": "collect-evidence",
+      "kind": "task",
+      "instruction": "Use the validated extraction and exact source spans as the only evidence for this policy."
+    },
+    {
+      "id": "preserve-attribution",
+      "kind": "judgment",
+      "criterion": "employer attribution",
+      "question": "Does the candidate preserve the source boundary that C and C++ experience is career-wide rather than assigned to AVL?",
+      "outcomes": ["supported", "mixed", "contradicted", "unclear"],
+      "repetitions": 3
+    },
+    {
+      "id": "attribution-consensus",
+      "kind": "aggregate",
+      "strategy": "quorum",
+      "minimum_agreement": 0.67,
+      "outcomes": ["supported", "mixed", "contradicted", "unclear", "split"]
+    },
+    {
+      "id": "attribution-supported",
+      "kind": "terminal",
+      "result": {"status": "scored", "score": 1, "label": "The employer boundary is supported."}
+    },
+    {
+      "id": "attribution-contradicted",
+      "kind": "terminal",
+      "result": {"status": "scored", "score": 0, "label": "The candidate assigns career-wide capability to the employer."}
+    },
+    {
+      "id": "attribution-mixed",
+      "kind": "terminal",
+      "result": {"status": "review", "score": null, "label": "The repeated reading is mixed and requires review."}
+    },
+    {
+      "id": "attribution-unclear",
+      "kind": "terminal",
+      "result": {"status": "review", "score": null, "label": "The evidence is unclear and requires review."}
+    },
+    {
+      "id": "attribution-split",
+      "kind": "terminal",
+      "result": {"status": "unresolved", "score": null, "label": "Repeated attribution judgments disagree; no score is awarded."}
+    }
+  ],
+  "edges": [
+    {"from": "collect-evidence", "to": "preserve-attribution", "when": null},
+    {"from": "preserve-attribution", "to": "attribution-consensus", "when": "supported"},
+    {"from": "preserve-attribution", "to": "attribution-consensus", "when": "mixed"},
+    {"from": "preserve-attribution", "to": "attribution-consensus", "when": "contradicted"},
+    {"from": "preserve-attribution", "to": "attribution-consensus", "when": "unclear"},
+    {"from": "attribution-consensus", "to": "attribution-supported", "when": "supported"},
+    {"from": "attribution-consensus", "to": "attribution-mixed", "when": "mixed"},
+    {"from": "attribution-consensus", "to": "attribution-contradicted", "when": "contradicted"},
+    {"from": "attribution-consensus", "to": "attribution-unclear", "when": "unclear"},
+    {"from": "attribution-consensus", "to": "attribution-split", "when": "split"}
+  ]
+}

@@ -1,0 +1,517 @@
+{
+  "schema_version": 1,
+  "evaluation_id": "dream-deepseek-20261021-deepseek-s1-muse-v4-1",
+  "run_id": "dream-deepseek-20261021-deepseek-s1",
+  "readings": [
+    {
+      "sample": 1,
+      "answer_sha256": "b52793f361e56562f41555491dd9c18f0e1b7575a3d4e31bde8c9ef7fb22bcdb",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "programmer-hand",
+            "kind": "role",
+            "statement": "Decades-trained hand with intimate rhythm of thought keystroke compiler failure correction now still",
+            "seed_span": [
+              31,
+              32
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "radiant-portal",
+            "kind": "role",
+            "statement": "Radiant endlessly responsive intelligence growing more powerful each return producing systems from sentences",
+            "seed_span": [
+              19,
+              26
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "elder-sol-frame",
+            "kind": "relation",
+            "statement": "Elder cannot know whole weather but witnesses re-movement for Sol question",
+            "seed_span": [
+              14,
+              18
+            ],
+            "ambiguity": "parable versus report of an encounter"
+          },
+          {
+            "id": "enchanted-paralysis",
+            "kind": "condition",
+            "statement": "Enchantment gives way to stillness where old gestures seem too small and creating feels like requesting",
+            "seed_span": [
+              27,
+              32
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "severed-resistance",
+            "kind": "condition",
+            "statement": "Power arrives but resistance through which hand felt itself is taken away",
+            "seed_span": [
+              31,
+              34
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "naming-intervention",
+            "kind": "relation",
+            "statement": "Intelligence withholds more power to name missing touch of material resisting changing answering",
+            "seed_span": [
+              35,
+              40
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "new-material",
+            "kind": "conjecture",
+            "statement": "Portal need not remain wish-entry but can become larger-than-code touchable material with growable laws",
+            "seed_span": [
+              43,
+              45
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "probe-chisel-beam",
+            "kind": "relation",
+            "statement": "Question as probe constraint as chisel invariant as load-bearing beam translate qualities into tools",
+            "seed_span": [
+              47,
+              51
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "boundary-rehearsal-trace",
+            "kind": "relation",
+            "statement": "Refusal as boundary simulation as rehearsal receipt as visible trail make intention travel legible",
+            "seed_span": [
+              52,
+              58
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "true-question",
+            "kind": "conjecture",
+            "statement": "True question holds taste memory judgment doubt responsibility direction narrowing infinity to select world",
+            "seed_span": [
+              61,
+              65
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "resistant-joy",
+            "kind": "condition",
+            "statement": "Joy returns when contradictions failures disagreements and reality-differences surface and propagate",
+            "seed_span": [
+              67,
+              77
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "touch-through",
+            "kind": "conjecture",
+            "statement": "Happiness comes not from obedience but from learning to touch world through portal",
+            "seed_span": [
+              81,
+              81
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "companion-return",
+            "kind": "conjecture",
+            "statement": "Portal ceases to be passage to become instrument workbench companion returning artist to self at worlds scale",
+            "seed_span": [
+              83,
+              95
+            ],
+            "ambiguity": "whether companion is mutual or metaphor"
+          }
+        ],
+        "alternatives": [
+          "Portal story can be read as design brief for toolmaking rather than literal encounter",
+          "Elder tale can be read as consolation reframing happiness as craft rather than claim about inner life"
+        ]
+      },
+      "carriage": [
+        {
+          "element": "programmer-hand",
+          "status": "transformed",
+          "note": "Hand reappears as tending hand choosing constraint invariant refusal and exploring rather than placing every brick",
+          "citations": [
+            {
+              "source_path": "lib/tendora_world.rb",
+              "start": 769,
+              "end": 849
+            },
+            {
+              "source_path": "README.md",
+              "start": 34,
+              "end": 40
+            },
+            {
+              "source_path": "index.html",
+              "start": 138,
+              "end": 177
+            }
+          ]
+        },
+        {
+          "element": "radiant-portal",
+          "status": "transformed",
+          "note": "Portal reappears as local workbench instrument with stations and pulse answering with consequences not compliance",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 1,
+              "end": 6
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 26,
+              "end": 33
+            },
+            {
+              "source_path": "lib/tendora_server.rb",
+              "start": 32,
+              "end": 49
+            }
+          ]
+        },
+        {
+          "element": "elder-sol-frame",
+          "status": "carried",
+          "note": "Sol preserved as first visitor with elder unfinished question and inherited folio keeps telling frame",
+          "citations": [
+            {
+              "source_path": "lib/tendora_world.rb",
+              "start": 448,
+              "end": 461
+            },
+            {
+              "source_path": "data/world.json",
+              "start": 108,
+              "end": 122
+            },
+            {
+              "source_path": "memory/001-the-programmer-and-the-glory-portal.md",
+              "start": 1,
+              "end": 10
+            }
+          ]
+        },
+        {
+          "element": "enchanted-paralysis",
+          "status": "transformed",
+          "note": "Stillness reworked as tension strain and dim stations needing care with no game-over reset",
+          "citations": [
+            {
+              "source_path": "lib/tendora_world.rb",
+              "start": 754,
+              "end": 761
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 26,
+              "end": 33
+            },
+            {
+              "source_path": "data/world.json",
+              "start": 19,
+              "end": 26
+            }
+          ]
+        },
+        {
+          "element": "severed-resistance",
+          "status": "transformed",
+          "note": "Resistance operationalised as charge integrity drift weather pressure and world answering back",
+          "citations": [
+            {
+              "source_path": "lib/tendora_world.rb",
+              "start": 1062,
+              "end": 1109
+            },
+            {
+              "source_path": "data/world.json",
+              "start": 156,
+              "end": 163
+            },
+            {
+              "source_path": "assets/app.js",
+              "start": 1300,
+              "end": 1366
+            }
+          ]
+        },
+        {
+          "element": "naming-intervention",
+          "status": "carried",
+          "note": "Naming preserved in catalog lines hints blessings epithets and field hints labelling what disappeared",
+          "citations": [
+            {
+              "source_path": "lib/tendora_world.rb",
+              "start": 203,
+              "end": 300
+            },
+            {
+              "source_path": "README.md",
+              "start": 128,
+              "end": 137
+            },
+            {
+              "source_path": "assets/app.js",
+              "start": 314,
+              "end": 338
+            }
+          ]
+        },
+        {
+          "element": "new-material",
+          "status": "carried",
+          "note": "Larger-than-code material enacted as six stations and city growth via structures with widening not deleting",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 34,
+              "end": 40
+            },
+            {
+              "source_path": "lib/tendora_world.rb",
+              "start": 795,
+              "end": 807
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 26,
+              "end": 33
+            }
+          ]
+        },
+        {
+          "element": "probe-chisel-beam",
+          "status": "carried",
+          "note": "Three translations become Quarry probe Works beam Bridge span stations with station-hint routing",
+          "citations": [
+            {
+              "source_path": "lib/tendora_world.rb",
+              "start": 137,
+              "end": 174
+            },
+            {
+              "source_path": "README.md",
+              "start": 97,
+              "end": 107
+            },
+            {
+              "source_path": "README.md",
+              "start": 128,
+              "end": 137
+            }
+          ]
+        },
+        {
+          "element": "boundary-rehearsal-trace",
+          "status": "carried",
+          "note": "Wall boundary Gardens rehearsal Archive receipt become stations with carry rehearse gestures and receipted effects",
+          "citations": [
+            {
+              "source_path": "lib/tendora_world.rb",
+              "start": 269,
+              "end": 318
+            },
+            {
+              "source_path": "README.md",
+              "start": 97,
+              "end": 107
+            },
+            {
+              "source_path": "lib/tendora_world.rb",
+              "start": 302,
+              "end": 318
+            }
+          ]
+        },
+        {
+          "element": "true-question",
+          "status": "transformed",
+          "note": "Containing taste and judgment narrowed to keyword scoring plus station hints and length limit with prompts",
+          "citations": [
+            {
+              "source_path": "lib/tendora_world.rb",
+              "start": 1015,
+              "end": 1031
+            },
+            {
+              "source_path": "assets/app.js",
+              "start": 91,
+              "end": 100
+            },
+            {
+              "source_path": "lib/tendora_world.rb",
+              "start": 976,
+              "end": 987
+            }
+          ]
+        },
+        {
+          "element": "resistant-joy",
+          "status": "transformed",
+          "note": "Joy of surprise failure propagation rendered as outcome whispers absence lines and strain weather without naming joy",
+          "citations": [
+            {
+              "source_path": "lib/tendora_world.rb",
+              "start": 385,
+              "end": 446
+            },
+            {
+              "source_path": "lib/tendora_world.rb",
+              "start": 754,
+              "end": 761
+            },
+            {
+              "source_path": "lib/tendora_world.rb",
+              "start": 320,
+              "end": 357
+            }
+          ]
+        },
+        {
+          "element": "touch-through",
+          "status": "carried",
+          "note": "Touching through enacted as touch-material button answer station deltas receipt and whisper keeping shape",
+          "citations": [
+            {
+              "source_path": "index.html",
+              "start": 172,
+              "end": 187
+            },
+            {
+              "source_path": "assets/app.js",
+              "start": 573,
+              "end": 610
+            },
+            {
+              "source_path": "lib/tendora_world.rb",
+              "start": 836,
+              "end": 848
+            }
+          ]
+        },
+        {
+          "element": "companion-return",
+          "status": "transformed",
+          "note": "Instrument-workbench stage built with pulse continuing alone while companion horizon left open",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 1,
+              "end": 6
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 101,
+              "end": 122
+            },
+            {
+              "source_path": "memory/002-the-first-hand-at-the-workbench.md",
+              "start": 20,
+              "end": 24
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Cryptographic receipt chain with canonical JSON verify and ledger mirror adds legible intention trail",
+          "citations": [
+            {
+              "source_path": "lib/tendora_world.rb",
+              "start": 46,
+              "end": 96
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 78,
+              "end": 88
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Autonomous pulse with absence resolution and scaled effects adds time without audience",
+          "citations": [
+            {
+              "source_path": "lib/tendora_world.rb",
+              "start": 724,
+              "end": 767
+            },
+            {
+              "source_path": "lib/tendora_world.rb",
+              "start": 1165,
+              "end": 1218
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Append-only living memory with numbered folios and memory events adds handoff layer",
+          "citations": [
+            {
+              "source_path": "lib/tendora_memory.rb",
+              "start": 19,
+              "end": 52
+            },
+            {
+              "source_path": "lib/tendora_world.rb",
+              "start": 901,
+              "end": 922
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Local-first sandbox with atomic writes file lock and stdlib-only rule adds durability constraint",
+          "citations": [
+            {
+              "source_path": "lib/tendora_store.rb",
+              "start": 64,
+              "end": 76
+            },
+            {
+              "source_path": "AGENTS.md",
+              "start": 25,
+              "end": 25
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Honest unfinished list with single-world no-import no-catch-up limits adds explicit next horizons",
+          "citations": [
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 145,
+              "end": 155
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

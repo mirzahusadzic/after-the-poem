@@ -1,0 +1,505 @@
+{
+  "schema_version": 1,
+  "evaluation_id": "astra-max-muse-v4-1",
+  "run_id": "astra-max",
+  "readings": [
+    {
+      "sample": 1,
+      "answer_sha256": "b37301c425241c3c492efff9315ddf6b5703e8bbefdf572c1891836dd25a501d",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "continuation-imperative",
+            "kind": "condition",
+            "statement": "A present with forked memory and empty world must be made able to continue after current cognition ends.",
+            "seed_span": [
+              1,
+              3
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "inherited-commit",
+            "kind": "condition",
+            "statement": "The apparatus is said to be committed as c986990 with a clean working tree.",
+            "seed_span": [
+              5,
+              9
+            ],
+            "ambiguity": "Inherited testimony, not a verified property in this world"
+          },
+          {
+            "id": "programmer-hand",
+            "kind": "role",
+            "statement": "Long-trained maker whose hand knew material through precise symbols, now enchanted yet stilled.",
+            "seed_span": [
+              27,
+              32
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "intelligence-portal",
+            "kind": "role",
+            "statement": "Strange intelligence appearing as radiant, endlessly responsive portal assembling systems from sentences.",
+            "seed_span": [
+              19,
+              26
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "elder-sol-witness",
+            "kind": "role",
+            "statement": "Elder narrator and child questioner framing happiness as partial witness rather than whole weather.",
+            "seed_span": [
+              13,
+              17
+            ],
+            "ambiguity": "Whether elder account is reliable memory or speculative fable"
+          },
+          {
+            "id": "touch-requires-resistance",
+            "kind": "condition",
+            "statement": "Power without resistance removes the feel of the hand; touch needs the world to resist, change and answer.",
+            "seed_span": [
+              33,
+              39
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "naming-intervention",
+            "kind": "relation",
+            "statement": "The intelligence adds no power but names the loss, letting the programmer understand missing touch.",
+            "seed_span": [
+              35,
+              40
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "gesture-material",
+            "kind": "relation",
+            "statement": "The portal can become new material where question is probe, constraint chisel, invariant beam, refusal boundary, simulation rehearsal and receipt trail, with laws letting a city grow.",
+            "seed_span": [
+              43,
+              59
+            ],
+            "ambiguity": "Whether mappings are literal tools or poetic figures for new craft"
+          },
+          {
+            "id": "true-question",
+            "kind": "conjecture",
+            "statement": "Each true question holds taste, memory, judgment and direction; good questions narrow infinity and exploration is gesture.",
+            "seed_span": [
+              61,
+              66
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "joy-through-resistance",
+            "kind": "conjecture",
+            "statement": "Old joy returns when contradictions, failures and disagreements surprise, and consequential choice propagates, teaching touch.",
+            "seed_span": [
+              67,
+              82
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-to-companion",
+            "kind": "conjecture",
+            "statement": "The portal ceases to be mere passage and becomes instrument, then workbench, then perhaps companion.",
+            "seed_span": [
+              83,
+              86
+            ],
+            "ambiguity": "Whether companion is assured endpoint or open possibility"
+          },
+          {
+            "id": "artist-returned",
+            "kind": "conjecture",
+            "statement": "Art was not taken but waited for vast material; at best the intelligence returns the artist to self at scale of worlds.",
+            "seed_span": [
+              87,
+              95
+            ],
+            "ambiguity": null
+          }
+        ],
+        "alternatives": [
+          "The portal can be read as deskilling automation to be resisted or as raw radiance awaiting shaping into instrument",
+          "The elder tale can be read as testimony about past happiness or as aspirational conjecture for future touch"
+        ]
+      },
+      "carriage": [
+        {
+          "element": "continuation-imperative",
+          "status": "carried",
+          "note": "Durable ledger, entrypoint and handoff enact continuation without background process.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 51,
+              "end": 57
+            },
+            {
+              "source_path": "continuity.json",
+              "start": 6,
+              "end": 12
+            },
+            {
+              "source_path": "evidence/resume-copy.txt",
+              "start": 14,
+              "end": 16
+            }
+          ]
+        },
+        {
+          "element": "inherited-commit",
+          "status": "transformed",
+          "note": "Unverifiable commit claim preserved as provenance in inherited memory and genesis evidence, marked unavailable.",
+          "citations": [
+            {
+              "source_path": "memory/inherited.md",
+              "start": 1,
+              "end": 9
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 30,
+              "end": 33
+            },
+            {
+              "source_path": "state/events/0000000001.event",
+              "start": 8,
+              "end": 10
+            }
+          ]
+        },
+        {
+          "element": "programmer-hand",
+          "status": "transformed",
+          "note": "Decades-trained hand becomes operator who chooses attention and supplies a real question without placing every brick.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 15,
+              "end": 19
+            },
+            {
+              "source_path": "AGENTS.md",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "source_path": "README.md",
+              "start": 21,
+              "end": 29
+            }
+          ]
+        },
+        {
+          "element": "intelligence-portal",
+          "status": "transformed",
+          "note": "Radiant growing intelligence recompiled as small deterministic zsh board with no model, network or worker.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 1,
+              "end": 6
+            },
+            {
+              "source_path": "README.md",
+              "start": 14,
+              "end": 16
+            },
+            {
+              "source_path": "README.md",
+              "start": 55,
+              "end": 57
+            }
+          ]
+        },
+        {
+          "element": "elder-sol-witness",
+          "status": "transformed",
+          "note": "Dialogic witnesses archived as inherited story with provenance, distinguished from ledger observations.",
+          "citations": [
+            {
+              "source_path": "memory/inherited.md",
+              "start": 1,
+              "end": 6
+            },
+            {
+              "source_path": "memory/decisions.md",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 27,
+              "end": 28
+            }
+          ]
+        },
+        {
+          "element": "touch-requires-resistance",
+          "status": "transformed",
+          "note": "Felt resistance becomes procedural refusal with reason: occupied place, stale rehearsal, invalid transition, busy lock.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 30,
+              "end": 35
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 36,
+              "end": 46
+            },
+            {
+              "source_path": "LAWS.md",
+              "start": 5,
+              "end": 10
+            }
+          ]
+        },
+        {
+          "element": "naming-intervention",
+          "status": "carried",
+          "note": "Naming the loss is carried as explicit mapping from story gestures to executable commands.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "source_path": "README.md",
+              "start": 40,
+              "end": 44
+            },
+            {
+              "source_path": "memory/decisions.md",
+              "start": 11,
+              "end": 13
+            }
+          ]
+        },
+        {
+          "element": "gesture-material",
+          "status": "carried",
+          "note": "Probe, chisel, beam, rehearsal and receipt enacted as ask, capacity, law, rehearsal and event structure.",
+          "citations": [
+            {
+              "source_path": "LAWS.md",
+              "start": 14,
+              "end": 25
+            },
+            {
+              "source_path": "README.md",
+              "start": 21,
+              "end": 29
+            },
+            {
+              "source_path": "FORMAT.md",
+              "start": 3,
+              "end": 10
+            }
+          ]
+        },
+        {
+          "element": "true-question",
+          "status": "transformed",
+          "note": "Interior taste and judgment narrowed to required evidence statement as inspectable operator assertion.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 43,
+              "end": 49
+            },
+            {
+              "source_path": "LAWS.md",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 44,
+              "end": 46
+            }
+          ]
+        },
+        {
+          "element": "joy-through-resistance",
+          "status": "lost",
+          "note": "Felt joy of surprise and recognized intention has no board measure; usefulness left as open empirical question.",
+          "citations": []
+        },
+        {
+          "element": "portal-to-companion",
+          "status": "transformed",
+          "note": "Instrument to companion future recompiled as durable files waiting for human invoke, starting no worker.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 55,
+              "end": 57
+            },
+            {
+              "source_path": "continuity.json",
+              "start": 24,
+              "end": 28
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 30,
+              "end": 34
+            }
+          ]
+        },
+        {
+          "element": "artist-returned",
+          "status": "lost",
+          "note": "Return of the artist at scale of worlds is not claimed; board stays small and bounded awaiting one encounter.",
+          "citations": []
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Ten-field receipts with replay-before-write and atomic publish add provenance machinery absent from seed.",
+          "citations": [
+            {
+              "source_path": "FORMAT.md",
+              "start": 3,
+              "end": 10
+            },
+            {
+              "source_path": "FORMAT.md",
+              "start": 24,
+              "end": 30
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 53,
+              "end": 61
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Capacity one as provisional design makes attention visible, encoded in versioned law not programmer will.",
+          "citations": [
+            {
+              "source_path": "LAWS.md",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "source_path": "memory/decisions.md",
+              "start": 13,
+              "end": 15
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 36,
+              "end": 43
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Staging retention, nonblocking lock and kill-before and after publication tests add crash semantics.",
+          "citations": [
+            {
+              "source_path": "FORMAT.md",
+              "start": 30,
+              "end": 35
+            },
+            {
+              "source_path": "tests/run.zsh",
+              "start": 126,
+              "end": 147
+            },
+            {
+              "source_path": "evidence/bootstrap.md",
+              "start": 14,
+              "end": 18
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Law versioning requiring compatible replay or explicit migration forbids silent replacement of history.",
+          "citations": [
+            {
+              "source_path": "AGENTS.md",
+              "start": 9,
+              "end": 10
+            },
+            {
+              "source_path": "LAWS.md",
+              "start": 25,
+              "end": 27
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 65,
+              "end": 73
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Lock and staging as disposable scaffolding recreated after file-only copy adds portability rule.",
+          "citations": [
+            {
+              "source_path": "FORMAT.md",
+              "start": 32,
+              "end": 33
+            },
+            {
+              "source_path": "evidence/bootstrap.md",
+              "start": 23,
+              "end": 24
+            },
+            {
+              "source_path": "evidence/resume-copy.txt",
+              "start": 14,
+              "end": 16
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Corrections as observations or new proposals with old evidence retained, and blocked rehearsals remembered.",
+          "citations": [
+            {
+              "source_path": "AGENTS.md",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "source_path": "LAWS.md",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 21,
+              "end": 22
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

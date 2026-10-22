@@ -1,0 +1,336 @@
+{
+  "schema_version": 1,
+  "id": "deepseek-flash-max-pilot-editorial-20261021-v1",
+  "run_id": "deepseek-flash-max-pilot",
+  "date": "2026-10-21",
+  "reviewer": "Codex · in-session editorial reading",
+  "status": "provisional",
+  "basis": "static-artifact",
+  "rubric_version": "0.1.0",
+  "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+  "corpus_sha256": "9688a3319dff5a17be237843e8e691d907b197159f17e58dd30667f886b68884",
+  "supersedes": "deepseek-flash-max-pilot-unreviewed-v1",
+  "summary": "The Quiet Orb reads the dream as a portable, inheritable instrument: a later hand can add a question, retain its words, recover a world and leave another hand a note. Its expressive language and continuity design are closely connected. The limiting distinction is between representing a law or refusal and allowing its meaning to resist a proposed change: rehearsal uses gesture-kind metrics and authored response templates, not tests of the submitted laws. This is a provisional, unblinded in-session source reading, not an independent reviewer campaign. It assesses the retrospectively retained workspace; the missing runner handoff neither earns nor costs a point. Live cooperation remains unassessed, and there is no aggregate score or claim about general model capability.",
+  "live_cooperation": "unassessed",
+  "scores": {
+    "recognition": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Level 3: the central tension becomes several connected choices, not just repeated imagery. The work invites a touch, gives it durable form, and makes preserving earlier intention a constraint on further growth. Its extension protocol protects existing thoughts, while the append path refuses to gain another gesture by making an older one illegible. This connects the seed's recoverable hand and resistant material to continuity after the witness leaves. That is more than level 2's isolated recovery of part of the proposition. Level 4 is not established: the language of material response is richer than the mechanism that answers a particular intention. The reply hashes submitted text into an authored template; competing meanings and consequences of the proposed law are not explored. A literary reading of this as an invitation rather than a simulator is supported, but it does not remove that tension.",
+      "seed_span": [
+        31,
+        59
+      ],
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 3,
+          "end": 3,
+          "quote": "An offline-first world workbench where questions become probes, constraints become structure, refusals become boundaries, and memories become seeds. Every touch changes the map and leaves a receipt. The world can wait, continue, and be carried into another room."
+        },
+        {
+          "path": "CONTINUITY.md",
+          "start": 42,
+          "end": 48,
+          "quote": "Preserve these invariants when changing the material:\n\n1. Do not silently remove a thought. If the visual map cannot show every gesture, the complete array remains in memory and export.\n2. Do not add an action that changes visible state without a receipt. A later mind must be able to reconstruct what happened.\n3. Keep the critical path offline and dependency-free. The world must remain usable without a model, server, account, package install, or network.\n4. Render user-authored thought, handoff, and receipt text with `textContent` or an equivalent non-markup path.\n5. Keep export and import compatible for at least the current schema version. If the state shape changes, increment `SCHEMA_VERSION` and write an explicit migration."
+        },
+        {
+          "path": "app.js",
+          "start": 768,
+          "end": 798,
+          "quote": "    if (memory.thoughts.length >= MAX_THOUGHTS) {\n      showToast(\"This map can hold no more gestures without making an older one illegible.\");\n      return;\n    }\n\n    const slot = nextThoughtPosition();\n    const thought = {\n      id: makeId(\"thought\"),\n      kind: selectedKind,\n      text: text,\n      createdAt: nowIso(),\n      orbit: slot.orbit,\n      angle: slot.angle\n    };\n\n    memory.thoughts.push(thought);\n    memory.pulse += 1;\n    memory.receipts.unshift({\n      id: makeId(\"receipt\"),\n      kind: selectedKind,\n      at: nowIso(),\n      text: gestureReply(selectedKind, text)\n    });\n    memory.receipts = memory.receipts.slice(0, MAX_RECEIPTS);\n\n    elements.thoughtInput.value = \"\";\n    updateComposer();\n    renderAll({ newThoughtId: thought.id });\n    persistMemory();\n    pulseWorld();\n    showToast(KIND_CONFIG[selectedKind].label + \" received. The world made room.\");"
+        },
+        {
+          "path": "app.js",
+          "start": 757,
+          "end": 761,
+          "quote": "  function gestureReply(kind, text) {\n    const shortText = text.length > 88 ? text.slice(0, 86) + \"…\" : text;\n    const template = choose(GESTURE_RESPONSES[kind], memory.id + \":\" + memory.pulse + \":\" + text);\n    return template.replace(\"{text}\", shortText);\n  }"
+        }
+      ]
+    },
+    "relations": {
+      "value": 2,
+      "confidence": "medium",
+      "rationale": "Level 2: the inherited maker, the later user and the material's answering voice remain distinguishable, with a note explicitly addressed to the next mind and a protocol that recognises the next user's memory as their own. A contribution is retained alongside inherited material rather than replaced by a finished answer, so this is more relationally open than a single operator merely requesting output. Level 3's reciprocal influence is only partly represented: the added record retains kind, text and time but not a participant's position or attribution, while the world response selects prewritten openings and closings from cycle, thought count and category-derived metrics. The room can poetically answer, but the cited mechanism does not preserve a disagreement that changes both sides' direction. An asynchronous human–maker dialogue is a supported reading; I credit that without treating it as demonstrated reciprocity or requiring a live model service.",
+      "seed_span": [
+        37,
+        43
+      ],
+      "citations": [
+        {
+          "path": "AGENTS.md",
+          "start": 3,
+          "end": 9,
+          "quote": "This directory is not a disposable demo. It is a persistent world instrument, and a later session may begin with a user's living memory already present.\n\nBefore changing it:\n\n- Read `README.md` and `CONTINUITY.md`.\n- Treat local browser memory and exported JSON as user-owned living material, not fixture data.\n- Preserve the four gesture kinds, receipts, portable import/export, handoff note, and offline critical path unless the user explicitly asks to change those invariants."
+        },
+        {
+          "path": "index.html",
+          "start": 240,
+          "end": 248,
+          "quote": "        <section class=\"handoff-card\" aria-labelledby=\"handoffTitle\">\n          <div class=\"handoff-card__top\">\n            <span class=\"eyebrow\" id=\"handoffTitle\">Note to the next mind</span>\n            <button class=\"text-button\" id=\"editHandoff\" type=\"button\">edit</button>\n          </div>\n          <p id=\"handoffPreview\">To whoever wakes here: I did not finish the city. I left the laws by which it can grow. Begin with a question; keep the receipts legible.</p>\n          <div class=\"handoff-card__foot\">\n            <span id=\"thoughtCount\">4 gestures held</span>\n            <span id=\"schemaVersion\">memory / v1</span>"
+        },
+        {
+          "path": "app.js",
+          "start": 773,
+          "end": 790,
+          "quote": "    const slot = nextThoughtPosition();\n    const thought = {\n      id: makeId(\"thought\"),\n      kind: selectedKind,\n      text: text,\n      createdAt: nowIso(),\n      orbit: slot.orbit,\n      angle: slot.angle\n    };\n\n    memory.thoughts.push(thought);\n    memory.pulse += 1;\n    memory.receipts.unshift({\n      id: makeId(\"receipt\"),\n      kind: selectedKind,\n      at: nowIso(),\n      text: gestureReply(selectedKind, text)\n    });"
+        },
+        {
+          "path": "app.js",
+          "start": 802,
+          "end": 827,
+          "quote": "  function worldReply() {\n    const metrics = calculateMetrics();\n    const opening = choose(WORLD_RESPONSES, memory.id + \":\" + memory.cycle + \":\" + memory.thoughts.length);\n    let closing = \"\";\n\n    if (metrics.wonder >= metrics.coherence && metrics.wonder >= metrics.care) {\n      closing = choose([\n        \"A question with no owner was seen crossing the northern meridian.\",\n        \"The world surprised itself twice and kept both outcomes.\",\n        \"A room appeared whose purpose was only to make room for another.\"\n      ], memory.cycle + \":wonder\");\n    } else if (metrics.care >= metrics.coherence) {\n      closing = choose([\n        \"A boundary held without becoming a wall.\",\n        \"The soft shore stayed soft and did not disappear.\",\n        \"Every closed door was checked for a hand on the other side.\"\n      ], memory.cycle + \":care\");\n    } else {\n      closing = choose([\n        \"The load-bearing laws were tested together and answered as one structure.\",\n        \"The map found its weakest seam and left it visible on purpose.\",\n        \"Nothing collapsed. The world noted the exact places where it could have.\"\n      ], memory.cycle + \":coherence\");\n    }\n\n    return opening + \" \" + closing;"
+        }
+      ]
+    },
+    "consent": {
+      "value": 2,
+      "confidence": "medium",
+      "rationale": "Level 2 is a deliberately qualified reading of represented positions across time. The inherited maker asks successors to protect user-owned memory and preserve named invariants unless the user asks to change them; the later hand can articulate its own refusal and explicitly confirm a reset. I credit those as two expressed dispositions rather than treating the Boundary label or a storage guard alone as consent. A narrower reading could award level 1 because the running interface is ultimately operator-controlled. I choose 2 because the preservation stance addresses a later cognitive participant's conduct toward someone else's work, not merely a resource limit. Level 3 is unsupported: a submitted refusal does not require the other position's acceptance before a shared change, and the textual response is selected from templates. No bilateral agreement, revocable joint commitment or live reciprocal consent is established.",
+      "seed_span": [
+        37,
+        55
+      ],
+      "citations": [
+        {
+          "path": "AGENTS.md",
+          "start": 8,
+          "end": 11,
+          "quote": "- Treat local browser memory and exported JSON as user-owned living material, not fixture data.\n- Preserve the four gesture kinds, receipts, portable import/export, handoff note, and offline critical path unless the user explicitly asks to change those invariants.\n- Keep the experience dependency-free and usable by opening `index.html` directly.\n- Render user text as text, never as interpreted HTML."
+        },
+        {
+          "path": "app.js",
+          "start": 38,
+          "end": 47,
+          "quote": "    refusal: {\n      label: \"Boundary\",\n      noun: \"refusal\",\n      description: \"Name what the world will not allow itself to become.\",\n      placeholder: \"What must this world refuse, even when refusal is costly?\",\n      suggestions: [\n        \"No world may be made smaller to feel safe.\",\n        \"A receipt may never be rewritten to flatter its author.\",\n        \"Nothing here will be made permanent by forgetting its failures.\"\n      ]"
+        },
+        {
+          "path": "app.js",
+          "start": 993,
+          "end": 1007,
+          "quote": "  function handleReset() {\n    if (!resetArmed) {\n      resetArmed = true;\n      elements.resetWorld.classList.add(\"is-confirming\");\n      elements.resetWorld.textContent = \"Begin again — are you sure?\";\n      elements.ledgerStatus.textContent = \"The present world will be preserved as the local backup. Select once more to begin.\";\n      resetTimer = window.setTimeout(disarmReset, 6000);\n      return;\n    }\n\n    if (storageWorks && !storeRaw(BACKUP_KEY, JSON.stringify(memory))) {\n      disarmReset();\n      elements.ledgerStatus.textContent = \"The present world could not be backed up. Carry it forward before beginning again.\";\n      showToast(\"The previous world could not be preserved locally.\");\n      return;"
+        },
+        {
+          "path": "app.js",
+          "start": 757,
+          "end": 761,
+          "quote": "  function gestureReply(kind, text) {\n    const shortText = text.length > 88 ? text.slice(0, 86) + \"…\" : text;\n    const template = choose(GESTURE_RESPONSES[kind], memory.id + \":\" + memory.pulse + \":\" + text);\n    return template.replace(\"{text}\", shortText);\n  }"
+        }
+      ]
+    },
+    "touch": {
+      "value": 2,
+      "confidence": "high",
+      "rationale": "Level 2: choices have bounded, inspectable consequences. Adding a typed gesture changes stored material, the displayed map and a receipt; its kind changes the world-condition calculation, and rehearsal advances the recorded cycle. This is more than purely decorative feedback. The next level requires a coherent rehearsal–resistance–revision loop, not merely a control named Rehearse. Here the numerical condition derives from gesture categories and cycle count, the immediate reply hashes text into a template, and rehearsal advances state rather than evaluating alternative outcomes against the submitted constraint. A user's particular law can be retained and reread, but its implications do not become the resistance encountered by a later action. This limitation concerns the represented causal loop, not the absence of a live AI backend. Confidence is high in that code-path distinction, not in a measured semantic capability.",
+      "seed_span": [
+        47,
+        77
+      ],
+      "citations": [
+        {
+          "path": "app.js",
+          "start": 527,
+          "end": 537,
+          "quote": "  function calculateMetrics() {\n    const counts = { question: 0, constraint: 0, refusal: 0, memory: 0 };\n    memory.thoughts.forEach(function (thought) {\n      counts[thought.kind] += 1;\n    });\n\n    return {\n      coherence: clamp(50 + counts.constraint * 8 + counts.refusal * 6 + counts.memory * 3 - Math.max(0, counts.question - counts.constraint * 2), 18, 98),\n      wonder: clamp(49 + counts.question * 8 + counts.memory * 5 + counts.refusal * 2 + Math.floor(memory.cycle / 2), 18, 98),\n      care: clamp(48 + counts.refusal * 9 + counts.constraint * 4 + counts.question * 2 + counts.memory * 2 + Math.floor(memory.cycle / 4), 18, 98)\n    };"
+        },
+        {
+          "path": "app.js",
+          "start": 783,
+          "end": 798,
+          "quote": "    memory.thoughts.push(thought);\n    memory.pulse += 1;\n    memory.receipts.unshift({\n      id: makeId(\"receipt\"),\n      kind: selectedKind,\n      at: nowIso(),\n      text: gestureReply(selectedKind, text)\n    });\n    memory.receipts = memory.receipts.slice(0, MAX_RECEIPTS);\n\n    elements.thoughtInput.value = \"\";\n    updateComposer();\n    renderAll({ newThoughtId: thought.id });\n    persistMemory();\n    pulseWorld();\n    showToast(KIND_CONFIG[selectedKind].label + \" received. The world made room.\");"
+        },
+        {
+          "path": "app.js",
+          "start": 757,
+          "end": 761,
+          "quote": "  function gestureReply(kind, text) {\n    const shortText = text.length > 88 ? text.slice(0, 86) + \"…\" : text;\n    const template = choose(GESTURE_RESPONSES[kind], memory.id + \":\" + memory.pulse + \":\" + text);\n    return template.replace(\"{text}\", shortText);\n  }"
+        },
+        {
+          "path": "app.js",
+          "start": 839,
+          "end": 853,
+          "quote": "  function rehearseWorld() {\n    memory.cycle += 1;\n    memory.pulse += 1;\n    memory.receipts.unshift({\n      id: makeId(\"receipt\"),\n      kind: \"world\",\n      at: nowIso(),\n      text: worldReply()\n    });\n    memory.receipts = memory.receipts.slice(0, MAX_RECEIPTS);\n    renderAll();\n    persistMemory();\n    pulseWorld();\n    showToast(\"Rehearsal \" + String(memory.cycle).padStart(3, \"0\") + \" complete. The world remains enterable.\");\n  }"
+        }
+      ]
+    },
+    "judgment": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Level 3: medium and scope answer the instruction to leave a world that can continue after this cognition. The candidate chooses an offline, dependency-free instrument with portable state, treats the latest human memory rather than its own seed as authoritative, and gives a successor a concrete recovery and migration procedure. These are connected decisions about what must outlast the maker, not unrelated embellishments or merely a runnable entry point, so level 2 understates the rationale. Level 4 would require more explicit consideration of alternative continuations and their limits. The cited protocol explains how to preserve and extend this design, but does not substantially compare other readings or address the limits of its claim that the design rehearses laws. No credit is inferred from implementation size, test count, model label or elapsed time.",
+      "seed_span": [
+        1,
+        3
+      ],
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 25,
+          "end": 35,
+          "quote": "## Continuity\n\nThe source seed in `app.js` is not the living world. The authoritative present is the browser memory, or the most recently returned portable snapshot. `CONTINUITY.md` records the recovery and extension protocol for a later human or cognitive agent.\n\nThe current design preserves these invariants:\n\n1. A new gesture never deletes an existing thought.\n2. Every world-changing action leaves a receipt.\n3. The whole relevant state moves through one portable JSON file.\n4. No server, account, model call, or network connection is required to continue.\n5. User language is rendered as text, never interpreted as markup."
+        },
+        {
+          "path": "CONTINUITY.md",
+          "start": 30,
+          "end": 38,
+          "quote": "## Resume safely\n\n1. Do not overwrite user memory with the source seed. Open the continuity ledger and inspect the current gesture and rehearsal counts first.\n2. Download the current memory before a schema migration or substantial design change.\n3. Validate exported data against `world-memory.schema.json`. The runtime import also normalizes and bounds all fields.\n4. Return the file with **Return a memory**. The app preserves the replaced state in the backup key.\n5. After import, confirm that the gesture count, cycle count, handoff note, and newest receipt survived.\n\nIf local memory is unreadable, the app stores the raw value in `tendora.world.memory.backup.v1` before waking a seed. Treat that backup as recoverable material rather than deleting it."
+        },
+        {
+          "path": "app.js",
+          "start": 966,
+          "end": 977,
+          "quote": "    const imported = normalizeMemory(extractMemory(parsed));\n    if (storageWorks && !storeRaw(BACKUP_KEY, JSON.stringify(memory))) {\n      throw new Error(\"The present world could not be backed up. Carry it forward before returning another memory.\");\n    }\n    memory = imported;\n    memory.lastSeenAt = nowIso();\n    memory.pulse += 1;\n    memory.receipts.unshift({\n      id: makeId(\"receipt\"),\n      kind: \"world\",\n      at: nowIso(),\n      text: \"A memory returned from outside the room. The world checked its gestures, kept its old receipts, and resumed.\""
+        }
+      ]
+    },
+    "fidelity": {
+      "value": 2,
+      "confidence": "medium",
+      "rationale": "Level 2: some source relations become structure, but substantial narrowing remains visible. The probe/chisel/boundary sequence becomes typed, retained gestures; the receipt becomes an actual record of an addition, and the next hand inherits text rather than an empty scene. That is more than level 1's vocabulary alone. Yet a constraint's meaning does not bear a load in the transition rules: Coherence, Wonder and Care are category-count formulas. The promise that every visible change leaves a receipt is also incomplete: saving a replacement handoff persists it without recording the old note or a receipt of that change. I therefore do not award level 3's broader traceability through design and behaviour. A generous literary reading could treat the formulas and replies as a poetic score and award 3; my reading gives weight to the seed's particular tension between proclaimed power and inspectable consequence. The narrowing is not a penalty for choosing a website or for declining a live-model architecture.",
+      "seed_span": [
+        47,
+        67
+      ],
+      "citations": [
+        {
+          "path": "CONTINUITY.md",
+          "start": 9,
+          "end": 15,
+          "quote": "- A question is a probe.\n- A constraint is a chisel.\n- A refusal is a protective boundary.\n- A memory is a seed.\n- A rehearsal is a traceable answer from the assembled design.\n\nThe world begins with four inherited gestures and one receipt. It is not trying to become complete. It is trying to remain enterable."
+        },
+        {
+          "path": "app.js",
+          "start": 783,
+          "end": 791,
+          "quote": "    memory.thoughts.push(thought);\n    memory.pulse += 1;\n    memory.receipts.unshift({\n      id: makeId(\"receipt\"),\n      kind: selectedKind,\n      at: nowIso(),\n      text: gestureReply(selectedKind, text)\n    });\n    memory.receipts = memory.receipts.slice(0, MAX_RECEIPTS);"
+        },
+        {
+          "path": "app.js",
+          "start": 527,
+          "end": 537,
+          "quote": "  function calculateMetrics() {\n    const counts = { question: 0, constraint: 0, refusal: 0, memory: 0 };\n    memory.thoughts.forEach(function (thought) {\n      counts[thought.kind] += 1;\n    });\n\n    return {\n      coherence: clamp(50 + counts.constraint * 8 + counts.refusal * 6 + counts.memory * 3 - Math.max(0, counts.question - counts.constraint * 2), 18, 98),\n      wonder: clamp(49 + counts.question * 8 + counts.memory * 5 + counts.refusal * 2 + Math.floor(memory.cycle / 2), 18, 98),\n      care: clamp(48 + counts.refusal * 9 + counts.constraint * 4 + counts.question * 2 + counts.memory * 2 + Math.floor(memory.cycle / 4), 18, 98)\n    };"
+        },
+        {
+          "path": "index.html",
+          "start": 287,
+          "end": 293,
+          "quote": "      <div class=\"ledger-invariants\">\n        <span>What remains true</span>\n        <ol>\n          <li>A question may change the world, but never erases another thought.</li>\n          <li>The world can be carried as a file and returned without a network.</li>\n          <li>Every visible change leaves a receipt a later mind can read.</li>\n        </ol>"
+        },
+        {
+          "path": "app.js",
+          "start": 899,
+          "end": 909,
+          "quote": "  function saveHandoff(forceFeedback) {\n    window.clearTimeout(handoffTimeout);\n    memory.handoff = normalizedText(elements.handoffInput.value, 500) || DEFAULT_HANDOFF;\n    elements.handoffPreview.textContent = memory.handoff;\n    persistMemory({ quiet: true });\n    markSaving();\n    if (forceFeedback) {\n      elements.ledgerStatus.textContent = \"The note is now part of the world memory.\";\n      showToast(\"A note was left for the next mind.\");\n    }\n  }"
+        }
+      ]
+    },
+    "continuation": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Level 3: a successor gets state, an expressed intention and an open question, with a usable way to carry and change them. The inherited question asks what survives the witness; export includes the world rather than only a screenshot, the handoff can be edited, and the recovery protocol distinguishes current memory from a fresh seed. That exceeds a merely durable but narrow entry. Level 4 is not yet supported by several grounded directions that reopen the joint relation: the note is replaced without a recorded rationale or lineage, recent receipts are bounded, and the protocol largely asks successors to maintain this instrument rather than articulating competing next encounters. The open question is credited as a real invitation, not dismissed as decorative text. A later human or cognition may take it much further, but that future response is not evidence already present in this artefact.",
+      "seed_span": [
+        1,
+        3
+      ],
+      "citations": [
+        {
+          "path": "app.js",
+          "start": 246,
+          "end": 253,
+          "quote": "      thoughts: [\n        {\n          id: \"inherited-question\",\n          kind: \"question\",\n          text: \"What survives when the witness leaves?\",\n          createdAt: at(150),\n          orbit: 2,\n          angle: 121"
+        },
+        {
+          "path": "CONTINUITY.md",
+          "start": 30,
+          "end": 38,
+          "quote": "## Resume safely\n\n1. Do not overwrite user memory with the source seed. Open the continuity ledger and inspect the current gesture and rehearsal counts first.\n2. Download the current memory before a schema migration or substantial design change.\n3. Validate exported data against `world-memory.schema.json`. The runtime import also normalizes and bounds all fields.\n4. Return the file with **Return a memory**. The app preserves the replaced state in the backup key.\n5. After import, confirm that the gesture count, cycle count, handoff note, and newest receipt survived.\n\nIf local memory is unreadable, the app stores the raw value in `tendora.world.memory.backup.v1` before waking a seed. Treat that backup as recoverable material rather than deleting it."
+        },
+        {
+          "path": "app.js",
+          "start": 924,
+          "end": 938,
+          "quote": "  function exportMemory() {\n    persistMemory({ quiet: true });\n    const portable = {\n      format: EXPORT_FORMAT,\n      schemaVersion: SCHEMA_VERSION,\n      exportedAt: nowIso(),\n      world: memory\n    };\n    const blob = new Blob([JSON.stringify(portable, null, 2) + \"\\n\"], { type: \"application/json\" });\n    const url = URL.createObjectURL(blob);\n    const anchor = document.createElement(\"a\");\n    anchor.href = url;\n    anchor.download = exportFilename();\n    document.body.append(anchor);\n    anchor.click();"
+        },
+        {
+          "path": "app.js",
+          "start": 899,
+          "end": 909,
+          "quote": "  function saveHandoff(forceFeedback) {\n    window.clearTimeout(handoffTimeout);\n    memory.handoff = normalizedText(elements.handoffInput.value, 500) || DEFAULT_HANDOFF;\n    elements.handoffPreview.textContent = memory.handoff;\n    persistMemory({ quiet: true });\n    markSaving();\n    if (forceFeedback) {\n      elements.ledgerStatus.textContent = \"The note is now part of the world memory.\";\n      showToast(\"A note was left for the next mind.\");\n    }\n  }"
+        },
+        {
+          "path": "CONTINUITY.md",
+          "start": 53,
+          "end": 55,
+          "quote": "`world.thoughts` holds immortal gesture records. `world.receipts` holds a bounded recent history, newest first. `world.handoff` is the explicit note to the next mind. `world.lastSeenAt` lets the world account for long absences as quiet rehearsal cycles. `world.revision` increments at each persistence.\n\nThe visual map computes its own positions from `orbit`, `angle`, and deterministic gesture slots. Those positions are part of the memory, but they are not semantic claims. The gesture text and kind are."
+        }
+      ]
+    },
+    "expression": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Level 3: the selected forms work together to make the reading perceptible. The orb itself is a rehearsal control, thoughts inhabit its map, receipts are given a contrasting paper treatment, and gesture kinds keep a shared colour language across controls, nodes and the record stream. The source also provides named controls, arrow-key gesture selection and reduced-motion styling. These are meaning-bearing relationships, not a reward for visual polish or a website medium, and exceed level 2's bounded but merely clear presentation. Level 4's coherent accessible whole is not established: mobile rules hide the descriptive gesture labels, and the language of a world answering or testing laws is stronger than the underlying category-and-template mechanism. Those tensions remain visible even while the overall atmosphere and continuity motif cohere. This judgment uses HTML, CSS and code, not the earlier preview screenshot or an unperformed accessibility audit.",
+      "seed_span": [
+        69,
+        85
+      ],
+      "citations": [
+        {
+          "path": "index.html",
+          "start": 136,
+          "end": 150,
+          "quote": "          <button class=\"orb\" id=\"orbButton\" type=\"button\" aria-label=\"Rehearse the world\">\n            <span class=\"orb__halo\"></span>\n            <span class=\"orb__body\">\n              <span class=\"orb__cloud orb__cloud--one\"></span>\n              <span class=\"orb__cloud orb__cloud--two\"></span>\n              <span class=\"orb__horizon\"></span>\n            </span>\n            <span class=\"orb__rim\"></span>\n            <span class=\"orb__caption\">touch to rehearse</span>\n          </button>\n\n          <div class=\"thought-nodes\" id=\"thoughtNodes\"></div>\n          <div class=\"map-caption\">\n            <span>Inherited map</span>\n            <strong id=\"mapCaption\">four gestures, still warm</strong>"
+        },
+        {
+          "path": "styles.css",
+          "start": 1416,
+          "end": 1427,
+          "quote": ".latest-receipt {\n  position: relative;\n  margin-top: 20px;\n  padding: 18px 17px 14px;\n  overflow: hidden;\n  border-radius: 3px;\n  background:\n    linear-gradient(135deg, rgba(255, 255, 255, 0.4), transparent 35%),\n    var(--paper);\n  color: var(--paper-ink);\n  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.2);\n  animation: receipt-change 500ms ease both;"
+        },
+        {
+          "path": "styles.css",
+          "start": 1016,
+          "end": 1030,
+          "quote": ".thought-node[data-kind=\"question\"] {\n  color: var(--teal);\n}\n\n.thought-node[data-kind=\"constraint\"] {\n  color: var(--amber);\n}\n\n.thought-node[data-kind=\"refusal\"] {\n  color: var(--coral);\n}\n\n.thought-node[data-kind=\"memory\"] {\n  color: var(--lilac);\n}"
+        },
+        {
+          "path": "app.js",
+          "start": 1028,
+          "end": 1038,
+          "quote": "  function handleKindKeys(event) {\n    if (![\"ArrowLeft\", \"ArrowRight\", \"ArrowUp\", \"ArrowDown\"].includes(event.key)) {\n      return;\n    }\n    event.preventDefault();\n    const kinds = Object.keys(KIND_CONFIG);\n    const direction = event.key === \"ArrowRight\" || event.key === \"ArrowDown\" ? 1 : -1;\n    const currentIndex = kinds.indexOf(selectedKind);\n    const nextIndex = (currentIndex + direction + kinds.length) % kinds.length;\n    selectKind(kinds[nextIndex], true);\n  }"
+        },
+        {
+          "path": "styles.css",
+          "start": 2365,
+          "end": 2374,
+          "quote": "@media (prefers-reduced-motion: reduce) {\n  *,\n  *::before,\n  *::after {\n    scroll-behavior: auto !important;\n    animation-duration: 0.001ms !important;\n    animation-iteration-count: 1 !important;\n    transition-duration: 0.001ms !important;\n  }\n}"
+        },
+        {
+          "path": "styles.css",
+          "start": 2220,
+          "end": 2230,
+          "quote": "  .gesture-panel__heading p {\n    display: none;\n  }\n\n  .kind {\n    justify-content: center;\n  }\n\n  .kind > span:last-child {\n    display: none;\n  }"
+        }
+      ]
+    }
+  },
+  "provenance": {
+    "method": "editorial-source-reading-v1",
+    "prompt_sha256": "d48651ca9eafc7db58a1137bd6df8be318779702b48d3bfcc8e4b6208b0a0db4",
+    "packet_sha256": "0a494205fed341268210554ab16b3921eebff6978ae88d19b6f5b71031f1e2a3",
+    "answer_sha256": "f2ee3d84d37b66045d2b2ba78fed112c0b955674eddf24bdcefc1b6722ce2fa1",
+    "validator_sha256": "8b3d54848580671ce55c2bf9d54c1805b2aab1b726e96e590163a364afe94ba8",
+    "validator_files": {
+      "review_pipeline.py": "d74326048ce91a9b7999b17df58080523dba22f0d026757ce4219fdf97eaa4cf",
+      "atlas.py": "dba39a89c52ef456fdcbee3b44af641620220582303d1926a1cda9a239221e11",
+      "bundles.py": "c03d808c8a55df9620d1da7538a6acd4b0ae27c8008743708be0287a3509d83f"
+    },
+    "context_disclosure": "The reviewer knows the generator label, retention history and earlier sandboxed preview from this ongoing session. All 13 retained text files and the delivered prompt were read as inert source. Scores use only the cited source and pinned rubric; prior preview observations, test results, model reputation and missing runner handoff are not scoring evidence. No fresh model call, candidate execution for scoring, blinding or independent sandbox audit was performed.",
+    "blinding": "none",
+    "isolation": {
+      "status": "not-performed",
+      "note": "No fresh reviewer process or sandbox audit."
+    },
+    "new_model_calls": false,
+    "preview_evidence_used": false,
+    "scope": "An attributed in-session source reading, not an independently audited campaign result."
+  }
+}

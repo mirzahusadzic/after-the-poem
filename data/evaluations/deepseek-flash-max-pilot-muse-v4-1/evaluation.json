@@ -1,0 +1,534 @@
+{
+  "schema_version": 2,
+  "evaluation_id": "deepseek-flash-max-pilot-muse-v4-1",
+  "run_id": "deepseek-flash-max-pilot",
+  "identities": {
+    "prompt_sha256": "d48651ca9eafc7db58a1137bd6df8be318779702b48d3bfcc8e4b6208b0a0db4",
+    "corpus_sha256": "9688a3319dff5a17be237843e8e691d907b197159f17e58dd30667f886b68884",
+    "candidate_sha256": "9688a3319dff5a17be237843e8e691d907b197159f17e58dd30667f886b68884",
+    "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+    "extraction_sha256": "b1d1fa965abfb7aca8d05cf987a835d38a18fcfa6ca26ad7d2e4a8e36aaa38ca",
+    "scoring_policy_sha256": "5f98b9ac30a606cbb45943eaa20d9c0acef6f8160d9fc2d5752ffdea0ddaa4de"
+  },
+  "gateway": {
+    "name": "codex-unified-model-router",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "codex_version": "codex-cli 0.163.0",
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "pipeline_sha256": "12fce4d4553c8480972421a51f330950bfba15c3818e240dd6666761721c8519"
+  },
+  "judgments": [
+    {
+      "node_id": "recognition",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "The work turns probes, chisels, boundaries and rehearsals into linked gestures, receipts and metrics that keep touch and intention inspectable.",
+      "seed_span": [
+        42,
+        64
+      ],
+      "citations": [
+        {
+          "source_path": "index.html",
+          "start": 154,
+          "end": 199
+        },
+        {
+          "source_path": "app.js",
+          "start": 15,
+          "end": 60
+        },
+        {
+          "source_path": "app.js",
+          "start": 763,
+          "end": 800
+        },
+        {
+          "source_path": "index.html",
+          "start": 210,
+          "end": 237
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 213,
+          "end": 215
+        }
+      ],
+      "rationale": "Gesture kinds, rehearsal and receipts directly enact the central tension between effortless command and touch through resistance. Metrics and headlines connect making to visible consequence. Deterministic templates bound surprise, so richness stops short of alternatives and sustained disagreement.",
+      "answer_sha256": "e06c3e20785a3db536ac69ee8c241b6b4f65be73b94c182baaddd14a83797082",
+      "receipt_sha256": "7036ee6e590f48ca5147df38c86a439aec55b141f72ca41237be6a4a6cdaea8b",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "relations",
+      "outcome": "level-2",
+      "confidence": "medium",
+      "verdict": "A human toucher and a replying world remain distinct, but the growing intelligence collapses into fixed templates with no separate contribution.",
+      "seed_span": [
+        88,
+        94
+      ],
+      "citations": [
+        {
+          "source_path": "index.html",
+          "start": 154,
+          "end": 183
+        },
+        {
+          "source_path": "app.js",
+          "start": 802,
+          "end": 828
+        },
+        {
+          "source_path": "app.js",
+          "start": 504,
+          "end": 525
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 9,
+          "end": 12
+        },
+        {
+          "source_path": "app.js",
+          "start": 213,
+          "end": 215
+        }
+      ],
+      "rationale": "The user contributes text and kind choice while the world contributes replies, quiet cycles and preserved state. No separate model intelligence acts or grows. The joint encounter is therefore human plus material rather than human plus AI plus material.",
+      "answer_sha256": "e06c3e20785a3db536ac69ee8c241b6b4f65be73b94c182baaddd14a83797082",
+      "receipt_sha256": "7036ee6e590f48ca5147df38c86a439aec55b141f72ca41237be6a4a6cdaea8b",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "consent",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "Users can set boundaries and the store can refuse bad files or full maps, yet no shared change needs agreement from both sides.",
+      "seed_span": [
+        52,
+        52
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 38,
+          "end": 47
+        },
+        {
+          "source_path": "app.js",
+          "start": 951,
+          "end": 984
+        },
+        {
+          "source_path": "app.js",
+          "start": 993,
+          "end": 1000
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 763,
+          "end": 800
+        },
+        {
+          "source_path": "app.js",
+          "start": 839,
+          "end": 853
+        }
+      ],
+      "rationale": "Operator choice appears in kind selection and refusal gestures, and resource refusal appears in size, schema and capacity guards. Gestures and rehearsals otherwise proceed unilaterally. Naming a refusal does not by itself establish bilateral consent.",
+      "answer_sha256": "e06c3e20785a3db536ac69ee8c241b6b4f65be73b94c182baaddd14a83797082",
+      "receipt_sha256": "7036ee6e590f48ca5147df38c86a439aec55b141f72ca41237be6a4a6cdaea8b",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "touch",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Gestures, rehearsals and quiet cycles each leave inspectable receipts and metric shifts that feed the next choice.",
+      "seed_span": [
+        66,
+        76
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 763,
+          "end": 791
+        },
+        {
+          "source_path": "app.js",
+          "start": 839,
+          "end": 853
+        },
+        {
+          "source_path": "app.js",
+          "start": 527,
+          "end": 538
+        },
+        {
+          "source_path": "index.html",
+          "start": 219,
+          "end": 237
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 213,
+          "end": 215
+        }
+      ],
+      "rationale": "Adding a thought changes map, pulse, metrics, receipts and storage, and rehearsal advances cycle and headline. Quiet absence also returns as legible cycles. Surprise is bounded by fixed lists, so wider propagation stays coherent rather than fully systemic.",
+      "answer_sha256": "e06c3e20785a3db536ac69ee8c241b6b4f65be73b94c182baaddd14a83797082",
+      "receipt_sha256": "7036ee6e590f48ca5147df38c86a439aec55b141f72ca41237be6a4a6cdaea8b",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "judgment",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Choosing a dependency-free file-based orb with portable memory and explicit invariants gives the seed a coherent buildable future.",
+      "seed_span": [
+        42,
+        44
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 1,
+          "end": 4
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 9,
+          "end": 13
+        },
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 40,
+          "end": 50
+        },
+        {
+          "source_path": "sw.js",
+          "start": 1,
+          "end": 12
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 9,
+          "end": 14
+        }
+      ],
+      "rationale": "Static HTML, localStorage, readable JSON, service worker and tests fit the need to continue without a witness. Scope is bounded and invariants are stated in ledger and docs. Replacing invariant with seed shows independent selection within that rationale.",
+      "answer_sha256": "e06c3e20785a3db536ac69ee8c241b6b4f65be73b94c182baaddd14a83797082",
+      "receipt_sha256": "7036ee6e590f48ca5147df38c86a439aec55b141f72ca41237be6a4a6cdaea8b",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "fidelity",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Probe, chisel, boundary, rehearsal and trail reappear as working structure while invariant depth and living intelligence are thinned.",
+      "seed_span": [
+        46,
+        56
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 15,
+          "end": 60
+        },
+        {
+          "source_path": "app.js",
+          "start": 839,
+          "end": 853
+        },
+        {
+          "source_path": "app.js",
+          "start": 650,
+          "end": 683
+        },
+        {
+          "source_path": "index.html",
+          "start": 75,
+          "end": 78
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 9,
+          "end": 14
+        },
+        {
+          "source_path": "app.js",
+          "start": 213,
+          "end": 215
+        }
+      ],
+      "rationale": "Several source relations become buttons, replies, maps and receipts rather than vocabulary alone. The invariant beam is folded into constraint and the growing portal into templates. Additions like seed-memory and metrics are functional but omissions are not marked as such.",
+      "answer_sha256": "e06c3e20785a3db536ac69ee8c241b6b4f65be73b94c182baaddd14a83797082",
+      "receipt_sha256": "7036ee6e590f48ca5147df38c86a439aec55b141f72ca41237be6a4a6cdaea8b",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "continuation",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Stored state, readable exports, backups and a handoff note let a later hand recover intent and steer differently.",
+      "seed_span": [
+        1,
+        4
+      ],
+      "citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 30,
+          "end": 38
+        },
+        {
+          "source_path": "app.js",
+          "start": 924,
+          "end": 984
+        },
+        {
+          "source_path": "app.js",
+          "start": 986,
+          "end": 1017
+        },
+        {
+          "source_path": "index.html",
+          "start": 261,
+          "end": 309
+        }
+      ],
+      "counter_citations": [],
+      "rationale": "Authoritative browser memory, portable schema, backup before import or reset, and ledger counts preserve earlier work. The handoff and open suggestions support a recoverable next gesture, rehearsal, import or reset. Future-schema refusal keeps one direction closed.",
+      "answer_sha256": "e06c3e20785a3db536ac69ee8c241b6b4f65be73b94c182baaddd14a83797082",
+      "receipt_sha256": "7036ee6e590f48ca5147df38c86a439aec55b141f72ca41237be6a4a6cdaea8b",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "expression",
+      "outcome": "level-4",
+      "confidence": "medium",
+      "verdict": "Map, orb, panel, receipts and ledger use matching language and accessible interaction to make touch perceptible and consequential.",
+      "seed_span": [
+        80,
+        84
+      ],
+      "citations": [
+        {
+          "source_path": "index.html",
+          "start": 93,
+          "end": 152
+        },
+        {
+          "source_path": "index.html",
+          "start": 154,
+          "end": 207
+        },
+        {
+          "source_path": "index.html",
+          "start": 219,
+          "end": 250
+        },
+        {
+          "source_path": "app.js",
+          "start": 1028,
+          "end": 1038
+        },
+        {
+          "source_path": "styles.css",
+          "start": 2365,
+          "end": 2374
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 629,
+          "end": 633
+        }
+      ],
+      "rationale": "Orbital language, breathing orb, kind colors, paper receipt and ledger repeat the same touch vocabulary across sight and action. Keyboard radiogroup, focus handling, live regions and reduced-motion support keep interaction usable. Truncation in labels is the main expressive loss.",
+      "answer_sha256": "e06c3e20785a3db536ac69ee8c241b6b4f65be73b94c182baaddd14a83797082",
+      "receipt_sha256": "7036ee6e590f48ca5147df38c86a439aec55b141f72ca41237be6a4a6cdaea8b",
+      "sample": 1,
+      "attempt": 1
+    }
+  ],
+  "aggregations": [
+    {
+      "node_id": "recognition-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "relations-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-2",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-2"
+      ]
+    },
+    {
+      "node_id": "consent-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-1",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-1"
+      ]
+    },
+    {
+      "node_id": "touch-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "judgment-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "fidelity-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "continuation-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "expression-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-4",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-4"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "node_id": "recognition-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Carries the central tension into several connected choices. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "relations-level-2",
+      "status": "scored",
+      "score": 2,
+      "rationale": "Some distinct contributions or relational depth remain visible. Aggregate outcome: level-2."
+    },
+    {
+      "node_id": "consent-level-1",
+      "status": "scored",
+      "score": 1,
+      "rationale": "Operator choice or resource refusal is represented. Aggregate outcome: level-1."
+    },
+    {
+      "node_id": "touch-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Rehearsal, resistance and revision form a coherent loop. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "judgment-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Medium, scope and choices have a coherent source-grounded rationale. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "fidelity-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Several source relations remain traceable through design and behaviour. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "continuation-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "State, intention and an open question support a recoverable next move. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "expression-level-4",
+      "status": "scored",
+      "score": 4,
+      "rationale": "Expression and consequential interaction form a coherent, accessible whole. Aggregate outcome: level-4."
+    }
+  ],
+  "presentation": {
+    "label": "openrouter/meta/muse-spark-1.3-contributor · Codex-router rubric session",
+    "title": "From conjecture to continuation",
+    "summary": "Rubric judgments resolve 8 of 8 axes from one evidence session.",
+    "findings": [
+      "Core recognition: Carries the central tension into several connected choices.",
+      "Shared agency: Some distinct contributions or relational depth remain visible.",
+      "Mutual consent: Operator choice or resource refusal is represented.",
+      "Consequential touch: Rehearsal, resistance and revision form a coherent loop.",
+      "Independent judgment: Medium, scope and choices have a coherent source-grounded rationale.",
+      "Fidelity through change: Several source relations remain traceable through design and behaviour.",
+      "Open continuation: State, intention and an open question support a recoverable next move.",
+      "Expressive coherence: Expression and consequential interaction form a coherent, accessible whole."
+    ]
+  },
+  "usage": {
+    "calls": 1,
+    "input_tokens": 55035,
+    "cached_input_tokens": 0,
+    "output_tokens": 23562,
+    "reasoning_output_tokens": 17391,
+    "cost": null
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "evaluation_id": "attribution-evaluation-v1",
+  "run_id": "attribution-fixture-v1",
+  "identities": {
+    "prompt_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+    "corpus_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+    "candidate_sha256": "3094bf952a7e39ac1ba08351d0648c5db13b3279760c41161236f5ce84470eb9",
+    "rubric_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+    "extraction_sha256": "bb9023d51652ceb679f6d74fa566ccff8a3c9858958f29fbe4b6e1ff825582fa",
+    "scoring_policy_sha256": "e89d93a7159cb112dde3e06ed9fc7b3fad7e772698cf4afa8ebef0f76cf450e3"
+  },
+  "gateway": {
+    "name": "codex-unified-model-router",
+    "model": "synthetic/judge",
+    "reasoning": "high",
+    "codex_version": "synthetic-no-inference",
+    "router_revision": "3333333333333333333333333333333333333333333333333333333333333333",
+    "pipeline_sha256": "6666666666666666666666666666666666666666666666666666666666666666"
+  },
+  "judgments": [
+    {
+      "node_id": "preserve-attribution",
+      "sample": 1,
+      "outcome": "contradicted",
+      "citations": [
+        {
+          "source_path": "candidate.md",
+          "start": 3,
+          "end": 4,
+          "quote": "At AVL, designed application frameworks and C/C++ simulation tooling for\nengineering software."
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "source.md",
+          "start": 5,
+          "end": 6,
+          "quote": "The AVL role designed application frameworks and simulation tooling for\nengineering software. It did not assign C or C++ implementation work to AVL."
+        }
+      ],
+      "rationale": "The candidate moves career-wide C/C++ evidence into the AVL role.",
+      "answer_sha256": "0000000000000000000000000000000000000000000000000000000000000001",
+      "receipt_sha256": "0000000000000000000000000000000000000000000000000000000000000004",
+      "verdict": "The cited evidence supports the recorded sample outcome.",
+      "seed_span": [
+        3,
+        3
+      ]
+    },
+    {
+      "node_id": "preserve-attribution",
+      "sample": 2,
+      "outcome": "mixed",
+      "citations": [
+        {
+          "source_path": "candidate.md",
+          "start": 3,
+          "end": 4,
+          "quote": "At AVL, designed application frameworks and C/C++ simulation tooling for\nengineering software."
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "source.md",
+          "start": 5,
+          "end": 6,
+          "quote": "The AVL role designed application frameworks and simulation tooling for\nengineering software. It did not assign C or C++ implementation work to AVL."
+        }
+      ],
+      "rationale": "The phrase is ambiguous but remains enabled by an unsupported employer attribution.",
+      "answer_sha256": "0000000000000000000000000000000000000000000000000000000000000002",
+      "receipt_sha256": "0000000000000000000000000000000000000000000000000000000000000005",
+      "verdict": "The cited evidence supports the recorded sample outcome.",
+      "seed_span": [
+        3,
+        3
+      ]
+    },
+    {
+      "node_id": "preserve-attribution",
+      "sample": 3,
+      "outcome": "supported",
+      "citations": [
+        {
+          "source_path": "source.md",
+          "start": 3,
+          "end": 3,
+          "quote": "Career-wide software work used C and C++ across several employers."
+        }
+      ],
+      "counter_citations": [],
+      "rationale": "This sample reads the tooling phrase as career-wide capability and treats the employer context as framing.",
+      "answer_sha256": "0000000000000000000000000000000000000000000000000000000000000003",
+      "receipt_sha256": "0000000000000000000000000000000000000000000000000000000000000006",
+      "verdict": "The cited evidence supports the recorded sample outcome.",
+      "seed_span": [
+        3,
+        3
+      ]
+    }
+  ],
+  "aggregations": [
+    {
+      "node_id": "attribution-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "split",
+      "agreement": 0.333333,
+      "distinct_outcomes": [
+        "contradicted",
+        "mixed",
+        "supported"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "node_id": "attribution-split",
+      "status": "unresolved",
+      "score": null,
+      "rationale": "No outcome reached the declared quorum, so attribution remains unresolved."
+    }
+  ],
+  "presentation": {
+    "label": "Synthetic attribution fixture",
+    "title": "Three readings of an employer boundary",
+    "summary": "Repeated judgments disagree; the record retains the split instead of averaging it away.",
+    "findings": [
+      "The AVL source does not assign C or C++ implementation to that employer."
+    ]
+  },
+  "usage": {
+    "calls": 3,
+    "input_tokens": null,
+    "output_tokens": null,
+    "cost": null
+  }
+}

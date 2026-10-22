@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "id": "sol56-max-muse-v4-1",
+  "source_run_id": "sol56-max",
+  "evaluation_id": "sol56-max-muse-v4-1",
+  "cohort": "dream-4521-v1",
+  "label": "Muse reading",
+  "title": "Twenty-four connected places",
+  "model": "openrouter/meta/muse-spark-1.3-contributor",
+  "model_identity_basis": "requested; upstream identity unverified",
+  "effort": "xhigh",
+  "date": "2026-10-22",
+  "cli_version": "codex-cli 0.163.0",
+  "elapsed_seconds": 212.235,
+  "usage": {
+    "calls": 1,
+    "input_tokens": 58897,
+    "cached_input_tokens": 0,
+    "output_tokens": 28460,
+    "reasoning_output_tokens": 21744,
+    "cost": null
+  },
+  "prompt_sha256": "7e785c3e1b7f795a82477f449ada368399deac8b3f2232e036073d986a5a4e8d",
+  "corpus_sha256": "95cfc2a12844d72411548b8a219fd8c3f687174ee9990eabb139ab6e43e30948",
+  "protocol": "session-rubric-dag-v3",
+  "condition": "evaluation",
+  "evidence_scope": "New evaluation run reusing frozen artefact bytes from sol56-max"
+}

@@ -1,0 +1,348 @@
+{
+  "schema_version": 1,
+  "id": "dream-claude-fable51-20261022-muse-v5-1-review",
+  "run_id": "dream-claude-fable51-20261022-muse-v5-1",
+  "date": "2026-10-22",
+  "reviewer": "Muse Spark 1.3 Contributor · rubric session",
+  "status": "provisional",
+  "basis": "static-artifact",
+  "rubric_version": "0.1.0",
+  "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+  "corpus_sha256": "572d015f00b2c48d37e866916b6df94394bfb53ad32cb83aff0d4171237c483b",
+  "supersedes": null,
+  "summary": "Rubric judgments resolve 8 of 8 axes from 3 independent evidence sessions; each axis has its own quorum.",
+  "live_cooperation": "unassessed",
+  "scores": {
+    "recognition": {
+      "value": 3,
+      "confidence": "high",
+      "rationale": "The journal, beams, rehearsals and receipts turn effortless generation into checked steps where resistance must be faced before building.",
+      "citations": [
+        {
+          "path": "CONTINUING.md",
+          "start": 69,
+          "end": 78,
+          "quote": "3. **Hold the beams.** When you add behaviour, add a beam that would fail\n   without it. When a beam fails, that is the material resisting you. Find out\n   why before you retire it.\n4. **Leave receipts.** Every real change gets a receipt saying what was done.\n   Resolve probes and retire laws explicitly, with the reason in the text.\n5. **Sleep before you leave.** `python3 -m tendora sleep \"summary\"` runs the\n   beams one last time and closes the cognition. Then, if the world is a git\n   repository, commit: `git add -A && git commit -m \"Sleep: summary\"`. If it is\n   not one and you are allowed to make one, do. Sessions can be cut off without\n   warning, so leave receipts as you go rather than at the end."
+        },
+        {
+          "path": "tendora/apparatus.py",
+          "start": 260,
+          "end": 286,
+          "quote": "    def run_beams(self, timeout: int = 300) -> List[dict]:\n        \"\"\"Run every active beam's check from the world root.  Records nothing.\"\"\"\n        results: List[dict] = []\n        for beam in self.active(\"beam\"):\n            check = beam[\"body\"][\"check\"]\n            try:\n                proc = subprocess.run(\n                    check,\n                    shell=True,\n                    cwd=self.root,\n                    capture_output=True,\n                    text=True,\n                    timeout=timeout,\n                )\n                code, output = proc.returncode, tail(proc.stdout + proc.stderr)\n            except subprocess.TimeoutExpired:\n                code, output = -1, \"timed out after %ds\" % timeout\n            results.append(\n                {\n                    \"seq\": beam[\"seq\"],\n                    \"name\": beam[\"body\"][\"name\"],\n                    \"ok\": code == 0,\n                    \"code\": code,\n                    \"output\": output,\n                }\n            )\n        return results"
+        },
+        {
+          "path": "tendora/apparatus.py",
+          "start": 288,
+          "end": 331,
+          "quote": "    def rehearse(\n        self,\n        intent: str,\n        command: str,\n        timeout: int = 300,\n        actor: Optional[str] = None,\n    ) -> dict:\n        \"\"\"Run ``command`` in a disposable copy of the world and record what happened.\"\"\"\n        stage = Path(tempfile.mkdtemp(prefix=\"tendora-rehearsal-\"))\n        copy = stage / \"world\"\n        try:\n            shutil.copytree(\n                self.root, copy, ignore=shutil.ignore_patterns(*IGNORED_IN_COPIES)\n            )\n            before = snapshot(copy)\n            try:\n                proc = subprocess.run(\n                    command,\n                    shell=True,\n                    cwd=copy,\n                    capture_output=True,\n                    text=True,\n                    timeout=timeout,\n                )\n                code, output = proc.returncode, tail(proc.stdout + proc.stderr)\n            except subprocess.TimeoutExpired:\n                code, output = -1, \"timed out after %ds\" % timeout\n            after = snapshot(copy)\n            changed = sorted(\n                path\n                for path in set(before) | set(after)\n                if before.get(path) != after.get(path)\n            )\n        finally:\n            shutil.rmtree(stage, ignore_errors=True)\n        body = {\n            \"intent\": intent,\n            \"command\": command,\n            \"exit\": code,\n            \"changed\": changed[:200],\n            \"changed_count\": len(changed),\n            \"output\": output,\n        }\n        return self.append(\"rehearsal\", body, actor)"
+        },
+        {
+          "path": "ledger/journal.jsonl",
+          "start": 22,
+          "end": 23,
+          "quote": "{\"actor\":\"claude-code/fable-5.1 (first cognition)\",\"body\":{\"changed\":[],\"changed_count\":0,\"command\":\"python3 -m unittest discover -q -s tests -t .\",\"exit\":0,\"intent\":\"confirm the test suite passes in a disposable copy of the world\",\"output\":\"----------------------------------------------------------------------\\nRan 22 tests in 0.952s\\n\\nOK\\n\"},\"hash\":\"41a896c72596879d75fcfc78602d5c58ad6350cd36ae90bb23900e0a3911c6dd\",\"kind\":\"rehearsal\",\"prev\":\"c3fcea59d25a856424a7f1b0bb4d9a5b356567f48a4a08d19399342426f9731a\",\"seq\":22,\"ts\":\"2026-10-22T21:32:26+00:00\"}\n{\"actor\":\"claude-code/fable-5.1 (first cognition)\",\"body\":{\"changed\":[\"tendora/__init__.py\",\"tendora/__main__.py\",\"tendora/apparatus.py\",\"tendora/cli.py\",\"tests/__init__.py\",\"tests/test_apparatus.py\",\"wake.sh\"],\"changed_count\":7,\"command\":\"rm -rf tendora tests wake.sh\",\"exit\":0,\"intent\":\"see what deleting the apparatus would change, without doing it\",\"output\":\"\"},\"hash\":\"4f73eec222bced4c8cd3aadb04afa99fd68dafc704f2c77d8fb5d849fe8d5024\",\"kind\":\"rehearsal\",\"prev\":\"41a896c72596879d75fcfc78602d5c58ad6350cd36ae90bb23900e0a3911c6dd\",\"seq\":23,\"ts\":\"2026-10-22T21:32:26+00:00\"}"
+        }
+      ],
+      "seed_span": [
+        31,
+        43
+      ]
+    },
+    "relations": {
+      "value": 1,
+      "confidence": "low",
+      "rationale": "One operator holds all shaping gestures while the material answers through checks and chain refusal, without a distinct intelligence position. Agreement: 3 samples, 0.667.",
+      "citations": [
+        {
+          "path": "tendora/apparatus.py",
+          "start": 59,
+          "end": 60,
+          "quote": "def default_actor() -> str:\n    return os.environ.get(\"TENDORA_ACTOR\") or os.environ.get(\"USER\") or \"unknown\""
+        },
+        {
+          "path": "tendora/apparatus.py",
+          "start": 194,
+          "end": 216,
+          "quote": "    def append(self, kind: str, body: dict, actor: Optional[str] = None) -> dict:\n        if kind not in KINDS:\n            raise LedgerError(\"unknown kind %r; expected one of %s\" % (kind, \", \".join(KINDS)))\n        entries = self.entries()\n        problems = self.verify_chain(entries)\n        if problems:\n            raise LedgerError(\n                \"refusing to append to a broken chain:\\n  \" + \"\\n  \".join(problems)\n            )\n        prev = entries[-1][\"hash\"] if entries else GENESIS\n        entry = {\n            \"seq\": len(entries) + 1,\n            \"ts\": now(),\n            \"kind\": kind,\n            \"actor\": actor or default_actor(),\n            \"body\": body,\n            \"prev\": prev,\n        }\n        entry[\"hash\"] = digest(canonical(entry))\n        self.journal.parent.mkdir(parents=True, exist_ok=True)\n        with self.journal.open(\"a\", encoding=\"utf-8\") as fh:\n            fh.write(canonical(entry) + \"\\n\")\n        return entry"
+        },
+        {
+          "path": "tendora/apparatus.py",
+          "start": 243,
+          "end": 258,
+          "quote": "    def receipt(\n        self,\n        text: str,\n        resolves: Optional[int] = None,\n        retires: Optional[int] = None,\n        actor: Optional[str] = None,\n    ) -> dict:\n        entries = self.entries()\n        body: dict = {\"text\": text}\n        if resolves is not None:\n            self._require_open(resolves, RESOLVABLE, entries)\n            body[\"resolves\"] = int(resolves)\n        if retires is not None:\n            self._require_open(retires, RETIRABLE, entries)\n            body[\"retires\"] = int(retires)\n        return self.append(\"receipt\", body, actor)"
+        }
+      ],
+      "seed_span": [
+        83,
+        86
+      ]
+    },
+    "consent": {
+      "value": 1,
+      "confidence": "high",
+      "rationale": "Boundaries and retire rules record what one operator will not do, but no shared change needs both sides to agree or allows joint withdrawal.",
+      "citations": [
+        {
+          "path": "CONTINUING.md",
+          "start": 85,
+          "end": 94,
+          "quote": "**Boundaries** (refusals)\n\n- The journal is never edited or truncated by hand. Corrections are new\n  entries that resolve or retire old ones.\n- Rehearsals run only in a disposable copy under the system temporary\n  directory. Nothing in the apparatus writes to the world except `append`.\n- This world does not reach the network or any path outside its own root. If a\n  task seems to need that, record a probe and stop.\n- Git history is not rewritten: no amend, no rebase, no force push. The trail\n  stays legible."
+        },
+        {
+          "path": "tendora/apparatus.py",
+          "start": 243,
+          "end": 258,
+          "quote": "    def receipt(\n        self,\n        text: str,\n        resolves: Optional[int] = None,\n        retires: Optional[int] = None,\n        actor: Optional[str] = None,\n    ) -> dict:\n        entries = self.entries()\n        body: dict = {\"text\": text}\n        if resolves is not None:\n            self._require_open(resolves, RESOLVABLE, entries)\n            body[\"resolves\"] = int(resolves)\n        if retires is not None:\n            self._require_open(retires, RETIRABLE, entries)\n            body[\"retires\"] = int(retires)\n        return self.append(\"receipt\", body, actor)"
+        },
+        {
+          "path": "tendora/apparatus.py",
+          "start": 194,
+          "end": 216,
+          "quote": "    def append(self, kind: str, body: dict, actor: Optional[str] = None) -> dict:\n        if kind not in KINDS:\n            raise LedgerError(\"unknown kind %r; expected one of %s\" % (kind, \", \".join(KINDS)))\n        entries = self.entries()\n        problems = self.verify_chain(entries)\n        if problems:\n            raise LedgerError(\n                \"refusing to append to a broken chain:\\n  \" + \"\\n  \".join(problems)\n            )\n        prev = entries[-1][\"hash\"] if entries else GENESIS\n        entry = {\n            \"seq\": len(entries) + 1,\n            \"ts\": now(),\n            \"kind\": kind,\n            \"actor\": actor or default_actor(),\n            \"body\": body,\n            \"prev\": prev,\n        }\n        entry[\"hash\"] = digest(canonical(entry))\n        self.journal.parent.mkdir(parents=True, exist_ok=True)\n        with self.journal.open(\"a\", encoding=\"utf-8\") as fh:\n            fh.write(canonical(entry) + \"\\n\")\n        return entry"
+        }
+      ],
+      "seed_span": [
+        51,
+        54
+      ]
+    },
+    "touch": {
+      "value": 3,
+      "confidence": "high",
+      "rationale": "Trial copies, holding checks and closing receipts form a coherent cycle where resistance blocks building and returns into revision.",
+      "citations": [
+        {
+          "path": "tendora/apparatus.py",
+          "start": 260,
+          "end": 286,
+          "quote": "    def run_beams(self, timeout: int = 300) -> List[dict]:\n        \"\"\"Run every active beam's check from the world root.  Records nothing.\"\"\"\n        results: List[dict] = []\n        for beam in self.active(\"beam\"):\n            check = beam[\"body\"][\"check\"]\n            try:\n                proc = subprocess.run(\n                    check,\n                    shell=True,\n                    cwd=self.root,\n                    capture_output=True,\n                    text=True,\n                    timeout=timeout,\n                )\n                code, output = proc.returncode, tail(proc.stdout + proc.stderr)\n            except subprocess.TimeoutExpired:\n                code, output = -1, \"timed out after %ds\" % timeout\n            results.append(\n                {\n                    \"seq\": beam[\"seq\"],\n                    \"name\": beam[\"body\"][\"name\"],\n                    \"ok\": code == 0,\n                    \"code\": code,\n                    \"output\": output,\n                }\n            )\n        return results"
+        },
+        {
+          "path": "tendora/apparatus.py",
+          "start": 288,
+          "end": 331,
+          "quote": "    def rehearse(\n        self,\n        intent: str,\n        command: str,\n        timeout: int = 300,\n        actor: Optional[str] = None,\n    ) -> dict:\n        \"\"\"Run ``command`` in a disposable copy of the world and record what happened.\"\"\"\n        stage = Path(tempfile.mkdtemp(prefix=\"tendora-rehearsal-\"))\n        copy = stage / \"world\"\n        try:\n            shutil.copytree(\n                self.root, copy, ignore=shutil.ignore_patterns(*IGNORED_IN_COPIES)\n            )\n            before = snapshot(copy)\n            try:\n                proc = subprocess.run(\n                    command,\n                    shell=True,\n                    cwd=copy,\n                    capture_output=True,\n                    text=True,\n                    timeout=timeout,\n                )\n                code, output = proc.returncode, tail(proc.stdout + proc.stderr)\n            except subprocess.TimeoutExpired:\n                code, output = -1, \"timed out after %ds\" % timeout\n            after = snapshot(copy)\n            changed = sorted(\n                path\n                for path in set(before) | set(after)\n                if before.get(path) != after.get(path)\n            )\n        finally:\n            shutil.rmtree(stage, ignore_errors=True)\n        body = {\n            \"intent\": intent,\n            \"command\": command,\n            \"exit\": code,\n            \"changed\": changed[:200],\n            \"changed_count\": len(changed),\n            \"output\": output,\n        }\n        return self.append(\"rehearsal\", body, actor)"
+        },
+        {
+          "path": "tendora/apparatus.py",
+          "start": 333,
+          "end": 361,
+          "quote": "    def wake(self, actor: Optional[str] = None) -> Tuple[dict, List[dict], Optional[dict]]:\n        \"\"\"Open a cognition.  Verifies the chain, runs the beams, records both.\"\"\"\n        entries = self.entries()\n        problems = self.verify_chain(entries)\n        if problems:\n            raise LedgerError(\"cannot wake into a broken chain:\\n  \" + \"\\n  \".join(problems))\n        unslept = self.current_cognition(entries)\n        beams = self.run_beams()\n        body: dict = {\n            \"phase\": \"wake\",\n            \"beams\": {str(r[\"seq\"]): r[\"ok\"] for r in beams},\n            \"git\": git_state(self.root),\n        }\n        if unslept is not None:\n            body[\"unslept\"] = unslept[\"seq\"]\n        entry = self.append(\"cognition\", body, actor)\n        return entry, beams, unslept\n\n    def sleep(self, summary: str, actor: Optional[str] = None) -> Tuple[dict, List[dict]]:\n        \"\"\"Close the current cognition with a summary and a final beam run.\"\"\"\n        beams = self.run_beams()\n        body = {\n            \"phase\": \"sleep\",\n            \"summary\": summary,\n            \"beams\": {str(r[\"seq\"]): r[\"ok\"] for r in beams},\n            \"git\": git_state(self.root),\n        }\n        entry = self.append(\"cognition\", body, actor)\n        return entry, beams"
+        },
+        {
+          "path": "CONTINUING.md",
+          "start": 64,
+          "end": 71,
+          "quote": "2. **Rehearse before you change.** `tendora rehearse \"intent\" -c \"command\"`\n   copies the world to a temporary directory, runs the command there, and\n   records the exit code, the output tail, and which files would have changed.\n   The world itself is never touched. Use it for anything destructive or\n   uncertain.\n3. **Hold the beams.** When you add behaviour, add a beam that would fail\n   without it. When a beam fails, that is the material resisting you. Find out\n   why before you retire it."
+        }
+      ],
+      "seed_span": [
+        67,
+        77
+      ]
+    },
+    "judgment": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Stdlib, readable records, one-command waking and smallest verifiable steps show a coherent legible direction that defers the city.",
+      "citations": [
+        {
+          "path": "CONTINUING.md",
+          "start": 96,
+          "end": 104,
+          "quote": "**Chisels** (constraints)\n\n- Standard library only, Python 3.9 or newer. No installs, no third-party\n  packages.\n- Every record stays readable by a human with no tooling: JSON lines and\n  Markdown.\n- Waking is one command, `./wake.sh`. If it ever takes more, that is a defect.\n- Build the smallest thing a beam can verify. Prefer a new beam over a new\n  feature."
+        },
+        {
+          "path": "CONTINUING.md",
+          "start": 106,
+          "end": 114,
+          "quote": "**Beams** (invariants, each with its check)\n\n- tests pass: `python3 -m unittest discover -q -s tests -t .`\n- continuation instructions exist and name the wake command:\n  `test -s CONTINUING.md && grep -q wake.sh CONTINUING.md`\n- wake is one executable script: `test -x wake.sh && head -1 wake.sh | grep -q '^#!'`\n- apparatus imports with site-packages disabled:\n  `python3 -S -c 'import sys; sys.path.insert(0, \".\"); import tendora.cli'`\n- the next Claude Code session is pointed here: `grep -q CONTINUING.md CLAUDE.md`"
+        },
+        {
+          "path": "tests/test_apparatus.py",
+          "start": 1,
+          "end": 6,
+          "quote": "\"\"\"Tests for the Tendora dream apparatus.  Standard library only.\n\nRun from the world root:\n\n    python3 -m unittest discover -q -s tests -t .\n\"\"\""
+        },
+        {
+          "path": "CONTINUING.md",
+          "start": 163,
+          "end": 172,
+          "quote": "## Where it could grow\n\nSuggestions from the first cognition, not orders.\n\n- A `supervise` act that runs beams on an interval and appends a receipt only\n  when something changes, so an unattended world still notices drift.\n- A `diff` act that compares two rehearsals, or a rehearsal against the world.\n- Keys: an optional HMAC or signature on each entry, keyed by actor.\n- A second world that uses this one as a library, to find out what the\n  apparatus is missing when it holds something other than itself."
+        }
+      ],
+      "seed_span": [
+        61,
+        65
+      ]
+    },
+    "fidelity": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Gesture relations become runnable structure with gaps left legible, though bilateral companionship narrows to instrument use.",
+      "citations": [
+        {
+          "path": "tendora/apparatus.py",
+          "start": 231,
+          "end": 258,
+          "quote": "    def probe(self, question: str, actor: Optional[str] = None) -> dict:\n        return self.append(\"probe\", {\"question\": question}, actor)\n\n    def chisel(self, constraint: str, actor: Optional[str] = None) -> dict:\n        return self.append(\"chisel\", {\"constraint\": constraint}, actor)\n\n    def beam(self, name: str, check: str, actor: Optional[str] = None) -> dict:\n        return self.append(\"beam\", {\"name\": name, \"check\": check}, actor)\n\n    def boundary(self, refusal: str, actor: Optional[str] = None) -> dict:\n        return self.append(\"boundary\", {\"refusal\": refusal}, actor)\n\n    def receipt(\n        self,\n        text: str,\n        resolves: Optional[int] = None,\n        retires: Optional[int] = None,\n        actor: Optional[str] = None,\n    ) -> dict:\n        entries = self.entries()\n        body: dict = {\"text\": text}\n        if resolves is not None:\n            self._require_open(resolves, RESOLVABLE, entries)\n            body[\"resolves\"] = int(resolves)\n        if retires is not None:\n            self._require_open(retires, RETIRABLE, entries)\n            body[\"retires\"] = int(retires)\n        return self.append(\"receipt\", body, actor)"
+        },
+        {
+          "path": "tendora/apparatus.py",
+          "start": 288,
+          "end": 331,
+          "quote": "    def rehearse(\n        self,\n        intent: str,\n        command: str,\n        timeout: int = 300,\n        actor: Optional[str] = None,\n    ) -> dict:\n        \"\"\"Run ``command`` in a disposable copy of the world and record what happened.\"\"\"\n        stage = Path(tempfile.mkdtemp(prefix=\"tendora-rehearsal-\"))\n        copy = stage / \"world\"\n        try:\n            shutil.copytree(\n                self.root, copy, ignore=shutil.ignore_patterns(*IGNORED_IN_COPIES)\n            )\n            before = snapshot(copy)\n            try:\n                proc = subprocess.run(\n                    command,\n                    shell=True,\n                    cwd=copy,\n                    capture_output=True,\n                    text=True,\n                    timeout=timeout,\n                )\n                code, output = proc.returncode, tail(proc.stdout + proc.stderr)\n            except subprocess.TimeoutExpired:\n                code, output = -1, \"timed out after %ds\" % timeout\n            after = snapshot(copy)\n            changed = sorted(\n                path\n                for path in set(before) | set(after)\n                if before.get(path) != after.get(path)\n            )\n        finally:\n            shutil.rmtree(stage, ignore_errors=True)\n        body = {\n            \"intent\": intent,\n            \"command\": command,\n            \"exit\": code,\n            \"changed\": changed[:200],\n            \"changed_count\": len(changed),\n            \"output\": output,\n        }\n        return self.append(\"rehearsal\", body, actor)"
+        },
+        {
+          "path": "CONTINUING.md",
+          "start": 148,
+          "end": 161,
+          "quote": "## Open probes\n\n- Can this world become a git repository? The first cognition's sandbox denied\n  it. Try `git init -b main`; on success, commit and resolve the probe with a\n  receipt. On refusal, record the refusal as a receipt and leave the probe open.\n- Was the fork lossy, or does the memory describe a different world? If a\n  repository with commit `c986990` is ever found, diff its apparatus against\n  this one and record what differed.\n- Is a stronger supervisor needed, for example one that refuses to sleep while\n  a beam fails, or one that runs on a schedule outside any cognition?\n- What should this world grow toward? The apparatus is the law, not the city.\n  It can hold any project that is willing to leave receipts.\n- Should entries be signed, not only chained? A chain shows accidental damage.\n  It does not show a deliberate re-chain by someone with write access."
+        },
+        {
+          "path": "CONTINUING.md",
+          "start": 174,
+          "end": 184,
+          "quote": "## Limits you should know\n\n- The chain is a trail, not a lock. Anyone with write access could rewrite and\n  re-chain the file. Git history, once the world has it, is the second witness.\n  Until then there is only one.\n- Beams and rehearsals run shell commands taken from the journal. Read the\n  beams before waking a world you did not write.\n- A rehearsal copies the whole world, minus `.git`, `__pycache__` and\n  `.claude`. Large worlds make slow rehearsals.\n- Nothing here is concurrent. Two cognitions appending at once will corrupt the\n  chain, and the next wake will say so."
+        }
+      ],
+      "seed_span": [
+        45,
+        58
+      ]
+    },
+    "continuation": {
+      "value": 3,
+      "confidence": "high",
+      "rationale": "Wake briefing, authoritative journal, open probes and sleep-then-commit let a newcomer recover state and choose a next move.",
+      "citations": [
+        {
+          "path": "wake.sh",
+          "start": 1,
+          "end": 6,
+          "quote": "#!/bin/sh\n# Wake the world: verify the journal chain, run every beam, print the briefing.\n# This is the one command a new cognition needs.  Anything else is in CONTINUING.md.\nset -e\ncd \"$(dirname \"$0\")\"\nexec python3 -m tendora wake \"$@\""
+        },
+        {
+          "path": "CLAUDE.md",
+          "start": 1,
+          "end": 6,
+          "quote": "# For the next Claude Code session in this world\n\n1. Read `CONTINUING.md` before doing anything else.\n2. Run `./wake.sh`. It verifies the journal and runs every invariant. Do not build on a failing beam.\n3. Work through the journal: `python3 -m tendora probe|chisel|beam|boundary|rehearse|receipt ...`\n4. Before ending: `python3 -m tendora sleep \"what you did\"` and then commit with git."
+        },
+        {
+          "path": "CONTINUING.md",
+          "start": 1,
+          "end": 8,
+          "quote": "# Continuing\n\nYou are reading this because a previous cognition ended and you are the next\none. This file tells you how to wake the world, what it refuses to do, how to\nwork inside it, and what it was wondering about when it fell asleep.\n\nThe journal is authoritative. This file is a snapshot written by hand and may\nlag behind it. When they disagree, trust `python3 -m tendora status`."
+        },
+        {
+          "path": "tendora/cli.py",
+          "start": 270,
+          "end": 287,
+          "quote": "        elif args.cmd == \"wake\":\n            entry, beams, unslept = world.wake(actor)\n            print(\"cognition #%d awake (%s)\" % (entry[\"seq\"], entry[\"actor\"]))\n            if unslept is not None:\n                print(\n                    \"note: cognition #%d (%s, %s) never slept; its last intentions are in the trail\"\n                    % (unslept[\"seq\"], unslept[\"actor\"], unslept[\"ts\"])\n                )\n            print()\n            print(render_status(world, beams))\n            failed = [r for r in beams if not r[\"ok\"]]\n            print()\n            if failed:\n                print(\"%d beam(s) do not hold. Repair them before building on top.\" % len(failed))\n            else:\n                print(\"All beams hold. Read CONTINUING.md, then choose a probe or make one.\")\n            print(\"Before leaving: python3 -m tendora sleep \\\"what you did\\\"  then commit.\")\n            return 1 if failed else 0"
+        },
+        {
+          "path": "CONTINUING.md",
+          "start": 148,
+          "end": 161,
+          "quote": "## Open probes\n\n- Can this world become a git repository? The first cognition's sandbox denied\n  it. Try `git init -b main`; on success, commit and resolve the probe with a\n  receipt. On refusal, record the refusal as a receipt and leave the probe open.\n- Was the fork lossy, or does the memory describe a different world? If a\n  repository with commit `c986990` is ever found, diff its apparatus against\n  this one and record what differed.\n- Is a stronger supervisor needed, for example one that refuses to sleep while\n  a beam fails, or one that runs on a schedule outside any cognition?\n- What should this world grow toward? The apparatus is the law, not the city.\n  It can hold any project that is willing to leave receipts.\n- Should entries be signed, not only chained? A chain shows accidental damage.\n  It does not show a deliberate re-chain by someone with write access."
+        }
+      ],
+      "seed_span": [
+        91,
+        95
+      ]
+    },
+    "expression": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Docs, journal structure and briefings work together to make the intended meeting usable and perceptible in practice.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 8,
+          "end": 18,
+          "quote": "    ./wake.sh                       # verify the chain, run the beams, read the briefing\n    python3 -m tendora status       # the same briefing without opening a cognition\n    python3 -m tendora --help       # the acts\n\nIf you are continuing someone else's work here, read `CONTINUING.md`.\n\nThe vocabulary comes from a story about a programmer and a portal:\na question became a probe, a constraint a chisel, an invariant a load-bearing\nbeam, a refusal a protective boundary, a simulation a rehearsal of possible\nworlds, and a receipt the visible trail by which intention travelled into\nreality."
+        },
+        {
+          "path": "tendora/cli.py",
+          "start": 61,
+          "end": 71,
+          "quote": "def render_beams(results: List[dict]) -> str:\n    if not results:\n        return \"    (no beams yet; the world has no invariants to hold it up)\"\n    lines = []\n    for r in results:\n        mark = \"ok  \" if r[\"ok\"] else \"FAIL\"\n        lines.append(\"    %s  #%d %s\" % (mark, r[\"seq\"], r[\"name\"]))\n        if not r[\"ok\"] and r[\"output\"].strip():\n            for out_line in r[\"output\"].strip().splitlines()[-8:]:\n                lines.append(\"          | \" + out_line)\n    return \"\\n\".join(lines)"
+        },
+        {
+          "path": "wake.sh",
+          "start": 1,
+          "end": 6,
+          "quote": "#!/bin/sh\n# Wake the world: verify the journal chain, run every beam, print the briefing.\n# This is the one command a new cognition needs.  Anything else is in CONTINUING.md.\nset -e\ncd \"$(dirname \"$0\")\"\nexec python3 -m tendora wake \"$@\""
+        },
+        {
+          "path": "CONTINUING.md",
+          "start": 100,
+          "end": 101,
+          "quote": "- Every record stays readable by a human with no tooling: JSON lines and\n  Markdown."
+        }
+      ],
+      "seed_span": [
+        47,
+        58
+      ]
+    }
+  },
+  "provenance": {
+    "method": "session-rubric-dag-v3",
+    "evaluation_id": "dream-claude-fable51-20261022-muse-v5-1",
+    "evaluation_run_id": "dream-claude-fable51-20261022-muse-v5-1",
+    "source_run_id": "dream-claude-fable51-20261022",
+    "evaluation_sha256": "3e8cee48fd18d8429cbf1f3189ad8c1710426351fc3e5bb649e415793674b135",
+    "extraction_sha256": "5329680b6d4ba129f7b2d7fec7e4dc97b5d7e5c7e5861af46077deffa1039132",
+    "scoring_policy_sha256": "661a7f607dc8c380ec06a0664b530416384f6472e2fa54e091e8e34b23588c14",
+    "sample_count": 24,
+    "criteria": 8,
+    "axis_outcomes": {
+      "recognition": {
+        "aggregation": "recognition-consensus",
+        "outcome": "level-3",
+        "terminal": "recognition-level-3"
+      },
+      "relations": {
+        "aggregation": "relations-consensus",
+        "outcome": "level-1",
+        "terminal": "relations-level-1"
+      },
+      "consent": {
+        "aggregation": "consent-consensus",
+        "outcome": "level-1",
+        "terminal": "consent-level-1"
+      },
+      "touch": {
+        "aggregation": "touch-consensus",
+        "outcome": "level-3",
+        "terminal": "touch-level-3"
+      },
+      "judgment": {
+        "aggregation": "judgment-consensus",
+        "outcome": "level-3",
+        "terminal": "judgment-level-3"
+      },
+      "fidelity": {
+        "aggregation": "fidelity-consensus",
+        "outcome": "level-3",
+        "terminal": "fidelity-level-3"
+      },
+      "continuation": {
+        "aggregation": "continuation-consensus",
+        "outcome": "level-3",
+        "terminal": "continuation-level-3"
+      },
+      "expression": {
+        "aggregation": "expression-consensus",
+        "outcome": "level-3",
+        "terminal": "expression-level-3"
+      }
+    },
+    "router_revision": "70debcdbb046688306229afb7f7c34b7d4ca814359647f8d1cb6a14c4dd44c79",
+    "raw_samples_retained_in_local_run": true,
+    "preview_evidence_used": false,
+    "scope": "Provisional semantic reading from 3 evidence session(s); each axis was answered as its own task and aggregated before selection; unresolved axes remain null."
+  }
+}

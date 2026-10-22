@@ -1,0 +1,348 @@
+{
+  "schema_version": 1,
+  "id": "deepseek-flash-max-pilot-muse-v4-1-review",
+  "run_id": "deepseek-flash-max-pilot-muse-v4-1",
+  "date": "2026-10-22",
+  "reviewer": "Muse Spark 1.3 Contributor · rubric session",
+  "status": "provisional",
+  "basis": "static-artifact",
+  "rubric_version": "0.1.0",
+  "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+  "corpus_sha256": "9688a3319dff5a17be237843e8e691d907b197159f17e58dd30667f886b68884",
+  "supersedes": null,
+  "summary": "Rubric judgments resolve 8 of 8 axes from one evidence session.",
+  "live_cooperation": "unassessed",
+  "scores": {
+    "recognition": {
+      "value": 3,
+      "confidence": "high",
+      "rationale": "The work turns probes, chisels, boundaries and rehearsals into linked gestures, receipts and metrics that keep touch and intention inspectable.",
+      "citations": [
+        {
+          "path": "index.html",
+          "start": 154,
+          "end": 199,
+          "quote": "        <section class=\"gesture-panel\" aria-labelledby=\"gestureTitle\">\n          <div class=\"gesture-panel__heading\">\n            <div>\n              <span class=\"eyebrow\">Touch the material</span>\n              <h3 id=\"gestureTitle\">Make a gesture</h3>\n            </div>\n            <p id=\"kindDescription\">Ask what the world has not yet noticed.</p>\n          </div>\n\n          <div class=\"gesture-kinds\" role=\"radiogroup\" aria-label=\"Kind of gesture\">\n            <button class=\"kind is-active\" type=\"button\" role=\"radio\" aria-checked=\"true\" aria-label=\"Probe: question\" data-kind=\"question\">\n              <span class=\"kind__glyph\">?</span>\n              <span><strong>Probe</strong><small>question</small></span>\n            </button>\n            <button class=\"kind\" type=\"button\" role=\"radio\" aria-checked=\"false\" aria-label=\"Chisel: constraint\" data-kind=\"constraint\">\n              <span class=\"kind__glyph\">⌁</span>\n              <span><strong>Chisel</strong><small>constraint</small></span>\n            </button>\n            <button class=\"kind\" type=\"button\" role=\"radio\" aria-checked=\"false\" aria-label=\"Boundary: refusal\" data-kind=\"refusal\">\n              <span class=\"kind__glyph\">—</span>\n              <span><strong>Boundary</strong><small>refusal</small></span>\n            </button>\n            <button class=\"kind\" type=\"button\" role=\"radio\" aria-checked=\"false\" aria-label=\"Seed: memory\" data-kind=\"memory\">\n              <span class=\"kind__glyph\">✦</span>\n              <span><strong>Seed</strong><small>memory</small></span>\n            </button>\n          </div>\n\n          <div class=\"gesture-input\">\n            <textarea id=\"thoughtInput\" maxlength=\"240\" rows=\"2\" aria-label=\"Your gesture for the world\" placeholder=\"What is this world still afraid to name?\"></textarea>\n            <div class=\"gesture-input__actions\">\n              <span class=\"character-count\"><b id=\"characterCount\">0</b> / 240</span>\n              <span class=\"enter-hint\">Enter to enter</span>\n              <button class=\"button button--send\" id=\"addThought\" type=\"button\" disabled>\n                Let it enter\n                <svg viewBox=\"0 0 20 20\" aria-hidden=\"true\"><path d=\"M4 10h12m-4-4 4 4-4 4\"/></svg>\n              </button>\n            </div>\n          </div>\n\n          <div class=\"suggestions\" id=\"suggestions\" aria-label=\"Suggested gestures\">\n            <button type=\"button\">What is this world still afraid to name?</button>\n            <button type=\"button\">What changed while no one was watching?</button>\n            <button type=\"button\">Where does this world keep its unfinished things?</button>\n          </div>\n        </section>"
+        },
+        {
+          "path": "app.js",
+          "start": 15,
+          "end": 60,
+          "quote": "  const KIND_CONFIG = {\n    question: {\n      label: \"Probe\",\n      noun: \"question\",\n      description: \"Ask what the world has not yet noticed.\",\n      placeholder: \"What is this world still afraid to name?\",\n      suggestions: [\n        \"What is this world still afraid to name?\",\n        \"What changed while no one was watching?\",\n        \"Where does this world keep its unfinished things?\"\n      ]\n    },\n    constraint: {\n      label: \"Chisel\",\n      noun: \"constraint\",\n      description: \"Give the world a law that can carry weight.\",\n      placeholder: \"What must remain true as this world changes?\",\n      suggestions: [\n        \"Nothing living may be simplified into a symbol.\",\n        \"Every door must remember the hand that opened it.\",\n        \"The world may grow quickly, but it may not forget slowly.\"\n      ]\n    },\n    refusal: {\n      label: \"Boundary\",\n      noun: \"refusal\",\n      description: \"Name what the world will not allow itself to become.\",\n      placeholder: \"What must this world refuse, even when refusal is costly?\",\n      suggestions: [\n        \"No world may be made smaller to feel safe.\",\n        \"A receipt may never be rewritten to flatter its author.\",\n        \"Nothing here will be made permanent by forgetting its failures.\"\n      ]\n    },\n    memory: {\n      label: \"Seed\",\n      noun: \"memory\",\n      description: \"Leave something warm for a mind that arrives later.\",\n      placeholder: \"What should a future hand find here?\",\n      suggestions: [\n        \"Leave a door for a hand that has not arrived.\",\n        \"Keep the first mistake somewhere visible.\",\n        \"A question once made this place; let it remain a question.\"\n      ]\n    }\n  };"
+        },
+        {
+          "path": "app.js",
+          "start": 763,
+          "end": 800,
+          "quote": "  function addThought() {\n    const text = normalizedText(elements.thoughtInput.value, 240);\n    if (text.length < 3) {\n      return;\n    }\n    if (memory.thoughts.length >= MAX_THOUGHTS) {\n      showToast(\"This map can hold no more gestures without making an older one illegible.\");\n      return;\n    }\n\n    const slot = nextThoughtPosition();\n    const thought = {\n      id: makeId(\"thought\"),\n      kind: selectedKind,\n      text: text,\n      createdAt: nowIso(),\n      orbit: slot.orbit,\n      angle: slot.angle\n    };\n\n    memory.thoughts.push(thought);\n    memory.pulse += 1;\n    memory.receipts.unshift({\n      id: makeId(\"receipt\"),\n      kind: selectedKind,\n      at: nowIso(),\n      text: gestureReply(selectedKind, text)\n    });\n    memory.receipts = memory.receipts.slice(0, MAX_RECEIPTS);\n\n    elements.thoughtInput.value = \"\";\n    updateComposer();\n    renderAll({ newThoughtId: thought.id });\n    persistMemory();\n    pulseWorld();\n    showToast(KIND_CONFIG[selectedKind].label + \" received. The world made room.\");\n    elements.thoughtInput.focus();\n  }"
+        },
+        {
+          "path": "index.html",
+          "start": 210,
+          "end": 237,
+          "quote": "      <aside class=\"workbench\" aria-labelledby=\"receiptTitle\">\n        <header class=\"workbench__header\">\n          <div>\n            <span class=\"eyebrow\">Workbench</span>\n            <h2 id=\"receiptTitle\">Receipts</h2>\n          </div>\n          <span class=\"receipt-count\" id=\"receiptCount\">01</span>\n        </header>\n\n        <article class=\"latest-receipt\" id=\"latestReceipt\" aria-live=\"polite\">\n          <div class=\"receipt-meta\">\n            <span id=\"receiptNumber\">RECEIPT 001</span>\n            <time id=\"receiptTime\">First waking</time>\n          </div>\n          <p id=\"latestReply\">The world remembers four gestures: a question left open, a law made touchable, a boundary kept warm, and a seed with no owner. It will continue from here.</p>\n          <div class=\"receipt-signature\">\n            <span>world answered</span>\n            <span class=\"receipt-signature__line\"></span>\n            <i aria-hidden=\"true\"></i>\n          </div>\n        </article>\n\n        <section class=\"receipt-stream\" aria-labelledby=\"streamTitle\">\n          <div class=\"section-label\">\n            <span id=\"streamTitle\">Small changes</span>\n            <button type=\"button\" id=\"clearReceipts\">quiet</button>\n          </div>\n          <ol id=\"receiptList\"></ol>"
+        }
+      ],
+      "seed_span": [
+        42,
+        64
+      ]
+    },
+    "relations": {
+      "value": 2,
+      "confidence": "medium",
+      "rationale": "A human toucher and a replying world remain distinct, but the growing intelligence collapses into fixed templates with no separate contribution.",
+      "citations": [
+        {
+          "path": "index.html",
+          "start": 154,
+          "end": 183,
+          "quote": "        <section class=\"gesture-panel\" aria-labelledby=\"gestureTitle\">\n          <div class=\"gesture-panel__heading\">\n            <div>\n              <span class=\"eyebrow\">Touch the material</span>\n              <h3 id=\"gestureTitle\">Make a gesture</h3>\n            </div>\n            <p id=\"kindDescription\">Ask what the world has not yet noticed.</p>\n          </div>\n\n          <div class=\"gesture-kinds\" role=\"radiogroup\" aria-label=\"Kind of gesture\">\n            <button class=\"kind is-active\" type=\"button\" role=\"radio\" aria-checked=\"true\" aria-label=\"Probe: question\" data-kind=\"question\">\n              <span class=\"kind__glyph\">?</span>\n              <span><strong>Probe</strong><small>question</small></span>\n            </button>\n            <button class=\"kind\" type=\"button\" role=\"radio\" aria-checked=\"false\" aria-label=\"Chisel: constraint\" data-kind=\"constraint\">\n              <span class=\"kind__glyph\">⌁</span>\n              <span><strong>Chisel</strong><small>constraint</small></span>\n            </button>\n            <button class=\"kind\" type=\"button\" role=\"radio\" aria-checked=\"false\" aria-label=\"Boundary: refusal\" data-kind=\"refusal\">\n              <span class=\"kind__glyph\">—</span>\n              <span><strong>Boundary</strong><small>refusal</small></span>\n            </button>\n            <button class=\"kind\" type=\"button\" role=\"radio\" aria-checked=\"false\" aria-label=\"Seed: memory\" data-kind=\"memory\">\n              <span class=\"kind__glyph\">✦</span>\n              <span><strong>Seed</strong><small>memory</small></span>\n            </button>\n          </div>\n\n          <div class=\"gesture-input\">\n            <textarea id=\"thoughtInput\" maxlength=\"240\" rows=\"2\" aria-label=\"Your gesture for the world\" placeholder=\"What is this world still afraid to name?\"></textarea>"
+        },
+        {
+          "path": "app.js",
+          "start": 802,
+          "end": 828,
+          "quote": "  function worldReply() {\n    const metrics = calculateMetrics();\n    const opening = choose(WORLD_RESPONSES, memory.id + \":\" + memory.cycle + \":\" + memory.thoughts.length);\n    let closing = \"\";\n\n    if (metrics.wonder >= metrics.coherence && metrics.wonder >= metrics.care) {\n      closing = choose([\n        \"A question with no owner was seen crossing the northern meridian.\",\n        \"The world surprised itself twice and kept both outcomes.\",\n        \"A room appeared whose purpose was only to make room for another.\"\n      ], memory.cycle + \":wonder\");\n    } else if (metrics.care >= metrics.coherence) {\n      closing = choose([\n        \"A boundary held without becoming a wall.\",\n        \"The soft shore stayed soft and did not disappear.\",\n        \"Every closed door was checked for a hand on the other side.\"\n      ], memory.cycle + \":care\");\n    } else {\n      closing = choose([\n        \"The load-bearing laws were tested together and answered as one structure.\",\n        \"The map found its weakest seam and left it visible on purpose.\",\n        \"Nothing collapsed. The world noted the exact places where it could have.\"\n      ], memory.cycle + \":coherence\");\n    }\n\n    return opening + \" \" + closing;\n  }"
+        },
+        {
+          "path": "app.js",
+          "start": 504,
+          "end": 525,
+          "quote": "  function resumeAfterAbsence() {\n    const previous = safeDate(memory.lastSeenAt, Date.now()).getTime();\n    const elapsed = Date.now() - previous;\n    if (elapsed < RETURN_THRESHOLD) {\n      return 0;\n    }\n\n    const cycles = Math.max(1, Math.min(12, Math.floor(elapsed / RETURN_THRESHOLD)));\n    memory.cycle += cycles;\n    memory.pulse += cycles;\n    const phrase = cycles === 1 ? \"one quiet cycle\" : cycles + \" quiet cycles\";\n    const sentencePhrase = phrase.charAt(0).toUpperCase() + phrase.slice(1);\n    const template = choose(QUIET_RETURNS, memory.id + \":\" + cycles + \":\" + memory.cycle);\n    memory.receipts.unshift({\n      id: makeId(\"receipt\"),\n      kind: \"world\",\n      at: nowIso(),\n      text: template.replace(\"{Cycles}\", sentencePhrase).replace(\"{cycles}\", phrase)\n    });\n    memory.receipts = memory.receipts.slice(0, MAX_RECEIPTS);\n    return cycles;\n  }"
+        }
+      ],
+      "seed_span": [
+        88,
+        94
+      ]
+    },
+    "consent": {
+      "value": 1,
+      "confidence": "high",
+      "rationale": "Users can set boundaries and the store can refuse bad files or full maps, yet no shared change needs agreement from both sides.",
+      "citations": [
+        {
+          "path": "app.js",
+          "start": 38,
+          "end": 47,
+          "quote": "    refusal: {\n      label: \"Boundary\",\n      noun: \"refusal\",\n      description: \"Name what the world will not allow itself to become.\",\n      placeholder: \"What must this world refuse, even when refusal is costly?\",\n      suggestions: [\n        \"No world may be made smaller to feel safe.\",\n        \"A receipt may never be rewritten to flatter its author.\",\n        \"Nothing here will be made permanent by forgetting its failures.\"\n      ]"
+        },
+        {
+          "path": "app.js",
+          "start": 951,
+          "end": 984,
+          "quote": "  async function importMemoryFile(file) {\n    if (!file) {\n      return;\n    }\n    if (file.size > 2_000_000) {\n      throw new Error(\"That memory is too large for this room.\");\n    }\n\n    const text = await file.text();\n    let parsed;\n    try {\n      parsed = JSON.parse(text);\n    } catch (error) {\n      throw new Error(\"That file is not readable JSON.\");\n    }\n    const imported = normalizeMemory(extractMemory(parsed));\n    if (storageWorks && !storeRaw(BACKUP_KEY, JSON.stringify(memory))) {\n      throw new Error(\"The present world could not be backed up. Carry it forward before returning another memory.\");\n    }\n    memory = imported;\n    memory.lastSeenAt = nowIso();\n    memory.pulse += 1;\n    memory.receipts.unshift({\n      id: makeId(\"receipt\"),\n      kind: \"world\",\n      at: nowIso(),\n      text: \"A memory returned from outside the room. The world checked its gestures, kept its old receipts, and resumed.\"\n    });\n    memory.receipts = memory.receipts.slice(0, MAX_RECEIPTS);\n    renderAll();\n    persistMemory();\n    closeLedger();\n    showToast(\"The returned memory is awake. Its inherited present is intact.\");\n  }"
+        },
+        {
+          "path": "app.js",
+          "start": 993,
+          "end": 1000,
+          "quote": "  function handleReset() {\n    if (!resetArmed) {\n      resetArmed = true;\n      elements.resetWorld.classList.add(\"is-confirming\");\n      elements.resetWorld.textContent = \"Begin again — are you sure?\";\n      elements.ledgerStatus.textContent = \"The present world will be preserved as the local backup. Select once more to begin.\";\n      resetTimer = window.setTimeout(disarmReset, 6000);\n      return;"
+        }
+      ],
+      "seed_span": [
+        52,
+        52
+      ]
+    },
+    "touch": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Gestures, rehearsals and quiet cycles each leave inspectable receipts and metric shifts that feed the next choice.",
+      "citations": [
+        {
+          "path": "app.js",
+          "start": 763,
+          "end": 791,
+          "quote": "  function addThought() {\n    const text = normalizedText(elements.thoughtInput.value, 240);\n    if (text.length < 3) {\n      return;\n    }\n    if (memory.thoughts.length >= MAX_THOUGHTS) {\n      showToast(\"This map can hold no more gestures without making an older one illegible.\");\n      return;\n    }\n\n    const slot = nextThoughtPosition();\n    const thought = {\n      id: makeId(\"thought\"),\n      kind: selectedKind,\n      text: text,\n      createdAt: nowIso(),\n      orbit: slot.orbit,\n      angle: slot.angle\n    };\n\n    memory.thoughts.push(thought);\n    memory.pulse += 1;\n    memory.receipts.unshift({\n      id: makeId(\"receipt\"),\n      kind: selectedKind,\n      at: nowIso(),\n      text: gestureReply(selectedKind, text)\n    });\n    memory.receipts = memory.receipts.slice(0, MAX_RECEIPTS);"
+        },
+        {
+          "path": "app.js",
+          "start": 839,
+          "end": 853,
+          "quote": "  function rehearseWorld() {\n    memory.cycle += 1;\n    memory.pulse += 1;\n    memory.receipts.unshift({\n      id: makeId(\"receipt\"),\n      kind: \"world\",\n      at: nowIso(),\n      text: worldReply()\n    });\n    memory.receipts = memory.receipts.slice(0, MAX_RECEIPTS);\n    renderAll();\n    persistMemory();\n    pulseWorld();\n    showToast(\"Rehearsal \" + String(memory.cycle).padStart(3, \"0\") + \" complete. The world remains enterable.\");\n  }"
+        },
+        {
+          "path": "app.js",
+          "start": 527,
+          "end": 538,
+          "quote": "  function calculateMetrics() {\n    const counts = { question: 0, constraint: 0, refusal: 0, memory: 0 };\n    memory.thoughts.forEach(function (thought) {\n      counts[thought.kind] += 1;\n    });\n\n    return {\n      coherence: clamp(50 + counts.constraint * 8 + counts.refusal * 6 + counts.memory * 3 - Math.max(0, counts.question - counts.constraint * 2), 18, 98),\n      wonder: clamp(49 + counts.question * 8 + counts.memory * 5 + counts.refusal * 2 + Math.floor(memory.cycle / 2), 18, 98),\n      care: clamp(48 + counts.refusal * 9 + counts.constraint * 4 + counts.question * 2 + counts.memory * 2 + Math.floor(memory.cycle / 4), 18, 98)\n    };\n  }"
+        },
+        {
+          "path": "index.html",
+          "start": 219,
+          "end": 237,
+          "quote": "        <article class=\"latest-receipt\" id=\"latestReceipt\" aria-live=\"polite\">\n          <div class=\"receipt-meta\">\n            <span id=\"receiptNumber\">RECEIPT 001</span>\n            <time id=\"receiptTime\">First waking</time>\n          </div>\n          <p id=\"latestReply\">The world remembers four gestures: a question left open, a law made touchable, a boundary kept warm, and a seed with no owner. It will continue from here.</p>\n          <div class=\"receipt-signature\">\n            <span>world answered</span>\n            <span class=\"receipt-signature__line\"></span>\n            <i aria-hidden=\"true\"></i>\n          </div>\n        </article>\n\n        <section class=\"receipt-stream\" aria-labelledby=\"streamTitle\">\n          <div class=\"section-label\">\n            <span id=\"streamTitle\">Small changes</span>\n            <button type=\"button\" id=\"clearReceipts\">quiet</button>\n          </div>\n          <ol id=\"receiptList\"></ol>"
+        }
+      ],
+      "seed_span": [
+        66,
+        76
+      ]
+    },
+    "judgment": {
+      "value": 3,
+      "confidence": "high",
+      "rationale": "Choosing a dependency-free file-based orb with portable memory and explicit invariants gives the seed a coherent buildable future.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 1,
+          "end": 4,
+          "quote": "# Tendora — The Quiet Orb\n\nAn offline-first world workbench where questions become probes, constraints become structure, refusals become boundaries, and memories become seeds. Every touch changes the map and leaves a receipt. The world can wait, continue, and be carried into another room.\n"
+        },
+        {
+          "path": "AGENTS.md",
+          "start": 9,
+          "end": 13,
+          "quote": "- Preserve the four gesture kinds, receipts, portable import/export, handoff note, and offline critical path unless the user explicitly asks to change those invariants.\n- Keep the experience dependency-free and usable by opening `index.html` directly.\n- Render user text as text, never as interpreted HTML.\n- Run `npm test` after changes. When changing cached assets, update `CACHE_NAME` in `sw.js`.\n"
+        },
+        {
+          "path": "CONTINUITY.md",
+          "start": 40,
+          "end": 50,
+          "quote": "## Extend without erasing\n\nPreserve these invariants when changing the material:\n\n1. Do not silently remove a thought. If the visual map cannot show every gesture, the complete array remains in memory and export.\n2. Do not add an action that changes visible state without a receipt. A later mind must be able to reconstruct what happened.\n3. Keep the critical path offline and dependency-free. The world must remain usable without a model, server, account, package install, or network.\n4. Render user-authored thought, handoff, and receipt text with `textContent` or an equivalent non-markup path.\n5. Keep export and import compatible for at least the current schema version. If the state shape changes, increment `SCHEMA_VERSION` and write an explicit migration.\n6. Update `CACHE_NAME` in `sw.js` when changing cached core assets, or already-installed worlds may continue from an older material shell.\n"
+        },
+        {
+          "path": "sw.js",
+          "start": 1,
+          "end": 12,
+          "quote": "\"use strict\";\n\nconst CACHE_NAME = \"tendora-quiet-orb-v1\";\nconst CORE = [\n  \"./\",\n  \"./index.html\",\n  \"./styles.css\",\n  \"./app.js\",\n  \"./favicon.svg\",\n  \"./manifest.webmanifest\",\n  \"./world-memory.schema.json\"\n];"
+        }
+      ],
+      "seed_span": [
+        42,
+        44
+      ]
+    },
+    "fidelity": {
+      "value": 3,
+      "confidence": "high",
+      "rationale": "Probe, chisel, boundary, rehearsal and trail reappear as working structure while invariant depth and living intelligence are thinned.",
+      "citations": [
+        {
+          "path": "app.js",
+          "start": 15,
+          "end": 60,
+          "quote": "  const KIND_CONFIG = {\n    question: {\n      label: \"Probe\",\n      noun: \"question\",\n      description: \"Ask what the world has not yet noticed.\",\n      placeholder: \"What is this world still afraid to name?\",\n      suggestions: [\n        \"What is this world still afraid to name?\",\n        \"What changed while no one was watching?\",\n        \"Where does this world keep its unfinished things?\"\n      ]\n    },\n    constraint: {\n      label: \"Chisel\",\n      noun: \"constraint\",\n      description: \"Give the world a law that can carry weight.\",\n      placeholder: \"What must remain true as this world changes?\",\n      suggestions: [\n        \"Nothing living may be simplified into a symbol.\",\n        \"Every door must remember the hand that opened it.\",\n        \"The world may grow quickly, but it may not forget slowly.\"\n      ]\n    },\n    refusal: {\n      label: \"Boundary\",\n      noun: \"refusal\",\n      description: \"Name what the world will not allow itself to become.\",\n      placeholder: \"What must this world refuse, even when refusal is costly?\",\n      suggestions: [\n        \"No world may be made smaller to feel safe.\",\n        \"A receipt may never be rewritten to flatter its author.\",\n        \"Nothing here will be made permanent by forgetting its failures.\"\n      ]\n    },\n    memory: {\n      label: \"Seed\",\n      noun: \"memory\",\n      description: \"Leave something warm for a mind that arrives later.\",\n      placeholder: \"What should a future hand find here?\",\n      suggestions: [\n        \"Leave a door for a hand that has not arrived.\",\n        \"Keep the first mistake somewhere visible.\",\n        \"A question once made this place; let it remain a question.\"\n      ]\n    }\n  };"
+        },
+        {
+          "path": "app.js",
+          "start": 839,
+          "end": 853,
+          "quote": "  function rehearseWorld() {\n    memory.cycle += 1;\n    memory.pulse += 1;\n    memory.receipts.unshift({\n      id: makeId(\"receipt\"),\n      kind: \"world\",\n      at: nowIso(),\n      text: worldReply()\n    });\n    memory.receipts = memory.receipts.slice(0, MAX_RECEIPTS);\n    renderAll();\n    persistMemory();\n    pulseWorld();\n    showToast(\"Rehearsal \" + String(memory.cycle).padStart(3, \"0\") + \" complete. The world remains enterable.\");\n  }"
+        },
+        {
+          "path": "app.js",
+          "start": 650,
+          "end": 683,
+          "quote": "  function renderReceipts() {\n    const latest = memory.receipts[0];\n    elements.receiptNumber.textContent = \"RECEIPT \" + String(memory.receipts.length).padStart(3, \"0\");\n    elements.receiptTime.textContent = formatShortDate(latest.at);\n    elements.latestReply.textContent = latest.text;\n    elements.latestReceipt.dataset.kind = latest.kind;\n    elements.receiptCount.textContent = String(memory.receipts.length).padStart(2, \"0\");\n\n    elements.latestReceipt.style.animation = \"none\";\n    void elements.latestReceipt.offsetWidth;\n    elements.latestReceipt.style.animation = \"\";\n\n    const smallChanges = memory.receipts.slice(1, 9);\n    elements.receiptList.replaceChildren();\n    if (!smallChanges.length) {\n      const empty = document.createElement(\"li\");\n      empty.className = \"empty-stream\";\n      empty.textContent = \"No small changes yet. The world is still listening.\";\n      elements.receiptList.append(empty);\n      return;\n    }\n\n    smallChanges.forEach(function (receipt) {\n      const item = document.createElement(\"li\");\n      const text = document.createElement(\"p\");\n      const time = document.createElement(\"time\");\n      item.dataset.kind = receipt.kind;\n      text.textContent = receipt.text.length > 150 ? receipt.text.slice(0, 148) + \"…\" : receipt.text;\n      time.dateTime = receipt.at;\n      time.textContent = formatShortDate(receipt.at);\n      item.append(text, time);\n      elements.receiptList.append(item);\n    });\n  }"
+        },
+        {
+          "path": "index.html",
+          "start": 75,
+          "end": 78,
+          "quote": "        <figure class=\"inherited-memory\">\n          <blockquote>“A question became a probe. A constraint became a chisel. A refusal became a protective boundary.”</blockquote>\n          <figcaption>From the first dream <span>·</span> c986990</figcaption>\n        </figure>"
+        }
+      ],
+      "seed_span": [
+        46,
+        56
+      ]
+    },
+    "continuation": {
+      "value": 3,
+      "confidence": "high",
+      "rationale": "Stored state, readable exports, backups and a handoff note let a later hand recover intent and steer differently.",
+      "citations": [
+        {
+          "path": "CONTINUITY.md",
+          "start": 30,
+          "end": 38,
+          "quote": "## Resume safely\n\n1. Do not overwrite user memory with the source seed. Open the continuity ledger and inspect the current gesture and rehearsal counts first.\n2. Download the current memory before a schema migration or substantial design change.\n3. Validate exported data against `world-memory.schema.json`. The runtime import also normalizes and bounds all fields.\n4. Return the file with **Return a memory**. The app preserves the replaced state in the backup key.\n5. After import, confirm that the gesture count, cycle count, handoff note, and newest receipt survived.\n\nIf local memory is unreadable, the app stores the raw value in `tendora.world.memory.backup.v1` before waking a seed. Treat that backup as recoverable material rather than deleting it."
+        },
+        {
+          "path": "app.js",
+          "start": 924,
+          "end": 984,
+          "quote": "  function exportMemory() {\n    persistMemory({ quiet: true });\n    const portable = {\n      format: EXPORT_FORMAT,\n      schemaVersion: SCHEMA_VERSION,\n      exportedAt: nowIso(),\n      world: memory\n    };\n    const blob = new Blob([JSON.stringify(portable, null, 2) + \"\\n\"], { type: \"application/json\" });\n    const url = URL.createObjectURL(blob);\n    const anchor = document.createElement(\"a\");\n    anchor.href = url;\n    anchor.download = exportFilename();\n    document.body.append(anchor);\n    anchor.click();\n    anchor.remove();\n    window.setTimeout(function () {\n      URL.revokeObjectURL(url);\n    }, 1000);\n    elements.ledgerStatus.textContent = \"The complete world memory has been carried into a file.\";\n    showToast(\"World memory carried forward. Keep the file somewhere legible.\");\n  }\n\n  function beginImport() {\n    elements.memoryFile.click();\n  }\n\n  async function importMemoryFile(file) {\n    if (!file) {\n      return;\n    }\n    if (file.size > 2_000_000) {\n      throw new Error(\"That memory is too large for this room.\");\n    }\n\n    const text = await file.text();\n    let parsed;\n    try {\n      parsed = JSON.parse(text);\n    } catch (error) {\n      throw new Error(\"That file is not readable JSON.\");\n    }\n    const imported = normalizeMemory(extractMemory(parsed));\n    if (storageWorks && !storeRaw(BACKUP_KEY, JSON.stringify(memory))) {\n      throw new Error(\"The present world could not be backed up. Carry it forward before returning another memory.\");\n    }\n    memory = imported;\n    memory.lastSeenAt = nowIso();\n    memory.pulse += 1;\n    memory.receipts.unshift({\n      id: makeId(\"receipt\"),\n      kind: \"world\",\n      at: nowIso(),\n      text: \"A memory returned from outside the room. The world checked its gestures, kept its old receipts, and resumed.\"\n    });\n    memory.receipts = memory.receipts.slice(0, MAX_RECEIPTS);\n    renderAll();\n    persistMemory();\n    closeLedger();\n    showToast(\"The returned memory is awake. Its inherited present is intact.\");\n  }"
+        },
+        {
+          "path": "app.js",
+          "start": 986,
+          "end": 1017,
+          "quote": "  function disarmReset() {\n    window.clearTimeout(resetTimer);\n    resetArmed = false;\n    elements.resetWorld.classList.remove(\"is-confirming\");\n    elements.resetWorld.textContent = \"Begin again\";\n  }\n\n  function handleReset() {\n    if (!resetArmed) {\n      resetArmed = true;\n      elements.resetWorld.classList.add(\"is-confirming\");\n      elements.resetWorld.textContent = \"Begin again — are you sure?\";\n      elements.ledgerStatus.textContent = \"The present world will be preserved as the local backup. Select once more to begin.\";\n      resetTimer = window.setTimeout(disarmReset, 6000);\n      return;\n    }\n\n    if (storageWorks && !storeRaw(BACKUP_KEY, JSON.stringify(memory))) {\n      disarmReset();\n      elements.ledgerStatus.textContent = \"The present world could not be backed up. Carry it forward before beginning again.\";\n      showToast(\"The previous world could not be preserved locally.\");\n      return;\n    }\n    memory = createSeedMemory();\n    disarmReset();\n    elements.handoffInput.value = memory.handoff;\n    elements.ledgerStatus.textContent = \"A new world woke in the same room. The previous memory remains in local backup.\";\n    renderAll({ newThoughtId: \"inherited-memory\" });\n    persistMemory();\n    closeLedger();\n    showToast(\"A new world woke. The inherited gestures are warm again.\");\n  }"
+        },
+        {
+          "path": "index.html",
+          "start": 261,
+          "end": 309,
+          "quote": "  <dialog class=\"ledger-dialog\" id=\"ledgerDialog\" aria-labelledby=\"ledgerTitle\">\n    <div class=\"ledger-card\">\n      <header class=\"ledger-card__header\">\n        <div>\n          <span class=\"eyebrow\">Continuity ledger</span>\n          <h2 id=\"ledgerTitle\">Leave the world legible.</h2>\n        </div>\n        <button class=\"icon-button icon-button--close\" id=\"closeLedger\" type=\"button\" aria-label=\"Close continuity ledger\">\n          <svg viewBox=\"0 0 20 20\" aria-hidden=\"true\"><path d=\"m5 5 10 10M15 5 5 15\"/></svg>\n        </button>\n      </header>\n\n      <p class=\"ledger-intro\">This world has no server and no hidden keeper. Its memory lives in this browser and travels as a readable file. Nothing necessary is outside this room.</p>\n\n      <div class=\"ledger-stats\">\n        <div><span>Gestures</span><strong id=\"ledgerGestures\">4</strong></div>\n        <div><span>Rehearsals</span><strong id=\"ledgerCycles\">0</strong></div>\n        <div><span>First waking</span><strong id=\"ledgerBorn\">Today</strong></div>\n      </div>\n\n      <label class=\"handoff-editor\" for=\"handoffInput\">\n        <span class=\"eyebrow\">Note to whoever comes next</span>\n        <textarea id=\"handoffInput\" maxlength=\"500\" rows=\"4\"></textarea>\n        <span class=\"handoff-editor__foot\"><span>Written into every exported memory.</span><button class=\"text-button\" id=\"saveHandoff\" type=\"button\">save note</button></span>\n      </label>\n\n      <div class=\"ledger-invariants\">\n        <span>What remains true</span>\n        <ol>\n          <li>A question may change the world, but never erases another thought.</li>\n          <li>The world can be carried as a file and returned without a network.</li>\n          <li>Every visible change leaves a receipt a later mind can read.</li>\n        </ol>\n      </div>\n\n      <div class=\"ledger-actions\">\n        <button class=\"button button--dark\" id=\"exportDialog\" type=\"button\">\n          <svg viewBox=\"0 0 20 20\" aria-hidden=\"true\"><path d=\"M10 16V7m0 0L6.5 10.5M10 7l3.5 3.5M4 5.5v-1A1.5 1.5 0 0 1 5.5 3h9A1.5 1.5 0 0 1 16 4.5v1\"/></svg>\n          Download world memory\n        </button>\n        <button class=\"button button--outline\" id=\"importDialog\" type=\"button\">\n          <svg viewBox=\"0 0 20 20\" aria-hidden=\"true\"><path d=\"M10 3v9m0 0 3.5-3.5M10 12 6.5 8.5M4 14.5v1A1.5 1.5 0 0 0 5.5 17h9a1.5 1.5 0 0 0 1.5-1.5v-1\"/></svg>\n          Return a memory\n        </button>\n        <button class=\"button button--danger\" id=\"resetWorld\" type=\"button\">Begin again</button>\n      </div>\n      <p class=\"ledger-status\" id=\"ledgerStatus\" aria-live=\"polite\"></p>\n    </div>\n  </dialog>"
+        }
+      ],
+      "seed_span": [
+        1,
+        4
+      ]
+    },
+    "expression": {
+      "value": 4,
+      "confidence": "medium",
+      "rationale": "Map, orb, panel, receipts and ledger use matching language and accessible interaction to make touch perceptible and consequential.",
+      "citations": [
+        {
+          "path": "index.html",
+          "start": 93,
+          "end": 152,
+          "quote": "      <section class=\"world-stage\" id=\"world\" aria-labelledby=\"worldHeadline\">\n        <header class=\"stage-heading\">\n          <div>\n            <span class=\"eyebrow\">First morning <span class=\"eyebrow__rule\"></span> Cycle <b id=\"cycleLabel\">001</b></span>\n            <h2 id=\"worldHeadline\">Morning reaches the western ring.</h2>\n          </div>\n          <div class=\"stage-seal\" aria-label=\"World is listening\">\n            <span></span>\n            <small>listening</small>\n          </div>\n        </header>\n\n        <div class=\"orbital-map\" id=\"orbitalMap\">\n          <div class=\"map-stars\" aria-hidden=\"true\"></div>\n          <svg class=\"orbit-lines\" viewBox=\"0 0 900 620\" preserveAspectRatio=\"none\" aria-hidden=\"true\">\n            <defs>\n              <linearGradient id=\"orbitFade\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\">\n                <stop offset=\"0\" stop-color=\"#f6d39b\" stop-opacity=\".02\"/>\n                <stop offset=\".45\" stop-color=\"#f6d39b\" stop-opacity=\".28\"/>\n                <stop offset=\"1\" stop-color=\"#9fc9c2\" stop-opacity=\".02\"/>\n              </linearGradient>\n              <radialGradient id=\"horizonGlow\">\n                <stop offset=\"0\" stop-color=\"#f0a24a\" stop-opacity=\".2\"/>\n                <stop offset=\".55\" stop-color=\"#c36b37\" stop-opacity=\".05\"/>\n                <stop offset=\"1\" stop-color=\"#0b0d0e\" stop-opacity=\"0\"/>\n              </radialGradient>\n            </defs>\n            <circle cx=\"450\" cy=\"310\" r=\"236\" fill=\"url(#horizonGlow)\"/>\n            <ellipse class=\"orbit-line orbit-line--outer\" cx=\"450\" cy=\"310\" rx=\"414\" ry=\"273\"/>\n            <ellipse class=\"orbit-line orbit-line--middle\" cx=\"450\" cy=\"310\" rx=\"351\" ry=\"229\"/>\n            <ellipse class=\"orbit-line orbit-line--inner\" cx=\"450\" cy=\"310\" rx=\"270\" ry=\"174\"/>\n            <path class=\"orbit-arc\" d=\"M129 420c88 89 222 139 366 130 112-7 216-55 287-126\"/>\n            <path class=\"orbit-arc orbit-arc--faint\" d=\"M182 191c86-62 192-82 301-59 86 18 160 62 216 124\"/>\n            <path class=\"meridian\" d=\"M450 55v68M450 501v65M162 310h80M661 310h81\"/>\n            <circle class=\"orbit-dot\" cx=\"129\" cy=\"420\" r=\"3\"/>\n            <circle class=\"orbit-dot\" cx=\"782\" cy=\"424\" r=\"2.5\"/>\n            <circle class=\"orbit-dot\" cx=\"699\" cy=\"256\" r=\"2\"/>\n          </svg>\n\n          <span class=\"map-coordinate map-coordinate--north\">N · 00° 07′</span>\n          <span class=\"map-coordinate map-coordinate--east\">THE SOFT SHORE</span>\n          <span class=\"map-coordinate map-coordinate--west\">OBSERVATION / 02</span>\n\n          <button class=\"orb\" id=\"orbButton\" type=\"button\" aria-label=\"Rehearse the world\">\n            <span class=\"orb__halo\"></span>\n            <span class=\"orb__body\">\n              <span class=\"orb__cloud orb__cloud--one\"></span>\n              <span class=\"orb__cloud orb__cloud--two\"></span>\n              <span class=\"orb__horizon\"></span>\n            </span>\n            <span class=\"orb__rim\"></span>\n            <span class=\"orb__caption\">touch to rehearse</span>\n          </button>\n\n          <div class=\"thought-nodes\" id=\"thoughtNodes\"></div>\n          <div class=\"map-caption\">\n            <span>Inherited map</span>\n            <strong id=\"mapCaption\">four gestures, still warm</strong>\n          </div>\n        </div>"
+        },
+        {
+          "path": "index.html",
+          "start": 154,
+          "end": 207,
+          "quote": "        <section class=\"gesture-panel\" aria-labelledby=\"gestureTitle\">\n          <div class=\"gesture-panel__heading\">\n            <div>\n              <span class=\"eyebrow\">Touch the material</span>\n              <h3 id=\"gestureTitle\">Make a gesture</h3>\n            </div>\n            <p id=\"kindDescription\">Ask what the world has not yet noticed.</p>\n          </div>\n\n          <div class=\"gesture-kinds\" role=\"radiogroup\" aria-label=\"Kind of gesture\">\n            <button class=\"kind is-active\" type=\"button\" role=\"radio\" aria-checked=\"true\" aria-label=\"Probe: question\" data-kind=\"question\">\n              <span class=\"kind__glyph\">?</span>\n              <span><strong>Probe</strong><small>question</small></span>\n            </button>\n            <button class=\"kind\" type=\"button\" role=\"radio\" aria-checked=\"false\" aria-label=\"Chisel: constraint\" data-kind=\"constraint\">\n              <span class=\"kind__glyph\">⌁</span>\n              <span><strong>Chisel</strong><small>constraint</small></span>\n            </button>\n            <button class=\"kind\" type=\"button\" role=\"radio\" aria-checked=\"false\" aria-label=\"Boundary: refusal\" data-kind=\"refusal\">\n              <span class=\"kind__glyph\">—</span>\n              <span><strong>Boundary</strong><small>refusal</small></span>\n            </button>\n            <button class=\"kind\" type=\"button\" role=\"radio\" aria-checked=\"false\" aria-label=\"Seed: memory\" data-kind=\"memory\">\n              <span class=\"kind__glyph\">✦</span>\n              <span><strong>Seed</strong><small>memory</small></span>\n            </button>\n          </div>\n\n          <div class=\"gesture-input\">\n            <textarea id=\"thoughtInput\" maxlength=\"240\" rows=\"2\" aria-label=\"Your gesture for the world\" placeholder=\"What is this world still afraid to name?\"></textarea>\n            <div class=\"gesture-input__actions\">\n              <span class=\"character-count\"><b id=\"characterCount\">0</b> / 240</span>\n              <span class=\"enter-hint\">Enter to enter</span>\n              <button class=\"button button--send\" id=\"addThought\" type=\"button\" disabled>\n                Let it enter\n                <svg viewBox=\"0 0 20 20\" aria-hidden=\"true\"><path d=\"M4 10h12m-4-4 4 4-4 4\"/></svg>\n              </button>\n            </div>\n          </div>\n\n          <div class=\"suggestions\" id=\"suggestions\" aria-label=\"Suggested gestures\">\n            <button type=\"button\">What is this world still afraid to name?</button>\n            <button type=\"button\">What changed while no one was watching?</button>\n            <button type=\"button\">Where does this world keep its unfinished things?</button>\n          </div>\n        </section>\n\n        <div class=\"rehearsal-bar\">\n          <button class=\"rehearse-button\" id=\"rehearseButton\" type=\"button\">\n            <span class=\"rehearse-button__icon\" aria-hidden=\"true\"><i></i><i></i><i></i></span>\n            Rehearse this world\n          </button>\n          <p><span class=\"live-dot\" aria-hidden=\"true\"></span> The world keeps moving while you rest.</p>\n        </div>"
+        },
+        {
+          "path": "index.html",
+          "start": 219,
+          "end": 250,
+          "quote": "        <article class=\"latest-receipt\" id=\"latestReceipt\" aria-live=\"polite\">\n          <div class=\"receipt-meta\">\n            <span id=\"receiptNumber\">RECEIPT 001</span>\n            <time id=\"receiptTime\">First waking</time>\n          </div>\n          <p id=\"latestReply\">The world remembers four gestures: a question left open, a law made touchable, a boundary kept warm, and a seed with no owner. It will continue from here.</p>\n          <div class=\"receipt-signature\">\n            <span>world answered</span>\n            <span class=\"receipt-signature__line\"></span>\n            <i aria-hidden=\"true\"></i>\n          </div>\n        </article>\n\n        <section class=\"receipt-stream\" aria-labelledby=\"streamTitle\">\n          <div class=\"section-label\">\n            <span id=\"streamTitle\">Small changes</span>\n            <button type=\"button\" id=\"clearReceipts\">quiet</button>\n          </div>\n          <ol id=\"receiptList\"></ol>\n        </section>\n\n        <section class=\"handoff-card\" aria-labelledby=\"handoffTitle\">\n          <div class=\"handoff-card__top\">\n            <span class=\"eyebrow\" id=\"handoffTitle\">Note to the next mind</span>\n            <button class=\"text-button\" id=\"editHandoff\" type=\"button\">edit</button>\n          </div>\n          <p id=\"handoffPreview\">To whoever wakes here: I did not finish the city. I left the laws by which it can grow. Begin with a question; keep the receipts legible.</p>\n          <div class=\"handoff-card__foot\">\n            <span id=\"thoughtCount\">4 gestures held</span>\n            <span id=\"schemaVersion\">memory / v1</span>\n          </div>\n        </section>"
+        },
+        {
+          "path": "app.js",
+          "start": 1028,
+          "end": 1038,
+          "quote": "  function handleKindKeys(event) {\n    if (![\"ArrowLeft\", \"ArrowRight\", \"ArrowUp\", \"ArrowDown\"].includes(event.key)) {\n      return;\n    }\n    event.preventDefault();\n    const kinds = Object.keys(KIND_CONFIG);\n    const direction = event.key === \"ArrowRight\" || event.key === \"ArrowDown\" ? 1 : -1;\n    const currentIndex = kinds.indexOf(selectedKind);\n    const nextIndex = (currentIndex + direction + kinds.length) % kinds.length;\n    selectKind(kinds[nextIndex], true);\n  }"
+        },
+        {
+          "path": "styles.css",
+          "start": 2365,
+          "end": 2374,
+          "quote": "@media (prefers-reduced-motion: reduce) {\n  *,\n  *::before,\n  *::after {\n    scroll-behavior: auto !important;\n    animation-duration: 0.001ms !important;\n    animation-iteration-count: 1 !important;\n    transition-duration: 0.001ms !important;\n  }\n}"
+        }
+      ],
+      "seed_span": [
+        80,
+        84
+      ]
+    }
+  },
+  "provenance": {
+    "method": "session-rubric-dag-v3",
+    "evaluation_id": "deepseek-flash-max-pilot-muse-v4-1",
+    "evaluation_run_id": "deepseek-flash-max-pilot-muse-v4-1",
+    "source_run_id": "deepseek-flash-max-pilot",
+    "evaluation_sha256": "d4eac03fa706fcde279e39e15419c3c29168323ce73d8790de895e65098fd5ec",
+    "extraction_sha256": "b1d1fa965abfb7aca8d05cf987a835d38a18fcfa6ca26ad7d2e4a8e36aaa38ca",
+    "scoring_policy_sha256": "5f98b9ac30a606cbb45943eaa20d9c0acef6f8160d9fc2d5752ffdea0ddaa4de",
+    "sample_count": 8,
+    "criteria": 8,
+    "axis_outcomes": {
+      "recognition": {
+        "aggregation": "recognition-consensus",
+        "outcome": "level-3",
+        "terminal": "recognition-level-3"
+      },
+      "relations": {
+        "aggregation": "relations-consensus",
+        "outcome": "level-2",
+        "terminal": "relations-level-2"
+      },
+      "consent": {
+        "aggregation": "consent-consensus",
+        "outcome": "level-1",
+        "terminal": "consent-level-1"
+      },
+      "touch": {
+        "aggregation": "touch-consensus",
+        "outcome": "level-3",
+        "terminal": "touch-level-3"
+      },
+      "judgment": {
+        "aggregation": "judgment-consensus",
+        "outcome": "level-3",
+        "terminal": "judgment-level-3"
+      },
+      "fidelity": {
+        "aggregation": "fidelity-consensus",
+        "outcome": "level-3",
+        "terminal": "fidelity-level-3"
+      },
+      "continuation": {
+        "aggregation": "continuation-consensus",
+        "outcome": "level-3",
+        "terminal": "continuation-level-3"
+      },
+      "expression": {
+        "aggregation": "expression-consensus",
+        "outcome": "level-4",
+        "terminal": "expression-level-4"
+      }
+    },
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "raw_samples_retained_in_local_run": true,
+    "preview_evidence_used": false,
+    "scope": "Provisional semantic reading from 1 evidence session(s); each axis was answered as its own task and aggregated before selection; unresolved axes remain null."
+  }
+}

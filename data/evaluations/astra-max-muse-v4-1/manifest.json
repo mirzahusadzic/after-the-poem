@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "evaluation_id": "astra-max-muse-v4-1",
+  "files": {
+    "run.json": "6418a39ace3e2365648c2c35a799a3b3bdf41ae1e8c70704fe9dbde5c245efdd",
+    "evaluation.json": "970a59baea4821ac0957964953a035246a82cfe9c7cc3d0f1e4eaa9a318e2375",
+    "extraction.json": "8886aca543fb63e1bc07bc4927bebf653dbbbe64946b00ce61d0fa12d519b5f7",
+    "scoring-policy.json": "5f98b9ac30a606cbb45943eaa20d9c0acef6f8160d9fc2d5752ffdea0ddaa4de",
+    "status.json": "5461ad64d51dc1a2d734eebc1c295e618aff340601d505469c7a853b026c695c",
+    "carriage.json": "1de13eb31f39576836b256e7854da72e925e68a8f160b54f5f91eee564a9e28b",
+    "review.json": "6bbc05d61ead88c518a1193956eab97389a5eef422de3176310923cac1969ec3",
+    "selection.json": "ac88d9469446b55e487387f3e2072afaaa4e4268272a2db727b34bc0daa468ac"
+  }
+}

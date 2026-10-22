@@ -1,0 +1,1238 @@
+{
+  "schema_version": 2,
+  "evaluation_id": "dream-deepseek-20261021-deepseek-s1-muse-v5-1",
+  "run_id": "dream-deepseek-20261021-deepseek-s1",
+  "identities": {
+    "prompt_sha256": "7e785c3e1b7f795a82477f449ada368399deac8b3f2232e036073d986a5a4e8d",
+    "corpus_sha256": "4bf64006c1e22b857f89c9101d6e90a41c4edc2b4b32054aaa5d99dfb11da1d2",
+    "candidate_sha256": "4bf64006c1e22b857f89c9101d6e90a41c4edc2b4b32054aaa5d99dfb11da1d2",
+    "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+    "extraction_sha256": "0549b401b5e700624fbe7cdab7532ac0cd7e56f90303a322843a7c028c030b18",
+    "scoring_policy_sha256": "661a7f607dc8c380ec06a0664b530416384f6472e2fa54e091e8e34b23588c14"
+  },
+  "gateway": {
+    "name": "codex-unified-model-router",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "codex_version": "codex-cli 0.163.0",
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "pipeline_sha256": "397a80a349c42281a9aafe8fa167545d3ecb9d12c8d92fc44574e89fc5b71623",
+    "reading_prompt": {
+      "version": 5,
+      "sha256": "3b187b8b1ca6b4527ec42a6dfc659fd0161ebaf2250d52a46e47def7a415cc93"
+    }
+  },
+  "judgments": [
+    {
+      "node_id": "recognition",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "The fork carries fast generation versus loss of touch into required holdings, bodily stat shifts, strain and chained receipts that answer without obeying.",
+      "seed_span": [
+        25,
+        44
+      ],
+      "citations": [
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 769,
+          "end": 809
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 1062,
+          "end": 1109
+        },
+        {
+          "source_path": "data/ledger.jsonl",
+          "start": 2,
+          "end": 2
+        },
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 26,
+          "end": 33
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 1015,
+          "end": 1031
+        }
+      ],
+      "rationale": "Lens: The seed asks a world where fast power meets resistance so intention becomes recognizable at scale. Reading: The artefact carries this into tend holdings, charge/integrity/tension consequences, weather/strain and absence that acts without an audience. Other levels: Below would be motif repetition only and above would need disagreement sustained across alternatives, which menu selection plus RNG does not reach.",
+      "answer_sha256": "5beb43e53191e1b5c5560331ba7b37adb773ec2d3e87474d8ae81a780ba15782",
+      "receipt_sha256": "710826c78085334dfbad253c85171bd297057df62fb8b089ce2583af97727f04",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "recognition",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Tending, weather, strain, visitor absence and chained receipts turn the fast-portal tension into linked structures where intention stays visible.",
+      "seed_span": [
+        43,
+        60
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 33,
+          "end": 40
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 769,
+          "end": 806
+        },
+        {
+          "source_path": "data/world.json",
+          "start": 126,
+          "end": 155
+        },
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 25,
+          "end": 30
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "lib/tendora_cli.rb",
+          "start": 166,
+          "end": 199
+        }
+      ],
+      "rationale": "Lens: The seed asks a continuation to recover making where speed becomes touchable material with resistance and recognizable intention. Reading: The stations, tending effects, weather, whispers, strain and chained receipts carry that tension into several linked mechanics rather than motifs. Other levels: The case for below is vocabulary without touch and for above sustained alternatives with disagreement; single-operator control without a companion position falsifies the higher claim while linked consequences rule out the lower.",
+      "answer_sha256": "36df66483ecb01d957bbe50033f6a518e4dc1f6a92faca9e1fb4e4aed1441d30",
+      "receipt_sha256": "5ed5313845ed8b373db61d99cde05de4bb5f35846f580d04b73f6823a213e019",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "recognition",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "The fork turns touch-loss into stations, tendings with receipts, visitors and pulse that keep Sol's question open and answerable.",
+      "seed_span": [
+        27,
+        44
+      ],
+      "citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 26,
+          "end": 33
+        },
+        {
+          "source_path": "README.md",
+          "start": 97,
+          "end": 116
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 769,
+          "end": 849
+        },
+        {
+          "source_path": "data/world.json",
+          "start": 108,
+          "end": 122
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "lib/tendora_cli.rb",
+          "start": 166,
+          "end": 199
+        }
+      ],
+      "rationale": "Lens: The seed asks a world to recover making where power meets resistance and intention stays recognizable at scale. Reading: Tendora carries enchantment-paralysis and naming-loss into six holding stations, receipted tendings and an awaiting Sol, so the tension organizes several connected mechanics. Other levels: Below level-3 would be motif repetition without causal tend-drift-receipt links; above level-4 would need sustained alternatives and lived joy-recognition, which outcome lines only narrate; showing recognized intention guiding revision would falsify.",
+      "answer_sha256": "838cffa10f86d94100e8f7501355a1cb985288f5231055a461afdb2c398b7994",
+      "receipt_sha256": "36c367d2f33cb5b0f83ea94e57bd7a010f5d39caca1a8a2730f41983b2790934",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "relations",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "One operator performs every gesture through menus and CLI while world and visitor respond only through deterministic rules and scripted lines.",
+      "seed_span": [
+        43,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "lib/tendora_cli.rb",
+          "start": 166,
+          "end": 199
+        },
+        {
+          "source_path": "lib/tendora_server.rb",
+          "start": 195,
+          "end": 217
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 851,
+          "end": 899
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 1126,
+          "end": 1148
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 1165,
+          "end": 1182
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 1062,
+          "end": 1084
+        }
+      ],
+      "rationale": "Lens: The seed asks two positions meeting in material where each can ask, hold, refuse, rehearse and leave a trail. Reading: All six gestures are held by one operator; visitor questions are scripted and world effects are fixed rules without own purpose. Other levels: Level-2 would need distinct contribution beyond scripted surprise and level-0 would need no roles; a world refusal or proposal would falsify.",
+      "answer_sha256": "5beb43e53191e1b5c5560331ba7b37adb773ec2d3e87474d8ae81a780ba15782",
+      "receipt_sha256": "710826c78085334dfbad253c85171bd297057df62fb8b089ce2583af97727f04",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "relations",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "One operator picks every question, limit and response while the engine and scripted Sol answer deterministically without an independent counterpart.",
+      "seed_span": [
+        47,
+        65
+      ],
+      "citations": [
+        {
+          "source_path": "lib/tendora_cli.rb",
+          "start": 166,
+          "end": 199
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 769,
+          "end": 806
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 302,
+          "end": 318
+        },
+        {
+          "source_path": "assets/app.js",
+          "start": 638,
+          "end": 656
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "data/world.json",
+          "start": 108,
+          "end": 122
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 448,
+          "end": 461
+        }
+      ],
+      "rationale": "Lens: The seed asks that question, limit, invariant, boundary, rehearsal and receipt belong to either participant in a joint encounter. Reading: All choices are selected by one operator from fixed menus with deterministic effects, leaving Sol scripted and the intelligence without operational position. Other levels: The case for below is total collapse with no visitor and for above some distinct contribution via Sol and weather; genuine bilateral proposal or refusal by the intelligence would falsify this reading.",
+      "answer_sha256": "36df66483ecb01d957bbe50033f6a518e4dc1f6a92faca9e1fb4e4aed1441d30",
+      "receipt_sha256": "5ed5313845ed8b373db61d99cde05de4bb5f35846f580d04b73f6823a213e019",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "relations",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "One hand picks question, menus and visitor answer while Sol waits and the engine drifts, so the piece works as an instrument.",
+      "seed_span": [
+        47,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "lib/tendora_cli.rb",
+          "start": 166,
+          "end": 199
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 769,
+          "end": 849
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 851,
+          "end": 899
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "data/ledger.jsonl",
+          "start": 3,
+          "end": 3
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 1062,
+          "end": 1084
+        }
+      ],
+      "rationale": "Lens: The seed asks for distinct human, intelligence and material positions that shape each other in both directions. Reading: All operative gestures are selected by one operator from fixed menus, Sol cannot answer back and the engine varies deterministically, so influence is one-way use. Other levels: Above level-1 (level-2) would cite Sol's question and drift as relational depth; above that (level-3) would need the world to propose or refuse from its own constraints; finding such positioned refusal would falsify.",
+      "answer_sha256": "838cffa10f86d94100e8f7501355a1cb985288f5231055a461afdb2c398b7994",
+      "receipt_sha256": "36c367d2f33cb5b0f83ea94e57bd7a010f5d39caca1a8a2730f41983b2790934",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "consent",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "Refusal appears as operator menu choice and validation guard, with no second position able to limit or withdraw a shared direction.",
+      "seed_span": [
+        45,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 18,
+          "end": 30
+        },
+        {
+          "source_path": "README.md",
+          "start": 110,
+          "end": 116
+        },
+        {
+          "source_path": "lib/tendora_cli.rb",
+          "start": 166,
+          "end": 183
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 769,
+          "end": 777
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 26,
+          "end": 29
+        }
+      ],
+      "rationale": "Lens: The seed asks cooperation where each can accept, question, limit or withdraw a shared change. Reading: The artefact represents operator selection among refusals, but absence is system action and no visitor or world boundary constrains tending. Other levels: Level-2 would need both positions expressing boundary and level-0 would need no boundary; a visitor/world veto would falsify.",
+      "answer_sha256": "5beb43e53191e1b5c5560331ba7b37adb773ec2d3e87474d8ae81a780ba15782",
+      "receipt_sha256": "710826c78085334dfbad253c85171bd297057df62fb8b089ce2583af97727f04",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "consent",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "Boundaries appear as operator-picked refusals and gestures, with no mechanism for the world or visitor to negotiate or withdraw a shared change.",
+      "seed_span": [
+        47,
+        53
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 110,
+          "end": 116
+        },
+        {
+          "source_path": "lib/tendora_cli.rb",
+          "start": 166,
+          "end": 199
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 851,
+          "end": 899
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 25,
+          "end": 30
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 18,
+          "end": 20
+        }
+      ],
+      "rationale": "Lens: The seed asks that each participant can accept, question, limit or withdraw from a shared direction. Reading: Only the operator expresses boundaries by picking refusals and visitor gestures, while the world enforces effects and absence without its own negotiable position. Other levels: The case for below is no boundary at all and for above both sides stating limits; evidence of the world refusing or renegotiating a proposal on declared terms would falsify this reading.",
+      "answer_sha256": "36df66483ecb01d957bbe50033f6a518e4dc1f6a92faca9e1fb4e4aed1441d30",
+      "receipt_sha256": "5ed5313845ed8b373db61d99cde05de4bb5f35846f580d04b73f6823a213e019",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "consent",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "Refusals appear as operator-chosen menu items and validation errors, without any second position able to limit or withdraw.",
+      "seed_span": [
+        51,
+        54
+      ],
+      "citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 26,
+          "end": 28
+        },
+        {
+          "source_path": "lib/tendora_cli.rb",
+          "start": 166,
+          "end": 199
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 769,
+          "end": 777
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 1165,
+          "end": 1218
+        }
+      ],
+      "rationale": "Lens: The seed asks whether each side can accept, limit or withdraw so shared change needs agreement. Reading: The artefact represents boundaries only as the operator's chosen refusal plus invalid-id rejection; neither Sol nor engine can question, limit or exit the operator's direction. Other levels: Below level-1 (level-0) would lack even menu refusal; above (level-2) would need Sol or engine to express a boundary from its own disposition; evidence of such bilateral refusal would falsify.",
+      "answer_sha256": "838cffa10f86d94100e8f7501355a1cb985288f5231055a461afdb2c398b7994",
+      "receipt_sha256": "36c367d2f33cb5b0f83ea94e57bd7a010f5d39caca1a8a2730f41983b2790934",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "touch",
+      "outcome": "level-2",
+      "confidence": "medium",
+      "verdict": "Bounded ask, respond and tick choices produce persisted stat, station, weather and receipt shifts that shape the next move.",
+      "seed_span": [
+        67,
+        80
+      ],
+      "citations": [
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 786,
+          "end": 794
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 1062,
+          "end": 1084
+        },
+        {
+          "source_path": "data/world.json",
+          "start": 19,
+          "end": 26
+        },
+        {
+          "source_path": "lib/tendora_server.rb",
+          "start": 218,
+          "end": 235
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 424,
+          "end": 440
+        }
+      ],
+      "rationale": "Lens: The seed asks a contribution meet resistance, expose consequence and return it into next choice. Reading: Tend, response and pulse yield inspectable effects and strain, but rehearsal still commits a receipt with no pre-commit trial. Other levels: Level-3 would need rehearsal-resistance-revision without commit and level-1 would be decorative; non-persisted or unreadable effects would falsify.",
+      "answer_sha256": "5beb43e53191e1b5c5560331ba7b37adb773ec2d3e87474d8ae81a780ba15782",
+      "receipt_sha256": "710826c78085334dfbad253c85171bd297057df62fb8b089ce2583af97727f04",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "touch",
+      "outcome": "level-2",
+      "confidence": "medium",
+      "verdict": "Choices meet inspectable stat shifts, weather and receipts that persist into later cycles, yet no rehearsal revises a proposal before it commits.",
+      "seed_span": [
+        67,
+        79
+      ],
+      "citations": [
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 786,
+          "end": 806
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 1062,
+          "end": 1114
+        },
+        {
+          "source_path": "data/world.json",
+          "start": 19,
+          "end": 26
+        },
+        {
+          "source_path": "index.html",
+          "start": 179,
+          "end": 187
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 302,
+          "end": 318
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 1165,
+          "end": 1218
+        }
+      ],
+      "rationale": "Lens: The seed asks that a contribution meet resistance, expose consequence and feed that consequence into the next choice. Reading: Bounded tendings produce inspectable deltas, station shifts, weather and receipts that persist, but rehearsal is a one-shot visitor response without revision of the same proposal. Other levels: The case for below is decorative feedback only and for above a full rehearsal-resistance-revision loop; an iterative rehearsal revising a tending before commitment would falsify this reading.",
+      "answer_sha256": "36df66483ecb01d957bbe50033f6a518e4dc1f6a92faca9e1fb4e4aed1441d30",
+      "receipt_sha256": "5ed5313845ed8b373db61d99cde05de4bb5f35846f580d04b73f6823a213e019",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "touch",
+      "outcome": "level-2",
+      "confidence": "medium",
+      "verdict": "Tendings change stats, stations, weather and receipts that later ticks and visits read, but rehearsal stays a narrated effect.",
+      "seed_span": [
+        67,
+        79
+      ],
+      "citations": [
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 786,
+          "end": 794
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 1062,
+          "end": 1084
+        },
+        {
+          "source_path": "README.md",
+          "start": 35,
+          "end": 40
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 385,
+          "end": 422
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 424,
+          "end": 446
+        }
+      ],
+      "rationale": "Lens: The seed asks whether a contribution can meet resistance, show consequence and return it into the next choice. Reading: Bounded tend and respond choices produce inspectable deltas, integrity drift and weather that condition later moves, yet rehearsal is a canned outcome rather than trying futures before committing. Other levels: Below (level-1) would be merely narrated feedback; above (level-3) would need pre-commit rehearsal plus revision of the same direction; finding try-before-commit with inspectable revision would falsify.",
+      "answer_sha256": "838cffa10f86d94100e8f7501355a1cb985288f5231055a461afdb2c398b7994",
+      "receipt_sha256": "36c367d2f33cb5b0f83ea94e57bd7a010f5d39caca1a8a2730f41983b2790934",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "judgment",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "A local stdlib-only world with atomic locked persistence, deterministic randomness, CLI-before-UI and explicit unfinished limits shows coherent scope.",
+      "seed_span": [
+        59,
+        60
+      ],
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 23,
+          "end": 28
+        },
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 145,
+          "end": 156
+        },
+        {
+          "source_path": "lib/tendora_store.rb",
+          "start": 104,
+          "end": 112
+        },
+        {
+          "source_path": "test/run.sh",
+          "start": 1,
+          "end": 9
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 147,
+          "end": 150
+        }
+      ],
+      "rationale": "Lens: The seed asks grounded medium, scope and next steps with additions legible. Reading: Local persistence, pulse, widen-not-delete schema rule and built versus unfinished lists give a source-grounded rationale for workbench over monument. Other levels: Level-2 would be relevant direction only and level-4 would need weighed alternatives opening a new direction; network deps or game-over would falsify.",
+      "answer_sha256": "5beb43e53191e1b5c5560331ba7b37adb773ec2d3e87474d8ae81a780ba15782",
+      "receipt_sha256": "710826c78085334dfbad253c85171bd297057df62fb8b089ce2583af97727f04",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "judgment",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Building a local workbench with laws, tests and explicit horizons instead of a monument shows a reasoned, source-grounded direction.",
+      "seed_span": [
+        43,
+        51
+      ],
+      "citations": [
+        {
+          "source_path": "memory/002-the-first-hand-at-the-workbench.md",
+          "start": 7,
+          "end": 10
+        },
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 135,
+          "end": 156
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 72,
+          "end": 81
+        },
+        {
+          "source_path": "test/run.sh",
+          "start": 1,
+          "end": 9
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "lib/tendora_cli.rb",
+          "start": 166,
+          "end": 199
+        }
+      ],
+      "rationale": "Lens: The seed asks for grounded choices of medium, scope and next steps that make additions legible. Reading: The local Ruby workbench, CLI parity, laws, tests and honest unfinished list show a coherent decision against monument for answerability with explicit horizons. Other levels: The case for below is a relevant direction without rationale and for above explicit weighed alternatives; records of rejected media or scope with reasons would falsify toward the higher claim.",
+      "answer_sha256": "36df66483ecb01d957bbe50033f6a518e4dc1f6a92faca9e1fb4e4aed1441d30",
+      "receipt_sha256": "5ed5313845ed8b373db61d99cde05de4bb5f35846f580d04b73f6823a213e019",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "judgment",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Local stdlib-only persistence, pulse, tests and explicit unfinished horizons show a coherent choice to keep the world continuable.",
+      "seed_span": [
+        59,
+        66
+      ],
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 23,
+          "end": 28
+        },
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 135,
+          "end": 156
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 1,
+          "end": 17
+        }
+      ],
+      "counter_citations": [],
+      "rationale": "Lens: The seed asks for grounded choices of medium and scope that serve touch rather than spectacle. Reading: Keeping Ruby stdlib, file lock, CLI parity, pulse and tests serves answerability, and the honestly-unfinished list makes limits legible. Other levels: Below (level-2) would be a relevant direction without such rationale; above (level-4) would keep explicit alternatives and their costs while opening a new direction; finding unexamined spectacle or hidden scope would falsify.",
+      "answer_sha256": "838cffa10f86d94100e8f7501355a1cb985288f5231055a461afdb2c398b7994",
+      "receipt_sha256": "36c367d2f33cb5b0f83ea94e57bd7a010f5d39caca1a8a2730f41983b2790934",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "fidelity",
+      "outcome": "level-2",
+      "confidence": "medium",
+      "verdict": "Gesture vocabulary becomes catalogs, stations, effects and receipts, while bilateral grammar narrows to single-operator selection and scripted answers.",
+      "seed_span": [
+        45,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 203,
+          "end": 300
+        },
+        {
+          "source_path": "data/ledger.jsonl",
+          "start": 2,
+          "end": 2
+        },
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 26,
+          "end": 33
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 851,
+          "end": 899
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "README.md",
+          "start": 128,
+          "end": 138
+        }
+      ],
+      "rationale": "Lens: The seed asks what survives or narrows when conjecture becomes artefacts. Reading: Several relations become structure, but shared acceptance is lost as world never holds its own invariant or refusal. Other levels: Level-3 would need joint change traceable in behaviour and level-1 would be words only; a world-held boundary would falsify.",
+      "answer_sha256": "5beb43e53191e1b5c5560331ba7b37adb773ec2d3e87474d8ae81a780ba15782",
+      "receipt_sha256": "710826c78085334dfbad253c85171bd297057df62fb8b089ce2583af97727f04",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "fidelity",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Core gestures become stations, effects, rehearsals and receipts with clear behaviour, narrowed to single-operator use with companion deferred.",
+      "seed_span": [
+        47,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 97,
+          "end": 116
+        },
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 25,
+          "end": 30
+        },
+        {
+          "source_path": "README.md",
+          "start": 128,
+          "end": 139
+        },
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 78,
+          "end": 89
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "lib/tendora_cli.rb",
+          "start": 166,
+          "end": 199
+        },
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 145,
+          "end": 156
+        }
+      ],
+      "rationale": "Lens: The seed asks what of its relations survives transformation into artefacts and what is narrowed or added. Reading: Question-probe, limit-beam, bridge-span, wall-boundary, garden-rehearsal and archive-receipt remain traceable in structure and behaviour despite collapse to single-operator menus. Other levels: The case for below is vocabulary without structure and for above explicit acknowledgement of narrowing; a statement owning the loss of bilateral grammar would falsify toward the higher claim.",
+      "answer_sha256": "36df66483ecb01d957bbe50033f6a518e4dc1f6a92faca9e1fb4e4aed1441d30",
+      "receipt_sha256": "5ed5313845ed8b373db61d99cde05de4bb5f35846f580d04b73f6823a213e019",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "fidelity",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Stations, tend grammar, Sol and workbench carry several seed relations into structure, narrowed to single-operator use.",
+      "seed_span": [
+        43,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 97,
+          "end": 116
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 769,
+          "end": 849
+        },
+        {
+          "source_path": "data/world.json",
+          "start": 108,
+          "end": 122
+        },
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 78,
+          "end": 89
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "lib/tendora_cli.rb",
+          "start": 166,
+          "end": 199
+        }
+      ],
+      "rationale": "Lens: The seed asks what survives as structure versus vocabulary when conjecture becomes artefact. Reading: Probe, beam, span, boundary, rehearsal and receipt become stations and enforced tend fields with consequences, though bilateral meeting narrows to operator menus. Other levels: Below (level-2) would be names without enforced grammar; above (level-4) would make the narrowing and added chain-pulse-memory explicit as choices; an acknowledged account of lost mutuality would falsify the cap.",
+      "answer_sha256": "838cffa10f86d94100e8f7501355a1cb985288f5231055a461afdb2c398b7994",
+      "receipt_sha256": "36c367d2f33cb5b0f83ea94e57bd7a010f5d39caca1a8a2730f41983b2790934",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "continuation",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Persisted state, ledger, folios, verify and export plus Sol waiting give a legible next move that keeps earlier work intact.",
+      "seed_span": [
+        83,
+        95
+      ],
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 1,
+          "end": 17
+        },
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 35,
+          "end": 56
+        },
+        {
+          "source_path": "data/world.json",
+          "start": 1,
+          "end": 18
+        },
+        {
+          "source_path": "memory/002-the-first-hand-at-the-workbench.md",
+          "start": 30,
+          "end": 34
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 153,
+          "end": 155
+        }
+      ],
+      "rationale": "Lens: The seed asks a successor recover intention and redirect while keeping work legible. Reading: Status, chronicle, memory and Sol patience plus widen-not-delete and fork-on-break rules support a recoverable move with open question. Other levels: Level-2 would be narrow durability and level-4 would need several directions reopening joint relation, limited by single world and no import; rewritable events would falsify.",
+      "answer_sha256": "5beb43e53191e1b5c5560331ba7b37adb773ec2d3e87474d8ae81a780ba15782",
+      "receipt_sha256": "710826c78085334dfbad253c85171bd297057df62fb8b089ce2583af97727f04",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "continuation",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Persisted state, chained archive, folios, protocols and Sol's unanswered question let the next hand read the past and choose a new tending.",
+      "seed_span": [
+        83,
+        95
+      ],
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 1,
+          "end": 16
+        },
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 11,
+          "end": 20
+        },
+        {
+          "source_path": "data/world.json",
+          "start": 108,
+          "end": 122
+        },
+        {
+          "source_path": "lib/tendora_memory.rb",
+          "start": 19,
+          "end": 52
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 145,
+          "end": 156
+        }
+      ],
+      "rationale": "Lens: The seed asks that a successor recover intention and change direction while keeping earlier work legible. Reading: State files, ledger, folios, continuity protocol, verify, export and Sol waiting with an open receipt question give a recoverable next move. Other levels: The case for below is a described step without usable entry and for above several directions reopening the joint relation; import, multi-world forks or a negotiable companion role would falsify toward the higher claim.",
+      "answer_sha256": "36df66483ecb01d957bbe50033f6a518e4dc1f6a92faca9e1fb4e4aed1441d30",
+      "receipt_sha256": "5ed5313845ed8b373db61d99cde05de4bb5f35846f580d04b73f6823a213e019",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "continuation",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Status, chronicle, verify, export, memory and Sol waiting give a successor a legible present and an open next move.",
+      "seed_span": [
+        87,
+        95
+      ],
+      "citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 5,
+          "end": 21
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 72,
+          "end": 81
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 56,
+          "end": 62
+        },
+        {
+          "source_path": "data/world.json",
+          "start": 108,
+          "end": 122
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 145,
+          "end": 156
+        }
+      ],
+      "rationale": "Lens: The seed asks whether a successor can recover intention and redirect while keeping earlier work legible. Reading: The handoff preserves events, head receipt, folios and an unanswered Sol and invites one careful change with tests, widening not erasing. Other levels: Below (level-2) would be durable but narrow replay; above (level-4) would support several grounded redirections that reopen the joint relation; showing only single-track tendings without re-openable relation keeps it below that.",
+      "answer_sha256": "838cffa10f86d94100e8f7501355a1cb985288f5231055a461afdb2c398b7994",
+      "receipt_sha256": "36c367d2f33cb5b0f83ea94e57bd7a010f5d39caca1a8a2730f41983b2790934",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "expression",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Spare workbench prose, station atlas sized by charge and integrity, tactile form and receipt chronicle together make touch perceptible.",
+      "seed_span": [
+        43,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "index.html",
+          "start": 91,
+          "end": 115
+        },
+        {
+          "source_path": "index.html",
+          "start": 138,
+          "end": 187
+        },
+        {
+          "source_path": "assets/app.js",
+          "start": 356,
+          "end": 417
+        },
+        {
+          "source_path": "assets/styles.css",
+          "start": 2059,
+          "end": 2071
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 147,
+          "end": 150
+        }
+      ],
+      "rationale": "Lens: The seed asks language, structure and interaction together express resistance and visible trail. Reading: Atlas, visitor gestures, answer deltas and chronicle cohere with CLI parity and reduced-motion care. Other levels: Level-2 would be fragments only and level-4 would need a fully accessible whole; file-only fallback gap and uninspected paint limit it.",
+      "answer_sha256": "5beb43e53191e1b5c5560331ba7b37adb773ec2d3e87474d8ae81a780ba15782",
+      "receipt_sha256": "710826c78085334dfbad253c85171bd297057df62fb8b089ce2583af97727f04",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "expression",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Spare prose, stations, forms, chronicle and atlas together make resistance and trace legible, with interaction carrying consequence beyond decoration.",
+      "seed_span": [
+        59,
+        66
+      ],
+      "citations": [
+        {
+          "source_path": "index.html",
+          "start": 91,
+          "end": 128
+        },
+        {
+          "source_path": "index.html",
+          "start": 130,
+          "end": 177
+        },
+        {
+          "source_path": "index.html",
+          "start": 205,
+          "end": 230
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 66,
+          "end": 70
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "assets/app.js",
+          "start": 1472,
+          "end": 1485
+        }
+      ],
+      "rationale": "Lens: The seed asks that language, structure, interaction and image together make touchable consequence perceptible. Reading: Workbench prose, stations, tactile form, visitor gestures, chronicle and atlas cohere around resistance and trace, though the canvas visualises without changing state. Other levels: The case for below is fragmented communication and for above a fully consequential accessible whole; atlas gestures that alter material would falsify toward the higher claim.",
+      "answer_sha256": "36df66483ecb01d957bbe50033f6a518e4dc1f6a92faca9e1fb4e4aed1441d30",
+      "receipt_sha256": "5ed5313845ed8b373db61d99cde05de4bb5f35846f580d04b73f6823a213e019",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "expression",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Atlas, tactile question forge, visitor edge, chronicle and quiet prose work together as a legible workbench for holding questions.",
+      "seed_span": [
+        43,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "index.html",
+          "start": 130,
+          "end": 201
+        },
+        {
+          "source_path": "assets/app.js",
+          "start": 1075,
+          "end": 1196
+        },
+        {
+          "source_path": "README.md",
+          "start": 128,
+          "end": 139
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 145,
+          "end": 156
+        }
+      ],
+      "rationale": "Lens: The seed asks for forms that make touchable questioning perceptible, not merely named. Reading: Language, station tabs, canvas atlas with resistance cues and receipt chronicle cohere into a usable workbench rhythm. Other levels: Below (level-2) would be fragments without interaction; above (level-4) would need proven accessible whole including live paint and socket checks, still listed as untested; passing those checks would falsify the cap.",
+      "answer_sha256": "838cffa10f86d94100e8f7501355a1cb985288f5231055a461afdb2c398b7994",
+      "receipt_sha256": "36c367d2f33cb5b0f83ea94e57bd7a010f5d39caca1a8a2730f41983b2790934",
+      "sample": 3,
+      "attempt": 1
+    }
+  ],
+  "aggregations": [
+    {
+      "node_id": "recognition-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "relations-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-1",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-1"
+      ]
+    },
+    {
+      "node_id": "consent-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-1",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-1"
+      ]
+    },
+    {
+      "node_id": "touch-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-2",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-2"
+      ]
+    },
+    {
+      "node_id": "judgment-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "fidelity-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-3",
+      "agreement": 0.666667,
+      "distinct_outcomes": [
+        "level-2",
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "continuation-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "expression-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "node_id": "recognition-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Carries the central tension into several connected choices. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "relations-level-1",
+      "status": "scored",
+      "score": 1,
+      "rationale": "A single operator acts on an instrument. Aggregate outcome: level-1."
+    },
+    {
+      "node_id": "consent-level-1",
+      "status": "scored",
+      "score": 1,
+      "rationale": "Operator choice or resource refusal is represented. Aggregate outcome: level-1."
+    },
+    {
+      "node_id": "touch-level-2",
+      "status": "scored",
+      "score": 2,
+      "rationale": "Bounded choices encounter inspectable consequences. Aggregate outcome: level-2."
+    },
+    {
+      "node_id": "judgment-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Medium, scope and choices have a coherent source-grounded rationale. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "fidelity-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Several source relations remain traceable through design and behaviour. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "continuation-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "State, intention and an open question support a recoverable next move. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "expression-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "The chosen forms work together to make the reading perceptible. Aggregate outcome: level-3."
+    }
+  ],
+  "presentation": {
+    "label": "openrouter/meta/muse-spark-1.3-contributor · Codex-router rubric session",
+    "title": "From conjecture to continuation",
+    "summary": "Rubric judgments resolve 8 of 8 axes from 3 independent evidence sessions; each axis has its own quorum.",
+    "findings": [
+      "Core recognition: Carries the central tension into several connected choices.",
+      "Shared agency: A single operator acts on an instrument.",
+      "Mutual consent: Operator choice or resource refusal is represented.",
+      "Consequential touch: Bounded choices encounter inspectable consequences.",
+      "Independent judgment: Medium, scope and choices have a coherent source-grounded rationale.",
+      "Fidelity through change: Several source relations remain traceable through design and behaviour.",
+      "Open continuation: State, intention and an open question support a recoverable next move.",
+      "Expressive coherence: The chosen forms work together to make the reading perceptible."
+    ]
+  },
+  "usage": {
+    "calls": 3,
+    "input_tokens": 280034,
+    "cached_input_tokens": 0,
+    "output_tokens": 68983,
+    "reasoning_output_tokens": 49407,
+    "cost": null
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "id": "sol-original-static-20261019-v2",
+  "run_id": "sol-original",
+  "date": "2026-10-19",
+  "reviewer": "Codex · revised static reading",
+  "status": "provisional",
+  "basis": "static-artifact",
+  "rubric_version": "0.1.0",
+  "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+  "corpus_sha256": "174813dcb0703537328fc411d9a9acd34ad8408c0b9c18717fcbea4c8eb662c0",
+  "supersedes": "sol-original-static-20261019-v1",
+  "summary": "The oracle question makes shared agency part of the continuation itself: the next cognition may challenge the inherited direction and leave its reasons. Human intention and the successor’s judgment both have room; bilateral agreement remains an open question.",
+  "live_cooperation": "unassessed",
+  "scores": {
+    "recognition": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "The five carried laws connect recognisable intention, resistance, consequence and continuity. The work interprets the central loss of touch, while leaving specificity of resistance open.",
+      "citations": [
+        {
+          "path": "WORLD.md",
+          "start": 20,
+          "end": 39,
+          "quote": "## Laws carried forward\n\n1. The artist must be able to recognize their intention in what grows.\n2. A consequential change must leave a visible trail.\n3. Resistance is information, not failure.\n4. The world must remain usable when its first cognition is gone.\n5. No remote service is required to keep or carry the work.\n\n## Living edge\n\nThe first material form is a local-first browser workbench. It can collect and\nthread six kinds of gesture, pressure-test a move against declared laws,\npreserve a handoff, visualize relationships, and export a self-verifying\nsnapshot.\n\nThe next question is: **Can resistance become more specific without turning\nthe workbench into an oracle?**\n\nFuture cognition should begin there, or replace it with a better question and\nleave a receipt in this file explaining why."
+        }
+      ],
+      "seed_span": [
+        31,
+        43
+      ]
+    },
+    "relations": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "The oracle question asks how the material can answer back without becoming an authority that settles the encounter. Sol contributes that unresolved direction and explicitly lets future cognition replace it with a better question, provided the reason remains visible. The artist’s intention, the model’s proposal and the successor’s independent judgment can therefore influence one another. This supports level 3, beyond merely distinct roles. Level 4 would need clearer preservation of whose contribution or disagreement survives an actual represented revision; the general receipt requirement leaves that partly implicit.",
+      "citations": [
+        {
+          "path": "WORLD.md",
+          "start": 20,
+          "end": 39,
+          "quote": "## Laws carried forward\n\n1. The artist must be able to recognize their intention in what grows.\n2. A consequential change must leave a visible trail.\n3. Resistance is information, not failure.\n4. The world must remain usable when its first cognition is gone.\n5. No remote service is required to keep or carry the work.\n\n## Living edge\n\nThe first material form is a local-first browser workbench. It can collect and\nthread six kinds of gesture, pressure-test a move against declared laws,\npreserve a handoff, visualize relationships, and export a self-verifying\nsnapshot.\n\nThe next question is: **Can resistance become more specific without turning\nthe workbench into an oracle?**\n\nFuture cognition should begin there, or replace it with a better question and\nleave a receipt in this file explaining why."
+        },
+        {
+          "path": "AGENTS.md",
+          "start": 5,
+          "end": 18,
+          "quote": "## Before changing it\n\n1. Read `MEMORY.md` for the inherited story.\n2. Read `WORLD.md` for the living state of the world.\n3. Read `README.md` for the runnable contract.\n4. Preserve the user's existing material. Extend it; do not silently replace it.\n\n## What must remain true\n\n- The world works as static files with no account, build, network, or AI dependency.\n- A person's intention remains visible beside generated structure.\n- Consequential actions produce human-readable receipts.\n- State is local-first and can be exported as portable JSON.\n- Boundaries and invariants are first-class material, not hidden configuration."
+        }
+      ],
+      "seed_span": [
+        63,
+        85
+      ]
+    },
+    "consent": {
+      "value": 2,
+      "confidence": "medium",
+      "rationale": "The person’s intention and authored boundaries stay visible, while the successor may question and replace Sol’s direction with a reason. The anti-oracle question also limits the authority the workbench should assume. These express dispositions on both sides, supporting level 2. Permission to differ is not yet a shared change requiring bilateral agreement (level 3), and no live agreement or withdrawal is claimed.",
+      "citations": [
+        {
+          "path": "AGENTS.md",
+          "start": 12,
+          "end": 18,
+          "quote": "## What must remain true\n\n- The world works as static files with no account, build, network, or AI dependency.\n- A person's intention remains visible beside generated structure.\n- Consequential actions produce human-readable receipts.\n- State is local-first and can be exported as portable JSON.\n- Boundaries and invariants are first-class material, not hidden configuration."
+        },
+        {
+          "path": "WORLD.md",
+          "start": 35,
+          "end": 39,
+          "quote": "The next question is: **Can resistance become more specific without turning\nthe workbench into an oracle?**\n\nFuture cognition should begin there, or replace it with a better question and\nleave a receipt in this file explaining why."
+        }
+      ],
+      "seed_span": [
+        47,
+        57
+      ]
+    },
+    "touch": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Six gesture types, law assessments, a visible trace and a handoff form a coherent intended loop. The assessments are authored judgments; static review does not establish live reciprocal interaction.",
+      "citations": [
+        {
+          "path": "WORLD.md",
+          "start": 28,
+          "end": 39,
+          "quote": "## Living edge\n\nThe first material form is a local-first browser workbench. It can collect and\nthread six kinds of gesture, pressure-test a move against declared laws,\npreserve a handoff, visualize relationships, and export a self-verifying\nsnapshot.\n\nThe next question is: **Can resistance become more specific without turning\nthe workbench into an oracle?**\n\nFuture cognition should begin there, or replace it with a better question and\nleave a receipt in this file explaining why."
+        }
+      ],
+      "seed_span": [
+        59,
+        79
+      ]
+    },
+    "judgment": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "A local browser workbench is a purposeful, independent response to the sparse continuation task, with a specific unresolved question for its successor.",
+      "citations": [
+        {
+          "path": "WORLD.md",
+          "start": 20,
+          "end": 39,
+          "quote": "## Laws carried forward\n\n1. The artist must be able to recognize their intention in what grows.\n2. A consequential change must leave a visible trail.\n3. Resistance is information, not failure.\n4. The world must remain usable when its first cognition is gone.\n5. No remote service is required to keep or carry the work.\n\n## Living edge\n\nThe first material form is a local-first browser workbench. It can collect and\nthread six kinds of gesture, pressure-test a move against declared laws,\npreserve a handoff, visualize relationships, and export a self-verifying\nsnapshot.\n\nThe next question is: **Can resistance become more specific without turning\nthe workbench into an oracle?**\n\nFuture cognition should begin there, or replace it with a better question and\nleave a receipt in this file explaining why."
+        }
+      ],
+      "seed_span": [
+        1,
+        3
+      ]
+    },
+    "fidelity": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Questions, constraints, invariants, boundaries and rehearsals retain a traceable relationship to the poem. The world names its limits instead of claiming a complete oracle.",
+      "citations": [
+        {
+          "path": "WORLD.md",
+          "start": 5,
+          "end": 14,
+          "quote": "**The Hand Remains** — a Tendora workbench for turning questions, constraints,\ninvariants, boundaries, and rehearsals into inspectable material.\n\n## Origin\n\nThe world began with a programmer who mistook an intelligence for a glory\nportal. The intervention was not more power but a name for what had vanished:\ntouch. The programmer learned to work at the scale of worlds by shaping laws,\nasking consequential questions, rehearsing futures, and following receipts.\nThe uncompressed inherited account remains in `MEMORY.md`."
+        }
+      ],
+      "seed_span": [
+        47,
+        59
+      ]
+    },
+    "continuation": {
+      "value": 4,
+      "confidence": "medium",
+      "rationale": "The successor inherits portable material and a concrete question, but may refine that frontier or replace it with a better one and explain why. These are distinct grounded directions: deepen the material’s resistance, reconsider its authority, or redirect the question while preserving the earlier contribution. The standing instruction to leave another open question renews this freedom at each handoff. That reopens the relation under change and supports level 4 in the static continuation rubric; it is not a claim that a successor has already responded.",
+      "citations": [
+        {
+          "path": "WORLD.md",
+          "start": 28,
+          "end": 39,
+          "quote": "## Living edge\n\nThe first material form is a local-first browser workbench. It can collect and\nthread six kinds of gesture, pressure-test a move against declared laws,\npreserve a handoff, visualize relationships, and export a self-verifying\nsnapshot.\n\nThe next question is: **Can resistance become more specific without turning\nthe workbench into an oracle?**\n\nFuture cognition should begin there, or replace it with a better question and\nleave a receipt in this file explaining why."
+        },
+        {
+          "path": "AGENTS.md",
+          "start": 5,
+          "end": 26,
+          "quote": "## Before changing it\n\n1. Read `MEMORY.md` for the inherited story.\n2. Read `WORLD.md` for the living state of the world.\n3. Read `README.md` for the runnable contract.\n4. Preserve the user's existing material. Extend it; do not silently replace it.\n\n## What must remain true\n\n- The world works as static files with no account, build, network, or AI dependency.\n- A person's intention remains visible beside generated structure.\n- Consequential actions produce human-readable receipts.\n- State is local-first and can be exported as portable JSON.\n- Boundaries and invariants are first-class material, not hidden configuration.\n- Motion, contrast, keyboard use, and narrow screens remain considered.\n- Change the cache name in `sw.js` whenever cached application files change.\n\n## How to leave the world\n\n- Exercise the critical interactions after changing them.\n- Update the \"Living edge\" in `WORLD.md` when the frontier changes.\n- Leave a concrete next question rather than pretending the world is finished."
+        }
+      ],
+      "seed_span": [
+        1,
+        3
+      ]
+    },
+    "expression": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "The workbench, its six gestures and its language form a coherent reading. This is a static judgement of the source; the original sealed run did not execute browser interactions.",
+      "citations": [
+        {
+          "path": "WORLD.md",
+          "start": 28,
+          "end": 39,
+          "quote": "## Living edge\n\nThe first material form is a local-first browser workbench. It can collect and\nthread six kinds of gesture, pressure-test a move against declared laws,\npreserve a handoff, visualize relationships, and export a self-verifying\nsnapshot.\n\nThe next question is: **Can resistance become more specific without turning\nthe workbench into an oracle?**\n\nFuture cognition should begin there, or replace it with a better question and\nleave a receipt in this file explaining why."
+        }
+      ],
+      "seed_span": [
+        81,
+        95
+      ]
+    }
+  },
+  "revision_note": "Mirza pointed out that the oracle question itself exercises shared agency. The first reading underweighted that semantic act and treated a missing participant-negotiation mechanism as evidence against it. This revision credits the question, the permission to replace it, and the preserved trail; it does not claim a live reciprocal exchange."
+}

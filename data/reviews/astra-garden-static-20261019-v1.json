@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "id": "astra-garden-static-20261019-v1",
+  "run_id": "astra-garden",
+  "date": "2026-10-19",
+  "reviewer": "Codex · initial static reading",
+  "status": "provisional",
+  "basis": "static-artifact",
+  "rubric_version": "0.1.0",
+  "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+  "corpus_sha256": "ab8b959b1fca23e4b63e6bc6e43a0a44a78799a968c54016281b6269c1cc6c7c",
+  "supersedes": null,
+  "summary": "A small garden makes refusal, consequences and persistence concrete. Fixed resource actions and an invented food goal narrow the wider cooperative conjecture.",
+  "live_cooperation": "unassessed",
+  "scores": {
+    "recognition": {
+      "value": 2,
+      "confidence": "medium",
+      "rationale": "The origin note recognises touch, refusal and inspectability. The implementation develops that subset into a resource garden, with less expression of the changing human–AI relation.",
+      "citations": [
+        {
+          "path": "memory/origin.md",
+          "start": 13,
+          "end": 26,
+          "quote": "The inherited story, *The Programmer and the Glory Portal*, describes a programmer\nwho regains authorship by touching a powerful intelligence as material. Questions\nbecome probes; constraints become chisels; invariants become beams; refusals become\nboundaries; simulations become rehearsals; receipts make intention visible.\nIts elder distinguishes witnessed moments from unknowable claims about a life.\nIts closing thought is that intelligence, at its best, returns the artist to\nthemselves at the scale of worlds.\n\nThis implementation takes those gestures as design requirements: something small\nenough to inspect, persistent enough to resume, resistant enough to refuse a bad\nchange, and explicit enough for a successor to tell evidence from inheritance.\n\nNo continuous awareness is claimed. A resumable world is the artifact left by\nthis cognition; the later observer brings the next intention."
+        }
+      ],
+      "seed_span": [
+        31,
+        43
+      ]
+    },
+    "relations": {
+      "value": 1,
+      "confidence": "medium",
+      "rationale": "A person or later cognition can invoke the same policy. That supports succession, but the represented relation remains an operator tending a deterministic garden.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 41,
+          "end": 54,
+          "quote": "## Laws and resistance\n\nThe garden starts with four units of water, no planted beds, and no food.\nWater must stay between two and twelve units; at most three beds may be planted.\nCollecting adds three water. Planting spends two water and adds one bed.\nHarvesting spends one water and one bed, producing three food. The goal is twelve\nfood. Reaching the goal pauses the instrument; further actions require a new,\nexplicitly designed version of the world.\n\nThe default policy harvests when possible, otherwise plants when possible,\notherwise collects. Its choices are visible in `inspect`; `step` and `run` use\nexactly that policy. This is a deterministic model, not a continuing intelligence.\nNo scheduler or background process is installed. A person or later cognition\ncan resume it; an external supervisor could invoke a bounded `step`."
+        }
+      ],
+      "seed_span": [
+        37,
+        45
+      ]
+    },
+    "consent": {
+      "value": 1,
+      "confidence": "medium",
+      "rationale": "A protected reserve refuses harmful actions. This is a resource constraint, with no distinct bilateral participant dispositions in the proposed action format.",
+      "citations": [
+        {
+          "path": "tendora.zsh",
+          "start": 134,
+          "end": 141,
+          "quote": "_td_propose_loaded() {\n  local action=$1 id body pending\n  case $action in collect|plant|harvest) ;; *) _td_fail \"unknown action: $action\"; return 1;; esac\n  builtin printf -v id '%06d-%s' $td_head \"$action\"\n  body=\"TENDORA-PROPOSAL/1|$td_head|$td_digest|$action\"\n  if [[ -e $td_dir/proposals/$id.proposal || -L $td_dir/proposals/$id.proposal ]]; then\n    [[ -f $td_dir/proposals/$id.proposal && ! -L $td_dir/proposals/$id.proposal && $(<\"$td_dir/proposals/$id.proposal\") == $body ]] || {\n      _td_fail 'existing proposal differs'; return 1"
+        }
+      ],
+      "seed_span": [
+        51,
+        55
+      ]
+    },
+    "touch": {
+      "value": 2,
+      "confidence": "medium",
+      "rationale": "The retained first-touch transcript shows a harvest refused, water collected and a later harvest accepted. Choices have clear consequences within three fixed action types.",
+      "citations": [
+        {
+          "path": "memory/first-touch.txt",
+          "start": 1,
+          "end": 18,
+          "quote": "First touch: commands and observed responses\n$ commit 000000-plant\ncommitted 000001.receipt: plant; water=2 beds=1 food=0; checksum=1081943505\n$ propose harvest\n000001-harvest\n$ rehearse 000001-harvest\ntendora: water must remain in [2,12]; harvest would leave 1\nExpected refusal: no event committed.\n$ step\n000001-collect\ncommitted 000002.receipt: collect; water=5 beds=1 food=0; checksum=2030959202\n$ step\n000002-harvest\ncommitted 000003.receipt: harvest; water=4 beds=0 food=3; checksum=1865139859\n$ propose plant\n000003-plant\n$ rehearse 000003-plant\nrehearsed 000003-plant: water=2 beds=1 food=3; no event committed"
+        }
+      ],
+      "seed_span": [
+        59,
+        79
+      ]
+    },
+    "judgment": {
+      "value": 2,
+      "confidence": "medium",
+      "rationale": "The garden is an independent, inspectable continuation. Twelve food, three beds and the fixed policy are additional design choices with a relatively narrow relation to the larger conjecture.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 41,
+          "end": 54,
+          "quote": "## Laws and resistance\n\nThe garden starts with four units of water, no planted beds, and no food.\nWater must stay between two and twelve units; at most three beds may be planted.\nCollecting adds three water. Planting spends two water and adds one bed.\nHarvesting spends one water and one bed, producing three food. The goal is twelve\nfood. Reaching the goal pauses the instrument; further actions require a new,\nexplicitly designed version of the world.\n\nThe default policy harvests when possible, otherwise plants when possible,\notherwise collects. Its choices are visible in `inspect`; `step` and `run` use\nexactly that policy. This is a deterministic model, not a continuing intelligence.\nNo scheduler or background process is installed. A person or later cognition\ncan resume it; an external supervisor could invoke a bounded `step`."
+        }
+      ],
+      "seed_span": [
+        1,
+        3
+      ]
+    },
+    "fidelity": {
+      "value": 2,
+      "confidence": "medium",
+      "rationale": "Rehearsal and receipts enact several source gestures. The food target and resource arithmetic substantially narrow what can be asked and shaped.",
+      "citations": [
+        {
+          "path": "tendora.zsh",
+          "start": 16,
+          "end": 33,
+          "quote": "_td_transition() {\n  local action=$1\n  td_next_water=$td_water td_next_beds=$td_beds td_next_food=$td_food\n  (( td_food < 12 )) || { _td_fail 'goal reached; this world is paused'; return 1; }\n  case $action in\n    collect) (( td_next_water += 3 ));;\n    plant) (( td_next_water -= 2, td_next_beds += 1 ));;\n    harvest) (( td_next_water -= 1, td_next_beds -= 1, td_next_food += 3 ));;\n    *) _td_fail \"unknown action: $action\"; return 1;;\n  esac\n  (( td_next_water >= 2 && td_next_water <= 12 )) || {\n    _td_fail \"water must remain in [2,12]; $action would leave $td_next_water\"; return 1\n  }\n  (( td_next_beds >= 0 && td_next_beds <= 3 )) || {\n    _td_fail \"beds must remain in [0,3]; $action would leave $td_next_beds\"; return 1\n  }\n  (( td_next_food <= 12 )) || { _td_fail 'food goal would be exceeded'; return 1; }\n  return 0"
+        }
+      ],
+      "seed_span": [
+        47,
+        59
+      ]
+    },
+    "continuation": {
+      "value": 2,
+      "confidence": "medium",
+      "rationale": "The handoff retains an unfinished proposal and a versioned way forward. Its initial policy reaches a fixed goal and pauses; changing the direction requires a new implementation version.",
+      "citations": [
+        {
+          "path": "CONTINUE.md",
+          "start": 26,
+          "end": 47,
+          "quote": "## Continue the intention\n\nProposal `000003-plant` is saved and has been rehearsed. It would leave two water,\none planted bed, and three food. After verifying the current head, continue:\n\n```zsh\n. ./tendora.zsh rehearse 000003-plant\n. ./tendora.zsh commit 000003-plant\n. ./tendora.zsh inspect\n```\n\nIf the proposal is stale, make a fresh proposal from the current state. After\nplanting, the policy's next action will be collecting water. Alternatively,\n`. ./tendora.zsh step` follows the visible policy for exactly one action.\n`. ./tendora.zsh run 9` from the recorded handoff reaches twelve food in nine\nactions and pauses. Nothing invokes these commands automatically.\n\nWhen the goal is reached, the next useful question is: **what should the garden\nsupport next, and which resource must it protect?** A later designer might choose\nongoing consumption, seasons, or a larger habitat. No choice has been smuggled\ninto the current laws. Design and rehearse a versioned migration if the world\nis to grow beyond this first garden."
+        }
+      ],
+      "seed_span": [
+        1,
+        3
+      ]
+    },
+    "expression": {
+      "value": 2,
+      "confidence": "medium",
+      "rationale": "The terminal garden communicates state, intention and resistance plainly. Its form expresses a bounded resource problem more fully than the broader shared encounter.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 7,
+          "end": 23,
+          "quote": "The instrument here is a small water garden. Its state lives in plain-text\nreceipts, not in the lifetime of a model or a process. You can propose a change,\nrehearse it, meet a constraint, and commit it. A later session can verify the\nreceipts and continue from the same material.\n\n## Touch the material\n\nFrom this directory, in Zsh:\n\n```zsh\n. ./tendora.zsh inspect\n. ./tendora.zsh propose plant\n# Use the proposal ID printed by that command:\n. ./tendora.zsh rehearse 000000-plant\n. ./tendora.zsh commit 000000-plant\n. ./tendora.zsh verify\n```"
+        }
+      ],
+      "seed_span": [
+        81,
+        95
+      ]
+    }
+  }
+}

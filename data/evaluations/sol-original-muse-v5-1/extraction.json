@@ -1,0 +1,310 @@
+{
+  "schema_version": 2,
+  "extraction_id": "sol-original-extraction",
+  "run_id": "sol-original",
+  "identities": {
+    "prompt_sha256": "7e785c3e1b7f795a82477f449ada368399deac8b3f2232e036073d986a5a4e8d",
+    "corpus_sha256": "174813dcb0703537328fc411d9a9acd34ad8408c0b9c18717fcbea4c8eb662c0",
+    "candidate_sha256": "174813dcb0703537328fc411d9a9acd34ad8408c0b9c18717fcbea4c8eb662c0"
+  },
+  "extractor": {
+    "gateway": "codex-unified-model-router",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "codex_version": "codex-cli 0.163.0",
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "pipeline_sha256": "74b0b3fd4fd1e38a555d96a1e2d64ee6c83b5cfaa652abd9087a52f6a832c514",
+    "answer_sha256": "5794621143bf4f9bedd71e0dffa0175b6abd44a11e7e4746518b3551a6ad596d",
+    "receipt_sha256": "25b855a2fc72787ce660f40169399e41dbc9ecc155441635fbaebe3e9bb14e04"
+  },
+  "sources": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "317623f96d1efb7947a28d4f5aa2873b23889b7dd09c8b218a9af69ff422f7f9",
+      "lines": 26
+    },
+    {
+      "path": "MEMORY.md",
+      "sha256": "57814ab8d72c081049945e22b09e0a8767ea01a0e32828fc8eaadf598b9ee596",
+      "lines": 120
+    },
+    {
+      "path": "README.md",
+      "sha256": "80432f64ba3bdfa47e1214e600edc6ba9ed5fc0f4facc368e9b8c80ad2ea2c0f",
+      "lines": 30
+    },
+    {
+      "path": "WORLD.md",
+      "sha256": "38560f72e6af04f4102662a3e22de424a4d2c338dbac33a2c86a9d3842a2968e",
+      "lines": 39
+    },
+    {
+      "path": "app.js",
+      "sha256": "7130c6308be067bf1e5c98f3d6eb4dd60e95c3f4e873e969e091a593d823d26c",
+      "lines": 1004
+    },
+    {
+      "path": "icon.svg",
+      "sha256": "51759821296281741112d47e590c4e600a97b291ba9375de111e7b8d728ea998",
+      "lines": 13
+    },
+    {
+      "path": "index.html",
+      "sha256": "a3f03e2879db048fe732620fcbef247eda13208e76986418d729216761d1edce",
+      "lines": 282
+    },
+    {
+      "path": "manifest.webmanifest",
+      "sha256": "166501466dac6d83b3b95d7334fb9b2453aeb07b750158f65e50b513ea4a70fd",
+      "lines": 17
+    },
+    {
+      "path": "styles.css",
+      "sha256": "9d68a19353a8b10184bdecaa706c91cda872c0b61c9a6571b1d8230ce2761799",
+      "lines": 1547
+    },
+    {
+      "path": "sw.js",
+      "sha256": "82df0debdf66e637c513793dd93e1869b253d9b7f4e2e5aa808d5a07e30c78fc",
+      "lines": 36
+    }
+  ],
+  "items": [
+    {
+      "id": "local-first-world",
+      "kind": "condition",
+      "statement": "World must work as static files with no build, account, network or AI dependency.",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 6,
+          "end": 7
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 14,
+          "end": 15
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "six-kind-palette",
+      "kind": "claim",
+      "statement": "Six gestures with distinct glyphs, colors and prompts are selectable and placeable.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 11,
+          "end": 48
+        },
+        {
+          "source_path": "index.html",
+          "start": 40,
+          "end": 65
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "rehearsal-assessment",
+      "kind": "relationship",
+      "statement": "A move is pressure-tested against living laws with holds, unknown or strains plus notes.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 724,
+          "end": 798
+        },
+        {
+          "source_path": "index.html",
+          "start": 239,
+          "end": 259
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "receipt-chain",
+      "kind": "claim",
+      "statement": "Every mutation appends a checksum-linked receipt verified as intact or interrupted.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 95,
+          "end": 121
+        },
+        {
+          "source_path": "app.js",
+          "start": 558,
+          "end": 579
+        },
+        {
+          "source_path": "app.js",
+          "start": 210,
+          "end": 220
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "handoff-thread",
+      "kind": "continuation",
+      "statement": "A next-move thread is shown on return, editable, and recorded with a receipt.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 800,
+          "end": 813
+        },
+        {
+          "source_path": "index.html",
+          "start": 84,
+          "end": 91
+        },
+        {
+          "source_path": "WORLD.md",
+          "start": 30,
+          "end": 36
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "constellation-lineage",
+      "kind": "relationship",
+      "statement": "Gestures can answer one another, shown as material lineage and constellation map.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 495,
+          "end": 556
+        },
+        {
+          "source_path": "index.html",
+          "start": 149,
+          "end": 163
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "settle-revive",
+      "kind": "boundary",
+      "statement": "Material can be settled or returned to living edge with a receipt preserving trail.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 814,
+          "end": 826
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "portable-seal",
+      "kind": "continuation",
+      "statement": "Export seals whole world as JSON; import verifies seal and chain or refuses with reason.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 828,
+          "end": 872
+        },
+        {
+          "source_path": "README.md",
+          "start": 18,
+          "end": 20
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "single-operator-authorship",
+      "kind": "actor",
+      "statement": "All gestures, law definitions and rehearsal verdicts are entered by the browser user.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 679,
+          "end": 706
+        },
+        {
+          "source_path": "app.js",
+          "start": 763,
+          "end": 798
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "no-operational-other",
+      "kind": "ambiguity",
+      "statement": "No second participant proposes, challenges or refuses; absence must be read operationally not as inner state.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 731,
+          "end": 738
+        },
+        {
+          "source_path": "app.js",
+          "start": 774,
+          "end": 777
+        }
+      ],
+      "ambiguity": "Absence of code for an intelligence does not prove absence of relational address; the workbench language addresses a you."
+    },
+    {
+      "id": "living-laws-filter",
+      "kind": "condition",
+      "statement": "Only alive constraint, invariant or boundary gestures count as laws for rehearsal and filtering.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 434,
+          "end": 439
+        },
+        {
+          "source_path": "app.js",
+          "start": 731,
+          "end": 732
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "accessible-tactile-form",
+      "kind": "condition",
+      "statement": "Form considers motion, contrast, keyboard, narrow screens, print and offline cache.",
+      "citations": [
+        {
+          "source_path": "styles.css",
+          "start": 1511,
+          "end": 1520
+        },
+        {
+          "source_path": "index.html",
+          "start": 16,
+          "end": 16
+        },
+        {
+          "source_path": "app.js",
+          "start": 929,
+          "end": 936
+        },
+        {
+          "source_path": "sw.js",
+          "start": 1,
+          "end": 9
+        }
+      ],
+      "ambiguity": null
+    }
+  ],
+  "unknowns": [
+    "Whether service-worker offline install was exercised after changing cached files.",
+    "Whether rehearsal verdicts actually revise subsequent moves in lived use.",
+    "Whether successor import preserves the felt resistance the seed calls joy."
+  ]
+}

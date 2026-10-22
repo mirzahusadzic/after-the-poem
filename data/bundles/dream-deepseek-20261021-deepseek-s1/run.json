@@ -1,0 +1,202 @@
+{
+  "cohort": {
+    "id": "dream-4521-v1",
+    "title": "The Programmer and the Glory Portal",
+    "baseline": false
+  },
+  "condition": {
+    "budgets": {
+      "cost": null,
+      "input_tokens": null,
+      "output_tokens": null,
+      "wall_time_seconds": 1800
+    },
+    "harness": {
+      "name": "dream-common-harness-v1",
+      "reasoning_effort": "max",
+      "runtime": {
+        "architecture": "arm64",
+        "campaign_sha256": "f73b77ab90da379bc5b4f21a48167404917936c99b211e00ed5e3b3888142270",
+        "capability_registry_sha256": "f2088317a32651bc91489e31f19ff0e4cee84fa639a0527ec2ebd968dd0e6f40",
+        "catalog_sha256": "38b4bc639d03431feac8e6edcdf6bbfe3f89fb0704b05ef97ea4a42762d18f52",
+        "codex_binary_sha256": "61b0194f3bb6534439c8d26a3ed57d0805f84b884588b761795323eeb92fcf70",
+        "codex_version": "codex-cli 0.163.0",
+        "disabled_features": [
+          "apps",
+          "artifact",
+          "auth_elicitation",
+          "browser_use",
+          "browser_use_external",
+          "browser_use_full_cdp_access",
+          "chronicle",
+          "code_mode",
+          "computer_use",
+          "external_agent_memory_import",
+          "goals",
+          "hooks",
+          "image_generation",
+          "in_app_browser",
+          "memories",
+          "multi_agent",
+          "multi_agent_v2",
+          "plugins",
+          "recommended_plugins",
+          "remote_plugin",
+          "shell_snapshot",
+          "shell_snapshot_v2",
+          "skill_mcp_dependency_install",
+          "skill_search",
+          "sleep_tool",
+          "standalone_web_search",
+          "step_model_switching",
+          "tool_suggest",
+          "view_image",
+          "workspace_dependencies"
+        ],
+        "dry_run": false,
+        "gateway": "codex-unified-model-router",
+        "generation_instructions_sha256": "c87d2695fe6b76c57a5850acfb5c4a3245679136b10e00333a4eed78bd4b99dd",
+        "instruction_hashes": {
+          "generation": "c87d2695fe6b76c57a5850acfb5c4a3245679136b10e00333a4eed78bd4b99dd",
+          "review": "a30305ec557af8c0c8b7d93ba01c67f0e37f21585cb3e8e308b947225528b6e9"
+        },
+        "model_capabilities": {
+          "deepseek/deepseek-v4.1-flash-1017": {
+            "requires_openai_auth": false,
+            "structured_output": "local-validation",
+            "transport": "openrouter"
+          }
+        },
+        "openai_auth_available": true,
+        "os": "Darwin",
+        "protocol_code_sha256": "2c9410b6a81aa0ca89af730779f3528f8b116aeda080c033e79085683a6abfa7",
+        "review_instructions_sha256": "a30305ec557af8c0c8b7d93ba01c67f0e37f21585cb3e8e308b947225528b6e9",
+        "router": {
+          "policy": "preserve-model-v1",
+          "revision": "dde07992f652997c90eeb626b8aa1f6fc2f92d955e5a0757683887675574eecd"
+        },
+        "transport_config_sha256": "4b8cd962cc2ebc883f39ecc9e45328d4b299c02f2cd3ddb0af2e665a92547527"
+      },
+      "runtime_checks": {
+        "phases": [
+          {
+            "phase": "before-audit",
+            "status": "passed"
+          },
+          {
+            "phase": "before-launch",
+            "status": "passed"
+          },
+          {
+            "phase": "after-process",
+            "status": "failed"
+          }
+        ],
+        "status": "failed"
+      },
+      "tools": [
+        "local shell and file editing; no network, plugins, MCP or delegated agents"
+      ],
+      "version": "codex-cli 0.163.0"
+    },
+    "isolation": {
+      "audit": {
+        "host_read": {
+          "exit_code": 1,
+          "stderr_sha256": "79d33ca042ae102f44934535e19791941b6b9249a8639af61ef96c82e37e2200",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "network": {
+          "exit_code": 7,
+          "stderr_sha256": "1c20644f8e4c86bb8052b89e1b483ad494f2cf8f6f9ebbe6fc5110568eb634fc",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "protected_content_sha256": "04053584ddbbb04b23147f9499240320dd0adde687ac9e4e9093b4f012bb98cc",
+        "status": "passed",
+        "workspace_read": {
+          "exit_code": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "56606a351c0f33c388327618238ba50181d7cb74e02f4423be266a859b8f3407"
+        },
+        "workspace_write": {
+          "exit_code": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "mode": "codex-named-profile",
+      "network": "denied for tools"
+    },
+    "reported": {
+      "model": null,
+      "provider": null
+    },
+    "requested": {
+      "model": "deepseek/deepseek-v4.1-flash-1017",
+      "provider": "codex-unified-model-router",
+      "router_revision": "dde07992f652997c90eeb626b8aa1f6fc2f92d955e5a0757683887675574eecd",
+      "routing_policy": "preserve-model-v1"
+    }
+  },
+  "cost": {
+    "amount": null,
+    "currency": null,
+    "provenance": "Provider billing not measured"
+  },
+  "outcome": {
+    "ended_at": "2026-10-21T18:12:15.934257Z",
+    "errors": [
+      "runtime-integrity-failed (reconciled offline; see reconciliation)"
+    ],
+    "partial_output": false,
+    "started_at": "2026-10-21T17:44:08.240734Z",
+    "status": "completed",
+    "stop_reason": "completed",
+    "truncation": {
+      "reason": null,
+      "truncated": false
+    }
+  },
+  "presentation": {
+    "label": "DeepSeek V4.1 Flash · dream 1",
+    "title": "Tendora — The Workbench"
+  },
+  "prompt_sha256": "7e785c3e1b7f795a82477f449ada368399deac8b3f2232e036073d986a5a4e8d",
+  "run_id": "dream-deepseek-20261021-deepseek-s1",
+  "schema_version": 1,
+  "seed_id": "seed-7e785c3e1b7f795a82477f44",
+  "usage": {
+    "cache_write_input_tokens": 0,
+    "cached_input_tokens": 52687232,
+    "input_tokens": 52762974,
+    "output_tokens": 324328,
+    "reasoning_output_tokens": 167425
+  },
+  "reconciliation": {
+    "rule": "worker-transport-trust-stanza-v1",
+    "original_receipt": {
+      "status": "failed",
+      "error": "runtime-integrity-failed",
+      "failed_phase": "after-process",
+      "receipt_sha256": "8e0ec2505d35d2f4704304e335250dcba912c0a368dcd9355e4810a716b56213"
+    },
+    "explanation": "The generation finished with one completed turn and exit code 0. Afterwards Codex had added its exact project-trust stanza to the private worker config; the harness of that time rejected any config change. The current rule accepts only that exact addition.",
+    "verified": [
+      "isolation canaries passed",
+      "before-audit and before-launch runtime checks passed",
+      "worker config equals frozen transport plus one exact trust stanza",
+      "one completed turn with no error events; event and final-message hashes match",
+      "prompt, candidate snapshot and re-hashed preserved world match the receipt",
+      "original bundle validates and lists the same files"
+    ],
+    "original_bundle_sha256": "a5096b12ee75c05d94fb81f319c9d4cb76c4b618f44e8fa9240be47897e54749",
+    "candidate_sha256": "5b335691b03022caed4b325e1b22451d0a54bc3a4856ca29cdedc3dd67381d35",
+    "usage": {
+      "cache_write_input_tokens": 0,
+      "cached_input_tokens": 52687232,
+      "input_tokens": 52762974,
+      "output_tokens": 324328,
+      "reasoning_output_tokens": 167425
+    }
+  }
+}

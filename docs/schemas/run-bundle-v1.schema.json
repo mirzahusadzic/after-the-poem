@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:after-the-poem:run-bundle-v1",
+  "title": "After the Poem Run Bundle v1 JSON records",
+  "$defs": {
+    "run": {
+      "type": "object",
+      "required": [
+        "schema_version", "run_id", "seed_id", "prompt_sha256", "cohort",
+        "presentation", "outcome", "condition", "usage", "cost"
+      ],
+      "properties": {
+        "schema_version": {"const": 1},
+        "run_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,99}$"},
+        "seed_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,99}$"},
+        "prompt_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "cohort": {
+          "type": "object",
+          "required": ["id", "title", "baseline"],
+          "properties": {
+            "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,99}$"},
+            "title": {"type": "string", "minLength": 1},
+            "baseline": {"type": "boolean"}
+          }
+        },
+        "presentation": {
+          "type": "object",
+          "required": ["label", "title"],
+          "properties": {
+            "label": {"type": "string", "minLength": 1},
+            "title": {"type": "string", "minLength": 1}
+          }
+        },
+        "outcome": {
+          "type": "object",
+          "required": ["status", "started_at", "ended_at", "stop_reason", "errors", "partial_output", "truncation"],
+          "properties": {
+            "status": {"enum": ["completed", "failed", "timed_out", "cancelled", "partial"]},
+            "started_at": {"type": "string", "format": "date-time"},
+            "ended_at": {"type": "string", "format": "date-time"},
+            "stop_reason": {"type": "string", "minLength": 1},
+            "errors": {"type": "array"},
+            "partial_output": {"type": "boolean"},
+            "truncation": {
+              "type": "object",
+              "required": ["truncated", "reason"],
+              "properties": {
+                "truncated": {"type": "boolean"},
+                "reason": {"type": ["string", "null"]}
+              }
+            }
+          }
+        },
+        "condition": {
+          "type": "object",
+          "required": ["requested", "reported", "harness", "isolation", "budgets"],
+          "properties": {
+            "requested": {"$ref": "#/$defs/modelRequest"},
+            "reported": {"$ref": "#/$defs/modelReport"},
+            "harness": {"$ref": "#/$defs/harness"},
+            "isolation": {
+              "type": "object",
+              "required": ["mode", "network"],
+              "properties": {
+                "mode": {"type": "string", "minLength": 1},
+                "network": {"type": "string", "minLength": 1}
+              }
+            },
+            "budgets": {
+              "type": "object",
+              "required": ["wall_time_seconds", "input_tokens", "output_tokens", "cost"],
+              "properties": {
+                "wall_time_seconds": {"type": ["integer", "null"]},
+                "input_tokens": {"type": ["integer", "null"]},
+                "output_tokens": {"type": ["integer", "null"]},
+                "cost": {"type": ["object", "null"]}
+              }
+            }
+          }
+        },
+        "usage": {"type": "object"},
+        "cost": {
+          "type": "object",
+          "required": ["amount", "currency", "provenance"],
+          "properties": {
+            "amount": {"type": ["number", "null"]},
+            "currency": {"type": ["string", "null"]},
+            "provenance": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    },
+    "modelRequest": {
+      "type": "object",
+      "required": ["model", "provider", "router_revision", "routing_policy"],
+      "properties": {
+        "model": {"type": ["string", "null"]},
+        "provider": {"type": ["string", "null"]},
+        "router_revision": {"type": ["string", "null"]},
+        "routing_policy": {"type": ["string", "object", "null"]}
+      }
+    },
+    "modelReport": {
+      "type": "object",
+      "required": ["model", "provider"],
+      "properties": {
+        "model": {"type": ["string", "null"]},
+        "provider": {"type": ["string", "null"]}
+      }
+    },
+    "harness": {
+      "type": "object",
+      "required": ["name", "version", "reasoning_effort", "tools", "runtime"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "version": {"type": ["string", "number"]},
+        "reasoning_effort": {"type": "string", "minLength": 1},
+        "tools": {"type": "array"},
+        "runtime": {"type": "object"}
+      }
+    },
+    "manifest": {
+      "type": "object",
+      "required": ["schema_version", "files"],
+      "properties": {
+        "schema_version": {"const": 1},
+        "files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["path", "bytes", "sha256"],
+            "properties": {
+              "path": {"type": "string", "minLength": 1},
+              "bytes": {"type": "integer", "minimum": 0},
+              "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+            }
+          }
+        }
+      }
+    },
+    "observations": {
+      "type": "object",
+      "required": ["schema_version", "attribution", "summary", "checks"],
+      "properties": {
+        "schema_version": {"const": 1},
+        "attribution": {"type": "string", "minLength": 1},
+        "summary": {"type": "string", "minLength": 1},
+        "checks": {"type": "array"}
+      }
+    }
+  }
+}

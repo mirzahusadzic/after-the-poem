@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "selections": {
+    "astra-garden": "astra-garden-static-20261019-v1",
+    "astra-max": "astra-max-static-20261019-v1",
+    "sol-original": "sol-original-static-20261019-v2",
+    "sol56-max": "sol56-max-static-20261019-v1",
+    "sol61-max": "sol61-max-static-20261019-v1",
+    "deepseek-flash-max-pilot": "deepseek-flash-max-pilot-editorial-20261021-v1",
+    "dream-deepseek-20261021-deepseek-s1": "dream-deepseek-20261021-deepseek-s1-unreviewed-v1",
+    "dream-deepseek-v2-20261021-deepseek-s1": "dream-deepseek-v2-20261021-deepseek-s1-unreviewed-v1",
+    "dream-claude-opus55-v2-20261022": "dream-claude-opus55-v2-20261022-unreviewed-v1",
+    "dream-claude-fable51-20261022": "dream-claude-fable51-20261022-unreviewed-v1"
+  }
+}

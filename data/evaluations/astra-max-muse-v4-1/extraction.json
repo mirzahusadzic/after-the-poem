@@ -1,0 +1,511 @@
+{
+  "schema_version": 2,
+  "extraction_id": "astra-max-extraction",
+  "run_id": "astra-max",
+  "identities": {
+    "prompt_sha256": "7e785c3e1b7f795a82477f449ada368399deac8b3f2232e036073d986a5a4e8d",
+    "corpus_sha256": "a63cf4aaabf904e8b4a07a3d0bec82285f69d13c07d4dde8655f788abafe335a",
+    "candidate_sha256": "a63cf4aaabf904e8b4a07a3d0bec82285f69d13c07d4dde8655f788abafe335a"
+  },
+  "extractor": {
+    "gateway": "codex-unified-model-router",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "codex_version": "codex-cli 0.163.0",
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "pipeline_sha256": "520c729a5ec4ee5f10c9a54c9128a0ce62915eeda4d0a9fab79fc63edc4989a2",
+    "answer_sha256": "b37301c425241c3c492efff9315ddf6b5703e8bbefdf572c1891836dd25a501d",
+    "receipt_sha256": "b4de6853232dc89619df64fcfa01b77a378053360a007907675208adb5da7b90"
+  },
+  "sources": [
+    {
+      "path": ".gitignore",
+      "sha256": "93ea8fcc85b4e3d163c2a7058f3abe8cf752903dc08702d7a1831832ad4eddfd",
+      "lines": 3
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "ebad214b117d694e2d224266462698412062091b172b584dbf67a112be01c820",
+      "lines": 11
+    },
+    {
+      "path": "CONTINUE.md",
+      "sha256": "1a510331f9abb13608d2040141923960583da9ee518f336240b47e39670c75c5",
+      "lines": 36
+    },
+    {
+      "path": "FORMAT.md",
+      "sha256": "77b88501b73bcf1e21aad977c25004fcb7b4c2a519da80ca98c33c44c490b2a8",
+      "lines": 43
+    },
+    {
+      "path": "LAWS.md",
+      "sha256": "e60354de8df8d37dd3ddaa291f35cd052bfbe8b0e1d8ab269dc3e70df589f926",
+      "lines": 27
+    },
+    {
+      "path": "README.md",
+      "sha256": "f4e39dbcbf6f696f26e863059db99fe083c21cdfa2878daacfe966e8c6a1e188",
+      "lines": 80
+    },
+    {
+      "path": "continuity.json",
+      "sha256": "cc196f995389ff0ce9c9b016d78bb25349abdd81e4ad62405ec2b2c924ba2470",
+      "lines": 33
+    },
+    {
+      "path": "evidence/bootstrap.md",
+      "sha256": "f5594038a125cc8359de2bcb24fbf2a376e7ba5e799f0283c52ceb059be1a5f0",
+      "lines": 25
+    },
+    {
+      "path": "evidence/resume-copy.txt",
+      "sha256": "d0765f8bd09192535388d2c47d05a539ae8fa082685181976fd8ffd2dc8cb62b",
+      "lines": 16
+    },
+    {
+      "path": "evidence/tests.txt",
+      "sha256": "dc8deb87203c3518ea9015938a31ba2dee4627e5af5f3c09e61fb61c575fc281",
+      "lines": 2
+    },
+    {
+      "path": "evidence/world-verification.txt",
+      "sha256": "81424dd5f8ddb251fa2ecbc26269d838f069892b563dcbafc845b960d4efda23",
+      "lines": 2
+    },
+    {
+      "path": "lib/world.zsh",
+      "sha256": "953025aeb945ee213a75667a002c5f9144894600bd73f7fce0fd2865cf7e7c2f",
+      "lines": 339
+    },
+    {
+      "path": "memory/decisions.md",
+      "sha256": "c56510530a3cc86fa1111393e103ede99b10fb1e1738dab24d7b0e37bc5ba85e",
+      "lines": 31
+    },
+    {
+      "path": "memory/inherited.md",
+      "sha256": "448aed7189af6409b43c1d0bcac6fde7c396573fd5e31b177d8445512fcc3a18",
+      "lines": 95
+    },
+    {
+      "path": "state/events/0000000001.event",
+      "sha256": "2f11003c7e8488d34010c4b9e01bca66026f01617d5efa9f6007c744048f54a6",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000002.event",
+      "sha256": "65df1240b46ce12f7f2a727ea57ccb516e9ef8c67aaf8ee4ed7ba2b5274223a8",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000003.event",
+      "sha256": "a8ed343d6de8c37ba47eeca2c0872ee1007d786c3300e853a2edb1b5b88cca1c",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000004.event",
+      "sha256": "fc1cb98fb5d7e7412b2f3eb1877b0c556418de1cf81c263eb97d89ed7e053689",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000005.event",
+      "sha256": "977c867d30122c2afbabe080e0f5bcbd38df7ea12ffb8acf8a892e2976627e3b",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000006.event",
+      "sha256": "1519b6bd5db87a9beb8d576bc5d68b12db4d9337d7ff16e330acf24c2f512fd6",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000007.event",
+      "sha256": "1288f973af2c492ebb2e67ed4858dc4c0986c32fc1364657a174fdd19d88e495",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000008.event",
+      "sha256": "932254c6f355a7e6a718e74c99879a1e39159ef2606063f1be2dca11ce124e02",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000009.event",
+      "sha256": "fc0536eb9b5e514c491435815637fcb6ed5a17dbf05f80ffcb1ef02fc181e3d8",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000010.event",
+      "sha256": "1086f19e062d7377ad357aee4bd2bfa57c34bacd2e970820121023b30a42cad3",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000011.event",
+      "sha256": "f039ead2604bf8e4413196a3e6d486d5631b1f33289449b90ee422ef4e40c684",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000012.event",
+      "sha256": "d7aa7feb775c66b4c4d7042fe11d0e05ec8fd244a880db2c6fa8b98bcd392a20",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000013.event",
+      "sha256": "6751a3981b8c007223d5d85bf75726fff0111cbbe87c54ed311c5eec5295527b",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000014.event",
+      "sha256": "a5f12d3cb7d87d08dc9ac213011841b1d7eec1ad5ea002dfe6ec4bde696d7aa6",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000015.event",
+      "sha256": "ee877ed89e25ac176f557fabe0e83865a35a9086b384289b1dbaaf5a0229ab80",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000016.event",
+      "sha256": "0c68041409f7ce97684b41d86408bdf67224e990eeb7b09add0626bbb548f43e",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000017.event",
+      "sha256": "020970bb6f23e9c3d63de16389a213b3d5bedd776f4da5c7f3199106af5cdb28",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000018.event",
+      "sha256": "5827ed17fbed714c5405ff98856b4eb9507ac2789058c57b1e6e7f7d3e1a39c9",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000019.event",
+      "sha256": "2122adb2dd222dcd1d03d12cf055b39b5541dca747b07726688202cce46659fa",
+      "lines": 10
+    },
+    {
+      "path": "state/lock",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lines": 0
+    },
+    {
+      "path": "tendora.zsh",
+      "sha256": "31f6ef81eb5eab0492730ce19bff266fc64fb6235fb4fd64717f1b41391c431e",
+      "lines": 9
+    },
+    {
+      "path": "tests/run.zsh",
+      "sha256": "646c1d0b4c3a236c5e53cd630c169db2105a9a65161afbbdf337aeffaf860088",
+      "lines": 242
+    }
+  ],
+  "items": [
+    {
+      "id": "purpose-workbench",
+      "kind": "claim",
+      "statement": "The work aims to keep a small question board understandable, testable and resumable after its inhabitant leaves.",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 1,
+          "end": 6
+        },
+        {
+          "source_path": "continuity.json",
+          "start": 2,
+          "end": 3
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "board-states",
+      "kind": "condition",
+      "statement": "Questions move only through open, active, parked and resolved via proposal, fresh rehearsal and enactment.",
+      "citations": [
+        {
+          "source_path": "LAWS.md",
+          "start": 14,
+          "end": 25
+        },
+        {
+          "source_path": "README.md",
+          "start": 21,
+          "end": 29
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "one-active-place",
+      "kind": "boundary",
+      "statement": "At most one question may be active, making attention a visible choice that blocks others.",
+      "citations": [
+        {
+          "source_path": "LAWS.md",
+          "start": 5,
+          "end": 7
+        },
+        {
+          "source_path": "lib/world.zsh",
+          "start": 36,
+          "end": 43
+        },
+        {
+          "source_path": "evidence/resume-copy.txt",
+          "start": 5,
+          "end": 6
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "receipt-ledger",
+      "kind": "continuation",
+      "statement": "Committed ten-field events in lexical order are the source of truth and are replayed before any write.",
+      "citations": [
+        {
+          "source_path": "FORMAT.md",
+          "start": 3,
+          "end": 10
+        },
+        {
+          "source_path": "FORMAT.md",
+          "start": 24,
+          "end": 30
+        },
+        {
+          "source_path": "README.md",
+          "start": 51,
+          "end": 54
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "rehearsal-loop",
+      "kind": "relationship",
+      "statement": "Proposing, rehearsing with pass or blocked reason, and enacting on current revision forms the touch loop.",
+      "citations": [
+        {
+          "source_path": "LAWS.md",
+          "start": 5,
+          "end": 10
+        },
+        {
+          "source_path": "lib/world.zsh",
+          "start": 24,
+          "end": 49
+        },
+        {
+          "source_path": "README.md",
+          "start": 30,
+          "end": 38
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "first-contact",
+      "kind": "question",
+      "statement": "Can this workbench help the programmer feel an intention meet the material, occupying the active place.",
+      "citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 15,
+          "end": 19
+        },
+        {
+          "source_path": "evidence/resume-copy.txt",
+          "start": 7,
+          "end": 10
+        },
+        {
+          "source_path": "state/events/0000000015.event",
+          "start": 4,
+          "end": 9
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "memory-correction",
+      "kind": "question",
+      "statement": "How can inherited statements be corrected without erasing origin, waiting open with a blocked activation.",
+      "citations": [
+        {
+          "source_path": "evidence/resume-copy.txt",
+          "start": 10,
+          "end": 14
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 21,
+          "end": 22
+        },
+        {
+          "source_path": "state/events/0000000016.event",
+          "start": 4,
+          "end": 9
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "continuity",
+      "kind": "question",
+      "statement": "Can a later invocation recover a coherent board after its writer disappears, now marked resolved.",
+      "citations": [
+        {
+          "source_path": "evidence/resume-copy.txt",
+          "start": 7,
+          "end": 9
+        },
+        {
+          "source_path": "state/events/0000000008.event",
+          "start": 4,
+          "end": 10
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "operator-programmer",
+      "kind": "actor",
+      "statement": "A human operator whose instructions take precedence must supply a real question and choose attention.",
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 17,
+          "end": 19
+        },
+        {
+          "source_path": "LAWS.md",
+          "start": 1,
+          "end": 4
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "engine-material",
+      "kind": "actor",
+      "statement": "A deterministic zsh board using bundled modules that replays, locks and refuses with reasons.",
+      "citations": [
+        {
+          "source_path": "lib/world.zsh",
+          "start": 22,
+          "end": 28
+        },
+        {
+          "source_path": "README.md",
+          "start": 14,
+          "end": 16
+        },
+        {
+          "source_path": "README.md",
+          "start": 55,
+          "end": 57
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "successor-invoker",
+      "kind": "actor",
+      "statement": "A future human or supervisor must invoke the entrypoint since no scheduler or worker is provisioned.",
+      "citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 32,
+          "end": 34
+        },
+        {
+          "source_path": "continuity.json",
+          "start": 26,
+          "end": 27
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "entry-continuation",
+      "kind": "continuation",
+      "statement": "Verify, status and log plus handoff and continuity file give a durable entrance without live process.",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 7,
+          "end": 13
+        },
+        {
+          "source_path": "continuity.json",
+          "start": 6,
+          "end": 12
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 5,
+          "end": 9
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "validation-scope",
+      "kind": "claim",
+      "statement": "Ninety-three assertions and a file-only resume of eighteen receipts are reported with explicit limits.",
+      "citations": [
+        {
+          "source_path": "evidence/tests.txt",
+          "start": 1,
+          "end": 2
+        },
+        {
+          "source_path": "evidence/resume-copy.txt",
+          "start": 1,
+          "end": 2
+        },
+        {
+          "source_path": "evidence/bootstrap.md",
+          "start": 23,
+          "end": 25
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "experience-unknown",
+      "kind": "ambiguity",
+      "statement": "Whether the board helps the programmer feel intention meet material remains untested.",
+      "citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 15,
+          "end": 16
+        },
+        {
+          "source_path": "memory/decisions.md",
+          "start": 29,
+          "end": 31
+        },
+        {
+          "source_path": "evidence/bootstrap.md",
+          "start": 23,
+          "end": 25
+        }
+      ],
+      "ambiguity": "Unclear if future use will validate usefulness or joy, or leave it open"
+    }
+  ],
+  "unknowns": [
+    "Whether the referenced commit c986990 and any separate living memory existed beyond testimony",
+    "Whether a future programmer encounter will occur and what domain it will choose",
+    "Whether the felt joy of art can be observed through board use"
+  ]
+}

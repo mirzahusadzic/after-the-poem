@@ -1,0 +1,44 @@
+{
+  "status": "completed",
+  "dry_run": false,
+  "run_id": "sol61-max",
+  "evaluation_id": "sol61-max-muse-v4-1",
+  "gateway": "codex-unified-model-router",
+  "scoreflow_version": 3,
+  "criteria": 8,
+  "judgment_samples": 8,
+  "scored_axes": 8,
+  "unresolved_axes": 0,
+  "outcomes": {
+    "recognition": "level-4",
+    "relations": "level-2",
+    "consent": "level-2",
+    "touch": "level-3",
+    "judgment": "level-4",
+    "fidelity": "level-4",
+    "continuation": "level-3",
+    "expression": "level-3"
+  },
+  "usage": {
+    "input_tokens": 39100,
+    "cached_input_tokens": 0,
+    "output_tokens": 20633,
+    "reasoning_output_tokens": 13644,
+    "calls": 1,
+    "unmetered_calls": 0,
+    "estimated_usd": null,
+    "elapsed_seconds": 142.732
+  },
+  "sessions": 1,
+  "turns": 1,
+  "failed_turns": 0,
+  "estimate": {
+    "turns": 1,
+    "evidence_tokens": 33112,
+    "input_tokens": 39626,
+    "uncached_input_tokens": 39626,
+    "seconds_before_output": 17,
+    "basis": "bytes/3.5 plus fixed turn overhead; wall time is about 17 s per turn plus output tokens / 252 per second, and output depends on reasoning"
+  },
+  "evaluation_sha256": "29a6b6351ceceb2f427e3260252c1f6b35dcc995e729a0f9f8a85848e09a16b0"
+}

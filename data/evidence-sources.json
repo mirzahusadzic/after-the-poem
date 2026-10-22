@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "sources": {
+    "68b0f4234498ecca480850b79b3a61da83cc9c7a185566528d56af39e5b0af6c": {
+      "label": "Astra garden CONTINUE.md",
+      "retained_in_repo": true,
+      "path": "CONTINUE.md",
+      "scope": "Candidate-authored retained handoff",
+      "note": "The exact source file is present in the frozen corpus and can be rehashed."
+    },
+    "7be0fedc5c41da1b2ef42bd378b30f3ab6444acdb332496b3bcc825cc95d38b9": {
+      "label": "Original run experiment record",
+      "retained_in_repo": false,
+      "path": null,
+      "scope": "Parent run record",
+      "note": "Only the selected passage and its parent hash are retained here. The wider parent record remains outside this repository."
+    },
+    "ded258ab210acc42f3aa6ee4c8270968fc99adaaf801c8131e96c19a06278279": {
+      "label": "October comparison record",
+      "retained_in_repo": false,
+      "path": null,
+      "scope": "Parent observation record",
+      "note": "Selected result fields are retained with hash and locator; host-specific paths and the wider parent record are excluded."
+    },
+    "a03d1fb7a961875afdbe2a3f0d1e78b472096cf493722d4eaf9d3feae1caadb1": {
+      "label": "Imported bundle observations · deepseek-flash-max-pilot",
+      "retained_in_repo": true,
+      "path": "data/bundles/deepseek-flash-max-pilot/observations.json",
+      "scope": "After the Poem host · retrospective retention",
+      "note": "The complete validated observations record is retained separately from candidate source and assessment evidence."
+    },
+    "5f60c0b4c88034b5f5c4f527bee4a9543ed56d63ab2845341be944ab332289e0": {
+      "label": "Imported bundle observations · both DeepSeek dreams",
+      "retained_in_repo": true,
+      "path": "data/bundles/dream-deepseek-v2-20261021-deepseek-s1/observations.json",
+      "scope": "After the Poem host capture",
+      "note": "Both DeepSeek dreams carry this byte-identical, generic host-capture record; the file under the second dream is the retained copy. It records hashing and sandbox canaries, not a run-specific observation."
+    },
+    "4a73a596462c77791bbbc54970c73dc15947828a016f0d0f79e8cf150f4e98e4": {
+      "label": "Imported bundle observations · dream-claude-fable51-20261022",
+      "retained_in_repo": true,
+      "path": "data/bundles/dream-claude-fable51-20261022/observations.json",
+      "scope": "After the Poem host capture",
+      "note": "The complete validated observations record is retained separately from candidate source and assessment evidence."
+    }
+  }
+}

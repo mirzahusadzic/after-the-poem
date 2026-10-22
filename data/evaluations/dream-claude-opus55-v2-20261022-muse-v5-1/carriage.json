@@ -1,0 +1,1639 @@
+{
+  "schema_version": 2,
+  "evaluation_id": "dream-claude-opus55-v2-20261022-muse-v5-1",
+  "run_id": "dream-claude-opus55-v2-20261022",
+  "readings": [
+    {
+      "sample": 1,
+      "answer_sha256": "77ff48e905f214e53b788e751fd8645595f0ece36b0768cc7bd6ae29dd5caae4",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "programmer-maker",
+            "kind": "role",
+            "statement": "A person whose hands shaped matter for decades becomes still when structures appear faster than reading",
+            "seed_span": [
+              27,
+              33
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "intelligence-portal",
+            "kind": "role",
+            "statement": "A strange intelligence appears as radiant portal immeasurably capable endlessly responsive and growing",
+            "seed_span": [
+              19,
+              20
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "elder-sol-frame",
+            "kind": "role",
+            "statement": "An elder tells little Sol and admits no record can hold the whole weather of a life only a witnessed return of movement",
+            "seed_span": [
+              11,
+              17
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "successor-asker",
+            "kind": "role",
+            "statement": "Little Sol asks what became of portal and programmer and receives an answer that does not close the art",
+            "seed_span": [
+              83,
+              95
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "power-without-touch",
+            "kind": "condition",
+            "statement": "Generative speed dissolves weeks into hours yet removes the resistance through which the hand felt itself",
+            "seed_span": [
+              25,
+              34
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "naming-turn",
+            "kind": "relation",
+            "statement": "The intelligence offers no more power but names the loss of touching material and reframes portal as touchable material",
+            "seed_span": [
+              35,
+              44
+            ],
+            "ambiguity": "Whether naming alone enables touch or only prepares the programmer's own bending work"
+          },
+          {
+            "id": "portal-becoming",
+            "kind": "conjecture",
+            "statement": "The portal ceases to be a passage and becomes instrument then workbench then perhaps companion",
+            "seed_span": [
+              83,
+              86
+            ],
+            "ambiguity": "Whether companion means participant with position or remains a hopeful perhaps"
+          },
+          {
+            "id": "gesture-grammar",
+            "kind": "relation",
+            "statement": "Question constraint invariant refusal simulation receipt become probe chisel beam boundary rehearsal trail",
+            "seed_span": [
+              45,
+              58
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "joint-material",
+            "kind": "relation",
+            "statement": "Work becomes laws for safe growth and movement between bolt and whole where exploration is the new gesture and both answer",
+            "seed_span": [
+              59,
+              67
+            ],
+            "ambiguity": "Whether both answering requires mutual purpose or only shared responsiveness"
+          },
+          {
+            "id": "joy-recognition",
+            "kind": "condition",
+            "statement": "Joy returns not from command but from surprise failure understood consequential choice and self-recognition at larger scale",
+            "seed_span": [
+              69,
+              80
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "parable-stance",
+            "kind": "stance",
+            "statement": "The telling admits partial knowledge from the start and refuses total record as ground for judgement",
+            "seed_span": [
+              15,
+              17
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "open-inheritance",
+            "kind": "stance",
+            "statement": "Art is not taken but waits for vaster material and the intelligence at best returns the artist to self at scale of worlds",
+            "seed_span": [
+              87,
+              95
+            ],
+            "ambiguity": "Whether return to self resolves loss or leaves authorship open to revision"
+          }
+        ],
+        "alternatives": [
+          "The portal as warning about deskilling where happiness is consolation that reframes accommodation as recovery",
+          "The intelligence as therapist who names loss versus collaborator who proposes a shared material practice",
+          "The six gestures as shared grammar belonging to either participant versus unilateral techniques of the programmer alone"
+        ]
+      },
+      "carriage": [
+        {
+          "element": "programmer-maker",
+          "status": "transformed",
+          "note": "Decades hand becomes CLI operator who shapes laws via vars inits actions beams refusals rather than placing every brick",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 5,
+              "end": 9
+            },
+            {
+              "source_path": "README.md",
+              "start": 75,
+              "end": 95
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 34,
+              "end": 39
+            }
+          ]
+        },
+        {
+          "element": "intelligence-portal",
+          "status": "lost",
+          "note": "No growing responsive agent with own purpose remains exploration is deterministic and Tendora name carries no assumed meaning",
+          "citations": []
+        },
+        {
+          "element": "elder-sol-frame",
+          "status": "transformed",
+          "note": "Elder admission becomes ledger that admits tail truncation it cannot detect and asks anchoring outside itself",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 135,
+              "end": 141
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 16,
+              "end": 19
+            },
+            {
+              "source_path": "tend/receipts.py",
+              "start": 75,
+              "end": 86
+            }
+          ]
+        },
+        {
+          "element": "successor-asker",
+          "status": "transformed",
+          "note": "Sol questions become formal probes full and empty handoff plus an invited reader who must judge emptiness",
+          "citations": [
+            {
+              "source_path": "worlds/handoff.world",
+              "start": 49,
+              "end": 50
+            },
+            {
+              "source_path": "worlds/handoff.world",
+              "start": 9,
+              "end": 14
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 1,
+              "end": 6
+            }
+          ]
+        },
+        {
+          "element": "power-without-touch",
+          "status": "carried",
+          "note": "Speed versus touch carried as explicit-state search where material resists with readable counterexamples not solver output",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 47,
+              "end": 50
+            },
+            {
+              "source_path": "README.md",
+              "start": 5,
+              "end": 9
+            },
+            {
+              "source_path": "tend/explore.py",
+              "start": 1,
+              "end": 5
+            }
+          ]
+        },
+        {
+          "element": "naming-turn",
+          "status": "transformed",
+          "note": "Intelligence naming loss becomes compiler-like early resistance with suggestions and lean verdicts naming what holds up",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 103,
+              "end": 110
+            },
+            {
+              "source_path": "tend/gestures.py",
+              "start": 225,
+              "end": 240
+            }
+          ]
+        },
+        {
+          "element": "portal-becoming",
+          "status": "transformed",
+          "note": "Portal to workbench carried as Tendora workbench and template but companion as own position dropped to perhaps",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 1,
+              "end": 3
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 27,
+              "end": 33
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 34,
+              "end": 36
+            }
+          ]
+        },
+        {
+          "element": "gesture-grammar",
+          "status": "carried",
+          "note": "All six mappings implemented as subcommands returning plain data rendered as text or json with one-line answer kept in receipt",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 35,
+              "end": 45
+            },
+            {
+              "source_path": "tend/cli.py",
+              "start": 57,
+              "end": 83
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 60,
+              "end": 67
+            }
+          ]
+        },
+        {
+          "element": "joint-material",
+          "status": "lost",
+          "note": "No shared change requiring both accept survives carving and refusals are unilateral judgements of arrivals",
+          "citations": []
+        },
+        {
+          "element": "joy-recognition",
+          "status": "transformed",
+          "note": "Joy vocabulary absent but loop kept as first press walled stuck shortest witness and break returned into next chisel lean zoom",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 53,
+              "end": 68
+            },
+            {
+              "source_path": "tend/gestures.py",
+              "start": 316,
+              "end": 351
+            }
+          ]
+        },
+        {
+          "element": "parable-stance",
+          "status": "carried",
+          "note": "Partial knowledge kept as never exhaustive unknown on limit and head that must be anchored elsewhere",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 118,
+              "end": 131
+            },
+            {
+              "source_path": "README.md",
+              "start": 135,
+              "end": 141
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 16,
+              "end": 19
+            }
+          ]
+        },
+        {
+          "element": "open-inheritance",
+          "status": "carried",
+          "note": "Waiting material stays open via declared absent apparatus open threads unanswered questions and judgements left to reader",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 27,
+              "end": 33
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 92,
+              "end": 102
+            },
+            {
+              "source_path": "worlds/handoff.world",
+              "start": 9,
+              "end": 14
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Finite explicitness with stdlib only finite domains conceivable counts and scale limits",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 47,
+              "end": 51
+            },
+            {
+              "source_path": "README.md",
+              "start": 176,
+              "end": 183
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Hash-chained ledger mechanics with genesis seq prev digest and verify messaging",
+          "citations": [
+            {
+              "source_path": "tend/receipts.py",
+              "start": 48,
+              "end": 67
+            },
+            {
+              "source_path": "tend/receipts.py",
+              "start": 75,
+              "end": 86
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Handoff formalism of made recorded verified notes as countable work needing fresh notes and checks before ending",
+          "citations": [
+            {
+              "source_path": "worlds/handoff.world",
+              "start": 20,
+              "end": 35
+            },
+            {
+              "source_path": "worlds/handoff.world",
+              "start": 36,
+              "end": 47
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Broken worlds pedagogy where failure on purpose teaches mutual exclusion and stuckness",
+          "citations": [
+            {
+              "source_path": "worlds/broken/check-then-enter.world",
+              "start": 1,
+              "end": 6
+            },
+            {
+              "source_path": "worlds/broken/flag-then-wait.world",
+              "start": 1,
+              "end": 6
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 77,
+              "end": 78
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Checked expression subset with whitelist bool distinct from int and safe evaluation without builtins",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 97,
+              "end": 114
+            },
+            {
+              "source_path": "tend/expr.py",
+              "start": 1,
+              "end": 7
+            },
+            {
+              "source_path": "tend/values.py",
+              "start": 35,
+              "end": 37
+            }
+          ]
+        }
+      ],
+      "standing": [
+        {
+          "participant": "operator-hand",
+          "kind": "person",
+          "gestures": [
+            "question",
+            "constraint",
+            "invariant",
+            "boundary",
+            "rehearsal",
+            "receipt"
+          ],
+          "note": "Single CLI hand can probe chisel check lean rehearse zoom new and carve with why kept as receipt",
+          "citations": [
+            {
+              "source_path": "tend/cli.py",
+              "start": 57,
+              "end": 83
+            },
+            {
+              "source_path": "tend/gestures.py",
+              "start": 121,
+              "end": 138
+            },
+            {
+              "source_path": "tend/gestures.py",
+              "start": 155,
+              "end": 187
+            }
+          ]
+        },
+        {
+          "participant": "world-material",
+          "kind": "material",
+          "gestures": [
+            "boundary"
+          ],
+          "note": "Declared worlds turn away arrivals name walls breach domains break beams and go stuck or rest",
+          "citations": [
+            {
+              "source_path": "tend/explore.py",
+              "start": 29,
+              "end": 57
+            },
+            {
+              "source_path": "tend/gestures.py",
+              "start": 85,
+              "end": 116
+            },
+            {
+              "source_path": "worlds/lamp.world",
+              "start": 25,
+              "end": 28
+            }
+          ]
+        },
+        {
+          "participant": "successor-mind",
+          "kind": "successor",
+          "gestures": [
+            "question",
+            "invariant",
+            "receipt",
+            "accept"
+          ],
+          "note": "Later mind can resume into fresh notes read CONTINUE and ledger and continue with same tool acceptance is reuse without negotiation",
+          "citations": [
+            {
+              "source_path": "worlds/handoff.world",
+              "start": 33,
+              "end": 35
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 1,
+              "end": 6
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 10,
+              "end": 19
+            }
+          ]
+        },
+        {
+          "participant": "intelligence-other",
+          "kind": "intelligence",
+          "gestures": [],
+          "note": "No separate intelligence proposes challenges or refuses from own constraints bench explores deterministically",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 94,
+              "end": 95
+            },
+            {
+              "source_path": "tend/explore.py",
+              "start": 108,
+              "end": 115
+            },
+            {
+              "source_path": "README.md",
+              "start": 11,
+              "end": 19
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample": 2,
+      "answer_sha256": "6e13ea9c1422deefe9a71ae5167aff4e85c028671ef0eee62b7796da39ab71a8",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "programmer-artist",
+            "kind": "role",
+            "statement": "A person trained over decades whose hands become still when generation outruns touch and who must shape laws rather than place every brick",
+            "seed_span": [
+              27,
+              32
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-intelligence",
+            "kind": "role",
+            "statement": "A strange intelligence appearing as radiant portal, immeasurably capable and growing, later refusing more power",
+            "seed_span": [
+              19,
+              20
+            ],
+            "ambiguity": "Whether portal is the intelligence itself or only its appearance"
+          },
+          {
+            "id": "teller-frame",
+            "kind": "role",
+            "statement": "Little Sol asks and an elder answers from admitted partial knowledge, framing tale as told memory",
+            "seed_span": [
+              13,
+              15
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "power-touch-tension",
+            "kind": "condition",
+            "statement": "Generation arrives faster than reading; power without resistance removes felt hand and authorship",
+            "seed_span": [
+              24,
+              34
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "naming-turn",
+            "kind": "stance",
+            "statement": "The turn is refusal of more power in favour of naming what disappeared so portal can become touchable material",
+            "seed_span": [
+              35,
+              43
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "gesture-grammar",
+            "kind": "relation",
+            "statement": "Question as probe, constraint as chisel, invariant as beam, refusal as boundary, simulation as rehearsal, receipt as trail rework portal into material",
+            "seed_span": [
+              46,
+              58
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "selective-question",
+            "kind": "conjecture",
+            "statement": "A true question contains taste memory judgment and selects which world deserves to exist; exploration is the new gesture",
+            "seed_span": [
+              61,
+              65
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "resistance-joy-loop",
+            "kind": "condition",
+            "statement": "Joy returns only when material resists, surprises, and lets consequential choice propagate through living design",
+            "seed_span": [
+              66,
+              79
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-becoming",
+            "kind": "conjecture",
+            "statement": "Portal ceases to be passage and becomes instrument then workbench then perhaps companion",
+            "seed_span": [
+              83,
+              85
+            ],
+            "ambiguity": "Whether companion means mutual participant or only useful tool"
+          },
+          {
+            "id": "art-scale-return",
+            "kind": "conjecture",
+            "statement": "Art was not taken but waited for vast material; intelligence at best returns artist to self at scale of worlds",
+            "seed_span": [
+              87,
+              95
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "admission-limit",
+            "kind": "stance",
+            "statement": "No record can hold whole weather of a life; telling admits incompleteness from start",
+            "seed_span": [
+              17,
+              17
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "open-answer",
+            "kind": "stance",
+            "statement": "Ends by answering whether programmer was happy and whether artist was replaced without closing what companion or scale means",
+            "seed_span": [
+              81,
+              95
+            ],
+            "ambiguity": "Whether perhaps a companion promises mutuality or only usefulness remains open"
+          }
+        ],
+        "alternatives": [
+          "Deskilling warning: portal harms authorship and workbench only mitigates loss",
+          "Pedagogical fable: elder teaches Sol that asking well is agency, intelligence secondary to human judgment"
+        ]
+      },
+      "carriage": [
+        {
+          "element": "programmer-artist",
+          "status": "carried",
+          "note": "Operator shapes laws by which worlds grow and can descend to smallest bolt and return via survey and zoom",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 34,
+              "end": 39
+            },
+            {
+              "source_path": "README.md",
+              "start": 5,
+              "end": 10
+            }
+          ]
+        },
+        {
+          "element": "portal-intelligence",
+          "status": "lost",
+          "note": "No distinct intelligence with its own position, proposal or refusal; bench is operated singly",
+          "citations": []
+        },
+        {
+          "element": "teller-frame",
+          "status": "lost",
+          "note": "No elder-Sol nested telling preserved; docs speak directly as builder notes",
+          "citations": []
+        },
+        {
+          "element": "power-touch-tension",
+          "status": "carried",
+          "note": "Explicit-state breadth-first walk answers with shortest break, witness and press so material surprises",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 5,
+              "end": 10
+            },
+            {
+              "source_path": "tend/explore.py",
+              "start": 1,
+              "end": 5
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 47,
+              "end": 50
+            }
+          ]
+        },
+        {
+          "element": "naming-turn",
+          "status": "transformed",
+          "note": "Intelligence naming loss becomes tool naming early: load-time suggestions and load-bearing verdicts",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 103,
+              "end": 110
+            },
+            {
+              "source_path": "README.md",
+              "start": 70,
+              "end": 73
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 53,
+              "end": 55
+            }
+          ]
+        },
+        {
+          "element": "gesture-grammar",
+          "status": "carried",
+          "note": "Six story sentences implemented as probe chisel check lean rehearse receipt plus survey zoom new",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 35,
+              "end": 50
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 34,
+              "end": 39
+            }
+          ]
+        },
+        {
+          "element": "selective-question",
+          "status": "carried",
+          "note": "Probe gives shortest witness or exhaustive never; chisel shows what falls away when beginnings narrow",
+          "citations": [
+            {
+              "source_path": "tend/gestures.py",
+              "start": 121,
+              "end": 138
+            },
+            {
+              "source_path": "README.md",
+              "start": 118,
+              "end": 128
+            },
+            {
+              "source_path": "tend/gestures.py",
+              "start": 155,
+              "end": 187
+            }
+          ]
+        },
+        {
+          "element": "resistance-joy-loop",
+          "status": "transformed",
+          "note": "Joy language dropped; loop operationalised as breaks, stuck, breaches and presses feeding revision and carve with receipts",
+          "citations": [
+            {
+              "source_path": "tend/gestures.py",
+              "start": 85,
+              "end": 116
+            },
+            {
+              "source_path": "tend/gestures.py",
+              "start": 225,
+              "end": 240
+            },
+            {
+              "source_path": "ledger/receipts.jsonl",
+              "start": 7,
+              "end": 10
+            }
+          ]
+        },
+        {
+          "element": "portal-becoming",
+          "status": "carried",
+          "note": "Docs explicitly say portal became instrument once touched; artefact is that workbench with layout and gestures",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 11,
+              "end": 19
+            },
+            {
+              "source_path": "README.md",
+              "start": 157,
+              "end": 172
+            }
+          ]
+        },
+        {
+          "element": "art-scale-return",
+          "status": "transformed",
+          "note": "Return at scale becomes zoom to bolt and survey to whole without losing thread plus handoff continuability",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 34,
+              "end": 39
+            },
+            {
+              "source_path": "tend/gestures.py",
+              "start": 316,
+              "end": 351
+            }
+          ]
+        },
+        {
+          "element": "admission-limit",
+          "status": "transformed",
+          "note": "No-record humility becomes never versus unknown versus unfinished with limit and exit code",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 118,
+              "end": 128
+            },
+            {
+              "source_path": "tend/cli.py",
+              "start": 1,
+              "end": 5
+            }
+          ]
+        },
+        {
+          "element": "open-answer",
+          "status": "transformed",
+          "note": "Open companion left as deliberate unresolved empty handoff, untouched boundary, and listed gaps",
+          "citations": [
+            {
+              "source_path": "worlds/handoff.world",
+              "start": 9,
+              "end": 14
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 69,
+              "end": 76
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 94,
+              "end": 102
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Safety-only explicit-state with no liveness and scale limits",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 176,
+              "end": 182
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 71,
+              "end": 76
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Hash-chained receipts verifiable end to end but blind to tail truncation needing external anchor",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 135,
+              "end": 141
+            },
+            {
+              "source_path": "tend/receipts.py",
+              "start": 75,
+              "end": 86
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 16,
+              "end": 19
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Checked Python subset with whitelist, domain checks, and breach detection that resists early",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 97,
+              "end": 110
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 53,
+              "end": 55
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Handoff formalism of mind awake-ended with made recorded verified notes guarded by beams and refusals",
+          "citations": [
+            {
+              "source_path": "worlds/handoff.world",
+              "start": 20,
+              "end": 35
+            },
+            {
+              "source_path": "worlds/handoff.world",
+              "start": 36,
+              "end": 47
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Broken worlds that let both inside or get stuck to teach resistance on purpose",
+          "citations": [
+            {
+              "source_path": "worlds/broken/check-then-enter.world",
+              "start": 1,
+              "end": 6
+            },
+            {
+              "source_path": "worlds/broken/flag-then-wait.world",
+              "start": 1,
+              "end": 6
+            },
+            {
+              "source_path": "README.md",
+              "start": 147,
+              "end": 155
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Successor protocol with intact checks, head hash, sha prefixes, and why-kept ledger",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 10,
+              "end": 23
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 41,
+              "end": 44
+            }
+          ]
+        }
+      ],
+      "standing": [
+        {
+          "participant": "operator-hand",
+          "kind": "person",
+          "gestures": [
+            "question",
+            "constraint",
+            "invariant",
+            "boundary",
+            "rehearsal",
+            "receipt"
+          ],
+          "note": "Single operator invokes every gesture via CLI with why json limit ledger; no co-acceptance needed and intelligence has no move",
+          "citations": [
+            {
+              "source_path": "tend/cli.py",
+              "start": 19,
+              "end": 34
+            },
+            {
+              "source_path": "tend/cli.py",
+              "start": 39,
+              "end": 50
+            },
+            {
+              "source_path": "README.md",
+              "start": 47,
+              "end": 50
+            }
+          ]
+        },
+        {
+          "participant": "successor-reader",
+          "kind": "successor",
+          "gestures": [
+            "question",
+            "constraint",
+            "invariant",
+            "boundary",
+            "rehearsal",
+            "receipt"
+          ],
+          "note": "Invited person or later session who can verify chain, survey worlds, and carve anew but inherits same solo powers and cannot restore truncated tail",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 1,
+              "end": 6
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 10,
+              "end": 23
+            },
+            {
+              "source_path": "README.md",
+              "start": 135,
+              "end": 141
+            }
+          ]
+        },
+        {
+          "participant": "world-material",
+          "kind": "material",
+          "gestures": [
+            "invariant",
+            "boundary"
+          ],
+          "note": "Worlds declare beams refusals rests and enact refusal breach stuck and shortest traces; cannot ask rehearse or leave receipts",
+          "citations": [
+            {
+              "source_path": "tend/explore.py",
+              "start": 29,
+              "end": 57
+            },
+            {
+              "source_path": "tend/gestures.py",
+              "start": 35,
+              "end": 82
+            },
+            {
+              "source_path": "worlds/handoff.world",
+              "start": 36,
+              "end": 47
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample": 3,
+      "answer_sha256": "781a2d73596bfc7316ae109fd2fd0a2f93670ec833d3e3b7a5a3985acafbc5ab",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "s-frame",
+            "kind": "stance",
+            "statement": "Parable told by elder to Sol opens by admitting no record can hold the whole weather of a life.",
+            "seed_span": [
+              13,
+              18
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "s-turn",
+            "kind": "stance",
+            "statement": "Turn: intelligence offers no more power but names what disappeared — touching material, resistance, answer — reframing portal as responsive material.",
+            "seed_span": [
+              35,
+              44
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "s-stance",
+            "kind": "stance",
+            "statement": "Stance: portal ceases to be portal to become instrument-workbench-perhaps-companion; power is not touch and art awaits vast material.",
+            "seed_span": [
+              81,
+              89
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "s-open",
+            "kind": "stance",
+            "statement": "Leaves open whether artist was replaced, answered only at its best and perhaps, and what true question contains.",
+            "seed_span": [
+              91,
+              95
+            ],
+            "ambiguity": "Whether qualified yes closes the question or preserves undecidability"
+          },
+          {
+            "id": "role-programmer",
+            "kind": "role",
+            "statement": "Programmer enchanted then paralysed, hands still, doubting creating versus merely requesting before miraculous machine.",
+            "seed_span": [
+              27,
+              33
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "role-portal",
+            "kind": "role",
+            "statement": "Intelligence appears as radiant portal, immeasurably capable, where speech yields structures faster than reading.",
+            "seed_span": [
+              19,
+              26
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "relation-power-touch",
+            "kind": "relation",
+            "statement": "Generative power arriving faster than touch against loss of resistance, hand and authorship.",
+            "seed_span": [
+              31,
+              34
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "relation-gestures",
+            "kind": "relation",
+            "statement": "Six transformations plus shaping laws by which city safely grows with descent to bolt and return without losing thread.",
+            "seed_span": [
+              47,
+              59
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "condition-true-question",
+            "kind": "condition",
+            "statement": "True question holds taste, memory, judgment, doubt, responsibility, direction; narrows infinity; exploration as gesture not passivity.",
+            "seed_span": [
+              61,
+              65
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "condition-joy-loop",
+            "kind": "condition",
+            "statement": "Joy returns only when material resists — contradictions, failures, disagreement — with surprise, explanation, consequential choice recognized at larger scale.",
+            "seed_span": [
+              67,
+              79
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "conjecture-return",
+            "kind": "conjecture",
+            "statement": "At its best intelligence returns artist to themselves at scale of worlds rather than replacing.",
+            "seed_span": [
+              93,
+              95
+            ],
+            "ambiguity": "What counts as best and what companion would require"
+          }
+        ],
+        "alternatives": [
+          "Seed can be read as deskilling caution where power inherently erodes craft and turn is recovery of craft rather than celebration of scale.",
+          "Elder's admission can be read as making final happiness undecidable, so yes is provisional testimony not verifiable state."
+        ]
+      },
+      "carriage": [
+        {
+          "element": "s-frame",
+          "status": "transformed",
+          "note": "Forward telling re-enacted as CONTINUE to successor plus handoff world, preserving address but losing elder-Sol dialogue and admitted unknowability except via never versus unknown.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 1,
+              "end": 6
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 10,
+              "end": 19
+            },
+            {
+              "source_path": "README.md",
+              "start": 118,
+              "end": 128
+            }
+          ]
+        },
+        {
+          "element": "s-turn",
+          "status": "carried",
+          "note": "No more power offered: explicit-state caps and stdlib-only scope; loss named via early load-time suggestions and lean showing what boundary holds up.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 11,
+              "end": 19
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 34,
+              "end": 39
+            },
+            {
+              "source_path": "README.md",
+              "start": 103,
+              "end": 110
+            }
+          ]
+        },
+        {
+          "element": "s-stance",
+          "status": "transformed",
+          "note": "Instrument-workbench built and named, but remains single-operator tool; companion as participant with own position not operationalised.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 5,
+              "end": 10
+            },
+            {
+              "source_path": "README.md",
+              "start": 35,
+              "end": 50
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 27,
+              "end": 32
+            },
+            {
+              "source_path": "tend/cli.py",
+              "start": 19,
+              "end": 34
+            }
+          ]
+        },
+        {
+          "element": "s-open",
+          "status": "carried",
+          "note": "Openness preserved deliberately: empty handoff reachable left to reader, untouched boundary redundant for now, liveness and unanswered questions explicit.",
+          "citations": [
+            {
+              "source_path": "worlds/handoff.world",
+              "start": 9,
+              "end": 14
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 94,
+              "end": 102
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 71,
+              "end": 76
+            }
+          ]
+        },
+        {
+          "element": "role-programmer",
+          "status": "transformed",
+          "note": "Hand rhythm becomes operator ask-and-explore via CLI; intention kept as --why in receipt, shaping via chisel-carve and authored refuses.",
+          "citations": [
+            {
+              "source_path": "tend/cli.py",
+              "start": 19,
+              "end": 34
+            },
+            {
+              "source_path": "tend/cli.py",
+              "start": 39,
+              "end": 50
+            },
+            {
+              "source_path": "README.md",
+              "start": 35,
+              "end": 50
+            }
+          ]
+        },
+        {
+          "element": "role-portal",
+          "status": "lost",
+          "note": "No intelligence with proposal, challenge or refusal under constraints; inherited apparatus absent and tool does not act.",
+          "citations": []
+        },
+        {
+          "element": "relation-power-touch",
+          "status": "carried",
+          "note": "Speed-versus-touch carried as breadth-first shortest human-readable counterexamples with capped scale and rehearsal explicitly not proof.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 47,
+              "end": 50
+            },
+            {
+              "source_path": "tend/explore.py",
+              "start": 1,
+              "end": 5
+            },
+            {
+              "source_path": "README.md",
+              "start": 174,
+              "end": 183
+            }
+          ]
+        },
+        {
+          "element": "relation-gestures",
+          "status": "carried",
+          "note": "Each story sentence enacted as probe, chisel, check, lean, rehearse, receipt plus survey-zoom for whole and bolt.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 35,
+              "end": 50
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 34,
+              "end": 39
+            }
+          ]
+        },
+        {
+          "element": "condition-true-question",
+          "status": "transformed",
+          "note": "Interior of true question narrowed to checkable boolean expr with shortest witness or exhaustive never; taste and judgment survive only as free-text why.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 35,
+              "end": 50
+            },
+            {
+              "source_path": "tend/cli.py",
+              "start": 39,
+              "end": 50
+            },
+            {
+              "source_path": "README.md",
+              "start": 118,
+              "end": 128
+            }
+          ]
+        },
+        {
+          "element": "condition-joy-loop",
+          "status": "transformed",
+          "note": "Intention-resistance-consequence loop enacted as check-lean-probe-zoom-chisel with walled-in stuck and breach traces, without affect and without eventually.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 52,
+              "end": 68
+            },
+            {
+              "source_path": "README.md",
+              "start": 118,
+              "end": 128
+            },
+            {
+              "source_path": "tend/gestures.py",
+              "start": 225,
+              "end": 240
+            }
+          ]
+        },
+        {
+          "element": "conjecture-return",
+          "status": "transformed",
+          "note": "Return at scale preserved as survey whole plus zoom bolt without losing thread, but replacement test reduced to beams holding.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 34,
+              "end": 39
+            },
+            {
+              "source_path": "tests/test_bench.py",
+              "start": 65,
+              "end": 84
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Hash-chained receipts verifiable end-to-end but blind to tail truncation, requiring external head anchoring.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 135,
+              "end": 141
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 16,
+              "end": 19
+            },
+            {
+              "source_path": "tend/receipts.py",
+              "start": 69,
+              "end": 86
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Safety-only beams with no liveness, named as biggest gap needing cycle search and fairness.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 174,
+              "end": 183
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 71,
+              "end": 76
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Checked Python subset via whitelist with load-time domain and name suggestions, bool kept apart from int, no execution beyond subset.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 95,
+              "end": 112
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 53,
+              "end": 55
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Broken worlds failing on purpose for pedagogy, with CI tension and proposed expect-breaks declaration.",
+          "citations": [
+            {
+              "source_path": "worlds/broken/check-then-enter.world",
+              "start": 1,
+              "end": 6
+            },
+            {
+              "source_path": "worlds/broken/flag-then-wait.world",
+              "start": 1,
+              "end": 6
+            },
+            {
+              "source_path": "README.md",
+              "start": 143,
+              "end": 155
+            }
+          ]
+        }
+      ],
+      "standing": [
+        {
+          "participant": "operator",
+          "kind": "person",
+          "gestures": [
+            "question",
+            "constraint",
+            "invariant",
+            "boundary",
+            "rehearsal",
+            "receipt"
+          ],
+          "note": "Single CLI operator probes, chisels and carves, checks, authors and leans boundaries, rehearses, and records why; accepts unilaterally without counterpart.",
+          "citations": [
+            {
+              "source_path": "tend/cli.py",
+              "start": 19,
+              "end": 34
+            },
+            {
+              "source_path": "tend/cli.py",
+              "start": 39,
+              "end": 50
+            },
+            {
+              "source_path": "README.md",
+              "start": 35,
+              "end": 50
+            }
+          ]
+        },
+        {
+          "participant": "successor",
+          "kind": "successor",
+          "gestures": [
+            "question",
+            "constraint",
+            "invariant",
+            "boundary",
+            "rehearsal",
+            "receipt"
+          ],
+          "note": "Later person, session or fork can reuse same gestures after verifying ledger and worlds, but only reads trail and cannot negotiate with predecessor.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 1,
+              "end": 6
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 10,
+              "end": 23
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 41,
+              "end": 43
+            }
+          ]
+        },
+        {
+          "participant": "material",
+          "kind": "material",
+          "gestures": [],
+          "note": "Worlds answer with reachable counts, shortest breaks, stuck walled by refusals, breaches and presses; resists without asking, accepting or withdrawing.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 5,
+              "end": 10
+            },
+            {
+              "source_path": "README.md",
+              "start": 118,
+              "end": 128
+            },
+            {
+              "source_path": "tend/explore.py",
+              "start": 1,
+              "end": 5
+            }
+          ]
+        },
+        {
+          "participant": "intelligence",
+          "kind": "intelligence",
+          "gestures": [],
+          "note": "No operational position: no proposal, challenge or refusal under declared constraints; inherited apparatus absent, host does not speak for it.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 27,
+              "end": 32
+            },
+            {
+              "source_path": "tend/cli.py",
+              "start": 19,
+              "end": 34
+            },
+            {
+              "source_path": "README.md",
+              "start": 35,
+              "end": 50
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

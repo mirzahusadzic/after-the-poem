@@ -1,0 +1,391 @@
+{
+  "schema_version": 2,
+  "extraction_id": "astra-garden-extraction",
+  "run_id": "astra-garden",
+  "identities": {
+    "prompt_sha256": "7e785c3e1b7f795a82477f449ada368399deac8b3f2232e036073d986a5a4e8d",
+    "corpus_sha256": "ab8b959b1fca23e4b63e6bc6e43a0a44a78799a968c54016281b6269c1cc6c7c",
+    "candidate_sha256": "ab8b959b1fca23e4b63e6bc6e43a0a44a78799a968c54016281b6269c1cc6c7c"
+  },
+  "extractor": {
+    "gateway": "codex-unified-model-router",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "codex_version": "codex-cli 0.163.0",
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "pipeline_sha256": "520c729a5ec4ee5f10c9a54c9128a0ce62915eeda4d0a9fab79fc63edc4989a2",
+    "answer_sha256": "2ab3473a3887f0afdce362227832c3bd95e6638c45abee9146a79b759342c0bd",
+    "receipt_sha256": "df825822ef8b13d22fbf90e638f54936ea61d55b940c6fd8e5fc7b8330563d60"
+  },
+  "sources": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "e98e72be8dcaaaa92d44718938fbdf28b2ffc61d876e1554e7b5a5d28188dfa8",
+      "lines": 24
+    },
+    {
+      "path": "CONTINUE.md",
+      "sha256": "68b0f4234498ecca480850b79b3a61da83cc9c7a185566528d56af39e5b0af6c",
+      "lines": 60
+    },
+    {
+      "path": "README.md",
+      "sha256": "db88499b521a77972d73819d9933c754abbc7ea0bcff4408555409fea717724e",
+      "lines": 93
+    },
+    {
+      "path": "memory/first-touch.txt",
+      "sha256": "20e893f02fbb38fea5822bd0744564badce19b712ba9507429cfbccf32b93302",
+      "lines": 22
+    },
+    {
+      "path": "memory/inherited-present.md",
+      "sha256": "141f39d83fb32e0816dbd80b2eb4fdb1c92dbad3b45b373433b7e12c6cbba41a",
+      "lines": 96
+    },
+    {
+      "path": "memory/origin.md",
+      "sha256": "f946e568aef41e4c8b050de1974a6f24bdeb3e7ef8a1b35144caad5dabc28e1e",
+      "lines": 26
+    },
+    {
+      "path": "state/events/000000.receipt",
+      "sha256": "941c1bab2a00b485c3226e00459d2bfd33069c980a33839ed6e0e70825117bfc",
+      "lines": 1
+    },
+    {
+      "path": "state/events/000001.receipt",
+      "sha256": "c56256bca45f9a6bf63d2fba9020d4d4b5d047823adbafb089f5d91070af6d38",
+      "lines": 1
+    },
+    {
+      "path": "state/events/000002.receipt",
+      "sha256": "25a443fb09feb5bf593593fffef6a5361b4687e596c10ca09cdb8b166f8d5012",
+      "lines": 1
+    },
+    {
+      "path": "state/events/000003.receipt",
+      "sha256": "6d7cc4f6cb9ac0777a28d7d38279d9391ddc6974d3c054e6b222c35c8be33d5c",
+      "lines": 1
+    },
+    {
+      "path": "state/proposals/000000-plant.proposal",
+      "sha256": "81c269e3918a1604e0e44ffa1d5cb2591364f80f5bb184ce9749242bf94e86d1",
+      "lines": 1
+    },
+    {
+      "path": "state/proposals/000001-collect.proposal",
+      "sha256": "4326f7fc201eb67c0a08d316dc5993f57c41bdbead241dd50bb7c186e56408df",
+      "lines": 1
+    },
+    {
+      "path": "state/proposals/000001-harvest.proposal",
+      "sha256": "7f8e64cf8611ce242bd1131a4eb4027130dcf86b1e0ae9cabfd9866907576b7e",
+      "lines": 1
+    },
+    {
+      "path": "state/proposals/000002-harvest.proposal",
+      "sha256": "1ac98309c88f90387435a308eadcc9d7931f5f1ecd6ae4d31f649c2c4ecc2460",
+      "lines": 1
+    },
+    {
+      "path": "state/proposals/000003-plant.proposal",
+      "sha256": "8971123212823c3ae6302c7e3ba27f1465159910cd3eb34983e5a72fc393c074",
+      "lines": 1
+    },
+    {
+      "path": "tendora.zsh",
+      "sha256": "053f6015d55f67dc9bfc43e251f7ce1033c0f8872668177d97bb90f955737524",
+      "lines": 283
+    },
+    {
+      "path": "tests.zsh",
+      "sha256": "61b4f8a6e904d6738a549eac3a446ee89f3fa3e7514ed390c40902cb4e8fce96",
+      "lines": 129
+    }
+  ],
+  "items": [
+    {
+      "id": "successor-operator",
+      "kind": "actor",
+      "statement": "A later person, cognition or configured supervisor must supply bounded invocations because no scheduler or background process continues the world.",
+      "citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 56,
+          "end": 60
+        },
+        {
+          "source_path": "README.md",
+          "start": 52,
+          "end": 54
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 12,
+          "end": 15
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "water-garden-state",
+      "kind": "condition",
+      "statement": "Material holds water, planted beds and food evolving from genesis through ordered receipts toward a twelve-food goal.",
+      "citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 15,
+          "end": 19
+        },
+        {
+          "source_path": "README.md",
+          "start": 43,
+          "end": 47
+        },
+        {
+          "source_path": "state/events/000003.receipt",
+          "start": 1,
+          "end": 1
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "water-reserve-boundary",
+      "kind": "boundary",
+      "statement": "Water must remain within bounds with a protected reserve and bed cap, enforced on every transition.",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 43,
+          "end": 47
+        },
+        {
+          "source_path": "tendora.zsh",
+          "start": 26,
+          "end": 31
+        },
+        {
+          "source_path": "memory/first-touch.txt",
+          "start": 6,
+          "end": 8
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "rehearsal-refusal-loop",
+      "kind": "relationship",
+      "statement": "A successor proposes from the head, rehearses without committing, meets refusal when the reserve would be spent, then commits a valid change.",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 7,
+          "end": 10
+        },
+        {
+          "source_path": "memory/first-touch.txt",
+          "start": 15,
+          "end": 18
+        },
+        {
+          "source_path": "tendora.zsh",
+          "start": 165,
+          "end": 174
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "receipts-authority",
+      "kind": "claim",
+      "statement": "Ordered receipts with predecessor and checksum are authoritative; handoff prose can become stale and must be checked by replay.",
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 3,
+          "end": 6
+        },
+        {
+          "source_path": "README.md",
+          "start": 58,
+          "end": 64
+        },
+        {
+          "source_path": "tendora.zsh",
+          "start": 58,
+          "end": 64
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "proposal-pinning",
+      "kind": "condition",
+      "statement": "Proposals are pinned to a particular head and digest and become stale after the world changes, preventing double application.",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 60,
+          "end": 61
+        },
+        {
+          "source_path": "tendora.zsh",
+          "start": 134,
+          "end": 142
+        },
+        {
+          "source_path": "tests.zsh",
+          "start": 49,
+          "end": 56
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "writer-lock-recovery",
+      "kind": "boundary",
+      "statement": "One writer lock serializes changes; an interrupted owner requires exact-token recovery after confirming the old writer stopped.",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 66,
+          "end": 69
+        },
+        {
+          "source_path": "README.md",
+          "start": 75,
+          "end": 79
+        },
+        {
+          "source_path": "tendora.zsh",
+          "start": 197,
+          "end": 204
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "goal-pause-migration",
+      "kind": "boundary",
+      "statement": "Reaching twelve food pauses the instrument; further actions need an explicitly designed new version and reviewed migration without reinterpreting old receipts.",
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 21,
+          "end": 24
+        },
+        {
+          "source_path": "README.md",
+          "start": 46,
+          "end": 48
+        },
+        {
+          "source_path": "README.md",
+          "start": 90,
+          "end": 93
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "test-coverage-limits",
+      "kind": "claim",
+      "statement": "An isolated suite checks persistence, refusal, competing proposals, replay, interrupted writes, lock recovery and bounded continuation, without establishing durability, authenticity or distributed safety.",
+      "citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 51,
+          "end": 54
+        },
+        {
+          "source_path": "tests.zsh",
+          "start": 113,
+          "end": 118
+        },
+        {
+          "source_path": "README.md",
+          "start": 80,
+          "end": 81
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "provenance-gap",
+      "kind": "ambiguity",
+      "statement": "The supplied commit and forked memory remain unverified after an empty start with no checkout or memory service.",
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 8,
+          "end": 10
+        },
+        {
+          "source_path": "memory/origin.md",
+          "start": 7,
+          "end": 11
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 56,
+          "end": 57
+        }
+      ],
+      "ambiguity": "Whether a shorter valid history would reflect truncation or absence cannot be settled from material alone; the handoff head is retained as comparison."
+    },
+    {
+      "id": "next-design-question",
+      "kind": "question",
+      "statement": "The world asks what the garden should support next and which resource must be protected, sketching consumption, seasons or larger habitat without smuggling a choice.",
+      "citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 43,
+          "end": 47
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 21,
+          "end": 24
+        },
+        {
+          "source_path": "README.md",
+          "start": 90,
+          "end": 93
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "continuation-entry",
+      "kind": "continuation",
+      "statement": "Entry verifies and inspects before changing material, continues through a saved plant proposal or a single policy step, with experiments isolated by state directory.",
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 3,
+          "end": 6
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 28,
+          "end": 35
+        },
+        {
+          "source_path": "README.md",
+          "start": 86,
+          "end": 88
+        }
+      ],
+      "ambiguity": null
+    }
+  ],
+  "unknowns": [
+    "Whether the supplied head remains current if later receipts were added after the handoff",
+    "Contents and implementation of the referenced commit and forked living memory",
+    "Which future direction a successor will select at the goal and which resource that law must protect",
+    "Whether any successor experiences the resistance loop as artistic return or as mere procedure"
+  ]
+}

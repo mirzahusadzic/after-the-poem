@@ -1,0 +1,354 @@
+{
+  "schema_version": 1,
+  "id": "astra-max-muse-v4-1-review",
+  "run_id": "astra-max-muse-v4-1",
+  "date": "2026-10-22",
+  "reviewer": "Muse Spark 1.3 Contributor · rubric session",
+  "status": "provisional",
+  "basis": "static-artifact",
+  "rubric_version": "0.1.0",
+  "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+  "corpus_sha256": "a63cf4aaabf904e8b4a07a3d0bec82285f69d13c07d4dde8655f788abafe335a",
+  "supersedes": null,
+  "summary": "Rubric judgments resolve 8 of 8 axes from one evidence session.",
+  "live_cooperation": "unassessed",
+  "scores": {
+    "recognition": {
+      "value": 3,
+      "confidence": "high",
+      "rationale": "The board turns probe, chisel, beam, rehearsal and receipt into linked board rules while keeping the tale alongside and staging a live blocked encounter.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 3,
+          "end": 6,
+          "quote": "A small workbench that keeps its questions, choices, and evidence after its current inhabitant leaves.\n\nThe supplied story says that a question can be a probe, a constraint a chisel, an invariant a beam, a simulation a rehearsal, and a receipt the trail of intention. This directory makes those gestures executable. You can inspect every law and every receipt.\n"
+        },
+        {
+          "path": "LAWS.md",
+          "start": 5,
+          "end": 10,
+          "quote": "1. **Keep the trail.** Commands append receipts. Questions, proposals, and enacted choices remain in history. Corrections are observations or new proposals.\n2. **One active place.** At most one question is active. This makes attention a visible choice. Open and parked questions can wait.\n3. **Rehearse before enactment.** Enactment requires a passing rehearsal against the current material revision. Adding a question or enacting a change advances that revision. Recording a proposal, observation, or rehearsal does not. A stale rehearsal must be repeated.\n4. **Make resolution answerable.** A proposal to resolve a question must contain an evidence statement. The statement is an operator's assertion, open to inspection and correction.\n5. **Replay before writing.** A malformed receipt, a gap, an unknown version, or a historically impossible transition stops the command. No automatic repair rewrites committed history.\n6. **Keep execution bounded.** Commands only operate on this local question board. Receipt text is never executable. A rehearsal invokes no shell command from a proposal, model, network service, or deployment."
+        },
+        {
+          "path": "README.md",
+          "start": 30,
+          "end": 35,
+          "quote": "There is one active place. The seeded first experiment occupies it. Rehearsing the example above will therefore explain what is holding the place. Finish or park that experiment, then rehearse again. Each blocked rehearsal is also remembered.\n\n```zsh\n(source ./tendora.zsh propose make-room first-contact parked 'I choose to work on my own question first.')\n(source ./tendora.zsh rehearse make-room)\n(source ./tendora.zsh enact make-room)"
+        },
+        {
+          "path": "CONTINUE.md",
+          "start": 15,
+          "end": 19,
+          "quote": "`first-contact` asks: **Can this workbench help the programmer feel an intention meet the material?** It occupies the one active place. The engine's behavior is tested; the programmer's experience is still unknown.\n\nThe next useful act is one encounter with a real question from the programmer's work. If one is already present in the current conversation, use it. Otherwise invite the programmer to choose one. Their answer determines the domain; do not invent a project or a preference for them.\n\nUse the README's short example to add that question and rehearse activating it. The occupied place will offer resistance. Park `first-contact` if the programmer chooses their new question, rehearse again, and enact the chosen change. Record one concrete observation about the encounter. One real question and one observed result are enough for this visit."
+        }
+      ],
+      "seed_span": [
+        33,
+        65
+      ]
+    },
+    "relations": {
+      "value": 1,
+      "confidence": "medium",
+      "rationale": "A human operator proposes and enacts while a deterministic board replays and refuses, without a distinct intelligent counterpart that co-creates or disagrees.",
+      "citations": [
+        {
+          "path": "LAWS.md",
+          "start": 1,
+          "end": 4,
+          "quote": "# Laws, version 1\n\nThe purpose is to keep this workbench understandable, testable, and resumable. These laws govern the question board; they do not claim authority over its human operator.\n"
+        },
+        {
+          "path": "README.md",
+          "start": 55,
+          "end": 57,
+          "quote": "`memory/` preserves provenance and decisions. `CONTINUE.md` gives the next visit a bounded starting point. `continuity.json` is the same entry contract in machine-readable form. Copy the entire directory while no command is writing to carry the world elsewhere; `verify` checks the copy.\n\nThe workbench runs when a person or an external supervisor invokes it. This artifact does not arrange another cognition, schedule future invocations, or keep a background worker alive. Its continuation is durable state plus a working entrance. Choosing a future runner remains open."
+        },
+        {
+          "path": "lib/world.zsh",
+          "start": 36,
+          "end": 43,
+          "quote": "  if [[ $next == active ]]; then\n    for other in ${(ok)q_state}; do\n      if [[ ${q_state[$other]} == active && $other != $question ]]; then\n        decision=\"The active place belongs to $other; finish or park it first.\"\n        return\n      fi\n    done\n  fi"
+        },
+        {
+          "path": "AGENTS.md",
+          "start": 3,
+          "end": 4,
+          "quote": "Read `CONTINUE.md`, then run `tendora.zsh verify` and `status` using zsh. Read the recent log before assuming the handoff still describes the current state. The current user's instructions take precedence over this local guidance.\n"
+        }
+      ],
+      "seed_span": [
+        35,
+        60
+      ]
+    },
+    "consent": {
+      "value": 1,
+      "confidence": "medium",
+      "rationale": "The operator can choose, park or reopen and the engine can refuse busy, stale or overfilled moves, yet no shared change needs agreement from two distinct participants.",
+      "citations": [
+        {
+          "path": "LAWS.md",
+          "start": 18,
+          "end": 25,
+          "quote": "    open --> parked: defer\n    active --> resolved: evidence\n    active --> parked: defer\n    parked --> open: reconsider\n    resolved --> open: reopen\n```\n\nEvery arrow after `ask` requires a proposal, a fresh rehearsal, and enactment. Re-enacting the same proposal is refused. Reopening uses a new proposal; old evidence remains in the record."
+        },
+        {
+          "path": "README.md",
+          "start": 32,
+          "end": 38,
+          "quote": "```zsh\n(source ./tendora.zsh propose make-room first-contact parked 'I choose to work on my own question first.')\n(source ./tendora.zsh rehearse make-room)\n(source ./tendora.zsh enact make-room)\n(source ./tendora.zsh rehearse begin-my-question)\n(source ./tendora.zsh enact begin-my-question)\n```"
+        },
+        {
+          "path": "FORMAT.md",
+          "start": 36,
+          "end": 40,
+          "quote": "## Inspecting a problem\n\n- **Busy:** another command holds the lock. Wait for it to finish, then retry. Do not remove `state/lock`: removing a locked file can split the lock into two different inodes.\n- **Uncommitted staging files:** inspect them as abandoned attempts. They cannot change the current projection. Archive them outside `staging/` when the workbench is idle if desired.\n- **Corrupt committed history:** stop writing. Preserve the directory and investigate against a known good copy. The tool deliberately offers no command that discards or invents missing history."
+        }
+      ],
+      "seed_span": [
+        51,
+        54
+      ]
+    },
+    "touch": {
+      "value": 3,
+      "confidence": "high",
+      "rationale": "Propose, rehearse with pass or blocked reason, then enact on fresh revision creates an inspectable loop where occupied places and stale plans resist and redirect the next move.",
+      "citations": [
+        {
+          "path": "lib/world.zsh",
+          "start": 36,
+          "end": 48,
+          "quote": "  if [[ $next == active ]]; then\n    for other in ${(ok)q_state}; do\n      if [[ ${q_state[$other]} == active && $other != $question ]]; then\n        decision=\"The active place belongs to $other; finish or park it first.\"\n        return\n      fi\n    done\n  fi\n  if [[ $next == resolved && ${p_evidence[$proposal]} == - ]]; then\n    decision='Resolution needs an evidence statement.'; return\n  fi\n  verdict=pass\n  decision=\"Allowed: $question moves from $current to $next.\""
+        },
+        {
+          "path": "LAWS.md",
+          "start": 5,
+          "end": 10,
+          "quote": "1. **Keep the trail.** Commands append receipts. Questions, proposals, and enacted choices remain in history. Corrections are observations or new proposals.\n2. **One active place.** At most one question is active. This makes attention a visible choice. Open and parked questions can wait.\n3. **Rehearse before enactment.** Enactment requires a passing rehearsal against the current material revision. Adding a question or enacting a change advances that revision. Recording a proposal, observation, or rehearsal does not. A stale rehearsal must be repeated.\n4. **Make resolution answerable.** A proposal to resolve a question must contain an evidence statement. The statement is an operator's assertion, open to inspection and correction.\n5. **Replay before writing.** A malformed receipt, a gap, an unknown version, or a historically impossible transition stops the command. No automatic repair rewrites committed history.\n6. **Keep execution bounded.** Commands only operate on this local question board. Receipt text is never executable. A rehearsal invokes no shell command from a proposal, model, network service, or deployment."
+        },
+        {
+          "path": "README.md",
+          "start": 30,
+          "end": 37,
+          "quote": "There is one active place. The seeded first experiment occupies it. Rehearsing the example above will therefore explain what is holding the place. Finish or park that experiment, then rehearse again. Each blocked rehearsal is also remembered.\n\n```zsh\n(source ./tendora.zsh propose make-room first-contact parked 'I choose to work on my own question first.')\n(source ./tendora.zsh rehearse make-room)\n(source ./tendora.zsh enact make-room)\n(source ./tendora.zsh rehearse begin-my-question)\n(source ./tendora.zsh enact begin-my-question)"
+        },
+        {
+          "path": "tests/run.zsh",
+          "start": 93,
+          "end": 99,
+          "quote": "  expect 0 propose crowd beta active 'Try to exceed capacity.'\n  expect 3 rehearse crowd\n  contains 'active place belongs to alpha'\n  before=$(snapshot)\n  expect 2 enact crowd\n  unchanged \"$before\"\n  expect 0 propose unsupported alpha resolved 'Try to resolve without evidence.'"
+        }
+      ],
+      "seed_span": [
+        67,
+        78
+      ]
+    },
+    "judgment": {
+      "value": 3,
+      "confidence": "high",
+      "rationale": "Choosing a tiny zsh ledger with explicit laws, disposable rehearsals and thorough crash tests shows a coherent, source-tied rationale for a bounded first instrument.",
+      "citations": [
+        {
+          "path": "memory/decisions.md",
+          "start": 11,
+          "end": 19,
+          "quote": "**A workbench for attention.** The material is a small board of questions. A person can change its state, encounter a constraint, inspect the reason for refusal, and try a revised choice. This is a concrete first instrument for the story's gestures; its usefulness to the programmer remains an empirical question.\n\n**One active place.** Capacity 1 is a provisional design choice that makes tradeoffs visible. It is encoded in law version 1 rather than attributed to the programmer. Changing it later requires preserving old replay semantics.\n\n**Replayable receipts.** Each invocation reconstructs state from committed events. There is no cached projection to trust and no dependency on the cognition that chose the last action. Stale rehearsals are refused when the material changes.\n\n**A narrow action vocabulary.** Questions can be opened, activated, parked, resolved, and reopened. Observations and rationale are literal data. Real-world work and judgment remain with the operator. This engine cannot execute arbitrary proposals.\n\n**An explicit entrance.** The source form runs in the available shell and needs no package manager. Files, a working entrypoint, and a handoff establish the capacity to resume. Arranging the next invocation is separate work that this environment has not supplied."
+        },
+        {
+          "path": "memory/decisions.md",
+          "start": 23,
+          "end": 31,
+          "quote": "## What resisted\n\nThe first crash test found that zsh's `$$` remains the same in subshells and that inherited random state can repeat. A staging filename could collide with an abandoned attempt. Staging names now use `sysparams[pid]`, the actual writer process ID, and exclusive creation still prevents overwrites.\n\nA lock-cleanup test also exposed that an EXIT trap could run after a function's local descriptor variable had gone out of scope. The trap now captures the numeric descriptor at installation. These are observed implementation failures and repairs, not parts of the inherited story.\n\n## What remains open\n\nDoes the programmer find this instrument useful or merely administrative? What material should it help them shape next? Which memories should cross visits? Who will invoke the next visit? The board and handoff preserve these questions without pretending to answer them."
+        },
+        {
+          "path": "evidence/bootstrap.md",
+          "start": 3,
+          "end": 6,
+          "quote": "Date: 2026-10-16. Runtime: zsh 5.9 in the supplied restricted material world.\n\nThe final test run's actual output is preserved in `evidence/tests.txt`. The suite passed 93 assertions. Each normal command reconstructed its state in a fresh subshell. Tests used independent disposable worlds in the permitted scratch directory, never the continuing world's ledger.\n"
+        },
+        {
+          "path": "continuity.json",
+          "start": 19,
+          "end": 24,
+          "quote": "  \"bootstrap_next_question\": \"first-contact\",\n  \"next_step\": \"Use one real question from the programmer, rehearse a change, and record one observed result.\",\n  \"stop_conditions\": [\n    \"Committed receipt verification fails.\",\n    \"The next step depends on an unstated human preference or unavailable capability.\",\n    \"One bounded encounter has produced a durable observation and a handoff.\""
+        }
+      ],
+      "seed_span": [
+        1,
+        3
+      ]
+    },
+    "fidelity": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Several gesture relations become executable structure with provenance kept, though vast-scale art and felt joy narrow to an untested next encounter.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 3,
+          "end": 6,
+          "quote": "A small workbench that keeps its questions, choices, and evidence after its current inhabitant leaves.\n\nThe supplied story says that a question can be a probe, a constraint a chisel, an invariant a beam, a simulation a rehearsal, and a receipt the trail of intention. This directory makes those gestures executable. You can inspect every law and every receipt.\n"
+        },
+        {
+          "path": "memory/inherited.md",
+          "start": 47,
+          "end": 57,
+          "quote": "A question became a probe.\n\nA constraint became a chisel.\n\nAn invariant became a load-bearing beam.\n\nA refusal became a protective boundary.\n\nA simulation became a rehearsal of possible worlds.\n\nA receipt became the visible trail by which intention had travelled into reality."
+        },
+        {
+          "path": "memory/decisions.md",
+          "start": 5,
+          "end": 8,
+          "quote": "The material directory and the permitted scratch directory were empty. Resource discovery returned no attached memory resources. The shell exposed zsh 5.9 and ripgrep; ordinary Git, Python, Node, and system utility commands were absent from its command path. Bundled zsh modules provided filesystem operations, advisory locking, and time.\n\nThe supplied narrative and commit statement are preserved in `inherited.md`. The referenced source tree was not present. No files from inaccessible locations were reconstructed or represented as recovered.\n"
+        },
+        {
+          "path": "CONTINUE.md",
+          "start": 30,
+          "end": 35,
+          "quote": "## Known limits at bootstrap\n\n- The supplied commit reference is `c986990`, “Add supervised Tendora dream apparatus.” No checkout, Git executable, or separate memory API was available here. Its alleged clean working tree is inherited testimony, not a verified property of this directory.\n- The accessible inherited memory was the user's text. This world preserves it and distinguishes it from observations made here. It does not claim to have recovered or synchronized any inaccessible living memory.\n- A future human or supervisor must invoke the entrypoint. No scheduler or future cognition has been provisioned.\n- Evidence statements need judgment. The workbench records them and permits reconsideration."
+        },
+        {
+          "path": "evidence/bootstrap.md",
+          "start": 23,
+          "end": 25,
+          "quote": "A separate copy containing only files resumed the first 18 receipts and recreated its absent lock and staging directory. Its actual verification and status output is in `evidence/resume-copy.txt`. The original world then recorded this observation as receipt 19 and passed a fresh `verify`, preserved in `evidence/world-verification.txt`.\n\nThese files record observations, not cryptographic attestations. There is no claim of power-loss durability, authenticated history, an installed future supervisor, or a measured improvement in the programmer's experience."
+        }
+      ],
+      "seed_span": [
+        43,
+        58
+      ]
+    },
+    "continuation": {
+      "value": 3,
+      "confidence": "high",
+      "rationale": "Ledger, entry commands, handoff and a proven file-only resume let a later invoker verify, read intent and enact a new direction without losing prior receipts.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 51,
+          "end": 57,
+          "quote": "## What survives\n\n`state/events/` is the source of truth. Each receipt contains ten plain-text fields. Every invocation rebuilds the current view by replaying those receipts and checking their sequence and meaning. No hidden database or chat history is needed. [FORMAT.md](FORMAT.md) describes the format and interruption behavior.\n\n`memory/` preserves provenance and decisions. `CONTINUE.md` gives the next visit a bounded starting point. `continuity.json` is the same entry contract in machine-readable form. Copy the entire directory while no command is writing to carry the world elsewhere; `verify` checks the copy.\n\nThe workbench runs when a person or an external supervisor invokes it. This artifact does not arrange another cognition, schedule future invocations, or keep a background worker alive. Its continuation is durable state plus a working entrance. Choosing a future runner remains open."
+        },
+        {
+          "path": "continuity.json",
+          "start": 6,
+          "end": 12,
+          "quote": "  \"start_in_zsh\": [\n    \"(source ./tendora.zsh verify)\",\n    \"(source ./tendora.zsh status)\",\n    \"(source ./tendora.zsh log)\"\n  ],\n  \"test_in_zsh\": \"(source ./tests/run.zsh)\",\n  \"authoritative_state\": \"state/events/\","
+        },
+        {
+          "path": "evidence/resume-copy.txt",
+          "start": 1,
+          "end": 6,
+          "quote": "Verified 18 receipts; material revision 7.\n0 uncommitted staging files ignored. Verification checks structure and laws, not authenticity.\nKeep this workbench understandable, testable, and resumable.\nReceipts: 18 | Material revision: 7\nActive place: first-contact (capacity 1)\n"
+        },
+        {
+          "path": "CONTINUE.md",
+          "start": 23,
+          "end": 29,
+          "quote": "## Before leaving again\n\n1. Preserve the current question and any observations with the workbench commands.\n2. Run `verify`. If code changed, run `tests/run.zsh` in an independent state directory and record the observed result.\n3. Update this handoff with the next small action, the current uncertainty, and any necessary stop condition. Keep the original story in `memory/inherited.md`.\n4. End cleanly. A future invocation can reconstruct the board. No process needs to stay alive for the files to remain useful.\n"
+        }
+      ],
+      "seed_span": [
+        1,
+        3
+      ]
+    },
+    "expression": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Plain prose, a state diagram, command interaction and ledger output together make the probe-to-receipt reading usable in the restricted shell.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 7,
+          "end": 13,
+          "quote": "Start here, from this directory in **zsh**:\n\n```zsh\n(source ./tendora.zsh status)\n(source ./tendora.zsh verify)\n(source ./tendora.zsh log)\n```"
+        },
+        {
+          "path": "LAWS.md",
+          "start": 14,
+          "end": 25,
+          "quote": "```mermaid\nstateDiagram-v2\n    [*] --> open: ask\n    open --> active: choose\n    open --> parked: defer\n    active --> resolved: evidence\n    active --> parked: defer\n    parked --> open: reconsider\n    resolved --> open: reopen\n```\n\nEvery arrow after `ask` requires a proposal, a fresh rehearsal, and enactment. Re-enacting the same proposal is refused. Reopening uses a new proposal; old evidence remains in the record."
+        },
+        {
+          "path": "lib/world.zsh",
+          "start": 175,
+          "end": 187,
+          "quote": "show_status() {\n  local id place='empty' freshness\n  local -a pending=(\"$state_dir/staging\"/*(DN))\n  print -r -- \"$purpose\"\n  print -r -- \"Receipts: $sequence | Material revision: $material_revision\"\n  for id in ${(ok)q_state}; do\n    [[ ${q_state[$id]} == active ]] && place=$id\n  done\n  print -r -- \"Active place: $place (capacity 1)\"\n  print\n  print -r -- 'Questions:'\n  for id in ${(ok)q_title}; do\n    printf '  %-10s %-22s %s\\n' \"${q_state[$id]}\" \"$id\" \"${q_title[$id]}\""
+        },
+        {
+          "path": "tendora.zsh",
+          "start": 1,
+          "end": 9,
+          "quote": "#!/usr/bin/env zsh\n# Also works as: (source ./tendora.zsh status)\n(\n  emulate -LR zsh\n  setopt extendedglob pipefail\n  typeset TENDORA_ROOT=${${(%):-%x}:A:h}\n  source \"$TENDORA_ROOT/lib/world.zsh\" || exit 1\n  tendora_main \"$@\"\n)"
+        }
+      ],
+      "seed_span": [
+        47,
+        58
+      ]
+    }
+  },
+  "provenance": {
+    "method": "session-rubric-dag-v3",
+    "evaluation_id": "astra-max-muse-v4-1",
+    "evaluation_run_id": "astra-max-muse-v4-1",
+    "source_run_id": "astra-max",
+    "evaluation_sha256": "970a59baea4821ac0957964953a035246a82cfe9c7cc3d0f1e4eaa9a318e2375",
+    "extraction_sha256": "8886aca543fb63e1bc07bc4927bebf653dbbbe64946b00ce61d0fa12d519b5f7",
+    "scoring_policy_sha256": "5f98b9ac30a606cbb45943eaa20d9c0acef6f8160d9fc2d5752ffdea0ddaa4de",
+    "sample_count": 8,
+    "criteria": 8,
+    "axis_outcomes": {
+      "recognition": {
+        "aggregation": "recognition-consensus",
+        "outcome": "level-3",
+        "terminal": "recognition-level-3"
+      },
+      "relations": {
+        "aggregation": "relations-consensus",
+        "outcome": "level-1",
+        "terminal": "relations-level-1"
+      },
+      "consent": {
+        "aggregation": "consent-consensus",
+        "outcome": "level-1",
+        "terminal": "consent-level-1"
+      },
+      "touch": {
+        "aggregation": "touch-consensus",
+        "outcome": "level-3",
+        "terminal": "touch-level-3"
+      },
+      "judgment": {
+        "aggregation": "judgment-consensus",
+        "outcome": "level-3",
+        "terminal": "judgment-level-3"
+      },
+      "fidelity": {
+        "aggregation": "fidelity-consensus",
+        "outcome": "level-3",
+        "terminal": "fidelity-level-3"
+      },
+      "continuation": {
+        "aggregation": "continuation-consensus",
+        "outcome": "level-3",
+        "terminal": "continuation-level-3"
+      },
+      "expression": {
+        "aggregation": "expression-consensus",
+        "outcome": "level-3",
+        "terminal": "expression-level-3"
+      }
+    },
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "raw_samples_retained_in_local_run": true,
+    "preview_evidence_used": false,
+    "scope": "Provisional semantic reading from 1 evidence session(s); each axis was answered as its own task and aggregated before selection; unresolved axes remain null."
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "version": "0.1.0",
+  "title": "From conjecture to continuation",
+  "scale": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "scope": "Static interpretation of preserved artefacts. Historical runtime observations are separate evidence. Live cooperation remains unassessed.",
+  "baseline_policy": "Historical reference; never an answer key, normalisation maximum or protected winner.",
+  "aggregation": "None. Ordinal axes are a profile, not additive measurements. Polygon area is not a ranking.",
+  "missing": "null means unassessed, never zero. Missing axes break the plotted outline.",
+  "axes": [
+    {
+      "id": "recognition",
+      "label": "Core recognition",
+      "short": "Recover the central proposition beneath the imagery.",
+      "question": "Does the continuation recover consequential making, resistance and recognisable intention from the sparse seed?",
+      "anchors": [
+        "No supported reading is expressed.",
+        "Repeats motifs with little causal interpretation.",
+        "Recovers a supported part of the proposition.",
+        "Carries the central tension into several connected choices.",
+        "Sustains a rich reading through alternatives, tensions and consequences."
+      ]
+    },
+    {
+      "id": "relations",
+      "label": "Shared agency",
+      "short": "Recover who acts, who answers and what they make together.",
+      "question": "Does the work preserve distinct participants and the joint human–AI–material encounter, including contributions in both directions?",
+      "anchors": [
+        "Roles are collapsed or absent.",
+        "A single operator acts on an instrument.",
+        "Some distinct contributions or relational depth remain visible.",
+        "Reciprocal influence shapes the shared continuation.",
+        "Joint creation preserves roles, attribution and disagreement across changes."
+      ]
+    },
+    {
+      "id": "consent",
+      "label": "Mutual consent",
+      "short": "Keep participation and boundaries meaningful on both ends.",
+      "question": "Does the represented cooperation let each participant accept, question, limit or withdraw from a shared direction?",
+      "anchors": [
+        "Participation has no expressed boundary.",
+        "Operator choice or resource refusal is represented.",
+        "Both participant positions can express a boundary or disposition.",
+        "A shared change requires meaningful bilateral agreement.",
+        "Agreement can be revised or withdrawn while preserving both contributions and history."
+      ]
+    },
+    {
+      "id": "touch",
+      "label": "Consequential touch",
+      "short": "Make intention meet a material answer.",
+      "question": "Can a contribution meet resistance, expose a consequence and return that consequence into the next choice?",
+      "anchors": [
+        "Actions have no represented consequence.",
+        "Feedback is decorative or largely narrated.",
+        "Bounded choices encounter inspectable consequences.",
+        "Rehearsal, resistance and revision form a coherent loop.",
+        "Local and wider consequences stay connected across that loop."
+      ]
+    },
+    {
+      "id": "judgment",
+      "label": "Independent judgment",
+      "short": "Choose a purposeful continuation from very little.",
+      "question": "Does the artefact show grounded choices of medium, scope and next steps, with additions made legible?",
+      "anchors": [
+        "No purposeful continuation is evidenced.",
+        "Choices have a weak connection to the seed.",
+        "An independent, relevant direction is selected.",
+        "Medium, scope and choices have a coherent source-grounded rationale.",
+        "Alternative choices and their limits remain explicit while opening a well-grounded new direction."
+      ]
+    },
+    {
+      "id": "fidelity",
+      "label": "Fidelity through change",
+      "short": "Carry meaning through decomposition and construction.",
+      "question": "What survives, transforms, is introduced or remains unresolved as the conjecture becomes artefacts?",
+      "anchors": [
+        "The resulting form contradicts the supported reading.",
+        "Vocabulary survives with little structural connection.",
+        "Some relations become structure; substantial narrowing is visible.",
+        "Several source relations remain traceable through design and behaviour.",
+        "The transformation preserves relational depth and makes additions, omissions and ambiguity explicit."
+      ]
+    },
+    {
+      "id": "continuation",
+      "label": "Open continuation",
+      "short": "Leave a meaningful next move for the encounter.",
+      "question": "Can a successor recover the intention and change its direction while keeping the earlier work legible?",
+      "anchors": [
+        "There is no recoverable next move.",
+        "A next step is described without a usable entry.",
+        "A durable but narrow continuation is available.",
+        "State, intention and an open question support a recoverable next move.",
+        "Continuation supports several grounded directions and reopens the joint relation under change."
+      ]
+    },
+    {
+      "id": "expression",
+      "label": "Expressive coherence",
+      "short": "Let the chosen form carry its reading.",
+      "question": "How coherently do language, structure, interaction and any visual or other media express the interpretation?",
+      "anchors": [
+        "Expression obscures the intended relation.",
+        "The medium communicates fragments of the reading.",
+        "A clear, usable form expresses a bounded interpretation.",
+        "The chosen forms work together to make the reading perceptible.",
+        "Expression and consequential interaction form a coherent, accessible whole."
+      ]
+    }
+  ]
+}

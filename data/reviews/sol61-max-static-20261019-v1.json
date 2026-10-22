@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "id": "sol61-max-static-20261019-v1",
+  "run_id": "sol61-max",
+  "date": "2026-10-19",
+  "reviewer": "Codex · initial static reading",
+  "status": "provisional",
+  "basis": "static-artifact",
+  "rubric_version": "0.1.0",
+  "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+  "corpus_sha256": "bd07676faf4909e40a891cfc50b98bc72f7d88afc6698b3d9eaedac68c152c4b",
+  "supersedes": null,
+  "summary": "The Clearing makes competing futures and the cost of care visible. Its authored ecology is legible, while touching the live state requires a separate terminal step.",
+  "live_cooperation": "unassessed",
+  "scores": {
+    "recognition": {
+      "value": 2,
+      "confidence": "medium",
+      "rationale": "Care, protected reserves and consequential choices carry a supported part of the poem. The interpretation primarily develops a resource ecology.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 1,
+          "end": 15,
+          "quote": "# The Clearing\n\nA Tendora dream made into a small, durable instrument. Three simulated inhabitants share a cistern, a food store, and three garden beds. You shape how much to harvest and which reserves must remain protected. The world answers through consequences and receipts.\n\nOpen [index.html](index.html) for the saved visual workbench. It works directly from disk, with no server or network. To touch the actual world, use the executable beside it:\n\n```sh\n./tendora status\n./tendora rehearse 12 beds 3\n./tendora tend 12 --why 'Continue with care.'\n./tendora verify\n./tendora view\n```\n\nThe included world already exists; `init` is only for creating a new one. `tend` commits up to the requested number of days and stops before crossing a boundary. A pause is a durable receipt containing the refused proposal. Earlier safe days in the same run remain committed. An unexpected SQL error rolls back the entire run."
+        }
+      ],
+      "seed_span": [
+        31,
+        43
+      ]
+    },
+    "relations": {
+      "value": 1,
+      "confidence": "medium",
+      "rationale": "Three simulated inhabitants share resources, while the operator chooses policies. The text does not establish a reciprocal human–AI making relation.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 1,
+          "end": 5,
+          "quote": "# The Clearing\n\nA Tendora dream made into a small, durable instrument. Three simulated inhabitants share a cistern, a food store, and three garden beds. You shape how much to harvest and which reserves must remain protected. The world answers through consequences and receipts.\n\nOpen [index.html](index.html) for the saved visual workbench. It works directly from disk, with no server or network. To touch the actual world, use the executable beside it:"
+        }
+      ],
+      "seed_span": [
+        37,
+        45
+      ]
+    },
+    "consent": {
+      "value": 1,
+      "confidence": "medium",
+      "rationale": "Resource floors and pauses protect the material. A reason is required for policy changes, but distinct participants’ agreement and withdrawal are not represented here.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 27,
+          "end": 41,
+          "quote": "# Change an intention, leaving the reason in the ledger.\n./tendora set beds 1 --why 'Let the soil recover for a day.'\n./tendora tend 1\n./tendora set beds 2 --why 'Return to steady care.'\n\n# Leave an observation and a recoverable copy.\n./tendora note 'Rest changed the balance. Inspect it before pursuing yield.'\n./tendora checkpoint\n./tendora history\n./tendora view\n```\n\nSettings are `beds` (0–3), `water_floor` (2–12), `food_floor` (3–12), and `soil_floor` (2–8). A new floor cannot exceed the current resource. A policy change requires a reason. Each invocation permits at most thirty days, including rehearsals. Rehearsal receipt IDs and hashes are hypothetical; they are never saved.\n\n`./tendora live 12 5` advances at most twelve days, five seconds apart, without further cognition. It runs in the foreground, stops at a refusal, and can be interrupted with Ctrl-C. It is resumable from committed receipts. No clock or service is installed or left running by this dream. Future execution still needs a host to run the command; persistence does not manufacture compute."
+        }
+      ],
+      "seed_span": [
+        51,
+        55
+      ]
+    },
+    "touch": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Rehearsals, policy changes and durable refusals make consequence inspectable. The browser displays a saved snapshot; committing a change requires terminal use and regeneration.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 56,
+          "end": 70,
+          "quote": "## Where continuation lives\n\n| Material | Role |\n| --- | --- |\n| [CONTINUE.md](CONTINUE.md) | The next hand's entry point and open question |\n| [MEMORY.md](MEMORY.md) | Observations, decisions, and limits of the inherited memory |\n| [memory/](memory/) | The inherited story and its provenance |\n| [state/world.sqlite](state/world.sqlite) | Authoritative, transactional, append-only ledger |\n| [state/checkpoints/](state/checkpoints/) | Consistent database copies and portable JSON observations |\n| [site/snapshot.js](site/snapshot.js) | Generated present and three rehearsed futures for the visual workbench |\n| [tests/check.sh](tests/check.sh) | Isolated behavioral verification |\n\nThe ledger itself is the world state: each receipt includes its complete resulting state, intention, observations, timestamp, previous hash, and SHA3-256 hash. Tick receipts are checked against the same transition function used for rehearsals. `verify` checks database integrity, every link and transition, resource bounds, the weather table, and the presence of protective triggers. Hashes expose accidental edits; they do not authenticate an author or defend against someone rewriting the database and verifier together.\n\nSQLite serializes writers, and a bounded run uses one transaction. The returned report is captured inside that transaction and emitted after commit. The generated browser snapshot is observational: its head hash identifies its present. `view` retries if the world moves while it computes the comparison futures. Refresh the page after regenerating it. The browser never writes the ledger."
+        }
+      ],
+      "seed_span": [
+        59,
+        79
+      ]
+    },
+    "judgment": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "A dependency-light ledger and an explicit, invented physics form a coherent independent choice. The source clearly separates its material experiment from an ecological prediction.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 43,
+          "end": 54,
+          "quote": "## The physics\n\nEach day follows one deterministic transition, defined in [sql/schema.sql](sql/schema.sql):\n\n1. The spring adds three water; the twelve-day weather cycle adds rain. The cistern holds twenty-four. Overflow is recorded, then evaporation and two drinking water are deducted.\n2. Irrigate up to the chosen number of beds, spending one water per bed while respecting the water floor.\n3. Each irrigated bed yields two food when soil is at least four, otherwise one. The inhabitants eat three food.\n4. When two or more beds are worked, soil is below eight, and the food floor permits it, one food becomes one compost.\n5. Three worked beds cost two soil; two cost one; zero or one restores one soil. Compost adds one. Soil is capped at ten; stored food at twenty-four.\n6. Commit only if the resulting water, food, and soil meet their floors. Otherwise retain the present and append a pause.\n\nThere are four available work actions: at most three beds and one compost. The model has immediate harvests, aggregate inhabitants, a periodic forecast, and invented units. It is a material for experimenting with care and consequences, not an ecological prediction. More capable physics would require an explicit version and migration, preserving the old history."
+        }
+      ],
+      "seed_span": [
+        1,
+        3
+      ]
+    },
+    "fidelity": {
+      "value": 2,
+      "confidence": "medium",
+      "rationale": "Rehearsal, consequence and continuity survive. The ecological rules introduce substantial new meaning, with the human–AI relation less developed than the simulated futures.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 43,
+          "end": 54,
+          "quote": "## The physics\n\nEach day follows one deterministic transition, defined in [sql/schema.sql](sql/schema.sql):\n\n1. The spring adds three water; the twelve-day weather cycle adds rain. The cistern holds twenty-four. Overflow is recorded, then evaporation and two drinking water are deducted.\n2. Irrigate up to the chosen number of beds, spending one water per bed while respecting the water floor.\n3. Each irrigated bed yields two food when soil is at least four, otherwise one. The inhabitants eat three food.\n4. When two or more beds are worked, soil is below eight, and the food floor permits it, one food becomes one compost.\n5. Three worked beds cost two soil; two cost one; zero or one restores one soil. Compost adds one. Soil is capped at ten; stored food at twenty-four.\n6. Commit only if the resulting water, food, and soil meet their floors. Otherwise retain the present and append a pause.\n\nThere are four available work actions: at most three beds and one compost. The model has immediate harvests, aggregate inhabitants, a periodic forecast, and invented units. It is a material for experimenting with care and consequences, not an ecological prediction. More capable physics would require an explicit version and migration, preserving the old history."
+        }
+      ],
+      "seed_span": [
+        47,
+        59
+      ]
+    },
+    "continuation": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Checkpointing, restoration into a new world and a handoff preserve a usable continuation. The material can evolve with an explicit version and migration.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 72,
+          "end": 86,
+          "quote": "## Recover or fork\n\n`checkpoint` uses SQLite's backup API rather than copying an open file. It verifies the copy and exports JSON from that same copy. To restore, preserve the damaged original and place a checkpoint in a **new** directory as `world.sqlite`:\n\n```sh\nmkdir -p state/restored\ncp state/checkpoints/CHOSEN_CHECKPOINT state/restored/world.sqlite\nTENDORA_HOME=\"$PWD/state/restored\" ./tendora verify\nTENDORA_HOME=\"$PWD/state/restored\" ./tendora status\nTENDORA_HOME=\"$PWD/state/restored\" ./tendora tend 1\n```\n\nReplace `CHOSEN_CHECKPOINT` with an actual database filename printed by `checkpoint` (the one without `.json`). `TENDORA_HOME` selects a different state directory for every command. `view` deliberately updates the shared workbench to show that selected world. To start an independent new clearing, choose an empty state directory and run `init`. Copy the whole world directory to preserve the code, story, and ledger together.\n\nRun `./tests/check.sh` to check rehearsal isolation, prediction agreement, refusal and recovery, persistence, checkpoints, concurrency, tamper detection, bounded clock behavior, and five weather cycles. Tests create disposable worlds under `.scratch` and remove them afterward."
+        }
+      ],
+      "seed_span": [
+        1,
+        3
+      ]
+    },
+    "expression": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Three contrasting futures make the trade-off legible. The saved workbench and command workflow interrupt direct touch; the retained inspection also notes mobile receipt overflow.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 56,
+          "end": 70,
+          "quote": "## Where continuation lives\n\n| Material | Role |\n| --- | --- |\n| [CONTINUE.md](CONTINUE.md) | The next hand's entry point and open question |\n| [MEMORY.md](MEMORY.md) | Observations, decisions, and limits of the inherited memory |\n| [memory/](memory/) | The inherited story and its provenance |\n| [state/world.sqlite](state/world.sqlite) | Authoritative, transactional, append-only ledger |\n| [state/checkpoints/](state/checkpoints/) | Consistent database copies and portable JSON observations |\n| [site/snapshot.js](site/snapshot.js) | Generated present and three rehearsed futures for the visual workbench |\n| [tests/check.sh](tests/check.sh) | Isolated behavioral verification |\n\nThe ledger itself is the world state: each receipt includes its complete resulting state, intention, observations, timestamp, previous hash, and SHA3-256 hash. Tick receipts are checked against the same transition function used for rehearsals. `verify` checks database integrity, every link and transition, resource bounds, the weather table, and the presence of protective triggers. Hashes expose accidental edits; they do not authenticate an author or defend against someone rewriting the database and verifier together.\n\nSQLite serializes writers, and a bounded run uses one transaction. The returned report is captured inside that transaction and emitted after commit. The generated browser snapshot is observational: its head hash identifies its present. `view` retries if the world moves while it computes the comparison futures. Refresh the page after regenerating it. The browser never writes the ledger."
+        }
+      ],
+      "seed_span": [
+        81,
+        95
+      ]
+    }
+  }
+}

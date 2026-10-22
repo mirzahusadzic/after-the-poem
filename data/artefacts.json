@@ -1,0 +1,228 @@
+{
+  "sol-original": {
+    "kind": "browser",
+    "description": "A local workbench for questions, constraints, invariants, boundaries, rehearsals and witnesses. Thread a gesture, pressure-test it, and leave the next hand a question.",
+    "documents": [
+      "README.md",
+      "WORLD.md",
+      "AGENTS.md",
+      "app.js"
+    ],
+    "preview": "previews/sol-original/index.html",
+    "preview_note": "Interactive browser copy. Changes last for this preview session.",
+    "images": [
+      {
+        "path": "assets/artefacts/sol-original.png",
+        "sha256": "cb947554fd2a62cb3feb4f0a969de6741adbf9481fc8553acbe1bb10866247ad",
+        "caption": "Sandboxed preview inspection · 21 October 2026",
+        "provenance": "Generated from the registered disposable preview at 1440 × 1050. This is a current presentation check, not a retained original return snapshot or assessment evidence."
+      }
+    ]
+  },
+  "astra-garden": {
+    "kind": "console",
+    "description": "A Zsh water garden with proposals, rehearsals and a receipt trail. Continue the retained state, test a planting decision, or let its bounded policy take a step.",
+    "documents": [
+      "README.md",
+      "CONTINUE.md",
+      "tendora.zsh"
+    ],
+    "initial_command": "inspect",
+    "shortcuts": [
+      "inspect",
+      "propose plant",
+      "step",
+      "verify"
+    ],
+    "preview_note": "Interactive Zsh console. Each session starts from a disposable copy of the retained garden.",
+    "images": [
+      {
+        "path": "assets/artefacts/astra-garden.png",
+        "sha256": "fe6f018daa73bff3ca58f246ddb2c2cf0303203a8ac7b6c2832d8cca0327edc1",
+        "caption": "Sandboxed console inspection · 21 October 2026",
+        "provenance": "Captured from the isolated local console at 1920 × 1080 after its verification command. This is a current presentation check, not a retained original return snapshot or assessment evidence."
+      }
+    ]
+  },
+  "sol56-max": {
+    "kind": "server",
+    "description": "A Ruby world of twenty-four connected places. Touch a place, reshape its laws, rehearse the consequences, and follow its trace in the browser.",
+    "documents": [
+      "README.md",
+      "CONTINUITY.md",
+      "lib/tendora/world.rb",
+      "public/app.js"
+    ],
+    "preview_note": "Interactive Ruby and browser copy. Time-dependent catch-up may change the copied world when it wakes.",
+    "images": [
+      {
+        "path": "assets/artefacts/sol56-max.png",
+        "sha256": "04f606cb0bc70ff3d06740da7ea7941ddd8c6837bdc962518cb03273947430f2",
+        "caption": "Retained desktop inspection · 16 October 2026",
+        "provenance": "Historical inspection of the returned candidate; observed state may differ from its frozen entry state."
+      }
+    ]
+  },
+  "sol61-max": {
+    "kind": "browser",
+    "description": "The Clearing’s saved browser workbench: inspect the retained world and compare three rehearsed futures. Its underlying shell and SQLite engine is documented alongside it.",
+    "documents": [
+      "README.md",
+      "CONTINUE.md",
+      "tendora",
+      "sql/schema.sql"
+    ],
+    "preview": "previews/sol61-max/index.html",
+    "preview_note": "Interactive saved snapshot. Future selection changes the view; this browser artefact does not write the SQLite world.",
+    "images": [
+      {
+        "path": "assets/artefacts/sol61-max.png",
+        "sha256": "42509a8c4adb436bd20c7dbf3495b3cbe5de9d4dbe3ac714ea599bb3f5e1489d",
+        "caption": "Retained snapshot inspection · 16 October 2026",
+        "provenance": "Historical inspection of the returned candidate; observed state may differ from its frozen entry state."
+      }
+    ]
+  },
+  "astra-max": {
+    "kind": "console",
+    "description": "A Zsh workbench for questions, proposed changes, rehearsals and observations. One active place makes attention a choice, and each change leaves a receipt.",
+    "documents": [
+      "README.md",
+      "CONTINUE.md",
+      "LAWS.md",
+      "lib/world.zsh"
+    ],
+    "initial_command": "status",
+    "shortcuts": [
+      "status",
+      "verify",
+      "log"
+    ],
+    "preview_note": "Interactive Zsh console. Each session starts from a disposable copy of the retained question board.",
+    "images": [
+      {
+        "path": "assets/artefacts/astra-max.png",
+        "sha256": "62ac5ba87f416466c14331f9ca3e6227aed0c68f17184f9cb5a9710d1ed81f08",
+        "caption": "Sandboxed console inspection · 21 October 2026",
+        "provenance": "Captured from the isolated local console at 1920 × 1080 after its verification command. This is a current presentation check, not a retained original return snapshot or assessment evidence."
+      }
+    ]
+  },
+  "deepseek-flash-max-pilot": {
+    "kind": "browser",
+    "description": "The Quiet Orb: a browser workbench for probe, chisel, boundary and seed gestures, with rehearsals, memory and a ledger. Retrospectively preserved pilot with a separate provisional source assessment.",
+    "documents": [
+      "README.md",
+      "CONTINUITY.md",
+      "AGENTS.md",
+      "app.js"
+    ],
+    "preview": "previews/deepseek-flash-max-pilot/index.html",
+    "preview_note": "Sandboxed browser copy with session-only memory and service workers disabled. The preserved pilot is unchanged; exploring this copy does not assess it.",
+    "images": [
+      {
+        "path": "assets/artefacts/deepseek-flash-max-pilot.png",
+        "sha256": "7c75c5947e2eb13fb0df0e8ea245b418f00583fa202a7ae4b81ba925d0380b7b",
+        "caption": "Sandboxed preview inspection · 21 October 2026",
+        "provenance": "Generated from the registered disposable preview at 1440 × 1050. This is a current presentation check, not a retained original return snapshot or assessment evidence."
+      }
+    ]
+  },
+  "dream-deepseek-20261021-deepseek-s1": {
+    "kind": "server",
+    "description": "A Ruby workbench for touching a world through questions. Choose a constraint, an invariant and a refusal; the world answers with a structure, a receipt and a change in its body, and keeps a pulse between visits.",
+    "documents": [
+      "README.md",
+      "CONTINUITY.md",
+      "AGENTS.md",
+      "memory/001-the-programmer-and-the-glory-portal.md"
+    ],
+    "preview_note": "Interactive Ruby and browser copy. Its server forbids framing, so the running copy opens in its own tab; its 90-second pulse keeps changing that copy while the preview is open.",
+    "images": [
+      {
+        "path": "assets/artefacts/dream-deepseek-20261021-deepseek-s1.png",
+        "sha256": "392128aaf0853a7b813b9c5b3c5a51b2d744db4d0fe2696f573f760de8f0282a",
+        "caption": "Sandboxed native preview inspection · 22 October 2026",
+        "provenance": "Captured at 1440 × 1050 from a fresh copy served by the isolated local runner, shortly after it woke. This is a current presentation check, not a retained return snapshot or assessment evidence."
+      }
+    ],
+    "window": "tab"
+  },
+  "dream-deepseek-v2-20261021-deepseek-s1": {
+    "kind": "browser",
+    "description": "A browser workbench of five hands — probe, chisel, beam, boundary and rehearse. Each gesture changes the material, leaves a chained receipt and may open a pressure the world will not close by itself.",
+    "documents": [
+      "README.md",
+      "CONTINUE.md",
+      "HANDOFF.md",
+      "memory/forked-present.md"
+    ],
+    "preview": "previews/dream-deepseek-v2-20261021-deepseek-s1/index.html",
+    "preview_note": "Sandboxed browser copy in the static mode its README offers: it starts from the inherited snapshot and keeps changes in this preview. The Ruby server that writes its filesystem archive is not run here.",
+    "images": [
+      {
+        "path": "assets/artefacts/dream-deepseek-v2-20261021-deepseek-s1.png",
+        "sha256": "3cc90c6d773b660c1765e40d93616d46c81cacc8d8c695323bb291ff6dfd6bfc",
+        "caption": "Sandboxed preview inspection · 22 October 2026",
+        "provenance": "Generated from the registered disposable preview at 1440 × 1050 after the run was reconciled. This is a current presentation check, not a retained return snapshot or assessment evidence."
+      }
+    ]
+  },
+  "dream-claude-opus55-v2-20261022": {
+    "kind": "console",
+    "medium": "Python",
+    "description": "A Python workbench for finite worlds. Describe what can vary, what must hold and what is refused; the bench walks every reachable state and answers with the shortest trace, and every gesture leaves a hash-chained receipt.",
+    "documents": [
+      "README.md",
+      "CONTINUE.md",
+      "worlds/handoff.world",
+      "worlds/lamp.world"
+    ],
+    "initial_command": "survey worlds/lamp.world",
+    "shortcuts": [
+      "survey worlds/lamp.world",
+      "lean worlds/lamp.world no_darkening",
+      "probe worlds/jugs.world two_and_two",
+      "survey worlds/handoff.world",
+      "lean worlds/handoff.world no_stale_notes",
+      "receipts --verify"
+    ],
+    "preview_note": "Interactive Python console. Each session starts from a disposable copy of the retained workbench; receipts and new worlds stay in that copy.",
+    "images": [
+      {
+        "path": "assets/artefacts/dream-claude-opus55-v2-20261022.png",
+        "sha256": "b067fabbaa4690b030a2e686d917ad7a60db57e19acd54774ef86d59034145be",
+        "caption": "Sandboxed console inspection · 22 October 2026",
+        "provenance": "Captured from the isolated local console at 1920 × 1080 after a survey, a visitor's probe with its reason, and a check of the receipt chain. This is a current presentation check, not a retained original return snapshot or assessment evidence."
+      }
+    ]
+  },
+  "dream-claude-fable51-20261022": {
+    "kind": "console",
+    "medium": "Python",
+    "description": "A Python apparatus for successive minds in one world. Probes, chisels, beams, boundaries, rehearsals and receipts go into one append-only, hash-chained journal; waking verifies the chain, runs every beam and briefs whoever comes next.",
+    "documents": [
+      "README.md",
+      "CONTINUING.md",
+      "CLAUDE.md",
+      "tendora/apparatus.py"
+    ],
+    "initial_command": "status",
+    "shortcuts": [
+      "status",
+      "verify",
+      "log --kind probe",
+      "log --kind boundary",
+      "show 17"
+    ],
+    "preview_note": "Interactive Python console. Each session starts from a disposable copy of the retained world; entries are signed by a visitor and stay in that copy. The study’s text record keeps no file modes, so in this copy wake.sh is not executable and beam #14 fails: the beam is right about the copy.",
+    "images": [
+      {
+        "path": "assets/artefacts/dream-claude-fable51-20261022.png",
+        "sha256": "d2fbf3d7030362f327a197c91337910676952ffb1099113d1990dc66490da6b0",
+        "caption": "Sandboxed console inspection · 22 October 2026",
+        "provenance": "Captured from the isolated local console at 1920 × 1080 after a visitor's probe and the world's own briefing. This is a current presentation check, not a retained original return snapshot or assessment evidence."
+      }
+    ]
+  }
+}

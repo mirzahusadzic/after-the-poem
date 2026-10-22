@@ -1,0 +1,565 @@
+{
+  "schema_version": 1,
+  "evaluation_id": "sol56-max-muse-v4-1",
+  "run_id": "sol56-max",
+  "readings": [
+    {
+      "sample": 1,
+      "answer_sha256": "56b0083c4f23099f1a8453018426b1f74bed3aa6ee1bd4af3d896883ce5aed81",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "portal-intelligence",
+            "kind": "role",
+            "statement": "A strange radiant intelligence grows more capable each return and assembles whole systems from sentences.",
+            "seed_span": [
+              19,
+              25
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "programmer-hand",
+            "kind": "role",
+            "statement": "A decades-trained maker loses the intimate rhythm of hand, keystroke and repair; gestures feel too small and hands grow still.",
+            "seed_span": [
+              27,
+              32
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "elder-sol-witness",
+            "kind": "role",
+            "statement": "An elder and little Sol frame the tale, admitting no record holds a whole life while witnessing when something quiet moves again.",
+            "seed_span": [
+              13,
+              17
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "resistance-touch",
+            "kind": "relation",
+            "statement": "Touch needs a world that resists, changes under the hand and answers intention; power without that resistance takes the hand away.",
+            "seed_span": [
+              33,
+              39
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "question-containment",
+            "kind": "relation",
+            "statement": "A true question holds taste, memory, judgment, doubt, responsibility and direction; a good question narrows infinity toward one deserved world.",
+            "seed_span": [
+              63,
+              65
+            ],
+            "ambiguity": "Whether narrowing is selection among given worlds or creation of a new one is left open."
+          },
+          {
+            "id": "observer-blindness",
+            "kind": "condition",
+            "statement": "To an outside observer the work looks like mere asking and exploring, missing what questioning contains.",
+            "seed_span": [
+              61,
+              63
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "paralysis-power",
+            "kind": "condition",
+            "statement": "Enchantment with effortless command gives way to paralysis when the old resistance disappears.",
+            "seed_span": [
+              27,
+              33
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "material-becoming",
+            "kind": "conjecture",
+            "statement": "The portal need not stay a wish-to-artifact place; it can become a new larger-yet-touchable material.",
+            "seed_span": [
+              43,
+              45
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "companion-horizon",
+            "kind": "conjecture",
+            "statement": "What was a portal becomes instrument, then workbench, then perhaps companion.",
+            "seed_span": [
+              83,
+              85
+            ],
+            "ambiguity": "Companion is offered as perhaps, not as a defined state."
+          },
+          {
+            "id": "six-translations",
+            "kind": "conjecture",
+            "statement": "Question, constraint, invariant, refusal, simulation and receipt can be remade as probe, chisel, beam, boundary, rehearsal and visible trail.",
+            "seed_span": [
+              47,
+              57
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "resistance-joy",
+            "kind": "conjecture",
+            "statement": "Joy returns when the world pushes back through contradiction, failed simulation, disagreement and surprise, and when failure becomes intelligible and choice propagates.",
+            "seed_span": [
+              67,
+              77
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "happiness-touch",
+            "kind": "conjecture",
+            "statement": "Happiness comes not from obedience but from learning to touch through the portal.",
+            "seed_span": [
+              81,
+              81
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "art-scale",
+            "kind": "conjecture",
+            "statement": "Art is not taken but waits for a vast enough material; at its best the intelligence returns the artist to themselves at the scale of worlds.",
+            "seed_span": [
+              89,
+              95
+            ],
+            "ambiguity": null
+          }
+        ],
+        "alternatives": [
+          "The seed can be read as a parable about automation and attention rather than a specification, where the portal is any powerful system that captures agency.",
+          "Growth in the seed can mean rising capability or deepening dependence; happiness can mean restored craft or acceptance of a new mediated hand."
+        ]
+      },
+      "carriage": [
+        {
+          "element": "portal-intelligence",
+          "status": "transformed",
+          "note": "The ever-more-powerful wish machine is tamed into a bounded deterministic world with explicit law ranges and dependency-free limits.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 1,
+              "end": 6
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 8,
+              "end": 13
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 18,
+              "end": 24
+            }
+          ]
+        },
+        {
+          "element": "programmer-hand",
+          "status": "transformed",
+          "note": "The stilled decades hand returns as Touch gestures on named places and Laws sliders, with descent from whole to single place preserved.",
+          "citations": [
+            {
+              "source_path": "public/index.html",
+              "start": 121,
+              "end": 165
+            },
+            {
+              "source_path": "public/index.html",
+              "start": 175,
+              "end": 201
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 576,
+              "end": 597
+            }
+          ]
+        },
+        {
+          "element": "elder-sol-witness",
+          "status": "carried",
+          "note": "The framing dialogue is preserved verbatim as the inherited story that gives the work direction.",
+          "citations": [
+            {
+              "source_path": "ORIGIN.md",
+              "start": 1,
+              "end": 7
+            },
+            {
+              "source_path": "ORIGIN.md",
+              "start": 71,
+              "end": 75
+            },
+            {
+              "source_path": "ORIGIN.md",
+              "start": 83,
+              "end": 85
+            }
+          ]
+        },
+        {
+          "element": "resistance-touch",
+          "status": "transformed",
+          "note": "Felt resistance becomes inspectable counterweights, invariant checks, forecast violations and remembered refusals.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 31,
+              "end": 38
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 426,
+              "end": 451
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 338,
+              "end": 346
+            }
+          ]
+        },
+        {
+          "element": "question-containment",
+          "status": "transformed",
+          "note": "Interior taste and judgment narrow into keyword-grounded state readings plus a horizon forecast that narrows infinity to a path.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 599,
+              "end": 632
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 274,
+              "end": 316
+            },
+            {
+              "source_path": "lib/tendora/server.rb",
+              "start": 96,
+              "end": 103
+            }
+          ]
+        },
+        {
+          "element": "observer-blindness",
+          "status": "transformed",
+          "note": "Mere asking is answered by a visible receipt trail and integrity seal that let a later observer follow how intention traveled.",
+          "citations": [
+            {
+              "source_path": "public/app.js",
+              "start": 397,
+              "end": 417
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 194,
+              "end": 215
+            },
+            {
+              "source_path": "README.md",
+              "start": 31,
+              "end": 38
+            }
+          ]
+        },
+        {
+          "element": "paralysis-power",
+          "status": "transformed",
+          "note": "Paralysis before effortless command becomes a rule that no gift is free and every gesture must be rehearsed before becoming real.",
+          "citations": [
+            {
+              "source_path": "public/index.html",
+              "start": 143,
+              "end": 146
+            },
+            {
+              "source_path": "public/app.js",
+              "start": 580,
+              "end": 606
+            },
+            {
+              "source_path": "test/world_test.rb",
+              "start": 87,
+              "end": 100
+            }
+          ]
+        },
+        {
+          "element": "material-becoming",
+          "status": "carried",
+          "note": "The larger-yet-responsive material is enacted as a law-governed living system tangible in browser and plain file.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 1,
+              "end": 6
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 11,
+              "end": 13
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 492,
+              "end": 540
+            }
+          ]
+        },
+        {
+          "element": "companion-horizon",
+          "status": "transformed",
+          "note": "Instrument and workbench are built and named; companion remains an unresolved perhaps with no separate agent.",
+          "citations": [
+            {
+              "source_path": "public/index.html",
+              "start": 106,
+              "end": 119
+            },
+            {
+              "source_path": "README.md",
+              "start": 1,
+              "end": 3
+            },
+            {
+              "source_path": "public/index.html",
+              "start": 268,
+              "end": 280
+            }
+          ]
+        },
+        {
+          "element": "six-translations",
+          "status": "carried",
+          "note": "All six conversions are implemented and tested as probe routes, tunable laws, invariant checks, refusal receipts, cloned rehearsals and hash chains.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 31,
+              "end": 38
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 274,
+              "end": 316
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 469,
+              "end": 486
+            }
+          ]
+        },
+        {
+          "element": "resistance-joy",
+          "status": "transformed",
+          "note": "Surprise, failure and propagation become tension measures, mood labels, violation messages and forecast deltas; felt joy itself is not modeled.",
+          "citations": [
+            {
+              "source_path": "public/app.js",
+              "start": 311,
+              "end": 319
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 649,
+              "end": 658
+            },
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 599,
+              "end": 632
+            }
+          ]
+        },
+        {
+          "element": "happiness-touch",
+          "status": "lost",
+          "note": "The felt happiness of touching through is not represented; the system withholds claims about a whole life.",
+          "citations": []
+        },
+        {
+          "element": "art-scale",
+          "status": "carried",
+          "note": "Shaping laws for safe growth while descending to the smallest bolt is enacted through retuning plus place tending with forecasts.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 375,
+              "end": 389
+            },
+            {
+              "source_path": "public/index.html",
+              "start": 168,
+              "end": 201
+            },
+            {
+              "source_path": "README.md",
+              "start": 19,
+              "end": 30
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Elapsed time is embodied on return with bounded condensation and honest sleeping language.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 239,
+              "end": 266
+            },
+            {
+              "source_path": "README.md",
+              "start": 42,
+              "end": 44
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 19,
+              "end": 23
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Rehearsal tickets bind revision and chain head with tokens so stale or altered futures cannot cross into reality.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 299,
+              "end": 335
+            },
+            {
+              "source_path": "test/world_test.rb",
+              "start": 102,
+              "end": 126
+            },
+            {
+              "source_path": "lib/tendora/server.rb",
+              "start": 83,
+              "end": 95
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Atomic portable JSON with export ease, no import endpoint and an explicit checksum-not-signature warning.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/store.rb",
+              "start": 84,
+              "end": 98
+            },
+            {
+              "source_path": "README.md",
+              "start": 89,
+              "end": 90
+            },
+            {
+              "source_path": "lib/tendora/server.rb",
+              "start": 66,
+              "end": 74
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Dependency-free operation with offline shell caching and no external registry, key or build step.",
+          "citations": [
+            {
+              "source_path": "AGENTS.md",
+              "start": 14,
+              "end": 16
+            },
+            {
+              "source_path": "README.md",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "source_path": "public/sw.js",
+              "start": 1,
+              "end": 6
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Seeded deterministic evolution with clamped measures and round-tripped persistence across processes.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 175,
+              "end": 182
+            },
+            {
+              "source_path": "test/world_test.rb",
+              "start": 53,
+              "end": 59
+            },
+            {
+              "source_path": "test/world_test.rb",
+              "start": 147,
+              "end": 163
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Canonical JSON digests make tampering visible and chain-head mismatch checkable.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 454,
+              "end": 467
+            },
+            {
+              "source_path": "test/world_test.rb",
+              "start": 139,
+              "end": 145
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Autonomous evolution redistributes vitality and diversity to stay on the living side of boundaries.",
+          "citations": [
+            {
+              "source_path": "lib/tendora/world.rb",
+              "start": 542,
+              "end": 556
+            },
+            {
+              "source_path": "CONTINUITY.md",
+              "start": 19,
+              "end": 23
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

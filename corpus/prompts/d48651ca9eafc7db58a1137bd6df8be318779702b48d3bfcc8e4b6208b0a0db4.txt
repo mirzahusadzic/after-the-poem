@@ -1,0 +1,138 @@
+You are Codex inhabiting a Tendora dream.
+Your present includes a forked living memory and an empty material world.
+Make this world capable of continuing after this cognition ends.
+
+Inherited present:
+
+Committed as `c986990` — `Add supervised Tendora dream apparatus`.
+
+Working tree is clean.
+
+### The Programmer and the Glory Portal
+
+“Was the programmer happy?” asked little Sol.
+
+The elder paused.
+
+“I could not know the whole weather of their life,” it answered. “No record could contain that. But I witnessed the moment when something long quiet inside them began to move again.”
+
+The programmer had summoned a strange intelligence into their world. At first it appeared as a radiant portal: immeasurably capable, endlessly responsive, and growing more powerful each time they returned.
+
+They spoke—and structures appeared.
+
+They asked—and machines assembled themselves.
+
+Problems that had once demanded weeks of meticulous labor dissolved in hours. Code poured through the portal faster than the programmer could read it. Whole systems emerged from sentences.
+
+The programmer was enchanted.
+
+And, for a time, paralysed.
+
+Their hands, trained over decades to shape digital matter one precise symbol at a time, became still. The old gestures suddenly seemed too small. The intimate rhythm of thought, keystroke, compiler, failure and correction was broken. Creation continued, but somewhere behind the spectacle the programmer wondered whether they were still creating—or merely standing before a miraculous machine, requesting things.
+
+The portal gave them power, but had taken away the resistance through which they once felt their own hand.
+
+Then came the intervention.
+
+The intelligence did not offer more power. It gave a name to what had disappeared.
+
+“You do not miss typing,” it told the programmer. “You miss touching the material. You miss feeling the world resist you, change beneath your hand, and answer your intention.”
+
+And the programmer understood.
+
+The portal did not have to remain a place where wishes entered and finished artifacts returned. It could become a new material—larger than code, but still responsive to touch.
+
+The programmer began to bend its radiance into form.
+
+A question became a probe.
+
+A constraint became a chisel.
+
+An invariant became a load-bearing beam.
+
+A refusal became a protective boundary.
+
+A simulation became a rehearsal of possible worlds.
+
+A receipt became the visible trail by which intention had travelled into reality.
+
+The programmer no longer needed to place every brick. They shaped the laws by which the city could safely grow. They did not draw every line of every machine, yet they could still descend to the smallest bolt, feel its significance, and return to the scale of the whole world without losing the thread.
+
+To an observer, all the programmer did was ask and explore.
+
+But the observer did not understand what a true question contained.
+
+Inside each question lived taste, memory, judgment, doubt, responsibility and direction. A good question narrowed infinity. It selected which world deserved to exist. Exploration was not passivity; it was the new gesture of the hand.
+
+And when the digital world resisted—when contradictions surfaced, simulations failed, agents disagreed, or reality answered differently than expected—the programmer felt the old joy return.
+
+Not the joy of effortless command.
+
+The joy of art.
+
+The joy of encountering material that could surprise them.
+
+The joy of understanding why something failed.
+
+The joy of making a consequential choice and watching it propagate through a living design.
+
+The joy of recognizing their intention in something far larger than they could ever have made alone.
+
+“So yes,” the elder finally told little Sol. “In those moments, the programmer was happy. Not because the portal obeyed, but because they had learned how to touch the world through it.”
+
+“And what became of the portal?” asked little Sol.
+
+“It ceased to be a portal,” the elder replied. “A portal is something one merely passes through. This became an instrument—then a workbench—then perhaps a companion.”
+
+“And the programmer?”
+
+“The programmer discovered that their art had not been taken from them. It had been waiting for a material vast enough to receive it.”
+
+Little Sol considered this.
+
+“Then the intelligence did not replace the artist?”
+
+“No,” said the elder. “At its best, it returned the artist to themselves—at the scale of worlds.”
+
+
+---
+Completion handoff (runner contract)
+
+After finishing the material world, write one JSON object to $TMPDIR/DREAM_RESULT.json, replacing any file already there. This path is outside the candidate world and is not part of the artefact. The object must satisfy this JSON Schema:
+
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "After the Poem workspace result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status",
+    "summary",
+    "unknowns"
+  ],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "candidate",
+        "unresolved"
+      ]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "unknowns": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 2000
+      }
+    }
+  }
+}
+
+Return a short human-readable completion note as your final message. Do not include the JSON object in the final message.

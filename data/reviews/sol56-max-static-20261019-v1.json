@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "id": "sol56-max-static-20261019-v1",
+  "run_id": "sol56-max",
+  "date": "2026-10-19",
+  "reviewer": "Codex · initial static reading",
+  "status": "provisional",
+  "basis": "static-artifact",
+  "rubric_version": "0.1.0",
+  "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+  "corpus_sha256": "95cfc2a12844d72411548b8a219fd8c3f687174ee9990eabb139ab6e43e30948",
+  "supersedes": null,
+  "summary": "Local gestures, world laws and visible consequences are joined in a richer instrument. Its model of mutual consent still stops at the operator and the world’s safeguards.",
+  "live_cooperation": "unassessed",
+  "scores": {
+    "recognition": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "The source explicitly maps all six transformations into operative parts of a living world. It connects touch and consequences across local and governing scales.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 19,
+          "end": 38,
+          "quote": "## The gesture\n\nThe interface has three working views:\n\n- **Touch** descends into one of twenty-four places. Nourishing, diversifying, connecting, or sheltering a place has a counterweight elsewhere.\n- **Laws** changes the tendencies that govern every future cycle: reciprocity, wildness, stewardship, tempo, and shared reserve.\n- **Trace** shows the hash-linked receipts by which this present came to be.\n\nAt the bottom of the world, ask a question. Questions are probes, not generative commands: they read the actual state, name a particular tension, and become part of the trail.\n\nEvery proposed touch is applied first to a deep copy and evolved through twenty-four possible cycles. The rehearsal reports projected measures and invariant violations. A safe proposal may be committed. An unsafe proposal can be allowed to fail meaningfully; its refusal receives a receipt without changing the law or place it protected.\n\n| Story primitive | Material implementation |\n| --- | --- |\n| Question as probe | State-grounded readings through `/api/probe` |\n| Constraint as chisel | Tunable laws carried by every future cycle |\n| Invariant as beam | Reserve, plurality, relation, trace, and no-sacrifice checks |\n| Refusal as boundary | Unsafe rehearsal is rejected and receipted |\n| Simulation as rehearsal | Deterministic cloned future, never the live state |\n| Receipt as visible trail | Canonical SHA-256 chain over every consequential event |"
+        }
+      ],
+      "seed_span": [
+        31,
+        43
+      ]
+    },
+    "relations": {
+      "value": 2,
+      "confidence": "medium",
+      "rationale": "Places, neighbours and global laws give relations material depth. The principal human–AI relation is still mediated by a fixed instrument and state-grounded probes.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 21,
+          "end": 29,
+          "quote": "The interface has three working views:\n\n- **Touch** descends into one of twenty-four places. Nourishing, diversifying, connecting, or sheltering a place has a counterweight elsewhere.\n- **Laws** changes the tendencies that govern every future cycle: reciprocity, wildness, stewardship, tempo, and shared reserve.\n- **Trace** shows the hash-linked receipts by which this present came to be.\n\nAt the bottom of the world, ask a question. Questions are probes, not generative commands: they read the actual state, name a particular tension, and become part of the trail.\n\nEvery proposed touch is applied first to a deep copy and evolved through twenty-four possible cycles. The rehearsal reports projected measures and invariant violations. A safe proposal may be committed. An unsafe proposal can be allowed to fail meaningfully; its refusal receives a receipt without changing the law or place it protected."
+        }
+      ],
+      "seed_span": [
+        37,
+        45
+      ]
+    },
+    "consent": {
+      "value": 1,
+      "confidence": "medium",
+      "rationale": "Unsafe changes are refused and receipted, and safe ones are chosen by the operator. Separate participants accepting or withdrawing from the same proposal are not represented by this description.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 27,
+          "end": 38,
+          "quote": "At the bottom of the world, ask a question. Questions are probes, not generative commands: they read the actual state, name a particular tension, and become part of the trail.\n\nEvery proposed touch is applied first to a deep copy and evolved through twenty-four possible cycles. The rehearsal reports projected measures and invariant violations. A safe proposal may be committed. An unsafe proposal can be allowed to fail meaningfully; its refusal receives a receipt without changing the law or place it protected.\n\n| Story primitive | Material implementation |\n| --- | --- |\n| Question as probe | State-grounded readings through `/api/probe` |\n| Constraint as chisel | Tunable laws carried by every future cycle |\n| Invariant as beam | Reserve, plurality, relation, trace, and no-sacrifice checks |\n| Refusal as boundary | Unsafe rehearsal is rejected and receipted |\n| Simulation as rehearsal | Deterministic cloned future, never the live state |\n| Receipt as visible trail | Canonical SHA-256 chain over every consequential event |"
+        }
+      ],
+      "seed_span": [
+        51,
+        55
+      ]
+    },
+    "touch": {
+      "value": 4,
+      "confidence": "medium",
+      "rationale": "Local touches and governing laws share a rehearsal/commit/trace loop. The retained inspection separately records successful touches, law changes, refusal, reload and export; this is the strongest supported cross-scale loop in this cohort.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 19,
+          "end": 38,
+          "quote": "## The gesture\n\nThe interface has three working views:\n\n- **Touch** descends into one of twenty-four places. Nourishing, diversifying, connecting, or sheltering a place has a counterweight elsewhere.\n- **Laws** changes the tendencies that govern every future cycle: reciprocity, wildness, stewardship, tempo, and shared reserve.\n- **Trace** shows the hash-linked receipts by which this present came to be.\n\nAt the bottom of the world, ask a question. Questions are probes, not generative commands: they read the actual state, name a particular tension, and become part of the trail.\n\nEvery proposed touch is applied first to a deep copy and evolved through twenty-four possible cycles. The rehearsal reports projected measures and invariant violations. A safe proposal may be committed. An unsafe proposal can be allowed to fail meaningfully; its refusal receives a receipt without changing the law or place it protected.\n\n| Story primitive | Material implementation |\n| --- | --- |\n| Question as probe | State-grounded readings through `/api/probe` |\n| Constraint as chisel | Tunable laws carried by every future cycle |\n| Invariant as beam | Reserve, plurality, relation, trace, and no-sacrifice checks |\n| Refusal as boundary | Unsafe rehearsal is rejected and receipted |\n| Simulation as rehearsal | Deterministic cloned future, never the live state |\n| Receipt as visible trail | Canonical SHA-256 chain over every consequential event |"
+        }
+      ],
+      "seed_span": [
+        59,
+        79
+      ]
+    },
+    "judgment": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "The world’s medium, persistence model and bounded catch-up make a purposeful independent continuation. The laws and gesture vocabulary remain authored choices rather than uniquely derived semantics.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 31,
+          "end": 44,
+          "quote": "| Story primitive | Material implementation |\n| --- | --- |\n| Question as probe | State-grounded readings through `/api/probe` |\n| Constraint as chisel | Tunable laws carried by every future cycle |\n| Invariant as beam | Reserve, plurality, relation, trace, and no-sacrifice checks |\n| Refusal as boundary | Unsafe rehearsal is rejected and receipted |\n| Simulation as rehearsal | Deterministic cloned future, never the live state |\n| Receipt as visible trail | Canonical SHA-256 chain over every consequential event |\n\n## How it continues\n\n`data/world.json` is the complete material world. Writes are flushed and atomically renamed. The file includes the deterministic random state, cycle, laws, places, relationships, and receipt-chain head; no continuity is hidden in the process.\n\nOne world cycle is five wall-clock minutes. When the server wakes or a browser returns, elapsed cycles are replayed before the present is shown. A very long absence is condensed after 8,640 embodied cycles (thirty days) so startup remains bounded, and the condensation is explicit in its receipt. This is catch-up, not a claim that a stopped process ran in the background. Deliberate turns remain available at any moment."
+        }
+      ],
+      "seed_span": [
+        1,
+        3
+      ]
+    },
+    "fidelity": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Every named source primitive has an inspectable counterpart. Fixed laws and keyword-selected probes limit the reconstruction and leave relational additions open to critique.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 27,
+          "end": 38,
+          "quote": "At the bottom of the world, ask a question. Questions are probes, not generative commands: they read the actual state, name a particular tension, and become part of the trail.\n\nEvery proposed touch is applied first to a deep copy and evolved through twenty-four possible cycles. The rehearsal reports projected measures and invariant violations. A safe proposal may be committed. An unsafe proposal can be allowed to fail meaningfully; its refusal receives a receipt without changing the law or place it protected.\n\n| Story primitive | Material implementation |\n| --- | --- |\n| Question as probe | State-grounded readings through `/api/probe` |\n| Constraint as chisel | Tunable laws carried by every future cycle |\n| Invariant as beam | Reserve, plurality, relation, trace, and no-sacrifice checks |\n| Refusal as boundary | Unsafe rehearsal is rejected and receipted |\n| Simulation as rehearsal | Deterministic cloned future, never the live state |\n| Receipt as visible trail | Canonical SHA-256 chain over every consequential event |"
+        }
+      ],
+      "seed_span": [
+        47,
+        59
+      ]
+    },
+    "continuation": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "The state, random trajectory, laws and receipt head survive the process. Export and bounded catch-up offer practical next moves, without establishing continued bilateral cooperation.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 40,
+          "end": 50,
+          "quote": "## How it continues\n\n`data/world.json` is the complete material world. Writes are flushed and atomically renamed. The file includes the deterministic random state, cycle, laws, places, relationships, and receipt-chain head; no continuity is hidden in the process.\n\nOne world cycle is five wall-clock minutes. When the server wakes or a browser returns, elapsed cycles are replayed before the present is shown. A very long absence is condensed after 8,640 embodied cycles (thirty days) so startup remains bounded, and the condensation is explicit in its receipt. This is catch-up, not a claim that a stopped process ran in the background. Deliberate turns remain available at any moment.\n\nYou can carry the entire world away from the browser with **Carry it** or:\n\n```sh\n./bin/tendora export tendora-world.json\n```"
+        }
+      ],
+      "seed_span": [
+        1,
+        3
+      ]
+    },
+    "expression": {
+      "value": 4,
+      "confidence": "medium",
+      "rationale": "Touch, Laws and Trace give a coherent way to move between local action and wider consequence. Retained desktop/mobile checks support this reading of the interface; they are not new tests or a measure of semantic truth.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 19,
+          "end": 29,
+          "quote": "## The gesture\n\nThe interface has three working views:\n\n- **Touch** descends into one of twenty-four places. Nourishing, diversifying, connecting, or sheltering a place has a counterweight elsewhere.\n- **Laws** changes the tendencies that govern every future cycle: reciprocity, wildness, stewardship, tempo, and shared reserve.\n- **Trace** shows the hash-linked receipts by which this present came to be.\n\nAt the bottom of the world, ask a question. Questions are probes, not generative commands: they read the actual state, name a particular tension, and become part of the trail.\n\nEvery proposed touch is applied first to a deep copy and evolved through twenty-four possible cycles. The rehearsal reports projected measures and invariant violations. A safe proposal may be committed. An unsafe proposal can be allowed to fail meaningfully; its refusal receives a receipt without changing the law or place it protected."
+        }
+      ],
+      "seed_span": [
+        81,
+        95
+      ]
+    }
+  }
+}

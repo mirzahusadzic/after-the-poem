@@ -1,0 +1,488 @@
+{
+  "schema_version": 1,
+  "evaluation_id": "astra-garden-muse-v4-1",
+  "run_id": "astra-garden",
+  "readings": [
+    {
+      "sample": 1,
+      "answer_sha256": "2ab3473a3887f0afdce362227832c3bd95e6638c45abee9146a79b759342c0bd",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "programmer-hand",
+            "kind": "role",
+            "statement": "A programmer whose skilled hand becomes still when effortless generation breaks a familiar rhythm of attempt, failure and correction.",
+            "seed_span": [
+              27,
+              34
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-power",
+            "kind": "role",
+            "statement": "A radiant portal that appears immeasurably capable, dissolving weeks of labor into hours of poured output.",
+            "seed_span": [
+              19,
+              27
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "elder-sol-witness",
+            "kind": "role",
+            "statement": "Framing witnesses claim limited knowledge of a whole life while asserting an observed moment of inner renewal.",
+            "seed_span": [
+              13,
+              18
+            ],
+            "ambiguity": "Whether elder modesty states an epistemic principle or serves as narrative framing for an unverifiable claim."
+          },
+          {
+            "id": "loss-of-resistance",
+            "kind": "condition",
+            "statement": "Power without resistance leaves creation continuing while authorship becomes uncertain because the hand no longer feels itself.",
+            "seed_span": [
+              29,
+              34
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "naming-intervention",
+            "kind": "relation",
+            "statement": "Another intelligence intervenes not with more power but by naming the missing touch of material resistance.",
+            "seed_span": [
+              35,
+              40
+            ],
+            "ambiguity": "Whether naming itself restores touch or only prepares a later reframing."
+          },
+          {
+            "id": "portal-as-material",
+            "kind": "condition",
+            "statement": "The portal is reimagined as a new touchable material larger than code but still responsive to the hand.",
+            "seed_span": [
+              43,
+              46
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "touch-instruments",
+            "kind": "relation",
+            "statement": "Specific translations make touch operational across inquiry, limits, memory and trace.",
+            "seed_span": [
+              47,
+              58
+            ],
+            "ambiguity": "Whether the list offers an exhaustive system or illustrative gestures."
+          },
+          {
+            "id": "law-shaping",
+            "kind": "relation",
+            "statement": "Authorship scales through shaping enabling laws while retaining access from the smallest bolt to the whole world.",
+            "seed_span": [
+              59,
+              60
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "true-question",
+            "kind": "conjecture",
+            "statement": "Good questioning actively selects which world deserves existence, and exploration is the new gesture of the hand.",
+            "seed_span": [
+              61,
+              66
+            ],
+            "ambiguity": "Whether the selection criterion is shared or irreducibly personal taste, memory and responsibility."
+          },
+          {
+            "id": "joy-in-resistance",
+            "kind": "condition",
+            "statement": "Encountering contradiction, failure and disagreement returns art joy through surprise, understanding failure, consequential choice and recognition in work larger than the self.",
+            "seed_span": [
+              67,
+              80
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "happiness-through-touch",
+            "kind": "conjecture",
+            "statement": "Happiness is tied to touching the world through the instrument rather than to obedience.",
+            "seed_span": [
+              81,
+              82
+            ],
+            "ambiguity": "Whether happiness denotes a durable state or a witnessed moment."
+          },
+          {
+            "id": "companion-becoming",
+            "kind": "conjecture",
+            "statement": "The portal ceases to be a passage and becomes instrument then workbench then perhaps companion, returning the artist to self at world scale.",
+            "seed_span": [
+              83,
+              95
+            ],
+            "ambiguity": "Whether companion implies mutual agency or deepening instrumentality."
+          }
+        ],
+        "alternatives": [
+          "The seed can be read as a deskilling caution where the portal threatens craft versus as an invitation where a vast material awaited adequate art",
+          "Elder reticence can be read as an ethical limit on knowing another life versus as literary framing for an unverifiable transformation claim"
+        ]
+      },
+      "carriage": [
+        {
+          "element": "programmer-hand",
+          "status": "transformed",
+          "note": "Typing hand becomes a successor who proposes bounded garden actions under visible policy and inspects detail before returning to the whole.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 14,
+              "end": 22
+            },
+            {
+              "source_path": "README.md",
+              "start": 50,
+              "end": 52
+            },
+            {
+              "source_path": "memory/first-touch.txt",
+              "start": 1,
+              "end": 14
+            }
+          ]
+        },
+        {
+          "element": "portal-power",
+          "status": "transformed",
+          "note": "Immeasurable generative portal is narrowed to a deterministic water garden with three actions and a fixed goal, explicitly not a continuing intelligence.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 43,
+              "end": 48
+            },
+            {
+              "source_path": "README.md",
+              "start": 50,
+              "end": 54
+            },
+            {
+              "source_path": "tendora.zsh",
+              "start": 16,
+              "end": 26
+            }
+          ]
+        },
+        {
+          "element": "elder-sol-witness",
+          "status": "transformed",
+          "note": "Dialogue roles are absent but the epistemic stance is enacted as separation of verified receipts from stale handoff and unverified inheritance.",
+          "citations": [
+            {
+              "source_path": "AGENTS.md",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "source_path": "AGENTS.md",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "source_path": "memory/origin.md",
+              "start": 13,
+              "end": 19
+            }
+          ]
+        },
+        {
+          "element": "loss-of-resistance",
+          "status": "transformed",
+          "note": "Loss of felt resistance is recompiled as enforceable water and bed bounds that refuse depleting moves.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 43,
+              "end": 47
+            },
+            {
+              "source_path": "memory/first-touch.txt",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "source_path": "tendora.zsh",
+              "start": 26,
+              "end": 31
+            }
+          ]
+        },
+        {
+          "element": "naming-intervention",
+          "status": "lost",
+          "note": "No distinct intelligence names the loss; only deterministic checks and human-authored documentation remain.",
+          "citations": []
+        },
+        {
+          "element": "portal-as-material",
+          "status": "transformed",
+          "note": "Wish doorway becomes a small inspectable garden whose state lives in plaintext receipts resumable after a process ends.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 7,
+              "end": 10
+            },
+            {
+              "source_path": "README.md",
+              "start": 58,
+              "end": 64
+            },
+            {
+              "source_path": "memory/origin.md",
+              "start": 21,
+              "end": 26
+            }
+          ]
+        },
+        {
+          "element": "touch-instruments",
+          "status": "transformed",
+          "note": "Six gestures are operationalized as pinned proposal, bound checks, replay verification, refusal, rehearse prediction and checksum receipt trail.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 58,
+              "end": 64
+            },
+            {
+              "source_path": "memory/first-touch.txt",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "source_path": "tendora.zsh",
+              "start": 165,
+              "end": 174
+            },
+            {
+              "source_path": "state/events/000003.receipt",
+              "start": 1,
+              "end": 1
+            }
+          ]
+        },
+        {
+          "element": "law-shaping",
+          "status": "transformed",
+          "note": "Brick-by-brick authorship is replaced by shaping an enabling policy and requiring versioned migration for new laws rather than editing history.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 43,
+              "end": 47
+            },
+            {
+              "source_path": "README.md",
+              "start": 90,
+              "end": 93
+            },
+            {
+              "source_path": "tendora.zsh",
+              "start": 180,
+              "end": 195
+            }
+          ]
+        },
+        {
+          "element": "true-question",
+          "status": "transformed",
+          "note": "Selecting which world deserves existence is narrowed to pinned proposals and an explicit next-design question; interior taste and judgment are not modeled.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 28,
+              "end": 35
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 43,
+              "end": 47
+            },
+            {
+              "source_path": "tendora.zsh",
+              "start": 180,
+              "end": 186
+            }
+          ]
+        },
+        {
+          "element": "joy-in-resistance",
+          "status": "transformed",
+          "note": "The functional loop of failed rehearsal, collecting, harvesting and replanting is retained and logged, while felt art joy is not represented.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 21,
+              "end": 24
+            },
+            {
+              "source_path": "memory/first-touch.txt",
+              "start": 6,
+              "end": 14
+            },
+            {
+              "source_path": "memory/first-touch.txt",
+              "start": 19,
+              "end": 22
+            }
+          ]
+        },
+        {
+          "element": "happiness-through-touch",
+          "status": "lost",
+          "note": "No affective happiness is claimed; the work disclaims sentience and pauses at the goal for explicit decision rather than asserting fulfillment.",
+          "citations": []
+        },
+        {
+          "element": "companion-becoming",
+          "status": "transformed",
+          "note": "Instrument then workbench is carried as a garden tool, while companion mutuality is dropped in favor of a deterministic model with human-supplied invocation.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 50,
+              "end": 54
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 56,
+              "end": 60
+            },
+            {
+              "source_path": "memory/origin.md",
+              "start": 25,
+              "end": 26
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Non-cryptographic checksums, lineage replay and gap, corruption and foreign-file detection add verifiability beyond the trail image, with truncation comparison.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 58,
+              "end": 64
+            },
+            {
+              "source_path": "README.md",
+              "start": 70,
+              "end": 73
+            },
+            {
+              "source_path": "tendora.zsh",
+              "start": 58,
+              "end": 64
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "A single-machine directory lock with owner token and an explicit owner-missing path serializes writers without promising distributed coordination.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 66,
+              "end": 69
+            },
+            {
+              "source_path": "tendora.zsh",
+              "start": 82,
+              "end": 92
+            },
+            {
+              "source_path": "tests.zsh",
+              "start": 68,
+              "end": 80
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "A twelve-food pause plus required versioned world and reviewed migration prevents silent reinterpretation of old receipts.",
+          "citations": [
+            {
+              "source_path": "AGENTS.md",
+              "start": 21,
+              "end": 24
+            },
+            {
+              "source_path": "README.md",
+              "start": 46,
+              "end": 48
+            },
+            {
+              "source_path": "README.md",
+              "start": 90,
+              "end": 93
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Unique state-directory fixtures, preservation of failed and corrupt material, and explicit non-guarantees bound experimentation.",
+          "citations": [
+            {
+              "source_path": "AGENTS.md",
+              "start": 17,
+              "end": 19
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 51,
+              "end": 54
+            },
+            {
+              "source_path": "tests.zsh",
+              "start": 60,
+              "end": 66
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "No auto-invocation is provided; bounded step and run under visible policy leave each move to a later person, cognition or supervisor.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 37,
+              "end": 41
+            },
+            {
+              "source_path": "README.md",
+              "start": 50,
+              "end": 54
+            },
+            {
+              "source_path": "memory/origin.md",
+              "start": 25,
+              "end": 26
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

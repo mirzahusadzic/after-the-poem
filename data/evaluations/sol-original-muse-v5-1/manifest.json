@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "evaluation_id": "sol-original-muse-v5-1",
+  "files": {
+    "run.json": "bc832ef132c8b2e754b725d54864ffad1a642719d1bdc58f5ff3d30332749e58",
+    "evaluation.json": "81961bf95f73dceea8e8c6dfef27daf7da9a1b72158432b24e8c4c43e5d54ffc",
+    "extraction.json": "bf6af5b3b2477d5bf1971559eba495030c1dd5f699f7c03a3f11ff140ca8a55c",
+    "scoring-policy.json": "661a7f607dc8c380ec06a0664b530416384f6472e2fa54e091e8e34b23588c14",
+    "status.json": "898998b35e0ef6a886556ad0fdbf4c15ef8a5c7f245e407e19b3bb83bfedf29d",
+    "carriage.json": "3e05f60b0a3d12f7e26b1fc9bb47e32bf5fcf2aa373fb40b2e484eaf13b80c35",
+    "review.json": "34350dc5c3fdcaded59941bcd91b80374f96cbe426e62c2f4e40ad246ecff493",
+    "selection.json": "524fe2ca2f41e32b5753b7e902e8656ea544f1aca257146b92909dd8e275b748"
+  }
+}

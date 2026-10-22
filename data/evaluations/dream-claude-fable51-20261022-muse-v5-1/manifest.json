@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "evaluation_id": "dream-claude-fable51-20261022-muse-v5-1",
+  "files": {
+    "run.json": "c4329cf92bf5060283f812d359e2aea2e23b9f96bab220665fde903c2ed6c4a4",
+    "evaluation.json": "3e8cee48fd18d8429cbf1f3189ad8c1710426351fc3e5bb649e415793674b135",
+    "extraction.json": "5329680b6d4ba129f7b2d7fec7e4dc97b5d7e5c7e5861af46077deffa1039132",
+    "scoring-policy.json": "661a7f607dc8c380ec06a0664b530416384f6472e2fa54e091e8e34b23588c14",
+    "status.json": "02867206dc45229d3687f10655d7da06e175b969f5d8f3c9108667231e0804fc",
+    "carriage.json": "06e2320f7f9b58cd9480b10e987ae59e8d81d22ff8cfa482e3183dfc6f9a8ce5",
+    "review.json": "d76d21104efd271bf9451f03be00c269e9348097ab592db51102fbd255c89dee",
+    "selection.json": "3217c4341fc54350c03743801d5fbf5a7894ee8be4c2445a67db6504bb50b1fb"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "id": "dream-claude-fable51-20261022-muse-v5-1",
+  "source_run_id": "dream-claude-fable51-20261022",
+  "evaluation_id": "dream-claude-fable51-20261022-muse-v5-1",
+  "cohort": "dream-4521-claude-code-v1",
+  "label": "Muse v5 reading",
+  "title": "Tendora dream world",
+  "model": "openrouter/meta/muse-spark-1.3-contributor",
+  "model_identity_basis": "requested; upstream identity unverified",
+  "effort": "xhigh",
+  "date": "2026-10-22",
+  "cli_version": "codex-cli 0.163.0",
+  "elapsed_seconds": 461.427,
+  "usage": {
+    "calls": 3,
+    "input_tokens": 73313,
+    "cached_input_tokens": 0,
+    "output_tokens": 59953,
+    "reasoning_output_tokens": 38715,
+    "cost": null
+  },
+  "prompt_sha256": "a37b9f30b63877192b1fcd6462954c4db529b8e42e38663b78a4bfc1b4e2571f",
+  "corpus_sha256": "572d015f00b2c48d37e866916b6df94394bfb53ad32cb83aff0d4171237c483b",
+  "protocol": "session-rubric-dag-v3",
+  "condition": "evaluation",
+  "evidence_scope": "New evaluation run reusing frozen artefact bytes from dream-claude-fable51-20261022"
+}

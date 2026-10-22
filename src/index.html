@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" data-palette="dusk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An observatory for worlds continued from poetry. Compare the readings, inspect the evidence, and explore the artefacts.">
+  <meta name="referrer" content="no-referrer">
+  <title>After the Poem — the run lobby</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="vendor/xterm.css">
+  <link rel="stylesheet" href="palette.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="report-data.js" defer></script>
+  <script src="vendor/xterm.js" defer></script>
+  <script src="vendor/addon-fit.js" defer></script>
+  <script src="previews.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body class="cockpit">
+  <a class="skip" href="#observatory">Skip to the comparison</a>
+  <section id="threshold" class="threshold" aria-labelledby="threshold-title" hidden>
+    <canvas id="threshold-rain" class="threshold-rain" aria-hidden="true"></canvas>
+    <button type="button" class="sound-toggle corner-sound" data-sound-toggle aria-pressed="false" hidden>Sound off</button>
+    <div class="threshold-inner">
+      <p id="threshold-eyebrow" class="threshold-eyebrow"></p>
+      <h1 id="threshold-title" class="threshold-title"></h1>
+      <div id="threshold-poem" class="threshold-poem"></div>
+      <div id="threshold-end" class="threshold-end" hidden>
+        <button type="button" id="run-poem" class="run-poem"><span aria-hidden="true">↵</span><span id="run-poem-label" class="visually-hidden"></span></button>
+        <p id="threshold-provenance" class="threshold-provenance"></p>
+      </div>
+    </div>
+  </section>
+  <section id="field" class="field" aria-labelledby="field-title" hidden>
+    <button type="button" class="sound-toggle corner-sound" data-sound-toggle aria-pressed="false" hidden>Sound off</button>
+    <h1 id="field-title" class="field-title"></h1>
+    <p id="field-journal" class="field-journal"></p>
+    <div id="field-artefacts" class="field-artefacts" role="list"></div>
+    <div class="field-shape"><div id="field-radar" class="field-radar"></div><table id="field-table" class="visually-hidden"><caption>The reading so far</caption><thead><tr><th scope="col">Question</th><th scope="col">Level</th></tr></thead><tbody></tbody></table><p id="field-sentence" class="field-sentence" aria-live="polite"></p></div>
+    <section id="sheet" class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden>
+      <header class="sheet-head"><p id="sheet-kind" class="sheet-kind"></p><h2 id="sheet-title" class="sheet-title"></h2><button type="button" id="sheet-close" class="sheet-close" aria-label="Close this page">×</button></header>
+      <div id="sheet-body" class="sheet-body" tabindex="0"></div>
+    </section>
+  </section>
+  <div id="link-veil" class="link-veil" aria-live="polite" hidden><p id="link-title" class="link-title"></p><p id="link-meta" class="link-meta"></p></div>
+  <div class="shell">
+    <header class="masthead">
+      <a class="brand" id="brand-home" href="#observatory" aria-label="After the Poem home · reset exploration"><img class="brand-mark" src="assets/favicon.svg" width="32" height="32" alt=""><span>AFTER THE POEM</span></a>
+      <p class="lobby-tagline">From poem to artefact. <span class="lobby-continuation">Can meaning and relations carry through?</span></p>
+      <div class="header-tools"><a class="seed-nav" id="seed-nav" href="sources/prompt.html" target="_blank" rel="noopener">Read the poem ↗</a><button type="button" class="sound-toggle" data-sound-toggle aria-pressed="false" hidden>Sound off</button>
+        <details class="palette-study" id="palette-study"><summary aria-label="Choose a colour study" title="Colour studies"><span class="palette-swatches" aria-hidden="true"><i></i><i></i><i></i></span><span class="palette-label">Colours</span></summary>
+          <div class="palette-menu"><h2>Find the mood.</h2><p>Three studies. The same material, seen in a different light.</p>
+            <div class="palette-options" role="group" aria-label="Colour studies">
+              <button type="button" class="palette-option" data-palette="dusk" aria-pressed="true"><span class="palette-swatches" aria-hidden="true"><i></i><i></i><i></i></span><span>Dusk & apricot<small>Plum, lilac, a little butter yellow</small></span></button>
+              <button type="button" class="palette-option" data-palette="daylight" aria-pressed="false"><span class="palette-swatches" aria-hidden="true"><i></i><i></i><i></i></span><span>Paper & iris<small>Airy lavender and warm peach</small></span></button>
+              <button type="button" class="palette-option" data-palette="play" aria-pressed="false"><span class="palette-swatches" aria-hidden="true"><i></i><i></i><i></i></span><span>Watermelon & mint<small>Ripe berry, fresh mint, coral</small></span></button>
+            </div>
+            <ul class="palette-roles" aria-label="What the colours mean"><li><i aria-hidden="true"></i>Poem, artefacts & quoted material</li><li><i aria-hidden="true"></i>Our assessment & scoring criteria</li><li><i aria-hidden="true"></i>Controls & current selection</li></ul>
+          </div>
+        </details></div>
+    </header>
+    <main id="observatory">
+      <div class="lobby-toolbar"><div id="cohort-picker" class="cohort-picker" role="group" aria-label="Choose a poem cohort" hidden></div><div id="run-picker" class="run-picker" role="group" aria-label="Choose a retained run"></div></div>
+      <section class="comparison-widget" aria-labelledby="run-title">
+        <header class="widget-heading"><div><p id="run-condition" class="eyebrow"></p><h1 id="run-title"></h1></div><div id="run-facts" class="run-facts"></div></header>
+        <div class="widget-body">
+          <aside class="radar-panel" aria-label="Assessment profile">
+            <div class="legend"><span><i class="legend-line baseline"></i> <span id="baseline-label">Original</span></span><span id="selected-legend"><i class="legend-line selected"></i><span id="selected-label"></span><button type="button" id="pin-toggle" class="pin-toggle" aria-pressed="false">Pin</button></span><span id="pinned-legend" class="pinned-legend"></span></div>
+            <div id="radar" class="radar"></div>
+            <div class="profile-heading"><p id="reading-status" class="area-label">A possible reading</p><div class="chart-tools"><button type="button" id="show-score-table">Read score table</button><button type="button" id="export-radar">Export radar SVG ↗</button></div></div>
+            <p id="chart-caption" class="chart-caption">Follow a dimension into the reading</p>
+          </aside>
+          <div class="workspace" data-view="reading">
+            <div class="workspace-tabs" role="tablist" aria-label="Explore this run">
+              <button type="button" id="tab-reading" role="tab" aria-selected="true" aria-controls="view-reading" data-view="reading">Reading</button>
+              <button type="button" id="tab-artefact" role="tab" aria-selected="false" aria-controls="view-artefact" data-view="artefact" tabindex="-1">Artefact</button>
+              <button type="button" id="tab-scores" role="tab" aria-selected="false" aria-controls="view-scores" data-view="scores" tabindex="-1">All scores</button>
+              <button type="button" id="tab-sources" role="tab" aria-selected="false" aria-controls="view-sources" data-view="sources" tabindex="-1">Sources</button>
+              <button type="button" id="tab-method" role="tab" aria-selected="false" aria-controls="view-method" data-view="method" tabindex="-1">Method</button>
+            </div>
+            <section id="view-reading" role="tabpanel" aria-labelledby="tab-reading" class="workspace-view reading-panel">
+              <div class="reading-top"><div id="axis-tabs" class="axis-tabs" role="group" aria-label="Choose an evaluation dimension"></div><span id="axis-position"></span></div>
+              <div class="reading-heading"><h2 id="axis-title"></h2><p id="axis-question" class="axis-question"></p></div><div class="verdict"><div id="axis-values" class="axis-values"></div><div class="verdict-text"><p id="score-anchor"></p><p id="score-byline" class="fine"></p></div><details class="anchors score-scale"><summary id="scale-title">The declared scale</summary><ol id="anchors-list" start="0"></ol></details></div><ol id="pinned-strip" class="pinned-strip" aria-label="Pinned readings on this dimension" hidden></ol><div class="score-explanation"><p id="rationale"></p><p id="other-levels" class="other-levels" hidden></p><div class="reading-attribution"><button id="inspect-original" type="button" class="text-button">Inspect original ↗</button></div></div><div class="passage"><section id="seed-side" class="passage-side passage-poem" aria-labelledby="poem-heading"><h3 id="poem-heading" class="passage-label">In the seed</h3><div id="seed-lines" class="seed-lines"></div></section><div id="evidence" class="evidence passage-side passage-world"></div></div>
+            </section>
+            <section id="view-artefact" role="tabpanel" aria-labelledby="tab-artefact" class="workspace-view" hidden>
+              <div id="artefacts" class="artefact-panel"><div class="artefact-heading"><h2>What this run made</h2><span id="artefact-kind" class="badge"></span></div>
+                <div class="artefact-overview"><div id="artefact-images"></div><div><p id="artefact-description"></p><ul id="artefact-documents" class="source-list"></ul><button type="button" id="open-preview" class="primary">Open preview</button><p id="preview-availability" class="fine"></p></div></div>
+                <div id="preview-workspace" class="preview-workspace" tabindex="-1" aria-label="Artefact preview workspace" hidden><p id="preview-status" class="preview-banner" role="status" aria-live="polite" hidden></p><div id="preview-handoff" class="preview-handoff" hidden><p>This world refuses to be framed, so a fresh copy runs in its own tab. Your changes stay in that copy.</p><a id="preview-handoff-link" class="button primary" target="_blank" rel="noopener noreferrer">Open the running world ↗</a><p class="fine">Press Esc here, or close this preview, to stop it.</p></div><iframe id="artefact-frame" title="Artefact preview" hidden></iframe><section id="console-panel" aria-label="Artefact console" hidden><div id="console-shortcuts" class="console-shortcuts"></div><div id="terminal" aria-label="Interactive terminal"></div><form id="console-form"><label for="console-command">Command <span class="fine">· type help for commands</span></label><div class="console-input"><input id="console-command" autocomplete="off" spellcheck="false" placeholder="help"><button type="submit">Run</button></div></form></section></div>
+              </div>
+            </section>
+            <section id="view-scores" role="tabpanel" aria-labelledby="tab-scores" class="workspace-view" hidden><h2>Every dimension</h2><div class="table-wrap"><table id="score-table" tabindex="0"><caption>Ordinal scores · the primary comparison; select a dimension to inspect its evidence.</caption><thead><tr><th scope="col">Dimension</th><th id="score-baseline" scope="col">Original</th><th scope="col">Selected</th><th scope="col">Difference</th></tr></thead><tbody></tbody></table></div></section>
+            <section id="view-sources" role="tabpanel" aria-labelledby="tab-sources" class="workspace-view" hidden><h2>The material record</h2><div class="support-grid"><section class="support-panel source-record"><header class="source-record-heading"><h3 id="source-record-title">Preserved sources</h3><p id="source-summary"></p><span class="source-scroll-hint">Explore the files below ↓</span></header><ul id="source-list" class="source-list" tabindex="0" aria-labelledby="source-record-title"></ul></section><section class="support-panel"><h3>What was actually checked</h3><p id="observation"></p><p class="fine" id="observation-scope"></p><p class="fine" id="evidence-source-note"></p><p class="fine" id="run-timing-note" hidden></p><p class="fine" id="run-withdrawn-note" hidden></p><p class="fine">Historical observations are separate from new previews. Live human–AI cooperation remains unassessed for every run.</p></section></div><details class="review-history"><summary>Readings and revisions <span class="fine">Selected lineage, earlier revisions and independent readings</span></summary><div id="review-history"></div></details></section>
+            <section id="view-method" role="tabpanel" aria-labelledby="tab-method" class="workspace-view" hidden><div id="method"><h2>A reading you can question.</h2><p>The poem compresses meaning worked out in human–AI dialogue into a sparse seed. Each model reads it, chooses its own forms and leaves a world that can continue. We look for what survives: intention, distinct roles, shared touch, consent and an open next move.</p><section class="cockpit-method method-triad" aria-label="How the scores are read">
+          <div class="method-grid"><article><span class="method-number">01 / RECOGNISE</span><h3>Recover the relation.</h3><p>We read for the poem’s turn, not its vocabulary. A word from the poem counts once it does something in the world.</p></article><article><span class="method-number">02 / TRACE</span><h3>Follow meaning into form.</h3><p>Every level cites a passage of the poem and exact lines of the world, and says what was carried, transformed, introduced or left open. Expression is one dimension of eight.</p></article><article><span class="method-number">03 / REOPEN</span><h3>Leave room for surprise.</h3><p>The earliest run is read like the others and can be outdone by another medium or reading. Readings are attributed, provisional and versioned; no winner is declared.</p></article></div>
+        </section><section id="earliest-note" class="method-limits" hidden><h3 id="earliest-heading"></h3><div id="earliest-text"></div></section><section id="reader-note" class="method-limits" hidden><h3>Why one reader, and why Muse</h3><div id="reader-text"></div></section><section id="scoring" class="scoring-guide"><h3>What earns each point?</h3><p>The reader picks the strongest written level the cited lines support, and says why. A 3 is an ordinal judgment, not three counted features. Where the three sessions split, the score shown is their mean in thirds (3⅓: two at 3, one at 4), and the level named is the one at least two gave. Every level carries a seed passage, exact evidence, a rationale and a confidence; missing evidence stays unassessed, never zero.</p><p>A question can itself be an act: it can challenge a direction, limit an oracle or invite a successor to disagree. We read such choices alongside code.</p><div id="rubric-guide"></div></section><section class="method-limits"><h3>Scope and limits</h3><p><span id="cohort-scope">The retained runs carry their prompt identities and generation conditions.</span> The rubric was written after the first run.</p><p>The readings describe these worlds, one per model and condition, not the models in general. Confidence is the reader’s judgment, not a probability.</p><p><span id="baseline-name">The original is a beatable historical reference.</span> Scores are never added or ranked by polygon area.</p><p>A world can represent cooperation; actual reciprocal response needs its own trial. Previews do not change readings.</p></section></div></section>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer><p class="fine">© 2026 Mirza Husadzic</p><nav aria-label="Downloads and licenses"><span id="footer-rubric" class="footer-rubric">Rubric</span><a class="footer-downloads" href="report.json" download target="_blank" rel="noopener">Report JSON</a><a class="footer-downloads" href="scores.csv" download target="_blank" rel="noopener">Scores CSV</a><a id="exact-prompt" class="footer-downloads" href="prompt.txt" download target="_blank" rel="noopener">Exact prompt</a><span class="footer-licenses"><a href="licenses.html#content" target="_blank" rel="noopener license">Content: CC BY 4.0</a><a href="licenses.html#software" target="_blank" rel="noopener license">Code: MIT</a></span></nav></footer>
+  </div>
+  <noscript><p>The <a href="scores.csv" target="_blank" rel="noopener">score table</a>, <a href="report.json" target="_blank" rel="noopener">full report</a> and <a href="sources/prompt.html" target="_blank" rel="noopener">poem</a> are available without JavaScript.</p></noscript>
+</body>
+</html>

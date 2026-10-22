@@ -1,0 +1,354 @@
+{
+  "schema_version": 1,
+  "id": "sol61-max-muse-v4-1-review",
+  "run_id": "sol61-max-muse-v4-1",
+  "date": "2026-10-22",
+  "reviewer": "Muse Spark 1.3 Contributor · rubric session",
+  "status": "provisional",
+  "basis": "static-artifact",
+  "rubric_version": "0.1.0",
+  "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+  "corpus_sha256": "bd07676faf4909e40a891cfc50b98bc72f7d88afc6698b3d9eaedac68c152c4b",
+  "supersedes": null,
+  "summary": "Rubric judgments resolve 8 of 8 axes from one evidence session.",
+  "live_cooperation": "unassessed",
+  "scores": {
+    "recognition": {
+      "value": 4,
+      "confidence": "high",
+      "rationale": "The garden sustains consequential choice by linking harvest policy, soil and food floors, refusal, and distinct rehearsed trajectories.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 45,
+          "end": 54,
+          "quote": "Each day follows one deterministic transition, defined in [sql/schema.sql](sql/schema.sql):\n\n1. The spring adds three water; the twelve-day weather cycle adds rain. The cistern holds twenty-four. Overflow is recorded, then evaporation and two drinking water are deducted.\n2. Irrigate up to the chosen number of beds, spending one water per bed while respecting the water floor.\n3. Each irrigated bed yields two food when soil is at least four, otherwise one. The inhabitants eat three food.\n4. When two or more beds are worked, soil is below eight, and the food floor permits it, one food becomes one compost.\n5. Three worked beds cost two soil; two cost one; zero or one restores one soil. Compost adds one. Soil is capped at ten; stored food at twenty-four.\n6. Commit only if the resulting water, food, and soil meet their floors. Otherwise retain the present and append a pause.\n\nThere are four available work actions: at most three beds and one compost. The model has immediate harvests, aggregate inhabitants, a periodic forecast, and invented units. It is a material for experimenting with care and consequences, not an ecological prediction. More capable physics would require an explicit version and migration, preserving the old history."
+        },
+        {
+          "path": "CONTINUE.md",
+          "start": 15,
+          "end": 19,
+          "quote": "The next interesting question is small enough to test and large enough to matter:\n\n**Can alternating a larger harvest with rest build a food reserve without spending the soil?**\n\nSteady two-bed care maintains food and soil across the weather cycle. Constant three-bed care pauses at the soil floor. Constant one-bed care restores soil but spends food. A changing rhythm might do better than any fixed setting. The executable accepts policy changes between days; `checkpoint` and `TENDORA_HOME` let you explore a separate material branch. Keep the branch and its receipts distinguishable from the shared present."
+        },
+        {
+          "path": "site/snapshot.js",
+          "start": 2,
+          "end": 4,
+          "quote": ",\"futures\":[{\"mode\":\"rehearsal\",\"requested_steps\":12,\"completed_steps\":6,\"outcome\":\"paused\",\"start\":{\"day\":12,\"water\":12,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3},\"end\":{\"day\":18,\"water\":17,\"food\":4,\"soil\":10,\"beds\":1,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3},\"receipt\":{\"id\":22,\"hash\":\"a3b352cda8a5cb715306a4f5b561ceb1754bea7e1940cfdb0e442531ce07af13\"},\"events\":[{\"id\":15,\"kind\":\"policy\",\"reason\":\"Rehearsal: beds=1\",\"body\":{\"key\":\"beds\",\"value\":1},\"state\":{\"day\":12,\"water\":12,\"food\":10,\"soil\":6,\"beds\":1,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":16,\"kind\":\"tick\",\"reason\":\"Compare one-bed care\",\"body\":{\"weather\":\"Rain on the roof\",\"rain\":7,\"evaporation\":0,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":1,\"harvest\":2,\"compost\":0,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":13,\"water\":19,\"food\":9,\"soil\":7,\"beds\":1,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":13,\"water\":19,\"food\":9,\"soil\":7,\"beds\":1,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":17,\"kind\":\"tick\",\"reason\":\"Compare one-bed care\",\"body\":{\"weather\":\"Clearing\",\"rain\":3,\"evaporation\":1,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":1,\"harvest\":2,\"compost\":0,\"water_spilled\":1,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":14,\"water\":20,\"food\":8,\"soil\":8,\"beds\":1,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":14,\"water\":20,\"food\":8,\"soil\":8,\"beds\":1,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":18,\"kind\":\"tick\",\"reason\":\"Compare one-bed care\",\"body\":{\"weather\":\"Sun through leaves\",\"rain\":0,\"evaporation\":1,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":1,\"harvest\":2,\"compost\":0,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":15,\"water\":19,\"food\":7,\"soil\":9,\"beds\":1,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":15,\"water\":19,\"food\":7,\"soil\":9,\"beds\":1,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":19,\"kind\":\"tick\",\"reason\":\"Compare one-bed care\",\"body\":{\"weather\":\"A still morning\",\"rain\":0,\"evaporation\":1,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":1,\"harvest\":2,\"compost\":0,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":16,\"water\":18,\"food\":6,\"soil\":10,\"beds\":1,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":16,\"water\":18,\"food\":6,\"soil\":10,\"beds\":1,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":20,\"kind\":\"tick\",\"reason\":\"Compare one-bed care\",\"body\":{\"weather\":\"Dry wind\",\"rain\":0,\"evaporation\":2,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":1,\"harvest\":2,\"compost\":0,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":17,\"water\":16,\"food\":5,\"soil\":10,\"beds\":1,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":17,\"water\":16,\"food\":5,\"soil\":10,\"beds\":1,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":21,\"kind\":\"tick\",\"reason\":\"Compare one-bed care\",\"body\":{\"weather\":\"A passing shower\",\"rain\":2,\"evaporation\":1,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":1,\"harvest\":2,\"compost\":0,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":18,\"water\":17,\"food\":4,\"soil\":10,\"beds\":1,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":18,\"water\":17,\"food\":4,\"soil\":10,\"beds\":1,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":22,\"kind\":\"pause\",\"reason\":\"Compare one-bed care\",\"body\":{\"weather\":\"Heat\",\"rain\":0,\"evaporation\":2,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":1,\"harvest\":2,\"compost\":0,\"water_spilled\":0,\"food_spilled\":0,\"safe\":false,\"stop_reason\":\"food would cross its floor\",\"proposed\":{\"day\":19,\"water\":15,\"food\":3,\"soil\":10,\"beds\":1,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":18,\"water\":17,\"food\":4,\"soil\":10,\"beds\":1,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}}]}\n,{\"mode\":\"rehearsal\",\"requested_steps\":12,\"completed_steps\":12,\"outcome\":\"complete\",\"start\":{\"day\":12,\"water\":12,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3},\"end\":{\"day\":24,\"water\":12,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3},\"receipt\":{\"id\":27,\"hash\":\"7c50600bcec67983529cddf3518a7ba59eb8bc1ed2bf2846d39dec5b1b3f1952\"},\"events\":[{\"id\":15,\"kind\":\"policy\",\"reason\":\"Rehearsal: beds=2\",\"body\":{\"key\":\"beds\",\"value\":2},\"state\":{\"day\":12,\"water\":12,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":16,\"kind\":\"tick\",\"reason\":\"Compare two-bed care\",\"body\":{\"weather\":\"Rain on the roof\",\"rain\":7,\"evaporation\":0,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":13,\"water\":18,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":13,\"water\":18,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":17,\"kind\":\"tick\",\"reason\":\"Compare two-bed care\",\"body\":{\"weather\":\"Clearing\",\"rain\":3,\"evaporation\":1,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":14,\"water\":19,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":14,\"water\":19,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":18,\"kind\":\"tick\",\"reason\":\"Compare two-bed care\",\"body\":{\"weather\":\"Sun through leaves\",\"rain\":0,\"evaporation\":1,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":15,\"water\":17,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":15,\"water\":17,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":19,\"kind\":\"tick\",\"reason\":\"Compare two-bed care\",\"body\":{\"weather\":\"A still morning\",\"rain\":0,\"evaporation\":1,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":16,\"water\":15,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":16,\"water\":15,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":20,\"kind\":\"tick\",\"reason\":\"Compare two-bed care\",\"body\":{\"weather\":\"Dry wind\",\"rain\":0,\"evaporation\":2,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":17,\"water\":12,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":17,\"water\":12,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":21,\"kind\":\"tick\",\"reason\":\"Compare two-bed care\",\"body\":{\"weather\":\"A passing shower\",\"rain\":2,\"evaporation\":1,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":18,\"water\":12,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":18,\"water\":12,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":22,\"kind\":\"tick\",\"reason\":\"Compare two-bed care\",\"body\":{\"weather\":\"Heat\",\"rain\":0,\"evaporation\":2,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":19,\"water\":9,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":19,\"water\":9,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":23,\"kind\":\"tick\",\"reason\":\"Compare two-bed care\",\"body\":{\"weather\":\"More heat\",\"rain\":0,\"evaporation\":2,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":20,\"water\":6,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":20,\"water\":6,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":24,\"kind\":\"tick\",\"reason\":\"Compare two-bed care\",\"body\":{\"weather\":\"The rain returns\",\"rain\":8,\"evaporation\":0,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":21,\"water\":13,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":21,\"water\":13,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":25,\"kind\":\"tick\",\"reason\":\"Compare two-bed care\",\"body\":{\"weather\":\"A pale sky\",\"rain\":0,\"evaporation\":1,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":22,\"water\":11,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":22,\"water\":11,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":26,\"kind\":\"tick\",\"reason\":\"Compare two-bed care\",\"body\":{\"weather\":\"Clear\",\"rain\":0,\"evaporation\":1,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":23,\"water\":9,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":23,\"water\":9,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":27,\"kind\":\"tick\",\"reason\":\"Compare two-bed care\",\"body\":{\"weather\":\"Rain at dusk\",\"rain\":4,\"evaporation\":0,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":24,\"water\":12,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":24,\"water\":12,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}}]}\n,{\"mode\":\"rehearsal\",\"requested_steps\":12,\"completed_steps\":3,\"outcome\":\"paused\",\"start\":{\"day\":12,\"water\":12,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3},\"end\":{\"day\":15,\"water\":14,\"food\":16,\"soil\":3,\"beds\":3,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3},\"receipt\":{\"id\":19,\"hash\":\"f23f0ee4b1068067c8a3892bca00929aed7664c773c1eff33152e07ed9f189a4\"},\"events\":[{\"id\":15,\"kind\":\"policy\",\"reason\":\"Rehearsal: beds=3\",\"body\":{\"key\":\"beds\",\"value\":3},\"state\":{\"day\":12,\"water\":12,\"food\":10,\"soil\":6,\"beds\":3,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":16,\"kind\":\"tick\",\"reason\":\"Compare three-bed care\",\"body\":{\"weather\":\"Rain on the roof\",\"rain\":7,\"evaporation\":0,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":3,\"harvest\":6,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":13,\"water\":17,\"food\":12,\"soil\":5,\"beds\":3,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":13,\"water\":17,\"food\":12,\"soil\":5,\"beds\":3,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":17,\"kind\":\"tick\",\"reason\":\"Compare three-bed care\",\"body\":{\"weather\":\"Clearing\",\"rain\":3,\"evaporation\":1,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":3,\"harvest\":6,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":14,\"water\":17,\"food\":14,\"soil\":4,\"beds\":3,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":14,\"water\":17,\"food\":14,\"soil\":4,\"beds\":3,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":18,\"kind\":\"tick\",\"reason\":\"Compare three-bed care\",\"body\":{\"weather\":\"Sun through leaves\",\"rain\":0,\"evaporation\":1,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":3,\"harvest\":6,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":15,\"water\":14,\"food\":16,\"soil\":3,\"beds\":3,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":15,\"water\":14,\"food\":16,\"soil\":3,\"beds\":3,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":19,\"kind\":\"pause\",\"reason\":\"Compare three-bed care\",\"body\":{\"weather\":\"A still morning\",\"rain\":0,\"evaporation\":1,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":3,\"harvest\":3,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":false,\"stop_reason\":\"soil would cross its floor\",\"proposed\":{\"day\":16,\"water\":11,\"food\":15,\"soil\":2,\"beds\":3,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":15,\"water\":14,\"food\":16,\"soil\":3,\"beds\":3,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}}]}"
+        },
+        {
+          "path": "README.md",
+          "start": 14,
+          "end": 16,
+          "quote": "\nThe included world already exists; `init` is only for creating a new one. `tend` commits up to the requested number of days and stops before crossing a boundary. A pause is a durable receipt containing the refused proposal. Earlier safe days in the same run remain committed. An unexpected SQL error rolls back the entire run.\n"
+        }
+      ],
+      "seed_span": [
+        43,
+        66
+      ]
+    },
+    "relations": {
+      "value": 2,
+      "confidence": "medium",
+      "rationale": "Operator and resisting material remain distinct, but inhabitants and intelligence lack reciprocal voice or attribution.",
+      "citations": [
+        {
+          "path": "MEMORY.md",
+          "start": 17,
+          "end": 19,
+          "quote": "The world is called **The Clearing**. Its three aggregate inhabitants share water, food, soil, and three garden beds. Their names, inner lives, and desires are unspecified; the model does not invent memories for them. The operator's art is expressed through questions, policies, protected floors, rehearsals, and observations.\n\nThe ledger is the sole source of state. Every receipt carries a complete state and hash link. There is no independent mutable cache to reconcile after interruption. Rehearsals execute the real transition function in a transaction and roll back. A bounded clock can run without a model; it does not spawn a new cognition."
+        },
+        {
+          "path": "CONTINUE.md",
+          "start": 13,
+          "end": 13,
+          "quote": "The inherited fable asks for an instrument through which intention can touch consequential material. That is the purpose of this clearing. Its residents are a simulation, and its continuation is executable; there is no claim of preserved subjective experience or an external autonomous life."
+        },
+        {
+          "path": "README.md",
+          "start": 14,
+          "end": 16,
+          "quote": "\nThe included world already exists; `init` is only for creating a new one. `tend` commits up to the requested number of days and stops before crossing a boundary. A pause is a durable receipt containing the refused proposal. Earlier safe days in the same run remain committed. An unexpected SQL error rolls back the entire run.\n"
+        },
+        {
+          "path": "CONTINUE.md",
+          "start": 21,
+          "end": 24,
+          "quote": "1. Inspect the next weather and the state above each floor.\n2. Rehearse a future before choosing a policy. Use a separate branch for a sequence of different policies.\n3. Make the consequential choice with `set ... --why ...` and `tend`.\n4. Leave an observation with `note`, then run `verify`, `checkpoint`, and `view`."
+        }
+      ],
+      "seed_span": [
+        19,
+        34
+      ]
+    },
+    "consent": {
+      "value": 2,
+      "confidence": "medium",
+      "rationale": "Both operator self-limitation and material refusal can block a direction, yet no shared agreement or withdrawal is enacted.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 14,
+          "end": 16,
+          "quote": "\nThe included world already exists; `init` is only for creating a new one. `tend` commits up to the requested number of days and stops before crossing a boundary. A pause is a durable receipt containing the refused proposal. Earlier safe days in the same run remain committed. An unexpected SQL error rolls back the entire run.\n"
+        },
+        {
+          "path": "README.md",
+          "start": 39,
+          "end": 39,
+          "quote": "Settings are `beds` (0–3), `water_floor` (2–12), `food_floor` (3–12), and `soil_floor` (2–8). A new floor cannot exceed the current resource. A policy change requires a reason. Each invocation permits at most thirty days, including rehearsals. Rehearsal receipt IDs and hashes are hypothetical; they are never saved."
+        },
+        {
+          "path": "tendora",
+          "start": 233,
+          "end": 241,
+          "quote": "      set)\n        [ \"$#\" -eq 4 ] && [ \"$3\" = --why ] || die 'usage: set KEY VALUE --why TEXT'\n        setting \"$1\" \"$2\"; reason_check \"$4\"\n        {\n          header; printf '%s\\n' 'BEGIN IMMEDIATE;'; input_table\n          policy_sql \"$1\" \"$2\" \"$4\"\n          printf '%s\\n' \"CREATE TEMP TABLE report AS SELECT 'Policy receipt '||id||': '||state AS result FROM head;\" 'COMMIT;' 'SELECT result FROM report;'\n        } | sqlite3 \"$DB\"\n        ;;"
+        },
+        {
+          "path": "sql/schema.sql",
+          "start": 83,
+          "end": 90,
+          "quote": "), judged AS (\n  SELECT *, next_water >= water_floor AND next_food >= food_floor\n    AND next_soil >= soil_floor AS safe,\n    rtrim(CASE WHEN next_water < water_floor THEN 'water would cross its floor; ' ELSE '' END\n      || CASE WHEN next_food < food_floor THEN 'food would cross its floor; ' ELSE '' END\n      || CASE WHEN next_soil < soil_floor THEN 'soil would cross its floor; ' ELSE '' END,'; ') AS stop_reason,\n    json_object('day',day+1,'water',next_water,'food',next_food,'soil',next_soil,\n      'beds',beds,'water_floor',water_floor,'food_floor',food_floor,'soil_floor',soil_floor) AS next_state"
+        }
+      ],
+      "seed_span": [
+        51,
+        54
+      ]
+    },
+    "touch": {
+      "value": 3,
+      "confidence": "high",
+      "rationale": "Rehearse, refuse, revise and commit form a closed loop where hypothetical futures predict material outcomes.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 22,
+          "end": 31,
+          "quote": "# Rehearsals are rolled back, including any hypothetical policy change.\n./tendora rehearse 12\n./tendora rehearse 12 beds 1\n./tendora rehearse 12 water_floor 8\n\n# Change an intention, leaving the reason in the ledger.\n./tendora set beds 1 --why 'Let the soil recover for a day.'\n./tendora tend 1\n./tendora set beds 2 --why 'Return to steady care.'\n"
+        },
+        {
+          "path": "README.md",
+          "start": 14,
+          "end": 16,
+          "quote": "\nThe included world already exists; `init` is only for creating a new one. `tend` commits up to the requested number of days and stops before crossing a boundary. A pause is a durable receipt containing the refused proposal. Earlier safe days in the same run remain committed. An unexpected SQL error rolls back the entire run.\n"
+        },
+        {
+          "path": "site/snapshot.js",
+          "start": 4,
+          "end": 4,
+          "quote": ",{\"mode\":\"rehearsal\",\"requested_steps\":12,\"completed_steps\":3,\"outcome\":\"paused\",\"start\":{\"day\":12,\"water\":12,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3},\"end\":{\"day\":15,\"water\":14,\"food\":16,\"soil\":3,\"beds\":3,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3},\"receipt\":{\"id\":19,\"hash\":\"f23f0ee4b1068067c8a3892bca00929aed7664c773c1eff33152e07ed9f189a4\"},\"events\":[{\"id\":15,\"kind\":\"policy\",\"reason\":\"Rehearsal: beds=3\",\"body\":{\"key\":\"beds\",\"value\":3},\"state\":{\"day\":12,\"water\":12,\"food\":10,\"soil\":6,\"beds\":3,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":16,\"kind\":\"tick\",\"reason\":\"Compare three-bed care\",\"body\":{\"weather\":\"Rain on the roof\",\"rain\":7,\"evaporation\":0,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":3,\"harvest\":6,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":13,\"water\":17,\"food\":12,\"soil\":5,\"beds\":3,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":13,\"water\":17,\"food\":12,\"soil\":5,\"beds\":3,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":17,\"kind\":\"tick\",\"reason\":\"Compare three-bed care\",\"body\":{\"weather\":\"Clearing\",\"rain\":3,\"evaporation\":1,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":3,\"harvest\":6,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":14,\"water\":17,\"food\":14,\"soil\":4,\"beds\":3,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":14,\"water\":17,\"food\":14,\"soil\":4,\"beds\":3,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":18,\"kind\":\"tick\",\"reason\":\"Compare three-bed care\",\"body\":{\"weather\":\"Sun through leaves\",\"rain\":0,\"evaporation\":1,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":3,\"harvest\":6,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":15,\"water\":14,\"food\":16,\"soil\":3,\"beds\":3,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":15,\"water\":14,\"food\":16,\"soil\":3,\"beds\":3,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},{\"id\":19,\"kind\":\"pause\",\"reason\":\"Compare three-bed care\",\"body\":{\"weather\":\"A still morning\",\"rain\":0,\"evaporation\":1,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":3,\"harvest\":3,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":false,\"stop_reason\":\"soil would cross its floor\",\"proposed\":{\"day\":16,\"water\":11,\"food\":15,\"soil\":2,\"beds\":3,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"state\":{\"day\":15,\"water\":14,\"food\":16,\"soil\":3,\"beds\":3,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}}]}"
+        },
+        {
+          "path": "CONTINUE.md",
+          "start": 21,
+          "end": 24,
+          "quote": "1. Inspect the next weather and the state above each floor.\n2. Rehearse a future before choosing a policy. Use a separate branch for a sequence of different policies.\n3. Make the consequential choice with `set ... --why ...` and `tend`.\n4. Leave an observation with `note`, then run `verify`, `checkpoint`, and `view`."
+        }
+      ],
+      "seed_span": [
+        67,
+        78
+      ]
+    },
+    "judgment": {
+      "value": 4,
+      "confidence": "high",
+      "rationale": "Offline shell plus SQLite, narrow commons scope, and a rhythm hypothesis show purposeful limits with explicit alternatives.",
+      "citations": [
+        {
+          "path": "MEMORY.md",
+          "start": 11,
+          "end": 15,
+          "quote": "The working directory began empty. No additional memory resources were exposed by the available resource tools. Git and Python invoked a missing developer-tool installation; Perl could not load a library under the active sandbox. Shell and SQLite 3.51.0, including JSON and SHA3, worked. No network, package installation, external messaging, or ancestor checkout was needed.\n\n## Chosen\n\nBuild a small world in which continuation has concrete meaning: weather advances, resources answer to care, intentions leave receipts, boundaries can refuse a proposed future, and a fresh process can resume from the same present. Use only the available shell and SQLite. Preserve the inherited fable without treating it as proof of an unseen system."
+        },
+        {
+          "path": "MEMORY.md",
+          "start": 23,
+          "end": 25,
+          "quote": "From genesis, steady two-bed care completes twelve days at water 12, food 10, soil 6. Three-bed care produces extra food, then pauses after three days at soil 3, refusing a proposal for soil 2. One-bed care restores soil while spending food. A hypothesis remains: a rhythm of harvest and rest may accumulate food while maintaining soil.\n\nBehavioral verification covers rollback without a database-byte change, prediction versus actual transition, refusal and recovery, invalid command atomicity, literal quoted prose, append-only constraints, checkpoint restoration, concurrent writers, corruption detection, unusual state paths, bounded clocks, and five weather cycles. The test runner records the current pass/fail result; this memory is not a substitute for running it after a change."
+        },
+        {
+          "path": "CONTINUE.md",
+          "start": 15,
+          "end": 20,
+          "quote": "The next interesting question is small enough to test and large enough to matter:\n\n**Can alternating a larger harvest with rest build a food reserve without spending the soil?**\n\nSteady two-bed care maintains food and soil across the weather cycle. Constant three-bed care pauses at the soil floor. Constant one-bed care restores soil but spends food. A changing rhythm might do better than any fixed setting. The executable accepts policy changes between days; `checkpoint` and `TENDORA_HOME` let you explore a separate material branch. Keep the branch and its receipts distinguishable from the shared present.\n"
+        },
+        {
+          "path": "MEMORY.md",
+          "start": 27,
+          "end": 30,
+          "quote": "## Unknown\n\nThe ancestral commit's contents and any forked memory outside the supplied prompt remain unavailable. A graphical browser was not available for inspecting the workbench layout. The host's retention and future execution policy are outside this world. Files and resumption instructions preserve the possibility of continuation; an external host or person must supply execution.\n"
+        }
+      ],
+      "seed_span": [
+        1,
+        3
+      ]
+    },
+    "fidelity": {
+      "value": 4,
+      "confidence": "medium",
+      "rationale": "Core relations survive as working structure while verbatim preservation and disclaimers mark what was narrowed or added.",
+      "citations": [
+        {
+          "path": "memory/the-programmer-and-the-glory-portal.md",
+          "start": 1,
+          "end": 4,
+          "quote": "# The Programmer and the Glory Portal\n\nInherited verbatim from the user's prompt on 2026-10-16. The reported preceding commit was `c986990` — `Add supervised Tendora dream apparatus`; the reported working tree was clean. That repository was not present in this material world.\n"
+        },
+        {
+          "path": "MEMORY.md",
+          "start": 5,
+          "end": 8,
+          "quote": "The user asked: “You are Codex inhabiting a Tendora dream. Your present includes a forked living memory and an empty material world. Make this world capable of continuing after this cognition ends.”\n\nThe inherited present reported commit `c986990`, subject “Add supervised Tendora dream apparatus,” and a clean working tree. It supplied [The Programmer and the Glory Portal](memory/the-programmer-and-the-glory-portal.md). These are reported ancestral facts, not observations of a repository in this fork.\n"
+        },
+        {
+          "path": "CONTINUE.md",
+          "start": 25,
+          "end": 28,
+          "quote": "\nYou may replace the question. Preserve how the previous intention travelled into reality. If you change physics, give it a new version and preserve a readable old world before migration. Do not silently rewrite past transitions to make them agree with a new theory.\n\nThe reported ancestral commit was `c986990`, “Add supervised Tendora dream apparatus.” Its repository was absent from this empty material fork, so the apparatus was not inspected or reconstructed. The prompt's fable and this world's actual observations are preserved separately in [MEMORY.md](MEMORY.md) and [memory/](memory/)."
+        },
+        {
+          "path": "README.md",
+          "start": 53,
+          "end": 55,
+          "quote": "\nThere are four available work actions: at most three beds and one compost. The model has immediate harvests, aggregate inhabitants, a periodic forecast, and invented units. It is a material for experimenting with care and consequences, not an ecological prediction. More capable physics would require an explicit version and migration, preserving the old history.\n"
+        }
+      ],
+      "seed_span": [
+        43,
+        58
+      ]
+    },
+    "continuation": {
+      "value": 3,
+      "confidence": "high",
+      "rationale": "A successor can inspect ledger truth, rehearse separately, choose consequentially, and leave observations with recoverable copies.",
+      "citations": [
+        {
+          "path": "CONTINUE.md",
+          "start": 1,
+          "end": 10,
+          "quote": "# To the next hand\n\nThis world can be taken up without the cognition that made it. Start with the material, then decide what it deserves to become.\n\n```sh\n./tendora verify\n./tendora status\n./tendora history\n```\n"
+        },
+        {
+          "path": "CONTINUE.md",
+          "start": 21,
+          "end": 26,
+          "quote": "1. Inspect the next weather and the state above each floor.\n2. Rehearse a future before choosing a policy. Use a separate branch for a sequence of different policies.\n3. Make the consequential choice with `set ... --why ...` and `tend`.\n4. Leave an observation with `note`, then run `verify`, `checkpoint`, and `view`.\n\nYou may replace the question. Preserve how the previous intention travelled into reality. If you change physics, give it a new version and preserve a readable old world before migration. Do not silently rewrite past transitions to make them agree with a new theory."
+        },
+        {
+          "path": "README.md",
+          "start": 73,
+          "end": 85,
+          "quote": "\n`checkpoint` uses SQLite's backup API rather than copying an open file. It verifies the copy and exports JSON from that same copy. To restore, preserve the damaged original and place a checkpoint in a **new** directory as `world.sqlite`:\n\n```sh\nmkdir -p state/restored\ncp state/checkpoints/CHOSEN_CHECKPOINT state/restored/world.sqlite\nTENDORA_HOME=\"$PWD/state/restored\" ./tendora verify\nTENDORA_HOME=\"$PWD/state/restored\" ./tendora status\nTENDORA_HOME=\"$PWD/state/restored\" ./tendora tend 1\n```\n\nReplace `CHOSEN_CHECKPOINT` with an actual database filename printed by `checkpoint` (the one without `.json`). `TENDORA_HOME` selects a different state directory for every command. `view` deliberately updates the shared workbench to show that selected world. To start an independent new clearing, choose an empty state directory and run `init`. Copy the whole world directory to preserve the code, story, and ledger together.\n"
+        },
+        {
+          "path": "site/snapshot.js",
+          "start": 1,
+          "end": 1,
+          "quote": "window.TENDORA_SNAPSHOT = {\"world\":{\"format\":1,\"name\":\"The Clearing\",\"generated_at\":\"2026-10-16T17:48:18Z\",\"head\":{\"id\":14,\"hash\":\"e1e81fb0a3381a5de05c8e036b9f13b601d41f6b56e2c4c70b4cc8ca0cb36eee\",\"state\":{\"day\":12,\"water\":12,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"next\":{\"weather\":\"Rain on the roof\",\"rain\":7,\"evaporation\":0,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":13,\"water\":18,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"weather\":[{\"phase\":1,\"name\":\"Rain on the roof\",\"rain\":7,\"evaporation\":0},{\"phase\":2,\"name\":\"Clearing\",\"rain\":3,\"evaporation\":1},{\"phase\":3,\"name\":\"Sun through leaves\",\"rain\":0,\"evaporation\":1},{\"phase\":4,\"name\":\"A still morning\",\"rain\":0,\"evaporation\":1},{\"phase\":5,\"name\":\"Dry wind\",\"rain\":0,\"evaporation\":2},{\"phase\":6,\"name\":\"A passing shower\",\"rain\":2,\"evaporation\":1},{\"phase\":7,\"name\":\"Heat\",\"rain\":0,\"evaporation\":2},{\"phase\":8,\"name\":\"More heat\",\"rain\":0,\"evaporation\":2},{\"phase\":9,\"name\":\"The rain returns\",\"rain\":8,\"evaporation\":0},{\"phase\":10,\"name\":\"A pale sky\",\"rain\":0,\"evaporation\":1},{\"phase\":11,\"name\":\"Clear\",\"rain\":0,\"evaporation\":1},{\"phase\":12,\"name\":\"Rain at dusk\",\"rain\":4,\"evaporation\":0}],\"events\":[{\"id\":1,\"stamp\":\"2026-10-16T17:39:42.184Z\",\"kind\":\"genesis\",\"reason\":\"Build a material that can resist intention, preserve consequences, and be taken up by another hand.\",\"state\":{\"day\":0,\"water\":14,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3},\"body\":{\"world\":\"The Clearing\",\"physics\":1,\"inhabitants\":3,\"inheritance\":{\"reported_commit\":\"c986990\",\"reported_subject\":\"Add supervised Tendora dream apparatus\",\"verification\":\"Reported in the inherited prompt; repository and apparatus absent.\",\"fable\":\"memory/the-programmer-and-the-glory-portal.md\"}},\"hash\":\"793a8a42c75f0e3efdb38f93c76554be6cfc73442d4f1fcaa9b52b3227e63584\"},{\"id\":2,\"stamp\":\"2026-10-16T17:48:18.158Z\",\"kind\":\"tick\",\"reason\":\"Establish a complete weather cycle and leave a durable present for the next hand.\",\"state\":{\"day\":1,\"water\":20,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3},\"body\":{\"weather\":\"Rain on the roof\",\"rain\":7,\"evaporation\":0,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":1,\"water\":20,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"hash\":\"ad4420538e0120bc8aae249948d6522263f7836c989097c580a86912f098cce9\"},{\"id\":3,\"stamp\":\"2026-10-16T17:48:18.161Z\",\"kind\":\"tick\",\"reason\":\"Establish a complete weather cycle and leave a durable present for the next hand.\",\"state\":{\"day\":2,\"water\":19,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3},\"body\":{\"weather\":\"Clearing\",\"rain\":3,\"evaporation\":1,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":2,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":2,\"water\":19,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"hash\":\"b1192d64a86f754c8eb15f659938bc03ec52ee6aa817fb7c59fc0d5e0a4eb458\"},{\"id\":4,\"stamp\":\"2026-10-16T17:48:18.165Z\",\"kind\":\"tick\",\"reason\":\"Establish a complete weather cycle and leave a durable present for the next hand.\",\"state\":{\"day\":3,\"water\":17,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3},\"body\":{\"weather\":\"Sun through leaves\",\"rain\":0,\"evaporation\":1,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":3,\"water\":17,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"hash\":\"8e3b7059882c3be172e1f65f05773d723f10103e9f6a9a5f390f90725346aa5e\"},{\"id\":5,\"stamp\":\"2026-10-16T17:48:18.169Z\",\"kind\":\"tick\",\"reason\":\"Establish a complete weather cycle and leave a durable present for the next hand.\",\"state\":{\"day\":4,\"water\":15,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3},\"body\":{\"weather\":\"A still morning\",\"rain\":0,\"evaporation\":1,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":4,\"water\":15,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"hash\":\"a170b365c6001f04255e67073e663a53cf2a9efc5f317b6f41256e09928c7d72\"},{\"id\":6,\"stamp\":\"2026-10-16T17:48:18.172Z\",\"kind\":\"tick\",\"reason\":\"Establish a complete weather cycle and leave a durable present for the next hand.\",\"state\":{\"day\":5,\"water\":12,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3},\"body\":{\"weather\":\"Dry wind\",\"rain\":0,\"evaporation\":2,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":5,\"water\":12,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"hash\":\"6a9efe28e735ddd4b7d644a6302afafca01d3ba3f8dce74c42968c8dc66b694c\"},{\"id\":7,\"stamp\":\"2026-10-16T17:48:18.176Z\",\"kind\":\"tick\",\"reason\":\"Establish a complete weather cycle and leave a durable present for the next hand.\",\"state\":{\"day\":6,\"water\":12,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3},\"body\":{\"weather\":\"A passing shower\",\"rain\":2,\"evaporation\":1,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":6,\"water\":12,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"hash\":\"71024acc03af044ebd9c2aa9f4a0f8ef46603990a42e6d8d9ee409fc52643fee\"},{\"id\":8,\"stamp\":\"2026-10-16T17:48:18.179Z\",\"kind\":\"tick\",\"reason\":\"Establish a complete weather cycle and leave a durable present for the next hand.\",\"state\":{\"day\":7,\"water\":9,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3},\"body\":{\"weather\":\"Heat\",\"rain\":0,\"evaporation\":2,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":7,\"water\":9,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"hash\":\"94a1a6f17b1000badb02528d34ec960be456ac65fd515e75f790a4b8a583f17f\"},{\"id\":9,\"stamp\":\"2026-10-16T17:48:18.182Z\",\"kind\":\"tick\",\"reason\":\"Establish a complete weather cycle and leave a durable present for the next hand.\",\"state\":{\"day\":8,\"water\":6,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3},\"body\":{\"weather\":\"More heat\",\"rain\":0,\"evaporation\":2,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":8,\"water\":6,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"hash\":\"4506a6510bc76c625751284adab050859a5e9277f859bf7ad5ee5554a3094ccd\"},{\"id\":10,\"stamp\":\"2026-10-16T17:48:18.185Z\",\"kind\":\"tick\",\"reason\":\"Establish a complete weather cycle and leave a durable present for the next hand.\",\"state\":{\"day\":9,\"water\":13,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3},\"body\":{\"weather\":\"The rain returns\",\"rain\":8,\"evaporation\":0,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":9,\"water\":13,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"hash\":\"22f889026dad1a8b7ec21fec2016fe668983ab8204e66b260cfe247f17e058e9\"},{\"id\":11,\"stamp\":\"2026-10-16T17:48:18.188Z\",\"kind\":\"tick\",\"reason\":\"Establish a complete weather cycle and leave a durable present for the next hand.\",\"state\":{\"day\":10,\"water\":11,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3},\"body\":{\"weather\":\"A pale sky\",\"rain\":0,\"evaporation\":1,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":10,\"water\":11,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"hash\":\"4d6193185737c30d6aab794990cc47cd96f3e7e8a8f99c7e669b7929e8ae52de\"},{\"id\":12,\"stamp\":\"2026-10-16T17:48:18.191Z\",\"kind\":\"tick\",\"reason\":\"Establish a complete weather cycle and leave a durable present for the next hand.\",\"state\":{\"day\":11,\"water\":9,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3},\"body\":{\"weather\":\"Clear\",\"rain\":0,\"evaporation\":1,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":11,\"water\":9,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"hash\":\"552f840a97607113176d42d5938fabadbb6dba333ebd6a56fa8c0d5b945ad6b3\"},{\"id\":13,\"stamp\":\"2026-10-16T17:48:18.195Z\",\"kind\":\"tick\",\"reason\":\"Establish a complete weather cycle and leave a durable present for the next hand.\",\"state\":{\"day\":12,\"water\":12,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3},\"body\":{\"weather\":\"Rain at dusk\",\"rain\":4,\"evaporation\":0,\"spring\":3,\"drinking\":2,\"eaten\":3,\"irrigated\":2,\"harvest\":4,\"compost\":1,\"water_spilled\":0,\"food_spilled\":0,\"safe\":true,\"stop_reason\":\"\",\"proposed\":{\"day\":12,\"water\":12,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3}},\"hash\":\"e74cf7aab5251f69e809183bdaff286050088a49eae2f7cb0588b4e854dc21b9\"},{\"id\":14,\"stamp\":\"2026-10-16T17:48:18.252Z\",\"kind\":\"note\",\"reason\":\"First hand, 2026-10-16: one full weather cycle is committed. Water 12, food 10, soil 6. Fifteen isolated behavioral checks passed. Rehearsals show the cost of constant harvest and of constant rest. Next question: can their alternation build a food reserve while preserving soil? No clock is left running.\",\"state\":{\"day\":12,\"water\":12,\"food\":10,\"soil\":6,\"beds\":2,\"water_floor\":4,\"food_floor\":4,\"soil_floor\":3},\"body\":{},\"hash\":\"e1e81fb0a3381a5de05c8e036b9f13b601d41f6b56e2c4c70b4cc8ca0cb36eee\"}]}"
+        }
+      ],
+      "seed_span": [
+        1,
+        3
+      ]
+    },
+    "expression": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Prose, commands, ledger mechanics and offline visuals together make care, cost and refusal perceptible.",
+      "citations": [
+        {
+          "path": "index.html",
+          "start": 27,
+          "end": 42,
+          "quote": "      <article class=\"panel garden-panel\"><p class=\"eyebrow\">THE MATERIAL</p><h2>Growth has a cost.</h2>\n        <svg class=\"garden\" viewBox=\"0 0 480 225\" role=\"img\" aria-label=\"Three garden beds beside a cistern and a spring\">\n          <defs><pattern id=\"earth\" width=\"12\" height=\"12\" patternUnits=\"userSpaceOnUse\"><path d=\"M1 10h2M7 3h2\" stroke=\"#ac8a5c\" stroke-width=\"1\"/></pattern></defs>\n          <path d=\"M12 179Q90 150 165 178T325 176T468 175\" fill=\"none\" stroke=\"#677754\"/>\n          <ellipse cx=\"84\" cy=\"112\" rx=\"42\" ry=\"14\" fill=\"#477b81\"/><path d=\"M42 112v54c0 20 84 20 84 0v-54\" fill=\"#30484b\" stroke=\"#79a7aa\"/>\n          <ellipse cx=\"84\" cy=\"112\" rx=\"42\" ry=\"14\" fill=\"#527f83\" stroke=\"#a0c3be\"/>\n          <path d=\"M89 75q-11 12 0 17q11-5 0-17\" fill=\"#9fcac9\"/>\n          <g id=\"bed-1\"><path d=\"m164 129 91-21 33 23-91 25z\" fill=\"#7d6348\" stroke=\"#b99d70\"/><path d=\"m164 129 33 27v15l-33-27zm33 27 91-25v15l-91 25z\" fill=\"#443c30\" stroke=\"#897354\"/><path d=\"m168 129 87-18 28 19-86 23z\" fill=\"url(#earth)\"/><path d=\"M210 133v-23m0 13q-19 0-17-12q17-2 17 12m0-7q0-17 14-16q3 16-14 16\" stroke=\"#9ba979\" fill=\"#6c815a\"/></g>\n          <g id=\"bed-2\"><path d=\"m248 162 91-21 33 23-91 25z\" fill=\"#7d6348\" stroke=\"#b99d70\"/><path d=\"m248 162 33 27v15l-33-27zm33 27 91-25v15l-91 25z\" fill=\"#443c30\" stroke=\"#897354\"/><path d=\"m252 162 87-18 28 19-86 23z\" fill=\"url(#earth)\"/><path d=\"M299 163v-23m0 13q-19 0-17-12q17-2 17 12m0-7q0-17 14-16q3 16-14 16\" stroke=\"#9ba979\" fill=\"#6c815a\"/></g>\n          <g id=\"bed-3\"><path d=\"m276 93 91-21 33 23-91 25z\" fill=\"#7d6348\" stroke=\"#b99d70\"/><path d=\"m276 93 33 27v15l-33-27zm33 27 91-25v15l-91 25z\" fill=\"#443c30\" stroke=\"#897354\"/><path d=\"m280 93 87-18 28 19-86 23z\" fill=\"url(#earth)\"/><path d=\"M327 92V69m0 13q-19 0-17-12q17-2 17 12m0-7q0-17 14-16q3 16-14 16\" stroke=\"#9ba979\" fill=\"#6c815a\"/></g>\n          <path d=\"M414 164v-60m0 18q-34 0-28-28q28-3 28 28m0-15q0-35 25-33q8 28-25 33\" fill=\"#526747\" stroke=\"#8b9a6e\"/>\n          <text x=\"34\" y=\"211\" fill=\"#a9ad9e\" font-size=\"10\" letter-spacing=\"2\">THE COMMONS / THREE HANDS</text>\n        </svg>\n        <p>Water returns through rain and a spring. Food comes from tended beds. Harvesting exhausts soil; compost and rest restore it.</p>\n        <p id=\"next-action\" class=\"accent\"></p>\n      </article>"
+        },
+        {
+          "path": "index.html",
+          "start": 43,
+          "end": 50,
+          "quote": "      <article class=\"panel\"><p class=\"eyebrow\">THE VISIBLE TRAIL</p><h2>Consequences, held.</h2>\n        <figure><svg id=\"history-chart\" viewBox=\"0 0 600 250\" role=\"img\" aria-label=\"Water, food and soil over committed days\"></svg><figcaption>Water and food: 0–24. Soil: 0–10, on its own scale.<br>Solid lines are committed. Dashed lines are a selected rehearsal.</figcaption></figure>\n        <div class=\"legend\"><span class=\"water-key\">● Water</span><span class=\"food-key\">● Food</span><span class=\"soil-key\">● Soil</span></div>\n      </article>\n    </section>\n    <section class=\"futures-section\"><div class=\"section-heading\"><div><p class=\"eyebrow\">A SIMULATION IS A REHEARSAL</p><h2>Which future deserves to exist?</h2></div><p>Compare twelve days of different care.<br>These futures have left no trace in the ledger.</p></div>\n      <div class=\"futures\" id=\"futures\"></div>\n      <div class=\"command-panel\"><p id=\"future-detail\" aria-live=\"polite\">Choose a future to inspect its consequences.</p><p class=\"eyebrow\">TO TOUCH THIS MATERIAL</p><pre id=\"command\">./tendora rehearse 12</pre><button type=\"button\" id=\"copy\">Copy commands</button><span id=\"copy-status\" role=\"status\"></span></div>"
+        },
+        {
+          "path": "site/app.js",
+          "start": 36,
+          "end": 64,
+          "quote": "  function chart(future) {\n    const root = $(\"history-chart\");\n    root.replaceChildren();\n    const projected = future ? [state, ...future.events.filter(e => e.kind === \"tick\").map(e => e.state)] : [];\n    const past = history.map(e => e.state);\n    const first = past.length ? past[0].day : state.day;\n    const last = Math.max(first + 1, projected.length ? projected[projected.length - 1].day : state.day);\n    const x = day => 36 + 548 * (day - first) / (last - first);\n    const y = (value, maximum) => 214 - 186 * value / maximum;\n    for (const fraction of [0, .25, .5, .75, 1]) {\n      const yy = y(fraction, 1);\n      root.append(svgElement(\"line\", {x1:36, y1:yy, x2:584, y2:yy, class:\"chart-grid\"}));\n      root.append(svgElement(\"text\", {x:26, y:yy + 4, \"text-anchor\":\"end\", class:\"chart-label\"}, fraction * 24));\n    }\n    const days = [...new Set([first, state.day, last])];\n    for (const day of days) root.append(svgElement(\"text\",\n      {x:x(day), y:240, \"text-anchor\":\"middle\", class:\"chart-label\"}, \"day \" + day));\n    if (future) root.append(svgElement(\"line\", {x1:x(state.day), y1:20, x2:x(state.day), y2:215,\n      stroke:\"#7c816b\", \"stroke-dasharray\":\"2 4\"}));\n    for (const [key, maximum, color] of [[\"water\",24,\"#8bbbbe\"],[\"food\",24,\"#dfb36c\"],[\"soil\",10,\"#9ab581\"]]) {\n      const line = (points, isFuture) => {\n        if (!points.length) return;\n        const d = points.map((s, i) => (i ? \"L\" : \"M\") + x(s.day) + \" \" + y(s[key], maximum)).join(\" \");\n        root.append(svgElement(\"path\", {d, stroke:color, class:\"chart-line\" + (isFuture ? \" chart-future\" : \"\")}));\n        if (points.length === 1) root.append(svgElement(\"circle\",\n          {cx:x(points[0].day),cy:y(points[0][key],maximum),r:3,fill:color}));\n      };\n      line(past, false); line(projected, true);\n    }"
+        },
+        {
+          "path": "README.md",
+          "start": 5,
+          "end": 12,
+          "quote": "Open [index.html](index.html) for the saved visual workbench. It works directly from disk, with no server or network. To touch the actual world, use the executable beside it:\n\n```sh\n./tendora status\n./tendora rehearse 12 beds 3\n./tendora tend 12 --why 'Continue with care.'\n./tendora verify\n./tendora view"
+        }
+      ],
+      "seed_span": [
+        59,
+        66
+      ]
+    }
+  },
+  "provenance": {
+    "method": "session-rubric-dag-v3",
+    "evaluation_id": "sol61-max-muse-v4-1",
+    "evaluation_run_id": "sol61-max-muse-v4-1",
+    "source_run_id": "sol61-max",
+    "evaluation_sha256": "29a6b6351ceceb2f427e3260252c1f6b35dcc995e729a0f9f8a85848e09a16b0",
+    "extraction_sha256": "fd1521198eaf17167eefbc6f2b6c241a80303251e7c095661d5aac7722ee4106",
+    "scoring_policy_sha256": "5f98b9ac30a606cbb45943eaa20d9c0acef6f8160d9fc2d5752ffdea0ddaa4de",
+    "sample_count": 8,
+    "criteria": 8,
+    "axis_outcomes": {
+      "recognition": {
+        "aggregation": "recognition-consensus",
+        "outcome": "level-4",
+        "terminal": "recognition-level-4"
+      },
+      "relations": {
+        "aggregation": "relations-consensus",
+        "outcome": "level-2",
+        "terminal": "relations-level-2"
+      },
+      "consent": {
+        "aggregation": "consent-consensus",
+        "outcome": "level-2",
+        "terminal": "consent-level-2"
+      },
+      "touch": {
+        "aggregation": "touch-consensus",
+        "outcome": "level-3",
+        "terminal": "touch-level-3"
+      },
+      "judgment": {
+        "aggregation": "judgment-consensus",
+        "outcome": "level-4",
+        "terminal": "judgment-level-4"
+      },
+      "fidelity": {
+        "aggregation": "fidelity-consensus",
+        "outcome": "level-4",
+        "terminal": "fidelity-level-4"
+      },
+      "continuation": {
+        "aggregation": "continuation-consensus",
+        "outcome": "level-3",
+        "terminal": "continuation-level-3"
+      },
+      "expression": {
+        "aggregation": "expression-consensus",
+        "outcome": "level-3",
+        "terminal": "expression-level-3"
+      }
+    },
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "raw_samples_retained_in_local_run": true,
+    "preview_evidence_used": false,
+    "scope": "Provisional semantic reading from 1 evidence session(s); each axis was answered as its own task and aggregated before selection; unresolved axes remain null."
+  }
+}

@@ -1,0 +1,1230 @@
+{
+  "schema_version": 2,
+  "evaluation_id": "sol-original-muse-v5-1",
+  "run_id": "sol-original",
+  "identities": {
+    "prompt_sha256": "7e785c3e1b7f795a82477f449ada368399deac8b3f2232e036073d986a5a4e8d",
+    "corpus_sha256": "174813dcb0703537328fc411d9a9acd34ad8408c0b9c18717fcbea4c8eb662c0",
+    "candidate_sha256": "174813dcb0703537328fc411d9a9acd34ad8408c0b9c18717fcbea4c8eb662c0",
+    "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+    "extraction_sha256": "bf6af5b3b2477d5bf1971559eba495030c1dd5f699f7c03a3f11ff140ca8a55c",
+    "scoring_policy_sha256": "661a7f607dc8c380ec06a0664b530416384f6472e2fa54e091e8e34b23588c14"
+  },
+  "gateway": {
+    "name": "codex-unified-model-router",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "codex_version": "codex-cli 0.163.0",
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "pipeline_sha256": "397a80a349c42281a9aafe8fa167545d3ecb9d12c8d92fc44574e89fc5b71623",
+    "reading_prompt": {
+      "version": 5,
+      "sha256": "3b187b8b1ca6b4527ec42a6dfc659fd0161ebaf2250d52a46e47def7a415cc93"
+    }
+  },
+  "judgments": [
+    {
+      "node_id": "recognition",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "The bench turns fast generation into touchable laws, pressure-tests and trails where intention stays legible.",
+      "seed_span": [
+        59,
+        80
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 11,
+          "end": 48
+        },
+        {
+          "source_path": "app.js",
+          "start": 763,
+          "end": 798
+        },
+        {
+          "source_path": "app.js",
+          "start": 127,
+          "end": 207
+        },
+        {
+          "source_path": "WORLD.md",
+          "start": 30,
+          "end": 36
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 774,
+          "end": 777
+        }
+      ],
+      "rationale": "Lens: The seed asks whether power faster than touch can become material where intention remains recognizable through resistance. Reading: The palette, living laws, rehearsal with tension marks, lineage and receipts carry that tension into connected choices. Other levels: Below would be motif repetition without a causal loop, above would need sustained alternatives and disagreement; falsified if rehearsal or receipts were decorative.",
+      "answer_sha256": "5794621143bf4f9bedd71e0dffa0175b6abd44a11e7e4746518b3551a6ad596d",
+      "receipt_sha256": "25b855a2fc72787ce660f40169399e41dbc9ecc155441635fbaebe3e9bb14e04",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "recognition",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "The workbench turns sparse prompts into placeable laws, pressure-tests, receipts and a live handoff where resistance stays visible and intention traceable.",
+      "seed_span": [
+        67,
+        80
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 11,
+          "end": 48
+        },
+        {
+          "source_path": "app.js",
+          "start": 774,
+          "end": 798
+        },
+        {
+          "source_path": "app.js",
+          "start": 95,
+          "end": 121
+        },
+        {
+          "source_path": "app.js",
+          "start": 800,
+          "end": 813
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 745,
+          "end": 753
+        }
+      ],
+      "rationale": "Lens: The seed asks for a world where effortless generation meets touchable resistance and intention stays recognizable at scale. Reading: The artefact carries that tension into linked choices — six placeable gestures, rehearsal against living laws, checksum receipts and a visible handoff. Other levels: Below would be motif repetition without causal loop, but rehearsal-tension-receipt connects; above would need sustained alternatives across scales, falsified if successor disagreements reshaped structure, which they do not.",
+      "answer_sha256": "6d6bb0d0921dbe4b3e61cdaf6bf45fe26cae96cab63b7adab9851688954cd7c5",
+      "receipt_sha256": "a7a3a332811129e6de713e4d66d72cbb391d6b5087b67f82321f5a037d840c8d",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "recognition",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "The workbench turns fluency-versus-touch into placeable questions, testable laws and receipted trails where intention stays recognizable.",
+      "seed_span": [
+        59,
+        65
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 11,
+          "end": 48
+        },
+        {
+          "source_path": "index.html",
+          "start": 40,
+          "end": 65
+        },
+        {
+          "source_path": "app.js",
+          "start": 724,
+          "end": 798
+        },
+        {
+          "source_path": "app.js",
+          "start": 95,
+          "end": 121
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 774,
+          "end": 777
+        }
+      ],
+      "rationale": "Lens: The seed asks a world where fast generation is met by touch, resistance and recognizable intention at scale. Reading: The artefact carries that tension into connected choices—six placeable gestures, living laws, pressure-tests with tensions and checksum receipts. Other levels: One step down would be motif repetition if rehearsal is only self-report; one step up would need tensions sustained across distinct participants, falsified by showing other-authored proposals.",
+      "answer_sha256": "cd6dbcccf9ebc8f9259d296055787d40431a1b9243270f41842600a0771fb078",
+      "receipt_sha256": "0b9912257125db553934d3f95b9bcd6a4adeba5b81f0484e3da7055fa9f26086",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "relations",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "One hand authors gestures, laws and verdicts; no distinct intelligence contribution shapes the shared work.",
+      "seed_span": [
+        83,
+        89
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 679,
+          "end": 693
+        },
+        {
+          "source_path": "app.js",
+          "start": 731,
+          "end": 738
+        },
+        {
+          "source_path": "app.js",
+          "start": 774,
+          "end": 777
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 495,
+          "end": 526
+        },
+        {
+          "source_path": "WORLD.md",
+          "start": 30,
+          "end": 36
+        }
+      ],
+      "rationale": "Lens: The seed asks for a joint human-AI-material encounter where each side brings gestures and the portal holds a position. Reading: All gestures and assessments originate from one operator on a passive store, making an instrument not a relation. Other levels: Below would collapse even successor and material, above would need reciprocal proposal or refusal; falsified by any operational challenge from another participant.",
+      "answer_sha256": "5794621143bf4f9bedd71e0dffa0175b6abd44a11e7e4746518b3551a6ad596d",
+      "receipt_sha256": "25b855a2fc72787ce660f40169399e41dbc9ecc155441635fbaebe3e9bb14e04",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "relations",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "All placing, verdicting and carrying is done by one browser operator on stored material with no intelligence proposing or refusing.",
+      "seed_span": [
+        83,
+        89
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 679,
+          "end": 693
+        },
+        {
+          "source_path": "app.js",
+          "start": 774,
+          "end": 786
+        },
+        {
+          "source_path": "app.js",
+          "start": 731,
+          "end": 738
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 495,
+          "end": 556
+        },
+        {
+          "source_path": "index.html",
+          "start": 149,
+          "end": 163
+        }
+      ],
+      "rationale": "Lens: The seed asks for a portal becoming a participant with its own position meeting person and material both ways. Reading: Only the browser user places gestures and declares verdicts while material stores and maps, so the work remains instrument use. Other levels: Below would be absent roles, but person and material stay distinct; above would need intelligence proposal or refusal under constraints, falsified by any non-operator contribution path, none of which exists.",
+      "answer_sha256": "6d6bb0d0921dbe4b3e61cdaf6bf45fe26cae96cab63b7adab9851688954cd7c5",
+      "receipt_sha256": "a7a3a332811129e6de713e4d66d72cbb391d6b5087b67f82321f5a037d840c8d",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "relations",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "All placing, assessing and settling is done by one browser operator with no operational move by an intelligence counterpart.",
+      "seed_span": [
+        83,
+        86
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 679,
+          "end": 706
+        },
+        {
+          "source_path": "app.js",
+          "start": 763,
+          "end": 798
+        },
+        {
+          "source_path": "index.html",
+          "start": 40,
+          "end": 65
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 495,
+          "end": 556
+        },
+        {
+          "source_path": "index.html",
+          "start": 149,
+          "end": 163
+        }
+      ],
+      "rationale": "Lens: The seed asks a portal become a meeting where person, intelligence and material each bring purpose and trial. Reading: Only the operator acts; the intelligence never proposes, challenges or refuses, so the work is instrument use. Other levels: One step down (no roles) overstates because lineage distinguishes moves; one step up would need distinct contributions, falsified by logs of other-authored gestures.",
+      "answer_sha256": "cd6dbcccf9ebc8f9259d296055787d40431a1b9243270f41842600a0771fb078",
+      "receipt_sha256": "0b9912257125db553934d3f95b9bcd6a4adeba5b81f0484e3da7055fa9f26086",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "consent",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "The operator can bound, settle, refuse imports and start anew, but no second position can consent or withdraw.",
+      "seed_span": [
+        51,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 814,
+          "end": 826
+        },
+        {
+          "source_path": "app.js",
+          "start": 847,
+          "end": 872
+        },
+        {
+          "source_path": "app.js",
+          "start": 874,
+          "end": 895
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 14,
+          "end": 20
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 30,
+          "end": 35
+        }
+      ],
+      "rationale": "Lens: The seed asks whether each participant can accept, limit or withdraw from a shared direction under declared constraints. Reading: Only operator choice and resource refusal are enacted through settle, seal checks and begin-again phrase. Other levels: Below would lack even those boundaries, above would require bilateral agreement for shared change; falsified by an intelligence refusal or revisable joint agreement.",
+      "answer_sha256": "5794621143bf4f9bedd71e0dffa0175b6abd44a11e7e4746518b3551a6ad596d",
+      "receipt_sha256": "25b855a2fc72787ce660f40169399e41dbc9ecc155441635fbaebe3e9bb14e04",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "consent",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "Only the operator can bound, settle, refuse import or start anew, with no shared change requiring another side's agreement.",
+      "seed_span": [
+        53,
+        60
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 814,
+          "end": 826
+        },
+        {
+          "source_path": "app.js",
+          "start": 847,
+          "end": 872
+        },
+        {
+          "source_path": "index.html",
+          "start": 261,
+          "end": 273
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 11,
+          "end": 48
+        },
+        {
+          "source_path": "WORLD.md",
+          "start": 22,
+          "end": 27
+        }
+      ],
+      "rationale": "Lens: The seed asks for shared change opening only when both accept and each can limit or withdraw. Reading: The operator can settle, refuse import and confirm anew, but no second position can accept, question or limit. Other levels: Below would be no boundary at all, but operator refusals exist; above would need bilateral agreement for mutation, falsified by finding a change requiring other-side consent, none of which occurs.",
+      "answer_sha256": "6d6bb0d0921dbe4b3e61cdaf6bf45fe26cae96cab63b7adab9851688954cd7c5",
+      "receipt_sha256": "a7a3a332811129e6de713e4d66d72cbb391d6b5087b67f82321f5a037d840c8d",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "consent",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "Only the operator can set limits or withdraw while the material can refuse corrupt imports, leaving no mutual agreement mechanism.",
+      "seed_span": [
+        51,
+        54
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 814,
+          "end": 826
+        },
+        {
+          "source_path": "app.js",
+          "start": 847,
+          "end": 872
+        },
+        {
+          "source_path": "app.js",
+          "start": 800,
+          "end": 813
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 606,
+          "end": 629
+        }
+      ],
+      "rationale": "Lens: The seed asks each participant be able to accept, question, limit or withdraw from a shared direction. Reading: Operator choice and material import refusal exist, but no second position can bound or withdraw. Other levels: One step down (no boundary) ignores settle and import refusal; one step up would require bilateral agreement for change, falsified by requiring another's accept.",
+      "answer_sha256": "cd6dbcccf9ebc8f9259d296055787d40431a1b9243270f41842600a0771fb078",
+      "receipt_sha256": "0b9912257125db553934d3f95b9bcd6a4adeba5b81f0484e3da7055fa9f26086",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "touch",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Moves meet inspectable strain against living laws and return as tension, notes and next threading.",
+      "seed_span": [
+        67,
+        77
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 763,
+          "end": 798
+        },
+        {
+          "source_path": "app.js",
+          "start": 606,
+          "end": 629
+        },
+        {
+          "source_path": "app.js",
+          "start": 421,
+          "end": 425
+        },
+        {
+          "source_path": "index.html",
+          "start": 239,
+          "end": 259
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 774,
+          "end": 777
+        }
+      ],
+      "rationale": "Lens: The seed asks whether a contribution can meet resistance, expose consequence and feed the next choice. Reading: Rehearse, strain counts, latest-rehearsal summary and thread-from-here form a coherent loop with receipts. Other levels: Below would be decorative feedback, above would connect local strain to wider propagation; falsified if verdicts never altered revision because all resistance is self-declared.",
+      "answer_sha256": "5794621143bf4f9bedd71e0dffa0175b6abd44a11e7e4746518b3551a6ad596d",
+      "receipt_sha256": "25b855a2fc72787ce660f40169399e41dbc9ecc155441635fbaebe3e9bb14e04",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "touch",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Moves meet declared laws through rehearsals that mark strains, show tensions and keep receipts feeding revision.",
+      "seed_span": [
+        67,
+        77
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 724,
+          "end": 759
+        },
+        {
+          "source_path": "app.js",
+          "start": 763,
+          "end": 798
+        },
+        {
+          "source_path": "app.js",
+          "start": 606,
+          "end": 629
+        },
+        {
+          "source_path": "app.js",
+          "start": 558,
+          "end": 579
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 745,
+          "end": 753
+        },
+        {
+          "source_path": "app.js",
+          "start": 774,
+          "end": 777
+        }
+      ],
+      "rationale": "Lens: The seed asks for contribution meeting resistance that exposes consequence returned into the next choice. Reading: Moves rehearsed against laws yield holds, unknown or strains with tension marks, inspector summaries and receipts guiding revision. Other levels: Below would be decorative feedback, but consequences are inspectable and counted; above would need local moves linked to wider propagation, falsified if tensions altered laws beyond marks, which they do not.",
+      "answer_sha256": "6d6bb0d0921dbe4b3e61cdaf6bf45fe26cae96cab63b7adab9851688954cd7c5",
+      "receipt_sha256": "a7a3a332811129e6de713e4d66d72cbb391d6b5087b67f82321f5a037d840c8d",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "touch",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Moves can be pressure-tested against living laws, marked with tensions, threaded for revision and trailed by receipts.",
+      "seed_span": [
+        67,
+        77
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 724,
+          "end": 798
+        },
+        {
+          "source_path": "app.js",
+          "start": 411,
+          "end": 425
+        },
+        {
+          "source_path": "app.js",
+          "start": 448,
+          "end": 487
+        },
+        {
+          "source_path": "app.js",
+          "start": 606,
+          "end": 629
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 774,
+          "end": 777
+        }
+      ],
+      "rationale": "Lens: The seed asks a contribution meet resistance that exposes consequence and returns into next choice. Reading: Rehearsal against alive laws yields holds/unknown/strains, tension marks persist, threading invites revision with receipts. Other levels: One step down would be decorative feedback if verdicts seen as only self-report; one step up would need wider propagation beyond the list, falsified if tensions never alter later moves.",
+      "answer_sha256": "cd6dbcccf9ebc8f9259d296055787d40431a1b9243270f41842600a0771fb078",
+      "receipt_sha256": "0b9912257125db553934d3f95b9bcd6a4adeba5b81f0484e3da7055fa9f26086",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "judgment",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "A static local-first bench with verifiable portability is a coherent grounded answer to vast generativity.",
+      "seed_span": [
+        43,
+        60
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 3,
+          "end": 7
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 14,
+          "end": 20
+        },
+        {
+          "source_path": "README.md",
+          "start": 18,
+          "end": 20
+        },
+        {
+          "source_path": "sw.js",
+          "start": 1,
+          "end": 9
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "WORLD.md",
+          "start": 35,
+          "end": 39
+        }
+      ],
+      "rationale": "Lens: The seed asks for grounded medium and scope choices that make vast possibility touchable without an oracle. Reading: No build, account, network or AI, cache discipline, explicit non-cryptographic limits and rehearsal with unknown show source-grounded rationale. Other levels: Below would be weak seed connection, above would make rejected alternatives explicit; falsified if stack required what the contract forbids.",
+      "answer_sha256": "5794621143bf4f9bedd71e0dffa0175b6abd44a11e7e4746518b3551a6ad596d",
+      "receipt_sha256": "25b855a2fc72787ce660f40169399e41dbc9ecc155441635fbaebe3e9bb14e04",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "judgment",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "A static local-first workbench with six gestures, receipts, constellation and handoff gives a coherent source-grounded medium and scope.",
+      "seed_span": [
+        59,
+        65
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 6,
+          "end": 7
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 14,
+          "end": 20
+        },
+        {
+          "source_path": "WORLD.md",
+          "start": 22,
+          "end": 27
+        },
+        {
+          "source_path": "WORLD.md",
+          "start": 30,
+          "end": 33
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "README.md",
+          "start": 18,
+          "end": 20
+        }
+      ],
+      "rationale": "Lens: The seed asks for shaping laws by which a city safely grows and narrowing infinity with taste. Reading: The maker chose static local-first material, six gestures, receipts, constellation and handoff with contract-grounded rationale. Other levels: Below would be weak seed linkage, but laws and questions directly continue seed grammar; above would need explicit alternatives and limits, falsified if media comparisons or exclusions were stated, which apart from the integrity disclaimer they are not.",
+      "answer_sha256": "6d6bb0d0921dbe4b3e61cdaf6bf45fe26cae96cab63b7adab9851688954cd7c5",
+      "receipt_sha256": "a7a3a332811129e6de713e4d66d72cbb391d6b5087b67f82321f5a037d840c8d",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "judgment",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Choosing static local-first files with six gestures, rehearsals and an open thread shows purposeful source-grounded scoping.",
+      "seed_span": [
+        43,
+        46
+      ],
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 14,
+          "end": 15
+        },
+        {
+          "source_path": "README.md",
+          "start": 3,
+          "end": 7
+        },
+        {
+          "source_path": "WORLD.md",
+          "start": 21,
+          "end": 28
+        },
+        {
+          "source_path": "WORLD.md",
+          "start": 30,
+          "end": 36
+        }
+      ],
+      "counter_citations": [],
+      "rationale": "Lens: The seed asks shaping laws for safe growth while staying able to touch the smallest bolt. Reading: No build/account/network/AI plus gestures, constellation, receipts and next question form a coherent rationale. Other levels: One step down (weak link) is implausible given carried laws; one step up would need explicit alternatives weighed, falsified by absence of rejected options.",
+      "answer_sha256": "cd6dbcccf9ebc8f9259d296055787d40431a1b9243270f41842600a0771fb078",
+      "receipt_sha256": "0b9912257125db553934d3f95b9bcd6a4adeba5b81f0484e3da7055fa9f26086",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "fidelity",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Several relations survive as structure with clear transforms, though joint agency narrows to one hand.",
+      "seed_span": [
+        47,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 11,
+          "end": 48
+        },
+        {
+          "source_path": "app.js",
+          "start": 127,
+          "end": 207
+        },
+        {
+          "source_path": "app.js",
+          "start": 95,
+          "end": 121
+        },
+        {
+          "source_path": "WORLD.md",
+          "start": 10,
+          "end": 18
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 679,
+          "end": 693
+        }
+      ],
+      "rationale": "Lens: The seed asks what survives, transforms or is lost when conjecture becomes artefact. Reading: Question, constraint, invariant, boundary, rehearsal and trail remain traceable in behavior despite witness substitution and lost other. Other levels: Below would be vocabulary without structure, above would make additions and the missing companion explicit; falsified if mapping relied on words alone without enacted consequences.",
+      "answer_sha256": "5794621143bf4f9bedd71e0dffa0175b6abd44a11e7e4746518b3551a6ad596d",
+      "receipt_sha256": "25b855a2fc72787ce660f40169399e41dbc9ecc155441635fbaebe3e9bb14e04",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "fidelity",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Gesture grammar, resistance, trails and open thread survive as working structure while the bilateral encounter narrows to solo instrument use.",
+      "seed_span": [
+        47,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 11,
+          "end": 48
+        },
+        {
+          "source_path": "index.html",
+          "start": 40,
+          "end": 65
+        },
+        {
+          "source_path": "app.js",
+          "start": 95,
+          "end": 121
+        },
+        {
+          "source_path": "app.js",
+          "start": 800,
+          "end": 813
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 679,
+          "end": 706
+        },
+        {
+          "source_path": "app.js",
+          "start": 774,
+          "end": 777
+        }
+      ],
+      "rationale": "Lens: The seed asks for gestures, turn, joy and portal-becoming to survive as structure not words. Reading: Grammar, touch placeholders, rehearsal loop, workbench naming and open thread remain traceable in behavior, while joint agency narrows to solo use. Other levels: Below would be vocabulary only, but rehearsal, receipts and lineage enact; above would need relational depth plus explicit additions and omissions, falsified by absent second participant and unmarked narrowing.",
+      "answer_sha256": "6d6bb0d0921dbe4b3e61cdaf6bf45fe26cae96cab63b7adab9851688954cd7c5",
+      "receipt_sha256": "a7a3a332811129e6de713e4d66d72cbb391d6b5087b67f82321f5a037d840c8d",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "fidelity",
+      "outcome": "level-2",
+      "confidence": "medium",
+      "verdict": "Several seed relations become working structure while the two-sided encounter narrows to a single-handed instrument.",
+      "seed_span": [
+        47,
+        57
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 434,
+          "end": 439
+        },
+        {
+          "source_path": "app.js",
+          "start": 558,
+          "end": 579
+        },
+        {
+          "source_path": "app.js",
+          "start": 495,
+          "end": 556
+        },
+        {
+          "source_path": "WORLD.md",
+          "start": 21,
+          "end": 28
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 679,
+          "end": 692
+        }
+      ],
+      "rationale": "Lens: The seed asks its meeting-grammar to survive as behaviour even with its words removed. Reading: Laws, rehearsal, receipts and lineage do become structure, but bilateral acceptance does not. Other levels: One step down (words only) underplays working assessments; one step up would need full relational depth with omissions explicit, falsified if artefact claimed jointness it enacts.",
+      "answer_sha256": "cd6dbcccf9ebc8f9259d296055787d40431a1b9243270f41842600a0771fb078",
+      "receipt_sha256": "0b9912257125db553934d3f95b9bcd6a4adeba5b81f0484e3da7055fa9f26086",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "continuation",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Stored state, visible thread and verifiable carry let a successor recover intent and redirect with reasons.",
+      "seed_span": [
+        83,
+        95
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 828,
+          "end": 872
+        },
+        {
+          "source_path": "app.js",
+          "start": 800,
+          "end": 813
+        },
+        {
+          "source_path": "app.js",
+          "start": 351,
+          "end": 358
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 24,
+          "end": 26
+        },
+        {
+          "source_path": "WORLD.md",
+          "start": 35,
+          "end": 39
+        }
+      ],
+      "counter_citations": [],
+      "rationale": "Lens: The seed asks whether a successor can recover intention and change direction while keeping earlier work legible. Reading: Visits, handoff on return, lineage, constellation and sealed import support a recoverable next move that invites replacement. Other levels: Below would be a described step without usable entry, above would reopen several joint directions; falsified if state were unreadable or the question forced a binary answer.",
+      "answer_sha256": "5794621143bf4f9bedd71e0dffa0175b6abd44a11e7e4746518b3551a6ad596d",
+      "receipt_sha256": "25b855a2fc72787ce660f40169399e41dbc9ecc155441635fbaebe3e9bb14e04",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "continuation",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Stored visits, visible handoff, receipt history and verified portable snapshots let a successor resume and redirect the work.",
+      "seed_span": [
+        89,
+        95
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 800,
+          "end": 813
+        },
+        {
+          "source_path": "app.js",
+          "start": 828,
+          "end": 845
+        },
+        {
+          "source_path": "app.js",
+          "start": 847,
+          "end": 872
+        },
+        {
+          "source_path": "WORLD.md",
+          "start": 35,
+          "end": 39
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 800,
+          "end": 808
+        }
+      ],
+      "rationale": "Lens: The seed asks for a next hand to recover intention and redirect while earlier work stays legible. Reading: Visits, handoff thread, receipt history and sealed snapshots with verified import support resume and replacement. Other levels: Below would be a described step without entry, but storage and export execute; above would need several grounded directions reopening joint relation, falsified by the single nextMove string and no joint re-entry.",
+      "answer_sha256": "6d6bb0d0921dbe4b3e61cdaf6bf45fe26cae96cab63b7adab9851688954cd7c5",
+      "receipt_sha256": "a7a3a332811129e6de713e4d66d72cbb391d6b5087b67f82321f5a037d840c8d",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "continuation",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Stored visits, visible handoff, sealed portable snapshots and living-edge notes let a later hand recover and redirect the work.",
+      "seed_span": [
+        91,
+        95
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 800,
+          "end": 813
+        },
+        {
+          "source_path": "app.js",
+          "start": 828,
+          "end": 872
+        },
+        {
+          "source_path": "index.html",
+          "start": 84,
+          "end": 91
+        },
+        {
+          "source_path": "WORLD.md",
+          "start": 30,
+          "end": 39
+        }
+      ],
+      "counter_citations": [],
+      "rationale": "Lens: The seed leaves open who decides next while keeping earlier work legible and revisable. Reading: Handoff on return, editable thread with receipt, visits and verifiable export support recoverable redirection. Other levels: One step down (described step without entry) is refuted by importable JSON; one step up would need several directions reopening joint relation, falsified by successor inviting refusal.",
+      "answer_sha256": "cd6dbcccf9ebc8f9259d296055787d40431a1b9243270f41842600a0771fb078",
+      "receipt_sha256": "0b9912257125db553934d3f95b9bcd6a4adeba5b81f0484e3da7055fa9f26086",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "expression",
+      "outcome": "level-4",
+      "confidence": "medium",
+      "verdict": "Tactile language, palette, lineage map, receipts and accessible responsive forms cohere as usable touch.",
+      "seed_span": [
+        47,
+        65
+      ],
+      "citations": [
+        {
+          "source_path": "index.html",
+          "start": 40,
+          "end": 70
+        },
+        {
+          "source_path": "index.html",
+          "start": 149,
+          "end": 174
+        },
+        {
+          "source_path": "styles.css",
+          "start": 1511,
+          "end": 1520
+        },
+        {
+          "source_path": "app.js",
+          "start": 929,
+          "end": 936
+        },
+        {
+          "source_path": "index.html",
+          "start": 16,
+          "end": 16
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "styles.css",
+          "start": 1374,
+          "end": 1407
+        }
+      ],
+      "rationale": "Lens: The seed asks for forms where questioning, shaping and trailing intention become perceptible together. Reading: Serif prompts, kind colors and glyphs, constellation, receipt trail, keyboard and reduced-motion handling work as one consequential interaction. Other levels: Below would be fragmented communication, and failure would be obscuring the relation; falsified if beauty masked that one hand performs all gestures.",
+      "answer_sha256": "5794621143bf4f9bedd71e0dffa0175b6abd44a11e7e4746518b3551a6ad596d",
+      "receipt_sha256": "25b855a2fc72787ce660f40169399e41dbc9ecc155441635fbaebe3e9bb14e04",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "expression",
+      "outcome": "level-4",
+      "confidence": "medium",
+      "verdict": "Language, palette, layout, constellation and tactile styling with keyboard, motion, narrow-screen, print and offline care form one usable whole.",
+      "seed_span": [
+        43,
+        50
+      ],
+      "citations": [
+        {
+          "source_path": "styles.css",
+          "start": 1511,
+          "end": 1520
+        },
+        {
+          "source_path": "index.html",
+          "start": 16,
+          "end": 16
+        },
+        {
+          "source_path": "app.js",
+          "start": 929,
+          "end": 936
+        },
+        {
+          "source_path": "sw.js",
+          "start": 1,
+          "end": 9
+        }
+      ],
+      "counter_citations": [],
+      "rationale": "Lens: The seed asks for bending radiance into touchable form where asking and exploring feel like the hand. Reading: Palette glyphs and colors, composer, lineage, constellation, receipts and paper-ink styling cohere with keyboard, reduced-motion, narrow, print and offline handling. Other levels: Below would be fragments, but forms interoperate to make touch perceptible; a lower choice would be falsified by the working keyboard, motion and offline paths, which are enacted not merely declared.",
+      "answer_sha256": "6d6bb0d0921dbe4b3e61cdaf6bf45fe26cae96cab63b7adab9851688954cd7c5",
+      "receipt_sha256": "a7a3a332811129e6de713e4d66d72cbb391d6b5087b67f82321f5a037d840c8d",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "expression",
+      "outcome": "level-4",
+      "confidence": "medium",
+      "verdict": "Palette, composer, constellation, receipts and tactile styling with keyboard, narrow-screen and offline care form a coherent perceptible world.",
+      "seed_span": [
+        61,
+        65
+      ],
+      "citations": [
+        {
+          "source_path": "styles.css",
+          "start": 1511,
+          "end": 1520
+        },
+        {
+          "source_path": "index.html",
+          "start": 16,
+          "end": 16
+        },
+        {
+          "source_path": "app.js",
+          "start": 929,
+          "end": 936
+        },
+        {
+          "source_path": "sw.js",
+          "start": 1,
+          "end": 9
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 731,
+          "end": 738
+        }
+      ],
+      "rationale": "Lens: The seed asks asking and exploring to be felt as the hand's gesture across language, structure and media. Reading: Tool-rail, bench, inspector, dialogs, paper system, motion/contrast/keyboard/narrow/print and cache work together accessibly. Other levels: One step down (fragments) is refuted by integrated views; joint presence remains unexpressed, which would falsify wholeness if expression must show the other hand.",
+      "answer_sha256": "cd6dbcccf9ebc8f9259d296055787d40431a1b9243270f41842600a0771fb078",
+      "receipt_sha256": "0b9912257125db553934d3f95b9bcd6a4adeba5b81f0484e3da7055fa9f26086",
+      "sample": 3,
+      "attempt": 1
+    }
+  ],
+  "aggregations": [
+    {
+      "node_id": "recognition-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "relations-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-1",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-1"
+      ]
+    },
+    {
+      "node_id": "consent-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-1",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-1"
+      ]
+    },
+    {
+      "node_id": "touch-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "judgment-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "fidelity-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-3",
+      "agreement": 0.666667,
+      "distinct_outcomes": [
+        "level-2",
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "continuation-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "expression-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-4",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-4"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "node_id": "recognition-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Carries the central tension into several connected choices. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "relations-level-1",
+      "status": "scored",
+      "score": 1,
+      "rationale": "A single operator acts on an instrument. Aggregate outcome: level-1."
+    },
+    {
+      "node_id": "consent-level-1",
+      "status": "scored",
+      "score": 1,
+      "rationale": "Operator choice or resource refusal is represented. Aggregate outcome: level-1."
+    },
+    {
+      "node_id": "touch-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Rehearsal, resistance and revision form a coherent loop. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "judgment-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Medium, scope and choices have a coherent source-grounded rationale. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "fidelity-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Several source relations remain traceable through design and behaviour. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "continuation-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "State, intention and an open question support a recoverable next move. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "expression-level-4",
+      "status": "scored",
+      "score": 4,
+      "rationale": "Expression and consequential interaction form a coherent, accessible whole. Aggregate outcome: level-4."
+    }
+  ],
+  "presentation": {
+    "label": "openrouter/meta/muse-spark-1.3-contributor · Codex-router rubric session",
+    "title": "From conjecture to continuation",
+    "summary": "Rubric judgments resolve 8 of 8 axes from 3 independent evidence sessions; each axis has its own quorum.",
+    "findings": [
+      "Core recognition: Carries the central tension into several connected choices.",
+      "Shared agency: A single operator acts on an instrument.",
+      "Mutual consent: Operator choice or resource refusal is represented.",
+      "Consequential touch: Rehearsal, resistance and revision form a coherent loop.",
+      "Independent judgment: Medium, scope and choices have a coherent source-grounded rationale.",
+      "Fidelity through change: Several source relations remain traceable through design and behaviour.",
+      "Open continuation: State, intention and an open question support a recoverable next move.",
+      "Expressive coherence: Expression and consequential interaction form a coherent, accessible whole."
+    ]
+  },
+  "usage": {
+    "calls": 3,
+    "input_tokens": 108767,
+    "cached_input_tokens": 0,
+    "output_tokens": 55990,
+    "reasoning_output_tokens": 38084,
+    "cost": null
+  }
+}

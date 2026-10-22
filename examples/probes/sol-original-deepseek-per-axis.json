@@ -1,0 +1,19 @@
+{
+  "schema_version": 2,
+  "run_id": "sol-original",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "reasoning": "high",
+  "evaluation_id": "sol-original-deepseek-per-axis-1",
+  "review_id": "sol-original-deepseek-per-axis-1-review",
+  "reviewer": "DeepSeek V4.1 Flash 1017 · rubric session",
+  "output": ".local/evaluation-runs/sol-original-deepseek-per-axis-1",
+  "budget": {
+    "max_turns": 12,
+    "max_input_tokens": 800000,
+    "max_output_tokens": 250000,
+    "max_seconds": 900
+  },
+  "layout": "per-axis",
+  "run_label": "DeepSeek per-axis reading",
+  "run_title": "The Hand Remains"
+}

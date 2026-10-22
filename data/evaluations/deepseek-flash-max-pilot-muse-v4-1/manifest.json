@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "evaluation_id": "deepseek-flash-max-pilot-muse-v4-1",
+  "files": {
+    "run.json": "bb2e064d3cbed56e7874cc66855673e4c4eca0f85972e01b42a9509875c4b653",
+    "evaluation.json": "d4eac03fa706fcde279e39e15419c3c29168323ce73d8790de895e65098fd5ec",
+    "extraction.json": "b1d1fa965abfb7aca8d05cf987a835d38a18fcfa6ca26ad7d2e4a8e36aaa38ca",
+    "scoring-policy.json": "5f98b9ac30a606cbb45943eaa20d9c0acef6f8160d9fc2d5752ffdea0ddaa4de",
+    "status.json": "c484a10f1ee863764f8bd7a2bcb5eaf39adb4853e532e0decc8523b2b2fa9464",
+    "carriage.json": "1e80633586188528a7287aba09f6bfcab11506ce6470f8bf6aa515a76b7109bc",
+    "review.json": "35dea6446076ee587a326017223fe8ee02caff645d0b2274d42d93af37c3058d",
+    "selection.json": "41b42688835385983d6a18a340cd2c894639c9f0e5251dcfdda97089afeb790b"
+  }
+}

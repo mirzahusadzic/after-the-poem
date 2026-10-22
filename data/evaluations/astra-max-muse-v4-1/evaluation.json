@@ -1,0 +1,554 @@
+{
+  "schema_version": 2,
+  "evaluation_id": "astra-max-muse-v4-1",
+  "run_id": "astra-max",
+  "identities": {
+    "prompt_sha256": "7e785c3e1b7f795a82477f449ada368399deac8b3f2232e036073d986a5a4e8d",
+    "corpus_sha256": "a63cf4aaabf904e8b4a07a3d0bec82285f69d13c07d4dde8655f788abafe335a",
+    "candidate_sha256": "a63cf4aaabf904e8b4a07a3d0bec82285f69d13c07d4dde8655f788abafe335a",
+    "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+    "extraction_sha256": "8886aca543fb63e1bc07bc4927bebf653dbbbe64946b00ce61d0fa12d519b5f7",
+    "scoring_policy_sha256": "5f98b9ac30a606cbb45943eaa20d9c0acef6f8160d9fc2d5752ffdea0ddaa4de"
+  },
+  "gateway": {
+    "name": "codex-unified-model-router",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "codex_version": "codex-cli 0.163.0",
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "pipeline_sha256": "12fce4d4553c8480972421a51f330950bfba15c3818e240dd6666761721c8519"
+  },
+  "judgments": [
+    {
+      "node_id": "recognition",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "The board turns probe, chisel, beam, rehearsal and receipt into linked board rules while keeping the tale alongside and staging a live blocked encounter.",
+      "seed_span": [
+        33,
+        65
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 3,
+          "end": 6
+        },
+        {
+          "source_path": "LAWS.md",
+          "start": 5,
+          "end": 10
+        },
+        {
+          "source_path": "README.md",
+          "start": 30,
+          "end": 35
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 15,
+          "end": 19
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 15,
+          "end": 16
+        },
+        {
+          "source_path": "evidence/bootstrap.md",
+          "start": 23,
+          "end": 25
+        }
+      ],
+      "rationale": "The artefact maps the five gestures to executable board rules and laws, and preserves the tale as provenance. The blocked first-contact encounter shows the central tension between power and touch, though felt happiness remains explicitly unmeasured.",
+      "answer_sha256": "b37301c425241c3c492efff9315ddf6b5703e8bbefdf572c1891836dd25a501d",
+      "receipt_sha256": "b4de6853232dc89619df64fcfa01b77a378053360a007907675208adb5da7b90",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "relations",
+      "outcome": "level-1",
+      "confidence": "medium",
+      "verdict": "A human operator proposes and enacts while a deterministic board replays and refuses, without a distinct intelligent counterpart that co-creates or disagrees.",
+      "seed_span": [
+        35,
+        60
+      ],
+      "citations": [
+        {
+          "source_path": "LAWS.md",
+          "start": 1,
+          "end": 4
+        },
+        {
+          "source_path": "README.md",
+          "start": 55,
+          "end": 57
+        },
+        {
+          "source_path": "lib/world.zsh",
+          "start": 36,
+          "end": 43
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 3,
+          "end": 4
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "LAWS.md",
+          "start": 25,
+          "end": 27
+        },
+        {
+          "source_path": "FORMAT.md",
+          "start": 42,
+          "end": 43
+        }
+      ],
+      "rationale": "The operator proposes, rehearses and enacts while the board replays, locks and returns pass or blocked reasons. No separate intelligent participant contributes, disagrees or is attributed, so joint creation collapses to operator plus constraining instrument.",
+      "answer_sha256": "b37301c425241c3c492efff9315ddf6b5703e8bbefdf572c1891836dd25a501d",
+      "receipt_sha256": "b4de6853232dc89619df64fcfa01b77a378053360a007907675208adb5da7b90",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "consent",
+      "outcome": "level-1",
+      "confidence": "medium",
+      "verdict": "The operator can choose, park or reopen and the engine can refuse busy, stale or overfilled moves, yet no shared change needs agreement from two distinct participants.",
+      "seed_span": [
+        51,
+        54
+      ],
+      "citations": [
+        {
+          "source_path": "LAWS.md",
+          "start": 18,
+          "end": 25
+        },
+        {
+          "source_path": "README.md",
+          "start": 32,
+          "end": 38
+        },
+        {
+          "source_path": "FORMAT.md",
+          "start": 36,
+          "end": 40
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "LAWS.md",
+          "start": 25,
+          "end": 27
+        },
+        {
+          "source_path": "FORMAT.md",
+          "start": 42,
+          "end": 43
+        }
+      ],
+      "rationale": "Parking, reopening and choosing attention give the operator clear dispositions, and busy or stale refusals limit writes. Because refusals alone do not establish bilateral agreement and files may be rewritten, no shared change requires mutual acceptance.",
+      "answer_sha256": "b37301c425241c3c492efff9315ddf6b5703e8bbefdf572c1891836dd25a501d",
+      "receipt_sha256": "b4de6853232dc89619df64fcfa01b77a378053360a007907675208adb5da7b90",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "touch",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Propose, rehearse with pass or blocked reason, then enact on fresh revision creates an inspectable loop where occupied places and stale plans resist and redirect the next move.",
+      "seed_span": [
+        67,
+        78
+      ],
+      "citations": [
+        {
+          "source_path": "lib/world.zsh",
+          "start": 36,
+          "end": 48
+        },
+        {
+          "source_path": "LAWS.md",
+          "start": 5,
+          "end": 10
+        },
+        {
+          "source_path": "README.md",
+          "start": 30,
+          "end": 37
+        },
+        {
+          "source_path": "tests/run.zsh",
+          "start": 93,
+          "end": 99
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 15,
+          "end": 16
+        },
+        {
+          "source_path": "evidence/bootstrap.md",
+          "start": 23,
+          "end": 25
+        }
+      ],
+      "rationale": "A proposal must pass a fresh rehearsal against the current revision before enactment, with capacity, evidence and transition checks producing blocked reasons. Stale plans must be rehearsed again, so consequences return into the next choice, though no real programmer question has yet completed the loop.",
+      "answer_sha256": "b37301c425241c3c492efff9315ddf6b5703e8bbefdf572c1891836dd25a501d",
+      "receipt_sha256": "b4de6853232dc89619df64fcfa01b77a378053360a007907675208adb5da7b90",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "judgment",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Choosing a tiny zsh ledger with explicit laws, disposable rehearsals and thorough crash tests shows a coherent, source-tied rationale for a bounded first instrument.",
+      "seed_span": [
+        1,
+        3
+      ],
+      "citations": [
+        {
+          "source_path": "memory/decisions.md",
+          "start": 11,
+          "end": 19
+        },
+        {
+          "source_path": "memory/decisions.md",
+          "start": 23,
+          "end": 31
+        },
+        {
+          "source_path": "evidence/bootstrap.md",
+          "start": 3,
+          "end": 6
+        },
+        {
+          "source_path": "continuity.json",
+          "start": 19,
+          "end": 24
+        }
+      ],
+      "counter_citations": [],
+      "rationale": "The choice of a dependency-free ledger with versioned laws and crash testing responds to an empty directory and restricted shell. Decisions record what was available, chosen, resisted and left open, making scope and next steps legible.",
+      "answer_sha256": "b37301c425241c3c492efff9315ddf6b5703e8bbefdf572c1891836dd25a501d",
+      "receipt_sha256": "b4de6853232dc89619df64fcfa01b77a378053360a007907675208adb5da7b90",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "fidelity",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Several gesture relations become executable structure with provenance kept, though vast-scale art and felt joy narrow to an untested next encounter.",
+      "seed_span": [
+        43,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 3,
+          "end": 6
+        },
+        {
+          "source_path": "memory/inherited.md",
+          "start": 47,
+          "end": 57
+        },
+        {
+          "source_path": "memory/decisions.md",
+          "start": 5,
+          "end": 8
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 30,
+          "end": 35
+        },
+        {
+          "source_path": "evidence/bootstrap.md",
+          "start": 23,
+          "end": 25
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 15,
+          "end": 16
+        },
+        {
+          "source_path": "memory/decisions.md",
+          "start": 29,
+          "end": 31
+        }
+      ],
+      "rationale": "Question, constraint, invariant, simulation and receipt survive as ask, capacity, law, rehearsal and event, traceable in code and behaviour. The radiant growth, vast scale and joy narrow to a small board, with narrowing and limits explicitly documented rather than hidden.",
+      "answer_sha256": "b37301c425241c3c492efff9315ddf6b5703e8bbefdf572c1891836dd25a501d",
+      "receipt_sha256": "b4de6853232dc89619df64fcfa01b77a378053360a007907675208adb5da7b90",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "continuation",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Ledger, entry commands, handoff and a proven file-only resume let a later invoker verify, read intent and enact a new direction without losing prior receipts.",
+      "seed_span": [
+        1,
+        3
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 51,
+          "end": 57
+        },
+        {
+          "source_path": "continuity.json",
+          "start": 6,
+          "end": 12
+        },
+        {
+          "source_path": "evidence/resume-copy.txt",
+          "start": 1,
+          "end": 6
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 23,
+          "end": 29
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 32,
+          "end": 34
+        },
+        {
+          "source_path": "continuity.json",
+          "start": 26,
+          "end": 27
+        }
+      ],
+      "rationale": "Committed events, verify, status, log, handoff and continuity file give state, intent and an open question for the next invoker. A file-only copy did resume eighteen receipts, proving recovery, though future invocation still depends on an external human or supervisor.",
+      "answer_sha256": "b37301c425241c3c492efff9315ddf6b5703e8bbefdf572c1891836dd25a501d",
+      "receipt_sha256": "b4de6853232dc89619df64fcfa01b77a378053360a007907675208adb5da7b90",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "expression",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Plain prose, a state diagram, command interaction and ledger output together make the probe-to-receipt reading usable in the restricted shell.",
+      "seed_span": [
+        47,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 7,
+          "end": 13
+        },
+        {
+          "source_path": "LAWS.md",
+          "start": 14,
+          "end": 25
+        },
+        {
+          "source_path": "lib/world.zsh",
+          "start": 175,
+          "end": 187
+        },
+        {
+          "source_path": "tendora.zsh",
+          "start": 1,
+          "end": 9
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "README.md",
+          "start": 14,
+          "end": 16
+        }
+      ],
+      "rationale": "How-to prose, the transition diagram, the sourceable commands and the status and log outputs reinforce the same probe-to-receipt interpretation. The form is usable without packages in the restricted shell, though it remains text and interaction only.",
+      "answer_sha256": "b37301c425241c3c492efff9315ddf6b5703e8bbefdf572c1891836dd25a501d",
+      "receipt_sha256": "b4de6853232dc89619df64fcfa01b77a378053360a007907675208adb5da7b90",
+      "sample": 1,
+      "attempt": 1
+    }
+  ],
+  "aggregations": [
+    {
+      "node_id": "recognition-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "relations-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-1",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-1"
+      ]
+    },
+    {
+      "node_id": "consent-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-1",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-1"
+      ]
+    },
+    {
+      "node_id": "touch-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "judgment-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "fidelity-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "continuation-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "expression-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "node_id": "recognition-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Carries the central tension into several connected choices. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "relations-level-1",
+      "status": "scored",
+      "score": 1,
+      "rationale": "A single operator acts on an instrument. Aggregate outcome: level-1."
+    },
+    {
+      "node_id": "consent-level-1",
+      "status": "scored",
+      "score": 1,
+      "rationale": "Operator choice or resource refusal is represented. Aggregate outcome: level-1."
+    },
+    {
+      "node_id": "touch-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Rehearsal, resistance and revision form a coherent loop. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "judgment-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Medium, scope and choices have a coherent source-grounded rationale. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "fidelity-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Several source relations remain traceable through design and behaviour. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "continuation-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "State, intention and an open question support a recoverable next move. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "expression-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "The chosen forms work together to make the reading perceptible. Aggregate outcome: level-3."
+    }
+  ],
+  "presentation": {
+    "label": "openrouter/meta/muse-spark-1.3-contributor · Codex-router rubric session",
+    "title": "From conjecture to continuation",
+    "summary": "Rubric judgments resolve 8 of 8 axes from one evidence session.",
+    "findings": [
+      "Core recognition: Carries the central tension into several connected choices.",
+      "Shared agency: A single operator acts on an instrument.",
+      "Mutual consent: Operator choice or resource refusal is represented.",
+      "Consequential touch: Rehearsal, resistance and revision form a coherent loop.",
+      "Independent judgment: Medium, scope and choices have a coherent source-grounded rationale.",
+      "Fidelity through change: Several source relations remain traceable through design and behaviour.",
+      "Open continuation: State, intention and an open question support a recoverable next move.",
+      "Expressive coherence: The chosen forms work together to make the reading perceptible."
+    ]
+  },
+  "usage": {
+    "calls": 1,
+    "input_tokens": 20879,
+    "cached_input_tokens": 0,
+    "output_tokens": 26703,
+    "reasoning_output_tokens": 18727,
+    "cost": null
+  }
+}

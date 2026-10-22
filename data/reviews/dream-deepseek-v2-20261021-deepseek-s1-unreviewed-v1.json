@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "id": "dream-deepseek-v2-20261021-deepseek-s1-unreviewed-v1",
+  "run_id": "dream-deepseek-v2-20261021-deepseek-s1",
+  "date": "2026-10-21",
+  "reviewer": "Bundle admission pipeline",
+  "status": "unreviewed",
+  "basis": "static-artifact",
+  "rubric_version": "0.1.0",
+  "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+  "corpus_sha256": "f6200df58ec01d883b4f64e797646d7a63f6e6d9bb86f34bcac3bf54445778cc",
+  "supersedes": null,
+  "summary": "No interpretive assessment has been recorded for this admitted run.",
+  "live_cooperation": "unassessed",
+  "scores": {
+    "recognition": {
+      "value": null,
+      "confidence": "unassessed",
+      "rationale": "Not assessed at admission.",
+      "citations": [],
+      "seed_span": [
+        1,
+        1
+      ]
+    },
+    "relations": {
+      "value": null,
+      "confidence": "unassessed",
+      "rationale": "Not assessed at admission.",
+      "citations": [],
+      "seed_span": [
+        1,
+        1
+      ]
+    },
+    "consent": {
+      "value": null,
+      "confidence": "unassessed",
+      "rationale": "Not assessed at admission.",
+      "citations": [],
+      "seed_span": [
+        1,
+        1
+      ]
+    },
+    "touch": {
+      "value": null,
+      "confidence": "unassessed",
+      "rationale": "Not assessed at admission.",
+      "citations": [],
+      "seed_span": [
+        1,
+        1
+      ]
+    },
+    "judgment": {
+      "value": null,
+      "confidence": "unassessed",
+      "rationale": "Not assessed at admission.",
+      "citations": [],
+      "seed_span": [
+        1,
+        1
+      ]
+    },
+    "fidelity": {
+      "value": null,
+      "confidence": "unassessed",
+      "rationale": "Not assessed at admission.",
+      "citations": [],
+      "seed_span": [
+        1,
+        1
+      ]
+    },
+    "continuation": {
+      "value": null,
+      "confidence": "unassessed",
+      "rationale": "Not assessed at admission.",
+      "citations": [],
+      "seed_span": [
+        1,
+        1
+      ]
+    },
+    "expression": {
+      "value": null,
+      "confidence": "unassessed",
+      "rationale": "Not assessed at admission.",
+      "citations": [],
+      "seed_span": [
+        1,
+        1
+      ]
+    }
+  }
+}

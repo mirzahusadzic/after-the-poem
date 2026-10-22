@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "run_id": "dream-claude-opus55-v2-20261022",
+  "cohort": "dream-4521-claude-code-v1",
+  "prompt": "examples/prompts/dream-4521-claude-code.txt",
+  "output": ".local/dream-runs/dream-claude-opus55-v2-20261022",
+  "model": "claude-opus-5-5",
+  "effort": "xhigh",
+  "generation_seconds": 1800,
+  "label": "Claude Opus 5.5 · Claude Code",
+  "audit_model": "claude-haiku-5-5",
+  "reader": {
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "reviewer": "Muse Spark 1.3 Contributor · rubric session",
+    "layout": "compact",
+    "budget": {
+      "max_turns": 9,
+      "max_input_tokens": 900000,
+      "max_output_tokens": 300000,
+      "max_seconds": 2400
+    }
+  },
+  "cohort_title": "The Programmer and the Glory Portal · named for Claude Code"
+}

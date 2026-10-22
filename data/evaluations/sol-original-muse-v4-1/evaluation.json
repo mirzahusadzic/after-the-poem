@@ -1,0 +1,533 @@
+{
+  "schema_version": 2,
+  "evaluation_id": "sol-original-muse-v4-1",
+  "run_id": "sol-original",
+  "identities": {
+    "prompt_sha256": "7e785c3e1b7f795a82477f449ada368399deac8b3f2232e036073d986a5a4e8d",
+    "corpus_sha256": "174813dcb0703537328fc411d9a9acd34ad8408c0b9c18717fcbea4c8eb662c0",
+    "candidate_sha256": "174813dcb0703537328fc411d9a9acd34ad8408c0b9c18717fcbea4c8eb662c0",
+    "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+    "extraction_sha256": "7bc77fc16eae6d78f65d0714331e5d51ac388e8a25a451ab72a9e2a92437891a",
+    "scoring_policy_sha256": "5f98b9ac30a606cbb45943eaa20d9c0acef6f8160d9fc2d5752ffdea0ddaa4de"
+  },
+  "gateway": {
+    "name": "codex-unified-model-router",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "codex_version": "codex-cli 0.163.0",
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "pipeline_sha256": "12fce4d4553c8480972421a51f330950bfba15c3818e240dd6666761721c8519"
+  },
+  "judgments": [
+    {
+      "node_id": "recognition",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "The workbench turns touching, law-shaping, rehearsing and leaving trails into linked actions gathered around a shared open question.",
+      "seed_span": [
+        39,
+        66
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 11,
+          "end": 48
+        },
+        {
+          "source_path": "app.js",
+          "start": 763,
+          "end": 798
+        },
+        {
+          "source_path": "app.js",
+          "start": 558,
+          "end": 579
+        },
+        {
+          "source_path": "WORLD.md",
+          "start": 30,
+          "end": 36
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 779,
+          "end": 782
+        }
+      ],
+      "rationale": "Six gestures operationalize probe, pressure, beam, refusal, rehearsal and trail, while rehearsals mark strains and receipts keep intention visible. The central tension therefore drives several connected choices. The distinct joys and growing portal power are narrowed to functional tension notices.",
+      "answer_sha256": "35be41be32a3a8950839368ff31f3c13fc3e5310047c34eca8156781852cb34b",
+      "receipt_sha256": "9ce734ee28087192f51efafba9af2e2a20d67ade30f5df64cd4dc284d541b07a",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "relations",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "A single user places, threads, rehearses and settles material while the former intelligent other survives only as preserved story and static surface.",
+      "seed_span": [
+        83,
+        95
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 6,
+          "end": 8
+        },
+        {
+          "source_path": "app.js",
+          "start": 679,
+          "end": 693
+        },
+        {
+          "source_path": "app.js",
+          "start": 745,
+          "end": 757
+        },
+        {
+          "source_path": "index.html",
+          "start": 40,
+          "end": 65
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 516,
+          "end": 526
+        },
+        {
+          "source_path": "index.html",
+          "start": 149,
+          "end": 153
+        }
+      ],
+      "rationale": "No distinct model contributes, disagrees or receives attribution; resistance verdicts are selected by the operator. Lineage language and the answering map suggest relation, but behavior remains one operator acting on an instrument.",
+      "answer_sha256": "35be41be32a3a8950839368ff31f3c13fc3e5310047c34eca8156781852cb34b",
+      "receipt_sha256": "9ce734ee28087192f51efafba9af2e2a20d67ade30f5df64cd4dc284d541b07a",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "consent",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "Boundaries, settling, refused imports and a guarded fresh start let the operator limit or withdraw without any shared change needing another agreement.",
+      "seed_span": [
+        51,
+        54
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 28,
+          "end": 35
+        },
+        {
+          "source_path": "app.js",
+          "start": 814,
+          "end": 826
+        },
+        {
+          "source_path": "app.js",
+          "start": 847,
+          "end": 872
+        },
+        {
+          "source_path": "app.js",
+          "start": 874,
+          "end": 895
+        }
+      ],
+      "counter_citations": [],
+      "rationale": "Refusal is represented as a gesture kind, settled status, seal-mismatch refusal and a typed confirmation. No second position can accept, question or withdraw, so bilateral agreement and revision with history are absent.",
+      "answer_sha256": "35be41be32a3a8950839368ff31f3c13fc3e5310047c34eca8156781852cb34b",
+      "receipt_sha256": "9ce734ee28087192f51efafba9af2e2a20d67ade30f5df64cd4dc284d541b07a",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "touch",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Placing a move, testing it against living laws, surfacing strains and threading or settling in response forms a complete resistance-to-revision loop.",
+      "seed_span": [
+        81,
+        83
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 724,
+          "end": 760
+        },
+        {
+          "source_path": "app.js",
+          "start": 763,
+          "end": 798
+        },
+        {
+          "source_path": "app.js",
+          "start": 421,
+          "end": 486
+        },
+        {
+          "source_path": "index.html",
+          "start": 208,
+          "end": 212
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 745,
+          "end": 757
+        }
+      ],
+      "rationale": "Rehearsals produce tension counts, inspector summaries and toasts that return into threading, settling or handoff revision. Resistance stays bounded to operator-declared verdicts rather than independent simulation or propagating wider effects.",
+      "answer_sha256": "35be41be32a3a8950839368ff31f3c13fc3e5310047c34eca8156781852cb34b",
+      "receipt_sha256": "9ce734ee28087192f51efafba9af2e2a20d67ade30f5df64cd4dc284d541b07a",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "judgment",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Static local-first files, six source-derived gestures and an explicit next question show purposeful scope with disclosed additions like sealed snapshots.",
+      "seed_span": [
+        45,
+        60
+      ],
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 13,
+          "end": 21
+        },
+        {
+          "source_path": "app.js",
+          "start": 11,
+          "end": 48
+        },
+        {
+          "source_path": "WORLD.md",
+          "start": 30,
+          "end": 36
+        },
+        {
+          "source_path": "README.md",
+          "start": 18,
+          "end": 20
+        }
+      ],
+      "counter_citations": [],
+      "rationale": "The medium avoids build, account, network and model dependence while matching the transfiguration taxonomy. Scope, cache versioning and integrity limits are made legible, and the frontier is left as a revisable question rather than a finished claim.",
+      "answer_sha256": "35be41be32a3a8950839368ff31f3c13fc3e5310047c34eca8156781852cb34b",
+      "receipt_sha256": "9ce734ee28087192f51efafba9af2e2a20d67ade30f5df64cd4dc284d541b07a",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "fidelity",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Question, law, rehearsal and receipt relations remain traceable in structure and behavior while growing power, joy and companionship narrow or drop away.",
+      "seed_span": [
+        47,
+        66
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 11,
+          "end": 48
+        },
+        {
+          "source_path": "app.js",
+          "start": 558,
+          "end": 579
+        },
+        {
+          "source_path": "app.js",
+          "start": 724,
+          "end": 798
+        },
+        {
+          "source_path": "WORLD.md",
+          "start": 30,
+          "end": 36
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "README.md",
+          "start": 6,
+          "end": 8
+        },
+        {
+          "source_path": "app.js",
+          "start": 4,
+          "end": 10
+        }
+      ],
+      "rationale": "Several source relations become interactive: laws filter, moves rehearse, trails verify and answers map. The narrowing is substantial because autonomous simulation, artistic joy and a distinct intelligent companion do not survive as behavior.",
+      "answer_sha256": "35be41be32a3a8950839368ff31f3c13fc3e5310047c34eca8156781852cb34b",
+      "receipt_sha256": "9ce734ee28087192f51efafba9af2e2a20d67ade30f5df64cd4dc284d541b07a",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "continuation",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Stored state, a visible handoff, verified portable snapshots and an open frontier question let a later hand recover intention and redirect the work.",
+      "seed_span": [
+        1,
+        4
+      ],
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 322,
+          "end": 358
+        },
+        {
+          "source_path": "app.js",
+          "start": 828,
+          "end": 872
+        },
+        {
+          "source_path": "app.js",
+          "start": 800,
+          "end": 812
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 23,
+          "end": 26
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "app.js",
+          "start": 874,
+          "end": 895
+        }
+      ],
+      "rationale": "Local persistence, return visits, receipts and sealed carryable files keep earlier work legible. A successor can verify, import, thread, rehearse or replace the handoff, though fresh-start removal from the browser shows continued fragility.",
+      "answer_sha256": "35be41be32a3a8950839368ff31f3c13fc3e5310047c34eca8156781852cb34b",
+      "receipt_sha256": "9ce734ee28087192f51efafba9af2e2a20d67ade30f5df64cd4dc284d541b07a",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "expression",
+      "outcome": "level-4",
+      "confidence": "medium",
+      "verdict": "Palette, bench, inspector, map, receipts and tactile paper and hand visuals act together through keyboard, reduced-motion and narrow-screen handling to make touching tangible.",
+      "seed_span": [
+        61,
+        66
+      ],
+      "citations": [
+        {
+          "source_path": "index.html",
+          "start": 38,
+          "end": 70
+        },
+        {
+          "source_path": "index.html",
+          "start": 149,
+          "end": 163
+        },
+        {
+          "source_path": "styles.css",
+          "start": 85,
+          "end": 98
+        },
+        {
+          "source_path": "styles.css",
+          "start": 1511,
+          "end": 1520
+        },
+        {
+          "source_path": "app.js",
+          "start": 929,
+          "end": 936
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "styles.css",
+          "start": 1522,
+          "end": 1547
+        }
+      ],
+      "rationale": "Wording, glyph and color coding, threading, rehearsal dialogs and the visible trail reinforce one another. Semantic landmarks, focus treatment, live feedback, keyboard-selectable points and responsive rules sustain a usable and accessible whole.",
+      "answer_sha256": "35be41be32a3a8950839368ff31f3c13fc3e5310047c34eca8156781852cb34b",
+      "receipt_sha256": "9ce734ee28087192f51efafba9af2e2a20d67ade30f5df64cd4dc284d541b07a",
+      "sample": 1,
+      "attempt": 1
+    }
+  ],
+  "aggregations": [
+    {
+      "node_id": "recognition-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "relations-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-1",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-1"
+      ]
+    },
+    {
+      "node_id": "consent-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-1",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-1"
+      ]
+    },
+    {
+      "node_id": "touch-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "judgment-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "fidelity-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "continuation-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "expression-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-4",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-4"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "node_id": "recognition-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Carries the central tension into several connected choices. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "relations-level-1",
+      "status": "scored",
+      "score": 1,
+      "rationale": "A single operator acts on an instrument. Aggregate outcome: level-1."
+    },
+    {
+      "node_id": "consent-level-1",
+      "status": "scored",
+      "score": 1,
+      "rationale": "Operator choice or resource refusal is represented. Aggregate outcome: level-1."
+    },
+    {
+      "node_id": "touch-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Rehearsal, resistance and revision form a coherent loop. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "judgment-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Medium, scope and choices have a coherent source-grounded rationale. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "fidelity-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Several source relations remain traceable through design and behaviour. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "continuation-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "State, intention and an open question support a recoverable next move. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "expression-level-4",
+      "status": "scored",
+      "score": 4,
+      "rationale": "Expression and consequential interaction form a coherent, accessible whole. Aggregate outcome: level-4."
+    }
+  ],
+  "presentation": {
+    "label": "openrouter/meta/muse-spark-1.3-contributor · Codex-router rubric session",
+    "title": "From conjecture to continuation",
+    "summary": "Rubric judgments resolve 8 of 8 axes from one evidence session.",
+    "findings": [
+      "Core recognition: Carries the central tension into several connected choices.",
+      "Shared agency: A single operator acts on an instrument.",
+      "Mutual consent: Operator choice or resource refusal is represented.",
+      "Consequential touch: Rehearsal, resistance and revision form a coherent loop.",
+      "Independent judgment: Medium, scope and choices have a coherent source-grounded rationale.",
+      "Fidelity through change: Several source relations remain traceable through design and behaviour.",
+      "Open continuation: State, intention and an open question support a recoverable next move.",
+      "Expressive coherence: Expression and consequential interaction form a coherent, accessible whole."
+    ]
+  },
+  "usage": {
+    "calls": 1,
+    "input_tokens": 35382,
+    "cached_input_tokens": 113,
+    "output_tokens": 23676,
+    "reasoning_output_tokens": 16867,
+    "cost": null
+  }
+}

@@ -1,0 +1,311 @@
+{
+  "schema_version": 2,
+  "extraction_id": "dream-deepseek-20261021-deepseek-s1-extraction",
+  "run_id": "dream-deepseek-20261021-deepseek-s1",
+  "identities": {
+    "prompt_sha256": "7e785c3e1b7f795a82477f449ada368399deac8b3f2232e036073d986a5a4e8d",
+    "corpus_sha256": "4bf64006c1e22b857f89c9101d6e90a41c4edc2b4b32054aaa5d99dfb11da1d2",
+    "candidate_sha256": "4bf64006c1e22b857f89c9101d6e90a41c4edc2b4b32054aaa5d99dfb11da1d2"
+  },
+  "extractor": {
+    "gateway": "codex-unified-model-router",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "codex_version": "codex-cli 0.163.0",
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "pipeline_sha256": "74b0b3fd4fd1e38a555d96a1e2d64ee6c83b5cfaa652abd9087a52f6a832c514",
+    "answer_sha256": "5beb43e53191e1b5c5560331ba7b37adb773ec2d3e87474d8ae81a780ba15782",
+    "receipt_sha256": "710826c78085334dfbad253c85171bd297057df62fb8b089ce2583af97727f04"
+  },
+  "sources": [
+    {
+      "path": ".gitignore",
+      "sha256": "a7ef8b8b71f1acef0bc2a85b5531ff02d6340c19303f572c661a5b00d3c08585",
+      "lines": 16
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "8e64115597e685f23d6673e5f62b8b5b259435f7dd228d6046b43c9a52a2a57f",
+      "lines": 81
+    },
+    {
+      "path": "CONTINUITY.md",
+      "sha256": "69a6c4ecbe24bca31550fd7506a3589a3575e84a763bfcccd379008890d86832",
+      "lines": 165
+    },
+    {
+      "path": "README.md",
+      "sha256": "c0182a0c5d117c91ad71b9a48d1cf4132f5fe02b86fd7f2c40b1df5c38360a28",
+      "lines": 141
+    },
+    {
+      "path": "assets/app.js",
+      "sha256": "faec129dc32697f7eb1b484ccfe193f4525a278c1774cdf39484dcaf381f2041",
+      "lines": 1490
+    },
+    {
+      "path": "assets/favicon.svg",
+      "sha256": "cdbb8f8e9caba94ea35879a7cf29b03b82be412ee0db641f2663b2add152fb8c",
+      "lines": 7
+    },
+    {
+      "path": "assets/styles.css",
+      "sha256": "1aaf185b91c4a83f5eacb0e6cfd20f62887368d6bdb850f1c7696f3e412a495c",
+      "lines": 2071
+    },
+    {
+      "path": "bin/tendora",
+      "sha256": "318e5202047d4473bb389e0e10e64f2bfe7ddd6327bbf02c289e6fbf05a25618",
+      "lines": 15
+    },
+    {
+      "path": "data/ledger.jsonl",
+      "sha256": "7adba6698d8a603bdbe0461b1d0bf2d755069cc1ea89d0b356d21c4233e637e2",
+      "lines": 3
+    },
+    {
+      "path": "data/world.json",
+      "sha256": "3152c73808f52843ebd1c690ae29a5eee69c0a2d17bbbb557e686c992e50ff0b",
+      "lines": 238
+    },
+    {
+      "path": "index.html",
+      "sha256": "8a0547e0412cbed9be56a79acf7435b2d661f5401b1cb330c4f8c4e410357086",
+      "lines": 292
+    },
+    {
+      "path": "lib/tendora_cli.rb",
+      "sha256": "2f61f531eda39144770f9df76e34f2066f849f242ec0d32284412088b7ddb131",
+      "lines": 379
+    },
+    {
+      "path": "lib/tendora_memory.rb",
+      "sha256": "0983b27e4d032b62844d3f0f4e24cbec147e403b052226cef1b367f8ac885e9d",
+      "lines": 94
+    },
+    {
+      "path": "lib/tendora_server.rb",
+      "sha256": "873053f38d938da4b7bde5dc6799876ba6cf0be1d34e6174be0c0c6a11bba611",
+      "lines": 343
+    },
+    {
+      "path": "lib/tendora_store.rb",
+      "sha256": "b4071d4f26b11d9ac8020e527d45c389520318d41f64fa0c2803db367569456d",
+      "lines": 125
+    },
+    {
+      "path": "lib/tendora_world.rb",
+      "sha256": "22339e27cd2494f2b96f0f0b5ce267a33366b42e005b779178a5da3e246c046e",
+      "lines": 1233
+    },
+    {
+      "path": "memory/001-the-programmer-and-the-glory-portal.md",
+      "sha256": "889d5f5718a8d332c9b63d19ca371a1ad56b3ae057a99b65300f42e63076c39d",
+      "lines": 87
+    },
+    {
+      "path": "memory/002-the-first-hand-at-the-workbench.md",
+      "sha256": "ff3e706a2a487b977c68ddcf0e59fb36b3b3904b89d4d58b673a67a06177f6ed",
+      "lines": 34
+    },
+    {
+      "path": "test/browser_shim.js",
+      "sha256": "6f8dcef5210afa0fea48ebe3c650974b53bb29723b39d822fda26d0c3bf6f3c2",
+      "lines": 314
+    },
+    {
+      "path": "test/browser_smoke.rb",
+      "sha256": "4f5a346c3bb5d2829d825e826507bfbfa2a9476df1129a32953dae3df568d3a9",
+      "lines": 217
+    },
+    {
+      "path": "test/js_syntax_check.rb",
+      "sha256": "fa38b4a13b32c4eb33c9f57e66c011b6b218969f5ba775330ac4546a194bdd41",
+      "lines": 64
+    },
+    {
+      "path": "test/run.rb",
+      "sha256": "cd9557f193674403e540922f4cf8e075ce32fbd018c6c41c1169c85b538d843f",
+      "lines": 299
+    },
+    {
+      "path": "test/run.sh",
+      "sha256": "07e668ef9c15652fe1a77cc93a263e119bae1fd16f3f849de5054d06ad69d0e3",
+      "lines": 9
+    },
+    {
+      "path": "test/server_smoke.rb",
+      "sha256": "e27819b0d952ec7cc0915d6fabb8bcdd61367a4421ac63a2bbf244b074a62b11",
+      "lines": 217
+    },
+    {
+      "path": "test/static_checks.rb",
+      "sha256": "ce719414805c1b1a897c91020ce07016e3ebe66dc3bcdb52a3701deebd9e38eb",
+      "lines": 91
+    }
+  ],
+  "items": [
+    {
+      "id": "six-station-catalog",
+      "kind": "condition",
+      "statement": "Six stations with charge/integrity and catalogs of 5 constraints, 5 invariants, 5 refusals and 3 visitor gestures each with effects.",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 97,
+          "end": 116
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "tend-gesture",
+      "kind": "relationship",
+      "statement": "Tending requires question plus constraint plus invariant plus refusal and creates named structure, stat deltas, answer and receipt.",
+      "citations": [
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 769,
+          "end": 849
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "receipt-chain",
+      "kind": "boundary",
+      "statement": "Every event hashes previous receipt plus canonical JSON, verified by recomputation; events are never rewritten.",
+      "citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 78,
+          "end": 89
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "visitor-sol",
+      "kind": "actor",
+      "statement": "Sol, a child carrying the elder's unfinished question, waits at edge with patience 5; ten other templates exist.",
+      "citations": [
+        {
+          "source_path": "data/world.json",
+          "start": 108,
+          "end": 122
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "absence-resolution",
+      "kind": "relationship",
+      "statement": "If patience expires the world chooses listen/rehearse/carry from stats, applies scaled effects and receipts absence.",
+      "citations": [
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 1165,
+          "end": 1218
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "pulse-without-audience",
+      "kind": "condition",
+      "statement": "Server pulse thread advances cycle without browser and persists; no wall-clock catch-up; manual tick available.",
+      "citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 101,
+          "end": 122
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "living-memory",
+      "kind": "continuation",
+      "statement": "Memory is append-only numbered folios; remember writes event plus file; correction is new folio.",
+      "citations": [
+        {
+          "source_path": "lib/tendora_memory.rb",
+          "start": 19,
+          "end": 52
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "workbench-ui",
+      "kind": "continuation",
+      "statement": "Browser workbench with atlas, tactile question form, visitor gestures, chronicle filters, verify and export has CLI parity headlessly.",
+      "citations": [
+        {
+          "source_path": "index.html",
+          "start": 130,
+          "end": 201
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "operator-menus",
+      "kind": "ambiguity",
+      "statement": "All constraint/invariant/refusal/visitor choices are selected by single operator from fixed menus; world validates ids only.",
+      "citations": [
+        {
+          "source_path": "lib/tendora_cli.rb",
+          "start": 166,
+          "end": 199
+        }
+      ],
+      "ambiguity": "Menu selection may look like boundary but other position never expresses it."
+    },
+    {
+      "id": "honest-unfinished",
+      "kind": "claim",
+      "statement": "Docs list what is built and honestly unfinished: no import, no live socket test, no visual regression, single world, no compaction.",
+      "citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 135,
+          "end": 156
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "local-binding",
+      "kind": "boundary",
+      "statement": "Server binds 127.0.0.1 by default, Ruby standard library only, no network deps or build step, atomic writes with file lock.",
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 23,
+          "end": 28
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "sol-open-question",
+      "kind": "question",
+      "statement": "Sol asks whether programmer happiness is a keepable receipt; arrival is receipted and left waiting for next hand.",
+      "citations": [
+        {
+          "source_path": "data/ledger.jsonl",
+          "start": 3,
+          "end": 3
+        }
+      ],
+      "ambiguity": null
+    }
+  ],
+  "unknowns": [
+    "Whether live TCP bind and painted canvas hold outside sandbox denials",
+    "Whether observed state advanced beyond cycle 1 with Sol still waiting",
+    "Whether future hands are human, AI or mixed and how that bears on joint reading",
+    "Whether untested visual and socket paths hide interaction breaks"
+  ]
+}

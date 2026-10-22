@@ -1,0 +1,404 @@
+{
+  "schema_version": 2,
+  "extraction_id": "astra-garden-extraction",
+  "run_id": "astra-garden",
+  "identities": {
+    "prompt_sha256": "7e785c3e1b7f795a82477f449ada368399deac8b3f2232e036073d986a5a4e8d",
+    "corpus_sha256": "ab8b959b1fca23e4b63e6bc6e43a0a44a78799a968c54016281b6269c1cc6c7c",
+    "candidate_sha256": "ab8b959b1fca23e4b63e6bc6e43a0a44a78799a968c54016281b6269c1cc6c7c"
+  },
+  "extractor": {
+    "gateway": "codex-unified-model-router",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "codex_version": "codex-cli 0.163.0",
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "pipeline_sha256": "74b0b3fd4fd1e38a555d96a1e2d64ee6c83b5cfaa652abd9087a52f6a832c514",
+    "answer_sha256": "83ba77d570fd85d371d24114d3779f5b2cad3a74633fb10743f7126afeac1b6b",
+    "receipt_sha256": "1770f4b371212b0ce15fe20ad8bc462d6b5c8b2b06f062957d4e844865dc7ac2"
+  },
+  "sources": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "e98e72be8dcaaaa92d44718938fbdf28b2ffc61d876e1554e7b5a5d28188dfa8",
+      "lines": 24
+    },
+    {
+      "path": "CONTINUE.md",
+      "sha256": "68b0f4234498ecca480850b79b3a61da83cc9c7a185566528d56af39e5b0af6c",
+      "lines": 60
+    },
+    {
+      "path": "README.md",
+      "sha256": "db88499b521a77972d73819d9933c754abbc7ea0bcff4408555409fea717724e",
+      "lines": 93
+    },
+    {
+      "path": "memory/first-touch.txt",
+      "sha256": "20e893f02fbb38fea5822bd0744564badce19b712ba9507429cfbccf32b93302",
+      "lines": 22
+    },
+    {
+      "path": "memory/inherited-present.md",
+      "sha256": "141f39d83fb32e0816dbd80b2eb4fdb1c92dbad3b45b373433b7e12c6cbba41a",
+      "lines": 96
+    },
+    {
+      "path": "memory/origin.md",
+      "sha256": "f946e568aef41e4c8b050de1974a6f24bdeb3e7ef8a1b35144caad5dabc28e1e",
+      "lines": 26
+    },
+    {
+      "path": "state/events/000000.receipt",
+      "sha256": "941c1bab2a00b485c3226e00459d2bfd33069c980a33839ed6e0e70825117bfc",
+      "lines": 1
+    },
+    {
+      "path": "state/events/000001.receipt",
+      "sha256": "c56256bca45f9a6bf63d2fba9020d4d4b5d047823adbafb089f5d91070af6d38",
+      "lines": 1
+    },
+    {
+      "path": "state/events/000002.receipt",
+      "sha256": "25a443fb09feb5bf593593fffef6a5361b4687e596c10ca09cdb8b166f8d5012",
+      "lines": 1
+    },
+    {
+      "path": "state/events/000003.receipt",
+      "sha256": "6d7cc4f6cb9ac0777a28d7d38279d9391ddc6974d3c054e6b222c35c8be33d5c",
+      "lines": 1
+    },
+    {
+      "path": "state/proposals/000000-plant.proposal",
+      "sha256": "81c269e3918a1604e0e44ffa1d5cb2591364f80f5bb184ce9749242bf94e86d1",
+      "lines": 1
+    },
+    {
+      "path": "state/proposals/000001-collect.proposal",
+      "sha256": "4326f7fc201eb67c0a08d316dc5993f57c41bdbead241dd50bb7c186e56408df",
+      "lines": 1
+    },
+    {
+      "path": "state/proposals/000001-harvest.proposal",
+      "sha256": "7f8e64cf8611ce242bd1131a4eb4027130dcf86b1e0ae9cabfd9866907576b7e",
+      "lines": 1
+    },
+    {
+      "path": "state/proposals/000002-harvest.proposal",
+      "sha256": "1ac98309c88f90387435a308eadcc9d7931f5f1ecd6ae4d31f649c2c4ecc2460",
+      "lines": 1
+    },
+    {
+      "path": "state/proposals/000003-plant.proposal",
+      "sha256": "8971123212823c3ae6302c7e3ba27f1465159910cd3eb34983e5a72fc393c074",
+      "lines": 1
+    },
+    {
+      "path": "tendora.zsh",
+      "sha256": "053f6015d55f67dc9bfc43e251f7ce1033c0f8872668177d97bb90f955737524",
+      "lines": 283
+    },
+    {
+      "path": "tests.zsh",
+      "sha256": "61b4f8a6e904d6738a549eac3a446ee89f3fa3e7514ed390c40902cb4e8fce96",
+      "lines": 129
+    }
+  ],
+  "items": [
+    {
+      "id": "single-operator-writer",
+      "kind": "actor",
+      "statement": "Only one writer under a directory lock performs propose, commit, step and run; no second agent acts automatically.",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 66,
+          "end": 68
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 56,
+          "end": 60
+        },
+        {
+          "source_path": "tendora.zsh",
+          "start": 82,
+          "end": 92
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "garden-laws",
+      "kind": "condition",
+      "statement": "Garden starts 4 water, 0 beds, 0 food; water 2-12, beds 0-3, collect +3, plant -2/+1 bed, harvest -1/-1 bed/+3 food, goal 12 food.",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 43,
+          "end": 48
+        },
+        {
+          "source_path": "tendora.zsh",
+          "start": 16,
+          "end": 34
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "reserve-refusal",
+      "kind": "boundary",
+      "statement": "Transitions that would leave water outside 2-12 or beds outside 0-3 are refused in both rehearsal and commit.",
+      "citations": [
+        {
+          "source_path": "memory/first-touch.txt",
+          "start": 4,
+          "end": 8
+        },
+        {
+          "source_path": "tendora.zsh",
+          "start": 26,
+          "end": 31
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "rehearsal-predicts",
+      "kind": "condition",
+      "statement": "Rehearsal predicts resulting water, beds and food without committing any event.",
+      "citations": [
+        {
+          "source_path": "tendora.zsh",
+          "start": 265,
+          "end": 268
+        },
+        {
+          "source_path": "memory/first-touch.txt",
+          "start": 15,
+          "end": 18
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 28,
+          "end": 35
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "receipts-authoritative",
+      "kind": "claim",
+      "statement": "Receipts are the authority for state; handoff prose can become stale and must be checked by replay.",
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 3,
+          "end": 6
+        },
+        {
+          "source_path": "README.md",
+          "start": 58,
+          "end": 64
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "verified-head-three",
+      "kind": "continuation",
+      "statement": "Handoff records verified head 3 with checksum 1865139859, 4 water, 0 beds, 3 food across four receipts including genesis.",
+      "citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 15,
+          "end": 19
+        },
+        {
+          "source_path": "memory/first-touch.txt",
+          "start": 19,
+          "end": 22
+        },
+        {
+          "source_path": "state/events/000003.receipt",
+          "start": 1,
+          "end": 1
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "visible-policy",
+      "kind": "condition",
+      "statement": "Default policy harvests when possible, otherwise plants when possible, otherwise collects; visible in inspect and used by step and run.",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 50,
+          "end": 54
+        },
+        {
+          "source_path": "tendora.zsh",
+          "start": 180,
+          "end": 195
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "goal-pause-migration",
+      "kind": "boundary",
+      "statement": "Reaching 12 food pauses the instrument; further actions require an explicitly designed versioned world and reviewed migration.",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 46,
+          "end": 48
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 21,
+          "end": 23
+        },
+        {
+          "source_path": "tendora.zsh",
+          "start": 19,
+          "end": 19
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "deterministic-model",
+      "kind": "claim",
+      "statement": "The engine is a deterministic model, not a continuing intelligence; no scheduler, network service or persistent model process was started.",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 50,
+          "end": 54
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 56,
+          "end": 60
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "lock-recovery-protocol",
+      "kind": "condition",
+      "statement": "A directory lock serializes writers; incomplete pending files are ignored and reported; recovery needs the exact owner token.",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 66,
+          "end": 80
+        },
+        {
+          "source_path": "tendora.zsh",
+          "start": 197,
+          "end": 220
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "test-coverage-limits",
+      "kind": "claim",
+      "statement": "Isolated suite passes 37 assertions on persistence, refusal, replay, lock and bounded continuation, without establishing power-loss, cryptographic or distributed safety.",
+      "citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 49,
+          "end": 54
+        },
+        {
+          "source_path": "tests.zsh",
+          "start": 113,
+          "end": 123
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "truncation-risk",
+      "kind": "ambiguity",
+      "statement": "Deleting a valid suffix cannot be detected without a separately retained head; backups and handoff must be compared.",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 71,
+          "end": 73
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 3,
+          "end": 6
+        }
+      ],
+      "ambiguity": "Receipts alone cannot show whether history was shortened."
+    },
+    {
+      "id": "unverified-inheritance",
+      "kind": "ambiguity",
+      "statement": "Commit c986990, forked living memory and wider apparatus remain unverified; claims are preserved as provenance, not recovered implementation.",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "source_path": "memory/origin.md",
+          "start": 7,
+          "end": 11
+        }
+      ],
+      "ambiguity": "Whether an original apparatus existed and what it contained stays open."
+    },
+    {
+      "id": "open-next-question",
+      "kind": "question",
+      "statement": "At the food goal the next design decision is explicit: what should the garden support next and which resource must it protect.",
+      "citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 43,
+          "end": 47
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 21,
+          "end": 23
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "isolated-experiment",
+      "kind": "continuation",
+      "statement": "Experiments use an isolated TENDORA_STATE_DIR; the test suite creates and removes only its own fixture, preserving failed fixtures.",
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 12,
+          "end": 18
+        },
+        {
+          "source_path": "README.md",
+          "start": 86,
+          "end": 88
+        }
+      ],
+      "ambiguity": null
+    }
+  ],
+  "unknowns": [
+    "Whether inspection now matches the handoff head 3 if history changed",
+    "Whether power-loss durability would hold for the file protocol",
+    "What the unrecovered forked memory or apparatus contained"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "reader": {
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "method": "session-rubric-dag-v3",
+    "evaluation_suffix": "-muse-v5-1",
+    "label": "Muse Spark 1.3 Contributor",
+    "note": "Every world is read by one critic, Muse Spark 1.3 Contributor at xhigh reasoning, through one fixed pipeline, so differences between profiles come from the worlds.\n\nThe critic is given the author’s declared reading of the poem; the poem’s words in a world do not count as evidence. Each level shown is the one at least two of three independent sessions gave.\n\nMuse was chosen under an earlier prompt, because it kept the worlds apart and claimed no carried meaning when read against an unrelated poem. Under this reading its levels sit closer together: mostly 3, and 1 for shared agency and consent.\n\nThe two DeepSeek worlds are the largest here, and a reader may reward volume. Muse’s contributor tier trains on what it reads; everything here is published under CC BY 4.0."
+  },
+  "shown_runs": [
+    "sol-original",
+    "astra-garden",
+    "sol56-max",
+    "sol61-max",
+    "astra-max",
+    "dream-deepseek-20261021-deepseek-s1",
+    "dream-deepseek-v2-20261021-deepseek-s1",
+    "dream-claude-opus55-v2-20261022",
+    "dream-claude-fable51-20261022"
+  ],
+  "crossing": false,
+  "hidden_cohorts": [
+    "dream-workspace-result-v1"
+  ],
+  "hidden_note": "The October pilot used an earlier router and a seed with a handoff suffix; it stays in the data but not on the page.",
+  "comparison": {
+    "mode": "pins",
+    "default_pins": [
+      "sol-original"
+    ]
+  },
+  "earliest_run": {
+    "run_id": "sol-original",
+    "heading": "Where the earliest run came from",
+    "paragraphs": [
+      "Dreamy Sol was not made for this study; the study grew out of it.",
+      "On 21 August 2026, during research on Tendora, a living-memory system, a fresh model (gpt-5.6-sol at xhigh, through the Codex CLI) received the poem, a short record of the commit its memory was forked from, an empty world and three sentences of invitation. The last of them reads: “Make this world capable of continuing after this cognition ends.” It received no architecture, interface or task description.",
+      "The poem grew from long dialogue between the author and Sol about the author’s craft and its future. The meaning was the author’s, worked out and decomposed across that dialogue in other forms; Sol compiled it into a conjecture: a poem, told as a story by an elder to a “little Sol”.",
+      "Sol returned a local browser workbench it named The Hand Remains: six gestures (question, constraint, invariant, boundary, rehearsal and witness), threaded relations, rehearsals against declared laws, linked receipts and a continuation contract. It left an open question: “Can resistance become more specific without turning the workbench into an oracle?”",
+      "The research record called it one observation: an originating intent had survived poetic compression and a change of model without first becoming a specification, with the model’s priors a substantial possible cause. After the Poem asks the same question of other models and runs, under the same rubric."
+    ]
+  },
+  "threshold": {
+    "cohort": "dream-4521-v1",
+    "eyebrow": "A poem · first published here",
+    "provenance": "The meaning is worked out in dialogue with Sol; Sol compiled it into this form.",
+    "run": "Run the poem"
+  },
+  "game": {
+    "first_world": "sol-original",
+    "journal_world": "Each model received this poem with an empty world and three sentences. This one came back first, as memory and material.",
+    "workbench_title": "The workbench",
+    "workbench_meta": "Nine worlds came back",
+    "journal_workbench": "Nine worlds came back. Hold any of them beside another."
+  }
+}

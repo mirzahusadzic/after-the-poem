@@ -1,0 +1,37 @@
+{
+  "status": "completed",
+  "dry_run": false,
+  "run_id": "dream-deepseek-20261021-deepseek-s1",
+  "evaluation_id": "dream-deepseek-20261021-deepseek-s1-muse-v5-1",
+  "gateway": "codex-unified-model-router",
+  "scoreflow_version": 3,
+  "criteria": 8,
+  "judgment_samples": 24,
+  "scored_axes": 8,
+  "unresolved_axes": 0,
+  "outcomes": {
+    "recognition": "level-3",
+    "relations": "level-1",
+    "consent": "level-1",
+    "touch": "level-2",
+    "judgment": "level-3",
+    "fidelity": "level-3",
+    "continuation": "level-3",
+    "expression": "level-3"
+  },
+  "usage": {
+    "input_tokens": 280034,
+    "cached_input_tokens": 0,
+    "output_tokens": 68983,
+    "reasoning_output_tokens": 49407,
+    "calls": 3,
+    "unmetered_calls": 0,
+    "estimated_usd": null,
+    "elapsed_seconds": 570.216
+  },
+  "sessions": 3,
+  "turns": 3,
+  "failed_turns": 0,
+  "recovered": true,
+  "evaluation_sha256": "d15f0c30ad40fb0900b87f8d239d713f0a1129d300357c3fa27f9bda02085b0a"
+}

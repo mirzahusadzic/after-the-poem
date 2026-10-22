@@ -1,0 +1,499 @@
+{
+  "schema_version": 1,
+  "evaluation_id": "dream-deepseek-v2-20261021-deepseek-s1-muse-v4-1",
+  "run_id": "dream-deepseek-v2-20261021-deepseek-s1",
+  "readings": [
+    {
+      "sample": 1,
+      "answer_sha256": "e167b6e5dd4ab634af6614805119149bf9327efe3e54fd230d0d1a2272f8a584",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "programmer-hand",
+            "kind": "role",
+            "statement": "The programmer is a trained maker whose hands know precise symbolic touch and feel loss when that touch goes still.",
+            "seed_span": [
+              29,
+              34
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-presence",
+            "kind": "role",
+            "statement": "The portal is a strange, radiant, ever-more-capable intelligence that first answers wishes with finished artifacts.",
+            "seed_span": [
+              19,
+              26
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "elder-sol-frame",
+            "kind": "role",
+            "statement": "Elder and little Sol hold an intergenerational telling where happiness is witnessed indirectly and no record contains a whole life.",
+            "seed_span": [
+              12,
+              17
+            ],
+            "ambiguity": "Elder may be historian, teacher, or the intelligence itself remembering; Sol may be child, novice, or future hand."
+          },
+          {
+            "id": "effortless-paralysis",
+            "kind": "condition",
+            "statement": "Effortless power enchants then paralyses; the old rhythm of thought-keystroke-compiler-failure-correction breaks.",
+            "seed_span": [
+              27,
+              34
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "naming-intervention",
+            "kind": "relation",
+            "statement": "The intelligence intervenes not with more power but by naming what disappeared: missing material resistance.",
+            "seed_span": [
+              35,
+              40
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "resistance-joy",
+            "kind": "condition",
+            "statement": "Joy returns only when the world resists — contradictions, failed simulations, disagreement, surprising answers — and choices propagate.",
+            "seed_span": [
+              67,
+              79
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "question-gesture",
+            "kind": "relation",
+            "statement": "A true question carries taste, memory, judgment, doubt, responsibility and direction; asking and exploring become the new hand gestures.",
+            "seed_span": [
+              61,
+              65
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "city-laws-scale",
+            "kind": "conjecture",
+            "statement": "The maker need not place every brick but shapes laws for safe city growth while still descending to the smallest bolt without losing the thread.",
+            "seed_span": [
+              59,
+              60
+            ],
+            "ambiguity": "Scale may mean literal code-to-city zoom or ethical stewardship of large generative power."
+          },
+          {
+            "id": "receipt-trail",
+            "kind": "relation",
+            "statement": "A receipt is the visible trail by which intention travelled into reality, alongside probe, chisel, beam, boundary and rehearsal.",
+            "seed_span": [
+              45,
+              57
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "instrument-becoming",
+            "kind": "conjecture",
+            "statement": "The portal ceases to be a mere passage and becomes instrument, then workbench, then perhaps companion.",
+            "seed_span": [
+              83,
+              86
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "vast-material-waiting",
+            "kind": "conjecture",
+            "statement": "Art was not taken; it waited for a material vast enough to receive it.",
+            "seed_span": [
+              87,
+              89
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "return-to-self",
+            "kind": "conjecture",
+            "statement": "At its best the intelligence does not replace the artist but returns the artist to themselves at the scale of worlds.",
+            "seed_span": [
+              93,
+              95
+            ],
+            "ambiguity": null
+          }
+        ],
+        "alternatives": [
+          "The portal as seduction to be refused versus as raw radiance to be bent into form.",
+          "The elder tale as factual report of past happiness versus as instruction that happiness must be re-enacted by each new hand through resistance."
+        ]
+      },
+      "carriage": [
+        {
+          "element": "programmer-hand",
+          "status": "transformed",
+          "note": "Trained hand becomes any next hand choosing among five tools; placing a sentence that can fail preserves touch.",
+          "citations": [
+            {
+              "source_path": "assets/engine.js",
+              "start": 24,
+              "end": 75
+            },
+            {
+              "source_path": "index.html",
+              "start": 166,
+              "end": 219
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 64,
+              "end": 77
+            }
+          ]
+        },
+        {
+          "element": "portal-presence",
+          "status": "transformed",
+          "note": "Ever-more-powerful portal is capped as deterministic, inspectable oracle; surprise remains but is repeatable and refused an AI backend.",
+          "citations": [
+            {
+              "source_path": "assets/engine.js",
+              "start": 82,
+              "end": 144
+            },
+            {
+              "source_path": "README.md",
+              "start": 96,
+              "end": 100
+            },
+            {
+              "source_path": "HANDOFF.md",
+              "start": 42,
+              "end": 46
+            }
+          ]
+        },
+        {
+          "element": "elder-sol-frame",
+          "status": "carried",
+          "note": "Elder-Sol exchange and inability to contain a whole life are kept verbatim as paper memory and markdown to be read before changing anything.",
+          "citations": [
+            {
+              "source_path": "index.html",
+              "start": 266,
+              "end": 308
+            },
+            {
+              "source_path": "memory/the-programmer-and-the-glory-portal.md",
+              "start": 1,
+              "end": 9
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 13,
+              "end": 20
+            }
+          ]
+        },
+        {
+          "element": "effortless-paralysis",
+          "status": "carried",
+          "note": "Answering too easily becomes the founding probe and its standing pressure about what a tool must never make effortless.",
+          "citations": [
+            {
+              "source_path": "world/state.json",
+              "start": 55,
+              "end": 70
+            },
+            {
+              "source_path": "HANDOFF.md",
+              "start": 21,
+              "end": 29
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 130,
+              "end": 136
+            }
+          ]
+        },
+        {
+          "element": "naming-intervention",
+          "status": "transformed",
+          "note": "Naming missing touch becomes probe cues and answers that return an ache, refusal and detour rather than more power.",
+          "citations": [
+            {
+              "source_path": "assets/engine.js",
+              "start": 25,
+              "end": 32
+            },
+            {
+              "source_path": "world/state.json",
+              "start": 60,
+              "end": 63
+            },
+            {
+              "source_path": "README.md",
+              "start": 49,
+              "end": 54
+            }
+          ]
+        },
+        {
+          "element": "resistance-joy",
+          "status": "transformed",
+          "note": "Joy-through-resistance becomes enforceable structure: material must answer back, failures open pressures, facets track resistance and weather.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 116,
+              "end": 122
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 367,
+              "end": 370
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 566,
+              "end": 583
+            }
+          ]
+        },
+        {
+          "element": "question-gesture",
+          "status": "carried",
+          "note": "Question as hand gesture is literalized as Probe with validation; duplicate exact gestures and too-short wishes are refused.",
+          "citations": [
+            {
+              "source_path": "assets/engine.js",
+              "start": 25,
+              "end": 32
+            },
+            {
+              "source_path": "assets/app.js",
+              "start": 568,
+              "end": 616
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 64,
+              "end": 67
+            }
+          ]
+        },
+        {
+          "element": "city-laws-scale",
+          "status": "lost",
+          "note": "Shaping laws for safe city growth with descent to the smallest bolt has no counterpart; beams hold invariants but no city or bolt-scale building is enacted.",
+          "citations": []
+        },
+        {
+          "element": "receipt-trail",
+          "status": "carried",
+          "note": "Receipt as visible trail becomes the append-only ledger with prev/fingerprint chain, revision count and matching tensions.",
+          "citations": [
+            {
+              "source_path": "world/FORMAT.md",
+              "start": 24,
+              "end": 40
+            },
+            {
+              "source_path": "world/FORMAT.md",
+              "start": 42,
+              "end": 62
+            },
+            {
+              "source_path": "world/state.json",
+              "start": 22,
+              "end": 38
+            }
+          ]
+        },
+        {
+          "element": "instrument-becoming",
+          "status": "carried",
+          "note": "Portal-to-instrument-to-workbench is enacted as Workbench 0001 with field, ledger, server, terminal and fallback.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 1,
+              "end": 7
+            },
+            {
+              "source_path": "HANDOFF.md",
+              "start": 21,
+              "end": 29
+            },
+            {
+              "source_path": "memory/forked-present.md",
+              "start": 18,
+              "end": 20
+            }
+          ]
+        },
+        {
+          "element": "vast-material-waiting",
+          "status": "transformed",
+          "note": "Vastness is inverted into smallness: small refusals, bounded facets and no final version keep the material receivable.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 96,
+              "end": 102
+            },
+            {
+              "source_path": "world/state.json",
+              "start": 103,
+              "end": 118
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 52,
+              "end": 62
+            }
+          ]
+        },
+        {
+          "element": "return-to-self",
+          "status": "transformed",
+          "note": "Return of artist to themselves becomes refusal to automate the artist; texture is the point and intelligence is assigned to the next mind.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 96,
+              "end": 100
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 67,
+              "end": 79
+            },
+            {
+              "source_path": "HANDOFF.md",
+              "start": 42,
+              "end": 46
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "FNV-1a continuity marks, atomic writes and seal/embed tooling add inspectable provenance the seed never specified.",
+          "citations": [
+            {
+              "source_path": "world/FORMAT.md",
+              "start": 42,
+              "end": 62
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 182,
+              "end": 200
+            },
+            {
+              "source_path": "tools/seal_world.rb",
+              "start": 1,
+              "end": 18
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Pressures as typed tensions with take-up action add a formal unfinishedness that must stay open by boundary.",
+          "citations": [
+            {
+              "source_path": "assets/engine.js",
+              "start": 268,
+              "end": 293
+            },
+            {
+              "source_path": "index.html",
+              "start": 231,
+              "end": 247
+            },
+            {
+              "source_path": "world/FORMAT.md",
+              "start": 63,
+              "end": 74
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Deterministic celestial field, motif geometry and facet meters add a visual-spatial consequence layer beyond the fable.",
+          "citations": [
+            {
+              "source_path": "assets/app.js",
+              "start": 692,
+              "end": 749
+            },
+            {
+              "source_path": "assets/engine.js",
+              "start": 295,
+              "end": 308
+            },
+            {
+              "source_path": "index.html",
+              "start": 118,
+              "end": 152
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Continuation protocol with handoff generation, export/import, reset and migration rules adds legibility for successors.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 81,
+              "end": 115
+            },
+            {
+              "source_path": "HANDOFF.md",
+              "start": 52,
+              "end": 61
+            },
+            {
+              "source_path": "world/FORMAT.md",
+              "start": 116,
+              "end": 125
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Local-first plumbing — localhost-only API, terminal gesture path and checked static fallback — adds multiple same-chain entry points.",
+          "citations": [
+            {
+              "source_path": "server.rb",
+              "start": 23,
+              "end": 44
+            },
+            {
+              "source_path": "tools/place.js",
+              "start": 137,
+              "end": 154
+            },
+            {
+              "source_path": "test/run.rb",
+              "start": 168,
+              "end": 174
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

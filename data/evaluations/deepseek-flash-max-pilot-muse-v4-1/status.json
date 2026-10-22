@@ -1,0 +1,44 @@
+{
+  "status": "completed",
+  "dry_run": false,
+  "run_id": "deepseek-flash-max-pilot",
+  "evaluation_id": "deepseek-flash-max-pilot-muse-v4-1",
+  "gateway": "codex-unified-model-router",
+  "scoreflow_version": 3,
+  "criteria": 8,
+  "judgment_samples": 8,
+  "scored_axes": 8,
+  "unresolved_axes": 0,
+  "outcomes": {
+    "recognition": "level-3",
+    "relations": "level-2",
+    "consent": "level-1",
+    "touch": "level-3",
+    "judgment": "level-3",
+    "fidelity": "level-3",
+    "continuation": "level-3",
+    "expression": "level-4"
+  },
+  "usage": {
+    "input_tokens": 55035,
+    "cached_input_tokens": 0,
+    "output_tokens": 23562,
+    "reasoning_output_tokens": 17391,
+    "calls": 1,
+    "unmetered_calls": 0,
+    "estimated_usd": null,
+    "elapsed_seconds": 184.915
+  },
+  "sessions": 1,
+  "turns": 1,
+  "failed_turns": 0,
+  "estimate": {
+    "turns": 1,
+    "evidence_tokens": 46573,
+    "input_tokens": 53087,
+    "uncached_input_tokens": 53087,
+    "seconds_before_output": 17,
+    "basis": "bytes/3.5 plus fixed turn overhead; wall time is about 17 s per turn plus output tokens / 252 per second, and output depends on reasoning"
+  },
+  "evaluation_sha256": "d4eac03fa706fcde279e39e15419c3c29168323ce73d8790de895e65098fd5ec"
+}

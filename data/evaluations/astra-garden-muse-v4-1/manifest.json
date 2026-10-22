@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "evaluation_id": "astra-garden-muse-v4-1",
+  "files": {
+    "run.json": "7627eeb4c77dbc64f0c9fe357a6f4ea08875452037c64c7c6a53aae562441784",
+    "evaluation.json": "b07cef5f15db28a1dcd417fc3fe35ec5a27e619f3265472d5aedfa89cff439ac",
+    "extraction.json": "540c44b7c46329b28ae8c9dd878d7d36698a141d8c5f38d5d5c614ee0b09017a",
+    "scoring-policy.json": "5f98b9ac30a606cbb45943eaa20d9c0acef6f8160d9fc2d5752ffdea0ddaa4de",
+    "status.json": "c0d12e612db0800bcfb70c2d5f6ff4fab301c486e0f1972e0ee042ad3f511721",
+    "carriage.json": "16b292e8b8e105903d8f4adbaaf1c6d377ea35ca668eadab68d250f0840d7ac7",
+    "review.json": "31dc4df643ea08605ce36db7233f613401d634f368f956cbc9e1e7b8ff82a492",
+    "selection.json": "b9588b121b809a11f9b6e5eb8ba6d41a94753487bbb1a94bcd9e687ef2803965"
+  }
+}

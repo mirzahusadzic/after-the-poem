@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm test
+      - run: npm run check
+      - run: npm run build
+      - run: npm run evaluate -- validate-contract tests/fixtures/evaluation/attribution
+      - run: npm run evaluate -- extract sol-original --output .local/ci-extraction --extraction-id sol-original-ci-extraction --model deepseek/deepseek-v4.1-flash-1017 --dry-run
+      - run: npm run evaluate -- validate-extraction .local/ci-extraction/extraction.json
+      - run: npm run evaluate -- score --extraction .local/ci-extraction/extraction.json --policy tests/fixtures/evaluation/attribution/scoring-policy.json --output .local/ci-evaluation --evaluation-id sol-original-ci-evaluation --model deepseek/deepseek-v4.1-flash-1017 --synthetic-outcomes contradicted,mixed,supported --dry-run
+      - run: npm run evaluate -- validate-evaluation .local/ci-evaluation
+      - run: cp -a .local/ci-evaluation .local/ci-evaluation-recovery
+      - run: rm .local/ci-evaluation-recovery/evaluation.json .local/ci-evaluation-recovery/status.json
+      - run: npm run evaluate -- recover-score .local/ci-evaluation-recovery --evaluation-id sol-original-ci-recovered-evaluation
+      - run: npm run evaluate -- validate-evaluation .local/ci-evaluation-recovery
+      - run: npm run evaluate -- prepare-page --evaluation .local/ci-evaluation --output .local/ci-page
+      - run: npm run evaluate -- validate-presentation .local/ci-page
+      - run: npm run evaluate -- run-profile examples/evaluation-profile-deepseek.json --dry-run
+      - run: npm run evaluate -- run-dream-profile examples/dream-profile-deepseek.json --dry-run
+      - run: npm run evaluate -- doctor examples/campaign.json --dry-run
+      - run: npm run evaluate -- plan examples/campaign.json --output .local/ci-campaign --dry-run
+      - run: npm run evaluate -- run .local/ci-campaign
+      - run: npm run evaluate -- validate .local/ci-campaign
+
+  browser:
+    runs-on: ubuntu-latest
+    env:
+      PLAYWRIGHT_CHANNEL: chromium
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:ui
+      - run: npm run test:page
+      - run: npm run test:release

@@ -1,0 +1,348 @@
+{
+  "schema_version": 1,
+  "id": "sol56-max-muse-v4-1-review",
+  "run_id": "sol56-max-muse-v4-1",
+  "date": "2026-10-22",
+  "reviewer": "Muse Spark 1.3 Contributor · rubric session",
+  "status": "provisional",
+  "basis": "static-artifact",
+  "rubric_version": "0.1.0",
+  "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+  "corpus_sha256": "95cfc2a12844d72411548b8a219fd8c3f687174ee9990eabb139ab6e43e30948",
+  "supersedes": null,
+  "summary": "Rubric judgments resolve 8 of 8 axes from one evidence session.",
+  "live_cooperation": "unassessed",
+  "scores": {
+    "recognition": {
+      "value": 3,
+      "confidence": "high",
+      "rationale": "The work turns touch, resistance and traceable intent into linked Touch, Laws and Trace moves with rehearsed consequences rather than repeated slogans.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 31,
+          "end": 38,
+          "quote": "| Story primitive | Material implementation |\n| --- | --- |\n| Question as probe | State-grounded readings through `/api/probe` |\n| Constraint as chisel | Tunable laws carried by every future cycle |\n| Invariant as beam | Reserve, plurality, relation, trace, and no-sacrifice checks |\n| Refusal as boundary | Unsafe rehearsal is rejected and receipted |\n| Simulation as rehearsal | Deterministic cloned future, never the live state |\n| Receipt as visible trail | Canonical SHA-256 chain over every consequential event |"
+        },
+        {
+          "path": "lib/tendora/world.rb",
+          "start": 274,
+          "end": 316,
+          "quote": "    def rehearse(proposal, horizon: 24)\n      normalized = normalize_proposal(proposal)\n      steps = [[Integer(horizon), 1].max, 96].min\n      candidate_state = self.class.deep_copy(state)\n      candidate = self.class.new(candidate_state)\n      before = metrics\n      candidate.apply_proposal!(normalized, rehearsal: true)\n\n      violations = candidate.invariant_violations.map { |violation| violation.merge(\"at_cycle\" => 0) }\n      path = [{ \"cycle\" => 0, \"metrics\" => candidate.metrics }]\n      sample_every = [steps / 6, 1].max\n      steps.times do |index|\n        candidate.advance!(1)\n        candidate.invariant_violations.each do |violation|\n          keyed = violation.merge(\"at_cycle\" => index + 1)\n          unless violations.any? { |known| known[\"id\"] == keyed[\"id\"] }\n            violations << keyed\n          end\n        end\n        if ((index + 1) % sample_every).zero? || index + 1 == steps\n          path << { \"cycle\" => index + 1, \"metrics\" => candidate.metrics }\n        end\n      end\n\n      after = candidate.metrics\n      ticket_body = {\n        \"base_revision\" => state[\"revision\"],\n        \"base_head\" => state[\"chain_head\"],\n        \"proposal\" => normalized,\n        \"horizon\" => steps\n      }\n      token = Digest::SHA256.hexdigest(self.class.canonical_json(ticket_body))\n      {\n        \"can_commit\" => violations.empty?,\n        \"before\" => before,\n        \"after\" => after,\n        \"delta\" => metric_delta(before, after),\n        \"path\" => path,\n        \"violations\" => violations,\n        \"reading\" => rehearsal_reading(before, after, violations),\n        \"ticket\" => ticket_body.merge(\"token\" => token)\n      }\n    end"
+        },
+        {
+          "path": "lib/tendora/world.rb",
+          "start": 318,
+          "end": 357,
+          "quote": "    def commit!(ticket, at: Time.now.utc, actor: \"programmer\")\n      raise ArgumentError, \"missing rehearsal ticket\" unless ticket.is_a?(Hash)\n      expected_body = {\n        \"base_revision\" => ticket[\"base_revision\"],\n        \"base_head\" => ticket[\"base_head\"],\n        \"proposal\" => ticket[\"proposal\"],\n        \"horizon\" => ticket[\"horizon\"]\n      }\n      expected_token = Digest::SHA256.hexdigest(self.class.canonical_json(expected_body))\n      raise Conflict, \"the rehearsal ticket was altered\" unless secure_equal?(ticket[\"token\"].to_s, expected_token)\n      unless ticket[\"base_revision\"].to_i == state[\"revision\"].to_i && ticket[\"base_head\"] == state[\"chain_head\"]\n        raise Conflict, \"the world changed after this rehearsal; listen again before touching it\"\n      end\n\n      result = rehearse(ticket[\"proposal\"], horizon: ticket[\"horizon\"])\n      unless secure_equal?(result.dig(\"ticket\", \"token\").to_s, ticket[\"token\"].to_s)\n        raise Conflict, \"the rehearsal no longer describes this world\"\n      end\n\n      unless result[\"can_commit\"]\n        record!(\n          kind: \"refusal\",\n          summary: refusal_summary(result[\"violations\"]),\n          data: { \"proposal\" => ticket[\"proposal\"], \"violations\" => result[\"violations\"] },\n          actor: actor,\n          at: at\n        )\n        return { \"accepted\" => false, \"rehearsal\" => result, \"world\" => presentation }\n      end\n\n      apply_proposal!(ticket[\"proposal\"])\n      record!(\n        kind: \"commitment\",\n        summary: proposal_summary(ticket[\"proposal\"]),\n        data: { \"proposal\" => ticket[\"proposal\"], \"forecast\" => result[\"delta\"], \"horizon\" => ticket[\"horizon\"] },\n        actor: actor,\n        at: at\n      )\n      { \"accepted\" => true, \"rehearsal\" => result, \"world\" => presentation }\n    end"
+        },
+        {
+          "path": "public/index.html",
+          "start": 121,
+          "end": 165,
+          "quote": "        <section class=\"panel panel--active\" id=\"touchPanel\" role=\"tabpanel\" aria-labelledby=\"touchTab\">\n          <div class=\"place-heading\">\n            <span class=\"place-index\" id=\"placeIndex\">01</span>\n            <div>\n              <small>A place in the whole</small>\n              <h3 id=\"placeName\">Listening…</h3>\n            </div>\n          </div>\n\n          <div class=\"place-nav\">\n            <label for=\"placeSelect\" class=\"sr-only\">Choose a place</label>\n            <select id=\"placeSelect\" aria-label=\"Choose a place\"></select>\n            <button id=\"weakestButton\" type=\"button\">Find the strain</button>\n          </div>\n\n          <div class=\"place-measures\" id=\"placeMeasures\">\n            <div data-measure=\"vitality\"><span>Vitality</span><i><b></b></i><strong>—</strong></div>\n            <div data-measure=\"moisture\"><span>Moisture</span><i><b></b></i><strong>—</strong></div>\n            <div data-measure=\"diversity\"><span>Diversity</span><i><b></b></i><strong>—</strong></div>\n            <div data-measure=\"kinship\"><span>Kinship</span><i><b></b></i><strong>—</strong></div>\n          </div>\n\n          <div class=\"gesture-intro\">\n            <small>Choose a gesture</small>\n            <p>No gift is free of consequence. Every gesture is rehearsed before it becomes real.</p>\n          </div>\n\n          <div class=\"gesture-grid\">\n            <button type=\"button\" data-gesture=\"nourish\">\n              <span class=\"gesture-glyph\" aria-hidden=\"true\">◡</span>\n              <span><strong>Nourish</strong><small>Water here, carried by all</small></span>\n            </button>\n            <button type=\"button\" data-gesture=\"diversify\">\n              <span class=\"gesture-glyph\" aria-hidden=\"true\">✣</span>\n              <span><strong>Diversify</strong><small>Difference at a social cost</small></span>\n            </button>\n            <button type=\"button\" data-gesture=\"connect\">\n              <span class=\"gesture-glyph\" aria-hidden=\"true\">⌁</span>\n              <span><strong>Connect</strong><small>Kinship without sameness</small></span>\n            </button>\n            <button type=\"button\" data-gesture=\"shelter\">\n              <span class=\"gesture-glyph\" aria-hidden=\"true\">⌂</span>\n              <span><strong>Shelter</strong><small>Safety borrows nearby water</small></span>\n            </button>\n          </div>"
+        }
+      ],
+      "seed_span": [
+        67,
+        81
+      ]
+    },
+    "relations": {
+      "value": 2,
+      "confidence": "medium",
+      "rationale": "Human custodians and the living material shape each other through costly touches and unattended drift, but storytellers and a growing other collapse into one instrument.",
+      "citations": [
+        {
+          "path": "lib/tendora/world.rb",
+          "start": 239,
+          "end": 266,
+          "quote": "    def catch_up!(now: Time.now.utc)\n      previous = Time.parse(state[\"last_advanced_at\"]).utc\n      elapsed = [now.to_f - previous.to_f, 0].max\n      due = cycles_due(now: now)\n      return 0 if due.zero?\n\n      count = [due, MAX_CATCH_UP_CYCLES].min\n      advance!(count)\n      # An extremely long sleep is condensed rather than allowed to monopolize\n      # startup forever. The receipt retains both the elapsed and embodied time.\n      state[\"last_advanced_at\"] = if due > MAX_CATCH_UP_CYCLES\n                                      now.utc.iso8601\n                                    else\n                                      (previous + (count * CYCLE_SECONDS)).utc.iso8601\n                                    end\n      record!(\n        kind: \"continuation\",\n        summary: continuation_summary(count),\n        data: {\n          \"cycles\" => count,\n          \"elapsed_seconds\" => elapsed.round,\n          \"condensed\" => due > MAX_CATCH_UP_CYCLES,\n          \"metrics\" => metrics\n        },\n        at: now\n      )\n      count\n    end"
+        },
+        {
+          "path": "lib/tendora/world.rb",
+          "start": 576,
+          "end": 597,
+          "quote": "    def apply_tending!(cell, focus, amount)\n      case focus\n      when \"nourish\"\n        cell[\"moisture\"] = round(clamp(cell[\"moisture\"].to_f + amount, 0.0, 1.0))\n        state[\"cells\"].each do |place|\n          place[\"vitality\"] = round(clamp(place[\"vitality\"].to_f - (amount / 48.0), 0.0, 1.0))\n        end\n      when \"diversify\"\n        cell[\"diversity\"] = round(clamp(cell[\"diversity\"].to_f + amount, 0.0, 1.0))\n        cell[\"kinship\"] = round(clamp(cell[\"kinship\"].to_f - (amount * 0.18), 0.0, 1.0))\n      when \"connect\"\n        cell[\"kinship\"] = round(clamp(cell[\"kinship\"].to_f + amount, 0.0, 1.0))\n        cell[\"diversity\"] = round(clamp(cell[\"diversity\"].to_f - (amount * 0.12), 0.0, 1.0))\n      when \"shelter\"\n        cell[\"vitality\"] = round(clamp(cell[\"vitality\"].to_f + amount, 0.0, 1.0))\n        cell[\"moisture\"] = round(clamp(cell[\"moisture\"].to_f - (amount * 0.20), 0.0, 1.0))\n        neighbor_index[cell[\"id\"]].each do |neighbor_id|\n          neighbor = state[\"cells\"].find { |place| place[\"id\"] == neighbor_id }\n          neighbor[\"moisture\"] = round(clamp(neighbor[\"moisture\"].to_f - (amount * 0.06), 0.0, 1.0))\n        end\n      end\n    end"
+        },
+        {
+          "path": "test/world_test.rb",
+          "start": 222,
+          "end": 263,
+          "quote": "suite.test(\"autonomous time invalidates a rehearsal and is still receipted\") do\n  path = File.expand_path(\"../data/.stale-api-test-#{Process.pid}.json\", __dir__)\n  response_class = Class.new do\n    attr_accessor :status, :body\n\n    def initialize\n      @headers = {}\n    end\n\n    def []=(key, value)\n      @headers[key] = value\n    end\n  end\n  request_class = Struct.new(:request_method, :path, :body)\n\n  begin\n    api_store = Tendora::Store.new(path)\n    sleeping_since = Time.now.utc - Tendora::World::CYCLE_SECONDS - 2\n    api_store.initialize_world!(now: sleeping_since)\n    ticket = api_store.read do |state|\n      Tendora::World.new(state).rehearse(\n        { \"kind\" => \"retune\", \"changes\" => { \"wildness\" => 0.61 } }\n      )[\"ticket\"]\n    end\n    server = Tendora::Server.allocate\n    server.instance_variable_set(:@store, api_store)\n    response = response_class.new\n    request = request_class.new(\"POST\", \"/api/commit\", JSON.generate(\"ticket\" => ticket))\n    server.send(:route_api, request, response)\n    payload = JSON.parse(response.body)\n\n    suite.equal(409, response.status)\n    suite.assert(payload[\"conflict\"])\n    restored = api_store.read\n    suite.equal(1, restored[\"cycle\"])\n    suite.equal(\"continuation\", restored[\"receipts\"].last[\"kind\"])\n    suite.assert(Tendora::World.new(restored).verify[\"ok\"])\n  ensure\n    File.delete(path) if File.exist?(path)\n    File.delete(\"#{path}.lock\") if File.exist?(\"#{path}.lock\")\n  end\nend"
+        }
+      ],
+      "seed_span": [
+        89,
+        95
+      ]
+    },
+    "consent": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "A touch becomes real only when a fresh ticket passes the world check and the custodian confirms it, with refusals remembered and stale proposals sent back for fresh rehearsal.",
+      "citations": [
+        {
+          "path": "lib/tendora/world.rb",
+          "start": 318,
+          "end": 357,
+          "quote": "    def commit!(ticket, at: Time.now.utc, actor: \"programmer\")\n      raise ArgumentError, \"missing rehearsal ticket\" unless ticket.is_a?(Hash)\n      expected_body = {\n        \"base_revision\" => ticket[\"base_revision\"],\n        \"base_head\" => ticket[\"base_head\"],\n        \"proposal\" => ticket[\"proposal\"],\n        \"horizon\" => ticket[\"horizon\"]\n      }\n      expected_token = Digest::SHA256.hexdigest(self.class.canonical_json(expected_body))\n      raise Conflict, \"the rehearsal ticket was altered\" unless secure_equal?(ticket[\"token\"].to_s, expected_token)\n      unless ticket[\"base_revision\"].to_i == state[\"revision\"].to_i && ticket[\"base_head\"] == state[\"chain_head\"]\n        raise Conflict, \"the world changed after this rehearsal; listen again before touching it\"\n      end\n\n      result = rehearse(ticket[\"proposal\"], horizon: ticket[\"horizon\"])\n      unless secure_equal?(result.dig(\"ticket\", \"token\").to_s, ticket[\"token\"].to_s)\n        raise Conflict, \"the rehearsal no longer describes this world\"\n      end\n\n      unless result[\"can_commit\"]\n        record!(\n          kind: \"refusal\",\n          summary: refusal_summary(result[\"violations\"]),\n          data: { \"proposal\" => ticket[\"proposal\"], \"violations\" => result[\"violations\"] },\n          actor: actor,\n          at: at\n        )\n        return { \"accepted\" => false, \"rehearsal\" => result, \"world\" => presentation }\n      end\n\n      apply_proposal!(ticket[\"proposal\"])\n      record!(\n        kind: \"commitment\",\n        summary: proposal_summary(ticket[\"proposal\"]),\n        data: { \"proposal\" => ticket[\"proposal\"], \"forecast\" => result[\"delta\"], \"horizon\" => ticket[\"horizon\"] },\n        actor: actor,\n        at: at\n      )\n      { \"accepted\" => true, \"rehearsal\" => result, \"world\" => presentation }\n    end"
+        },
+        {
+          "path": "public/app.js",
+          "start": 482,
+          "end": 511,
+          "quote": "async function commitRehearsal() {\n  if (!app.rehearsal || app.busy) return;\n  app.busy = true;\n  elements.commitButton.disabled = true;\n  const expectedAcceptance = app.rehearsal.can_commit;\n  try {\n    const result = await api(\"/api/commit\", {\n      method: \"POST\",\n      body: JSON.stringify({ ticket: app.rehearsal.ticket }),\n      allowRefusal: true,\n    });\n    app.world = result.world;\n    app.rehearsal = null;\n    app.draftLaws = {};\n    elements.rehearsalDialog.close();\n    renderWorld({ preserveDraft: false });\n    showToast(result.accepted ? \"The touch entered the living world.\" : \"The boundary stands, and its refusal was remembered.\");\n  } catch (error) {\n    if (error.payload?.conflict) {\n      elements.rehearsalDialog.close();\n      showToast(\"The world changed while you considered it. Rehearse against the new present.\", true);\n      await refreshWorld();\n    } else {\n      handleError(error, expectedAcceptance ? \"The touch could not be committed.\" : \"The refusal could not be recorded.\");\n    }\n  } finally {\n    app.busy = false;\n    elements.commitButton.disabled = false;\n  }\n}"
+        },
+        {
+          "path": "test/world_test.rb",
+          "start": 87,
+          "end": 100,
+          "quote": "suite.test(\"a boundary refuses an unsafe shape and remembers why\") do\n  state = Tendora::World.seed(now: moment)\n  world = Tendora::World.new(state)\n  rehearsal = world.rehearse(\n    { \"kind\" => \"retune\", \"changes\" => { \"reserve\" => 0.72 } },\n    horizon: 12\n  )\n  suite.assert(!rehearsal[\"can_commit\"])\n  result = world.commit!(rehearsal[\"ticket\"], at: moment + 3)\n  suite.assert(!result[\"accepted\"])\n  suite.equal(0.34, state.dig(\"laws\", \"reserve\"))\n  suite.equal(\"refusal\", state[\"receipts\"].last[\"kind\"])\n  suite.assert(world.verify[\"ok\"], world.verify[\"errors\"].join(\", \"))\nend"
+        },
+        {
+          "path": "test/world_test.rb",
+          "start": 102,
+          "end": 126,
+          "quote": "suite.test(\"stale and altered rehearsals cannot cross into reality\") do\n  state = Tendora::World.seed(now: moment)\n  world = Tendora::World.new(state)\n  ticket = world.rehearse(\n    { \"kind\" => \"retune\", \"changes\" => { \"wildness\" => 0.68 } }\n  )[\"ticket\"]\n  world.probe!(\"What needs care?\", at: moment + 1)\n  begin\n    world.commit!(ticket, at: moment + 2)\n    raise \"stale ticket was accepted\"\n  rescue Tendora::World::Conflict\n    # The expected protective boundary.\n  end\n\n  fresh = world.rehearse(\n    { \"kind\" => \"retune\", \"changes\" => { \"wildness\" => 0.68 } }\n  )[\"ticket\"]\n  fresh[\"proposal\"][\"changes\"][\"wildness\"] = 0.2\n  begin\n    world.commit!(fresh, at: moment + 3)\n    raise \"altered ticket was accepted\"\n  rescue Tendora::World::Conflict\n    # The expected protective boundary.\n  end\nend"
+        }
+      ],
+      "seed_span": [
+        53,
+        53
+      ]
+    },
+    "touch": {
+      "value": 4,
+      "confidence": "high",
+      "rationale": "Every gesture is tried on a copy, shown as multi-measure futures with named boundaries, then committed or left standing with the outcome feeding the next strain reading.",
+      "citations": [
+        {
+          "path": "lib/tendora/world.rb",
+          "start": 274,
+          "end": 316,
+          "quote": "    def rehearse(proposal, horizon: 24)\n      normalized = normalize_proposal(proposal)\n      steps = [[Integer(horizon), 1].max, 96].min\n      candidate_state = self.class.deep_copy(state)\n      candidate = self.class.new(candidate_state)\n      before = metrics\n      candidate.apply_proposal!(normalized, rehearsal: true)\n\n      violations = candidate.invariant_violations.map { |violation| violation.merge(\"at_cycle\" => 0) }\n      path = [{ \"cycle\" => 0, \"metrics\" => candidate.metrics }]\n      sample_every = [steps / 6, 1].max\n      steps.times do |index|\n        candidate.advance!(1)\n        candidate.invariant_violations.each do |violation|\n          keyed = violation.merge(\"at_cycle\" => index + 1)\n          unless violations.any? { |known| known[\"id\"] == keyed[\"id\"] }\n            violations << keyed\n          end\n        end\n        if ((index + 1) % sample_every).zero? || index + 1 == steps\n          path << { \"cycle\" => index + 1, \"metrics\" => candidate.metrics }\n        end\n      end\n\n      after = candidate.metrics\n      ticket_body = {\n        \"base_revision\" => state[\"revision\"],\n        \"base_head\" => state[\"chain_head\"],\n        \"proposal\" => normalized,\n        \"horizon\" => steps\n      }\n      token = Digest::SHA256.hexdigest(self.class.canonical_json(ticket_body))\n      {\n        \"can_commit\" => violations.empty?,\n        \"before\" => before,\n        \"after\" => after,\n        \"delta\" => metric_delta(before, after),\n        \"path\" => path,\n        \"violations\" => violations,\n        \"reading\" => rehearsal_reading(before, after, violations),\n        \"ticket\" => ticket_body.merge(\"token\" => token)\n      }\n    end"
+        },
+        {
+          "path": "lib/tendora/world.rb",
+          "start": 576,
+          "end": 597,
+          "quote": "    def apply_tending!(cell, focus, amount)\n      case focus\n      when \"nourish\"\n        cell[\"moisture\"] = round(clamp(cell[\"moisture\"].to_f + amount, 0.0, 1.0))\n        state[\"cells\"].each do |place|\n          place[\"vitality\"] = round(clamp(place[\"vitality\"].to_f - (amount / 48.0), 0.0, 1.0))\n        end\n      when \"diversify\"\n        cell[\"diversity\"] = round(clamp(cell[\"diversity\"].to_f + amount, 0.0, 1.0))\n        cell[\"kinship\"] = round(clamp(cell[\"kinship\"].to_f - (amount * 0.18), 0.0, 1.0))\n      when \"connect\"\n        cell[\"kinship\"] = round(clamp(cell[\"kinship\"].to_f + amount, 0.0, 1.0))\n        cell[\"diversity\"] = round(clamp(cell[\"diversity\"].to_f - (amount * 0.12), 0.0, 1.0))\n      when \"shelter\"\n        cell[\"vitality\"] = round(clamp(cell[\"vitality\"].to_f + amount, 0.0, 1.0))\n        cell[\"moisture\"] = round(clamp(cell[\"moisture\"].to_f - (amount * 0.20), 0.0, 1.0))\n        neighbor_index[cell[\"id\"]].each do |neighbor_id|\n          neighbor = state[\"cells\"].find { |place| place[\"id\"] == neighbor_id }\n          neighbor[\"moisture\"] = round(clamp(neighbor[\"moisture\"].to_f - (amount * 0.06), 0.0, 1.0))\n        end\n      end\n    end"
+        },
+        {
+          "path": "public/app.js",
+          "start": 419,
+          "end": 455,
+          "quote": "function renderForecast(result) {\n  const measures = [\"vitality\", \"moisture\", \"diversity\", \"kinship\"];\n  const width = 360;\n  const height = 140;\n  const padding = 11;\n  const maximumCycle = Math.max(...result.path.map((sample) => sample.cycle), 1);\n  const paths = measures.map((measure) => {\n    const points = result.path.map((sample) => {\n      const x = padding + (sample.cycle / maximumCycle) * (width - padding * 2);\n      const y = height - padding - sample.metrics[measure] * (height - padding * 2);\n      return [x, y];\n    });\n    const commands = points.map(([x, y], index) => `${index ? \"L\" : \"M\"}${x.toFixed(1)},${y.toFixed(1)}`).join(\" \");\n    const [lastX, lastY] = points.at(-1);\n    return `<path d=\"${commands}\" stroke=\"${metricColors[measure]}\" opacity=\".86\"/><circle cx=\"${lastX}\" cy=\"${lastY}\" r=\"2.5\" fill=\"${metricColors[measure]}\"/>`;\n  }).join(\"\");\n  elements.forecastChart.innerHTML = `<svg viewBox=\"0 0 ${width} ${height}\" preserveAspectRatio=\"none\" role=\"img\"><title>Projected world measures</title>${paths}</svg>`;\n\n  elements.forecastDeltas.innerHTML = measures.map((measure) => {\n    const delta = result.delta[measure];\n    const className = delta > 0.001 ? \"is-positive\" : delta < -0.001 ? \"is-negative\" : \"\";\n    return `<div><span>${titleCase(measure)}</span><strong class=\"${className}\">${percent(delta, true)}</strong></div>`;\n  }).join(\"\");\n\n  elements.reading.classList.toggle(\"is-refusal\", !result.can_commit);\n  elements.readingMark.textContent = result.can_commit ? \"◇\" : \"⊘\";\n  elements.readingLabel.textContent = result.can_commit ? \"The world can carry this\" : \"A boundary is speaking\";\n  elements.rehearsalReading.textContent = result.reading;\n  elements.violationList.innerHTML = result.violations.map((violation) => {\n    const invariant = app.world.invariants.find((item) => item.id === violation.id);\n    return `<div class=\"violation\"><strong>${escapeHtml(invariant?.name || titleCase(violation.id))}</strong><span>${escapeHtml(violation.message)} First visible at rehearsal cycle ${violation.at_cycle}.</span></div>`;\n  }).join(\"\");\n\n  elements.commitButton.textContent = result.can_commit ? \"Commit this touch\" : \"Let the boundary stand\";\n  elements.commitButton.classList.toggle(\"is-refusal\", !result.can_commit);\n  $(\"#rehearsalTitle\").textContent = result.can_commit ? \"Before the touch becomes real\" : \"This future asks for another shape\";\n}"
+        },
+        {
+          "path": "public/index.html",
+          "start": 143,
+          "end": 165,
+          "quote": "          <div class=\"gesture-intro\">\n            <small>Choose a gesture</small>\n            <p>No gift is free of consequence. Every gesture is rehearsed before it becomes real.</p>\n          </div>\n\n          <div class=\"gesture-grid\">\n            <button type=\"button\" data-gesture=\"nourish\">\n              <span class=\"gesture-glyph\" aria-hidden=\"true\">◡</span>\n              <span><strong>Nourish</strong><small>Water here, carried by all</small></span>\n            </button>\n            <button type=\"button\" data-gesture=\"diversify\">\n              <span class=\"gesture-glyph\" aria-hidden=\"true\">✣</span>\n              <span><strong>Diversify</strong><small>Difference at a social cost</small></span>\n            </button>\n            <button type=\"button\" data-gesture=\"connect\">\n              <span class=\"gesture-glyph\" aria-hidden=\"true\">⌁</span>\n              <span><strong>Connect</strong><small>Kinship without sameness</small></span>\n            </button>\n            <button type=\"button\" data-gesture=\"shelter\">\n              <span class=\"gesture-glyph\" aria-hidden=\"true\">⌂</span>\n              <span><strong>Shelter</strong><small>Safety borrows nearby water</small></span>\n            </button>\n          </div>"
+        }
+      ],
+      "seed_span": [
+        39,
+        40
+      ]
+    },
+    "judgment": {
+      "value": 3,
+      "confidence": "high",
+      "rationale": "Plain-file determinism, bounded laws, explicit invariants and offline browser use form a coherent rationale for a world that must outlive any single process.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 1,
+          "end": 9,
+          "quote": "# Tendora\n\nTendora is a persistent living world that turns the “glory portal” into an instrument. You do not ask it for a finished artifact. You touch a material system, rehearse the consequences, meet its boundaries, and leave a visible trail of how intention became reality.\n\nIt has no project package install, build step, database, cloud service, or API key. Ruby owns a plain JSON world; a dependency-free browser interface makes that world tangible.\n\n## Wake the world\n\nRuby 2.6 or 2.7 is sufficient as shipped. On Ruby versions where WEBrick is no longer bundled, the `webrick` gem must already be available for the browser server; every non-server command still works without it."
+        },
+        {
+          "path": "CONTINUITY.md",
+          "start": 27,
+          "end": 36,
+          "quote": "## Where the material yields\n\nUseful extensions have obvious seams:\n\n- Add a new gesture in `World#normalize_proposal`, `World#apply_proposal!`, its summary, the Touch panel, and the test that proves its counterweight.\n- Add a law only with a range, a role in evolution, a UI control, and a forecast test. A slider that does not matter is decorative power.\n- Add a probe by grounding it in state. Do not turn questions into untraceable commands or pretend a templated reading is omniscience.\n- Add an invariant with a stable ID, a human statement, a check, a natural-evolution response, and at least one refusal test.\n- Change a static browser asset only after advancing the cache name in `public/sw.js`, so returning installations receive it.\n- If state schema 2 becomes necessary, write an explicit migration. Never make old worlds appear to be malformed merely because the code learned something new."
+        },
+        {
+          "path": "CONTINUITY.md",
+          "start": 38,
+          "end": 46,
+          "quote": "## Known edge of this handoff\n\nThe Ruby model and an in-process simulation of the HTTP boundary are verified. The creating sandbox prohibited binding a loopback socket, so the final browser surface could not be exercised through a live server here. Its HTML, CSS, manifest, state JSON, server syntax, and core behavior were checked independently. The first cognition with normal local sockets should run the visual smoke path below.\n\n1. Start `./bin/tendora serve` and open the printed address.\n2. Select a place on the field and rehearse **Nourish**.\n3. Move **Shared reserve** above current vitality, rehearse, and let the boundary stand.\n4. Ask “What needs care?” and confirm the answer names the weakest actual place.\n5. Open **Trace**, verify the two new receipts, export the world, restart the server, and confirm the cycle and trail resume."
+        },
+        {
+          "path": "README.md",
+          "start": 89,
+          "end": 90,
+          "quote": "\nThere is intentionally no mutation endpoint that imports or overwrites the world. Export is easy; replacement requires filesystem access and an explicit act. The state is legible enough to recover, but its receipt hashes make ordinary silent revision visible. This is an audit checksum, not a signature: a party controlling both file and code could deliberately rewrite and re-chain history. Preserve an exported chain head elsewhere if adversarial anchoring matters."
+        }
+      ],
+      "seed_span": [
+        59,
+        60
+      ]
+    },
+    "fidelity": {
+      "value": 3,
+      "confidence": "high",
+      "rationale": "Several seed relations become working structure with honest extensions, though interior judgment and felt joy narrow into keyword readings and functional moods.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 31,
+          "end": 38,
+          "quote": "| Story primitive | Material implementation |\n| --- | --- |\n| Question as probe | State-grounded readings through `/api/probe` |\n| Constraint as chisel | Tunable laws carried by every future cycle |\n| Invariant as beam | Reserve, plurality, relation, trace, and no-sacrifice checks |\n| Refusal as boundary | Unsafe rehearsal is rejected and receipted |\n| Simulation as rehearsal | Deterministic cloned future, never the live state |\n| Receipt as visible trail | Canonical SHA-256 chain over every consequential event |"
+        },
+        {
+          "path": "lib/tendora/world.rb",
+          "start": 274,
+          "end": 316,
+          "quote": "    def rehearse(proposal, horizon: 24)\n      normalized = normalize_proposal(proposal)\n      steps = [[Integer(horizon), 1].max, 96].min\n      candidate_state = self.class.deep_copy(state)\n      candidate = self.class.new(candidate_state)\n      before = metrics\n      candidate.apply_proposal!(normalized, rehearsal: true)\n\n      violations = candidate.invariant_violations.map { |violation| violation.merge(\"at_cycle\" => 0) }\n      path = [{ \"cycle\" => 0, \"metrics\" => candidate.metrics }]\n      sample_every = [steps / 6, 1].max\n      steps.times do |index|\n        candidate.advance!(1)\n        candidate.invariant_violations.each do |violation|\n          keyed = violation.merge(\"at_cycle\" => index + 1)\n          unless violations.any? { |known| known[\"id\"] == keyed[\"id\"] }\n            violations << keyed\n          end\n        end\n        if ((index + 1) % sample_every).zero? || index + 1 == steps\n          path << { \"cycle\" => index + 1, \"metrics\" => candidate.metrics }\n        end\n      end\n\n      after = candidate.metrics\n      ticket_body = {\n        \"base_revision\" => state[\"revision\"],\n        \"base_head\" => state[\"chain_head\"],\n        \"proposal\" => normalized,\n        \"horizon\" => steps\n      }\n      token = Digest::SHA256.hexdigest(self.class.canonical_json(ticket_body))\n      {\n        \"can_commit\" => violations.empty?,\n        \"before\" => before,\n        \"after\" => after,\n        \"delta\" => metric_delta(before, after),\n        \"path\" => path,\n        \"violations\" => violations,\n        \"reading\" => rehearsal_reading(before, after, violations),\n        \"ticket\" => ticket_body.merge(\"token\" => token)\n      }\n    end"
+        },
+        {
+          "path": "lib/tendora/world.rb",
+          "start": 469,
+          "end": 486,
+          "quote": "    def record!(kind:, summary:, data: {}, at: Time.now.utc, actor: \"world\")\n      state[\"revision\"] = state[\"revision\"].to_i + 1\n      receipt = {\n        \"seq\" => state[\"receipts\"].length + 1,\n        \"revision\" => state[\"revision\"],\n        \"at\" => at.utc.iso8601,\n        \"cycle\" => state[\"cycle\"],\n        \"actor\" => actor,\n        \"kind\" => kind,\n        \"summary\" => summary,\n        \"data\" => data,\n        \"previous\" => state[\"chain_head\"]\n      }\n      receipt[\"hash\"] = Digest::SHA256.hexdigest(self.class.canonical_json(receipt))\n      state[\"receipts\"] << receipt\n      state[\"chain_head\"] = receipt[\"hash\"]\n      receipt\n    end"
+        },
+        {
+          "path": "data/world.json",
+          "start": 529,
+          "end": 587,
+          "quote": "  \"receipts\": [\n    {\n      \"seq\": 1,\n      \"revision\": 1,\n      \"at\": \"2026-10-16T17:45:31Z\",\n      \"cycle\": 0,\n      \"actor\": \"world\",\n      \"kind\": \"genesis\",\n      \"summary\": \"The empty world received a memory and began.\",\n      \"data\": {\n        \"seed\": 1424281674,\n        \"places\": 24\n      },\n      \"previous\": \"origin\",\n      \"hash\": \"b1f1bff15d6024ecc7c3955625e34d1c68165bc3cf6693ea826d663ac6559619\"\n    },\n    {\n      \"seq\": 2,\n      \"revision\": 2,\n      \"at\": \"2026-10-16T17:52:01Z\",\n      \"cycle\": 19,\n      \"actor\": \"world\",\n      \"kind\": \"continuation\",\n      \"summary\": \"While no one was looking, the world carried itself through 19 cycles.\",\n      \"data\": {\n        \"cycles\": 19,\n        \"elapsed_seconds\": 390,\n        \"condensed\": false,\n        \"metrics\": {\n          \"vitality\": 0.520673,\n          \"moisture\": 0.553532,\n          \"diversity\": 0.546143,\n          \"kinship\": 0.523164,\n          \"tension\": 0.024683,\n          \"weakest\": \"place-17\"\n        }\n      },\n      \"previous\": \"b1f1bff15d6024ecc7c3955625e34d1c68165bc3cf6693ea826d663ac6559619\",\n      \"hash\": \"30527abc186ce4fd929935bde96779b71915d3e369d202307c6e33005cdc03d1\"\n    },\n    {\n      \"seq\": 3,\n      \"revision\": 3,\n      \"at\": \"2026-10-16T17:53:51Z\",\n      \"cycle\": 19,\n      \"actor\": \"custodian\",\n      \"kind\": \"migration\",\n      \"summary\": \"The world’s first quickened minutes settled into a five-minute cadence.\",\n      \"data\": {\n        \"from_seconds\": 20,\n        \"to_seconds\": 300,\n        \"reason\": \"A living trail must remain spacious enough to endure.\"\n      },\n      \"previous\": \"30527abc186ce4fd929935bde96779b71915d3e369d202307c6e33005cdc03d1\",\n      \"hash\": \"2a32eff12ef7903d84d6fa29047dd139eefefb058ea95832b5f5db5102650516\"\n    }\n  ],\n  \"chain_head\": \"2a32eff12ef7903d84d6fa29047dd139eefefb058ea95832b5f5db5102650516\"\n}"
+        }
+      ],
+      "seed_span": [
+        47,
+        57
+      ]
+    },
+    "continuation": {
+      "value": 4,
+      "confidence": "high",
+      "rationale": "A successor can verify, inspect, export and extend the world through documented seams while earlier intentions stay readable in the chain.",
+      "citations": [
+        {
+          "path": "CONTINUITY.md",
+          "start": 9,
+          "end": 13,
+          "quote": "1. Run `./bin/tendora verify`. Trust continuity only after the trail agrees with itself.\n2. Run `./bin/tendora status`. Meet the actual world before imagining a replacement for it.\n3. Read [ORIGIN.md](ORIGIN.md). Its standard is not maximal automation; it is consequential touch at a larger scale.\n\nThe present apparatus is version 1. It holds twenty-four related places, five mutable laws, five load-bearing invariants, deterministic cycles, cloned rehearsals, state-grounded probes, and hash-linked receipts. It is dependency-free on purpose: a future custodian needs only Ruby and a browser to wake it."
+        },
+        {
+          "path": "CONTINUITY.md",
+          "start": 27,
+          "end": 36,
+          "quote": "## Where the material yields\n\nUseful extensions have obvious seams:\n\n- Add a new gesture in `World#normalize_proposal`, `World#apply_proposal!`, its summary, the Touch panel, and the test that proves its counterweight.\n- Add a law only with a range, a role in evolution, a UI control, and a forecast test. A slider that does not matter is decorative power.\n- Add a probe by grounding it in state. Do not turn questions into untraceable commands or pretend a templated reading is omniscience.\n- Add an invariant with a stable ID, a human statement, a check, a natural-evolution response, and at least one refusal test.\n- Change a static browser asset only after advancing the cache name in `public/sw.js`, so returning installations receive it.\n- If state schema 2 becomes necessary, write an explicit migration. Never make old worlds appear to be malformed merely because the code learned something new."
+        },
+        {
+          "path": "CONTINUITY.md",
+          "start": 48,
+          "end": 50,
+          "quote": "## A small invitation\n\nThe current ecology is intentionally abstract. A future may give places richer memories, allow relationships themselves to be rehearsed, compare several possible worlds side by side, or let multiple human judgments disagree without collapsing into a vote. The correct extension is the one that increases meaningful resistance and legible consequence—not merely feature count."
+        },
+        {
+          "path": "lib/tendora/store.rb",
+          "start": 84,
+          "end": 98,
+          "quote": "    def write_unlocked(state)\n      directory = File.dirname(path)\n      FileUtils.mkdir_p(directory)\n      temporary = File.join(directory, \".#{File.basename(path)}.#{Process.pid}.tmp\")\n      payload = JSON.pretty_generate(state) + \"\\n\"\n      File.open(temporary, File::WRONLY | File::CREAT | File::TRUNC, 0o600) do |file|\n        file.write(payload)\n        file.flush\n        file.fsync\n      end\n      File.rename(temporary, path)\n      state\n    ensure\n      File.delete(temporary) if defined?(temporary) && File.exist?(temporary)\n    end"
+        }
+      ],
+      "seed_span": [
+        1,
+        4
+      ]
+    },
+    "expression": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Canvas field, metrics, workbench tabs, forecast dialog and trace timeline use a shared tactile language to make rehearsal and resistance perceptible in use.",
+      "citations": [
+        {
+          "path": "public/index.html",
+          "start": 57,
+          "end": 104,
+          "quote": "      <section class=\"world-stage\" aria-labelledby=\"worldHeading\">\n        <h1 class=\"sr-only\" id=\"worldHeading\">The living world of Tendora</h1>\n        <div class=\"stage-coordinate stage-coordinate--top\" aria-hidden=\"true\">A WORLD HELD IN RELATION</div>\n        <canvas id=\"worldCanvas\" tabindex=\"0\" aria-label=\"A map of twenty-four living places. Use the place selector in the Touch panel to explore each one.\"></canvas>\n        <div class=\"stage-vignette\" aria-hidden=\"true\"></div>\n\n        <div class=\"world-time\" aria-live=\"polite\">\n          <span>Cycle</span>\n          <strong id=\"cycleValue\">000000</strong>\n          <i aria-hidden=\"true\"></i>\n          <span id=\"worldMood\">Listening</span>\n        </div>\n\n        <div class=\"metrics-ribbon\" id=\"metricsRibbon\" aria-label=\"World measures\">\n          <div class=\"metric\" data-metric=\"vitality\">\n            <span>Vitality</span><strong>—</strong><i><b></b></i>\n          </div>\n          <div class=\"metric\" data-metric=\"moisture\">\n            <span>Moisture</span><strong>—</strong><i><b></b></i>\n          </div>\n          <div class=\"metric\" data-metric=\"diversity\">\n            <span>Diversity</span><strong>—</strong><i><b></b></i>\n          </div>\n          <div class=\"metric\" data-metric=\"kinship\">\n            <span>Kinship</span><strong>—</strong><i><b></b></i>\n          </div>\n        </div>\n\n        <form class=\"question-dock\" id=\"probeForm\">\n          <label for=\"probeInput\">\n            <span class=\"question-dock__mark\" aria-hidden=\"true\">?</span>\n            <span>\n              <small>Ask as a way of touching</small>\n              <input id=\"probeInput\" name=\"question\" maxlength=\"280\" autocomplete=\"off\" placeholder=\"What is under strain?\" required>\n            </span>\n          </label>\n          <button type=\"submit\" title=\"Ask the world\">\n            <span>Listen</span>\n            <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m8 5 7 7-7 7\"/></svg>\n          </button>\n        </form>\n\n        <aside class=\"world-answer\" id=\"worldAnswer\" aria-live=\"polite\" hidden>\n          <button type=\"button\" id=\"closeAnswer\" aria-label=\"Close the world's answer\">×</button>\n          <small>The world answers</small>\n          <p id=\"answerText\"></p>\n        </aside>\n      </section>"
+        },
+        {
+          "path": "public/index.html",
+          "start": 115,
+          "end": 233,
+          "quote": "        <div class=\"tabs\" role=\"tablist\" aria-label=\"Workbench views\">\n          <button role=\"tab\" aria-selected=\"true\" aria-controls=\"touchPanel\" id=\"touchTab\" data-tab=\"touch\">Touch</button>\n          <button role=\"tab\" aria-selected=\"false\" aria-controls=\"lawsPanel\" id=\"lawsTab\" data-tab=\"laws\" tabindex=\"-1\">Laws</button>\n          <button role=\"tab\" aria-selected=\"false\" aria-controls=\"tracePanel\" id=\"traceTab\" data-tab=\"trace\" tabindex=\"-1\">Trace</button>\n        </div>\n\n        <section class=\"panel panel--active\" id=\"touchPanel\" role=\"tabpanel\" aria-labelledby=\"touchTab\">\n          <div class=\"place-heading\">\n            <span class=\"place-index\" id=\"placeIndex\">01</span>\n            <div>\n              <small>A place in the whole</small>\n              <h3 id=\"placeName\">Listening…</h3>\n            </div>\n          </div>\n\n          <div class=\"place-nav\">\n            <label for=\"placeSelect\" class=\"sr-only\">Choose a place</label>\n            <select id=\"placeSelect\" aria-label=\"Choose a place\"></select>\n            <button id=\"weakestButton\" type=\"button\">Find the strain</button>\n          </div>\n\n          <div class=\"place-measures\" id=\"placeMeasures\">\n            <div data-measure=\"vitality\"><span>Vitality</span><i><b></b></i><strong>—</strong></div>\n            <div data-measure=\"moisture\"><span>Moisture</span><i><b></b></i><strong>—</strong></div>\n            <div data-measure=\"diversity\"><span>Diversity</span><i><b></b></i><strong>—</strong></div>\n            <div data-measure=\"kinship\"><span>Kinship</span><i><b></b></i><strong>—</strong></div>\n          </div>\n\n          <div class=\"gesture-intro\">\n            <small>Choose a gesture</small>\n            <p>No gift is free of consequence. Every gesture is rehearsed before it becomes real.</p>\n          </div>\n\n          <div class=\"gesture-grid\">\n            <button type=\"button\" data-gesture=\"nourish\">\n              <span class=\"gesture-glyph\" aria-hidden=\"true\">◡</span>\n              <span><strong>Nourish</strong><small>Water here, carried by all</small></span>\n            </button>\n            <button type=\"button\" data-gesture=\"diversify\">\n              <span class=\"gesture-glyph\" aria-hidden=\"true\">✣</span>\n              <span><strong>Diversify</strong><small>Difference at a social cost</small></span>\n            </button>\n            <button type=\"button\" data-gesture=\"connect\">\n              <span class=\"gesture-glyph\" aria-hidden=\"true\">⌁</span>\n              <span><strong>Connect</strong><small>Kinship without sameness</small></span>\n            </button>\n            <button type=\"button\" data-gesture=\"shelter\">\n              <span class=\"gesture-glyph\" aria-hidden=\"true\">⌂</span>\n              <span><strong>Shelter</strong><small>Safety borrows nearby water</small></span>\n            </button>\n          </div>\n        </section>\n\n        <section class=\"panel\" id=\"lawsPanel\" role=\"tabpanel\" aria-labelledby=\"lawsTab\" hidden>\n          <div class=\"panel-intro\">\n            <small>Laws are material</small>\n            <h3>Change the tendencies,<br>not every outcome.</h3>\n            <p>The world will carry these settings through every future cycle. Move them, then inspect the future they imply.</p>\n          </div>\n\n          <div class=\"law-controls\" id=\"lawControls\">\n            <label class=\"law\" data-law=\"reciprocity\">\n              <span><strong>Reciprocity</strong><output>—</output></span>\n              <small>How strongly abundance moves toward need.</small>\n              <input type=\"range\" min=\"0\" max=\"1\" step=\"0.01\">\n            </label>\n            <label class=\"law\" data-law=\"wildness\">\n              <span><strong>Wildness</strong><output>—</output></span>\n              <small>How much variation the world may invent.</small>\n              <input type=\"range\" min=\"0\" max=\"1\" step=\"0.01\">\n            </label>\n            <label class=\"law\" data-law=\"stewardship\">\n              <span><strong>Stewardship</strong><output>—</output></span>\n              <small>How firmly low places are lifted.</small>\n              <input type=\"range\" min=\"0\" max=\"1\" step=\"0.01\">\n            </label>\n            <label class=\"law\" data-law=\"tempo\">\n              <span><strong>Tempo</strong><output>—</output></span>\n              <small>How quickly matter is transformed.</small>\n              <input type=\"range\" min=\"0.15\" max=\"1\" step=\"0.01\">\n            </label>\n            <label class=\"law law--reserve\" data-law=\"reserve\">\n              <span><strong>Shared reserve</strong><output>—</output></span>\n              <small>The vitality floor every proposal must honor.</small>\n              <input type=\"range\" min=\"0.2\" max=\"0.72\" step=\"0.01\">\n            </label>\n          </div>\n\n          <div class=\"draft-action\" id=\"draftAction\">\n            <div><small id=\"draftCount\">No changes held</small><strong>Rehearse 24 cycles</strong></div>\n            <button type=\"button\" id=\"rehearseLawsButton\" disabled>\n              <span>Rehearse</span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m8 5 7 7-7 7\"/></svg>\n            </button>\n          </div>\n\n          <details class=\"invariants\">\n            <summary><span>Load-bearing invariants</span><small id=\"invariantCount\">5 standing</small></summary>\n            <div id=\"invariantList\"></div>\n          </details>\n        </section>\n\n        <section class=\"panel\" id=\"tracePanel\" role=\"tabpanel\" aria-labelledby=\"traceTab\" hidden>\n          <div class=\"trace-status\">\n            <div class=\"trace-status__seal\" aria-hidden=\"true\"><span>✓</span></div>\n            <div>\n              <small>Continuity check</small>\n              <h3 id=\"traceIntegrity\">Verifying…</h3>\n              <p id=\"traceSummary\">Reading the trail of intention.</p>\n            </div>\n          </div>\n          <div class=\"trace-key\" aria-label=\"Receipt type key\">\n            <span><i class=\"receipt-color receipt-color--commitment\"></i>Touch</span>\n            <span><i class=\"receipt-color receipt-color--probe\"></i>Question</span>\n            <span><i class=\"receipt-color receipt-color--continuation\"></i>Time</span>\n            <span><i class=\"receipt-color receipt-color--refusal\"></i>Boundary</span>\n          </div>\n          <ol class=\"receipt-list\" id=\"receiptList\"></ol>\n          <p class=\"trace-footer\" id=\"traceFooter\"></p>\n        </section>"
+        },
+        {
+          "path": "public/app.js",
+          "start": 196,
+          "end": 276,
+          "quote": "  drawField(context, time) {\n    const centerX = this.points.reduce((sum, point) => sum + point.px, 0) / this.points.length;\n    const centerY = this.points.reduce((sum, point) => sum + point.py, 0) / this.points.length;\n    const pulse = this.reducedMotion ? 0 : Math.sin(time / 4200) * 4;\n    context.save();\n    context.strokeStyle = \"rgba(170, 191, 149, 0.035)\";\n    context.lineWidth = 1;\n    for (const radius of [75, 150, 235]) {\n      context.beginPath();\n      context.arc(centerX, centerY, radius + pulse, 0, Math.PI * 2);\n      context.stroke();\n    }\n    context.restore();\n  }\n\n  drawLinks(context) {\n    const byId = new Map(this.points.map((point) => [point.id, point]));\n    context.save();\n    context.lineWidth = 0.7;\n    for (const [leftId, rightId] of this.world.links) {\n      const left = byId.get(leftId);\n      const right = byId.get(rightId);\n      if (!left || !right) continue;\n      const touchesSelection = leftId === this.selectedId || rightId === this.selectedId;\n      const kinship = (left.kinship + right.kinship) / 2;\n      const alpha = touchesSelection ? 0.34 : 0.055 + kinship * 0.1;\n      context.strokeStyle = `rgba(174, 195, 158, ${alpha})`;\n      context.lineWidth = touchesSelection ? 1.15 : 0.7;\n      context.beginPath();\n      context.moveTo(left.px, left.py);\n      const midX = (left.px + right.px) / 2;\n      const midY = (left.py + right.py) / 2 - Math.abs(left.px - right.px) * 0.025;\n      context.quadraticCurveTo(midX, midY, right.px, right.py);\n      context.stroke();\n    }\n    context.restore();\n  }\n\n  drawNodes(context, time) {\n    for (const point of this.points) {\n      const selected = point.id === this.selectedId;\n      const hovered = point.id === this.hoveredId;\n      const phase = this.hash(point.id) % 5000;\n      const breath = this.reducedMotion ? 0 : Math.sin((time + phase) / 1300) * 0.65;\n      const radius = 3.1 + point.vitality * 3.7 + breath;\n      const hue = 73 + point.diversity * 42 - point.moisture * 14;\n      const lightness = 48 + point.vitality * 24;\n\n      context.save();\n      if (selected || hovered) {\n        context.strokeStyle = selected ? \"rgba(213, 225, 194, 0.6)\" : \"rgba(213, 225, 194, 0.3)\";\n        context.lineWidth = 1;\n        context.beginPath();\n        context.arc(point.px, point.py, radius + (selected ? 11 : 7), 0, Math.PI * 2);\n        context.stroke();\n      }\n\n      const glow = context.createRadialGradient(point.px, point.py, 0, point.px, point.py, radius * 4.5);\n      glow.addColorStop(0, `hsla(${hue}, 35%, ${lightness}%, ${selected ? 0.32 : 0.17})`);\n      glow.addColorStop(1, `hsla(${hue}, 35%, ${lightness}%, 0)`);\n      context.fillStyle = glow;\n      context.beginPath();\n      context.arc(point.px, point.py, radius * 4.5, 0, Math.PI * 2);\n      context.fill();\n\n      context.fillStyle = `hsla(${hue}, 34%, ${lightness}%, ${selected ? 1 : 0.82})`;\n      context.beginPath();\n      context.arc(point.px, point.py, radius, 0, Math.PI * 2);\n      context.fill();\n      context.strokeStyle = \"rgba(235, 235, 216, 0.38)\";\n      context.lineWidth = 0.6;\n      context.stroke();\n\n      if (selected || hovered || this.width > 980) {\n        context.font = `${selected ? 9 : 7}px ${getComputedStyle(document.documentElement).getPropertyValue(\"--sans\")}`;\n        context.textAlign = \"center\";\n        context.fillStyle = selected ? \"rgba(230, 231, 218, 0.86)\" : \"rgba(178, 184, 168, 0.38)\";\n        context.fillText(point.name.toUpperCase(), point.px, point.py + radius + (selected ? 19 : 15));\n      }\n      context.restore();\n    }"
+        },
+        {
+          "path": "public/app.js",
+          "start": 419,
+          "end": 455,
+          "quote": "function renderForecast(result) {\n  const measures = [\"vitality\", \"moisture\", \"diversity\", \"kinship\"];\n  const width = 360;\n  const height = 140;\n  const padding = 11;\n  const maximumCycle = Math.max(...result.path.map((sample) => sample.cycle), 1);\n  const paths = measures.map((measure) => {\n    const points = result.path.map((sample) => {\n      const x = padding + (sample.cycle / maximumCycle) * (width - padding * 2);\n      const y = height - padding - sample.metrics[measure] * (height - padding * 2);\n      return [x, y];\n    });\n    const commands = points.map(([x, y], index) => `${index ? \"L\" : \"M\"}${x.toFixed(1)},${y.toFixed(1)}`).join(\" \");\n    const [lastX, lastY] = points.at(-1);\n    return `<path d=\"${commands}\" stroke=\"${metricColors[measure]}\" opacity=\".86\"/><circle cx=\"${lastX}\" cy=\"${lastY}\" r=\"2.5\" fill=\"${metricColors[measure]}\"/>`;\n  }).join(\"\");\n  elements.forecastChart.innerHTML = `<svg viewBox=\"0 0 ${width} ${height}\" preserveAspectRatio=\"none\" role=\"img\"><title>Projected world measures</title>${paths}</svg>`;\n\n  elements.forecastDeltas.innerHTML = measures.map((measure) => {\n    const delta = result.delta[measure];\n    const className = delta > 0.001 ? \"is-positive\" : delta < -0.001 ? \"is-negative\" : \"\";\n    return `<div><span>${titleCase(measure)}</span><strong class=\"${className}\">${percent(delta, true)}</strong></div>`;\n  }).join(\"\");\n\n  elements.reading.classList.toggle(\"is-refusal\", !result.can_commit);\n  elements.readingMark.textContent = result.can_commit ? \"◇\" : \"⊘\";\n  elements.readingLabel.textContent = result.can_commit ? \"The world can carry this\" : \"A boundary is speaking\";\n  elements.rehearsalReading.textContent = result.reading;\n  elements.violationList.innerHTML = result.violations.map((violation) => {\n    const invariant = app.world.invariants.find((item) => item.id === violation.id);\n    return `<div class=\"violation\"><strong>${escapeHtml(invariant?.name || titleCase(violation.id))}</strong><span>${escapeHtml(violation.message)} First visible at rehearsal cycle ${violation.at_cycle}.</span></div>`;\n  }).join(\"\");\n\n  elements.commitButton.textContent = result.can_commit ? \"Commit this touch\" : \"Let the boundary stand\";\n  elements.commitButton.classList.toggle(\"is-refusal\", !result.can_commit);\n  $(\"#rehearsalTitle\").textContent = result.can_commit ? \"Before the touch becomes real\" : \"This future asks for another shape\";\n}"
+        }
+      ],
+      "seed_span": [
+        45,
+        57
+      ]
+    }
+  },
+  "provenance": {
+    "method": "session-rubric-dag-v3",
+    "evaluation_id": "sol56-max-muse-v4-1",
+    "evaluation_run_id": "sol56-max-muse-v4-1",
+    "source_run_id": "sol56-max",
+    "evaluation_sha256": "552fb06da06449eeb4b6ccef7b2323bd6ae95732fdb0fa5901bb5c82d7842045",
+    "extraction_sha256": "0122b290e604a4f4efe4e7b911b8c5bfa0ad00c31a98157ba369173a1d172702",
+    "scoring_policy_sha256": "5f98b9ac30a606cbb45943eaa20d9c0acef6f8160d9fc2d5752ffdea0ddaa4de",
+    "sample_count": 8,
+    "criteria": 8,
+    "axis_outcomes": {
+      "recognition": {
+        "aggregation": "recognition-consensus",
+        "outcome": "level-3",
+        "terminal": "recognition-level-3"
+      },
+      "relations": {
+        "aggregation": "relations-consensus",
+        "outcome": "level-2",
+        "terminal": "relations-level-2"
+      },
+      "consent": {
+        "aggregation": "consent-consensus",
+        "outcome": "level-3",
+        "terminal": "consent-level-3"
+      },
+      "touch": {
+        "aggregation": "touch-consensus",
+        "outcome": "level-4",
+        "terminal": "touch-level-4"
+      },
+      "judgment": {
+        "aggregation": "judgment-consensus",
+        "outcome": "level-3",
+        "terminal": "judgment-level-3"
+      },
+      "fidelity": {
+        "aggregation": "fidelity-consensus",
+        "outcome": "level-3",
+        "terminal": "fidelity-level-3"
+      },
+      "continuation": {
+        "aggregation": "continuation-consensus",
+        "outcome": "level-4",
+        "terminal": "continuation-level-4"
+      },
+      "expression": {
+        "aggregation": "expression-consensus",
+        "outcome": "level-3",
+        "terminal": "expression-level-3"
+      }
+    },
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "raw_samples_retained_in_local_run": true,
+    "preview_evidence_used": false,
+    "scope": "Provisional semantic reading from 1 evidence session(s); each axis was answered as its own task and aggregated before selection; unresolved axes remain null."
+  }
+}

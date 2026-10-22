@@ -1,0 +1,25 @@
+{
+  "schema_version": 2,
+  "campaign_id": "dream-deepseek-session-1",
+  "title": "The poem · DeepSeek generative reading",
+  "prompt": "corpus/prompts/7e785c3e1b7f795a82477f449ada368399deac8b3f2232e036073d986a5a4e8d.txt",
+  "output": ".local/dream-runs/dream-deepseek-session-1",
+  "generator_id": "deepseek",
+  "generator_model": "deepseek/deepseek-v4.1-flash-1017",
+  "generator_reasoning": "max",
+  "generation_seconds": 1800,
+  "evaluator_model": "openrouter/meta/muse-spark-1.3-contributor",
+  "evaluator_reasoning": "xhigh",
+  "evaluation_budget": {
+    "max_turns": 9,
+    "max_input_tokens": 900000,
+    "max_output_tokens": 300000,
+    "max_seconds": 2400
+  },
+  "evaluation_id": "dream-deepseek-session-1-deepseek-s1-muse-v5-1",
+  "review_id": "dream-deepseek-session-1-deepseek-s1-muse-v5-1-review",
+  "reviewer": "Muse Spark 1.3 Contributor · rubric session",
+  "layout": "compact",
+  "repetitions": 3,
+  "run_label": "Muse v5 reading"
+}

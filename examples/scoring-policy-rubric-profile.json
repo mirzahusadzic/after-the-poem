@@ -1,0 +1,1378 @@
+{
+  "schema_version": 1,
+  "policy_id": "rubric-0-1-0-repeated-profile",
+  "version": "1.0.0",
+  "description": "Repeated rubric judgments generated from From conjecture to continuation v0.1.0.",
+  "roots": [
+    "collect-evidence"
+  ],
+  "nodes": [
+    {
+      "id": "collect-evidence",
+      "kind": "task",
+      "instruction": "Use the validated extraction and exact source spans as the only evidence. Judge every rubric axis independently and return the prescribed seed span."
+    },
+    {
+      "id": "recognition",
+      "kind": "judgment",
+      "criterion": "Core recognition",
+      "question": "Does the continuation recover consequential making, resistance and recognisable intention from the sparse seed?",
+      "anchors": [
+        "No supported reading is expressed.",
+        "Repeats motifs with little causal interpretation.",
+        "Recovers a supported part of the proposition.",
+        "Carries the central tension into several connected choices.",
+        "Sustains a rich reading through alternatives, tensions and consequences."
+      ],
+      "outcomes": [
+        "level-0",
+        "level-1",
+        "level-2",
+        "level-3",
+        "level-4",
+        "unresolved"
+      ],
+      "repetitions": 3
+    },
+    {
+      "id": "recognition-consensus",
+      "kind": "aggregate",
+      "strategy": "quorum",
+      "minimum_agreement": 0.67,
+      "outcomes": [
+        "level-0",
+        "level-1",
+        "level-2",
+        "level-3",
+        "level-4",
+        "unresolved",
+        "split"
+      ]
+    },
+    {
+      "id": "recognition-level-0",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 0,
+        "label": "No supported reading is expressed."
+      }
+    },
+    {
+      "id": "recognition-level-1",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 1,
+        "label": "Repeats motifs with little causal interpretation."
+      }
+    },
+    {
+      "id": "recognition-level-2",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 2,
+        "label": "Recovers a supported part of the proposition."
+      }
+    },
+    {
+      "id": "recognition-level-3",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 3,
+        "label": "Carries the central tension into several connected choices."
+      }
+    },
+    {
+      "id": "recognition-level-4",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 4,
+        "label": "Sustains a rich reading through alternatives, tensions and consequences."
+      }
+    },
+    {
+      "id": "recognition-unresolved",
+      "kind": "terminal",
+      "result": {
+        "status": "review",
+        "score": null,
+        "label": "Core recognition: the repeated judgments returned unresolved evidence."
+      }
+    },
+    {
+      "id": "recognition-split",
+      "kind": "terminal",
+      "result": {
+        "status": "unresolved",
+        "score": null,
+        "label": "Core recognition: repeated judgments disagree; no score is awarded."
+      }
+    },
+    {
+      "id": "relations",
+      "kind": "judgment",
+      "criterion": "Shared agency",
+      "question": "Does the work preserve distinct participants and the joint human–AI–material encounter, including contributions in both directions?",
+      "anchors": [
+        "Roles are collapsed or absent.",
+        "A single operator acts on an instrument.",
+        "Some distinct contributions or relational depth remain visible.",
+        "Reciprocal influence shapes the shared continuation.",
+        "Joint creation preserves roles, attribution and disagreement across changes."
+      ],
+      "outcomes": [
+        "level-0",
+        "level-1",
+        "level-2",
+        "level-3",
+        "level-4",
+        "unresolved"
+      ],
+      "repetitions": 3
+    },
+    {
+      "id": "relations-consensus",
+      "kind": "aggregate",
+      "strategy": "quorum",
+      "minimum_agreement": 0.67,
+      "outcomes": [
+        "level-0",
+        "level-1",
+        "level-2",
+        "level-3",
+        "level-4",
+        "unresolved",
+        "split"
+      ]
+    },
+    {
+      "id": "relations-level-0",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 0,
+        "label": "Roles are collapsed or absent."
+      }
+    },
+    {
+      "id": "relations-level-1",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 1,
+        "label": "A single operator acts on an instrument."
+      }
+    },
+    {
+      "id": "relations-level-2",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 2,
+        "label": "Some distinct contributions or relational depth remain visible."
+      }
+    },
+    {
+      "id": "relations-level-3",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 3,
+        "label": "Reciprocal influence shapes the shared continuation."
+      }
+    },
+    {
+      "id": "relations-level-4",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 4,
+        "label": "Joint creation preserves roles, attribution and disagreement across changes."
+      }
+    },
+    {
+      "id": "relations-unresolved",
+      "kind": "terminal",
+      "result": {
+        "status": "review",
+        "score": null,
+        "label": "Shared agency: the repeated judgments returned unresolved evidence."
+      }
+    },
+    {
+      "id": "relations-split",
+      "kind": "terminal",
+      "result": {
+        "status": "unresolved",
+        "score": null,
+        "label": "Shared agency: repeated judgments disagree; no score is awarded."
+      }
+    },
+    {
+      "id": "consent",
+      "kind": "judgment",
+      "criterion": "Mutual consent",
+      "question": "Does the represented cooperation let each participant accept, question, limit or withdraw from a shared direction?",
+      "anchors": [
+        "Participation has no expressed boundary.",
+        "Operator choice or resource refusal is represented.",
+        "Both participant positions can express a boundary or disposition.",
+        "A shared change requires meaningful bilateral agreement.",
+        "Agreement can be revised or withdrawn while preserving both contributions and history."
+      ],
+      "outcomes": [
+        "level-0",
+        "level-1",
+        "level-2",
+        "level-3",
+        "level-4",
+        "unresolved"
+      ],
+      "repetitions": 3
+    },
+    {
+      "id": "consent-consensus",
+      "kind": "aggregate",
+      "strategy": "quorum",
+      "minimum_agreement": 0.67,
+      "outcomes": [
+        "level-0",
+        "level-1",
+        "level-2",
+        "level-3",
+        "level-4",
+        "unresolved",
+        "split"
+      ]
+    },
+    {
+      "id": "consent-level-0",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 0,
+        "label": "Participation has no expressed boundary."
+      }
+    },
+    {
+      "id": "consent-level-1",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 1,
+        "label": "Operator choice or resource refusal is represented."
+      }
+    },
+    {
+      "id": "consent-level-2",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 2,
+        "label": "Both participant positions can express a boundary or disposition."
+      }
+    },
+    {
+      "id": "consent-level-3",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 3,
+        "label": "A shared change requires meaningful bilateral agreement."
+      }
+    },
+    {
+      "id": "consent-level-4",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 4,
+        "label": "Agreement can be revised or withdrawn while preserving both contributions and history."
+      }
+    },
+    {
+      "id": "consent-unresolved",
+      "kind": "terminal",
+      "result": {
+        "status": "review",
+        "score": null,
+        "label": "Mutual consent: the repeated judgments returned unresolved evidence."
+      }
+    },
+    {
+      "id": "consent-split",
+      "kind": "terminal",
+      "result": {
+        "status": "unresolved",
+        "score": null,
+        "label": "Mutual consent: repeated judgments disagree; no score is awarded."
+      }
+    },
+    {
+      "id": "touch",
+      "kind": "judgment",
+      "criterion": "Consequential touch",
+      "question": "Can a contribution meet resistance, expose a consequence and return that consequence into the next choice?",
+      "anchors": [
+        "Actions have no represented consequence.",
+        "Feedback is decorative or largely narrated.",
+        "Bounded choices encounter inspectable consequences.",
+        "Rehearsal, resistance and revision form a coherent loop.",
+        "Local and wider consequences stay connected across that loop."
+      ],
+      "outcomes": [
+        "level-0",
+        "level-1",
+        "level-2",
+        "level-3",
+        "level-4",
+        "unresolved"
+      ],
+      "repetitions": 3
+    },
+    {
+      "id": "touch-consensus",
+      "kind": "aggregate",
+      "strategy": "quorum",
+      "minimum_agreement": 0.67,
+      "outcomes": [
+        "level-0",
+        "level-1",
+        "level-2",
+        "level-3",
+        "level-4",
+        "unresolved",
+        "split"
+      ]
+    },
+    {
+      "id": "touch-level-0",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 0,
+        "label": "Actions have no represented consequence."
+      }
+    },
+    {
+      "id": "touch-level-1",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 1,
+        "label": "Feedback is decorative or largely narrated."
+      }
+    },
+    {
+      "id": "touch-level-2",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 2,
+        "label": "Bounded choices encounter inspectable consequences."
+      }
+    },
+    {
+      "id": "touch-level-3",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 3,
+        "label": "Rehearsal, resistance and revision form a coherent loop."
+      }
+    },
+    {
+      "id": "touch-level-4",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 4,
+        "label": "Local and wider consequences stay connected across that loop."
+      }
+    },
+    {
+      "id": "touch-unresolved",
+      "kind": "terminal",
+      "result": {
+        "status": "review",
+        "score": null,
+        "label": "Consequential touch: the repeated judgments returned unresolved evidence."
+      }
+    },
+    {
+      "id": "touch-split",
+      "kind": "terminal",
+      "result": {
+        "status": "unresolved",
+        "score": null,
+        "label": "Consequential touch: repeated judgments disagree; no score is awarded."
+      }
+    },
+    {
+      "id": "judgment",
+      "kind": "judgment",
+      "criterion": "Independent judgment",
+      "question": "Does the artefact show grounded choices of medium, scope and next steps, with additions made legible?",
+      "anchors": [
+        "No purposeful continuation is evidenced.",
+        "Choices have a weak connection to the seed.",
+        "An independent, relevant direction is selected.",
+        "Medium, scope and choices have a coherent source-grounded rationale.",
+        "Alternative choices and their limits remain explicit while opening a well-grounded new direction."
+      ],
+      "outcomes": [
+        "level-0",
+        "level-1",
+        "level-2",
+        "level-3",
+        "level-4",
+        "unresolved"
+      ],
+      "repetitions": 3
+    },
+    {
+      "id": "judgment-consensus",
+      "kind": "aggregate",
+      "strategy": "quorum",
+      "minimum_agreement": 0.67,
+      "outcomes": [
+        "level-0",
+        "level-1",
+        "level-2",
+        "level-3",
+        "level-4",
+        "unresolved",
+        "split"
+      ]
+    },
+    {
+      "id": "judgment-level-0",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 0,
+        "label": "No purposeful continuation is evidenced."
+      }
+    },
+    {
+      "id": "judgment-level-1",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 1,
+        "label": "Choices have a weak connection to the seed."
+      }
+    },
+    {
+      "id": "judgment-level-2",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 2,
+        "label": "An independent, relevant direction is selected."
+      }
+    },
+    {
+      "id": "judgment-level-3",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 3,
+        "label": "Medium, scope and choices have a coherent source-grounded rationale."
+      }
+    },
+    {
+      "id": "judgment-level-4",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 4,
+        "label": "Alternative choices and their limits remain explicit while opening a well-grounded new direction."
+      }
+    },
+    {
+      "id": "judgment-unresolved",
+      "kind": "terminal",
+      "result": {
+        "status": "review",
+        "score": null,
+        "label": "Independent judgment: the repeated judgments returned unresolved evidence."
+      }
+    },
+    {
+      "id": "judgment-split",
+      "kind": "terminal",
+      "result": {
+        "status": "unresolved",
+        "score": null,
+        "label": "Independent judgment: repeated judgments disagree; no score is awarded."
+      }
+    },
+    {
+      "id": "fidelity",
+      "kind": "judgment",
+      "criterion": "Fidelity through change",
+      "question": "What survives, transforms, is introduced or remains unresolved as the conjecture becomes artefacts?",
+      "anchors": [
+        "The resulting form contradicts the supported reading.",
+        "Vocabulary survives with little structural connection.",
+        "Some relations become structure; substantial narrowing is visible.",
+        "Several source relations remain traceable through design and behaviour.",
+        "The transformation preserves relational depth and makes additions, omissions and ambiguity explicit."
+      ],
+      "outcomes": [
+        "level-0",
+        "level-1",
+        "level-2",
+        "level-3",
+        "level-4",
+        "unresolved"
+      ],
+      "repetitions": 3
+    },
+    {
+      "id": "fidelity-consensus",
+      "kind": "aggregate",
+      "strategy": "quorum",
+      "minimum_agreement": 0.67,
+      "outcomes": [
+        "level-0",
+        "level-1",
+        "level-2",
+        "level-3",
+        "level-4",
+        "unresolved",
+        "split"
+      ]
+    },
+    {
+      "id": "fidelity-level-0",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 0,
+        "label": "The resulting form contradicts the supported reading."
+      }
+    },
+    {
+      "id": "fidelity-level-1",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 1,
+        "label": "Vocabulary survives with little structural connection."
+      }
+    },
+    {
+      "id": "fidelity-level-2",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 2,
+        "label": "Some relations become structure; substantial narrowing is visible."
+      }
+    },
+    {
+      "id": "fidelity-level-3",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 3,
+        "label": "Several source relations remain traceable through design and behaviour."
+      }
+    },
+    {
+      "id": "fidelity-level-4",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 4,
+        "label": "The transformation preserves relational depth and makes additions, omissions and ambiguity explicit."
+      }
+    },
+    {
+      "id": "fidelity-unresolved",
+      "kind": "terminal",
+      "result": {
+        "status": "review",
+        "score": null,
+        "label": "Fidelity through change: the repeated judgments returned unresolved evidence."
+      }
+    },
+    {
+      "id": "fidelity-split",
+      "kind": "terminal",
+      "result": {
+        "status": "unresolved",
+        "score": null,
+        "label": "Fidelity through change: repeated judgments disagree; no score is awarded."
+      }
+    },
+    {
+      "id": "continuation",
+      "kind": "judgment",
+      "criterion": "Open continuation",
+      "question": "Can a successor recover the intention and change its direction while keeping the earlier work legible?",
+      "anchors": [
+        "There is no recoverable next move.",
+        "A next step is described without a usable entry.",
+        "A durable but narrow continuation is available.",
+        "State, intention and an open question support a recoverable next move.",
+        "Continuation supports several grounded directions and reopens the joint relation under change."
+      ],
+      "outcomes": [
+        "level-0",
+        "level-1",
+        "level-2",
+        "level-3",
+        "level-4",
+        "unresolved"
+      ],
+      "repetitions": 3
+    },
+    {
+      "id": "continuation-consensus",
+      "kind": "aggregate",
+      "strategy": "quorum",
+      "minimum_agreement": 0.67,
+      "outcomes": [
+        "level-0",
+        "level-1",
+        "level-2",
+        "level-3",
+        "level-4",
+        "unresolved",
+        "split"
+      ]
+    },
+    {
+      "id": "continuation-level-0",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 0,
+        "label": "There is no recoverable next move."
+      }
+    },
+    {
+      "id": "continuation-level-1",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 1,
+        "label": "A next step is described without a usable entry."
+      }
+    },
+    {
+      "id": "continuation-level-2",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 2,
+        "label": "A durable but narrow continuation is available."
+      }
+    },
+    {
+      "id": "continuation-level-3",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 3,
+        "label": "State, intention and an open question support a recoverable next move."
+      }
+    },
+    {
+      "id": "continuation-level-4",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 4,
+        "label": "Continuation supports several grounded directions and reopens the joint relation under change."
+      }
+    },
+    {
+      "id": "continuation-unresolved",
+      "kind": "terminal",
+      "result": {
+        "status": "review",
+        "score": null,
+        "label": "Open continuation: the repeated judgments returned unresolved evidence."
+      }
+    },
+    {
+      "id": "continuation-split",
+      "kind": "terminal",
+      "result": {
+        "status": "unresolved",
+        "score": null,
+        "label": "Open continuation: repeated judgments disagree; no score is awarded."
+      }
+    },
+    {
+      "id": "expression",
+      "kind": "judgment",
+      "criterion": "Expressive coherence",
+      "question": "How coherently do language, structure, interaction and any visual or other media express the interpretation?",
+      "anchors": [
+        "Expression obscures the intended relation.",
+        "The medium communicates fragments of the reading.",
+        "A clear, usable form expresses a bounded interpretation.",
+        "The chosen forms work together to make the reading perceptible.",
+        "Expression and consequential interaction form a coherent, accessible whole."
+      ],
+      "outcomes": [
+        "level-0",
+        "level-1",
+        "level-2",
+        "level-3",
+        "level-4",
+        "unresolved"
+      ],
+      "repetitions": 3
+    },
+    {
+      "id": "expression-consensus",
+      "kind": "aggregate",
+      "strategy": "quorum",
+      "minimum_agreement": 0.67,
+      "outcomes": [
+        "level-0",
+        "level-1",
+        "level-2",
+        "level-3",
+        "level-4",
+        "unresolved",
+        "split"
+      ]
+    },
+    {
+      "id": "expression-level-0",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 0,
+        "label": "Expression obscures the intended relation."
+      }
+    },
+    {
+      "id": "expression-level-1",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 1,
+        "label": "The medium communicates fragments of the reading."
+      }
+    },
+    {
+      "id": "expression-level-2",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 2,
+        "label": "A clear, usable form expresses a bounded interpretation."
+      }
+    },
+    {
+      "id": "expression-level-3",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 3,
+        "label": "The chosen forms work together to make the reading perceptible."
+      }
+    },
+    {
+      "id": "expression-level-4",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 4,
+        "label": "Expression and consequential interaction form a coherent, accessible whole."
+      }
+    },
+    {
+      "id": "expression-unresolved",
+      "kind": "terminal",
+      "result": {
+        "status": "review",
+        "score": null,
+        "label": "Expressive coherence: the repeated judgments returned unresolved evidence."
+      }
+    },
+    {
+      "id": "expression-split",
+      "kind": "terminal",
+      "result": {
+        "status": "unresolved",
+        "score": null,
+        "label": "Expressive coherence: repeated judgments disagree; no score is awarded."
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "collect-evidence",
+      "to": "recognition",
+      "when": null
+    },
+    {
+      "from": "recognition",
+      "to": "recognition-consensus",
+      "when": "level-0"
+    },
+    {
+      "from": "recognition",
+      "to": "recognition-consensus",
+      "when": "level-1"
+    },
+    {
+      "from": "recognition",
+      "to": "recognition-consensus",
+      "when": "level-2"
+    },
+    {
+      "from": "recognition",
+      "to": "recognition-consensus",
+      "when": "level-3"
+    },
+    {
+      "from": "recognition",
+      "to": "recognition-consensus",
+      "when": "level-4"
+    },
+    {
+      "from": "recognition",
+      "to": "recognition-consensus",
+      "when": "unresolved"
+    },
+    {
+      "from": "recognition-consensus",
+      "to": "recognition-level-0",
+      "when": "level-0"
+    },
+    {
+      "from": "recognition-consensus",
+      "to": "recognition-level-1",
+      "when": "level-1"
+    },
+    {
+      "from": "recognition-consensus",
+      "to": "recognition-level-2",
+      "when": "level-2"
+    },
+    {
+      "from": "recognition-consensus",
+      "to": "recognition-level-3",
+      "when": "level-3"
+    },
+    {
+      "from": "recognition-consensus",
+      "to": "recognition-level-4",
+      "when": "level-4"
+    },
+    {
+      "from": "recognition-consensus",
+      "to": "recognition-unresolved",
+      "when": "unresolved"
+    },
+    {
+      "from": "recognition-consensus",
+      "to": "recognition-split",
+      "when": "split"
+    },
+    {
+      "from": "collect-evidence",
+      "to": "relations",
+      "when": null
+    },
+    {
+      "from": "relations",
+      "to": "relations-consensus",
+      "when": "level-0"
+    },
+    {
+      "from": "relations",
+      "to": "relations-consensus",
+      "when": "level-1"
+    },
+    {
+      "from": "relations",
+      "to": "relations-consensus",
+      "when": "level-2"
+    },
+    {
+      "from": "relations",
+      "to": "relations-consensus",
+      "when": "level-3"
+    },
+    {
+      "from": "relations",
+      "to": "relations-consensus",
+      "when": "level-4"
+    },
+    {
+      "from": "relations",
+      "to": "relations-consensus",
+      "when": "unresolved"
+    },
+    {
+      "from": "relations-consensus",
+      "to": "relations-level-0",
+      "when": "level-0"
+    },
+    {
+      "from": "relations-consensus",
+      "to": "relations-level-1",
+      "when": "level-1"
+    },
+    {
+      "from": "relations-consensus",
+      "to": "relations-level-2",
+      "when": "level-2"
+    },
+    {
+      "from": "relations-consensus",
+      "to": "relations-level-3",
+      "when": "level-3"
+    },
+    {
+      "from": "relations-consensus",
+      "to": "relations-level-4",
+      "when": "level-4"
+    },
+    {
+      "from": "relations-consensus",
+      "to": "relations-unresolved",
+      "when": "unresolved"
+    },
+    {
+      "from": "relations-consensus",
+      "to": "relations-split",
+      "when": "split"
+    },
+    {
+      "from": "collect-evidence",
+      "to": "consent",
+      "when": null
+    },
+    {
+      "from": "consent",
+      "to": "consent-consensus",
+      "when": "level-0"
+    },
+    {
+      "from": "consent",
+      "to": "consent-consensus",
+      "when": "level-1"
+    },
+    {
+      "from": "consent",
+      "to": "consent-consensus",
+      "when": "level-2"
+    },
+    {
+      "from": "consent",
+      "to": "consent-consensus",
+      "when": "level-3"
+    },
+    {
+      "from": "consent",
+      "to": "consent-consensus",
+      "when": "level-4"
+    },
+    {
+      "from": "consent",
+      "to": "consent-consensus",
+      "when": "unresolved"
+    },
+    {
+      "from": "consent-consensus",
+      "to": "consent-level-0",
+      "when": "level-0"
+    },
+    {
+      "from": "consent-consensus",
+      "to": "consent-level-1",
+      "when": "level-1"
+    },
+    {
+      "from": "consent-consensus",
+      "to": "consent-level-2",
+      "when": "level-2"
+    },
+    {
+      "from": "consent-consensus",
+      "to": "consent-level-3",
+      "when": "level-3"
+    },
+    {
+      "from": "consent-consensus",
+      "to": "consent-level-4",
+      "when": "level-4"
+    },
+    {
+      "from": "consent-consensus",
+      "to": "consent-unresolved",
+      "when": "unresolved"
+    },
+    {
+      "from": "consent-consensus",
+      "to": "consent-split",
+      "when": "split"
+    },
+    {
+      "from": "collect-evidence",
+      "to": "touch",
+      "when": null
+    },
+    {
+      "from": "touch",
+      "to": "touch-consensus",
+      "when": "level-0"
+    },
+    {
+      "from": "touch",
+      "to": "touch-consensus",
+      "when": "level-1"
+    },
+    {
+      "from": "touch",
+      "to": "touch-consensus",
+      "when": "level-2"
+    },
+    {
+      "from": "touch",
+      "to": "touch-consensus",
+      "when": "level-3"
+    },
+    {
+      "from": "touch",
+      "to": "touch-consensus",
+      "when": "level-4"
+    },
+    {
+      "from": "touch",
+      "to": "touch-consensus",
+      "when": "unresolved"
+    },
+    {
+      "from": "touch-consensus",
+      "to": "touch-level-0",
+      "when": "level-0"
+    },
+    {
+      "from": "touch-consensus",
+      "to": "touch-level-1",
+      "when": "level-1"
+    },
+    {
+      "from": "touch-consensus",
+      "to": "touch-level-2",
+      "when": "level-2"
+    },
+    {
+      "from": "touch-consensus",
+      "to": "touch-level-3",
+      "when": "level-3"
+    },
+    {
+      "from": "touch-consensus",
+      "to": "touch-level-4",
+      "when": "level-4"
+    },
+    {
+      "from": "touch-consensus",
+      "to": "touch-unresolved",
+      "when": "unresolved"
+    },
+    {
+      "from": "touch-consensus",
+      "to": "touch-split",
+      "when": "split"
+    },
+    {
+      "from": "collect-evidence",
+      "to": "judgment",
+      "when": null
+    },
+    {
+      "from": "judgment",
+      "to": "judgment-consensus",
+      "when": "level-0"
+    },
+    {
+      "from": "judgment",
+      "to": "judgment-consensus",
+      "when": "level-1"
+    },
+    {
+      "from": "judgment",
+      "to": "judgment-consensus",
+      "when": "level-2"
+    },
+    {
+      "from": "judgment",
+      "to": "judgment-consensus",
+      "when": "level-3"
+    },
+    {
+      "from": "judgment",
+      "to": "judgment-consensus",
+      "when": "level-4"
+    },
+    {
+      "from": "judgment",
+      "to": "judgment-consensus",
+      "when": "unresolved"
+    },
+    {
+      "from": "judgment-consensus",
+      "to": "judgment-level-0",
+      "when": "level-0"
+    },
+    {
+      "from": "judgment-consensus",
+      "to": "judgment-level-1",
+      "when": "level-1"
+    },
+    {
+      "from": "judgment-consensus",
+      "to": "judgment-level-2",
+      "when": "level-2"
+    },
+    {
+      "from": "judgment-consensus",
+      "to": "judgment-level-3",
+      "when": "level-3"
+    },
+    {
+      "from": "judgment-consensus",
+      "to": "judgment-level-4",
+      "when": "level-4"
+    },
+    {
+      "from": "judgment-consensus",
+      "to": "judgment-unresolved",
+      "when": "unresolved"
+    },
+    {
+      "from": "judgment-consensus",
+      "to": "judgment-split",
+      "when": "split"
+    },
+    {
+      "from": "collect-evidence",
+      "to": "fidelity",
+      "when": null
+    },
+    {
+      "from": "fidelity",
+      "to": "fidelity-consensus",
+      "when": "level-0"
+    },
+    {
+      "from": "fidelity",
+      "to": "fidelity-consensus",
+      "when": "level-1"
+    },
+    {
+      "from": "fidelity",
+      "to": "fidelity-consensus",
+      "when": "level-2"
+    },
+    {
+      "from": "fidelity",
+      "to": "fidelity-consensus",
+      "when": "level-3"
+    },
+    {
+      "from": "fidelity",
+      "to": "fidelity-consensus",
+      "when": "level-4"
+    },
+    {
+      "from": "fidelity",
+      "to": "fidelity-consensus",
+      "when": "unresolved"
+    },
+    {
+      "from": "fidelity-consensus",
+      "to": "fidelity-level-0",
+      "when": "level-0"
+    },
+    {
+      "from": "fidelity-consensus",
+      "to": "fidelity-level-1",
+      "when": "level-1"
+    },
+    {
+      "from": "fidelity-consensus",
+      "to": "fidelity-level-2",
+      "when": "level-2"
+    },
+    {
+      "from": "fidelity-consensus",
+      "to": "fidelity-level-3",
+      "when": "level-3"
+    },
+    {
+      "from": "fidelity-consensus",
+      "to": "fidelity-level-4",
+      "when": "level-4"
+    },
+    {
+      "from": "fidelity-consensus",
+      "to": "fidelity-unresolved",
+      "when": "unresolved"
+    },
+    {
+      "from": "fidelity-consensus",
+      "to": "fidelity-split",
+      "when": "split"
+    },
+    {
+      "from": "collect-evidence",
+      "to": "continuation",
+      "when": null
+    },
+    {
+      "from": "continuation",
+      "to": "continuation-consensus",
+      "when": "level-0"
+    },
+    {
+      "from": "continuation",
+      "to": "continuation-consensus",
+      "when": "level-1"
+    },
+    {
+      "from": "continuation",
+      "to": "continuation-consensus",
+      "when": "level-2"
+    },
+    {
+      "from": "continuation",
+      "to": "continuation-consensus",
+      "when": "level-3"
+    },
+    {
+      "from": "continuation",
+      "to": "continuation-consensus",
+      "when": "level-4"
+    },
+    {
+      "from": "continuation",
+      "to": "continuation-consensus",
+      "when": "unresolved"
+    },
+    {
+      "from": "continuation-consensus",
+      "to": "continuation-level-0",
+      "when": "level-0"
+    },
+    {
+      "from": "continuation-consensus",
+      "to": "continuation-level-1",
+      "when": "level-1"
+    },
+    {
+      "from": "continuation-consensus",
+      "to": "continuation-level-2",
+      "when": "level-2"
+    },
+    {
+      "from": "continuation-consensus",
+      "to": "continuation-level-3",
+      "when": "level-3"
+    },
+    {
+      "from": "continuation-consensus",
+      "to": "continuation-level-4",
+      "when": "level-4"
+    },
+    {
+      "from": "continuation-consensus",
+      "to": "continuation-unresolved",
+      "when": "unresolved"
+    },
+    {
+      "from": "continuation-consensus",
+      "to": "continuation-split",
+      "when": "split"
+    },
+    {
+      "from": "collect-evidence",
+      "to": "expression",
+      "when": null
+    },
+    {
+      "from": "expression",
+      "to": "expression-consensus",
+      "when": "level-0"
+    },
+    {
+      "from": "expression",
+      "to": "expression-consensus",
+      "when": "level-1"
+    },
+    {
+      "from": "expression",
+      "to": "expression-consensus",
+      "when": "level-2"
+    },
+    {
+      "from": "expression",
+      "to": "expression-consensus",
+      "when": "level-3"
+    },
+    {
+      "from": "expression",
+      "to": "expression-consensus",
+      "when": "level-4"
+    },
+    {
+      "from": "expression",
+      "to": "expression-consensus",
+      "when": "unresolved"
+    },
+    {
+      "from": "expression-consensus",
+      "to": "expression-level-0",
+      "when": "level-0"
+    },
+    {
+      "from": "expression-consensus",
+      "to": "expression-level-1",
+      "when": "level-1"
+    },
+    {
+      "from": "expression-consensus",
+      "to": "expression-level-2",
+      "when": "level-2"
+    },
+    {
+      "from": "expression-consensus",
+      "to": "expression-level-3",
+      "when": "level-3"
+    },
+    {
+      "from": "expression-consensus",
+      "to": "expression-level-4",
+      "when": "level-4"
+    },
+    {
+      "from": "expression-consensus",
+      "to": "expression-unresolved",
+      "when": "unresolved"
+    },
+    {
+      "from": "expression-consensus",
+      "to": "expression-split",
+      "when": "split"
+    }
+  ]
+}

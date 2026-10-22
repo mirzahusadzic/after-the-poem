@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "id": "dream-deepseek-20261021-deepseek-s1-muse-v4-1",
+  "source_run_id": "dream-deepseek-20261021-deepseek-s1",
+  "evaluation_id": "dream-deepseek-20261021-deepseek-s1-muse-v4-1",
+  "cohort": "dream-4521-v1",
+  "label": "Muse reading",
+  "title": "Tendora — The Workbench",
+  "model": "openrouter/meta/muse-spark-1.3-contributor",
+  "model_identity_basis": "requested; upstream identity unverified",
+  "effort": "xhigh",
+  "date": "2026-10-22",
+  "cli_version": "codex-cli 0.163.0",
+  "elapsed_seconds": 128.28,
+  "usage": {
+    "calls": 1,
+    "input_tokens": 92526,
+    "cached_input_tokens": 0,
+    "output_tokens": 16809,
+    "reasoning_output_tokens": 10972,
+    "cost": null
+  },
+  "prompt_sha256": "7e785c3e1b7f795a82477f449ada368399deac8b3f2232e036073d986a5a4e8d",
+  "corpus_sha256": "4bf64006c1e22b857f89c9101d6e90a41c4edc2b4b32054aaa5d99dfb11da1d2",
+  "protocol": "session-rubric-dag-v3",
+  "condition": "evaluation",
+  "evidence_scope": "New evaluation run reusing frozen artefact bytes from dream-deepseek-20261021-deepseek-s1"
+}

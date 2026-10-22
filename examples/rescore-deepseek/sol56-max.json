@@ -1,0 +1,19 @@
+{
+  "schema_version": 2,
+  "run_id": "sol56-max",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "reasoning": "high",
+  "evaluation_id": "sol56-max-deepseek-per-axis-1",
+  "review_id": "sol56-max-deepseek-per-axis-1-review",
+  "reviewer": "DeepSeek V4.1 Flash 1017 · rubric session",
+  "output": ".local/evaluation-runs/sol56-max-deepseek-per-axis-1",
+  "budget": {
+    "max_turns": 12,
+    "max_input_tokens": 900000,
+    "max_output_tokens": 250000,
+    "max_seconds": 900
+  },
+  "layout": "per-axis",
+  "run_label": "DeepSeek per-axis reading",
+  "run_title": "Twenty-four connected places"
+}

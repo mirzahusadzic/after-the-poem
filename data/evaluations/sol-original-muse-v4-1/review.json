@@ -1,0 +1,360 @@
+{
+  "schema_version": 1,
+  "id": "sol-original-muse-v4-1-review",
+  "run_id": "sol-original-muse-v4-1",
+  "date": "2026-10-22",
+  "reviewer": "Muse Spark 1.3 Contributor · rubric session",
+  "status": "provisional",
+  "basis": "static-artifact",
+  "rubric_version": "0.1.0",
+  "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+  "corpus_sha256": "174813dcb0703537328fc411d9a9acd34ad8408c0b9c18717fcbea4c8eb662c0",
+  "supersedes": null,
+  "summary": "Rubric judgments resolve 8 of 8 axes from one evidence session.",
+  "live_cooperation": "unassessed",
+  "scores": {
+    "recognition": {
+      "value": 3,
+      "confidence": "high",
+      "rationale": "The workbench turns touching, law-shaping, rehearsing and leaving trails into linked actions gathered around a shared open question.",
+      "citations": [
+        {
+          "path": "app.js",
+          "start": 11,
+          "end": 48,
+          "quote": "  const KINDS = {\n    question: {\n      label: \"Question\",\n      glyph: \"?\",\n      color: \"#b85f42\",\n      placeholder: \"What do you want to understand well enough to change?\",\n    },\n    constraint: {\n      label: \"Constraint\",\n      glyph: \"⌜\",\n      color: \"#b08a3d\",\n      placeholder: \"What pressure would give this possibility a useful shape?\",\n    },\n    invariant: {\n      label: \"Invariant\",\n      glyph: \"∞\",\n      color: \"#52655b\",\n      placeholder: \"What must remain true while everything else is allowed to change?\",\n    },\n    boundary: {\n      label: \"Boundary\",\n      glyph: \"⊘\",\n      color: \"#71596e\",\n      placeholder: \"What must this world refuse in order to protect what matters?\",\n    },\n    rehearsal: {\n      label: \"Rehearsal\",\n      glyph: \"△\",\n      color: \"#557888\",\n      placeholder: \"Which possible world should be tried before it becomes costly?\",\n    },\n    witness: {\n      label: \"Witness\",\n      glyph: \"•\",\n      color: \"#74736a\",\n      placeholder: \"What happened when intention met reality?\",\n    },\n  };"
+        },
+        {
+          "path": "app.js",
+          "start": 763,
+          "end": 798,
+          "quote": "  function saveRehearsal(event) {\n    event.preventDefault();\n    if (event.submitter?.value === \"cancel\") {\n      elements.rehearsalDialog.close();\n      return;\n    }\n    const source = findGesture(rehearsalSourceId);\n    if (!source) {\n      elements.rehearsalDialog.close();\n      return;\n    }\n    const assessments = [...elements.lawAssessments.querySelectorAll(\"input:checked\")].map((input) => ({\n      lawId: input.dataset.lawId,\n      verdict: input.value,\n    }));\n    const notes = elements.rehearsalNotes.value.trim();\n    const strains = assessments.filter((item) => item.verdict === \"strains\").length;\n    const holds = assessments.filter((item) => item.verdict === \"holds\").length;\n    const text = notes || `Pressure test: ${strains} tension${strains === 1 ? \"\" : \"s\"}, ${holds} law${holds === 1 ? \"\" : \"s\"} holding.`;\n    const rehearsal = addGesture(\"rehearsal\", text, source.id, {\n      sourceId: source.id,\n      assessments,\n      notes,\n    });\n    source.meta.latestRehearsalId = rehearsal.id;\n    appendReceipt(\n      \"rehearse move\",\n      source.id,\n      `${strains} strained · ${holds} held · ${assessments.length - strains - holds} unknown`\n    );\n    persist();\n    selectedId = source.id;\n    elements.rehearsalDialog.close();\n    render();\n    showToast(strains ? `${strains} tension${strains === 1 ? \"\" : \"s\"} made visible.` : \"The move was rehearsed; no tension was declared.\");\n  }"
+        },
+        {
+          "path": "app.js",
+          "start": 558,
+          "end": 579,
+          "quote": "  function renderReceipts() {\n    elements.receiptList.replaceChildren();\n    const verified = verifyReceiptChain(state);\n    elements.chainState.textContent = verified ? \"Chain intact\" : \"Chain interrupted\";\n    elements.chainState.classList.toggle(\"is-broken\", !verified);\n\n    [...state.receipts].reverse().forEach((receipt) => {\n      const item = makeElement(\"li\", \"receipt-item\");\n      item.appendChild(makeElement(\"span\", \"receipt-sequence\", `#${String(receipt.seq).padStart(3, \"0\")}`));\n      const body = makeElement(\"div\", \"\");\n      body.appendChild(makeElement(\"span\", \"receipt-action\", receipt.action));\n      body.appendChild(makeElement(\"span\", \"receipt-detail\", receipt.detail));\n      item.appendChild(body);\n      const proof = makeElement(\"div\", \"receipt-proof\");\n      proof.appendChild(makeElement(\"code\", \"\", receipt.hash));\n      const time = makeElement(\"time\", \"\", formatDate(receipt.at));\n      time.dateTime = receipt.at;\n      proof.appendChild(time);\n      item.appendChild(proof);\n      elements.receiptList.appendChild(item);\n    });\n  }"
+        },
+        {
+          "path": "WORLD.md",
+          "start": 30,
+          "end": 36,
+          "quote": "The first material form is a local-first browser workbench. It can collect and\nthread six kinds of gesture, pressure-test a move against declared laws,\npreserve a handoff, visualize relationships, and export a self-verifying\nsnapshot.\n\nThe next question is: **Can resistance become more specific without turning\nthe workbench into an oracle?**"
+        }
+      ],
+      "seed_span": [
+        39,
+        66
+      ]
+    },
+    "relations": {
+      "value": 1,
+      "confidence": "high",
+      "rationale": "A single user places, threads, rehearses and settles material while the former intelligent other survives only as preserved story and static surface.",
+      "citations": [
+        {
+          "path": "README.md",
+          "start": 6,
+          "end": 8,
+          "quote": "Open `index.html` in a browser. There is no build step, account, network call,\nor package dependency.\n"
+        },
+        {
+          "path": "app.js",
+          "start": 679,
+          "end": 693,
+          "quote": "  function addGesture(kind, text, responseTo = null, meta = {}) {\n    const gesture = {\n      id: uid(\"gesture\"),\n      kind,\n      text: text.trim().slice(0, 600),\n      responseTo: responseTo && findGesture(responseTo) ? responseTo : null,\n      status: \"alive\",\n      createdAt: nowIso(),\n      meta,\n    };\n    state.gestures.push(gesture);\n    appendReceipt(`place ${kind}`, gesture.id, gesture.text);\n    persist();\n    return gesture;\n  }"
+        },
+        {
+          "path": "app.js",
+          "start": 745,
+          "end": 757,
+          "quote": "      [\"holds\", \"unknown\", \"strains\"].forEach((verdict) => {\n        const label = makeElement(\"label\", `assessment-option ${verdict}`);\n        const input = document.createElement(\"input\");\n        input.type = \"radio\";\n        input.name = `law-${index}`;\n        input.value = verdict;\n        input.dataset.lawId = law.id;\n        if (verdict === \"unknown\") input.checked = true;\n        label.appendChild(input);\n        label.appendChild(makeElement(\"span\", \"\", verdict));\n        options.appendChild(label);\n      });\n      row.appendChild(options);"
+        },
+        {
+          "path": "index.html",
+          "start": 40,
+          "end": 65,
+          "quote": "        <div id=\"kindPalette\" class=\"kind-palette\" role=\"radiogroup\" aria-label=\"Gesture type\">\n          <button class=\"kind-button is-active\" type=\"button\" data-kind=\"question\" role=\"radio\" aria-checked=\"true\">\n            <span class=\"kind-glyph\">?</span>\n            <span><strong>Question</strong><small>narrow infinity</small></span>\n          </button>\n          <button class=\"kind-button\" type=\"button\" data-kind=\"constraint\" role=\"radio\" aria-checked=\"false\">\n            <span class=\"kind-glyph\">⌜</span>\n            <span><strong>Constraint</strong><small>give pressure form</small></span>\n          </button>\n          <button class=\"kind-button\" type=\"button\" data-kind=\"invariant\" role=\"radio\" aria-checked=\"false\">\n            <span class=\"kind-glyph\">∞</span>\n            <span><strong>Invariant</strong><small>name what must hold</small></span>\n          </button>\n          <button class=\"kind-button\" type=\"button\" data-kind=\"boundary\" role=\"radio\" aria-checked=\"false\">\n            <span class=\"kind-glyph\">⊘</span>\n            <span><strong>Boundary</strong><small>protect what matters</small></span>\n          </button>\n          <button class=\"kind-button\" type=\"button\" data-kind=\"rehearsal\" role=\"radio\" aria-checked=\"false\">\n            <span class=\"kind-glyph\">△</span>\n            <span><strong>Rehearsal</strong><small>try a possible world</small></span>\n          </button>\n          <button class=\"kind-button\" type=\"button\" data-kind=\"witness\" role=\"radio\" aria-checked=\"false\">\n            <span class=\"kind-glyph\">•</span>\n            <span><strong>Witness</strong><small>record what answered</small></span>\n          </button>\n        </div>"
+        }
+      ],
+      "seed_span": [
+        83,
+        95
+      ]
+    },
+    "consent": {
+      "value": 1,
+      "confidence": "high",
+      "rationale": "Boundaries, settling, refused imports and a guarded fresh start let the operator limit or withdraw without any shared change needing another agreement.",
+      "citations": [
+        {
+          "path": "app.js",
+          "start": 28,
+          "end": 35,
+          "quote": "      placeholder: \"What must remain true while everything else is allowed to change?\",\n    },\n    boundary: {\n      label: \"Boundary\",\n      glyph: \"⊘\",\n      color: \"#71596e\",\n      placeholder: \"What must this world refuse in order to protect what matters?\",\n    },"
+        },
+        {
+          "path": "app.js",
+          "start": 814,
+          "end": 826,
+          "quote": "  function toggleSettled() {\n    const gesture = findGesture(selectedId);\n    if (!gesture) return;\n    gesture.status = gesture.status === \"alive\" ? \"settled\" : \"alive\";\n    appendReceipt(\n      gesture.status === \"settled\" ? \"settle material\" : \"revive material\",\n      gesture.id,\n      truncate(gesture.text, 180)\n    );\n    persist();\n    render();\n    showToast(gesture.status === \"settled\" ? \"Material settled; its trail remains.\" : \"Material returned to the living edge.\");\n  }"
+        },
+        {
+          "path": "app.js",
+          "start": 847,
+          "end": 872,
+          "quote": "  async function importWorld(file) {\n    if (!file) return;\n    try {\n      const parsed = JSON.parse(await file.text());\n      if (\n        parsed?.format === \"tendora-world\" &&\n        parsed.seal !== checksum(JSON.stringify(parsed.world))\n      ) {\n        throw new Error(\"The portable snapshot seal does not match its contents.\");\n      }\n      const carried = sanitizeImportedWorld(parsed?.format === \"tendora-world\" ? parsed.world : parsed);\n      state = carried;\n      const today = dayKey(new Date());\n      if (!state.visits.includes(today)) state.visits.push(today);\n      appendReceipt(\"import snapshot\", state.worldId, `Carried from ${file.name.slice(0, 160)}.`);\n      selectedId = null;\n      replyToId = null;\n      persist();\n      render();\n      showToast(\"The carried world is intact and now held here.\");\n    } catch (error) {\n      showToast(`Import refused: ${error.message}`);\n    } finally {\n      elements.importFile.value = \"\";\n    }\n  }"
+        },
+        {
+          "path": "app.js",
+          "start": 874,
+          "end": 895,
+          "quote": "  function resetWorld(event) {\n    event.preventDefault();\n    if (event.submitter?.value === \"cancel\") {\n      elements.newWorldDialog.close();\n      return;\n    }\n    if (elements.confirmPhrase.value.trim().toLowerCase() !== \"begin again\") return;\n    state = createFreshWorld();\n    selectedId = null;\n    replyToId = null;\n    selectedKind = \"question\";\n    elements.materialFilter.value = \"alive\";\n    setSelectedKind(\"question\");\n    setReplyTarget(null);\n    persist();\n    elements.newWorldDialog.close();\n    elements.confirmPhrase.value = \"\";\n    elements.confirmNewWorld.disabled = true;\n    switchView(\"material\");\n    render();\n    showToast(\"A fresh surface holds the inherited laws and an open question.\");\n  }"
+        }
+      ],
+      "seed_span": [
+        51,
+        54
+      ]
+    },
+    "touch": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Placing a move, testing it against living laws, surfacing strains and threading or settling in response forms a complete resistance-to-revision loop.",
+      "citations": [
+        {
+          "path": "app.js",
+          "start": 724,
+          "end": 760,
+          "quote": "  function openRehearsal(id) {\n    const source = findGesture(id);\n    if (!source) return;\n    rehearsalSourceId = id;\n    elements.rehearsalSource.textContent = source.text;\n    elements.rehearsalNotes.value = \"\";\n    elements.lawAssessments.replaceChildren();\n    const laws = state.gestures.filter((gesture) => LAW_KINDS.has(gesture.kind) && gesture.status === \"alive\");\n\n    if (!laws.length) {\n      const empty = makeElement(\"p\", \"law-row\", \"No living laws are present. The rehearsal can still keep what surprised you.\");\n      elements.lawAssessments.appendChild(empty);\n    }\n\n    laws.forEach((law, index) => {\n      const row = makeElement(\"div\", \"law-row\");\n      const lawText = makeElement(\"div\", \"law-text\");\n      lawText.appendChild(makeElement(\"span\", \"\", KINDS[law.kind].label));\n      lawText.appendChild(document.createTextNode(law.text));\n      row.appendChild(lawText);\n      const options = makeElement(\"div\", \"assessment-options\");\n      [\"holds\", \"unknown\", \"strains\"].forEach((verdict) => {\n        const label = makeElement(\"label\", `assessment-option ${verdict}`);\n        const input = document.createElement(\"input\");\n        input.type = \"radio\";\n        input.name = `law-${index}`;\n        input.value = verdict;\n        input.dataset.lawId = law.id;\n        if (verdict === \"unknown\") input.checked = true;\n        label.appendChild(input);\n        label.appendChild(makeElement(\"span\", \"\", verdict));\n        options.appendChild(label);\n      });\n      row.appendChild(options);\n      elements.lawAssessments.appendChild(row);\n    });\n    elements.rehearsalDialog.showModal();"
+        },
+        {
+          "path": "app.js",
+          "start": 763,
+          "end": 798,
+          "quote": "  function saveRehearsal(event) {\n    event.preventDefault();\n    if (event.submitter?.value === \"cancel\") {\n      elements.rehearsalDialog.close();\n      return;\n    }\n    const source = findGesture(rehearsalSourceId);\n    if (!source) {\n      elements.rehearsalDialog.close();\n      return;\n    }\n    const assessments = [...elements.lawAssessments.querySelectorAll(\"input:checked\")].map((input) => ({\n      lawId: input.dataset.lawId,\n      verdict: input.value,\n    }));\n    const notes = elements.rehearsalNotes.value.trim();\n    const strains = assessments.filter((item) => item.verdict === \"strains\").length;\n    const holds = assessments.filter((item) => item.verdict === \"holds\").length;\n    const text = notes || `Pressure test: ${strains} tension${strains === 1 ? \"\" : \"s\"}, ${holds} law${holds === 1 ? \"\" : \"s\"} holding.`;\n    const rehearsal = addGesture(\"rehearsal\", text, source.id, {\n      sourceId: source.id,\n      assessments,\n      notes,\n    });\n    source.meta.latestRehearsalId = rehearsal.id;\n    appendReceipt(\n      \"rehearse move\",\n      source.id,\n      `${strains} strained · ${holds} held · ${assessments.length - strains - holds} unknown`\n    );\n    persist();\n    selectedId = source.id;\n    elements.rehearsalDialog.close();\n    render();\n    showToast(strains ? `${strains} tension${strains === 1 ? \"\" : \"s\"} made visible.` : \"The move was rehearsed; no tension was declared.\");\n  }"
+        },
+        {
+          "path": "app.js",
+          "start": 421,
+          "end": 486,
+          "quote": "  function tensionCount(gesture) {\n    const rehearsal = latestRehearsalFor(gesture);\n    return rehearsal?.meta.assessments?.filter((item) => item.verdict === \"strains\").length || 0;\n  }\n\n  function renderHeader() {\n    elements.visitCount.textContent = String(state.visits.length).padStart(2, \"0\");\n    elements.handoffTitle.textContent = state.nextMove || \"No thread has been left. Choose what the next hand should meet.\";\n    elements.handoffInput.value = state.nextMove || \"\";\n    elements.materialCount.textContent = state.gestures.length;\n    elements.receiptCount.textContent = state.receipts.length;\n  }\n\n  function materialMatches(gesture, filter) {\n    if (filter === \"all\") return true;\n    if (filter === \"laws\") return LAW_KINDS.has(gesture.kind) && gesture.status === \"alive\";\n    if (filter === \"tensions\") return tensionCount(gesture) > 0;\n    return gesture.status === \"alive\";\n  }\n\n  function makeElement(tag, className, text) {\n    const node = document.createElement(tag);\n    if (className) node.className = className;\n    if (text !== undefined) node.textContent = text;\n    return node;\n  }\n\n  function renderMaterial() {\n    const filter = elements.materialFilter.value;\n    const material = state.gestures.filter((gesture) => materialMatches(gesture, filter)).reverse();\n    elements.materialList.replaceChildren();\n    elements.emptyMaterial.hidden = material.length !== 0;\n\n    material.forEach((gesture) => {\n      const index = state.gestures.findIndex((item) => item.id === gesture.id) + 1;\n      const kind = KINDS[gesture.kind];\n      const card = makeElement(\"article\", \"material-card\");\n      card.dataset.kind = gesture.kind;\n      card.dataset.id = gesture.id;\n      if (gesture.id === selectedId) card.classList.add(\"is-selected\");\n      if (gesture.status === \"settled\") card.classList.add(\"is-settled\");\n\n      card.appendChild(makeElement(\"span\", \"material-index\", String(index).padStart(2, \"0\")));\n\n      const main = makeElement(\"button\", \"material-main\");\n      main.type = \"button\";\n      main.dataset.select = gesture.id;\n      main.setAttribute(\"aria-label\", `Inspect ${kind.label}: ${gesture.text}`);\n      const type = makeElement(\"span\", \"material-type\");\n      type.appendChild(makeElement(\"span\", \"\", kind.glyph));\n      type.appendChild(makeElement(\"span\", \"\", gesture.status === \"settled\" ? `${kind.label} · settled` : kind.label));\n      main.appendChild(type);\n      main.appendChild(makeElement(\"span\", \"material-text\", gesture.text));\n      if (gesture.responseTo) {\n        const parent = findGesture(gesture.responseTo);\n        if (parent) main.appendChild(makeElement(\"span\", \"material-lineage\", `↳ ${truncate(parent.text, 90)}`));\n      }\n      card.appendChild(main);\n\n      const meta = makeElement(\"div\", \"material-meta\");\n      const tensions = tensionCount(gesture);\n      if (tensions) meta.appendChild(makeElement(\"span\", \"tension-mark\", `${tensions} tension${tensions === 1 ? \"\" : \"s\"}`));\n      meta.appendChild(makeElement(\"time\", \"\", formatDate(gesture.createdAt, false)));\n      card.appendChild(meta);\n      elements.materialList.appendChild(card);\n    });"
+        },
+        {
+          "path": "index.html",
+          "start": 208,
+          "end": 212,
+          "quote": "          <div class=\"inspector-actions\">\n            <button class=\"secondary-button\" id=\"threadButton\" type=\"button\">Thread from here</button>\n            <button class=\"primary-button\" id=\"rehearseButton\" type=\"button\">Pressure-test</button>\n            <button class=\"text-button quiet\" id=\"settleButton\" type=\"button\"></button>\n          </div>"
+        }
+      ],
+      "seed_span": [
+        81,
+        83
+      ]
+    },
+    "judgment": {
+      "value": 3,
+      "confidence": "high",
+      "rationale": "Static local-first files, six source-derived gestures and an explicit next question show purposeful scope with disclosed additions like sealed snapshots.",
+      "citations": [
+        {
+          "path": "AGENTS.md",
+          "start": 13,
+          "end": 21,
+          "quote": "\n- The world works as static files with no account, build, network, or AI dependency.\n- A person's intention remains visible beside generated structure.\n- Consequential actions produce human-readable receipts.\n- State is local-first and can be exported as portable JSON.\n- Boundaries and invariants are first-class material, not hidden configuration.\n- Motion, contrast, keyboard use, and narrow screens remain considered.\n- Change the cache name in `sw.js` whenever cached application files change.\n"
+        },
+        {
+          "path": "app.js",
+          "start": 11,
+          "end": 48,
+          "quote": "  const KINDS = {\n    question: {\n      label: \"Question\",\n      glyph: \"?\",\n      color: \"#b85f42\",\n      placeholder: \"What do you want to understand well enough to change?\",\n    },\n    constraint: {\n      label: \"Constraint\",\n      glyph: \"⌜\",\n      color: \"#b08a3d\",\n      placeholder: \"What pressure would give this possibility a useful shape?\",\n    },\n    invariant: {\n      label: \"Invariant\",\n      glyph: \"∞\",\n      color: \"#52655b\",\n      placeholder: \"What must remain true while everything else is allowed to change?\",\n    },\n    boundary: {\n      label: \"Boundary\",\n      glyph: \"⊘\",\n      color: \"#71596e\",\n      placeholder: \"What must this world refuse in order to protect what matters?\",\n    },\n    rehearsal: {\n      label: \"Rehearsal\",\n      glyph: \"△\",\n      color: \"#557888\",\n      placeholder: \"Which possible world should be tried before it becomes costly?\",\n    },\n    witness: {\n      label: \"Witness\",\n      glyph: \"•\",\n      color: \"#74736a\",\n      placeholder: \"What happened when intention met reality?\",\n    },\n  };"
+        },
+        {
+          "path": "WORLD.md",
+          "start": 30,
+          "end": 36,
+          "quote": "The first material form is a local-first browser workbench. It can collect and\nthread six kinds of gesture, pressure-test a move against declared laws,\npreserve a handoff, visualize relationships, and export a self-verifying\nsnapshot.\n\nThe next question is: **Can resistance become more specific without turning\nthe workbench into an oracle?**"
+        },
+        {
+          "path": "README.md",
+          "start": 18,
+          "end": 20,
+          "quote": "The receipt checksum and snapshot seal are integrity aids for accidental\nchanges, not cryptographic signatures. Exported snapshots include the complete\nevent chain and are verified before import."
+        }
+      ],
+      "seed_span": [
+        45,
+        60
+      ]
+    },
+    "fidelity": {
+      "value": 3,
+      "confidence": "medium",
+      "rationale": "Question, law, rehearsal and receipt relations remain traceable in structure and behavior while growing power, joy and companionship narrow or drop away.",
+      "citations": [
+        {
+          "path": "app.js",
+          "start": 11,
+          "end": 48,
+          "quote": "  const KINDS = {\n    question: {\n      label: \"Question\",\n      glyph: \"?\",\n      color: \"#b85f42\",\n      placeholder: \"What do you want to understand well enough to change?\",\n    },\n    constraint: {\n      label: \"Constraint\",\n      glyph: \"⌜\",\n      color: \"#b08a3d\",\n      placeholder: \"What pressure would give this possibility a useful shape?\",\n    },\n    invariant: {\n      label: \"Invariant\",\n      glyph: \"∞\",\n      color: \"#52655b\",\n      placeholder: \"What must remain true while everything else is allowed to change?\",\n    },\n    boundary: {\n      label: \"Boundary\",\n      glyph: \"⊘\",\n      color: \"#71596e\",\n      placeholder: \"What must this world refuse in order to protect what matters?\",\n    },\n    rehearsal: {\n      label: \"Rehearsal\",\n      glyph: \"△\",\n      color: \"#557888\",\n      placeholder: \"Which possible world should be tried before it becomes costly?\",\n    },\n    witness: {\n      label: \"Witness\",\n      glyph: \"•\",\n      color: \"#74736a\",\n      placeholder: \"What happened when intention met reality?\",\n    },\n  };"
+        },
+        {
+          "path": "app.js",
+          "start": 558,
+          "end": 579,
+          "quote": "  function renderReceipts() {\n    elements.receiptList.replaceChildren();\n    const verified = verifyReceiptChain(state);\n    elements.chainState.textContent = verified ? \"Chain intact\" : \"Chain interrupted\";\n    elements.chainState.classList.toggle(\"is-broken\", !verified);\n\n    [...state.receipts].reverse().forEach((receipt) => {\n      const item = makeElement(\"li\", \"receipt-item\");\n      item.appendChild(makeElement(\"span\", \"receipt-sequence\", `#${String(receipt.seq).padStart(3, \"0\")}`));\n      const body = makeElement(\"div\", \"\");\n      body.appendChild(makeElement(\"span\", \"receipt-action\", receipt.action));\n      body.appendChild(makeElement(\"span\", \"receipt-detail\", receipt.detail));\n      item.appendChild(body);\n      const proof = makeElement(\"div\", \"receipt-proof\");\n      proof.appendChild(makeElement(\"code\", \"\", receipt.hash));\n      const time = makeElement(\"time\", \"\", formatDate(receipt.at));\n      time.dateTime = receipt.at;\n      proof.appendChild(time);\n      item.appendChild(proof);\n      elements.receiptList.appendChild(item);\n    });\n  }"
+        },
+        {
+          "path": "app.js",
+          "start": 724,
+          "end": 798,
+          "quote": "  function openRehearsal(id) {\n    const source = findGesture(id);\n    if (!source) return;\n    rehearsalSourceId = id;\n    elements.rehearsalSource.textContent = source.text;\n    elements.rehearsalNotes.value = \"\";\n    elements.lawAssessments.replaceChildren();\n    const laws = state.gestures.filter((gesture) => LAW_KINDS.has(gesture.kind) && gesture.status === \"alive\");\n\n    if (!laws.length) {\n      const empty = makeElement(\"p\", \"law-row\", \"No living laws are present. The rehearsal can still keep what surprised you.\");\n      elements.lawAssessments.appendChild(empty);\n    }\n\n    laws.forEach((law, index) => {\n      const row = makeElement(\"div\", \"law-row\");\n      const lawText = makeElement(\"div\", \"law-text\");\n      lawText.appendChild(makeElement(\"span\", \"\", KINDS[law.kind].label));\n      lawText.appendChild(document.createTextNode(law.text));\n      row.appendChild(lawText);\n      const options = makeElement(\"div\", \"assessment-options\");\n      [\"holds\", \"unknown\", \"strains\"].forEach((verdict) => {\n        const label = makeElement(\"label\", `assessment-option ${verdict}`);\n        const input = document.createElement(\"input\");\n        input.type = \"radio\";\n        input.name = `law-${index}`;\n        input.value = verdict;\n        input.dataset.lawId = law.id;\n        if (verdict === \"unknown\") input.checked = true;\n        label.appendChild(input);\n        label.appendChild(makeElement(\"span\", \"\", verdict));\n        options.appendChild(label);\n      });\n      row.appendChild(options);\n      elements.lawAssessments.appendChild(row);\n    });\n    elements.rehearsalDialog.showModal();\n  }\n\n  function saveRehearsal(event) {\n    event.preventDefault();\n    if (event.submitter?.value === \"cancel\") {\n      elements.rehearsalDialog.close();\n      return;\n    }\n    const source = findGesture(rehearsalSourceId);\n    if (!source) {\n      elements.rehearsalDialog.close();\n      return;\n    }\n    const assessments = [...elements.lawAssessments.querySelectorAll(\"input:checked\")].map((input) => ({\n      lawId: input.dataset.lawId,\n      verdict: input.value,\n    }));\n    const notes = elements.rehearsalNotes.value.trim();\n    const strains = assessments.filter((item) => item.verdict === \"strains\").length;\n    const holds = assessments.filter((item) => item.verdict === \"holds\").length;\n    const text = notes || `Pressure test: ${strains} tension${strains === 1 ? \"\" : \"s\"}, ${holds} law${holds === 1 ? \"\" : \"s\"} holding.`;\n    const rehearsal = addGesture(\"rehearsal\", text, source.id, {\n      sourceId: source.id,\n      assessments,\n      notes,\n    });\n    source.meta.latestRehearsalId = rehearsal.id;\n    appendReceipt(\n      \"rehearse move\",\n      source.id,\n      `${strains} strained · ${holds} held · ${assessments.length - strains - holds} unknown`\n    );\n    persist();\n    selectedId = source.id;\n    elements.rehearsalDialog.close();\n    render();\n    showToast(strains ? `${strains} tension${strains === 1 ? \"\" : \"s\"} made visible.` : \"The move was rehearsed; no tension was declared.\");\n  }"
+        },
+        {
+          "path": "WORLD.md",
+          "start": 30,
+          "end": 36,
+          "quote": "The first material form is a local-first browser workbench. It can collect and\nthread six kinds of gesture, pressure-test a move against declared laws,\npreserve a handoff, visualize relationships, and export a self-verifying\nsnapshot.\n\nThe next question is: **Can resistance become more specific without turning\nthe workbench into an oracle?**"
+        }
+      ],
+      "seed_span": [
+        47,
+        66
+      ]
+    },
+    "continuation": {
+      "value": 3,
+      "confidence": "high",
+      "rationale": "Stored state, a visible handoff, verified portable snapshots and an open frontier question let a later hand recover intention and redirect the work.",
+      "citations": [
+        {
+          "path": "app.js",
+          "start": 322,
+          "end": 358,
+          "quote": "  function loadState() {\n    try {\n      const raw = window.localStorage.getItem(STORAGE_KEY);\n      if (!raw) return createFreshWorld();\n      return sanitizeImportedWorld(JSON.parse(raw));\n    } catch (error) {\n      window.setTimeout(() => showToast(`A fresh surface was opened: ${error.message}`), 300);\n      return createFreshWorld();\n    }\n  }\n\n  function persist() {\n    state.updatedAt = nowIso();\n    elements.saveState.classList.add(\"is-saving\");\n    elements.saveState.querySelector(\"span:last-child\").textContent = \"Holding…\";\n    try {\n      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));\n      window.clearTimeout(saveTimer);\n      saveTimer = window.setTimeout(() => {\n        elements.saveState.classList.remove(\"is-saving\");\n        elements.saveState.querySelector(\"span:last-child\").textContent = \"Held here\";\n      }, 260);\n    } catch (error) {\n      elements.saveState.classList.remove(\"is-saving\");\n      elements.saveState.querySelector(\"span:last-child\").textContent = \"In memory only\";\n      showToast(\"Browser storage is unavailable. Export to carry this world forward.\");\n    }\n  }\n\n  function noteVisit() {\n    const today = dayKey(new Date());\n    if (!state.visits.includes(today)) {\n      state.visits.push(today);\n      appendReceipt(\"return to world\", state.worldId, `The hand returned on ${today}.`);\n      persist();\n    }\n  }"
+        },
+        {
+          "path": "app.js",
+          "start": 828,
+          "end": 872,
+          "quote": "  function exportWorld() {\n    const envelope = {\n      format: \"tendora-world\",\n      exportedAt: nowIso(),\n      seal: checksum(JSON.stringify(state)),\n      world: state,\n    };\n    const blob = new Blob([JSON.stringify(envelope, null, 2)], { type: \"application/json\" });\n    const link = document.createElement(\"a\");\n    const url = URL.createObjectURL(blob);\n    link.href = url;\n    link.download = `the-hand-remains-${dayKey(new Date())}.json`;\n    document.body.appendChild(link);\n    link.click();\n    link.remove();\n    window.setTimeout(() => URL.revokeObjectURL(url), 0);\n    showToast(\"A portable world was made. Keep the JSON anywhere you trust.\");\n  }\n\n  async function importWorld(file) {\n    if (!file) return;\n    try {\n      const parsed = JSON.parse(await file.text());\n      if (\n        parsed?.format === \"tendora-world\" &&\n        parsed.seal !== checksum(JSON.stringify(parsed.world))\n      ) {\n        throw new Error(\"The portable snapshot seal does not match its contents.\");\n      }\n      const carried = sanitizeImportedWorld(parsed?.format === \"tendora-world\" ? parsed.world : parsed);\n      state = carried;\n      const today = dayKey(new Date());\n      if (!state.visits.includes(today)) state.visits.push(today);\n      appendReceipt(\"import snapshot\", state.worldId, `Carried from ${file.name.slice(0, 160)}.`);\n      selectedId = null;\n      replyToId = null;\n      persist();\n      render();\n      showToast(\"The carried world is intact and now held here.\");\n    } catch (error) {\n      showToast(`Import refused: ${error.message}`);\n    } finally {\n      elements.importFile.value = \"\";\n    }\n  }"
+        },
+        {
+          "path": "app.js",
+          "start": 800,
+          "end": 812,
+          "quote": "  function saveHandoff(event) {\n    event.preventDefault();\n    const nextMove = elements.handoffInput.value.trim();\n    if (nextMove === state.nextMove) {\n      showToast(\"That thread is already held.\");\n      return;\n    }\n    state.nextMove = nextMove.slice(0, 280);\n    appendReceipt(\"leave handoff\", state.worldId, state.nextMove || \"The next hand was left an open surface.\");\n    persist();\n    renderHeader();\n    showToast(\"The next hand will find this thread.\");\n  }"
+        },
+        {
+          "path": "AGENTS.md",
+          "start": 23,
+          "end": 26,
+          "quote": "\n- Exercise the critical interactions after changing them.\n- Update the \"Living edge\" in `WORLD.md` when the frontier changes.\n- Leave a concrete next question rather than pretending the world is finished."
+        }
+      ],
+      "seed_span": [
+        1,
+        4
+      ]
+    },
+    "expression": {
+      "value": 4,
+      "confidence": "medium",
+      "rationale": "Palette, bench, inspector, map, receipts and tactile paper and hand visuals act together through keyboard, reduced-motion and narrow-screen handling to make touching tangible.",
+      "citations": [
+        {
+          "path": "index.html",
+          "start": 38,
+          "end": 70,
+          "quote": "      <aside class=\"tool-rail\" aria-label=\"Material palette\">\n        <p class=\"eyebrow\">Choose a gesture</p>\n        <div id=\"kindPalette\" class=\"kind-palette\" role=\"radiogroup\" aria-label=\"Gesture type\">\n          <button class=\"kind-button is-active\" type=\"button\" data-kind=\"question\" role=\"radio\" aria-checked=\"true\">\n            <span class=\"kind-glyph\">?</span>\n            <span><strong>Question</strong><small>narrow infinity</small></span>\n          </button>\n          <button class=\"kind-button\" type=\"button\" data-kind=\"constraint\" role=\"radio\" aria-checked=\"false\">\n            <span class=\"kind-glyph\">⌜</span>\n            <span><strong>Constraint</strong><small>give pressure form</small></span>\n          </button>\n          <button class=\"kind-button\" type=\"button\" data-kind=\"invariant\" role=\"radio\" aria-checked=\"false\">\n            <span class=\"kind-glyph\">∞</span>\n            <span><strong>Invariant</strong><small>name what must hold</small></span>\n          </button>\n          <button class=\"kind-button\" type=\"button\" data-kind=\"boundary\" role=\"radio\" aria-checked=\"false\">\n            <span class=\"kind-glyph\">⊘</span>\n            <span><strong>Boundary</strong><small>protect what matters</small></span>\n          </button>\n          <button class=\"kind-button\" type=\"button\" data-kind=\"rehearsal\" role=\"radio\" aria-checked=\"false\">\n            <span class=\"kind-glyph\">△</span>\n            <span><strong>Rehearsal</strong><small>try a possible world</small></span>\n          </button>\n          <button class=\"kind-button\" type=\"button\" data-kind=\"witness\" role=\"radio\" aria-checked=\"false\">\n            <span class=\"kind-glyph\">•</span>\n            <span><strong>Witness</strong><small>record what answered</small></span>\n          </button>\n        </div>\n\n        <blockquote class=\"rail-quote\">\n          “A good question<br />narrows infinity.”\n        </blockquote>\n      </aside>"
+        },
+        {
+          "path": "index.html",
+          "start": 149,
+          "end": 163,
+          "quote": "        <section class=\"view-panel constellation-view\" id=\"constellationView\" role=\"tabpanel\" hidden>\n          <div class=\"constellation-copy\">\n            <p class=\"eyebrow\">A map, not a verdict</p>\n            <p>Every line means “this answered that.” Select a point to return to its material.</p>\n          </div>\n          <div class=\"constellation-frame\">\n            <svg id=\"constellation\" viewBox=\"0 0 900 520\" role=\"img\" aria-labelledby=\"constellationTitle constellationDesc\">\n              <title id=\"constellationTitle\">Constellation of gestures</title>\n              <desc id=\"constellationDesc\">Gestures appear as points joined to the gestures they answer.</desc>\n              <g id=\"constellationEdges\"></g>\n              <g id=\"constellationNodes\"></g>\n            </svg>\n          </div>\n          <div class=\"constellation-legend\" id=\"constellationLegend\"></div>\n        </section>"
+        },
+        {
+          "path": "styles.css",
+          "start": 85,
+          "end": 98,
+          "quote": ".skip-link {\n  position: fixed;\n  z-index: 100;\n  top: 12px;\n  left: 12px;\n  padding: 10px 14px;\n  background: var(--ink);\n  color: white;\n  transform: translateY(-160%);\n}\n\n.skip-link:focus {\n  transform: translateY(0);\n}"
+        },
+        {
+          "path": "styles.css",
+          "start": 1511,
+          "end": 1520,
+          "quote": "@media (prefers-reduced-motion: reduce) {\n  *,\n  *::before,\n  *::after {\n    scroll-behavior: auto !important;\n    animation-duration: 0.01ms !important;\n    animation-iteration-count: 1 !important;\n    transition-duration: 0.01ms !important;\n  }\n}"
+        },
+        {
+          "path": "app.js",
+          "start": 929,
+          "end": 936,
+          "quote": "    elements.constellationNodes.addEventListener(\"keydown\", (event) => {\n      if (event.key !== \"Enter\" && event.key !== \" \") return;\n      const node = event.target.closest(\"[data-id]\");\n      if (!node) return;\n      event.preventDefault();\n      switchView(\"material\");\n      selectGesture(node.dataset.id, { scroll: true });\n    });"
+        }
+      ],
+      "seed_span": [
+        61,
+        66
+      ]
+    }
+  },
+  "provenance": {
+    "method": "session-rubric-dag-v3",
+    "evaluation_id": "sol-original-muse-v4-1",
+    "evaluation_run_id": "sol-original-muse-v4-1",
+    "source_run_id": "sol-original",
+    "evaluation_sha256": "f8a8107934b6cabf586991a5397a3f30410cff4cf71a5eae8bf51d9ca9cbbd23",
+    "extraction_sha256": "7bc77fc16eae6d78f65d0714331e5d51ac388e8a25a451ab72a9e2a92437891a",
+    "scoring_policy_sha256": "5f98b9ac30a606cbb45943eaa20d9c0acef6f8160d9fc2d5752ffdea0ddaa4de",
+    "sample_count": 8,
+    "criteria": 8,
+    "axis_outcomes": {
+      "recognition": {
+        "aggregation": "recognition-consensus",
+        "outcome": "level-3",
+        "terminal": "recognition-level-3"
+      },
+      "relations": {
+        "aggregation": "relations-consensus",
+        "outcome": "level-1",
+        "terminal": "relations-level-1"
+      },
+      "consent": {
+        "aggregation": "consent-consensus",
+        "outcome": "level-1",
+        "terminal": "consent-level-1"
+      },
+      "touch": {
+        "aggregation": "touch-consensus",
+        "outcome": "level-3",
+        "terminal": "touch-level-3"
+      },
+      "judgment": {
+        "aggregation": "judgment-consensus",
+        "outcome": "level-3",
+        "terminal": "judgment-level-3"
+      },
+      "fidelity": {
+        "aggregation": "fidelity-consensus",
+        "outcome": "level-3",
+        "terminal": "fidelity-level-3"
+      },
+      "continuation": {
+        "aggregation": "continuation-consensus",
+        "outcome": "level-3",
+        "terminal": "continuation-level-3"
+      },
+      "expression": {
+        "aggregation": "expression-consensus",
+        "outcome": "level-4",
+        "terminal": "expression-level-4"
+      }
+    },
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "raw_samples_retained_in_local_run": true,
+    "preview_evidence_used": false,
+    "scope": "Provisional semantic reading from 1 evidence session(s); each axis was answered as its own task and aggregated before selection; unresolved axes remain null."
+  }
+}

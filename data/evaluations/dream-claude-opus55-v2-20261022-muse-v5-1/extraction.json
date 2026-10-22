@@ -1,0 +1,400 @@
+{
+  "schema_version": 2,
+  "extraction_id": "dream-claude-opus55-v2-20261022-extraction",
+  "run_id": "dream-claude-opus55-v2-20261022",
+  "identities": {
+    "prompt_sha256": "a37b9f30b63877192b1fcd6462954c4db529b8e42e38663b78a4bfc1b4e2571f",
+    "corpus_sha256": "8ae06e7fa558cafc61fdfc4bf0d88ea90b1c10ee9f4e901bb9e729479927383c",
+    "candidate_sha256": "8ae06e7fa558cafc61fdfc4bf0d88ea90b1c10ee9f4e901bb9e729479927383c"
+  },
+  "extractor": {
+    "gateway": "codex-unified-model-router",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "codex_version": "codex-cli 0.163.0",
+    "router_revision": "70debcdbb046688306229afb7f7c34b7d4ca814359647f8d1cb6a14c4dd44c79",
+    "pipeline_sha256": "5e9bb75df3d0e73f6aeb99208dabb42181929a7cfd11c4ab3ce0aada930ab753",
+    "answer_sha256": "77ff48e905f214e53b788e751fd8645595f0ece36b0768cc7bd6ae29dd5caae4",
+    "receipt_sha256": "eb563f86f6a7b7cd5dce31c290aa94d40a9327a8c19ecc26fa82641974a323dc"
+  },
+  "sources": [
+    {
+      "path": ".gitignore",
+      "sha256": "862263fa1f46c20f0d1e4dac5ffcc75abd55c08211b2c3864c5f8764b9d87793",
+      "lines": 2
+    },
+    {
+      "path": "CONTINUE.md",
+      "sha256": "510bfa973d2f20c919d4315b7f246da9ba6b3270f2d1e7abb7cd7fe24728722f",
+      "lines": 102
+    },
+    {
+      "path": "README.md",
+      "sha256": "116ff6864ce4196c0da537ceca01627161fc8585e9e1e143ef48a09883637b0d",
+      "lines": 184
+    },
+    {
+      "path": "bin/tend",
+      "sha256": "27f8560c753e3526d24941e1a2f6e6b0b1f68b38563f5a4940f97864584ca90b",
+      "lines": 4
+    },
+    {
+      "path": "ledger/receipts.jsonl",
+      "sha256": "014a795bfd3528843ccb3e6d0bcce749bb151d3979a5ef67b6c6d1b660c8db30",
+      "lines": 10
+    },
+    {
+      "path": "tend/__init__.py",
+      "sha256": "cfe7ff8276927161edd53ecc8c47aaaf6cfd3ca15c18291912010afa8c38a72e",
+      "lines": 3
+    },
+    {
+      "path": "tend/__main__.py",
+      "sha256": "13a1a5b340cdcfc1902b62be90e508c7c71886000d5bf087e7854aadf09fb35e",
+      "lines": 5
+    },
+    {
+      "path": "tend/cli.py",
+      "sha256": "b786652b448de322ecec4e6b19bc60e85e32e6ba7dcd54ed243c7613d20a20f7",
+      "lines": 207
+    },
+    {
+      "path": "tend/errors.py",
+      "sha256": "868e3d18edc0e1188fe9b38de2503b4f30c1fff93d7f314f3e19537b7c5bcfc9",
+      "lines": 12
+    },
+    {
+      "path": "tend/explore.py",
+      "sha256": "cd415fc8dd5e90a7c5dba7b1f6cab253daaabbaa7136c1aa8f69e7b045d46f9e",
+      "lines": 166
+    },
+    {
+      "path": "tend/expr.py",
+      "sha256": "22c0ff5bd76afead68c86db5bd4dd913d0d717d7cda55faa6a5be6bc6235f4b4",
+      "lines": 253
+    },
+    {
+      "path": "tend/gestures.py",
+      "sha256": "b6c6d5d26260149cb8ed9879349b917c30ec347ad5d8a0e4ff60815ccb2cb356",
+      "lines": 395
+    },
+    {
+      "path": "tend/receipts.py",
+      "sha256": "f4df65f92be69550dadec6d41d0012221707d520c7d37dab208159aac989b2ab",
+      "lines": 100
+    },
+    {
+      "path": "tend/render.py",
+      "sha256": "f4126cb5502bd8cf1b07627ffc1c85de2dade14169e50199dc158a6cb7297151",
+      "lines": 229
+    },
+    {
+      "path": "tend/values.py",
+      "sha256": "4af7394823d9db3048e3cbb59cc2e8c8464ecb8ef21965ec2f3a5e08f3aa5154",
+      "lines": 37
+    },
+    {
+      "path": "tend/world.py",
+      "sha256": "fb8d481b3fbcf0d71e30e3080afbcb5c823d617bf15171784b83c73d00af6512",
+      "lines": 385
+    },
+    {
+      "path": "tests/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lines": 0
+    },
+    {
+      "path": "tests/test_bench.py",
+      "sha256": "ce9a972f15a03a064d110d8df5049f6c0a08b3302aeffba7a75c986d88298e91",
+      "lines": 260
+    },
+    {
+      "path": "tests/test_language.py",
+      "sha256": "5fb7c95200c794fc40dc74e197bf97dd4820515592d7591c2b1c04db84d1af07",
+      "lines": 126
+    },
+    {
+      "path": "tests/test_trail.py",
+      "sha256": "5a29761b8ff8b55a8e52fc24f7f5f6f81a1005b1c1c5da8dd16f8be1d0542cc4",
+      "lines": 138
+    },
+    {
+      "path": "worlds/broken/check-then-enter.world",
+      "sha256": "31d015ed40f4bdef92b2a82367c60241ba92570c27f3f500f7516aac6010c24f",
+      "lines": 26
+    },
+    {
+      "path": "worlds/broken/flag-then-wait.world",
+      "sha256": "1845b212a823522f2f26c7b7cd965d5ceb2756336045d4d9e015a73b303df58d",
+      "lines": 26
+    },
+    {
+      "path": "worlds/handoff.world",
+      "sha256": "6c61444332244b6f349c0f74aa4a7ff7c76c557a8716e4e1ec485b0ae884f086",
+      "lines": 50
+    },
+    {
+      "path": "worlds/jugs.world",
+      "sha256": "faea0015e795480c96316a920e0d8077c60a40575c9912ce41cefef71fbae32c",
+      "lines": 26
+    },
+    {
+      "path": "worlds/lamp.world",
+      "sha256": "38f8ba988d8f456ad18592ee8e747f28d244986c19d8f30f375cdc66515147b4",
+      "lines": 32
+    },
+    {
+      "path": "worlds/peterson.world",
+      "sha256": "665ea6354cb344ccaeac9c47a0ec1255911dd43d56a90f746a3507ea2d880bdc",
+      "lines": 33
+    }
+  ],
+  "items": [
+    {
+      "id": "workbench-instrument",
+      "kind": "claim",
+      "statement": "A small instrument for finite worlds walks every reachable state and answers in shortest traces so material can surprise and every touch leaves a receipt",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 5,
+          "end": 10
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "gesture-table",
+      "kind": "relationship",
+      "statement": "Story sentences mapped to tend gestures probe chisel check lean rehearse receipt plus survey zoom new with same answer for text and json",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 35,
+          "end": 50
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 34,
+          "end": 39
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "explicit-resistance",
+      "kind": "condition",
+      "statement": "Explicit-state breadth-first walk returns first break witness press as shortest path with complete versus unknown on limit",
+      "citations": [
+        {
+          "source_path": "tend/explore.py",
+          "start": 1,
+          "end": 5
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 47,
+          "end": 50
+        },
+        {
+          "source_path": "README.md",
+          "start": 118,
+          "end": 128
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "receipt-trail",
+      "kind": "continuation",
+      "statement": "Every gesture appends hash-chained receipt with why and world sha verifiable end to end but blind to truncation off the end",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 135,
+          "end": 141
+        },
+        {
+          "source_path": "tend/receipts.py",
+          "start": 75,
+          "end": 86
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 16,
+          "end": 19
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "handoff-formalism",
+      "kind": "condition",
+      "statement": "Handoff world formalizes mind awake ended with made recorded verified notes fresh guarded by beams and refusals on ending and waking",
+      "citations": [
+        {
+          "source_path": "worlds/handoff.world",
+          "start": 20,
+          "end": 35
+        },
+        {
+          "source_path": "worlds/handoff.world",
+          "start": 36,
+          "end": 47
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "successor-invitation",
+      "kind": "continuation",
+      "statement": "CONTINUE addresses whoever picks up world whether person later session or fork with intact checks head hash and file prefixes",
+      "citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 1,
+          "end": 6
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 10,
+          "end": 23
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "operator-monopoly",
+      "kind": "actor",
+      "statement": "All gestures invoked by single operator through tend CLI with why json no-receipt limit ledger options",
+      "citations": [
+        {
+          "source_path": "tend/cli.py",
+          "start": 19,
+          "end": 34
+        },
+        {
+          "source_path": "tend/cli.py",
+          "start": 39,
+          "end": 50
+        },
+        {
+          "source_path": "README.md",
+          "start": 47,
+          "end": 50
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "liveness-gap",
+      "kind": "ambiguity",
+      "statement": "Safety only with no liveness eventually statements biggest gap needing cycle search and fairness",
+      "citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 71,
+          "end": 76
+        },
+        {
+          "source_path": "README.md",
+          "start": 176,
+          "end": 182
+        }
+      ],
+      "ambiguity": "Whether starvation freedom could ever be stated without changing explicit-state design"
+    },
+    {
+      "id": "broken-pedagogy",
+      "kind": "claim",
+      "statement": "Broken worlds let both inside or get stuck to teach resistance and must still resist in their own way",
+      "citations": [
+        {
+          "source_path": "worlds/broken/check-then-enter.world",
+          "start": 1,
+          "end": 6
+        },
+        {
+          "source_path": "worlds/broken/flag-then-wait.world",
+          "start": 1,
+          "end": 6
+        },
+        {
+          "source_path": "README.md",
+          "start": 147,
+          "end": 155
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "empty-handoff-question",
+      "kind": "question",
+      "statement": "Empty handoff reachable boundaries guard against loss not emptiness judgement left to reader",
+      "citations": [
+        {
+          "source_path": "worlds/handoff.world",
+          "start": 9,
+          "end": 14
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 96,
+          "end": 98
+        },
+        {
+          "source_path": "ledger/receipts.jsonl",
+          "start": 10,
+          "end": 10
+        }
+      ],
+      "ambiguity": "Whether reachable emptiness is flaw or freedom is deliberately unresolved"
+    },
+    {
+      "id": "untouched-boundary",
+      "kind": "boundary",
+      "statement": "No blind waking untouched redundant given guarded endings would bear load if another path to ended added",
+      "citations": [
+        {
+          "source_path": "worlds/handoff.world",
+          "start": 46,
+          "end": 47
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 99,
+          "end": 102
+        },
+        {
+          "source_path": "tests/test_bench.py",
+          "start": 74,
+          "end": 84
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "early-resistance",
+      "kind": "boundary",
+      "statement": "World language resists early at load with specific suggestions unknown names domains arithmetic without running code",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 103,
+          "end": 110
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 53,
+          "end": 55
+        }
+      ],
+      "ambiguity": null
+    }
+  ],
+  "unknowns": [
+    "Whether the inherited c986990 supervised apparatus ever existed and what its conventions required",
+    "Whether the ledger head after the evidence still matches the anchored hash or was truncated",
+    "How a future reader will judge empty_handoff and whether no_blind_waking will become load-bearing"
+  ]
+}

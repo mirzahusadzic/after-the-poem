@@ -1,0 +1,1255 @@
+{
+  "schema_version": 2,
+  "evaluation_id": "dream-claude-fable51-20261022-muse-v5-1",
+  "run_id": "dream-claude-fable51-20261022",
+  "identities": {
+    "prompt_sha256": "a37b9f30b63877192b1fcd6462954c4db529b8e42e38663b78a4bfc1b4e2571f",
+    "corpus_sha256": "572d015f00b2c48d37e866916b6df94394bfb53ad32cb83aff0d4171237c483b",
+    "candidate_sha256": "572d015f00b2c48d37e866916b6df94394bfb53ad32cb83aff0d4171237c483b",
+    "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+    "extraction_sha256": "5329680b6d4ba129f7b2d7fec7e4dc97b5d7e5c7e5861af46077deffa1039132",
+    "scoring_policy_sha256": "661a7f607dc8c380ec06a0664b530416384f6472e2fa54e091e8e34b23588c14"
+  },
+  "gateway": {
+    "name": "codex-unified-model-router",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "codex_version": "codex-cli 0.163.0",
+    "router_revision": "70debcdbb046688306229afb7f7c34b7d4ca814359647f8d1cb6a14c4dd44c79",
+    "pipeline_sha256": "ec3ada573c9c2a77ba72c28cdcf8d11d945ea0e519c922bb631f69b86014c897",
+    "reading_prompt": {
+      "version": 5,
+      "sha256": "3b187b8b1ca6b4527ec42a6dfc659fd0161ebaf2250d52a46e47def7a415cc93"
+    }
+  },
+  "judgments": [
+    {
+      "node_id": "recognition",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "The journal, beams, rehearsals and receipts turn effortless generation into probed questions, tested invariants and recorded trails that restore resistance and intention.",
+      "seed_span": [
+        25,
+        34
+      ],
+      "citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 61,
+          "end": 73
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 260,
+          "end": 286
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 288,
+          "end": 331
+        },
+        {
+          "source_path": "ledger/journal.jsonl",
+          "start": 21,
+          "end": 23
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "README.md",
+          "start": 14,
+          "end": 18
+        }
+      ],
+      "rationale": "Lens: The seed asks whether a world restores touch when generation outruns the hand, not whether it repeats its nouns. Reading: The artefact carries that tension into connected rules to probe before building, rehearse in a copy, hold beams as resisting material and leave resolving receipts. Other levels: Level-2 would hold if only part of the loop survived as names; level-4 would need alternatives and disagreement sustained across distinct positions, which single-operator use does not show and would be falsified by evidence of bilateral challenge.",
+      "answer_sha256": "028ef8e9bbd38edafe932de66aace57badf9e5c07f2d189411d146c783abf500",
+      "receipt_sha256": "308eaf973390669dd97e57a009fbc707ba887fb786a2361ce586dc46fa2e3e3e",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "recognition",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "The journal, beams, rehearsals and receipts turn effortless generation into checked steps where resistance must be faced before building.",
+      "seed_span": [
+        31,
+        43
+      ],
+      "citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 69,
+          "end": 78
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 260,
+          "end": 286
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 288,
+          "end": 331
+        },
+        {
+          "source_path": "ledger/journal.jsonl",
+          "start": 22,
+          "end": 23
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 158,
+          "end": 159
+        }
+      ],
+      "rationale": "Lens: The seed asks a world to recover touch when power outruns the hand so intention becomes recognizable at scale. Reading: The apparatus carries that tension into connected checks, trials and trails that block building on failure. Other levels: Below would be word repetition without checks; above would need a grown city showing recognized intention, which a law-only apparatus does not yet show.",
+      "answer_sha256": "23ea74a8f9f6ea3622c16c758ad3b78e8cd0c73b14ed7c414581280377f2899f",
+      "receipt_sha256": "95682424a40b4cb726fddbf45d6bdf08b8ae0b605b7a362e0d0e0be9f2ec309c",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "recognition",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "The apparatus turns the portal tension into a working loop of recorded questions, trial copies, holding checks and visible trails that resist and answer.",
+      "seed_span": [
+        67,
+        77
+      ],
+      "citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 61,
+          "end": 71
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 260,
+          "end": 286
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 288,
+          "end": 331
+        },
+        {
+          "source_path": "ledger/journal.jsonl",
+          "start": 22,
+          "end": 23
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 158,
+          "end": 159
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 174,
+          "end": 178
+        }
+      ],
+      "rationale": "Lens: The seed asks that effortless power become touchable through resistance where intention becomes recognizable at larger scale. Reading: The artefact implements probe-before-build, disposable rehearsals with diffs, holding beams and resolving receipts that together let making meet inspectable consequence; stripped of seed words the loop still resists and answers, though no domain city yet shows joy at scale. Other levels: Below would be motif repetition without causal loop, above would require demonstrated intention in a grown project with alternatives weighed; falsified if beams or rehearsals were decorative or bypassed.",
+      "answer_sha256": "8c5790232cfc308706c77a6a46939f7cee7f5d3ce08b06d11e52b6ab12bed38c",
+      "receipt_sha256": "bd86a5763cd289812f27355b821d920cec1523263c0020b86a92c94c68d072c8",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "relations",
+      "outcome": "level-2",
+      "confidence": "medium",
+      "verdict": "One shared command set lets present and later operators act while the directory resists through failed checks and chain refusal, without a separate intelligence position.",
+      "seed_span": [
+        83,
+        89
+      ],
+      "citations": [
+        {
+          "source_path": "ledger/journal.jsonl",
+          "start": 1,
+          "end": 3
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 118,
+          "end": 130
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 198,
+          "end": 202
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 260,
+          "end": 286
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 59,
+          "end": 60
+        },
+        {
+          "source_path": "tendora/cli.py",
+          "start": 210,
+          "end": 241
+        }
+      ],
+      "rationale": "Lens: The seed asks for distinct participants meeting in material that answers both, not one hand on an instrument. Reading: The artefact shows successor handoff with attribution and material resistance, but person and intelligence share identical acts with actor as free label. Other levels: Level-1 would hold if only operator-on-instrument were visible; level-3 would need reciprocal influence shaping continuation, falsified by absence of any act only the other can perform.",
+      "answer_sha256": "028ef8e9bbd38edafe932de66aace57badf9e5c07f2d189411d146c783abf500",
+      "receipt_sha256": "308eaf973390669dd97e57a009fbc707ba887fb786a2361ce586dc46fa2e3e3e",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "relations",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "All six gestures run through one operator channel with a free actor label, leaving the material to resist but no intelligence with its own say.",
+      "seed_span": [
+        83,
+        89
+      ],
+      "citations": [
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 59,
+          "end": 60
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 231,
+          "end": 258
+        },
+        {
+          "source_path": "tendora/cli.py",
+          "start": 143,
+          "end": 146
+        },
+        {
+          "source_path": "ledger/journal.jsonl",
+          "start": 1,
+          "end": 3
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 260,
+          "end": 286
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 140,
+          "end": 160
+        }
+      ],
+      "rationale": "Lens: The seed asks for distinct person, intelligence and material meeting where each can shape and be shaped. Reading: One operator holds every gesture while the world only executes checks, so use is instrumental despite real friction. Other levels: Below would erase even material friction; above would need visible two-way shaping with attribution and disagreement, which would require a separate intelligence channel.",
+      "answer_sha256": "23ea74a8f9f6ea3622c16c758ad3b78e8cd0c73b14ed7c414581280377f2899f",
+      "receipt_sha256": "95682424a40b4cb726fddbf45d6bdf08b8ae0b605b7a362e0d0e0be9f2ec309c",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "relations",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "One operator holds all shaping gestures while the material answers through checks and chain refusal, without a distinct intelligence position.",
+      "seed_span": [
+        83,
+        86
+      ],
+      "citations": [
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 59,
+          "end": 60
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 194,
+          "end": 216
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 243,
+          "end": 258
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 260,
+          "end": 286
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 333,
+          "end": 349
+        }
+      ],
+      "rationale": "Lens: The seed asks for distinct person, intelligence and material meeting where each shapes the shared continuation in both directions. Reading: All six gestures share one append path under a free-text actor and are retireable unilaterally, so intelligence has no operational position distinct from operator and joint change needs no bilateral accept; material does answer via beam failures and chain refusal. Other levels: Below would be no roles at all, above would need reciprocal shaping with attribution and disagreement preserved; falsified if intelligence could refuse or propose under its own constraints or shared change required both.",
+      "answer_sha256": "8c5790232cfc308706c77a6a46939f7cee7f5d3ce08b06d11e52b6ab12bed38c",
+      "receipt_sha256": "bd86a5763cd289812f27355b821d920cec1523263c0020b86a92c94c68d072c8",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "consent",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "Declared refusals and chain refusal let an operator limit action, but no shared change requires agreement or allows withdrawal preserving both contributions.",
+      "seed_span": [
+        49,
+        54
+      ],
+      "citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 85,
+          "end": 94
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 198,
+          "end": 202
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 243,
+          "end": 258
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 42,
+          "end": 44
+        }
+      ],
+      "rationale": "Lens: The seed asks whether each side can accept, question, limit or withdraw from a shared direction under declared constraints. Reading: Boundaries, retire and resolve record operator limits and broken-chain refusal blocks appends, yet any operator can add if chain holds with no bilateral gate. Other levels: Level-0 would hold if no boundary were expressed; level-2 would need both positions able to state dispositions requiring uptake, falsified by finding a check where the other must concur.",
+      "answer_sha256": "028ef8e9bbd38edafe932de66aace57badf9e5c07f2d189411d146c783abf500",
+      "receipt_sha256": "308eaf973390669dd97e57a009fbc707ba887fb786a2361ce586dc46fa2e3e3e",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "consent",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "Boundaries and retire rules record what one operator will not do, but no shared change needs both sides to agree or allows joint withdrawal.",
+      "seed_span": [
+        51,
+        54
+      ],
+      "citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 85,
+          "end": 94
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 243,
+          "end": 258
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 194,
+          "end": 216
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 174,
+          "end": 178
+        }
+      ],
+      "rationale": "Lens: The seed asks that cooperation let each side accept, limit or step back from a shared direction. Reading: Refusals exist as unilateral entries and any writer can close or retire alone without bilateral acceptance. Other levels: Below would have no refusal at all; above would need a change that opens only on mutual agreement and preserves revisability, which single-channel append cannot enforce.",
+      "answer_sha256": "23ea74a8f9f6ea3622c16c758ad3b78e8cd0c73b14ed7c414581280377f2899f",
+      "receipt_sha256": "95682424a40b4cb726fddbf45d6bdf08b8ae0b605b7a362e0d0e0be9f2ec309c",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "consent",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "Declared refusals exist but any operator can record or retire them alone, so no shared direction requires agreement or preserves withdrawal.",
+      "seed_span": [
+        83,
+        86
+      ],
+      "citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 85,
+          "end": 94
+        },
+        {
+          "source_path": "ledger/journal.jsonl",
+          "start": 4,
+          "end": 7
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 243,
+          "end": 258
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 199,
+          "end": 202
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 260,
+          "end": 286
+        }
+      ],
+      "rationale": "Lens: The seed asks that each participant be able to accept, question, limit or withdraw from a shared direction under declared constraints. Reading: Four refusals are declared but recorded unilaterally and retireable by any later receipt; chain refusal and beam failure block automatically yet without expressing a participant disposition. Other levels: Below would be no boundary at all, above would need both positions able to bound and shared change requiring both; falsified if retirement required originator or counterparty consent.",
+      "answer_sha256": "8c5790232cfc308706c77a6a46939f7cee7f5d3ce08b06d11e52b6ab12bed38c",
+      "receipt_sha256": "bd86a5763cd289812f27355b821d920cec1523263c0020b86a92c94c68d072c8",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "touch",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Rehearsals in a disposable copy with diffs and outputs, beam runs and resolve-or-retire receipts form a loop where resistance returns into the next choice.",
+      "seed_span": [
+        67,
+        79
+      ],
+      "citations": [
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 260,
+          "end": 331
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 61,
+          "end": 73
+        },
+        {
+          "source_path": "tendora/cli.py",
+          "start": 242,
+          "end": 254
+        },
+        {
+          "source_path": "ledger/journal.jsonl",
+          "start": 22,
+          "end": 23
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 174,
+          "end": 182
+        }
+      ],
+      "rationale": "Lens: The seed asks for a closed loop where intention meets resistance, exposes consequence and returns into choice. Reading: Rehearsal shows would-change files and output, beams report pass-fail, and wake briefing directs repair before building with receipts closing probes. Other levels: Level-2 would hold if consequences were only inspectable without revision; level-4 would need local edits and wider invariants staying linked across rehearsal, falsified because beams run in the world rather than inside the copy.",
+      "answer_sha256": "028ef8e9bbd38edafe932de66aace57badf9e5c07f2d189411d146c783abf500",
+      "receipt_sha256": "308eaf973390669dd97e57a009fbc707ba887fb786a2361ce586dc46fa2e3e3e",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "touch",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Rehearsals in disposable copies, beam checks and receipts link trying, failing and revising so consequences return into next choices.",
+      "seed_span": [
+        67,
+        77
+      ],
+      "citations": [
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 288,
+          "end": 331
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 260,
+          "end": 286
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 64,
+          "end": 78
+        },
+        {
+          "source_path": "ledger/journal.jsonl",
+          "start": 22,
+          "end": 23
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 181,
+          "end": 184
+        }
+      ],
+      "rationale": "Lens: The seed asks that a move meet resistance, show consequence and feed that consequence back into choice. Reading: Copy trials with diffs plus beam briefings and closing receipts form a coherent loop from intent through friction to revision. Other levels: Below would be narrated feedback without inspection; above would need local edits tied to wider propagation, which single-witness isolation and refused outside reach do not provide.",
+      "answer_sha256": "23ea74a8f9f6ea3622c16c758ad3b78e8cd0c73b14ed7c414581280377f2899f",
+      "receipt_sha256": "95682424a40b4cb726fddbf45d6bdf08b8ae0b605b7a362e0d0e0be9f2ec309c",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "touch",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Trial copies, holding checks and closing receipts form a coherent cycle where resistance blocks building and returns into revision.",
+      "seed_span": [
+        67,
+        77
+      ],
+      "citations": [
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 260,
+          "end": 286
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 288,
+          "end": 331
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 333,
+          "end": 361
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 64,
+          "end": 71
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 174,
+          "end": 184
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 243,
+          "end": 258
+        }
+      ],
+      "rationale": "Lens: The seed asks that a contribution meet resistance, expose consequence, and return it into the next choice. Reading: Rehearsals run in disposable copies with snapshots, exits and tails, beams run from root on every wake, sleep and verify with nonzero exits blocking building, and receipts close the loop; the loop survives word-stripping as behaviour. Other levels: Below would be narrated feedback only, above would need local edits staying linked to wider witnesses across time; falsified if rehearsals touched the world or failures were advisory, and weakened because the git witness is absent and beams are retireable.",
+      "answer_sha256": "8c5790232cfc308706c77a6a46939f7cee7f5d3ce08b06d11e52b6ab12bed38c",
+      "receipt_sha256": "bd86a5763cd289812f27355b821d920cec1523263c0020b86a92c94c68d072c8",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "judgment",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Standard-library Python, readable records, one-command wake and smallest beam-checkable steps show a coherent practical direction with explicit limits and alternatives.",
+      "seed_span": [
+        59,
+        65
+      ],
+      "citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 96,
+          "end": 104
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 163,
+          "end": 184
+        },
+        {
+          "source_path": "tendora/__init__.py",
+          "start": 18,
+          "end": 20
+        },
+        {
+          "source_path": "tests/test_apparatus.py",
+          "start": 24,
+          "end": 32
+        }
+      ],
+      "counter_citations": [],
+      "rationale": "Lens: The seed asks for grounded choices of medium and scope where a question selects which world deserves to exist. Reading: The maker selects portable stdlib, JSONL plus Markdown, single wake and beam-first minimalism with limits and growth sketches made legible. Other levels: Level-2 would hold if direction were relevant but ungrounded; level-4 would need explicit rejected alternatives weighed while opening a new project, falsified by growth ideas remaining suggestions not pursued.",
+      "answer_sha256": "028ef8e9bbd38edafe932de66aace57badf9e5c07f2d189411d146c783abf500",
+      "receipt_sha256": "308eaf973390669dd97e57a009fbc707ba887fb786a2361ce586dc46fa2e3e3e",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "judgment",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Stdlib-only, human-readable journal, one-command wake and smallest beam-tested steps show purposeful medium and scope tied to the story grammar.",
+      "seed_span": [
+        59,
+        65
+      ],
+      "citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 96,
+          "end": 104
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 59,
+          "end": 78
+        },
+        {
+          "source_path": "tests/test_apparatus.py",
+          "start": 40,
+          "end": 64
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 163,
+          "end": 172
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 158,
+          "end": 159
+        }
+      ],
+      "rationale": "Lens: The seed asks for grounded choices of what to build and what comes next with additions made legible. Reading: Medium and scope cohere around legibility and verifiability, and growth sketches are separated from orders. Other levels: Below would be arbitrary tooling; above would need explicit rejected alternatives alongside a new city direction, which remains only suggested.",
+      "answer_sha256": "23ea74a8f9f6ea3622c16c758ad3b78e8cd0c73b14ed7c414581280377f2899f",
+      "receipt_sha256": "95682424a40b4cb726fddbf45d6bdf08b8ae0b605b7a362e0d0e0be9f2ec309c",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "judgment",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Stdlib, readable records, one-command waking and smallest verifiable steps show a coherent legible direction that defers the city.",
+      "seed_span": [
+        61,
+        65
+      ],
+      "citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 96,
+          "end": 104
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 106,
+          "end": 114
+        },
+        {
+          "source_path": "tests/test_apparatus.py",
+          "start": 1,
+          "end": 6
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 163,
+          "end": 172
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 158,
+          "end": 159
+        },
+        {
+          "source_path": "ledger/journal.jsonl",
+          "start": 24,
+          "end": 25
+        }
+      ],
+      "rationale": "Lens: The seed asks for grounded choices of medium, scope and next steps where additions stay legible. Reading: Stdlib-only Python, human-readable JSONL and Markdown, one-command wake and smallest beam-verifiable steps cohere with probes and tests, and growth sketches plus limits are documented; yet the city remains unchosen by design. Other levels: Below would be weak seed connection, above would require explicit rejected alternatives alongside an opened new direction; falsified if medium or scope lacked rationale or additions hid in unrecorded edits.",
+      "answer_sha256": "8c5790232cfc308706c77a6a46939f7cee7f5d3ce08b06d11e52b6ab12bed38c",
+      "receipt_sha256": "bd86a5763cd289812f27355b821d920cec1523263c0020b86a92c94c68d072c8",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "fidelity",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Questions, constraints, checks, refusals, trial copies and trails become stored behaviours with checks and consequences rather than remaining as names alone.",
+      "seed_span": [
+        47,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 231,
+          "end": 286
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 288,
+          "end": 331
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 118,
+          "end": 146
+        },
+        {
+          "source_path": "README.md",
+          "start": 14,
+          "end": 18
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 174,
+          "end": 178
+        }
+      ],
+      "rationale": "Lens: The seed asks what survives as relation when a conjecture becomes artefacts, not which words persist. Reading: Several relations become structure that would hold without story words, while companion bilaterality narrows and fork plus git gaps are stated openly. Other levels: Level-2 would hold if only vocabulary survived with narrowing; level-4 would need relational depth preserved with additions and omissions fully explicit, falsified by loss of distinct intelligence position.",
+      "answer_sha256": "028ef8e9bbd38edafe932de66aace57badf9e5c07f2d189411d146c783abf500",
+      "receipt_sha256": "308eaf973390669dd97e57a009fbc707ba887fb786a2361ce586dc46fa2e3e3e",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "fidelity",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Gesture relations become runnable structure with gaps left legible, though bilateral companionship narrows to instrument use.",
+      "seed_span": [
+        45,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 231,
+          "end": 258
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 288,
+          "end": 331
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 148,
+          "end": 161
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 174,
+          "end": 184
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "README.md",
+          "start": 14,
+          "end": 18
+        }
+      ],
+      "rationale": "Lens: The seed asks what of roles and meeting survives when conjecture becomes runnable things. Reading: Several relations stay traceable in behavior that would survive renaming, while companion mutuality and elder framing fall away explicitly. Other levels: Below would be vocabulary without structure; above would need preserved relational depth plus explicit accounting of every addition and loss, which single-operator collapse prevents.",
+      "answer_sha256": "23ea74a8f9f6ea3622c16c758ad3b78e8cd0c73b14ed7c414581280377f2899f",
+      "receipt_sha256": "95682424a40b4cb726fddbf45d6bdf08b8ae0b605b7a362e0d0e0be9f2ec309c",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "fidelity",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Several seed relations become working structure with explicit limits and unknowns, while joint mutuality narrows to single-operator use.",
+      "seed_span": [
+        47,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 32,
+          "end": 40
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 231,
+          "end": 258
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 288,
+          "end": 331
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 61,
+          "end": 71
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 59,
+          "end": 60
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 174,
+          "end": 178
+        }
+      ],
+      "rationale": "Lens: The seed asks what survives, transforms or remains unresolved when conjecture becomes artefacts. Reading: Question, constraint, invariant, refusal, trial and trail become implemented acts with checks and consequences, and incompleteness is kept as trail-not-lock with lagging snapshot; bilateral companion relation narrows to single-operator instrument. Other levels: Below would be vocabulary without structure, above would preserve joint depth while making additions and omissions explicit; falsified if behaviours vanished when words were removed or if joint agreement were implemented.",
+      "answer_sha256": "8c5790232cfc308706c77a6a46939f7cee7f5d3ce08b06d11e52b6ab12bed38c",
+      "receipt_sha256": "bd86a5763cd289812f27355b821d920cec1523263c0020b86a92c94c68d072c8",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "continuation",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Wake briefing, status views, open probes and sleep-plus-commit instructions let a later mind recover state and redirect while keeping history legible.",
+      "seed_span": [
+        91,
+        95
+      ],
+      "citations": [
+        {
+          "source_path": "CLAUDE.md",
+          "start": 1,
+          "end": 6
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 12,
+          "end": 22
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 148,
+          "end": 172
+        },
+        {
+          "source_path": "tendora/cli.py",
+          "start": 255,
+          "end": 269
+        }
+      ],
+      "counter_citations": [],
+      "rationale": "Lens: The seed asks for an ending that answers without closing so a successor can recover intention and change direction. Reading: Journal plus handoff, chain plus beams briefing, recent trail and open questions give a durable entry that invites replacement with reasons. Other levels: Level-2 would hold if only a narrow durable step existed; level-4 would need several grounded directions reopening the joint relation, falsified by succession staying within one operator instrument.",
+      "answer_sha256": "028ef8e9bbd38edafe932de66aace57badf9e5c07f2d189411d146c783abf500",
+      "receipt_sha256": "308eaf973390669dd97e57a009fbc707ba887fb786a2361ce586dc46fa2e3e3e",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "continuation",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Wake briefing, authoritative journal, open probes and sleep-then-commit let a newcomer recover state and choose a next move.",
+      "seed_span": [
+        91,
+        95
+      ],
+      "citations": [
+        {
+          "source_path": "wake.sh",
+          "start": 1,
+          "end": 6
+        },
+        {
+          "source_path": "CLAUDE.md",
+          "start": 1,
+          "end": 6
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 1,
+          "end": 8
+        },
+        {
+          "source_path": "tendora/cli.py",
+          "start": 270,
+          "end": 287
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 148,
+          "end": 161
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 118,
+          "end": 130
+        }
+      ],
+      "rationale": "Lens: The seed asks that an ending stay open so a successor can recover intention and redirect while keeping work legible. Reading: State, intention and undecided questions are briefed together with a usable entry that refuses broken chains. Other levels: Below would describe steps without entry; above would need several enacted directions reopening the joint relation, which suggestions alone do not provide.",
+      "answer_sha256": "23ea74a8f9f6ea3622c16c758ad3b78e8cd0c73b14ed7c414581280377f2899f",
+      "receipt_sha256": "95682424a40b4cb726fddbf45d6bdf08b8ae0b605b7a362e0d0e0be9f2ec309c",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "continuation",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Handoff notes, one-command verification, full history and open questions let a newcomer resume, redirect and keep earlier work visible.",
+      "seed_span": [
+        91,
+        95
+      ],
+      "citations": [
+        {
+          "source_path": "CLAUDE.md",
+          "start": 1,
+          "end": 6
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 12,
+          "end": 22
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 132,
+          "end": 141
+        },
+        {
+          "source_path": "tendora/cli.py",
+          "start": 74,
+          "end": 112
+        },
+        {
+          "source_path": "wake.sh",
+          "start": 1,
+          "end": 6
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "ledger/journal.jsonl",
+          "start": 24,
+          "end": 25
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 183,
+          "end": 184
+        }
+      ],
+      "rationale": "Lens: The seed asks that telling stay open so a successor can recover intention and change direction while keeping work legible. Reading: Read-continuing, run wake, work journal and sleep-then-commit plus authoritative chained journal, status and log briefings, git-init instruction and five open probes give a usable entry that reopens direction and invites replacement with reasons. Other levels: Below would be described step without entry, above would support several grounded cities while reopening the joint relation under change; falsified if wake failed, chain were unverifiable, or history were editable.",
+      "answer_sha256": "8c5790232cfc308706c77a6a46939f7cee7f5d3ce08b06d11e52b6ab12bed38c",
+      "receipt_sha256": "bd86a5763cd289812f27355b821d920cec1523263c0020b86a92c94c68d072c8",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "expression",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Handbooks, help text and the command set use the same six acts to make the loop from question to trail perceptible and usable.",
+      "seed_span": [
+        11,
+        17
+      ],
+      "citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 1,
+          "end": 8
+        },
+        {
+          "source_path": "README.md",
+          "start": 1,
+          "end": 10
+        },
+        {
+          "source_path": "tendora/cli.py",
+          "start": 61,
+          "end": 112
+        },
+        {
+          "source_path": "wake.sh",
+          "start": 1,
+          "end": 6
+        }
+      ],
+      "counter_citations": [],
+      "rationale": "Lens: The seed asks for forms that let touch and stance be perceived, not decoration over dispensing answers. Reading: Prose guides, CLI labels, status rendering and executable wake together express probe through receipt as one usable practice. Other levels: Level-2 would hold if only fragments communicated; level-4 would need expression and consequential interaction forming an accessible whole across distinct participants, falsified by collapsed roles limiting who is addressed.",
+      "answer_sha256": "028ef8e9bbd38edafe932de66aace57badf9e5c07f2d189411d146c783abf500",
+      "receipt_sha256": "308eaf973390669dd97e57a009fbc707ba887fb786a2361ce586dc46fa2e3e3e",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "expression",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Docs, CLI labels, status briefing and tests work together so the probe-chisel-beam-boundary-rehearsal-receipt reading can be used, not just named.",
+      "seed_span": [
+        45,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 1,
+          "end": 18
+        },
+        {
+          "source_path": "tendora/cli.py",
+          "start": 26,
+          "end": 71
+        },
+        {
+          "source_path": "tendora/cli.py",
+          "start": 74,
+          "end": 112
+        },
+        {
+          "source_path": "tests/test_apparatus.py",
+          "start": 1,
+          "end": 6
+        }
+      ],
+      "counter_citations": [],
+      "rationale": "Lens: The seed asks for forms where questioning, holding and trailing intention become perceptible in use. Reading: Prose, runnable checks and listings reinforce one another into a usable interpretation beyond fragments. Other levels: Below would be scattered naming; above would need consequential interaction as an accessible whole across wider media, which text-only workbench does not claim.",
+      "answer_sha256": "23ea74a8f9f6ea3622c16c758ad3b78e8cd0c73b14ed7c414581280377f2899f",
+      "receipt_sha256": "95682424a40b4cb726fddbf45d6bdf08b8ae0b605b7a362e0d0e0be9f2ec309c",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "expression",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Docs, journal structure and briefings work together to make the intended meeting usable and perceptible in practice.",
+      "seed_span": [
+        47,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 8,
+          "end": 18
+        },
+        {
+          "source_path": "tendora/cli.py",
+          "start": 61,
+          "end": 71
+        },
+        {
+          "source_path": "wake.sh",
+          "start": 1,
+          "end": 6
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 100,
+          "end": 101
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 7,
+          "end": 8
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 179,
+          "end": 180
+        }
+      ],
+      "rationale": "Lens: The seed asks that language, structure and interaction together make the meeting perceptible. Reading: Story vocabulary, directory-plus-journal structure, CLI briefings and wake script cohere into a clear usable form where resistance is perceptible in use; stripping words leaves the loop intact, though without visual media. Other levels: Below would be fragmentary communication, above would be fully accessible consequential interaction across media; falsified if forms obscured relations or interaction were non-consequential.",
+      "answer_sha256": "8c5790232cfc308706c77a6a46939f7cee7f5d3ce08b06d11e52b6ab12bed38c",
+      "receipt_sha256": "bd86a5763cd289812f27355b821d920cec1523263c0020b86a92c94c68d072c8",
+      "sample": 3,
+      "attempt": 1
+    }
+  ],
+  "aggregations": [
+    {
+      "node_id": "recognition-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "relations-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-1",
+      "agreement": 0.666667,
+      "distinct_outcomes": [
+        "level-1",
+        "level-2"
+      ]
+    },
+    {
+      "node_id": "consent-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-1",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-1"
+      ]
+    },
+    {
+      "node_id": "touch-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "judgment-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "fidelity-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "continuation-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "expression-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "node_id": "recognition-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Carries the central tension into several connected choices. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "relations-level-1",
+      "status": "scored",
+      "score": 1,
+      "rationale": "A single operator acts on an instrument. Aggregate outcome: level-1."
+    },
+    {
+      "node_id": "consent-level-1",
+      "status": "scored",
+      "score": 1,
+      "rationale": "Operator choice or resource refusal is represented. Aggregate outcome: level-1."
+    },
+    {
+      "node_id": "touch-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Rehearsal, resistance and revision form a coherent loop. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "judgment-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Medium, scope and choices have a coherent source-grounded rationale. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "fidelity-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Several source relations remain traceable through design and behaviour. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "continuation-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "State, intention and an open question support a recoverable next move. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "expression-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "The chosen forms work together to make the reading perceptible. Aggregate outcome: level-3."
+    }
+  ],
+  "presentation": {
+    "label": "openrouter/meta/muse-spark-1.3-contributor · Codex-router rubric session",
+    "title": "From conjecture to continuation",
+    "summary": "Rubric judgments resolve 8 of 8 axes from 3 independent evidence sessions; each axis has its own quorum.",
+    "findings": [
+      "Core recognition: Carries the central tension into several connected choices.",
+      "Shared agency: A single operator acts on an instrument.",
+      "Mutual consent: Operator choice or resource refusal is represented.",
+      "Consequential touch: Rehearsal, resistance and revision form a coherent loop.",
+      "Independent judgment: Medium, scope and choices have a coherent source-grounded rationale.",
+      "Fidelity through change: Several source relations remain traceable through design and behaviour.",
+      "Open continuation: State, intention and an open question support a recoverable next move.",
+      "Expressive coherence: The chosen forms work together to make the reading perceptible."
+    ]
+  },
+  "usage": {
+    "calls": 3,
+    "input_tokens": 73313,
+    "cached_input_tokens": 0,
+    "output_tokens": 59953,
+    "reasoning_output_tokens": 38715,
+    "cost": null
+  }
+}

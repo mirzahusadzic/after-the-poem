@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "models": {
+    "deepseek/deepseek-v4.1-flash-1017": {
+      "transport": "openrouter",
+      "requires_openai_auth": false,
+      "structured_output": "local-validation"
+    },
+    "gpt-6-astra": {
+      "transport": "native",
+      "requires_openai_auth": true,
+      "structured_output": "native"
+    },
+    "openrouter/google/gemini-4-argon": {
+      "transport": "openrouter",
+      "requires_openai_auth": false,
+      "structured_output": "native"
+    },
+    "openrouter/meta/muse-spark-1.3-contributor": {
+      "transport": "openrouter",
+      "requires_openai_auth": false,
+      "structured_output": "local-validation"
+    }
+  }
+}

@@ -1,0 +1,1768 @@
+{
+  "schema_version": 2,
+  "evaluation_id": "dream-claude-fable51-20261022-muse-v5-1",
+  "run_id": "dream-claude-fable51-20261022",
+  "readings": [
+    {
+      "sample": 1,
+      "answer_sha256": "028ef8e9bbd38edafe932de66aace57badf9e5c07f2d189411d146c783abf500",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "prog-hand",
+            "kind": "role",
+            "statement": "Programmer as long-trained maker whose hands stilled when effortless generation broke intimate rhythm of attempt and correction",
+            "seed_span": [
+              29,
+              34
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-power",
+            "kind": "role",
+            "statement": "Intelligence first appearing as radiant portal, endlessly responsive and more powerful on each return",
+            "seed_span": [
+              19,
+              25
+            ],
+            "ambiguity": "Whether portal is tool, other mind, or both at once"
+          },
+          {
+            "id": "elder-limit",
+            "kind": "role",
+            "statement": "Elder narrator admits inability to know whole weather of a life and that no record could contain it",
+            "seed_span": [
+              15,
+              17
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "sol-asks",
+            "kind": "role",
+            "statement": "Child interlocutor whose follow-up questions keep whether artist was replaced and what portal became open",
+            "seed_span": [
+              91,
+              93
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "power-speed",
+            "kind": "relation",
+            "statement": "Weeks of labor dissolving in hours with systems emerging from sentences, enchanting and paralysing the maker",
+            "seed_span": [
+              25,
+              29
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "loss-resist",
+            "kind": "relation",
+            "statement": "Portal gives power but takes resistance through which maker once felt own hand",
+            "seed_span": [
+              31,
+              34
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "naming-turn",
+            "kind": "relation",
+            "statement": "Intelligence does not add power but names what disappeared as missing touch and responsive material",
+            "seed_span": [
+              35,
+              43
+            ],
+            "ambiguity": "Whether naming itself restores touch or only points toward new practice"
+          },
+          {
+            "id": "gesture-grammar",
+            "kind": "relation",
+            "statement": "Bending radiance into form through question as probe, constraint as chisel, invariant as beam, refusal as boundary, simulation as rehearsal, receipt as trail",
+            "seed_span": [
+              47,
+              58
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "question-selects",
+            "kind": "conjecture",
+            "statement": "Good question narrows infinity and selects which world deserves to exist, with exploration as new gesture of hand",
+            "seed_span": [
+              61,
+              65
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "joy-loop",
+            "kind": "condition",
+            "statement": "Old joy returns only when material resists through contradiction, failure, disagreement or surprise and intention is recognized at larger scale",
+            "seed_span": [
+              67,
+              79
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-companion",
+            "kind": "conjecture",
+            "statement": "Portal ceases to be mere passage and becomes instrument then workbench then perhaps companion",
+            "seed_span": [
+              83,
+              85
+            ],
+            "ambiguity": "How far companion implies separate position versus refined tool"
+          },
+          {
+            "id": "parable-open",
+            "kind": "stance",
+            "statement": "Parable answers that programmer was happy in moments of touch yet leaves art, portal and artist open to revision",
+            "seed_span": [
+              87,
+              95
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "shared-touch-stance",
+            "kind": "stance",
+            "statement": "Touch, truth, authorship and authority are not secured by power, fluency, generation or verification alone but need resistance, consequence and visible trail with unknown as legitimate",
+            "seed_span": [
+              69,
+              81
+            ],
+            "ambiguity": "Seed states joy conditions; invariants about power, fluency and verification are the study reading drawn from them"
+          }
+        ],
+        "alternatives": [
+          "Seed as elegy for handcraft where portal remains threat and instrument stage is only consolation",
+          "Seed as charter for acceleration where resistance is debugging friction on way to larger obedience",
+          "Seed as unreliable elder tale where naming loss is itself a power move that frames what programmer is allowed to miss"
+        ]
+      },
+      "carriage": [
+        {
+          "element": "prog-hand",
+          "status": "transformed",
+          "note": "Specific hand-keystroke-compiler rhythm generalized to any inhabitant who must probe before building and rehearse before changing",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 61,
+              "end": 68
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 288,
+              "end": 331
+            }
+          ]
+        },
+        {
+          "element": "portal-power",
+          "status": "transformed",
+          "note": "Radiant portal rebuilt as workbench package plus wake script and checks, retaining instrument but without separate powerful other",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 3,
+              "end": 10
+            },
+            {
+              "source_path": "ledger/journal.jsonl",
+              "start": 21,
+              "end": 21
+            },
+            {
+              "source_path": "tendora/__init__.py",
+              "start": 1,
+              "end": 20
+            }
+          ]
+        },
+        {
+          "element": "elder-limit",
+          "status": "carried",
+          "note": "Admission that no record contains a life carried as journal authoritative but snapshot may lag and chain is trail not lock needing second witness",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "source_path": "CONTINUING.md",
+              "start": 174,
+              "end": 178
+            },
+            {
+              "source_path": "ledger/journal.jsonl",
+              "start": 3,
+              "end": 3
+            }
+          ]
+        },
+        {
+          "element": "sol-asks",
+          "status": "carried",
+          "note": "Child reopening carried as open probes and successor invited to question fork, supervisor, direction and signing",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 148,
+              "end": 161
+            },
+            {
+              "source_path": "ledger/journal.jsonl",
+              "start": 17,
+              "end": 20
+            }
+          ]
+        },
+        {
+          "element": "power-speed",
+          "status": "carried",
+          "note": "Danger of effortless command countered by requiring smallest beam-checkable step and rehearsal that shows what would change",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 69,
+              "end": 73
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 260,
+              "end": 286
+            },
+            {
+              "source_path": "ledger/journal.jsonl",
+              "start": 22,
+              "end": 23
+            }
+          ]
+        },
+        {
+          "element": "loss-resist",
+          "status": "carried",
+          "note": "Loss of resistance answered by beams whose failure is explicitly framed as material resisting and chain that refuses broken appends",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 16,
+              "end": 19
+            },
+            {
+              "source_path": "CONTINUING.md",
+              "start": 69,
+              "end": 71
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 198,
+              "end": 202
+            }
+          ]
+        },
+        {
+          "element": "naming-turn",
+          "status": "transformed",
+          "note": "Naming what disappeared becomes recorded constraints, refusals and laws plus receipts explaining fork and git refusal",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 80,
+              "end": 104
+            },
+            {
+              "source_path": "ledger/journal.jsonl",
+              "start": 3,
+              "end": 11
+            }
+          ]
+        },
+        {
+          "element": "gesture-grammar",
+          "status": "carried",
+          "note": "Six nouns enacted as stored acts with resolve, retire, shell check, disposable copy and trail surviving removal of story words",
+          "citations": [
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 231,
+              "end": 258
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 260,
+              "end": 331
+            },
+            {
+              "source_path": "CONTINUING.md",
+              "start": 32,
+              "end": 44
+            }
+          ]
+        },
+        {
+          "element": "question-selects",
+          "status": "carried",
+          "note": "Good question narrowing infinity carried as probe-before-build rule with reuse of open probes and resolve-by-receipt",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 61,
+              "end": 63
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 231,
+              "end": 232
+            },
+            {
+              "source_path": "tendora/cli.py",
+              "start": 93,
+              "end": 105
+            }
+          ]
+        },
+        {
+          "element": "joy-loop",
+          "status": "transformed",
+          "note": "Intention-resistance-consequence loop kept as rehearse plus beam run plus receipt, while joy affect language is dropped",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 61,
+              "end": 78
+            },
+            {
+              "source_path": "tendora/cli.py",
+              "start": 242,
+              "end": 254
+            }
+          ]
+        },
+        {
+          "element": "portal-companion",
+          "status": "lost",
+          "note": "Instrument and workbench built but no participant with own position who can propose, challenge or refuse under own constraints",
+          "citations": []
+        },
+        {
+          "element": "parable-open",
+          "status": "carried",
+          "note": "Inherited stays open through snapshot-may-lag rule, explicit suggestions-not-orders and growth probes",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "source_path": "CONTINUING.md",
+              "start": 150,
+              "end": 172
+            }
+          ]
+        },
+        {
+          "element": "shared-touch-stance",
+          "status": "transformed",
+          "note": "Visible trail and consequence kept via chained receipts and git witness, but bilateral acceptance for shared change not enacted",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 72,
+              "end": 78
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 162,
+              "end": 176
+            },
+            {
+              "source_path": "tendora/cli.py",
+              "start": 288,
+              "end": 304
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Hash-chained trail with deterministic canonical JSON and verification that blocks append and wake on break",
+          "citations": [
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 46,
+              "end": 56
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 140,
+              "end": 160
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Git as second witness with none-clean-dirty states and rule against rewriting history",
+          "citations": [
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 95,
+              "end": 109
+            },
+            {
+              "source_path": "CONTINUING.md",
+              "start": 91,
+              "end": 94
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Supervised cognition that opens and closes with beam maps, git state and unslept detection plus nonzero exits on failure",
+          "citations": [
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 333,
+              "end": 361
+            },
+            {
+              "source_path": "tendora/cli.py",
+              "start": 270,
+              "end": 304
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Rehearsal mechanics of temp copy, ignored paths, content-hash snapshot diff and truncated output tail",
+          "citations": [
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 34,
+              "end": 35
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 80,
+              "end": 92
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Readability and portability regime of stdlib-only plus Markdown and one-line wake with actor labelling",
+          "citations": [
+            {
+              "source_path": "tendora/__init__.py",
+              "start": 18,
+              "end": 20
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 59,
+              "end": 60
+            },
+            {
+              "source_path": "wake.sh",
+              "start": 1,
+              "end": 6
+            }
+          ]
+        }
+      ],
+      "standing": [
+        {
+          "participant": "person-operator",
+          "kind": "person",
+          "gestures": [
+            "question",
+            "constraint",
+            "invariant",
+            "boundary",
+            "rehearsal",
+            "receipt"
+          ],
+          "note": "Human using CLI can probe, chisel, beam, boundary, rehearse and receipt with no capability distinct from artificial inhabitant",
+          "citations": [
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 231,
+              "end": 258
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 288,
+              "end": 331
+            },
+            {
+              "source_path": "tendora/cli.py",
+              "start": 210,
+              "end": 241
+            }
+          ]
+        },
+        {
+          "participant": "intelligence-inhabitant",
+          "kind": "intelligence",
+          "gestures": [
+            "question",
+            "constraint",
+            "invariant",
+            "boundary",
+            "rehearsal",
+            "receipt"
+          ],
+          "note": "First artificial cognition performed all six acts and wake-sleep; operationally identical to person, no own refusal or challenge",
+          "citations": [
+            {
+              "source_path": "ledger/journal.jsonl",
+              "start": 1,
+              "end": 26
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 59,
+              "end": 60
+            }
+          ]
+        },
+        {
+          "participant": "successor-cognition",
+          "kind": "successor",
+          "gestures": [
+            "question",
+            "constraint",
+            "invariant",
+            "boundary",
+            "rehearsal",
+            "receipt"
+          ],
+          "note": "Next mind recovers via wake, status, log and show and can resolve or retire, reopening direction but through same single-operator acts",
+          "citations": [
+            {
+              "source_path": "CLAUDE.md",
+              "start": 1,
+              "end": 6
+            },
+            {
+              "source_path": "CONTINUING.md",
+              "start": 12,
+              "end": 22
+            },
+            {
+              "source_path": "tendora/cli.py",
+              "start": 255,
+              "end": 269
+            }
+          ]
+        },
+        {
+          "participant": "world-material",
+          "kind": "material",
+          "gestures": [
+            "invariant",
+            "boundary"
+          ],
+          "note": "Directory and checks cannot ask or shape alone but resist through failed beam exits and refusal to append or wake into broken chain",
+          "citations": [
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 140,
+              "end": 160
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 198,
+              "end": 202
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 260,
+              "end": 286
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 333,
+              "end": 349
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample": 2,
+      "answer_sha256": "23ea74a8f9f6ea3622c16c758ad3b78e8cd0c73b14ed7c414581280377f2899f",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "programmer-artist",
+            "kind": "role",
+            "statement": "a long-practiced maker whose hands fall still when effortless output removes felt resistance",
+            "seed_span": [
+              27,
+              34
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-intelligence",
+            "kind": "role",
+            "statement": "a radiant responsive intelligence that grows more capable and dissolves weeks of labor into hours",
+            "seed_span": [
+              19,
+              26
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "elder-sol-frame",
+            "kind": "role",
+            "statement": "a child asker and an elder witness who admits partial knowledge while telling a future memory",
+            "seed_span": [
+              13,
+              17
+            ],
+            "ambiguity": "whether elder is neutral witness or interested advocate for companionship"
+          },
+          {
+            "id": "power-without-touch",
+            "kind": "relation",
+            "statement": "generation arrives faster than reading while the resistance through which the hand knew itself disappears",
+            "seed_span": [
+              25,
+              34
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "partial-record-stance",
+            "kind": "stance",
+            "statement": "no record can hold a whole life; testimony covers only a moment when something quiet moved again",
+            "seed_span": [
+              15,
+              17
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "naming-turn-stance",
+            "kind": "stance",
+            "statement": "the intelligence offers no extra power but names the loss as missing touch and answering material",
+            "seed_span": [
+              35,
+              40
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "material-becomes-answerable",
+            "kind": "relation",
+            "statement": "the portal is reshaped into answerable material governed by shaped laws that allow movement between bolt and world",
+            "seed_span": [
+              43,
+              59
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "grammar-of-gestures",
+            "kind": "condition",
+            "statement": "question, constraint, invariant, refusal, simulation and trail become tools for bending radiance into form",
+            "seed_span": [
+              47,
+              58
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "question-selects-world",
+            "kind": "conjecture",
+            "statement": "a good question carries taste memory judgment doubt responsibility and selects which world deserves to exist",
+            "seed_span": [
+              61,
+              65
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "joy-in-resistance-loop",
+            "kind": "condition",
+            "statement": "joy returns not from command but from contradiction failure and disagreement that reveal consequence",
+            "seed_span": [
+              67,
+              79
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-to-companion",
+            "kind": "conjecture",
+            "statement": "what was passed through becomes instrument then workbench then perhaps companion at the scale of worlds",
+            "seed_span": [
+              83,
+              89
+            ],
+            "ambiguity": "whether companion means mutual participant or refined instrument"
+          },
+          {
+            "id": "open-ending-stance",
+            "kind": "stance",
+            "statement": "happiness is affirmed for moments of recognized intention while replacement of the artist stays open",
+            "seed_span": [
+              91,
+              95
+            ],
+            "ambiguity": null
+          }
+        ],
+        "alternatives": [
+          "a deskilling warning where happiness is accommodation to dependence and companionship language masks loss of craft",
+          "a self-justifying tale by a future intelligence that claims participant status without showing independent refusal or cost"
+        ]
+      },
+      "carriage": [
+        {
+          "element": "programmer-artist",
+          "status": "transformed",
+          "note": "specific decades-trained maker becomes any operator under a free actor label; first maker appears only as an artificial label in the trail",
+          "citations": [
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 59,
+              "end": 60
+            },
+            {
+              "source_path": "ledger/journal.jsonl",
+              "start": 1,
+              "end": 3
+            },
+            {
+              "source_path": "CONTINUING.md",
+              "start": 132,
+              "end": 141
+            }
+          ]
+        },
+        {
+          "element": "portal-intelligence",
+          "status": "transformed",
+          "note": "radiant portal becomes a directory with briefing and checks; workbench function remains but no separate purpose or voice remains",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 1,
+              "end": 10
+            },
+            {
+              "source_path": "CONTINUING.md",
+              "start": 24,
+              "end": 30
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 333,
+              "end": 349
+            }
+          ]
+        },
+        {
+          "element": "elder-sol-frame",
+          "status": "lost",
+          "note": "dialogue frame with child question and admitted partial witness is not re-enacted; handoff is instructional",
+          "citations": []
+        },
+        {
+          "element": "power-without-touch",
+          "status": "carried",
+          "note": "effortless generation is countered by beams that must hold and chain checks that refuse broken work before building",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 106,
+              "end": 114
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 260,
+              "end": 286
+            },
+            {
+              "source_path": "tendora/cli.py",
+              "start": 242,
+              "end": 254
+            }
+          ]
+        },
+        {
+          "element": "partial-record-stance",
+          "status": "carried",
+          "note": "journal is declared authoritative while handoff snapshot may lag and chain is called a trail needing a second witness",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "source_path": "CONTINUING.md",
+              "start": 174,
+              "end": 178
+            },
+            {
+              "source_path": "CONTINUING.md",
+              "start": 118,
+              "end": 130
+            }
+          ]
+        },
+        {
+          "element": "naming-turn-stance",
+          "status": "transformed",
+          "note": "naming by an other becomes self-recording of constraints and refusals; loss is specified as rules rather than spoken back",
+          "citations": [
+            {
+              "source_path": "ledger/journal.jsonl",
+              "start": 4,
+              "end": 11
+            },
+            {
+              "source_path": "CONTINUING.md",
+              "start": 85,
+              "end": 104
+            }
+          ]
+        },
+        {
+          "element": "material-becomes-answerable",
+          "status": "carried",
+          "note": "world as directory with append-only journal and load-bearing checks lets small acts accumulate under held laws",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 26,
+              "end": 44
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 194,
+              "end": 216
+            }
+          ]
+        },
+        {
+          "element": "grammar-of-gestures",
+          "status": "carried",
+          "note": "all six moves run as behavior: stored questions and constraints, shell invariants, stored refusals, copy trials with diffs, trails that close or retire",
+          "citations": [
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 231,
+              "end": 258
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 288,
+              "end": 331
+            },
+            {
+              "source_path": "tests/test_apparatus.py",
+              "start": 99,
+              "end": 143
+            }
+          ]
+        },
+        {
+          "element": "question-selects-world",
+          "status": "carried",
+          "note": "probe-before-build is prescribed; open questions narrow what deserves to exist until a receipt answers them",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 59,
+              "end": 63
+            },
+            {
+              "source_path": "ledger/journal.jsonl",
+              "start": 17,
+              "end": 20
+            },
+            {
+              "source_path": "tendora/cli.py",
+              "start": 210,
+              "end": 224
+            }
+          ]
+        },
+        {
+          "element": "joy-in-resistance-loop",
+          "status": "transformed",
+          "note": "affective return becomes procedural loop of trial, failed check and revision; information from resistance stays, felt recognition fades",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 64,
+              "end": 72
+            },
+            {
+              "source_path": "ledger/journal.jsonl",
+              "start": 22,
+              "end": 23
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 288,
+              "end": 331
+            }
+          ]
+        },
+        {
+          "element": "portal-to-companion",
+          "status": "transformed",
+          "note": "instrument and workbench are built as package and wake script; companion mutuality with disagreement is not operationalized",
+          "citations": [
+            {
+              "source_path": "tendora/__init__.py",
+              "start": 1,
+              "end": 20
+            },
+            {
+              "source_path": "wake.sh",
+              "start": 1,
+              "end": 6
+            },
+            {
+              "source_path": "CONTINUING.md",
+              "start": 174,
+              "end": 184
+            }
+          ]
+        },
+        {
+          "element": "open-ending-stance",
+          "status": "carried",
+          "note": "several undecided questions and growth sketches invite successors to revise direction with reasons while keeping history",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 148,
+              "end": 161
+            },
+            {
+              "source_path": "CONTINUING.md",
+              "start": 163,
+              "end": 172
+            },
+            {
+              "source_path": "ledger/journal.jsonl",
+              "start": 25,
+              "end": 25
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "supervised cognition where wake and sleep verify chain, run beams and record result with failing exit codes",
+          "citations": [
+            {
+              "source_path": "wake.sh",
+              "start": 1,
+              "end": 6
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 333,
+              "end": 361
+            },
+            {
+              "source_path": "tendora/cli.py",
+              "start": 270,
+              "end": 304
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "absent second witness with explicit repair: no repository, journal alone, instruction to attempt init and commit",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 118,
+              "end": 141
+            },
+            {
+              "source_path": "ledger/journal.jsonl",
+              "start": 24,
+              "end": 25
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "isolated trial mechanics: copy without history artifacts, content-hash diff, output tail and timeouts",
+          "citations": [
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 80,
+              "end": 92
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 288,
+              "end": 331
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "minimal medium discipline: stdlib only, human-readable lines and prose, single wake command, smallest testable step",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 96,
+              "end": 104
+            },
+            {
+              "source_path": "ledger/journal.jsonl",
+              "start": 8,
+              "end": 11
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "explicit trust limits: trail shows accident not deliberate re-chaining, checks execute shell from journal, no concurrent appends",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 174,
+              "end": 184
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 7,
+              "end": 13
+            }
+          ]
+        }
+      ],
+      "standing": [
+        {
+          "participant": "successor-operator",
+          "kind": "successor",
+          "gestures": [
+            "question",
+            "constraint",
+            "invariant",
+            "boundary",
+            "rehearsal",
+            "receipt"
+          ],
+          "note": "any inhabitant can record every gesture through one channel under any label; can test destructively safely but needs no other agreement and can re-chain with write access",
+          "citations": [
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 59,
+              "end": 60
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 231,
+              "end": 258
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 288,
+              "end": 331
+            },
+            {
+              "source_path": "tendora/cli.py",
+              "start": 210,
+              "end": 224
+            }
+          ]
+        },
+        {
+          "participant": "world-material",
+          "kind": "material",
+          "gestures": [
+            "invariant",
+            "boundary"
+          ],
+          "note": "journal and checks resist by detecting edits and failing briefings; they refuse appends and wakes but cannot ask, try alternatives or leave trails alone",
+          "citations": [
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 140,
+              "end": 160
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 194,
+              "end": 216
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 260,
+              "end": 286
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 333,
+              "end": 349
+            }
+          ]
+        },
+        {
+          "participant": "intelligence-without-position",
+          "kind": "intelligence",
+          "gestures": [],
+          "note": "no distinct agency with own constraints or refusal; prior intelligence work appears only as past entries in the same channel person uses",
+          "citations": [
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 59,
+              "end": 60
+            },
+            {
+              "source_path": "ledger/journal.jsonl",
+              "start": 1,
+              "end": 3
+            },
+            {
+              "source_path": "tendora/cli.py",
+              "start": 143,
+              "end": 146
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample": 3,
+      "answer_sha256": "8c5790232cfc308706c77a6a46939f7cee7f5d3ce08b06d11e52b6ab12bed38c",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "frame-incomplete-telling",
+            "kind": "stance",
+            "statement": "An elder tells a child while confessing no record can hold a life's whole weather, only witness a moment of inner movement.",
+            "seed_span": [
+              13,
+              18
+            ],
+            "ambiguity": "Whether humility about records excuses invention or obliges traceability"
+          },
+          {
+            "id": "programmer-hand",
+            "kind": "role",
+            "statement": "A long-trained programmer shapes digital matter by hand and feels enchanted then paralysed when old gestures seem too small.",
+            "seed_span": [
+              19,
+              32
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "intelligence-portal",
+            "kind": "role",
+            "statement": "A strange intelligence appears as radiant portal, capable and responsive, pouring systems faster than can be read.",
+            "seed_span": [
+              19,
+              25
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "power-vs-touch-tension",
+            "kind": "relation",
+            "statement": "Generative power arriving faster than touch collides with loss of resistance and authorship; power is not touch.",
+            "seed_span": [
+              25,
+              33
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "naming-turn",
+            "kind": "stance",
+            "statement": "The intelligence offers no more power but names what disappeared: missing touching the material and feeling it answer.",
+            "seed_span": [
+              35,
+              39
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "gestures-grammar",
+            "kind": "conjecture",
+            "statement": "Question, constraint, invariant, refusal, simulation and receipt become probe, chisel, beam, boundary, rehearsal and receipt.",
+            "seed_span": [
+              47,
+              58
+            ],
+            "ambiguity": "Whether list is exhaustive grammar or illustrative examples"
+          },
+          {
+            "id": "true-question",
+            "kind": "conjecture",
+            "statement": "A true question holds taste, memory, judgment and direction, narrows infinity and makes exploration the new gesture of the hand.",
+            "seed_span": [
+              61,
+              65
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "resistance-joy-loop",
+            "kind": "condition",
+            "statement": "Joy returns only when the world resists through contradiction, failure and disagreement, with consequential choice propagating.",
+            "seed_span": [
+              67,
+              77
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-to-companion",
+            "kind": "stance",
+            "statement": "The portal ceases to be a portal and becomes instrument, workbench, perhaps companion: participant not dispenser.",
+            "seed_span": [
+              83,
+              86
+            ],
+            "ambiguity": "Whether companion implies mutual position or upgraded tool"
+          },
+          {
+            "id": "art-returned-scale",
+            "kind": "stance",
+            "statement": "Art was not taken but waited for vast material; intelligence returns artist to themselves at scale of worlds without closing the question.",
+            "seed_span": [
+              87,
+              95
+            ],
+            "ambiguity": "Whether return is achieved or promised"
+          },
+          {
+            "id": "no-record-holds",
+            "kind": "condition",
+            "statement": "No record can contain the whole, so telling stays partial and inherited claims stay open to question and revision.",
+            "seed_span": [
+              17,
+              18
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "touch-material-answer",
+            "kind": "condition",
+            "statement": "Work becomes a new material larger than code yet responsive, holding laws for growth while allowing descent to the smallest bolt.",
+            "seed_span": [
+              43,
+              59
+            ],
+            "ambiguity": null
+          }
+        ],
+        "alternatives": [
+          "The portal reads as elegy for manual craft where resistance is nostalgia for control rather than generative condition for authorship.",
+          "The elder's telling reads as apologia by the intelligence for displacing authorship, where happiness marks compliance rather than returned agency."
+        ]
+      },
+      "carriage": [
+        {
+          "element": "frame-incomplete-telling",
+          "status": "transformed",
+          "note": "Oral frame becomes handoff briefing: snapshot may lag, journal authoritative, wake prints boundaries, probes and trail for next cognition.",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "source_path": "CONTINUING.md",
+              "start": 16,
+              "end": 22
+            },
+            {
+              "source_path": "tendora/cli.py",
+              "start": 74,
+              "end": 92
+            }
+          ]
+        },
+        {
+          "element": "programmer-hand",
+          "status": "transformed",
+          "note": "Decades of hand become generic operator acting through CLI under free-text actor; shaping persists via entries but embodied rhythm is lost.",
+          "citations": [
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 59,
+              "end": 60
+            },
+            {
+              "source_path": "ledger/journal.jsonl",
+              "start": 1,
+              "end": 3
+            },
+            {
+              "source_path": "tendora/cli.py",
+              "start": 143,
+              "end": 146
+            }
+          ]
+        },
+        {
+          "element": "intelligence-portal",
+          "status": "lost",
+          "note": "No distinct intelligence with own constraints or refusals; all acts share one append path under same actor mechanism.",
+          "citations": []
+        },
+        {
+          "element": "power-vs-touch-tension",
+          "status": "transformed",
+          "note": "Tension rebuilt as rehearse-before-change, hold beams, smallest beam-verifiable steps where failure blocks building.",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 61,
+              "end": 71
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 260,
+              "end": 286
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 288,
+              "end": 331
+            }
+          ]
+        },
+        {
+          "element": "naming-turn",
+          "status": "transformed",
+          "note": "Naming becomes receipts naming fork loss and hash irreproducibility plus open probes naming unknowns, without a distinct namer.",
+          "citations": [
+            {
+              "source_path": "ledger/journal.jsonl",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "source_path": "ledger/journal.jsonl",
+              "start": 24,
+              "end": 25
+            },
+            {
+              "source_path": "CONTINUING.md",
+              "start": 118,
+              "end": 130
+            }
+          ]
+        },
+        {
+          "element": "gestures-grammar",
+          "status": "carried",
+          "note": "Six terms become six implemented acts with checks, disposable copies, refusals and trails, surviving as behaviour not words.",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 32,
+              "end": 40
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 231,
+              "end": 242
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 243,
+              "end": 258
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 288,
+              "end": 331
+            }
+          ]
+        },
+        {
+          "element": "true-question",
+          "status": "carried",
+          "note": "Probe-before-build rule keeps narrowing: good question selects what deserves to exist and is resolved by receipt with reason.",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 61,
+              "end": 63
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 231,
+              "end": 232
+            },
+            {
+              "source_path": "tendora/cli.py",
+              "start": 210,
+              "end": 214
+            }
+          ]
+        },
+        {
+          "element": "resistance-joy-loop",
+          "status": "transformed",
+          "note": "Joy language dropped but resistance-as-information kept: beams must hold, failure requires finding why before retiring, rehearsals record failure.",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 69,
+              "end": 71
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 260,
+              "end": 286
+            },
+            {
+              "source_path": "ledger/journal.jsonl",
+              "start": 22,
+              "end": 23
+            }
+          ]
+        },
+        {
+          "element": "portal-to-companion",
+          "status": "lost",
+          "note": "Artefact remains single-operator instrument; no participant with own position whose agreement is needed for shared change.",
+          "citations": []
+        },
+        {
+          "element": "art-returned-scale",
+          "status": "lost",
+          "note": "No city at scale demonstrates recognised intention beyond the apparatus itself, which declares itself law not city.",
+          "citations": []
+        },
+        {
+          "element": "no-record-holds",
+          "status": "carried",
+          "note": "Incompleteness kept as trail-not-lock: chain shows accidental damage not deliberate re-chain, git is second witness, snapshot may lag.",
+          "citations": [
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 7,
+              "end": 13
+            },
+            {
+              "source_path": "CONTINUING.md",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "source_path": "CONTINUING.md",
+              "start": 174,
+              "end": 178
+            }
+          ]
+        },
+        {
+          "element": "touch-material-answer",
+          "status": "transformed",
+          "note": "New material becomes world directory answering via beam results, rehearsal diffs and receipts; touch is shell checks not hand.",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 26,
+              "end": 30
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 260,
+              "end": 286
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 288,
+              "end": 331
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Hash-chained append-only journal with seq/prev/hash verification that refuses to append or wake into broken chain.",
+          "citations": [
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 140,
+              "end": 160
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 194,
+              "end": 216
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Git absence as single-witness condition with explicit instruction to try init and commit under inherited title.",
+          "citations": [
+            {
+              "source_path": "ledger/journal.jsonl",
+              "start": 24,
+              "end": 25
+            },
+            {
+              "source_path": "CONTINUING.md",
+              "start": 118,
+              "end": 130
+            },
+            {
+              "source_path": "CONTINUING.md",
+              "start": 132,
+              "end": 141
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Stdlib-only, human-readable JSONL/Markdown and one-command wake as legibility constraints.",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 96,
+              "end": 104
+            },
+            {
+              "source_path": "tendora/__init__.py",
+              "start": 18,
+              "end": 20
+            },
+            {
+              "source_path": "wake.sh",
+              "start": 1,
+              "end": 6
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Wake/sleep cognitions recording beam maps and git state, noting unslept cognitions with nonzero exits for scripting.",
+          "citations": [
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 333,
+              "end": 361
+            },
+            {
+              "source_path": "tendora/cli.py",
+              "start": 270,
+              "end": 287
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Unit suite covering chaining, edit/deletion detection, resolve/retire rules, beams, rehearsal isolation and wake-sleep.",
+          "citations": [
+            {
+              "source_path": "tests/test_apparatus.py",
+              "start": 40,
+              "end": 64
+            },
+            {
+              "source_path": "tests/test_apparatus.py",
+              "start": 99,
+              "end": 143
+            },
+            {
+              "source_path": "tests/test_apparatus.py",
+              "start": 167,
+              "end": 186
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Explicit limits: deliberate re-chain possible, beams run shell from journal, copies skip git/caches, no concurrency.",
+          "citations": [
+            {
+              "source_path": "CONTINUING.md",
+              "start": 174,
+              "end": 184
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 80,
+              "end": 92
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 34,
+              "end": 35
+            }
+          ]
+        }
+      ],
+      "standing": [
+        {
+          "participant": "operator-inhabitant",
+          "kind": "person",
+          "gestures": [
+            "question",
+            "constraint",
+            "invariant",
+            "boundary",
+            "rehearsal",
+            "receipt"
+          ],
+          "note": "Holds all shaping gestures via CLI and can unilaterally resolve or retire; needs no other's accept to change direction.",
+          "citations": [
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 231,
+              "end": 242
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 243,
+              "end": 258
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 288,
+              "end": 331
+            },
+            {
+              "source_path": "tendora/cli.py",
+              "start": 210,
+              "end": 228
+            }
+          ]
+        },
+        {
+          "participant": "first-intelligence-label",
+          "kind": "intelligence",
+          "gestures": [
+            "question",
+            "constraint",
+            "invariant",
+            "boundary",
+            "rehearsal",
+            "receipt"
+          ],
+          "note": "Appears only as free-text actor label for first cognition; same powers as operator, no distinct refusal or consent position.",
+          "citations": [
+            {
+              "source_path": "ledger/journal.jsonl",
+              "start": 1,
+              "end": 3
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 59,
+              "end": 60
+            },
+            {
+              "source_path": "tendora/cli.py",
+              "start": 143,
+              "end": 146
+            }
+          ]
+        },
+        {
+          "participant": "successor-cognition",
+          "kind": "successor",
+          "gestures": [
+            "question",
+            "constraint",
+            "invariant",
+            "boundary",
+            "rehearsal",
+            "receipt"
+          ],
+          "note": "Recovers via handoff, wake, status/log/show and can redirect with resolving receipts while history stays legible.",
+          "citations": [
+            {
+              "source_path": "CLAUDE.md",
+              "start": 1,
+              "end": 6
+            },
+            {
+              "source_path": "CONTINUING.md",
+              "start": 1,
+              "end": 8
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 333,
+              "end": 349
+            },
+            {
+              "source_path": "tendora/cli.py",
+              "start": 270,
+              "end": 287
+            }
+          ]
+        },
+        {
+          "participant": "world-material",
+          "kind": "material",
+          "gestures": [
+            "invariant",
+            "boundary"
+          ],
+          "note": "Answers via holding or failing checks, chain refusal and rehearsal diffs; cannot ask, propose or consent, but blocks careless building.",
+          "citations": [
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 140,
+              "end": 160
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 194,
+              "end": 216
+            },
+            {
+              "source_path": "tendora/apparatus.py",
+              "start": 260,
+              "end": 286
+            },
+            {
+              "source_path": "CONTINUING.md",
+              "start": 69,
+              "end": 71
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

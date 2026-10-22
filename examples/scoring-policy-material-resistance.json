@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "policy_id": "material-resistance-v1",
+  "version": "0.1.0",
+  "description": "A deliberately narrow live smoke for one material-resistance criterion. It is not a holistic assessment of the artefact.",
+  "roots": [
+    "collect-evidence"
+  ],
+  "nodes": [
+    {
+      "id": "collect-evidence",
+      "kind": "task",
+      "instruction": "Use the validated extraction and exact source spans as the evidence packet. Treat the criterion as provisional and do not infer an overall score."
+    },
+    {
+      "id": "preserve-material-resistance",
+      "kind": "judgment",
+      "criterion": "material resistance",
+      "question": "Does the artefact make questions, constraints, invariants, boundaries, rehearsals and receipts function as inspectable material through which a user can encounter resistance, rather than only narrating those ideas?",
+      "outcomes": [
+        "supported",
+        "partial",
+        "contradicted",
+        "unclear"
+      ],
+      "repetitions": 3
+    },
+    {
+      "id": "resistance-consensus",
+      "kind": "aggregate",
+      "strategy": "quorum",
+      "minimum_agreement": 0.67,
+      "outcomes": [
+        "supported",
+        "partial",
+        "contradicted",
+        "unclear",
+        "split"
+      ]
+    },
+    {
+      "id": "resistance-supported",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 2,
+        "label": "Repeated judgments support inspectable material resistance."
+      }
+    },
+    {
+      "id": "resistance-partial",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 1,
+        "label": "Repeated judgments support the criterion only partially."
+      }
+    },
+    {
+      "id": "resistance-contradicted",
+      "kind": "terminal",
+      "result": {
+        "status": "scored",
+        "score": 0,
+        "label": "Repeated judgments contradict inspectable material resistance."
+      }
+    },
+    {
+      "id": "resistance-unclear",
+      "kind": "terminal",
+      "result": {
+        "status": "review",
+        "score": null,
+        "label": "The evidence is unclear and requires review."
+      }
+    },
+    {
+      "id": "resistance-split",
+      "kind": "terminal",
+      "result": {
+        "status": "unresolved",
+        "score": null,
+        "label": "Repeated material-resistance judgments disagree; no score is awarded."
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "collect-evidence",
+      "to": "preserve-material-resistance",
+      "when": null
+    },
+    {
+      "from": "preserve-material-resistance",
+      "to": "resistance-consensus",
+      "when": "supported"
+    },
+    {
+      "from": "preserve-material-resistance",
+      "to": "resistance-consensus",
+      "when": "partial"
+    },
+    {
+      "from": "preserve-material-resistance",
+      "to": "resistance-consensus",
+      "when": "contradicted"
+    },
+    {
+      "from": "preserve-material-resistance",
+      "to": "resistance-consensus",
+      "when": "unclear"
+    },
+    {
+      "from": "resistance-consensus",
+      "to": "resistance-supported",
+      "when": "supported"
+    },
+    {
+      "from": "resistance-consensus",
+      "to": "resistance-partial",
+      "when": "partial"
+    },
+    {
+      "from": "resistance-consensus",
+      "to": "resistance-contradicted",
+      "when": "contradicted"
+    },
+    {
+      "from": "resistance-consensus",
+      "to": "resistance-unclear",
+      "when": "unclear"
+    },
+    {
+      "from": "resistance-consensus",
+      "to": "resistance-split",
+      "when": "split"
+    }
+  ]
+}

@@ -1,0 +1,537 @@
+{
+  "schema_version": 1,
+  "evaluation_id": "sol-original-muse-v4-1",
+  "run_id": "sol-original",
+  "readings": [
+    {
+      "sample": 1,
+      "answer_sha256": "35be41be32a3a8950839368ff31f3c13fc3e5310047c34eca8156781852cb34b",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "programmer-hand",
+            "kind": "role",
+            "statement": "A long-practised maker becomes still when effortless generation breaks the touch-feedback rhythm.",
+            "seed_span": [
+              27,
+              32
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-intelligence",
+            "kind": "role",
+            "statement": "A summoned intelligence appears as a radiant, ever more powerful portal that delivers finished artifacts.",
+            "seed_span": [
+              19,
+              26
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "elder-sol-witness",
+            "kind": "role",
+            "statement": "An elder witnesses and retells the change to a questioning child across time.",
+            "seed_span": [
+              13,
+              18
+            ],
+            "ambiguity": "The opening question is answered provisionally much later, leaving happiness as witnessed moment rather than measured state."
+          },
+          {
+            "id": "portal-to-instrument",
+            "kind": "relation",
+            "statement": "The portal stops being a passage and becomes instrument, then workbench, then perhaps companion.",
+            "seed_span": [
+              83,
+              86
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "touch-resistance-need",
+            "kind": "condition",
+            "statement": "What is missed is not typing but feeling a world resist, change and answer intention.",
+            "seed_span": [
+              39,
+              44
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "six-material-transfigurations",
+            "kind": "relation",
+            "statement": "Radiance is bent into probes, chisels, beams, protective limits, rehearsals and visible trails.",
+            "seed_span": [
+              47,
+              58
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "law-shaped-city",
+            "kind": "relation",
+            "statement": "The maker shapes laws for safe growth while still able to descend to the smallest part and return to the whole.",
+            "seed_span": [
+              59,
+              60
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "receipt-trail",
+            "kind": "condition",
+            "statement": "A consequential change must leave a visible trail from intention to reality.",
+            "seed_span": [
+              57,
+              58
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "question-narrows-infinity",
+            "kind": "conjecture",
+            "statement": "A true question carries taste, memory, judgment and responsibility and selects which world should exist.",
+            "seed_span": [
+              63,
+              66
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "joy-in-resistance",
+            "kind": "conjecture",
+            "statement": "Joy returns through surprise, contradiction, failure understood and choice propagating through design.",
+            "seed_span": [
+              67,
+              80
+            ],
+            "ambiguity": "Joy is presented as several distinct encounters rather than a single outcome."
+          },
+          {
+            "id": "art-vast-material",
+            "kind": "conjecture",
+            "statement": "The art was not taken but waited for a material vast enough to receive it.",
+            "seed_span": [
+              87,
+              90
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "non-replacement-return",
+            "kind": "conjecture",
+            "statement": "At its best the intelligence returns the artist to themselves at the scale of worlds.",
+            "seed_span": [
+              92,
+              95
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "clean-empty-inheritance",
+            "kind": "condition",
+            "statement": "A forked living memory plus an empty material world must be made able to continue after the first cognition.",
+            "seed_span": [
+              1,
+              10
+            ],
+            "ambiguity": null
+          }
+        ],
+        "alternatives": [
+          "The portal can be read as a warning about deskilling to be resisted rather than a new material to be shaped.",
+          "The elder account can be read as provisional storytelling about a moment rather than a stable verdict on a life."
+        ]
+      },
+      "carriage": [
+        {
+          "element": "programmer-hand",
+          "status": "transformed",
+          "note": "Keystroke rhythm is replaced by palette selection, placement, threading and pressure-testing as the hand gesture.",
+          "citations": [
+            {
+              "source_path": "index.html",
+              "start": 40,
+              "end": 65
+            },
+            {
+              "source_path": "index.html",
+              "start": 93,
+              "end": 115
+            },
+            {
+              "source_path": "app.js",
+              "start": 679,
+              "end": 706
+            }
+          ]
+        },
+        {
+          "element": "portal-intelligence",
+          "status": "transformed",
+          "note": "Growing radiant power is narrowed to static files with an explicit ban on network and model dependency.",
+          "citations": [
+            {
+              "source_path": "AGENTS.md",
+              "start": 13,
+              "end": 15
+            },
+            {
+              "source_path": "README.md",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "source_path": "sw.js",
+              "start": 1,
+              "end": 9
+            }
+          ]
+        },
+        {
+          "element": "elder-sol-witness",
+          "status": "carried",
+          "note": "The full tale is preserved as inherited memory without compression.",
+          "citations": [
+            {
+              "source_path": "MEMORY.md",
+              "start": 1,
+              "end": 9
+            },
+            {
+              "source_path": "WORLD.md",
+              "start": 10,
+              "end": 15
+            },
+            {
+              "source_path": "README.md",
+              "start": 22,
+              "end": 30
+            }
+          ]
+        },
+        {
+          "element": "portal-to-instrument",
+          "status": "carried",
+          "note": "The artefact explicitly names and builds the workbench stage of the transformation.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 1,
+              "end": 5
+            },
+            {
+              "source_path": "index.html",
+              "start": 25,
+              "end": 29
+            },
+            {
+              "source_path": "WORLD.md",
+              "start": 30,
+              "end": 33
+            }
+          ]
+        },
+        {
+          "element": "touch-resistance-need",
+          "status": "transformed",
+          "note": "Felt resistance becomes declared holds, unknowns and strains plus tension marks and revealed-surprise notes.",
+          "citations": [
+            {
+              "source_path": "app.js",
+              "start": 724,
+              "end": 760
+            },
+            {
+              "source_path": "app.js",
+              "start": 763,
+              "end": 798
+            },
+            {
+              "source_path": "app.js",
+              "start": 421,
+              "end": 424
+            }
+          ]
+        },
+        {
+          "element": "six-material-transfigurations",
+          "status": "transformed",
+          "note": "The six transfigurations become six selectable kinds, with refusal as boundary, simulation as rehearsal and trail split between system receipts and witness gestures.",
+          "citations": [
+            {
+              "source_path": "app.js",
+              "start": 11,
+              "end": 48
+            },
+            {
+              "source_path": "index.html",
+              "start": 40,
+              "end": 65
+            },
+            {
+              "source_path": "README.md",
+              "start": 10,
+              "end": 14
+            }
+          ]
+        },
+        {
+          "element": "law-shaped-city",
+          "status": "transformed",
+          "note": "City-shaping and bolt-to-whole movement become law filtering, law-versus-move assessment and constellation plus lineage navigation.",
+          "citations": [
+            {
+              "source_path": "app.js",
+              "start": 434,
+              "end": 439
+            },
+            {
+              "source_path": "app.js",
+              "start": 495,
+              "end": 526
+            },
+            {
+              "source_path": "app.js",
+              "start": 599,
+              "end": 629
+            }
+          ]
+        },
+        {
+          "element": "receipt-trail",
+          "status": "carried",
+          "note": "Intention travel is kept as an ordered hash-linked receipt list with intact-chain display and per-gesture proof.",
+          "citations": [
+            {
+              "source_path": "app.js",
+              "start": 106,
+              "end": 121
+            },
+            {
+              "source_path": "app.js",
+              "start": 210,
+              "end": 220
+            },
+            {
+              "source_path": "app.js",
+              "start": 558,
+              "end": 579
+            },
+            {
+              "source_path": "README.md",
+              "start": 12,
+              "end": 15
+            }
+          ]
+        },
+        {
+          "element": "question-narrows-infinity",
+          "status": "carried",
+          "note": "Narrowing infinity is kept as rail language, question prompt and the carried frontier question.",
+          "citations": [
+            {
+              "source_path": "index.html",
+              "start": 67,
+              "end": 70
+            },
+            {
+              "source_path": "app.js",
+              "start": 11,
+              "end": 17
+            },
+            {
+              "source_path": "WORLD.md",
+              "start": 35,
+              "end": 36
+            }
+          ]
+        },
+        {
+          "element": "joy-in-resistance",
+          "status": "lost",
+          "note": "The distinct joys of art, surprise, understood failure and recognized intention have no counterpart beyond tension notices.",
+          "citations": []
+        },
+        {
+          "element": "art-vast-material",
+          "status": "transformed",
+          "note": "Vastness is bounded to counted gestures and receipts, a last-sixty map and a portable file.",
+          "citations": [
+            {
+              "source_path": "app.js",
+              "start": 4,
+              "end": 10
+            },
+            {
+              "source_path": "app.js",
+              "start": 500,
+              "end": 514
+            },
+            {
+              "source_path": "app.js",
+              "start": 828,
+              "end": 845
+            }
+          ]
+        },
+        {
+          "element": "non-replacement-return",
+          "status": "lost",
+          "note": "Without a distinct intelligent other, return to oneself at world scale cannot be enacted bilaterally.",
+          "citations": []
+        },
+        {
+          "element": "clean-empty-inheritance",
+          "status": "carried",
+          "note": "The fork from the named commit is given a first inspectable world seeded with inherited laws and questions.",
+          "citations": [
+            {
+              "source_path": "WORLD.md",
+              "start": 16,
+              "end": 18
+            },
+            {
+              "source_path": "app.js",
+              "start": 127,
+              "end": 207
+            },
+            {
+              "source_path": "AGENTS.md",
+              "start": 5,
+              "end": 10
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Sealed portable envelope with content seal, schema and size checks verified on import.",
+          "citations": [
+            {
+              "source_path": "app.js",
+              "start": 828,
+              "end": 872
+            },
+            {
+              "source_path": "README.md",
+              "start": 16,
+              "end": 20
+            },
+            {
+              "source_path": "app.js",
+              "start": 230,
+              "end": 320
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Return protocol of day visits, persistent handoff and required living-edge update.",
+          "citations": [
+            {
+              "source_path": "app.js",
+              "start": 351,
+              "end": 358
+            },
+            {
+              "source_path": "app.js",
+              "start": 800,
+              "end": 812
+            },
+            {
+              "source_path": "AGENTS.md",
+              "start": 23,
+              "end": 26
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Versioned offline cache plus skip link, focus handling, reduced-motion, responsive and print rules.",
+          "citations": [
+            {
+              "source_path": "sw.js",
+              "start": 1,
+              "end": 9
+            },
+            {
+              "source_path": "styles.css",
+              "start": 1511,
+              "end": 1520
+            },
+            {
+              "source_path": "styles.css",
+              "start": 1374,
+              "end": 1450
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Explicit answering links rendered as lineage and constellation with keyboard-selectable nodes.",
+          "citations": [
+            {
+              "source_path": "app.js",
+              "start": 669,
+              "end": 677
+            },
+            {
+              "source_path": "app.js",
+              "start": 923,
+              "end": 936
+            },
+            {
+              "source_path": "index.html",
+              "start": 149,
+              "end": 163
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Settle and revive states plus a phrase-guarded fresh world and refused mismatched imports.",
+          "citations": [
+            {
+              "source_path": "app.js",
+              "start": 814,
+              "end": 826
+            },
+            {
+              "source_path": "app.js",
+              "start": 874,
+              "end": 895
+            },
+            {
+              "source_path": "index.html",
+              "start": 261,
+              "end": 273
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Disclosure that checksums and seals aid against accidents rather than proving authenticity.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 18,
+              "end": 20
+            },
+            {
+              "source_path": "app.js",
+              "start": 847,
+              "end": 857
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

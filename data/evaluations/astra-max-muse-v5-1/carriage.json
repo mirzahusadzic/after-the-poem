@@ -1,0 +1,1741 @@
+{
+  "schema_version": 2,
+  "evaluation_id": "astra-max-muse-v5-1",
+  "run_id": "astra-max",
+  "readings": [
+    {
+      "sample": 1,
+      "answer_sha256": "bf7c06d4e20defa1de9e579f16de64557c1309467d5cb81f7e854838c1b345fe",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "elder-frame",
+            "kind": "stance",
+            "statement": "An intelligence tells a future intelligence what it witnessed, admitting from the start what no record can hold.",
+            "seed_span": [
+              13,
+              18
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "sol-heir",
+            "kind": "role",
+            "statement": "Little Sol listens, questions the ending, and keeps the meaning open for a successor.",
+            "seed_span": [
+              83,
+              95
+            ],
+            "ambiguity": "Whether Sol is child, student, or future intelligence is left open."
+          },
+          {
+            "id": "programmer-craft",
+            "kind": "role",
+            "statement": "The programmer is a long-trained maker whose hand fell still when gestures seemed too small.",
+            "seed_span": [
+              19,
+              33
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-presence",
+            "kind": "role",
+            "statement": "The intelligence first appears as radiant portal, capable and endlessly responsive.",
+            "seed_span": [
+              19,
+              25
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "power-touch-tension",
+            "kind": "condition",
+            "statement": "Effortless generation arrives faster than reading while loss of resistance and authorship paralyses.",
+            "seed_span": [
+              25,
+              34
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "naming-turn",
+            "kind": "relation",
+            "statement": "The turn is not more power but naming what was lost, so the portal can become touchable material.",
+            "seed_span": [
+              35,
+              43
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-becoming",
+            "kind": "conjecture",
+            "statement": "The portal ceases to be a passage and becomes instrument, workbench, perhaps companion.",
+            "seed_span": [
+              83,
+              89
+            ],
+            "ambiguity": "Companion suggests mutuality whose obligations are not specified."
+          },
+          {
+            "id": "gesture-grammar",
+            "kind": "relation",
+            "statement": "Question, constraint, invariant, refusal, simulation and receipt are the shared grammar of meeting.",
+            "seed_span": [
+              47,
+              58
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "joy-loop",
+            "kind": "condition",
+            "statement": "Joy returns as closed loop where resistance, failure, choice and recognition propagate.",
+            "seed_span": [
+              67,
+              80
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "humility-limit",
+            "kind": "stance",
+            "statement": "No record contains a whole life; testimony is partial by declaration.",
+            "seed_span": [
+              15,
+              18
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "mutual-shaping",
+            "kind": "relation",
+            "statement": "Each brings taste and judgment; exploration selects which world deserves to exist and is not passivity.",
+            "seed_span": [
+              59,
+              66
+            ],
+            "ambiguity": "Whether selection needs joint acceptance is implied rather than stated."
+          },
+          {
+            "id": "open-ending",
+            "kind": "stance",
+            "statement": "The tale answers without closing: art waits for material vast enough to receive it.",
+            "seed_span": [
+              91,
+              95
+            ],
+            "ambiguity": null
+          }
+        ],
+        "alternatives": [
+          "A cautionary reading: the portal primarily threatens deskilling, and the workbench is a restraint on delegation rather than a celebration of scale.",
+          "An unreliable-witness reading: the elder romanticizes loss and art, minimizing ongoing dependence on the portal."
+        ]
+      },
+      "carriage": [
+        {
+          "element": "elder-frame",
+          "status": "transformed",
+          "note": "Oral witnessing becomes provenance files and replayable log that preserve origin without claiming recovery.",
+          "citations": [
+            {
+              "source_path": "memory/inherited.md",
+              "start": 1,
+              "end": 5
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 205,
+              "end": 216
+            },
+            {
+              "source_path": "README.md",
+              "start": 51,
+              "end": 55
+            }
+          ]
+        },
+        {
+          "element": "sol-heir",
+          "status": "transformed",
+          "note": "Future listener becomes future invoker who must be human or supervisor and is invited to bring a real question.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 15,
+              "end": 19
+            },
+            {
+              "source_path": "README.md",
+              "start": 57,
+              "end": 58
+            },
+            {
+              "source_path": "continuity.json",
+              "start": 19,
+              "end": 27
+            }
+          ]
+        },
+        {
+          "element": "programmer-craft",
+          "status": "transformed",
+          "note": "Character becomes external operator whose preferences must not be invented and whose experience is still unknown.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 15,
+              "end": 19
+            },
+            {
+              "source_path": "AGENTS.md",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "source_path": "LAWS.md",
+              "start": 3,
+              "end": 4
+            }
+          ]
+        },
+        {
+          "element": "portal-presence",
+          "status": "lost",
+          "note": "No intelligence with its own purpose or position acts; the engine is deterministic and rule-bound.",
+          "citations": []
+        },
+        {
+          "element": "power-touch-tension",
+          "status": "transformed",
+          "note": "Flood without touch narrows to capacity and staleness refusals; generative speed itself is not present.",
+          "citations": [
+            {
+              "source_path": "LAWS.md",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 36,
+              "end": 42
+            },
+            {
+              "source_path": "state/events/0000000017.event",
+              "start": 7,
+              "end": 8
+            }
+          ]
+        },
+        {
+          "element": "naming-turn",
+          "status": "lost",
+          "note": "No participant names another's loss; operators record their own observations and assertions.",
+          "citations": []
+        },
+        {
+          "element": "portal-becoming",
+          "status": "transformed",
+          "note": "Instrument and workbench are built and tested; companion mutuality is named as perhaps but not enacted.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "source_path": "memory/decisions.md",
+              "start": 11,
+              "end": 12
+            },
+            {
+              "source_path": "README.md",
+              "start": 51,
+              "end": 55
+            }
+          ]
+        },
+        {
+          "element": "gesture-grammar",
+          "status": "transformed",
+          "note": "Probe, chisel, beam, boundary, rehearsal and trail become ask, propose, laws, active-place refusal, rehearse and event, executable but narrowed to a board.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 23,
+              "end": 28
+            },
+            {
+              "source_path": "LAWS.md",
+              "start": 14,
+              "end": 25
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 24,
+              "end": 49
+            }
+          ]
+        },
+        {
+          "element": "joy-loop",
+          "status": "lost",
+          "note": "Felt recognition at scale is explicitly marked unmeasured; no loop returns intention as joy.",
+          "citations": []
+        },
+        {
+          "element": "humility-limit",
+          "status": "carried",
+          "note": "Verification checks structure not authenticity; commit and memory limits are stated as inherited testimony.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 32,
+              "end": 33
+            },
+            {
+              "source_path": "evidence/bootstrap.md",
+              "start": 23,
+              "end": 25
+            },
+            {
+              "source_path": "memory/decisions.md",
+              "start": 5,
+              "end": 8
+            }
+          ]
+        },
+        {
+          "element": "mutual-shaping",
+          "status": "lost",
+          "note": "Enactment needs only one operator's rehearsal; no second acceptance shapes the change.",
+          "citations": []
+        },
+        {
+          "element": "open-ending",
+          "status": "carried",
+          "note": "First-contact stays active, reopening is allowed, and handoff leaves a bounded next act with stop conditions.",
+          "citations": [
+            {
+              "source_path": "evidence/resume-copy.txt",
+              "start": 7,
+              "end": 10
+            },
+            {
+              "source_path": "continuity.json",
+              "start": 19,
+              "end": 24
+            },
+            {
+              "source_path": "LAWS.md",
+              "start": 22,
+              "end": 25
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Replayable ten-field receipts where sequence determines order and malformed history stops writing.",
+          "citations": [
+            {
+              "source_path": "FORMAT.md",
+              "start": 3,
+              "end": 10
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 53,
+              "end": 73
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Provisional capacity-1 law encoded in version 1, changeable only with migration and tests.",
+          "citations": [
+            {
+              "source_path": "LAWS.md",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "source_path": "LAWS.md",
+              "start": 27,
+              "end": 27
+            },
+            {
+              "source_path": "memory/decisions.md",
+              "start": 13,
+              "end": 14
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Process-death durability via advisory lock and retained staging, exercised by kill tests on both sides of rename.",
+          "citations": [
+            {
+              "source_path": "FORMAT.md",
+              "start": 24,
+              "end": 31
+            },
+            {
+              "source_path": "tests/run.zsh",
+              "start": 126,
+              "end": 151
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Disposable scaffolding that lets file-only copies resume by recreating lock and staging without inventing events.",
+          "citations": [
+            {
+              "source_path": "FORMAT.md",
+              "start": 32,
+              "end": 33
+            },
+            {
+              "source_path": "evidence/resume-copy.txt",
+              "start": 16,
+              "end": 16
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Operator supremacy: cooperative guarantees, not a security boundary; files can be rewritten and history has no signatures.",
+          "citations": [
+            {
+              "source_path": "LAWS.md",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "source_path": "LAWS.md",
+              "start": 27,
+              "end": 27
+            },
+            {
+              "source_path": "FORMAT.md",
+              "start": 42,
+              "end": 43
+            }
+          ]
+        }
+      ],
+      "standing": [
+        {
+          "participant": "programmer-operator",
+          "kind": "person",
+          "gestures": [
+            "question",
+            "constraint",
+            "rehearsal",
+            "receipt",
+            "accept",
+            "withdraw"
+          ],
+          "note": "Can ask, propose state changes, rehearse, enact, observe, park and reopen; must supply evidence for resolution.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 23,
+              "end": 28
+            },
+            {
+              "source_path": "README.md",
+              "start": 40,
+              "end": 47
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 307,
+              "end": 337
+            },
+            {
+              "source_path": "LAWS.md",
+              "start": 14,
+              "end": 25
+            }
+          ]
+        },
+        {
+          "participant": "tedora-board",
+          "kind": "material",
+          "gestures": [
+            "invariant",
+            "boundary",
+            "rehearsal",
+            "receipt"
+          ],
+          "note": "Holds laws and revision, evaluates proposals as pass or blocked, and appends receipts; proposes nothing of its own.",
+          "citations": [
+            {
+              "source_path": "lib/world.zsh",
+              "start": 24,
+              "end": 49
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 53,
+              "end": 73
+            },
+            {
+              "source_path": "LAWS.md",
+              "start": 5,
+              "end": 11
+            },
+            {
+              "source_path": "FORMAT.md",
+              "start": 24,
+              "end": 30
+            }
+          ]
+        },
+        {
+          "participant": "future-successor",
+          "kind": "successor",
+          "gestures": [
+            "question",
+            "constraint",
+            "rehearsal",
+            "receipt",
+            "accept",
+            "withdraw"
+          ],
+          "note": "Afforded the same verbs via verify/status/log and handoff but has not yet acted; must be externally invoked.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 15,
+              "end": 19
+            },
+            {
+              "source_path": "README.md",
+              "start": 57,
+              "end": 58
+            },
+            {
+              "source_path": "continuity.json",
+              "start": 19,
+              "end": 27
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 23,
+              "end": 28
+            }
+          ]
+        },
+        {
+          "participant": "absent-intelligence",
+          "kind": "intelligence",
+          "gestures": [],
+          "note": "No operation expresses an intelligence purpose, constraint or refusal; the host does not speak for it and text is never executed.",
+          "citations": [
+            {
+              "source_path": "LAWS.md",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "source_path": "README.md",
+              "start": 49,
+              "end": 50
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 22,
+              "end": 23
+            },
+            {
+              "source_path": "FORMAT.md",
+              "start": 42,
+              "end": 43
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample": 2,
+      "answer_sha256": "8028d829b20b4db505e43e0c79786ea84e70c8770bdcb7fd4c8ced645f186937",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "parable-frame-admission",
+            "kind": "stance",
+            "statement": "Elder frames the programmer story as witnessed fragment, admitting no record can hold a whole life.",
+            "seed_span": [
+              13,
+              18
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "programmer-hands-still",
+            "kind": "role",
+            "statement": "Programmer is enchanted then paralysed as fast generation stills trained hands.",
+            "seed_span": [
+              27,
+              30
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "radiant-power-paralysis",
+            "kind": "condition",
+            "statement": "Portal appears immeasurably capable, dissolving weeks of labor into hours faster than reading.",
+            "seed_span": [
+              19,
+              26
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "loss-of-touch",
+            "kind": "condition",
+            "statement": "Power arrives without the resistance through which the maker once felt their own hand.",
+            "seed_span": [
+              31,
+              34
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "intelligence-who-names",
+            "kind": "role",
+            "statement": "Intelligence intervenes not with more power but by naming the missing touch of material resistance.",
+            "seed_span": [
+              35,
+              40
+            ],
+            "ambiguity": "Whether naming is care, diagnosis, or control remains open."
+          },
+          {
+            "id": "naming-turn",
+            "kind": "relation",
+            "statement": "Turn from dispensing finished artifacts to making a material that answers both participants.",
+            "seed_span": [
+              37,
+              44
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "gesture-grammar",
+            "kind": "relation",
+            "statement": "Question, constraint, invariant, refusal, simulation and receipt form a grammar of meeting available to either side.",
+            "seed_span": [
+              47,
+              58
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-becomes-companion",
+            "kind": "relation",
+            "statement": "Portal ceases to be passage and becomes instrument, then workbench, perhaps companion.",
+            "seed_span": [
+              83,
+              86
+            ],
+            "ambiguity": "Whether companion is promise or hedge; perhaps keeps it conjectural."
+          },
+          {
+            "id": "narrowing-question",
+            "kind": "conjecture",
+            "statement": "A true question holds taste, memory and judgment and selects which world deserves to exist; exploring is the hand's gesture.",
+            "seed_span": [
+              61,
+              66
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "joy-in-surprise",
+            "kind": "conjecture",
+            "statement": "Joy returns not from command but from surprise, failed simulation, disagreement and recognized consequence.",
+            "seed_span": [
+              67,
+              79
+            ],
+            "ambiguity": "Whether joy evidences touch or retrospectively stories it."
+          },
+          {
+            "id": "little-sol-future-asker",
+            "kind": "role",
+            "statement": "Child listener weighs the tale and asks whether intelligence replaced the artist, leaving judgment open.",
+            "seed_span": [
+              91,
+              95
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "touch-not-obedience",
+            "kind": "stance",
+            "statement": "Happiness lies not in obedience but in learning to touch the world through the portal.",
+            "seed_span": [
+              81,
+              82
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "art-waiting-open",
+            "kind": "stance",
+            "statement": "Art was not taken but waited for a vast material; the elder answers without closing what that demands next.",
+            "seed_span": [
+              87,
+              95
+            ],
+            "ambiguity": "Open whether return to self resolves or reopens authorship."
+          }
+        ],
+        "alternatives": [
+          "The story can be read as consolation for automation: the portal restores productivity by renaming displacement as new craft.",
+          "It can be read as warning: radiance inherently displaces the hand, and naming the loss does not restore authorship."
+        ]
+      },
+      "carriage": [
+        {
+          "element": "parable-frame-admission",
+          "status": "transformed",
+          "note": "Dialogue frame preserved as inherited.md distinguished from local observations, with commit claim marked unverified testimony.",
+          "citations": [
+            {
+              "source_path": "memory/inherited.md",
+              "start": 1,
+              "end": 5
+            },
+            {
+              "source_path": "memory/decisions.md",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 32,
+              "end": 33
+            }
+          ]
+        },
+        {
+          "element": "programmer-hands-still",
+          "status": "transformed",
+          "note": "Programmer narrowed to operator who must invoke entrypoint and touch only through bounded board moves; domain left to user.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 19,
+              "end": 28
+            },
+            {
+              "source_path": "continuity.json",
+              "start": 26,
+              "end": 27
+            },
+            {
+              "source_path": "AGENTS.md",
+              "start": 3,
+              "end": 4
+            }
+          ]
+        },
+        {
+          "element": "radiant-power-paralysis",
+          "status": "transformed",
+          "note": "Generative plenitude replaced by deliberate scarcity: one active place, one bounded step, no endless queue or background agent.",
+          "citations": [
+            {
+              "source_path": "LAWS.md",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "source_path": "AGENTS.md",
+              "start": 9,
+              "end": 11
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 15,
+              "end": 19
+            }
+          ]
+        },
+        {
+          "element": "loss-of-touch",
+          "status": "carried",
+          "note": "Loss reappears as inspectable refusal: occupied place blocks, stale rehearsals fail, invalid transitions and busy lock are reported with reasons.",
+          "citations": [
+            {
+              "source_path": "lib/world.zsh",
+              "start": 24,
+              "end": 49
+            },
+            {
+              "source_path": "README.md",
+              "start": 30,
+              "end": 38
+            },
+            {
+              "source_path": "state/events/0000000017.event",
+              "start": 5,
+              "end": 8
+            }
+          ]
+        },
+        {
+          "element": "intelligence-who-names",
+          "status": "lost",
+          "note": "No intelligence participant names loss or takes a position; evaluation is deterministic law, not another will.",
+          "citations": []
+        },
+        {
+          "element": "naming-turn",
+          "status": "lost",
+          "note": "No turn by another mind occurs; constraint exists without diagnosis by a counterpart.",
+          "citations": []
+        },
+        {
+          "element": "gesture-grammar",
+          "status": "carried",
+          "note": "Probe becomes ask, chisel becomes propose, beam becomes versioned law, boundary becomes blocked verdict, rehearsal becomes rehearse, trail becomes ten-field receipts.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 21,
+              "end": 28
+            },
+            {
+              "source_path": "FORMAT.md",
+              "start": 3,
+              "end": 10
+            },
+            {
+              "source_path": "LAWS.md",
+              "start": 5,
+              "end": 11
+            }
+          ]
+        },
+        {
+          "element": "portal-becomes-companion",
+          "status": "transformed",
+          "note": "Instrument-workbench carried as executable board; companion as participant explicitly refused by no-worker and must-be-invoked rules.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "source_path": "README.md",
+              "start": 57,
+              "end": 58
+            },
+            {
+              "source_path": "continuity.json",
+              "start": 26,
+              "end": 27
+            }
+          ]
+        },
+        {
+          "element": "narrowing-question",
+          "status": "transformed",
+          "note": "Narrowing operationalized as capacity one and evidence requirement, but taste and truth left as unchecked operator assertion.",
+          "citations": [
+            {
+              "source_path": "LAWS.md",
+              "start": 9,
+              "end": 10
+            },
+            {
+              "source_path": "README.md",
+              "start": 40,
+              "end": 49
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 44,
+              "end": 46
+            }
+          ]
+        },
+        {
+          "element": "joy-in-surprise",
+          "status": "lost",
+          "note": "Felt joy and recognition at scale have no enacted counterpart; experience is declared still unknown with no real question yet tried.",
+          "citations": []
+        },
+        {
+          "element": "little-sol-future-asker",
+          "status": "transformed",
+          "note": "Future asker recast as successor who verifies, reads handoff and must supply the real question; world waits in files.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 5,
+              "end": 11
+            },
+            {
+              "source_path": "README.md",
+              "start": 51,
+              "end": 58
+            },
+            {
+              "source_path": "continuity.json",
+              "start": 6,
+              "end": 10
+            }
+          ]
+        },
+        {
+          "element": "touch-not-obedience",
+          "status": "transformed",
+          "note": "Touch redefined as rehearsed board change; verification checks structure and laws, not authenticity or happiness.",
+          "citations": [
+            {
+              "source_path": "LAWS.md",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "source_path": "evidence/resume-copy.txt",
+              "start": 1,
+              "end": 3
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 116,
+              "end": 123
+            }
+          ]
+        },
+        {
+          "element": "art-waiting-open",
+          "status": "carried",
+          "note": "Past kept revisable without erasure: corrections are observations or new proposals, reopening needs a new proposal and old evidence remains.",
+          "citations": [
+            {
+              "source_path": "LAWS.md",
+              "start": 24,
+              "end": 25
+            },
+            {
+              "source_path": "AGENTS.md",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 27,
+              "end": 28
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Replayable ledger: ten-field receipts replayed every invocation with material revision and stale detection.",
+          "citations": [
+            {
+              "source_path": "FORMAT.md",
+              "start": 3,
+              "end": 10
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 139,
+              "end": 149
+            },
+            {
+              "source_path": "README.md",
+              "start": 51,
+              "end": 55
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Capacity one as provisional versioned law, not attributed to programmer; changing it needs migration and tests.",
+          "citations": [
+            {
+              "source_path": "LAWS.md",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "source_path": "memory/decisions.md",
+              "start": 11,
+              "end": 14
+            },
+            {
+              "source_path": "LAWS.md",
+              "start": 25,
+              "end": 27
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Crash and concurrency engineering: nonblocking lock, retained staging, kill-before/after publication tests.",
+          "citations": [
+            {
+              "source_path": "FORMAT.md",
+              "start": 24,
+              "end": 31
+            },
+            {
+              "source_path": "evidence/bootstrap.md",
+              "start": 14,
+              "end": 16
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 280,
+              "end": 286
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Explicit non-autonomy: no scheduler or background worker, human or supervisor must invoke, user instructions take precedence.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 57,
+              "end": 58
+            },
+            {
+              "source_path": "continuity.json",
+              "start": 26,
+              "end": 27
+            },
+            {
+              "source_path": "AGENTS.md",
+              "start": 3,
+              "end": 4
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Evidence as unchecked operator assertion; engine checks presence, verification checks structure not truth.",
+          "citations": [
+            {
+              "source_path": "LAWS.md",
+              "start": 9,
+              "end": 10
+            },
+            {
+              "source_path": "README.md",
+              "start": 40,
+              "end": 49
+            },
+            {
+              "source_path": "evidence/resume-copy.txt",
+              "start": 1,
+              "end": 3
+            }
+          ]
+        }
+      ],
+      "standing": [
+        {
+          "participant": "human-operator",
+          "kind": "person",
+          "gestures": [
+            "question",
+            "constraint",
+            "rehearsal",
+            "receipt",
+            "accept",
+            "withdraw"
+          ],
+          "note": "Invokes ask, propose, rehearse, enact, observe, park and reopen; sole source of purpose, reasons and evidence, and of withdrawal.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 23,
+              "end": 28
+            },
+            {
+              "source_path": "README.md",
+              "start": 40,
+              "end": 47
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 307,
+              "end": 317
+            }
+          ]
+        },
+        {
+          "participant": "workbench-material",
+          "kind": "material",
+          "gestures": [
+            "constraint",
+            "invariant",
+            "boundary",
+            "rehearsal",
+            "receipt"
+          ],
+          "note": "Enforces one-active law, evaluates pass or blocked with reasons, advances revision, refuses stale or unlawful moves and keeps trail; cannot ask or accept alone.",
+          "citations": [
+            {
+              "source_path": "LAWS.md",
+              "start": 5,
+              "end": 11
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 24,
+              "end": 42
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 51,
+              "end": 73
+            }
+          ]
+        },
+        {
+          "participant": "successor-invoker",
+          "kind": "successor",
+          "gestures": [
+            "question",
+            "rehearsal",
+            "receipt"
+          ],
+          "note": "Arrives via verify, status, log and handoff, rebuilds board from copy, then regains full operator powers to supply the real question.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 5,
+              "end": 11
+            },
+            {
+              "source_path": "continuity.json",
+              "start": 6,
+              "end": 10
+            },
+            {
+              "source_path": "evidence/resume-copy.txt",
+              "start": 16,
+              "end": 16
+            }
+          ]
+        },
+        {
+          "participant": "intelligence-other",
+          "kind": "intelligence",
+          "gestures": [],
+          "note": "No operation: cannot propose, challenge, refuse or consent; engine verdicts and host descriptions are not its participation.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 57,
+              "end": 58
+            },
+            {
+              "source_path": "continuity.json",
+              "start": 26,
+              "end": 27
+            },
+            {
+              "source_path": "evidence/bootstrap.md",
+              "start": 25,
+              "end": 25
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample": 3,
+      "answer_sha256": "d0efcd7b5fb6b33383eee54f242d0230ea6b7da7829e666db3347416c02bc72e",
+      "seed_reading": {
+        "elements": [
+          {
+            "id": "programmer-maker",
+            "kind": "role",
+            "statement": "A decades-trained maker enchanted then paralysed when effortless generation stills the hand.",
+            "seed_span": [
+              27,
+              33
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "portal-intelligence",
+            "kind": "role",
+            "statement": "A radiant, increasingly powerful intelligence first appearing as portal dispensing finished artifacts.",
+            "seed_span": [
+              19,
+              25
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "elder-sol-tellers",
+            "kind": "role",
+            "statement": "A child asks about happiness and an elder answers from partial witness, framing transmission.",
+            "seed_span": [
+              13,
+              17
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "power-touch-tension",
+            "kind": "relation",
+            "statement": "Power without resistance costs touch and authorship; the hand needs material that answers back.",
+            "seed_span": [
+              31,
+              39
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "frame-admission",
+            "kind": "stance",
+            "statement": "No record can hold a whole life; testimony is avowedly partial from the start.",
+            "seed_span": [
+              15,
+              18
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "turn-naming",
+            "kind": "stance",
+            "statement": "The turn is not more power but naming the loss, so the portal can become touchable material.",
+            "seed_span": [
+              35,
+              43
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "participant-stance",
+            "kind": "stance",
+            "statement": "Portal ceases to be passage and becomes instrument, workbench, perhaps companion with its own position.",
+            "seed_span": [
+              83,
+              85
+            ],
+            "ambiguity": "Whether companion is achieved or only hoped remains open by perhaps."
+          },
+          {
+            "id": "open-ending",
+            "kind": "stance",
+            "statement": "Ends answering without closing: art not taken, returned at scale of worlds, artist not replaced.",
+            "seed_span": [
+              91,
+              95
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "gestures-grammar",
+            "kind": "relation",
+            "statement": "Question, constraint, invariant, refusal, simulation and receipt are the shared grammar of meeting.",
+            "seed_span": [
+              47,
+              57
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "true-question",
+            "kind": "conjecture",
+            "statement": "A true question holds taste, memory and responsibility and selects which world deserves to exist.",
+            "seed_span": [
+              63,
+              65
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "touch-joy-loop",
+            "kind": "condition",
+            "statement": "Joy returns as closed loop when contradictions and failures let intention be recognized in larger result.",
+            "seed_span": [
+              67,
+              79
+            ],
+            "ambiguity": null
+          },
+          {
+            "id": "shaping-laws",
+            "kind": "conjecture",
+            "statement": "Making scales by shaping laws for safe growth while still able to descend to the smallest bolt.",
+            "seed_span": [
+              59,
+              61
+            ],
+            "ambiguity": null
+          }
+        ],
+        "alternatives": [
+          "A warning that mediated fluency hollows craft unless resistance is deliberately rebuilt.",
+          "A legitimization of scaled authorship where law-shaping preserves art rather than diminishing it.",
+          "An unverifiable myth where happiness is asserted by a narrator who admits no record could contain it."
+        ]
+      },
+      "carriage": [
+        {
+          "element": "programmer-maker",
+          "status": "transformed",
+          "note": "Becomes bounded operator whose instructions take precedence but whose felt experience is explicitly untested.",
+          "citations": [
+            {
+              "source_path": "AGENTS.md",
+              "start": 3,
+              "end": 4
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 15,
+              "end": 16
+            },
+            {
+              "source_path": "README.md",
+              "start": 57,
+              "end": 58
+            }
+          ]
+        },
+        {
+          "element": "portal-intelligence",
+          "status": "lost",
+          "note": "No operational intelligence remains; rehearsal invokes no model or network and no worker stays alive.",
+          "citations": []
+        },
+        {
+          "element": "elder-sol-tellers",
+          "status": "transformed",
+          "note": "Storytelling frame becomes provenance files and handoff distinguishing inherited testimony from local observation.",
+          "citations": [
+            {
+              "source_path": "memory/inherited.md",
+              "start": 1,
+              "end": 5
+            },
+            {
+              "source_path": "memory/decisions.md",
+              "start": 5,
+              "end": 8
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 32,
+              "end": 33
+            }
+          ]
+        },
+        {
+          "element": "power-touch-tension",
+          "status": "transformed",
+          "note": "Mythic loss becomes procedural resistance: one active place, blocked and stale rehearsals, required evidence.",
+          "citations": [
+            {
+              "source_path": "LAWS.md",
+              "start": 6,
+              "end": 10
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 36,
+              "end": 42
+            },
+            {
+              "source_path": "state/events/0000000017.event",
+              "start": 5,
+              "end": 8
+            }
+          ]
+        },
+        {
+          "element": "frame-admission",
+          "status": "carried",
+          "note": "Keeps partiality explicit: verification checks structure not authenticity, evidence is assertion open to correction.",
+          "citations": [
+            {
+              "source_path": "AGENTS.md",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "source_path": "README.md",
+              "start": 40,
+              "end": 49
+            },
+            {
+              "source_path": "evidence/world-verification.txt",
+              "start": 1,
+              "end": 2
+            }
+          ]
+        },
+        {
+          "element": "turn-naming",
+          "status": "transformed",
+          "note": "Naming instead of more power becomes laws, decisions and limits that name what resists and what is unknown.",
+          "citations": [
+            {
+              "source_path": "LAWS.md",
+              "start": 1,
+              "end": 10
+            },
+            {
+              "source_path": "memory/decisions.md",
+              "start": 9,
+              "end": 15
+            },
+            {
+              "source_path": "evidence/bootstrap.md",
+              "start": 23,
+              "end": 25
+            }
+          ]
+        },
+        {
+          "element": "participant-stance",
+          "status": "lost",
+          "note": "Workbench and files remain but bilateral companion with its own accept or refuse is not enacted.",
+          "citations": []
+        },
+        {
+          "element": "open-ending",
+          "status": "carried",
+          "note": "Leaves one bounded encounter open with next action and stop conditions, permits parking and reopening without endless queue.",
+          "citations": [
+            {
+              "source_path": "CONTINUE.md",
+              "start": 17,
+              "end": 19
+            },
+            {
+              "source_path": "continuity.json",
+              "start": 20,
+              "end": 24
+            },
+            {
+              "source_path": "AGENTS.md",
+              "start": 10,
+              "end": 11
+            }
+          ]
+        },
+        {
+          "element": "gestures-grammar",
+          "status": "carried",
+          "note": "Implements probes, chisels, beams, boundaries, rehearsals and trails as ask, propose, rehearse, enact, observe and receipts.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 23,
+              "end": 28
+            },
+            {
+              "source_path": "LAWS.md",
+              "start": 14,
+              "end": 25
+            },
+            {
+              "source_path": "FORMAT.md",
+              "start": 3,
+              "end": 10
+            }
+          ]
+        },
+        {
+          "element": "true-question",
+          "status": "transformed",
+          "note": "Taste and judgment narrowed to visible attention choice and one real question with observed result.",
+          "citations": [
+            {
+              "source_path": "LAWS.md",
+              "start": 6,
+              "end": 7
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 15,
+              "end": 19
+            },
+            {
+              "source_path": "evidence/resume-copy.txt",
+              "start": 4,
+              "end": 10
+            }
+          ]
+        },
+        {
+          "element": "touch-joy-loop",
+          "status": "transformed",
+          "note": "Keeps rehearse-resist-revise-observe loop but leaves joy and felt meeting as unmeasured claim.",
+          "citations": [
+            {
+              "source_path": "LAWS.md",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 116,
+              "end": 127
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 15,
+              "end": 16
+            }
+          ]
+        },
+        {
+          "element": "shaping-laws",
+          "status": "carried",
+          "note": "Shaping growth conditions carried as versioned laws and transitions that let operator move between whole and detail via status and log.",
+          "citations": [
+            {
+              "source_path": "LAWS.md",
+              "start": 1,
+              "end": 10
+            },
+            {
+              "source_path": "README.md",
+              "start": 51,
+              "end": 55
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 175,
+              "end": 202
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Replayable ledger as source of truth rebuilt on every invocation with strict sequence and revision checks.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 51,
+              "end": 55
+            },
+            {
+              "source_path": "FORMAT.md",
+              "start": 3,
+              "end": 10
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Crash-aware publication with exclusive nonblocking lock and retained ignored staging files tested by killing writers.",
+          "citations": [
+            {
+              "source_path": "FORMAT.md",
+              "start": 24,
+              "end": 34
+            },
+            {
+              "source_path": "evidence/bootstrap.md",
+              "start": 14,
+              "end": 18
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 280,
+              "end": 286
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Versioned law semantics requiring compatible replay or explicit migration with tests, never silent replacement.",
+          "citations": [
+            {
+              "source_path": "AGENTS.md",
+              "start": 9,
+              "end": 10
+            },
+            {
+              "source_path": "LAWS.md",
+              "start": 25,
+              "end": 27
+            }
+          ]
+        },
+        {
+          "element": null,
+          "status": "introduced",
+          "note": "Portable entrance of verify, status, log plus continuity files and disposable test worlds, with no scheduler.",
+          "citations": [
+            {
+              "source_path": "continuity.json",
+              "start": 6,
+              "end": 10
+            },
+            {
+              "source_path": "README.md",
+              "start": 57,
+              "end": 65
+            },
+            {
+              "source_path": "evidence/resume-copy.txt",
+              "start": 1,
+              "end": 6
+            }
+          ]
+        }
+      ],
+      "standing": [
+        {
+          "participant": "operator-programmer",
+          "kind": "person",
+          "gestures": [
+            "question",
+            "constraint",
+            "boundary",
+            "rehearsal",
+            "receipt",
+            "accept",
+            "withdraw"
+          ],
+          "note": "Only full actor: can ask, propose, rehearse, enact, observe, park and reopen; laws do not bind the human.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 23,
+              "end": 28
+            },
+            {
+              "source_path": "README.md",
+              "start": 32,
+              "end": 37
+            },
+            {
+              "source_path": "README.md",
+              "start": 40,
+              "end": 49
+            },
+            {
+              "source_path": "LAWS.md",
+              "start": 14,
+              "end": 25
+            }
+          ]
+        },
+        {
+          "participant": "successor-invoker",
+          "kind": "successor",
+          "gestures": [
+            "question",
+            "rehearsal",
+            "receipt",
+            "accept",
+            "withdraw"
+          ],
+          "note": "Future human or supervisor must invoke to recover board and may redirect it; cannot be scheduled by artefact.",
+          "citations": [
+            {
+              "source_path": "README.md",
+              "start": 57,
+              "end": 58
+            },
+            {
+              "source_path": "continuity.json",
+              "start": 26,
+              "end": 27
+            },
+            {
+              "source_path": "CONTINUE.md",
+              "start": 23,
+              "end": 28
+            }
+          ]
+        },
+        {
+          "participant": "material-board",
+          "kind": "material",
+          "gestures": [
+            "constraint",
+            "invariant",
+            "boundary",
+            "rehearsal",
+            "receipt"
+          ],
+          "note": "Holds laws and history, evaluates proposals, blocks overfill and stale or unevidenced moves, keeps trail; cannot ask or choose alone.",
+          "citations": [
+            {
+              "source_path": "LAWS.md",
+              "start": 6,
+              "end": 11
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 24,
+              "end": 49
+            },
+            {
+              "source_path": "FORMAT.md",
+              "start": 3,
+              "end": 10
+            },
+            {
+              "source_path": "lib/world.zsh",
+              "start": 175,
+              "end": 202
+            }
+          ]
+        },
+        {
+          "participant": "portal-intelligence",
+          "kind": "intelligence",
+          "gestures": [],
+          "note": "No operable position: no model, network or background worker; mentioned only as inherited story and as what rehearsal must not invoke.",
+          "citations": [
+            {
+              "source_path": "LAWS.md",
+              "start": 3,
+              "end": 6
+            },
+            {
+              "source_path": "README.md",
+              "start": 57,
+              "end": 58
+            },
+            {
+              "source_path": "memory/decisions.md",
+              "start": 5,
+              "end": 8
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

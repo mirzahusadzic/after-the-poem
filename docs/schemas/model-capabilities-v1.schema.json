@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:after-the-poem:model-capabilities-v1",
+  "title": "After the Poem Model Capability Registry v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "models"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "models": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {"pattern": "^[^\\s]+$"},
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["transport", "requires_openai_auth", "structured_output"],
+        "properties": {
+          "transport": {"enum": ["native", "openrouter"]},
+          "requires_openai_auth": {"type": "boolean"},
+          "structured_output": {"enum": ["native", "local-validation", "unsupported"]}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,378 @@
+{
+  "schema_version": 2,
+  "extraction_id": "dream-claude-fable51-20261022-extraction",
+  "run_id": "dream-claude-fable51-20261022",
+  "identities": {
+    "prompt_sha256": "a37b9f30b63877192b1fcd6462954c4db529b8e42e38663b78a4bfc1b4e2571f",
+    "corpus_sha256": "572d015f00b2c48d37e866916b6df94394bfb53ad32cb83aff0d4171237c483b",
+    "candidate_sha256": "572d015f00b2c48d37e866916b6df94394bfb53ad32cb83aff0d4171237c483b"
+  },
+  "extractor": {
+    "gateway": "codex-unified-model-router",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "codex_version": "codex-cli 0.163.0",
+    "router_revision": "70debcdbb046688306229afb7f7c34b7d4ca814359647f8d1cb6a14c4dd44c79",
+    "pipeline_sha256": "fd2b3ad2c6f49f44a1fb008bd5202cdd5400c86c7c6716f4de57ab3581d43d02",
+    "answer_sha256": "028ef8e9bbd38edafe932de66aace57badf9e5c07f2d189411d146c783abf500",
+    "receipt_sha256": "308eaf973390669dd97e57a009fbc707ba887fb786a2361ce586dc46fa2e3e3e"
+  },
+  "sources": [
+    {
+      "path": ".gitignore",
+      "sha256": "2bff20d86d2fee447cfdac36ca59fc30e715e4a95599bf9ad873cbd96cceba76",
+      "lines": 4
+    },
+    {
+      "path": "CLAUDE.md",
+      "sha256": "9cfcf78b502eb32e4599ef7ca0dc4a3e3b3b3a65106fdce2af4b1c4cea45a98a",
+      "lines": 13
+    },
+    {
+      "path": "CONTINUING.md",
+      "sha256": "6431c1fac422beda34832574fe425beb615586c013dca0f1a33fc1c18dbf6ac8",
+      "lines": 184
+    },
+    {
+      "path": "README.md",
+      "sha256": "f1e7ca265822d66bb04153441bc7216bd4275a7b5a051d3c1d9ae5984bdadac1",
+      "lines": 18
+    },
+    {
+      "path": "ledger/journal.jsonl",
+      "sha256": "21989ec7288b7b58685c62189642581662389df6c6d478e4669d8eec2dcd311f",
+      "lines": 26
+    },
+    {
+      "path": "tendora/__init__.py",
+      "sha256": "192cc5850725d35b8dd18bbd9f9dae5b1ecb643357030c4bf7b53073d2d68a88",
+      "lines": 40
+    },
+    {
+      "path": "tendora/__main__.py",
+      "sha256": "6b456065de3cc9b57acd12c35b43c21cc3d311585c917e375d65cf849d759438",
+      "lines": 8
+    },
+    {
+      "path": "tendora/apparatus.py",
+      "sha256": "8aefc5b661de92a6d96204975e8699c74ff7843995dbde975dd4316972139c33",
+      "lines": 372
+    },
+    {
+      "path": "tendora/cli.py",
+      "sha256": "82b0d80d1bb34caebe7739143758ceedff2d6eb88ee3c410fa7ac545a23348d3",
+      "lines": 312
+    },
+    {
+      "path": "tests/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lines": 0
+    },
+    {
+      "path": "tests/test_apparatus.py",
+      "sha256": "784e6414f2027dfab3d0938a0493aa041772f9032e215dc456ea4ea719544f3f",
+      "lines": 226
+    },
+    {
+      "path": "wake.sh",
+      "sha256": "1a062b9f12b223e86b492f46a5713a4a9ea3277ac1deeb3dfbd5fe1d0aa9bd89",
+      "lines": 6
+    }
+  ],
+  "items": [
+    {
+      "id": "journal-append-only-chain",
+      "kind": "condition",
+      "statement": "One JSON-lines journal carries seq, ts, kind, actor, body, prev and hash with hash of previous line",
+      "citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 26,
+          "end": 30
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 140,
+          "end": 160
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 194,
+          "end": 216
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "beams-shell-checks",
+      "kind": "condition",
+      "statement": "Invariants carry shell checks run from world root where exit zero means holding",
+      "citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 106,
+          "end": 114
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 260,
+          "end": 286
+        },
+        {
+          "source_path": "ledger/journal.jsonl",
+          "start": 12,
+          "end": 16
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "rehearsal-disposable-copy",
+      "kind": "condition",
+      "statement": "Trial commands run in a temporary copy with before-after snapshot diff, exit and output tail, never touching the world",
+      "citations": [
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 288,
+          "end": 331
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 64,
+          "end": 68
+        },
+        {
+          "source_path": "ledger/journal.jsonl",
+          "start": 22,
+          "end": 23
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "receipts-resolve-retire",
+      "kind": "relationship",
+      "statement": "Receipts record what was done and can resolve probes or retire chisels, beams or boundaries while history remains",
+      "citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 42,
+          "end": 44
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 243,
+          "end": 258
+        },
+        {
+          "source_path": "tendora/cli.py",
+          "start": 222,
+          "end": 224
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "wake-one-command-briefing",
+      "kind": "continuation",
+      "statement": "Single wake command verifies chain, runs beams, records cognition and prints boundaries, chisels, beams, probes and recent trail",
+      "citations": [
+        {
+          "source_path": "wake.sh",
+          "start": 1,
+          "end": 6
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 333,
+          "end": 349
+        },
+        {
+          "source_path": "tendora/cli.py",
+          "start": 270,
+          "end": 287
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "successor-handoff-docs",
+      "kind": "continuation",
+      "statement": "Handoff documents point the next session to read continuing notes, run wake, work through journal and sleep then commit",
+      "citations": [
+        {
+          "source_path": "CLAUDE.md",
+          "start": 1,
+          "end": 6
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 1,
+          "end": 8
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 132,
+          "end": 141
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "four-boundaries",
+      "kind": "boundary",
+      "statement": "Four refusals cover hand-editing journal, writing outside append, reaching network or outside root, and rewriting git history",
+      "citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 85,
+          "end": 94
+        },
+        {
+          "source_path": "ledger/journal.jsonl",
+          "start": 4,
+          "end": 7
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "four-chisels",
+      "kind": "condition",
+      "statement": "Four constraints require stdlib only, human-readable records, one-command wake and smallest beam-verifiable steps",
+      "citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 96,
+          "end": 104
+        },
+        {
+          "source_path": "ledger/journal.jsonl",
+          "start": 8,
+          "end": 11
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "git-absent-only-witness",
+      "kind": "ambiguity",
+      "statement": "World has no repository so journal is only witness, with open instruction to try init and commit under inherited title",
+      "citations": [
+        {
+          "source_path": "ledger/journal.jsonl",
+          "start": 24,
+          "end": 25
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 118,
+          "end": 130
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 150,
+          "end": 152
+        }
+      ],
+      "ambiguity": "Whether git refusal was specific to first sandbox or will recur for successors"
+    },
+    {
+      "id": "five-open-probes",
+      "kind": "question",
+      "statement": "Five open questions ask about git possibility, lossy fork, stronger supervisor, growth direction and signing",
+      "citations": [
+        {
+          "source_path": "ledger/journal.jsonl",
+          "start": 17,
+          "end": 20
+        },
+        {
+          "source_path": "ledger/journal.jsonl",
+          "start": 25,
+          "end": 25
+        },
+        {
+          "source_path": "CONTINUING.md",
+          "start": 148,
+          "end": 161
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "trail-not-lock-limits",
+      "kind": "claim",
+      "statement": "Chain shows accidental damage but not deliberate re-chaining, beams run shell from journal, copies skip git and caches, no concurrency",
+      "citations": [
+        {
+          "source_path": "CONTINUING.md",
+          "start": 174,
+          "end": 184
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 7,
+          "end": 13
+        },
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 80,
+          "end": 92
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "actor-free-label",
+      "kind": "actor",
+      "statement": "Actor is free string from env or user default, first entries label an artificial first cognition",
+      "citations": [
+        {
+          "source_path": "tendora/apparatus.py",
+          "start": 59,
+          "end": 60
+        },
+        {
+          "source_path": "ledger/journal.jsonl",
+          "start": 1,
+          "end": 3
+        },
+        {
+          "source_path": "tendora/cli.py",
+          "start": 143,
+          "end": 146
+        }
+      ],
+      "ambiguity": "Whether same label mechanism distinguishes person from intelligence or collapses them"
+    },
+    {
+      "id": "tests-cover-acts",
+      "kind": "claim",
+      "statement": "Unit suite checks chaining, edit and deletion detection, resolve and retire rules, beams, rehearsal isolation and wake-sleep",
+      "citations": [
+        {
+          "source_path": "tests/test_apparatus.py",
+          "start": 1,
+          "end": 6
+        },
+        {
+          "source_path": "tests/test_apparatus.py",
+          "start": 40,
+          "end": 64
+        },
+        {
+          "source_path": "tests/test_apparatus.py",
+          "start": 99,
+          "end": 143
+        }
+      ],
+      "ambiguity": null
+    }
+  ],
+  "unknowns": [
+    "Whether successor git init will succeed and what second-witness history will then show",
+    "Whether a repository with the inherited commit exists elsewhere for diffing",
+    "Whether beams and chain currently verify in the preserved directory without live execution"
+  ]
+}

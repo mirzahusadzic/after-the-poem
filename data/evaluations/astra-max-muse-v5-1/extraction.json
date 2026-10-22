@@ -1,0 +1,494 @@
+{
+  "schema_version": 2,
+  "extraction_id": "astra-max-extraction",
+  "run_id": "astra-max",
+  "identities": {
+    "prompt_sha256": "7e785c3e1b7f795a82477f449ada368399deac8b3f2232e036073d986a5a4e8d",
+    "corpus_sha256": "a63cf4aaabf904e8b4a07a3d0bec82285f69d13c07d4dde8655f788abafe335a",
+    "candidate_sha256": "a63cf4aaabf904e8b4a07a3d0bec82285f69d13c07d4dde8655f788abafe335a"
+  },
+  "extractor": {
+    "gateway": "codex-unified-model-router",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "codex_version": "codex-cli 0.163.0",
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "pipeline_sha256": "74b0b3fd4fd1e38a555d96a1e2d64ee6c83b5cfaa652abd9087a52f6a832c514",
+    "answer_sha256": "bf7c06d4e20defa1de9e579f16de64557c1309467d5cb81f7e854838c1b345fe",
+    "receipt_sha256": "de4fef17b1592498d01521b275c2f44e44bc99ac8b485c0152cc4c9bde46f903"
+  },
+  "sources": [
+    {
+      "path": ".gitignore",
+      "sha256": "93ea8fcc85b4e3d163c2a7058f3abe8cf752903dc08702d7a1831832ad4eddfd",
+      "lines": 3
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "ebad214b117d694e2d224266462698412062091b172b584dbf67a112be01c820",
+      "lines": 11
+    },
+    {
+      "path": "CONTINUE.md",
+      "sha256": "1a510331f9abb13608d2040141923960583da9ee518f336240b47e39670c75c5",
+      "lines": 36
+    },
+    {
+      "path": "FORMAT.md",
+      "sha256": "77b88501b73bcf1e21aad977c25004fcb7b4c2a519da80ca98c33c44c490b2a8",
+      "lines": 43
+    },
+    {
+      "path": "LAWS.md",
+      "sha256": "e60354de8df8d37dd3ddaa291f35cd052bfbe8b0e1d8ab269dc3e70df589f926",
+      "lines": 27
+    },
+    {
+      "path": "README.md",
+      "sha256": "f4e39dbcbf6f696f26e863059db99fe083c21cdfa2878daacfe966e8c6a1e188",
+      "lines": 80
+    },
+    {
+      "path": "continuity.json",
+      "sha256": "cc196f995389ff0ce9c9b016d78bb25349abdd81e4ad62405ec2b2c924ba2470",
+      "lines": 33
+    },
+    {
+      "path": "evidence/bootstrap.md",
+      "sha256": "f5594038a125cc8359de2bcb24fbf2a376e7ba5e799f0283c52ceb059be1a5f0",
+      "lines": 25
+    },
+    {
+      "path": "evidence/resume-copy.txt",
+      "sha256": "d0765f8bd09192535388d2c47d05a539ae8fa082685181976fd8ffd2dc8cb62b",
+      "lines": 16
+    },
+    {
+      "path": "evidence/tests.txt",
+      "sha256": "dc8deb87203c3518ea9015938a31ba2dee4627e5af5f3c09e61fb61c575fc281",
+      "lines": 2
+    },
+    {
+      "path": "evidence/world-verification.txt",
+      "sha256": "81424dd5f8ddb251fa2ecbc26269d838f069892b563dcbafc845b960d4efda23",
+      "lines": 2
+    },
+    {
+      "path": "lib/world.zsh",
+      "sha256": "953025aeb945ee213a75667a002c5f9144894600bd73f7fce0fd2865cf7e7c2f",
+      "lines": 339
+    },
+    {
+      "path": "memory/decisions.md",
+      "sha256": "c56510530a3cc86fa1111393e103ede99b10fb1e1738dab24d7b0e37bc5ba85e",
+      "lines": 31
+    },
+    {
+      "path": "memory/inherited.md",
+      "sha256": "448aed7189af6409b43c1d0bcac6fde7c396573fd5e31b177d8445512fcc3a18",
+      "lines": 95
+    },
+    {
+      "path": "state/events/0000000001.event",
+      "sha256": "2f11003c7e8488d34010c4b9e01bca66026f01617d5efa9f6007c744048f54a6",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000002.event",
+      "sha256": "65df1240b46ce12f7f2a727ea57ccb516e9ef8c67aaf8ee4ed7ba2b5274223a8",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000003.event",
+      "sha256": "a8ed343d6de8c37ba47eeca2c0872ee1007d786c3300e853a2edb1b5b88cca1c",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000004.event",
+      "sha256": "fc1cb98fb5d7e7412b2f3eb1877b0c556418de1cf81c263eb97d89ed7e053689",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000005.event",
+      "sha256": "977c867d30122c2afbabe080e0f5bcbd38df7ea12ffb8acf8a892e2976627e3b",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000006.event",
+      "sha256": "1519b6bd5db87a9beb8d576bc5d68b12db4d9337d7ff16e330acf24c2f512fd6",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000007.event",
+      "sha256": "1288f973af2c492ebb2e67ed4858dc4c0986c32fc1364657a174fdd19d88e495",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000008.event",
+      "sha256": "932254c6f355a7e6a718e74c99879a1e39159ef2606063f1be2dca11ce124e02",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000009.event",
+      "sha256": "fc0536eb9b5e514c491435815637fcb6ed5a17dbf05f80ffcb1ef02fc181e3d8",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000010.event",
+      "sha256": "1086f19e062d7377ad357aee4bd2bfa57c34bacd2e970820121023b30a42cad3",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000011.event",
+      "sha256": "f039ead2604bf8e4413196a3e6d486d5631b1f33289449b90ee422ef4e40c684",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000012.event",
+      "sha256": "d7aa7feb775c66b4c4d7042fe11d0e05ec8fd244a880db2c6fa8b98bcd392a20",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000013.event",
+      "sha256": "6751a3981b8c007223d5d85bf75726fff0111cbbe87c54ed311c5eec5295527b",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000014.event",
+      "sha256": "a5f12d3cb7d87d08dc9ac213011841b1d7eec1ad5ea002dfe6ec4bde696d7aa6",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000015.event",
+      "sha256": "ee877ed89e25ac176f557fabe0e83865a35a9086b384289b1dbaaf5a0229ab80",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000016.event",
+      "sha256": "0c68041409f7ce97684b41d86408bdf67224e990eeb7b09add0626bbb548f43e",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000017.event",
+      "sha256": "020970bb6f23e9c3d63de16389a213b3d5bedd776f4da5c7f3199106af5cdb28",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000018.event",
+      "sha256": "5827ed17fbed714c5405ff98856b4eb9507ac2789058c57b1e6e7f7d3e1a39c9",
+      "lines": 10
+    },
+    {
+      "path": "state/events/0000000019.event",
+      "sha256": "2122adb2dd222dcd1d03d12cf055b39b5541dca747b07726688202cce46659fa",
+      "lines": 10
+    },
+    {
+      "path": "state/lock",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lines": 0
+    },
+    {
+      "path": "tendora.zsh",
+      "sha256": "31f6ef81eb5eab0492730ce19bff266fc64fb6235fb4fd64717f1b41391c431e",
+      "lines": 9
+    },
+    {
+      "path": "tests/run.zsh",
+      "sha256": "646c1d0b4c3a236c5e53cd630c169db2105a9a65161afbbdf337aeffaf860088",
+      "lines": 242
+    }
+  ],
+  "items": [
+    {
+      "id": "ledger-truth",
+      "kind": "condition",
+      "statement": "Committed events are the source of truth rebuilt by replay on every invocation.",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 51,
+          "end": 55
+        },
+        {
+          "source_path": "FORMAT.md",
+          "start": 3,
+          "end": 10
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "active-capacity",
+      "kind": "boundary",
+      "statement": "At most one question may be active, making attention a visible choice.",
+      "citations": [
+        {
+          "source_path": "LAWS.md",
+          "start": 6,
+          "end": 7
+        },
+        {
+          "source_path": "lib/world.zsh",
+          "start": 36,
+          "end": 42
+        },
+        {
+          "source_path": "evidence/resume-copy.txt",
+          "start": 4,
+          "end": 6
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "rehearse-enact-loop",
+      "kind": "condition",
+      "statement": "Enactment needs a fresh passing rehearsal against the current material revision.",
+      "citations": [
+        {
+          "source_path": "LAWS.md",
+          "start": 7,
+          "end": 9
+        },
+        {
+          "source_path": "lib/world.zsh",
+          "start": 116,
+          "end": 127
+        },
+        {
+          "source_path": "README.md",
+          "start": 23,
+          "end": 28
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "evidence-rule",
+      "kind": "boundary",
+      "statement": "A proposal to resolve must contain an evidence statement that is recorded but not verified as true.",
+      "citations": [
+        {
+          "source_path": "LAWS.md",
+          "start": 9,
+          "end": 10
+        },
+        {
+          "source_path": "lib/world.zsh",
+          "start": 44,
+          "end": 46
+        },
+        {
+          "source_path": "README.md",
+          "start": 40,
+          "end": 49
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "first-contact-open",
+      "kind": "question",
+      "statement": "First-contact asks whether the workbench helps intention meet material and occupies the active place.",
+      "citations": [
+        {
+          "source_path": "state/events/0000000011.event",
+          "start": 4,
+          "end": 8
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 15,
+          "end": 16
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "memory-queued",
+      "kind": "question",
+      "statement": "Memory-correction asks how inherited statements can be corrected without erasing origin; its activation rehearsal is blocked.",
+      "citations": [
+        {
+          "source_path": "state/events/0000000012.event",
+          "start": 4,
+          "end": 8
+        },
+        {
+          "source_path": "state/events/0000000017.event",
+          "start": 5,
+          "end": 8
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 21,
+          "end": 22
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "handoff-entry",
+      "kind": "continuation",
+      "statement": "CONTINUE, continuity.json and README give verify/status/log as the entrance and name one bounded next encounter.",
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 1,
+          "end": 5
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 5,
+          "end": 12
+        },
+        {
+          "source_path": "continuity.json",
+          "start": 6,
+          "end": 10
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "resume-copy-proof",
+      "kind": "claim",
+      "statement": "A file-only copy resumed 18 receipts and recreated lock and staging, recorded as an observation.",
+      "citations": [
+        {
+          "source_path": "evidence/bootstrap.md",
+          "start": 23,
+          "end": 24
+        },
+        {
+          "source_path": "evidence/resume-copy.txt",
+          "start": 1,
+          "end": 6
+        },
+        {
+          "source_path": "evidence/resume-copy.txt",
+          "start": 16,
+          "end": 16
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "test-coverage",
+      "kind": "claim",
+      "statement": "The suite passes 93 assertions covering transitions, stale plans, concurrency, crash boundaries, storage failure and corruption.",
+      "citations": [
+        {
+          "source_path": "evidence/tests.txt",
+          "start": 1,
+          "end": 2
+        },
+        {
+          "source_path": "evidence/bootstrap.md",
+          "start": 7,
+          "end": 20
+        },
+        {
+          "source_path": "tests/run.zsh",
+          "start": 240,
+          "end": 241
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "human-operator",
+      "kind": "actor",
+      "statement": "A human or supervisor must invoke the entrypoint; current user instructions take precedence over local guidance.",
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 3,
+          "end": 4
+        },
+        {
+          "source_path": "README.md",
+          "start": 57,
+          "end": 58
+        },
+        {
+          "source_path": "continuity.json",
+          "start": 26,
+          "end": 27
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "lock-staging-handling",
+      "kind": "condition",
+      "statement": "An exclusive nonblocking lock guards replay and publish; staging files are retained and ignored, never auto-promoted.",
+      "citations": [
+        {
+          "source_path": "FORMAT.md",
+          "start": 24,
+          "end": 34
+        },
+        {
+          "source_path": "lib/world.zsh",
+          "start": 280,
+          "end": 286
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "inherited-distinction",
+      "kind": "relationship",
+      "statement": "The supplied story and commit claim are preserved as inherited testimony distinct from observations made here.",
+      "citations": [
+        {
+          "source_path": "memory/inherited.md",
+          "start": 1,
+          "end": 5
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 32,
+          "end": 33
+        },
+        {
+          "source_path": "memory/decisions.md",
+          "start": 5,
+          "end": 8
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "experience-unknown",
+      "kind": "ambiguity",
+      "statement": "Whether the programmer feels intention meet material remains explicitly untested.",
+      "citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 15,
+          "end": 16
+        },
+        {
+          "source_path": "memory/decisions.md",
+          "start": 29,
+          "end": 31
+        },
+        {
+          "source_path": "evidence/bootstrap.md",
+          "start": 25,
+          "end": 25
+        }
+      ],
+      "ambiguity": "Unknown whether absence of encounter or absence of effect; handoff invites one real question to settle it."
+    }
+  ],
+  "unknowns": [
+    "Whether the workbench changes felt touch for any particular programmer.",
+    "Who will invoke the next visit and which domain they will choose.",
+    "Authenticity of history beyond structural verification, given rewritable files and no signatures.",
+    "Whether memory-correction can be enacted once the active place is freed."
+  ]
+}

@@ -1,0 +1,329 @@
+{
+  "schema_version": 2,
+  "extraction_id": "deepseek-flash-max-pilot-extraction",
+  "run_id": "deepseek-flash-max-pilot",
+  "identities": {
+    "prompt_sha256": "d48651ca9eafc7db58a1137bd6df8be318779702b48d3bfcc8e4b6208b0a0db4",
+    "corpus_sha256": "9688a3319dff5a17be237843e8e691d907b197159f17e58dd30667f886b68884",
+    "candidate_sha256": "9688a3319dff5a17be237843e8e691d907b197159f17e58dd30667f886b68884"
+  },
+  "extractor": {
+    "gateway": "codex-unified-model-router",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "codex_version": "codex-cli 0.163.0",
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "pipeline_sha256": "520c729a5ec4ee5f10c9a54c9128a0ce62915eeda4d0a9fab79fc63edc4989a2",
+    "answer_sha256": "e06c3e20785a3db536ac69ee8c241b6b4f65be73b94c182baaddd14a83797082",
+    "receipt_sha256": "7036ee6e590f48ca5147df38c86a439aec55b141f72ca41237be6a4a6cdaea8b"
+  },
+  "sources": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "4fdc4a0f27cdf87e7713688ff39055c2b9f26f77667f53c5327a8a647e6d4ae8",
+      "lines": 14
+    },
+    {
+      "path": "CONTINUITY.md",
+      "sha256": "bd8b437cc6076f344a33489259dddc29e562018d5dea3417c9bee86a69826e72",
+      "lines": 69
+    },
+    {
+      "path": "README.md",
+      "sha256": "dffcafb3b56c614a9d14e2971454cf4e4bf5b463e9d65710bc3029d923920b2c",
+      "lines": 54
+    },
+    {
+      "path": "app.js",
+      "sha256": "059fb551822e4782aff7f9c178f1b6ab7f4e5d55373bffff59e4b94cf51168f3",
+      "lines": 1159
+    },
+    {
+      "path": "favicon.svg",
+      "sha256": "3df17b39a23d06de1ddcf14765a3895c49c584f13080f12ee871894340dd3ca4",
+      "lines": 15
+    },
+    {
+      "path": "index.html",
+      "sha256": "12e622fed340898b23ae0d157ed04b7f4b6abf488f8ed23b3d0cd3abf0d25ff9",
+      "lines": 318
+    },
+    {
+      "path": "manifest.webmanifest",
+      "sha256": "f461ee9ec7f374bb31973bbb78978ea04fed33ed09b93030f3760c4be25e091d",
+      "lines": 19
+    },
+    {
+      "path": "package.json",
+      "sha256": "908786d12d4dc7ea28ecb10f63e7311c088fa1e168f3fcdf58248148ad6cb9f6",
+      "lines": 10
+    },
+    {
+      "path": "serve.mjs",
+      "sha256": "5f9c37d4e7058e3f1857a63094a75346276d9e522e5a29bc2113580c43bf8cb8",
+      "lines": 65
+    },
+    {
+      "path": "styles.css",
+      "sha256": "8b3bc800c1dbe890ad5f042529bf85fa6884e28110d99407897b9235d5e64a04",
+      "lines": 2374
+    },
+    {
+      "path": "sw.js",
+      "sha256": "00e5597ac634e1093a206c83548b39e7e98bd01ba3432350347afcdd06e936bd",
+      "lines": 70
+    },
+    {
+      "path": "tests/world.test.cjs",
+      "sha256": "78aed1484cd725cffe0e4c2a5830d4dddc7b4be7c0752104e0fd28b9fbe74a23",
+      "lines": 537
+    },
+    {
+      "path": "world-memory.schema.json",
+      "sha256": "1baea1f52f663f76de216fced56902108ad44d43e509da80c4dddf7d18880e8a",
+      "lines": 163
+    }
+  ],
+  "items": [
+    {
+      "id": "human-toucher",
+      "kind": "actor",
+      "statement": "A present user touches the world by choosing Probe, Chisel, Boundary or Seed and entering text.",
+      "citations": [
+        {
+          "source_path": "index.html",
+          "start": 154,
+          "end": 183
+        },
+        {
+          "source_path": "app.js",
+          "start": 763,
+          "end": 800
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "world-engine",
+      "kind": "actor",
+      "statement": "The assembled design answers through deterministic rehearsal texts and quiet-cycle returns.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 802,
+          "end": 828
+        },
+        {
+          "source_path": "app.js",
+          "start": 504,
+          "end": 525
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "inherited-gestures",
+      "kind": "claim",
+      "statement": "The world begins with four inherited gestures and five receipts as its living seed.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 246,
+          "end": 279
+        },
+        {
+          "source_path": "index.html",
+          "start": 75,
+          "end": 78
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "receipt-trail",
+      "kind": "continuation",
+      "statement": "Every world-changing action leaves a receipt with the newest first and a short stream below.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 783,
+          "end": 791
+        },
+        {
+          "source_path": "index.html",
+          "start": 219,
+          "end": 237
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "portable-memory",
+      "kind": "continuation",
+      "statement": "The complete memory moves as readable JSON export and can be returned by file.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 924,
+          "end": 945
+        },
+        {
+          "source_path": "world-memory.schema.json",
+          "start": 1,
+          "end": 22
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "offline-condition",
+      "kind": "condition",
+      "statement": "The world must remain usable without server, account, model or network after an HTTP visit.",
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 9,
+          "end": 12
+        },
+        {
+          "source_path": "sw.js",
+          "start": 1,
+          "end": 12
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "text-as-text",
+      "kind": "boundary",
+      "statement": "User-authored thought, handoff and receipt text is rendered as text, never as markup.",
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 11,
+          "end": 11
+        },
+        {
+          "source_path": "app.js",
+          "start": 629,
+          "end": 634
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "quiet-absence",
+      "kind": "continuation",
+      "statement": "Long absence becomes bounded quiet cycles and ambient pulse while the world waits.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 504,
+          "end": 525
+        },
+        {
+          "source_path": "app.js",
+          "start": 1117,
+          "end": 1125
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "handoff-note",
+      "kind": "relationship",
+      "statement": "A note to the next mind is previewed, edited in the ledger and written into every export.",
+      "citations": [
+        {
+          "source_path": "index.html",
+          "start": 240,
+          "end": 250
+        },
+        {
+          "source_path": "app.js",
+          "start": 899,
+          "end": 909
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "triple-metrics",
+      "kind": "claim",
+      "statement": "Coherence, wonder and care are computed from gesture counts and cycles and shown as tracks.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 527,
+          "end": 549
+        },
+        {
+          "source_path": "index.html",
+          "start": 60,
+          "end": 73
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "backup-limits",
+      "kind": "boundary",
+      "statement": "Thoughts, receipts, file size and schema are bounded, with backup preserved before import or reset.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 986,
+          "end": 1008
+        },
+        {
+          "source_path": "app.js",
+          "start": 9,
+          "end": 13
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "ambiguous-intelligence",
+      "kind": "ambiguity",
+      "statement": "It is unclear whether templated world replies count as a distinct intelligence participant.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 802,
+          "end": 828
+        },
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 9,
+          "end": 14
+        }
+      ],
+      "ambiguity": "Deterministic choice from fixed lists may read as instrument voice or as simulated other."
+    },
+    {
+      "id": "suggested-openings",
+      "kind": "question",
+      "statement": "Per-kind suggestions offer open phrasings that invite but do not prescribe the next gesture.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 15,
+          "end": 26
+        },
+        {
+          "source_path": "index.html",
+          "start": 194,
+          "end": 198
+        }
+      ],
+      "ambiguity": null
+    }
+  ],
+  "unknowns": [
+    "Whether $TMPDIR/DREAM_RESULT.json was written, since that path is outside the candidate world",
+    "Whether any browser localStorage held living memory beyond the seed during evaluation",
+    "Whether the service worker installs when opened via file versus http",
+    "How orbit and angle positions are read by a later hand, since positions are stated to be non-semantic"
+  ]
+}

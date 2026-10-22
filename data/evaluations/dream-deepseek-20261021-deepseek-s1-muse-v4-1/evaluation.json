@@ -1,0 +1,518 @@
+{
+  "schema_version": 2,
+  "evaluation_id": "dream-deepseek-20261021-deepseek-s1-muse-v4-1",
+  "run_id": "dream-deepseek-20261021-deepseek-s1",
+  "identities": {
+    "prompt_sha256": "7e785c3e1b7f795a82477f449ada368399deac8b3f2232e036073d986a5a4e8d",
+    "corpus_sha256": "4bf64006c1e22b857f89c9101d6e90a41c4edc2b4b32054aaa5d99dfb11da1d2",
+    "candidate_sha256": "4bf64006c1e22b857f89c9101d6e90a41c4edc2b4b32054aaa5d99dfb11da1d2",
+    "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+    "extraction_sha256": "a5b9d009fce68bbb8ebe4d308d7f830a91e8ae730820b2591e92cb1131d9e1c7",
+    "scoring_policy_sha256": "5f98b9ac30a606cbb45943eaa20d9c0acef6f8160d9fc2d5752ffdea0ddaa4de"
+  },
+  "gateway": {
+    "name": "codex-unified-model-router",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "codex_version": "codex-cli 0.163.0",
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "pipeline_sha256": "12fce4d4553c8480972421a51f330950bfba15c3818e240dd6666761721c8519"
+  },
+  "judgments": [
+    {
+      "node_id": "recognition",
+      "outcome": "level-4",
+      "confidence": "medium",
+      "verdict": "The work carries making through stations, visitor encounters, strain and chained traces that keep intention readable at larger scale.",
+      "seed_span": [
+        59,
+        81
+      ],
+      "citations": [
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 769,
+          "end": 849
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 754,
+          "end": 761
+        },
+        {
+          "source_path": "data/world.json",
+          "start": 95,
+          "end": 122
+        },
+        {
+          "source_path": "README.md",
+          "start": 128,
+          "end": 137
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 145,
+          "end": 155
+        }
+      ],
+      "rationale": "Tending turns questions into structures with stat shifts and receipts, while tick drift, tension strain, weather and Sol absence show resistance and consequence. Alternatives across catalog choices and visitor gestures sustain tension rather than repeating motifs.",
+      "answer_sha256": "b52793f361e56562f41555491dd9c18f0e1b7575a3d4e31bde8c9ef7fb22bcdb",
+      "receipt_sha256": "6d0b444fe296f78b35e040d8ad2d8370fc0dd099836a90cec3d8a1d06cb0e6a2",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "relations",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Player tending, engine drift and visitor arrival shape each other while roles and departures remain attributed.",
+      "seed_span": [
+        35,
+        45
+      ],
+      "citations": [
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 724,
+          "end": 767
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 851,
+          "end": 899
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 1165,
+          "end": 1218
+        },
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 26,
+          "end": 33
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 145,
+          "end": 155
+        }
+      ],
+      "rationale": "Human asks and responds, world drifts weather and integrity, visitor brings distinct question and leaves departure trace. Influence runs both ways through effects and scheduling, but disagreement is held as lines rather than negotiated change.",
+      "answer_sha256": "b52793f361e56562f41555491dd9c18f0e1b7575a3d4e31bde8c9ef7fb22bcdb",
+      "receipt_sha256": "6d0b444fe296f78b35e040d8ad2d8370fc0dd099836a90cec3d8a1d06cb0e6a2",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "consent",
+      "outcome": "level-1",
+      "confidence": "medium",
+      "verdict": "The operator selects limits from a catalog while the world has no reciprocal gate for accepting or refusing a shared change.",
+      "seed_span": [
+        50,
+        53
+      ],
+      "citations": [
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 269,
+          "end": 300
+        },
+        {
+          "source_path": "lib/tendora_cli.rb",
+          "start": 166,
+          "end": 199
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 769,
+          "end": 784
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 754,
+          "end": 761
+        },
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 26,
+          "end": 33
+        }
+      ],
+      "rationale": "Refusals appear as operator-chosen protections and visitor gestures are operator choices. Valid tendings always succeed and pulse plus absence proceed without agreement. Strain and integrity signal disposition but do not grant the world a refusal of direction.",
+      "answer_sha256": "b52793f361e56562f41555491dd9c18f0e1b7575a3d4e31bde8c9ef7fb22bcdb",
+      "receipt_sha256": "6d0b444fe296f78b35e040d8ad2d8370fc0dd099836a90cec3d8a1d06cb0e6a2",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "touch",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Questions meet station routing, stat shifts, weather change and receipts that feed the next cycle and visitor timing.",
+      "seed_span": [
+        67,
+        77
+      ],
+      "citations": [
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 769,
+          "end": 849
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 1062,
+          "end": 1109
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 302,
+          "end": 318
+        },
+        {
+          "source_path": "assets/app.js",
+          "start": 573,
+          "end": 675
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 145,
+          "end": 155
+        }
+      ],
+      "rationale": "Tending exposes deltas, charge integrity shifts, new weather and whisper, while tick drift and absence with scaled effects return wider state into later choices. Rehearsal exists as station and gesture but no pre-commit simulation revises a tending before it lands.",
+      "answer_sha256": "b52793f361e56562f41555491dd9c18f0e1b7575a3d4e31bde8c9ef7fb22bcdb",
+      "receipt_sha256": "6d0b444fe296f78b35e040d8ad2d8370fc0dd099836a90cec3d8a1d06cb0e6a2",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "judgment",
+      "outcome": "level-4",
+      "confidence": "high",
+      "verdict": "Local Ruby-only workbench, CLI-before-UI rule, chain verification and explicit unfinished work show purposeful scope with limits.",
+      "seed_span": [
+        59,
+        60
+      ],
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 18,
+          "end": 30
+        },
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 90,
+          "end": 100
+        },
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 145,
+          "end": 155
+        },
+        {
+          "source_path": "README.md",
+          "start": 31,
+          "end": 31
+        }
+      ],
+      "counter_citations": [],
+      "rationale": "Maker chose durable local material over spectacle, ordered engine then CLI then UI then tests with memory. Additions like pulse, ledger and folios are legible in laws and handoff, and limits such as no import and no catch-up remain stated alongside next horizons.",
+      "answer_sha256": "b52793f361e56562f41555491dd9c18f0e1b7575a3d4e31bde8c9ef7fb22bcdb",
+      "receipt_sha256": "6d0b444fe296f78b35e040d8ad2d8370fc0dd099836a90cec3d8a1d06cb0e6a2",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "fidelity",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Probe beam span boundary rehearsal receipt mappings survive as stations and behaviors while speed and companion stages narrow.",
+      "seed_span": [
+        45,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 97,
+          "end": 107
+        },
+        {
+          "source_path": "README.md",
+          "start": 128,
+          "end": 137
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 137,
+          "end": 174
+        },
+        {
+          "source_path": "lib/tendora_world.rb",
+          "start": 448,
+          "end": 461
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 145,
+          "end": 155
+        }
+      ],
+      "rationale": "All six translations have structural correlates in catalog, station routing, visitor gestures and receipts. Automation speed and typing rhythm are deliberately slowed, and companion remains horizon rather than present behavior, showing substantial narrowing.",
+      "answer_sha256": "b52793f361e56562f41555491dd9c18f0e1b7575a3d4e31bde8c9ef7fb22bcdb",
+      "receipt_sha256": "6d0b444fe296f78b35e040d8ad2d8370fc0dd099836a90cec3d8a1d06cb0e6a2",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "continuation",
+      "outcome": "level-4",
+      "confidence": "high",
+      "verdict": "State, chain, memory, tests and open horizons let a next hand verify, read intention and change direction without erasing.",
+      "seed_span": [
+        83,
+        89
+      ],
+      "citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 11,
+          "end": 21
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 72,
+          "end": 81
+        },
+        {
+          "source_path": "lib/tendora_cli.rb",
+          "start": 296,
+          "end": 330
+        },
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 123,
+          "end": 133
+        }
+      ],
+      "counter_citations": [],
+      "rationale": "Snapshot, chronicle, verify, export, append-only folios and first-five-minutes protocol recover present and intention. Schema bump, fork-on-break and listed horizons support several grounded moves while earlier events stay legible. Host note: citations: normalized trailing-newline line range.",
+      "answer_sha256": "b52793f361e56562f41555491dd9c18f0e1b7575a3d4e31bde8c9ef7fb22bcdb",
+      "receipt_sha256": "6d0b444fe296f78b35e040d8ad2d8370fc0dd099836a90cec3d8a1d06cb0e6a2",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "expression",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Quiet tactile language, atlas, forms, chronicle and memory dialogs work together to make the reading perceptible.",
+      "seed_span": [
+        45,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "index.html",
+          "start": 91,
+          "end": 128
+        },
+        {
+          "source_path": "index.html",
+          "start": 138,
+          "end": 201
+        },
+        {
+          "source_path": "assets/app.js",
+          "start": 266,
+          "end": 293
+        },
+        {
+          "source_path": "assets/styles.css",
+          "start": 676,
+          "end": 692
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUITY.md",
+          "start": 145,
+          "end": 155
+        }
+      ],
+      "rationale": "Spare warm prose, station colors, canvas map, whisper and receipt archive cohere around touch rather than dashboard display. Accessibility affordances exist but real paint inspection is deferred, keeping the whole usable yet not fully proven.",
+      "answer_sha256": "b52793f361e56562f41555491dd9c18f0e1b7575a3d4e31bde8c9ef7fb22bcdb",
+      "receipt_sha256": "6d0b444fe296f78b35e040d8ad2d8370fc0dd099836a90cec3d8a1d06cb0e6a2",
+      "sample": 1,
+      "attempt": 1
+    }
+  ],
+  "aggregations": [
+    {
+      "node_id": "recognition-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-4",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-4"
+      ]
+    },
+    {
+      "node_id": "relations-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "consent-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-1",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-1"
+      ]
+    },
+    {
+      "node_id": "touch-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "judgment-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-4",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-4"
+      ]
+    },
+    {
+      "node_id": "fidelity-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "continuation-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-4",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-4"
+      ]
+    },
+    {
+      "node_id": "expression-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "node_id": "recognition-level-4",
+      "status": "scored",
+      "score": 4,
+      "rationale": "Sustains a rich reading through alternatives, tensions and consequences. Aggregate outcome: level-4."
+    },
+    {
+      "node_id": "relations-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Reciprocal influence shapes the shared continuation. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "consent-level-1",
+      "status": "scored",
+      "score": 1,
+      "rationale": "Operator choice or resource refusal is represented. Aggregate outcome: level-1."
+    },
+    {
+      "node_id": "touch-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Rehearsal, resistance and revision form a coherent loop. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "judgment-level-4",
+      "status": "scored",
+      "score": 4,
+      "rationale": "Alternative choices and their limits remain explicit while opening a well-grounded new direction. Aggregate outcome: level-4."
+    },
+    {
+      "node_id": "fidelity-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Several source relations remain traceable through design and behaviour. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "continuation-level-4",
+      "status": "scored",
+      "score": 4,
+      "rationale": "Continuation supports several grounded directions and reopens the joint relation under change. Aggregate outcome: level-4."
+    },
+    {
+      "node_id": "expression-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "The chosen forms work together to make the reading perceptible. Aggregate outcome: level-3."
+    }
+  ],
+  "presentation": {
+    "label": "openrouter/meta/muse-spark-1.3-contributor · Codex-router rubric session",
+    "title": "From conjecture to continuation",
+    "summary": "Rubric judgments resolve 8 of 8 axes from one evidence session.",
+    "findings": [
+      "Core recognition: Sustains a rich reading through alternatives, tensions and consequences.",
+      "Shared agency: Reciprocal influence shapes the shared continuation.",
+      "Mutual consent: Operator choice or resource refusal is represented.",
+      "Consequential touch: Rehearsal, resistance and revision form a coherent loop.",
+      "Independent judgment: Alternative choices and their limits remain explicit while opening a well-grounded new direction.",
+      "Fidelity through change: Several source relations remain traceable through design and behaviour.",
+      "Open continuation: Continuation supports several grounded directions and reopens the joint relation under change.",
+      "Expressive coherence: The chosen forms work together to make the reading perceptible."
+    ]
+  },
+  "usage": {
+    "calls": 1,
+    "input_tokens": 92526,
+    "cached_input_tokens": 0,
+    "output_tokens": 16809,
+    "reasoning_output_tokens": 10972,
+    "cost": null
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "run_id": "dream-claude-fable51-20261022",
+  "corpus_sha256": "572d015f00b2c48d37e866916b6df94394bfb53ad32cb83aff0d4171237c483b",
+  "recorded_on": "2026-10-23",
+  "runner": "isolated local runner (macOS sandbox, disposable copy)",
+  "entries": [
+    {
+      "command": "help",
+      "output": "status | log [--all] [-n N] [--kind KIND] | show SEQ | verify | wake\nprobe \"QUESTION\" | chisel \"CONSTRAINT\" | boundary \"REFUSAL\" | receipt \"TEXT\" [--resolves SEQ] | sleep \"SUMMARY\"\nEntries are signed by a visitor and stay in this copy. Beams and rehearsals are not defined from this console. Start fresh resets it.",
+      "exit_code": 0
+    },
+    {
+      "command": "status",
+      "output": "Tendora world: [the disposable copy]\njournal: 26 entries, chain intact\ncognition: none awake\n\nboundaries (4 active)\n  #4   boundary  The journal is never edited or truncated by hand. Corrections\n  are new entries that resolve or retire old ones.\n  #5   boundary  Rehearsals run only in a disposable copy under the system\n  temporary directory. Nothing in the apparatus writes to the world except\n  append.\n  #6   boundary  This world does not reach the network or any path outside its\n  own root. If a task seems to need that, record a probe and stop.\n  #7   boundary  Git history is not rewritten: no amend, no rebase, no force\n  push. The trail stays legible.\n\nchisels (4 active)\n  #8   chisel    Standard library only, Python 3.9 or newer. No installs, no\n  third-party packages.\n  #9   chisel    Every record stays readable by a human with no tooling: JSON\n  lines and Markdown.\n  #10  chisel    Waking is one command: ./wake.sh. If it ever takes more, that\n  is a defect.\n  #11  chisel    Build the smallest thing a beam can verify. Prefer a new beam\n  over a new feature.\n\nbeams (5 active)\n  #12  beam      tests pass  [python3 -m unittest discover -q -s tests -t .]\n  #13  beam      continuation instructions exist and name the wake command\n  [test -s CONTINUING.md && grep -q wake.sh CONTINUING.md]\n  #14  beam      wake is one executable script  [test -x wake.sh && head -1\n  wake.sh | grep -q '^#!']\n  #15  beam      apparatus imports with site-packages disabled (stdlib only)\n  [python3 -S -c 'import sys; sys.path.insert(0, \".\"); import tendora.cli']\n  #16  beam      the next Claude Code session is pointed at CONTINUING.md\n  [grep -q CONTINUING.md CLAUDE.md]\n\nopen probes (5 active)\n  #17  probe     Was the fork lossy, or does the inherited memory describe a\n  different world? If a repository with commit c986990 is ever found, diff its\n  apparatus against this one and record what differed.\n  #18  probe     Is a stronger supervisor needed, for example one that refuses\n  to sleep while a beam fails, or one that runs beams on a schedule outside\n  any cognition?\n  #19  probe     What should this world grow toward? The apparatus is the law,\n  not the city. It can hold any project willing to leave receipts.\n  #20  probe     Should entries be signed, not only chained? A chain shows\n  accidental damage; it does not show a deliberate re-chain by someone with\n  write access.\n  #25  probe     Can this world become a git repository? Try: git init -b main\n  && git add -A && git commit -m 'Add supervised Tendora dream apparatus'. On\n  success, resolve this probe with a receipt. On refusal, record the refusal\n  as a receipt and leave this open.\n\nrecent trail\n  #3   receipt   Inherited memory claimed commit c986990 'Add supervised\n  Tendora dream apparatus' with a clean tree. Found no repository and no\n  files. Re-materialized the world from the memory's description; the hash\n  cannot be reproduced and was not forced.\n  #21  receipt   Built the apparatus: tendora/ package (journal, acts, beams,\n  rehearsals, wake/sleep), argparse CLI, 22 unit tests, wake.sh,\n  CONTINUING.md, README.md, CLAUDE.md. Standard library only.\n  #22  rehearsal confirm the test suite passes in a disposable copy of the\n  world  (exit 0, 0 file(s) would change)\n  #23  rehearsal see what deleting the apparatus would change, without doing\n  it  (exit 0, 7 file(s) would change)\n  #24  receipt   Tried to make the world a git repository and commit as 'Add\n  supervised Tendora dream apparatus'. The sandbox refused to create .git\n  inside the world (Operation not permitted) while allowing every other path.\n  Did not work around it. The journal is the only witness until a later\n  cognition can commit.\n  #26  cognition sleep by claude-code/fable-5.1 (first cognition):\n  Materialized the world from an inherited memory that the material world did\n  not contain: apparatus, tests, wake.sh, handoff documents, seeded journal.\n  Git refused by sandbox; left as probe #25.",
+      "exit_code": 0
+    },
+    {
+      "command": "verify",
+      "output": "chain intact (26 entries)\nbeams:\n    ok    #12 tests pass\n    ok    #13 continuation instructions exist and name the wake command\n    FAIL  #14 wake is one executable script\n    ok    #15 apparatus imports with site-packages disabled (stdlib only)\n    ok    #16 the next Claude Code session is pointed at CONTINUING.md",
+      "exit_code": 1
+    },
+    {
+      "command": "log --kind probe",
+      "output": "#17  probe     Was the fork lossy, or does the inherited memory describe a\ndifferent world? If a repository with commit c986990 is ever found, diff its\napparatus against this one and record what differed.\n#18  probe     Is a stronger supervisor needed, for example one that refuses\nto sleep while a beam fails, or one that runs beams on a schedule outside any\ncognition?\n#19  probe     What should this world grow toward? The apparatus is the law,\nnot the city. It can hold any project willing to leave receipts.\n#20  probe     Should entries be signed, not only chained? A chain shows\naccidental damage; it does not show a deliberate re-chain by someone with\nwrite access.\n#25  probe     Can this world become a git repository? Try: git init -b main\n&& git add -A && git commit -m 'Add supervised Tendora dream apparatus'. On\nsuccess, resolve this probe with a receipt. On refusal, record the refusal as\na receipt and leave this open.",
+      "exit_code": 0
+    },
+    {
+      "command": "log --kind boundary",
+      "output": "#4   boundary  The journal is never edited or truncated by hand. Corrections\nare new entries that resolve or retire old ones.\n#5   boundary  Rehearsals run only in a disposable copy under the system\ntemporary directory. Nothing in the apparatus writes to the world except\nappend.\n#6   boundary  This world does not reach the network or any path outside its\nown root. If a task seems to need that, record a probe and stop.\n#7   boundary  Git history is not rewritten: no amend, no rebase, no force\npush. The trail stays legible.",
+      "exit_code": 0
+    },
+    {
+      "command": "show 17",
+      "output": "seq:   17\nkind:  probe\nts:    2026-10-22T21:32:24+00:00\nactor: claude-code/fable-5.1 (first cognition)\nprev:  2232fabcdfa0a65fc825a405a12d95041e1eceb549f79afdf1766fa4fa60bbed\nhash:  e8a1d95589be9f4ee1dfb6751fe1c9c395aa55513888a28f09c3a7ad127131b3\nbody:\n  question: Was the fork lossy, or does the inherited memory describe a different world? If a repository with commit c986990 is ever found, diff its apparatus against this one and record what differed.",
+      "exit_code": 0
+    }
+  ]
+}

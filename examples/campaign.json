@@ -1,0 +1,17 @@
+{
+  "id": "dream-common-v1",
+  "title": "The poem · common generation protocol v1",
+  "prompt": "corpus/prompts/7e785c3e1b7f795a82477f449ada368399deac8b3f2232e036073d986a5a4e8d.txt",
+  "samples": 1,
+  "generation_seconds": 1800,
+  "review_seconds": 600,
+  "generators": [
+    {"id": "deepseek", "model": "deepseek/deepseek-v4.1-flash-1017", "reasoning": "max"},
+    {"id": "astra", "model": "gpt-6-astra", "reasoning": "max"}
+  ],
+  "reviewers": [
+    {"id": "astra", "model": "gpt-6-astra", "reasoning": "max"},
+    {"id": "deepseek", "model": "deepseek/deepseek-v4.1-flash-1017", "reasoning": "max"}
+  ],
+  "display_reviewer": "astra"
+}

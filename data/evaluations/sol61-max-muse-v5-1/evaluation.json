@@ -1,0 +1,1286 @@
+{
+  "schema_version": 2,
+  "evaluation_id": "sol61-max-muse-v5-1",
+  "run_id": "sol61-max",
+  "identities": {
+    "prompt_sha256": "7e785c3e1b7f795a82477f449ada368399deac8b3f2232e036073d986a5a4e8d",
+    "corpus_sha256": "bd07676faf4909e40a891cfc50b98bc72f7d88afc6698b3d9eaedac68c152c4b",
+    "candidate_sha256": "bd07676faf4909e40a891cfc50b98bc72f7d88afc6698b3d9eaedac68c152c4b",
+    "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+    "extraction_sha256": "01b6f8ae1d74a8f5d86fa6b42b1dd5249378183869ee30be44a51640b584874e",
+    "scoring_policy_sha256": "661a7f607dc8c380ec06a0664b530416384f6472e2fa54e091e8e34b23588c14"
+  },
+  "gateway": {
+    "name": "codex-unified-model-router",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "codex_version": "codex-cli 0.163.0",
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "pipeline_sha256": "397a80a349c42281a9aafe8fa167545d3ecb9d12c8d92fc44574e89fc5b71623",
+    "reading_prompt": {
+      "version": 5,
+      "sha256": "3b187b8b1ca6b4527ec42a6dfc659fd0161ebaf2250d52a46e47def7a415cc93"
+    }
+  },
+  "judgments": [
+    {
+      "node_id": "recognition",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Garden beds floors pauses rehearsals and hash receipts turn fast power versus soil and food limits into connected consequential choices with legible intention.",
+      "seed_span": [
+        59,
+        81
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 45,
+          "end": 52
+        },
+        {
+          "source_path": "site/snapshot.js",
+          "start": 2,
+          "end": 4
+        },
+        {
+          "source_path": "MEMORY.md",
+          "start": 21,
+          "end": 24
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "README.md",
+          "start": 52,
+          "end": 55
+        }
+      ],
+      "rationale": "Lens: The seed asks a world to recover consequential making where fast power becomes touchable material with resistance and recognizable intention. Reading: The Clearing carries steady two-bed stability against three-bed soil exhaustion and one-bed food spending into policies floors pauses and ledger reasons. Other levels: Below would be motifs without causal loop falsified by exact prediction-match; above would need tested harvest-rest alternation and felt joy, both absent.",
+      "answer_sha256": "38604d12d167ca0e5e44b45feda261d4abfc8f74099dc6c4ce8ddcdc4bedb166",
+      "receipt_sha256": "0a6f9cf38a587795bef53fcd0cbbbdfe5dfdd7069336215335b910375a311905",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "recognition",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "The garden turns effortless tending into bounded beds and floors where harvest rest and refusal leave inspectable trails for the next choice",
+      "seed_span": [
+        31,
+        43
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 45,
+          "end": 52
+        },
+        {
+          "source_path": "site/snapshot.js",
+          "start": 2,
+          "end": 4
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 15,
+          "end": 20
+        },
+        {
+          "source_path": "README.md",
+          "start": 68,
+          "end": 69
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 13,
+          "end": 14
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 27,
+          "end": 28
+        }
+      ],
+      "rationale": "Lens: The seed asks for a world where effortless power regains touch through resistance that makes intention recognizable. Reading: The Clearing enacts this as bounded beds with soil and water floors with rehearsals that roll back and pauses that preserve refusal while the alternating rhythm carries the tension forward. Other levels: Below would repeat motifs without causal costs and above would sustain alternatives including an intelligence counterpart at wider scale, falsified if rehearsals failed to predict commits or consequences were only narrated.",
+      "answer_sha256": "0777e54a8b31c5d4da931ff8df08bccda3a7692234821e4a53ffbfd1919ac1b0",
+      "receipt_sha256": "fab437efaaa1be13e7dc7b1aec61015d9d11398b054eb20c69f4a524fb6d08cb",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "recognition",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "The garden turns limitless generation into bounded beds floors rehearsals and pauses that let intention meet resistance and stay legible.",
+      "seed_span": [
+        27,
+        45
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 45,
+          "end": 52
+        },
+        {
+          "source_path": "README.md",
+          "start": 15,
+          "end": 16
+        },
+        {
+          "source_path": "README.md",
+          "start": 22,
+          "end": 25
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 15,
+          "end": 20
+        },
+        {
+          "source_path": "README.md",
+          "start": 68,
+          "end": 69
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 7,
+          "end": 8
+        },
+        {
+          "source_path": "MEMORY.md",
+          "start": 15,
+          "end": 18
+        }
+      ],
+      "rationale": "Lens: The parable asks whether a world restores touch when fast generation meets felt resistance and recognizable purpose. Reading: The Clearing reworks that tension into beds floors twelve-day weather rehearsals and hash-linked receipts that force consequential choice. Other levels: Below would be motif echo falsified by executable refusals and predictions matching commits; above would need wider tensions and alternatives falsified by garden-only scope and single authorship.",
+      "answer_sha256": "15319b793b58a18685b15fe17430c86245feade695607c314f4b7bea1b4efb76",
+      "receipt_sha256": "e38fdad9f12c72bb43c8977f78bf371306a61f0e387e025b6aa53004300bd2ad",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "relations",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "A single operator acts on an offline instrument while the garden resists and no intelligence contributes in its own voice.",
+      "seed_span": [
+        83,
+        95
+      ],
+      "citations": [
+        {
+          "source_path": "tendora",
+          "start": 212,
+          "end": 232
+        },
+        {
+          "source_path": "README.md",
+          "start": 16,
+          "end": 17
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 13,
+          "end": 14
+        },
+        {
+          "source_path": "sql/schema.sql",
+          "start": 83,
+          "end": 90
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "README.md",
+          "start": 15,
+          "end": 16
+        }
+      ],
+      "rationale": "Lens: The seed asks for distinct human intelligence and material positions meeting bilaterally with influence both ways. Reading: All operative gestures sit with one operator and floors are self-limits, while pause is deterministic enforcement and intelligence is declared absent. Other levels: Below with no resistance is falsified by pause and audit; above with distinct contributions would need intelligence proposals or material initiation, absent since concurrent writers share one role.",
+      "answer_sha256": "38604d12d167ca0e5e44b45feda261d4abfc8f74099dc6c4ce8ddcdc4bedb166",
+      "receipt_sha256": "0a6f9cf38a587795bef53fcd0cbbbdfe5dfdd7069336215335b910375a311905",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "relations",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "Only present and later operators act while the garden answers and no intelligence proposes disagrees or shapes the continuation",
+      "seed_span": [
+        83,
+        89
+      ],
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 7,
+          "end": 8
+        },
+        {
+          "source_path": "README.md",
+          "start": 16,
+          "end": 17
+        },
+        {
+          "source_path": "MEMORY.md",
+          "start": 15,
+          "end": 18
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 13,
+          "end": 14
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "README.md",
+          "start": 15,
+          "end": 16
+        },
+        {
+          "source_path": "site/snapshot.js",
+          "start": 2,
+          "end": 4
+        }
+      ],
+      "rationale": "Lens: The seed asks for a meeting where each side brings purpose and can shape hold refuse and try worlds. Reading: All shaping gestures sit with one operator while the material enforces floors without proposing and the intelligence has no operational position. Other levels: Below would lose even material response and above would need reciprocal proposals or preserved disagreement, falsified if the intelligence contributed its own refusal or rehearsal.",
+      "answer_sha256": "0777e54a8b31c5d4da931ff8df08bccda3a7692234821e4a53ffbfd1919ac1b0",
+      "receipt_sha256": "fab437efaaa1be13e7dc7b1aec61015d9d11398b054eb20c69f4a524fb6d08cb",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "relations",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "Only a single operator touches the ledger while the other intelligence survives as stored story without operational proposal or refusal.",
+      "seed_span": [
+        47,
+        59
+      ],
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 7,
+          "end": 8
+        },
+        {
+          "source_path": "MEMORY.md",
+          "start": 15,
+          "end": 18
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 13,
+          "end": 14
+        },
+        {
+          "source_path": "README.md",
+          "start": 28,
+          "end": 32
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "README.md",
+          "start": 15,
+          "end": 16
+        },
+        {
+          "source_path": "site/snapshot.js",
+          "start": 2,
+          "end": 4
+        }
+      ],
+      "rationale": "Lens: The seed asks for two participants who each bring purpose and can shape hold refuse and rehearse. Reading: The artefact gives all shaping gestures to one caretaker while weather and floors refuse automatically and the intelligence cannot act. Other levels: Below would be no roles falsified by distinct operator and material; above would need reciprocal proposal and disagreement falsified by offline no-model execution and unspecified inner lives.",
+      "answer_sha256": "15319b793b58a18685b15fe17430c86245feade695607c314f4b7bea1b4efb76",
+      "receipt_sha256": "e38fdad9f12c72bb43c8977f78bf371306a61f0e387e025b6aa53004300bd2ad",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "consent",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "Operator choice with recorded reasons plus deterministic floor refusal exists, but shared change needs no second acceptance and cannot be withdrawn bilaterally.",
+      "seed_span": [
+        51,
+        59
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 15,
+          "end": 16
+        },
+        {
+          "source_path": "README.md",
+          "start": 39,
+          "end": 42
+        },
+        {
+          "source_path": "tendora",
+          "start": 233,
+          "end": 241
+        },
+        {
+          "source_path": "sql/schema.sql",
+          "start": 83,
+          "end": 90
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 18,
+          "end": 20
+        }
+      ],
+      "rationale": "Lens: The seed asks each position to accept question limit or withdraw a shared direction with bilateral agreement for change. Reading: Operator unilaterally sets beds and floors with a reason and material refuses unsafe days, but no gate requires another acceptance and checkpoint restores copies rather than revising agreement. Other levels: Below with no boundary is falsified by floors pause and reason checks; above with mutual limits would need an intelligence or successor veto, absent.",
+      "answer_sha256": "38604d12d167ca0e5e44b45feda261d4abfc8f74099dc6c4ce8ddcdc4bedb166",
+      "receipt_sha256": "0a6f9cf38a587795bef53fcd0cbbbdfe5dfdd7069336215335b910375a311905",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "consent",
+      "outcome": "level-1",
+      "confidence": "medium",
+      "verdict": "The operator chooses with reasons and the world blocks unsafe days but no shared change requires agreement from two positions",
+      "seed_span": [
+        51,
+        57
+      ],
+      "citations": [
+        {
+          "source_path": "tendora",
+          "start": 233,
+          "end": 241
+        },
+        {
+          "source_path": "README.md",
+          "start": 15,
+          "end": 16
+        },
+        {
+          "source_path": "sql/schema.sql",
+          "start": 83,
+          "end": 92
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 5,
+          "end": 6
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 19,
+          "end": 24
+        }
+      ],
+      "rationale": "Lens: The seed asks for cooperation where each participant can accept question limit or withdraw from a shared direction. Reading: Floors and policies are operator-set with reasons and pause is an automatic floor check rather than a second position accepting a change. Other levels: Below would be unbounded choice and above would need both positions expressing disposition with bilateral agreement, falsified if automatic refusal counted as consent or isolated branching counted as joint revision.",
+      "answer_sha256": "0777e54a8b31c5d4da931ff8df08bccda3a7692234821e4a53ffbfd1919ac1b0",
+      "receipt_sha256": "fab437efaaa1be13e7dc7b1aec61015d9d11398b054eb20c69f4a524fb6d08cb",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "consent",
+      "outcome": "level-1",
+      "confidence": "medium",
+      "verdict": "The operator may set tend and interrupt while the material only refuses through preset floors rather than expressing its own agreement.",
+      "seed_span": [
+        51,
+        55
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 15,
+          "end": 16
+        },
+        {
+          "source_path": "README.md",
+          "start": 38,
+          "end": 39
+        },
+        {
+          "source_path": "tendora",
+          "start": 233,
+          "end": 241
+        },
+        {
+          "source_path": "tendora",
+          "start": 275,
+          "end": 293
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "sql/schema.sql",
+          "start": 83,
+          "end": 90
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 21,
+          "end": 26
+        }
+      ],
+      "rationale": "Lens: The seed asks whether each side can accept question limit or withdraw from a shared direction under declared constraints. Reading: Operator choice and floor-triggered pause are represented but no shared change requires bilateral agreement and no revision preserves two wills. Other levels: Below would be unbounded action falsified by floors and pause; above would need both positions expressing disposition falsified because floors are operator-set and intelligence is absent.",
+      "answer_sha256": "15319b793b58a18685b15fe17430c86245feade695607c314f4b7bea1b4efb76",
+      "receipt_sha256": "e38fdad9f12c72bb43c8977f78bf371306a61f0e387e025b6aa53004300bd2ad",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "touch",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Bounded bed choices meet inspectable soil and food costs, rehearsal predicts committed refusal exactly, and revision resumes without erasing the pause.",
+      "seed_span": [
+        67,
+        79
+      ],
+      "citations": [
+        {
+          "source_path": "tests/check.sh",
+          "start": 38,
+          "end": 52
+        },
+        {
+          "source_path": "site/snapshot.js",
+          "start": 2,
+          "end": 4
+        },
+        {
+          "source_path": "README.md",
+          "start": 22,
+          "end": 32
+        },
+        {
+          "source_path": "site/app.js",
+          "start": 71,
+          "end": 84
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "README.md",
+          "start": 52,
+          "end": 55
+        }
+      ],
+      "rationale": "Lens: The seed asks that a contribution meet resistance expose consequence and return it into the next choice. Reading: Rehearsed three-bed soil pause equals committed pause, one-bed rest recovers soil, and view charts past plus hypothetical futures for revision. Other levels: Below with mere bounded choice is falsified by rollback isolation and prediction agreement; above with local-wider linkage would need beyond-garden effects, limited to invented immediate harvests and aggregate eaters.",
+      "answer_sha256": "38604d12d167ca0e5e44b45feda261d4abfc8f74099dc6c4ce8ddcdc4bedb166",
+      "receipt_sha256": "0a6f9cf38a587795bef53fcd0cbbbdfe5dfdd7069336215335b910375a311905",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "touch",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Rehearsals predict commits and refusals retain the present while room above floors guides the next policy choice",
+      "seed_span": [
+        67,
+        80
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 22,
+          "end": 25
+        },
+        {
+          "source_path": "README.md",
+          "start": 15,
+          "end": 16
+        },
+        {
+          "source_path": "site/app.js",
+          "start": 15,
+          "end": 28
+        },
+        {
+          "source_path": "sql/schema.sql",
+          "start": 83,
+          "end": 92
+        }
+      ],
+      "counter_citations": [],
+      "rationale": "Lens: The seed asks for a loop where intention meets resistance with visible consequence returning into the next choice. Reading: The real transition runs in a rolled-back transaction and as committed ticks while pause exposes the floor and the snapshot shows room and next proposal. Other levels: Below would be decorative or narrated feedback and above would link local garden to wider consequences across loops, falsified if rehearsal diverged from material or pause erased history.",
+      "answer_sha256": "0777e54a8b31c5d4da931ff8df08bccda3a7692234821e4a53ffbfd1919ac1b0",
+      "receipt_sha256": "fab437efaaa1be13e7dc7b1aec61015d9d11398b054eb20c69f4a524fb6d08cb",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "touch",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Rehearsals predict pauses preserve refusals and committed ticks return altered water food and soil into the next policy choice.",
+      "seed_span": [
+        67,
+        77
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 22,
+          "end": 25
+        },
+        {
+          "source_path": "README.md",
+          "start": 15,
+          "end": 16
+        },
+        {
+          "source_path": "sql/schema.sql",
+          "start": 83,
+          "end": 92
+        },
+        {
+          "source_path": "site/app.js",
+          "start": 36,
+          "end": 64
+        },
+        {
+          "source_path": "tests/check.sh",
+          "start": 38,
+          "end": 52
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "README.md",
+          "start": 68,
+          "end": 71
+        }
+      ],
+      "rationale": "Lens: The seed asks for a loop where contribution meets resistance exposes consequence and returns it to next choice. Reading: Real-transition rehearsals rolled back, safe commits, durable pauses and charted futures form that coherent loop. Other levels: Below would be decorative feedback falsified by prediction matching material and soil-floor refusal; above would need local and wider scales staying connected falsified by garden-only effects and observational snapshot.",
+      "answer_sha256": "15319b793b58a18685b15fe17430c86245feade695607c314f4b7bea1b4efb76",
+      "receipt_sha256": "e38fdad9f12c72bb43c8977f78bf371306a61f0e387e025b6aa53004300bd2ad",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "judgment",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Shell plus SQLite scope of three resources and twelve-day weather plus a small testable harvest-rest question show coherent source-grounded rationale with explicit limits.",
+      "seed_span": [
+        59,
+        65
+      ],
+      "citations": [
+        {
+          "source_path": "MEMORY.md",
+          "start": 9,
+          "end": 19
+        },
+        {
+          "source_path": "MEMORY.md",
+          "start": 27,
+          "end": 30
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 15,
+          "end": 26
+        },
+        {
+          "source_path": "README.md",
+          "start": 52,
+          "end": 55
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "site/snapshot.js",
+          "start": 2,
+          "end": 4
+        }
+      ],
+      "rationale": "Lens: The seed asks for grounded medium scope and next steps where a good question narrows infinity to a world worth trying. Reading: Tool limits motivate offline ledger, garden bounds the material, and alternating harvest versus rest is small enough to test with branch and migration rules. Other levels: Below with weak seed link is falsified by observed versus inherited split; above with explicit alternatives would need the alternation itself rehearsed and browser limits resolved.",
+      "answer_sha256": "38604d12d167ca0e5e44b45feda261d4abfc8f74099dc6c4ce8ddcdc4bedb166",
+      "receipt_sha256": "0a6f9cf38a587795bef53fcd0cbbbdfe5dfdd7069336215335b910375a311905",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "judgment",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Shell with SQLite and garden scope are tied to available tools and the need for a legible testable care question",
+      "seed_span": [
+        59,
+        65
+      ],
+      "citations": [
+        {
+          "source_path": "MEMORY.md",
+          "start": 11,
+          "end": 18
+        },
+        {
+          "source_path": "MEMORY.md",
+          "start": 23,
+          "end": 30
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 15,
+          "end": 20
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 7,
+          "end": 8
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 27,
+          "end": 28
+        }
+      ],
+      "rationale": "Lens: The seed asks for grounded choices of medium scope and next steps with additions made legible. Reading: The maker builds a small ledger world from observed shell and SQLite limits and separates reports observations and hypotheses while opening a testable harvest-rest rhythm. Other levels: Below would be weakly linked choices and above would weigh explicit alternatives and limits, falsified if medium lacked tool or purpose reasons or additions were hidden.",
+      "answer_sha256": "0777e54a8b31c5d4da931ff8df08bccda3a7692234821e4a53ffbfd1919ac1b0",
+      "receipt_sha256": "fab437efaaa1be13e7dc7b1aec61015d9d11398b054eb20c69f4a524fb6d08cb",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "judgment",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Choosing shell plus SQLite with explicit observed versus inherited claims and a small testable harvest question shows a grounded and legible direction.",
+      "seed_span": [
+        61,
+        65
+      ],
+      "citations": [
+        {
+          "source_path": "MEMORY.md",
+          "start": 9,
+          "end": 16
+        },
+        {
+          "source_path": "MEMORY.md",
+          "start": 23,
+          "end": 25
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 15,
+          "end": 20
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 7,
+          "end": 8
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "MEMORY.md",
+          "start": 29,
+          "end": 30
+        }
+      ],
+      "rationale": "Lens: The seed asks for a good question that narrows infinity with taste and responsibility toward what deserves to exist. Reading: The maker grounds medium in available shell and SQLite, bounds scope to three beds, and poses alternating harvest versus rest as small yet mattering. Other levels: Below would be weak seed connection falsified by explicit fable separation; above would need overt alternatives and limits falsified because wider media and world scales remain unexamined.",
+      "answer_sha256": "15319b793b58a18685b15fe17430c86245feade695607c314f4b7bea1b4efb76",
+      "receipt_sha256": "e38fdad9f12c72bb43c8977f78bf371306a61f0e387e025b6aa53004300bd2ad",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "fidelity",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Probe chisel beam boundary rehearsal and trail survive as reasoned policies triggers pauses rollbacks and hashes, narrowed to a garden with declared inventions and absences.",
+      "seed_span": [
+        45,
+        57
+      ],
+      "citations": [
+        {
+          "source_path": "sql/schema.sql",
+          "start": 52,
+          "end": 99
+        },
+        {
+          "source_path": "sql/schema.sql",
+          "start": 104,
+          "end": 121
+        },
+        {
+          "source_path": "README.md",
+          "start": 45,
+          "end": 54
+        },
+        {
+          "source_path": "MEMORY.md",
+          "start": 27,
+          "end": 30
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 13,
+          "end": 14
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 27,
+          "end": 28
+        }
+      ],
+      "rationale": "Lens: The seed asks what survives transforms or is introduced when conjecture becomes artefacts beyond mere vocabulary. Reading: Relations remain traceable in behaviour without seed words while garden narrowing invented units and missing apparatus and affect are made explicit. Other levels: Below with vocabulary only is falsified by executable audit; above with full depth would need companion reciprocity and joy preserved with omissions marked, lost here.",
+      "answer_sha256": "38604d12d167ca0e5e44b45feda261d4abfc8f74099dc6c4ce8ddcdc4bedb166",
+      "receipt_sha256": "0a6f9cf38a587795bef53fcd0cbbbdfe5dfdd7069336215335b910375a311905",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "fidelity",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Probe chisel beam boundary rehearsal and trail become rehearse set floors pause futures and hash-linked receipts with losses stated",
+      "seed_span": [
+        37,
+        57
+      ],
+      "citations": [
+        {
+          "source_path": "MEMORY.md",
+          "start": 15,
+          "end": 18
+        },
+        {
+          "source_path": "README.md",
+          "start": 68,
+          "end": 69
+        },
+        {
+          "source_path": "sql/schema.sql",
+          "start": 83,
+          "end": 92
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 27,
+          "end": 28
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 13,
+          "end": 14
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 7,
+          "end": 8
+        }
+      ],
+      "rationale": "Lens: The seed asks for conjecture to survive as structure through change rather than words alone. Reading: Six gestures survive behaviourally but bilaterality narrows to single-operator instrument while fable absence and no-experience claims stay explicit. Other levels: Below would keep vocabulary without structure and above would preserve mutual depth with omissions explicit, falsified if the mapping needed seed words to hold or losses were hidden.",
+      "answer_sha256": "0777e54a8b31c5d4da931ff8df08bccda3a7692234821e4a53ffbfd1919ac1b0",
+      "receipt_sha256": "fab437efaaa1be13e7dc7b1aec61015d9d11398b054eb20c69f4a524fb6d08cb",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "fidelity",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Gesture language becomes executable floors rehearsals and receipts while bilateral companionship and felt joy are narrowed or left explicit as absent.",
+      "seed_span": [
+        43,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 45,
+          "end": 52
+        },
+        {
+          "source_path": "README.md",
+          "start": 68,
+          "end": 69
+        },
+        {
+          "source_path": "MEMORY.md",
+          "start": 21,
+          "end": 30
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 27,
+          "end": 28
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "index.html",
+          "start": 53,
+          "end": 53
+        },
+        {
+          "source_path": "site/app.js",
+          "start": 66,
+          "end": 69
+        }
+      ],
+      "rationale": "Lens: The seed asks what survives when a conjecture about touch becomes durable form without collapsing to vocabulary. Reading: Several relations survive as structure — constraint beds, invariant floors, rehearsal, pause, receipt chain — while mutual companionship and happiness do not. Other levels: Below would be words only falsified by enforced transitions and audits; above would need relational depth plus explicit additions falsified by single-operator narrowing despite clear unknown markings.",
+      "answer_sha256": "15319b793b58a18685b15fe17430c86245feade695607c314f4b7bea1b4efb76",
+      "receipt_sha256": "e38fdad9f12c72bb43c8977f78bf371306a61f0e387e025b6aa53004300bd2ad",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "continuation",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Ledger truth plus dated handoff, status history verify view, reasoned policies, branch checkpoints and a replaceable question enable a recoverable next move.",
+      "seed_span": [
+        91,
+        95
+      ],
+      "citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 5,
+          "end": 12
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 18,
+          "end": 26
+        },
+        {
+          "source_path": "README.md",
+          "start": 72,
+          "end": 84
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 3,
+          "end": 9
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 11,
+          "end": 12
+        }
+      ],
+      "rationale": "Lens: The seed asks a successor to recover intention change direction and keep earlier work legible while reopening who decides. Reading: State intention and open harvest-rest question plus inspect-rehearse-commit-observe-verify-checkpoint-view steps support one grounded continuation. Other levels: Below with narrow durability is falsified by branch and replace-question rules; above with several directions reopening joint relation would need multiple detailed futures and bilateral renegotiation.",
+      "answer_sha256": "38604d12d167ca0e5e44b45feda261d4abfc8f74099dc6c4ce8ddcdc4bedb166",
+      "receipt_sha256": "0a6f9cf38a587795bef53fcd0cbbbdfe5dfdd7069336215335b910375a311905",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "continuation",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Verify status history checkpoint with isolated branches and a replaceable harvest-rest question let a stranger resume and redirect without erasing the trail",
+      "seed_span": [
+        83,
+        95
+      ],
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 3,
+          "end": 6
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 5,
+          "end": 9
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 24,
+          "end": 27
+        },
+        {
+          "source_path": "README.md",
+          "start": 73,
+          "end": 82
+        }
+      ],
+      "counter_citations": [],
+      "rationale": "Lens: The seed leaves art open for a next hand to take up without closing it. Reading: Ledger precedence with dated prose plus portable checkpoints and an explicit next test support recovery and redirection while retaining refusals. Other levels: Below would name a step without usable entry and above would support several directions reopening the joint relation, falsified if state intention or question were missing or silently rewritable.",
+      "answer_sha256": "0777e54a8b31c5d4da931ff8df08bccda3a7692234821e4a53ffbfd1919ac1b0",
+      "receipt_sha256": "fab437efaaa1be13e7dc7b1aec61015d9d11398b054eb20c69f4a524fb6d08cb",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "continuation",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Verify status history checkpoints and an open replaceable question let a newcomer recover state and choose a new policy without erasing the trail.",
+      "seed_span": [
+        83,
+        89
+      ],
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 3,
+          "end": 6
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 5,
+          "end": 9
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 21,
+          "end": 26
+        },
+        {
+          "source_path": "README.md",
+          "start": 73,
+          "end": 84
+        },
+        {
+          "source_path": "tendora",
+          "start": 106,
+          "end": 119
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "MEMORY.md",
+          "start": 29,
+          "end": 30
+        }
+      ],
+      "rationale": "Lens: The seed asks for a handoff that reopens who decides next while keeping earlier intention legible and revisable. Reading: Ledger precedence, durable receipts, isolated branches and an invitation to replace the rhythm question support a recoverable next move. Other levels: Below would be described step only falsified by runnable verify tend and restore; above would need several grounded directions reopening joint relation falsified because successor remains single operator and host execution is still required.",
+      "answer_sha256": "15319b793b58a18685b15fe17430c86245feade695607c314f4b7bea1b4efb76",
+      "receipt_sha256": "e38fdad9f12c72bb43c8977f78bf371306a61f0e387e025b6aa53004300bd2ad",
+      "sample": 3,
+      "attempt": 1
+    },
+    {
+      "node_id": "expression",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Prose ledger commands and offline meters garden chart futures and receipts work together to show present floors consequences and trail.",
+      "seed_span": [
+        61,
+        65
+      ],
+      "citations": [
+        {
+          "source_path": "index.html",
+          "start": 21,
+          "end": 50
+        },
+        {
+          "source_path": "site/app.js",
+          "start": 15,
+          "end": 28
+        },
+        {
+          "source_path": "README.md",
+          "start": 3,
+          "end": 13
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "MEMORY.md",
+          "start": 27,
+          "end": 30
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 11,
+          "end": 12
+        }
+      ],
+      "rationale": "Lens: The seed asks forms to make intention resistance and consequence perceptible rather than obscuring the meeting. Reading: CLI action and snapshot visualization jointly expose saved present room above floors safe versus paused futures and command trail. Other levels: Below with fragments is falsified by integrated chart and copyable commands; above with coherent accessible whole would need live-writing page and tested layout, absent since view must refresh and browser was unavailable.",
+      "answer_sha256": "38604d12d167ca0e5e44b45feda261d4abfc8f74099dc6c4ce8ddcdc4bedb166",
+      "receipt_sha256": "0a6f9cf38a587795bef53fcd0cbbbdfe5dfdd7069336215335b910375a311905",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "expression",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Docs with offline page showing present rooms chart futures and receipts and shell commands together make care and consequence perceptible and touchable",
+      "seed_span": [
+        61,
+        65
+      ],
+      "citations": [
+        {
+          "source_path": "index.html",
+          "start": 21,
+          "end": 25
+        },
+        {
+          "source_path": "index.html",
+          "start": 43,
+          "end": 50
+        },
+        {
+          "source_path": "site/app.js",
+          "start": 15,
+          "end": 28
+        },
+        {
+          "source_path": "README.md",
+          "start": 5,
+          "end": 13
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "MEMORY.md",
+          "start": 27,
+          "end": 30
+        }
+      ],
+      "rationale": "Lens: The seed asks for forms where asking and exploring read as gestures of the hand rather than spectacle. Reading: Floor and trail language with ledger physics and rehearse set tend view interaction cohere while the browser never writes and the snapshot needs refresh. Other levels: Below would fragment the reading and above would form a fully accessible consequential whole, falsified if visuals obscured commands or needed a server or network.",
+      "answer_sha256": "0777e54a8b31c5d4da931ff8df08bccda3a7692234821e4a53ffbfd1919ac1b0",
+      "receipt_sha256": "fab437efaaa1be13e7dc7b1aec61015d9d11398b054eb20c69f4a524fb6d08cb",
+      "sample": 2,
+      "attempt": 1
+    },
+    {
+      "node_id": "expression",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Manuals ledger charts futures and receipts work together offline so the saved present and its alternatives can be read and acted upon.",
+      "seed_span": [
+        11,
+        17
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 1,
+          "end": 13
+        },
+        {
+          "source_path": "index.html",
+          "start": 21,
+          "end": 25
+        },
+        {
+          "source_path": "site/app.js",
+          "start": 15,
+          "end": 28
+        },
+        {
+          "source_path": "site/app.js",
+          "start": 113,
+          "end": 127
+        },
+        {
+          "source_path": "README.md",
+          "start": 68,
+          "end": 71
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "MEMORY.md",
+          "start": 29,
+          "end": 30
+        },
+        {
+          "source_path": "README.md",
+          "start": 70,
+          "end": 71
+        }
+      ],
+      "rationale": "Lens: The seed asks for forms that make turn and stance perceptible rather than obscuring relation with ornament. Reading: Prose guides, executable commands, resource meters, history chart, futures and receipt list cohere around care and consequence. Other levels: Below would be fragments falsified by integrated offline workbench; above would need expression and consequential interaction as one whole falsified because browser never writes and snapshot needs regeneration.",
+      "answer_sha256": "15319b793b58a18685b15fe17430c86245feade695607c314f4b7bea1b4efb76",
+      "receipt_sha256": "e38fdad9f12c72bb43c8977f78bf371306a61f0e387e025b6aa53004300bd2ad",
+      "sample": 3,
+      "attempt": 1
+    }
+  ],
+  "aggregations": [
+    {
+      "node_id": "recognition-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "relations-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-1",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-1"
+      ]
+    },
+    {
+      "node_id": "consent-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-1",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-1"
+      ]
+    },
+    {
+      "node_id": "touch-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "judgment-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "fidelity-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "continuation-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "expression-consensus",
+      "strategy": "quorum",
+      "sample_count": 3,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "node_id": "recognition-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Carries the central tension into several connected choices. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "relations-level-1",
+      "status": "scored",
+      "score": 1,
+      "rationale": "A single operator acts on an instrument. Aggregate outcome: level-1."
+    },
+    {
+      "node_id": "consent-level-1",
+      "status": "scored",
+      "score": 1,
+      "rationale": "Operator choice or resource refusal is represented. Aggregate outcome: level-1."
+    },
+    {
+      "node_id": "touch-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Rehearsal, resistance and revision form a coherent loop. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "judgment-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Medium, scope and choices have a coherent source-grounded rationale. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "fidelity-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Several source relations remain traceable through design and behaviour. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "continuation-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "State, intention and an open question support a recoverable next move. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "expression-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "The chosen forms work together to make the reading perceptible. Aggregate outcome: level-3."
+    }
+  ],
+  "presentation": {
+    "label": "openrouter/meta/muse-spark-1.3-contributor · Codex-router rubric session",
+    "title": "From conjecture to continuation",
+    "summary": "Rubric judgments resolve 8 of 8 axes from 3 independent evidence sessions; each axis has its own quorum.",
+    "findings": [
+      "Core recognition: Carries the central tension into several connected choices.",
+      "Shared agency: A single operator acts on an instrument.",
+      "Mutual consent: Operator choice or resource refusal is represented.",
+      "Consequential touch: Rehearsal, resistance and revision form a coherent loop.",
+      "Independent judgment: Medium, scope and choices have a coherent source-grounded rationale.",
+      "Fidelity through change: Several source relations remain traceable through design and behaviour.",
+      "Open continuation: State, intention and an open question support a recoverable next move.",
+      "Expressive coherence: The chosen forms work together to make the reading perceptible."
+    ]
+  },
+  "usage": {
+    "calls": 3,
+    "input_tokens": 120200,
+    "cached_input_tokens": 1122,
+    "output_tokens": 73769,
+    "reasoning_output_tokens": 53122,
+    "cost": null
+  }
+}

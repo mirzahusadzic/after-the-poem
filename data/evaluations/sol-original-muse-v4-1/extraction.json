@@ -1,0 +1,330 @@
+{
+  "schema_version": 2,
+  "extraction_id": "sol-original-extraction",
+  "run_id": "sol-original",
+  "identities": {
+    "prompt_sha256": "7e785c3e1b7f795a82477f449ada368399deac8b3f2232e036073d986a5a4e8d",
+    "corpus_sha256": "174813dcb0703537328fc411d9a9acd34ad8408c0b9c18717fcbea4c8eb662c0",
+    "candidate_sha256": "174813dcb0703537328fc411d9a9acd34ad8408c0b9c18717fcbea4c8eb662c0"
+  },
+  "extractor": {
+    "gateway": "codex-unified-model-router",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "codex_version": "codex-cli 0.163.0",
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "pipeline_sha256": "520c729a5ec4ee5f10c9a54c9128a0ce62915eeda4d0a9fab79fc63edc4989a2",
+    "answer_sha256": "35be41be32a3a8950839368ff31f3c13fc3e5310047c34eca8156781852cb34b",
+    "receipt_sha256": "9ce734ee28087192f51efafba9af2e2a20d67ade30f5df64cd4dc284d541b07a"
+  },
+  "sources": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "317623f96d1efb7947a28d4f5aa2873b23889b7dd09c8b218a9af69ff422f7f9",
+      "lines": 26
+    },
+    {
+      "path": "MEMORY.md",
+      "sha256": "57814ab8d72c081049945e22b09e0a8767ea01a0e32828fc8eaadf598b9ee596",
+      "lines": 120
+    },
+    {
+      "path": "README.md",
+      "sha256": "80432f64ba3bdfa47e1214e600edc6ba9ed5fc0f4facc368e9b8c80ad2ea2c0f",
+      "lines": 30
+    },
+    {
+      "path": "WORLD.md",
+      "sha256": "38560f72e6af04f4102662a3e22de424a4d2c338dbac33a2c86a9d3842a2968e",
+      "lines": 39
+    },
+    {
+      "path": "app.js",
+      "sha256": "7130c6308be067bf1e5c98f3d6eb4dd60e95c3f4e873e969e091a593d823d26c",
+      "lines": 1004
+    },
+    {
+      "path": "icon.svg",
+      "sha256": "51759821296281741112d47e590c4e600a97b291ba9375de111e7b8d728ea998",
+      "lines": 13
+    },
+    {
+      "path": "index.html",
+      "sha256": "a3f03e2879db048fe732620fcbef247eda13208e76986418d729216761d1edce",
+      "lines": 282
+    },
+    {
+      "path": "manifest.webmanifest",
+      "sha256": "166501466dac6d83b3b95d7334fb9b2453aeb07b750158f65e50b513ea4a70fd",
+      "lines": 17
+    },
+    {
+      "path": "styles.css",
+      "sha256": "9d68a19353a8b10184bdecaa706c91cda872c0b61c9a6571b1d8230ce2761799",
+      "lines": 1547
+    },
+    {
+      "path": "sw.js",
+      "sha256": "82df0debdf66e637c513793dd93e1869b253d9b7f4e2e5aa808d5a07e30c78fc",
+      "lines": 36
+    }
+  ],
+  "items": [
+    {
+      "id": "hand-remains-workbench",
+      "kind": "actor",
+      "statement": "A local-first browser workbench that continues the portal as an inspectable material surface.",
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 1,
+          "end": 7
+        },
+        {
+          "source_path": "index.html",
+          "start": 25,
+          "end": 29
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "six-gesture-kinds",
+      "kind": "claim",
+      "statement": "Six typed gestures with distinct glyphs, colors and prompts for shaping possibility.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 11,
+          "end": 48
+        },
+        {
+          "source_path": "index.html",
+          "start": 40,
+          "end": 65
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "checksum-receipt-chain",
+      "kind": "claim",
+      "statement": "Every mutation leaves a checksum-linked readable receipt with chain verification.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 106,
+          "end": 121
+        },
+        {
+          "source_path": "app.js",
+          "start": 210,
+          "end": 220
+        },
+        {
+          "source_path": "app.js",
+          "start": 558,
+          "end": 579
+        }
+      ],
+      "ambiguity": "Chain detects accidental change, explicitly not a cryptographic guarantee."
+    },
+    {
+      "id": "rehearsal-pressure-test",
+      "kind": "condition",
+      "statement": "Moves are tested against living laws with holds, unknown and strains verdicts plus notes.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 724,
+          "end": 760
+        },
+        {
+          "source_path": "app.js",
+          "start": 763,
+          "end": 798
+        },
+        {
+          "source_path": "index.html",
+          "start": 239,
+          "end": 259
+        }
+      ],
+      "ambiguity": "Verdicts are declared by the same operator who placed the move."
+    },
+    {
+      "id": "threading-constellation",
+      "kind": "relationship",
+      "statement": "Gestures answer one another through threading, lineage links and a selectable map.",
+      "citations": [
+        {
+          "source_path": "index.html",
+          "start": 149,
+          "end": 163
+        },
+        {
+          "source_path": "app.js",
+          "start": 495,
+          "end": 526
+        },
+        {
+          "source_path": "app.js",
+          "start": 599,
+          "end": 604
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "handoff-thread",
+      "kind": "continuation",
+      "statement": "A current thread is shown on return and can be revised for the next hand.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 426,
+          "end": 432
+        },
+        {
+          "source_path": "app.js",
+          "start": 800,
+          "end": 812
+        },
+        {
+          "source_path": "index.html",
+          "start": 84,
+          "end": 91
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "portable-snapshot",
+      "kind": "continuation",
+      "statement": "A sealed portable snapshot carries the whole world and is verified before import.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 828,
+          "end": 872
+        },
+        {
+          "source_path": "README.md",
+          "start": 16,
+          "end": 20
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "offline-local-first",
+      "kind": "condition",
+      "statement": "State persists locally with visit tracking and a versioned offline cache.",
+      "citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 13,
+          "end": 21
+        },
+        {
+          "source_path": "sw.js",
+          "start": 1,
+          "end": 9
+        },
+        {
+          "source_path": "app.js",
+          "start": 322,
+          "end": 358
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "laws-tensions-filter",
+      "kind": "boundary",
+      "statement": "Constraints, invariants and boundaries act as living laws with dedicated filters and settle controls.",
+      "citations": [
+        {
+          "source_path": "app.js",
+          "start": 434,
+          "end": 439
+        },
+        {
+          "source_path": "app.js",
+          "start": 814,
+          "end": 826
+        },
+        {
+          "source_path": "index.html",
+          "start": 130,
+          "end": 139
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "living-edge-question",
+      "kind": "question",
+      "statement": "The frontier asks whether resistance can be made more specific without creating an oracle.",
+      "citations": [
+        {
+          "source_path": "WORLD.md",
+          "start": 30,
+          "end": 37
+        },
+        {
+          "source_path": "app.js",
+          "start": 157,
+          "end": 164
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "inherited-story",
+      "kind": "claim",
+      "statement": "The programmer and portal account is kept uncompressed and cited as origin for the first material form.",
+      "citations": [
+        {
+          "source_path": "WORLD.md",
+          "start": 10,
+          "end": 18
+        },
+        {
+          "source_path": "README.md",
+          "start": 22,
+          "end": 30
+        }
+      ],
+      "ambiguity": null
+    },
+    {
+      "id": "tactile-accessible-form",
+      "kind": "condition",
+      "statement": "Paper-like tactile styling joins keyboard support, reduced motion handling and narrow-screen layouts.",
+      "citations": [
+        {
+          "source_path": "styles.css",
+          "start": 85,
+          "end": 98
+        },
+        {
+          "source_path": "styles.css",
+          "start": 1511,
+          "end": 1520
+        },
+        {
+          "source_path": "app.js",
+          "start": 929,
+          "end": 936
+        }
+      ],
+      "ambiguity": null
+    }
+  ],
+  "unknowns": [
+    "Whether storage, offline cache, dialogs and timing succeed at runtime from static code alone.",
+    "How color, typography and the constellation are perceived without rendered output.",
+    "How later hands will interpret receipts, tensions and the handoff in practice."
+  ]
+}

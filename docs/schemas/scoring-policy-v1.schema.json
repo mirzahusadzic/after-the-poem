@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:after-the-poem:scoring-policy-v1",
+  "title": "After the Poem Scoring Policy v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "policy_id", "version", "description", "roots", "nodes", "edges"],
+  "$defs": {
+    "digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "safeId": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,99}$"},
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "instruction"],
+      "properties": {
+        "id": {"$ref": "#/$defs/safeId"},
+        "kind": {"const": "task"},
+        "instruction": {"type": "string", "minLength": 1, "maxLength": 16000}
+      }
+    },
+    "judgment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "criterion", "question", "outcomes", "repetitions"],
+      "properties": {
+        "id": {"$ref": "#/$defs/safeId"},
+        "kind": {"const": "judgment"},
+        "criterion": {"type": "string", "minLength": 1},
+        "question": {"type": "string", "minLength": 1, "maxLength": 16000},
+        "outcomes": {"type": "array", "minItems": 2, "maxItems": 8, "uniqueItems": true, "items": {"$ref": "#/$defs/safeId"}},
+        "repetitions": {"type": "integer", "minimum": 1, "maximum": 20},
+        "anchors": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 8,
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "aggregate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "strategy", "minimum_agreement", "outcomes"],
+      "properties": {
+        "id": {"$ref": "#/$defs/safeId"},
+        "kind": {"const": "aggregate"},
+        "strategy": {"enum": ["unanimous", "majority", "quorum"]},
+        "minimum_agreement": {"type": "number", "exclusiveMinimum": 0, "maximum": 1},
+        "outcomes": {"type": "array", "minItems": 2, "maxItems": 8, "uniqueItems": true, "items": {"$ref": "#/$defs/safeId"}}
+      }
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "condition", "outcomes"],
+      "properties": {
+        "id": {"$ref": "#/$defs/safeId"},
+        "kind": {"const": "gate"},
+        "condition": {"type": "string", "minLength": 1, "maxLength": 16000},
+        "outcomes": {"type": "array", "minItems": 2, "maxItems": 8, "uniqueItems": true, "items": {"$ref": "#/$defs/safeId"}}
+      }
+    },
+    "terminal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "result"],
+      "properties": {
+        "id": {"$ref": "#/$defs/safeId"},
+        "kind": {"const": "terminal"},
+        "result": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "score", "label"],
+          "properties": {
+            "status": {"enum": ["scored", "unresolved", "review"]},
+            "score": {"type": ["number", "null"]},
+            "label": {"type": "string", "minLength": 1, "maxLength": 4000}
+          }
+        }
+      }
+    }
+  },
+  "properties": {
+    "schema_version": {"const": 1},
+    "policy_id": {"$ref": "#/$defs/safeId"},
+    "version": {"type": "string", "minLength": 1},
+    "description": {"type": "string", "minLength": 1, "maxLength": 16000},
+    "roots": {"type": "array", "minItems": 1, "maxItems": 32, "uniqueItems": true, "items": {"$ref": "#/$defs/safeId"}},
+    "nodes": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 256,
+      "items": {"oneOf": [
+        {"$ref": "#/$defs/task"},
+        {"$ref": "#/$defs/judgment"},
+        {"$ref": "#/$defs/aggregate"},
+        {"$ref": "#/$defs/gate"},
+        {"$ref": "#/$defs/terminal"}
+      ]}
+    },
+    "edges": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1024,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["from", "to", "when"],
+        "properties": {
+          "from": {"$ref": "#/$defs/safeId"},
+          "to": {"$ref": "#/$defs/safeId"},
+          "when": {"type": ["string", "null"]}
+        }
+      }
+    }
+  }
+}

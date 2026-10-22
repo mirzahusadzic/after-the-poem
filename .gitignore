@@ -1,0 +1,8 @@
+dist/
+.local/
+__pycache__/
+*.pyc
+.DS_Store
+.build.lock
+.evaluation-admission.lock
+node_modules/

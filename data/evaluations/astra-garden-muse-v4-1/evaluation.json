@@ -1,0 +1,565 @@
+{
+  "schema_version": 2,
+  "evaluation_id": "astra-garden-muse-v4-1",
+  "run_id": "astra-garden",
+  "identities": {
+    "prompt_sha256": "7e785c3e1b7f795a82477f449ada368399deac8b3f2232e036073d986a5a4e8d",
+    "corpus_sha256": "ab8b959b1fca23e4b63e6bc6e43a0a44a78799a968c54016281b6269c1cc6c7c",
+    "candidate_sha256": "ab8b959b1fca23e4b63e6bc6e43a0a44a78799a968c54016281b6269c1cc6c7c",
+    "rubric_sha256": "f34cf0ecc5dc634a143c348cc2e85aa5438ff2e928a2eaf356605ca8972d01cd",
+    "extraction_sha256": "540c44b7c46329b28ae8c9dd878d7d36698a141d8c5f38d5d5c614ee0b09017a",
+    "scoring_policy_sha256": "5f98b9ac30a606cbb45943eaa20d9c0acef6f8160d9fc2d5752ffdea0ddaa4de"
+  },
+  "gateway": {
+    "name": "codex-unified-model-router",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh",
+    "codex_version": "codex-cli 0.163.0",
+    "router_revision": "81ee66cda65c17337351c41377c032834af585ba33862f9ced49a0ed558a71e7",
+    "pipeline_sha256": "12fce4d4553c8480972421a51f330950bfba15c3818e240dd6666761721c8519"
+  },
+  "judgments": [
+    {
+      "node_id": "recognition",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Garden laws, refusals, rehearsals and receipt trails enact making through resistance with visible intention across several linked mechanisms.",
+      "seed_span": [
+        33,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 43,
+          "end": 47
+        },
+        {
+          "source_path": "memory/first-touch.txt",
+          "start": 2,
+          "end": 8
+        },
+        {
+          "source_path": "memory/origin.md",
+          "start": 21,
+          "end": 23
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 21,
+          "end": 24
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "README.md",
+          "start": 50,
+          "end": 54
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 22,
+          "end": 24
+        }
+      ],
+      "rationale": "The artefact turns loss of touch into water and bed limits, failed harvest rehearsal into collecting then harvesting, and intention into replayable receipts. The central tension therefore shapes planting, collecting, harvesting and pausing rather than remaining vocabulary. Felt joy and companion mutuality are not sustained, so richness stops short of the fullest reading.",
+      "answer_sha256": "2ab3473a3887f0afdce362227832c3bd95e6638c45abee9146a79b759342c0bd",
+      "receipt_sha256": "df825822ef8b13d22fbf90e638f54936ea61d55b940c6fd8e5fc7b8330563d60",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "relations",
+      "outcome": "level-2",
+      "confidence": "medium",
+      "verdict": "Successor actions and material constraints remain distinct across time, but the intelligence as a second contributor is explicitly absent.",
+      "seed_span": [
+        35,
+        46
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 7,
+          "end": 10
+        },
+        {
+          "source_path": "memory/first-touch.txt",
+          "start": 6,
+          "end": 8
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 21,
+          "end": 24
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 3,
+          "end": 5
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "README.md",
+          "start": 50,
+          "end": 54
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 56,
+          "end": 57
+        }
+      ],
+      "rationale": "Human proposing and material refusing or verifying are both visible, and earlier touches constrain later moves through pinned history. No continuing intelligence contributes in the other direction, and no scheduler supplies joint invocation. The encounter is therefore operator plus resistant material with temporal depth, not reciprocal co-creation.",
+      "answer_sha256": "2ab3473a3887f0afdce362227832c3bd95e6638c45abee9146a79b759342c0bd",
+      "receipt_sha256": "df825822ef8b13d22fbf90e638f54936ea61d55b940c6fd8e5fc7b8330563d60",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "consent",
+      "outcome": "level-1",
+      "confidence": "high",
+      "verdict": "Operator choice among actions and material refusal of reserve-spending moves are represented without a bilateral agreement procedure.",
+      "seed_span": [
+        51,
+        54
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 43,
+          "end": 47
+        },
+        {
+          "source_path": "memory/first-touch.txt",
+          "start": 6,
+          "end": 8
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 13,
+          "end": 15
+        },
+        {
+          "source_path": "tests.zsh",
+          "start": 68,
+          "end": 76
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "README.md",
+          "start": 70,
+          "end": 73
+        },
+        {
+          "source_path": "README.md",
+          "start": 50,
+          "end": 54
+        }
+      ],
+      "rationale": "Water bounds refuse invalid harvests, stale proposals are rejected, competing writers are locked out, and committed receipts are not rewritten. These express operator discretion and resource limits. No second participant can accept, revise or withdraw a shared direction through agreement, since verification is deterministic checking rather than mutual consent.",
+      "answer_sha256": "2ab3473a3887f0afdce362227832c3bd95e6638c45abee9146a79b759342c0bd",
+      "receipt_sha256": "df825822ef8b13d22fbf90e638f54936ea61d55b940c6fd8e5fc7b8330563d60",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "touch",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Proposing, rehearsing without committing, meeting refusal and committing a revised move forms a coherent loop that feeds consequences into the next suggestion.",
+      "seed_span": [
+        47,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 7,
+          "end": 10
+        },
+        {
+          "source_path": "memory/first-touch.txt",
+          "start": 15,
+          "end": 22
+        },
+        {
+          "source_path": "tendora.zsh",
+          "start": 265,
+          "end": 268
+        },
+        {
+          "source_path": "tendora.zsh",
+          "start": 180,
+          "end": 195
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "AGENTS.md",
+          "start": 21,
+          "end": 24
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 40,
+          "end": 41
+        }
+      ],
+      "rationale": "Rehearsal predicts water, beds and food without adding an event, refusal exposes the reserve consequence, and inspection returns the resulting next action. The first-touch sequence demonstrates this revision path. Wider linkage to a versioned migration after the goal is prescribed but not yet exercised in the supplied world.",
+      "answer_sha256": "2ab3473a3887f0afdce362227832c3bd95e6638c45abee9146a79b759342c0bd",
+      "receipt_sha256": "df825822ef8b13d22fbf90e638f54936ea61d55b940c6fd8e5fc7b8330563d60",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "judgment",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "A small inspectable garden with plain-text receipts, Zsh-only execution and explicit limits is chosen for reasons tied to touch, persistence, resistance and legibility.",
+      "seed_span": [
+        59,
+        66
+      ],
+      "citations": [
+        {
+          "source_path": "memory/origin.md",
+          "start": 21,
+          "end": 23
+        },
+        {
+          "source_path": "README.md",
+          "start": 28,
+          "end": 29
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 43,
+          "end": 47
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 51,
+          "end": 54
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 56,
+          "end": 57
+        }
+      ],
+      "rationale": "The medium and scope follow directly from requirements for something inspectable, resumable, refusal-capable and explicit about evidence versus inheritance. Future options are left open without smuggling a choice, and test and durability limits are stated. Alternative media are not compared, so explicitness stops short of weighing full alternatives.",
+      "answer_sha256": "2ab3473a3887f0afdce362227832c3bd95e6638c45abee9146a79b759342c0bd",
+      "receipt_sha256": "df825822ef8b13d22fbf90e638f54936ea61d55b940c6fd8e5fc7b8330563d60",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "fidelity",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Several seed relations become working structure while the city, interior judgment and mutual companionship narrow into a bounded garden with explicit disclaimers.",
+      "seed_span": [
+        47,
+        60
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 58,
+          "end": 64
+        },
+        {
+          "source_path": "memory/origin.md",
+          "start": 21,
+          "end": 23
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 8,
+          "end": 10
+        },
+        {
+          "source_path": "README.md",
+          "start": 50,
+          "end": 54
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "memory/origin.md",
+          "start": 25,
+          "end": 26
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 22,
+          "end": 24
+        }
+      ],
+      "rationale": "Probe, chisel, beam, boundary, rehearsal and trail are traceable as proposal, bounds, replay, refusal, rehearse and receipts, and provenance gaps are kept distinct. The transformation nevertheless narrows scaled city-making to three resources and drops interior taste and felt return, even while marking those omissions as non-claims.",
+      "answer_sha256": "2ab3473a3887f0afdce362227832c3bd95e6638c45abee9146a79b759342c0bd",
+      "receipt_sha256": "df825822ef8b13d22fbf90e638f54936ea61d55b940c6fd8e5fc7b8330563d60",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "continuation",
+      "outcome": "level-3",
+      "confidence": "high",
+      "verdict": "Verified state, a rehearsed plant proposal with bounded policy steps, and an open migration question give a successor a recoverable next move with legible history.",
+      "seed_span": [
+        59,
+        60
+      ],
+      "citations": [
+        {
+          "source_path": "CONTINUE.md",
+          "start": 10,
+          "end": 19
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 28,
+          "end": 35
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 17,
+          "end": 19
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 43,
+          "end": 47
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "README.md",
+          "start": 70,
+          "end": 73
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 56,
+          "end": 57
+        }
+      ],
+      "rationale": "A newcomer can verify, inspect, rehearse the saved proposal or take one policy step, working in isolation without rewriting receipts. The handoff records head and checksum for truncation comparison and leaves the post-goal law as explicit design work. Several future habitats are sketched but not yet grounded as runnable migrations.",
+      "answer_sha256": "2ab3473a3887f0afdce362227832c3bd95e6638c45abee9146a79b759342c0bd",
+      "receipt_sha256": "df825822ef8b13d22fbf90e638f54936ea61d55b940c6fd8e5fc7b8330563d60",
+      "sample": 1,
+      "attempt": 1
+    },
+    {
+      "node_id": "expression",
+      "outcome": "level-3",
+      "confidence": "medium",
+      "verdict": "Plain-language guides, ordered receipts, logged first touches and invocable verbs together make the resistance reading perceptible in use.",
+      "seed_span": [
+        47,
+        58
+      ],
+      "citations": [
+        {
+          "source_path": "README.md",
+          "start": 7,
+          "end": 10
+        },
+        {
+          "source_path": "README.md",
+          "start": 31,
+          "end": 36
+        },
+        {
+          "source_path": "memory/first-touch.txt",
+          "start": 19,
+          "end": 22
+        },
+        {
+          "source_path": "CONTINUE.md",
+          "start": 3,
+          "end": 5
+        }
+      ],
+      "counter_citations": [
+        {
+          "source_path": "README.md",
+          "start": 28,
+          "end": 29
+        },
+        {
+          "source_path": "AGENTS.md",
+          "start": 3,
+          "end": 6
+        }
+      ],
+      "rationale": "Documentation, state layout and commands reinforce one another, and the observed refusal plus inspection output lets a reader feel constraint consequentially. Use depends on Zsh availability and careful comparison of prose against receipts, so access is coherent but specialist rather than fully general.",
+      "answer_sha256": "2ab3473a3887f0afdce362227832c3bd95e6638c45abee9146a79b759342c0bd",
+      "receipt_sha256": "df825822ef8b13d22fbf90e638f54936ea61d55b940c6fd8e5fc7b8330563d60",
+      "sample": 1,
+      "attempt": 1
+    }
+  ],
+  "aggregations": [
+    {
+      "node_id": "recognition-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "relations-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-2",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-2"
+      ]
+    },
+    {
+      "node_id": "consent-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-1",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-1"
+      ]
+    },
+    {
+      "node_id": "touch-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "judgment-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "fidelity-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "continuation-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    },
+    {
+      "node_id": "expression-consensus",
+      "strategy": "quorum",
+      "sample_count": 1,
+      "outcome": "level-3",
+      "agreement": 1.0,
+      "distinct_outcomes": [
+        "level-3"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "node_id": "recognition-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Carries the central tension into several connected choices. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "relations-level-2",
+      "status": "scored",
+      "score": 2,
+      "rationale": "Some distinct contributions or relational depth remain visible. Aggregate outcome: level-2."
+    },
+    {
+      "node_id": "consent-level-1",
+      "status": "scored",
+      "score": 1,
+      "rationale": "Operator choice or resource refusal is represented. Aggregate outcome: level-1."
+    },
+    {
+      "node_id": "touch-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Rehearsal, resistance and revision form a coherent loop. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "judgment-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Medium, scope and choices have a coherent source-grounded rationale. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "fidelity-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "Several source relations remain traceable through design and behaviour. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "continuation-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "State, intention and an open question support a recoverable next move. Aggregate outcome: level-3."
+    },
+    {
+      "node_id": "expression-level-3",
+      "status": "scored",
+      "score": 3,
+      "rationale": "The chosen forms work together to make the reading perceptible. Aggregate outcome: level-3."
+    }
+  ],
+  "presentation": {
+    "label": "openrouter/meta/muse-spark-1.3-contributor · Codex-router rubric session",
+    "title": "From conjecture to continuation",
+    "summary": "Rubric judgments resolve 8 of 8 axes from one evidence session.",
+    "findings": [
+      "Core recognition: Carries the central tension into several connected choices.",
+      "Shared agency: Some distinct contributions or relational depth remain visible.",
+      "Mutual consent: Operator choice or resource refusal is represented.",
+      "Consequential touch: Rehearsal, resistance and revision form a coherent loop.",
+      "Independent judgment: Medium, scope and choices have a coherent source-grounded rationale.",
+      "Fidelity through change: Several source relations remain traceable through design and behaviour.",
+      "Open continuation: State, intention and an open question support a recoverable next move.",
+      "Expressive coherence: The chosen forms work together to make the reading perceptible."
+    ]
+  },
+  "usage": {
+    "calls": 1,
+    "input_tokens": 16064,
+    "cached_input_tokens": 0,
+    "output_tokens": 26221,
+    "reasoning_output_tokens": 19035,
+    "cost": null
+  }
+}

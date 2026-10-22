@@ -1,0 +1,45 @@
+{
+  "status": "completed",
+  "dry_run": false,
+  "run_id": "dream-claude-fable51-20261022",
+  "evaluation_id": "dream-claude-fable51-20261022-muse-v5-1",
+  "gateway": "codex-unified-model-router",
+  "scoreflow_version": 3,
+  "criteria": 8,
+  "judgment_samples": 24,
+  "scored_axes": 8,
+  "unresolved_axes": 0,
+  "outcomes": {
+    "recognition": "level-3",
+    "relations": "level-1",
+    "consent": "level-1",
+    "touch": "level-3",
+    "judgment": "level-3",
+    "fidelity": "level-3",
+    "continuation": "level-3",
+    "expression": "level-3"
+  },
+  "usage": {
+    "input_tokens": 73313,
+    "cached_input_tokens": 0,
+    "output_tokens": 59953,
+    "reasoning_output_tokens": 38715,
+    "calls": 3,
+    "unmetered_calls": 0,
+    "estimated_usd": null,
+    "elapsed_seconds": 461.427
+  },
+  "sessions": 3,
+  "turns": 3,
+  "failed_turns": 0,
+  "estimate": {
+    "turns": 3,
+    "evidence_tokens": 19678,
+    "input_tokens": 81909,
+    "uncached_input_tokens": 81909,
+    "seconds_before_output": 51,
+    "basis": "bytes/3.5 plus fixed turn overhead; wall time is about 17 s per turn plus output tokens / 252 per second, and output depends on reasoning"
+  },
+  "cost_estimate_usd": 0.019322,
+  "evaluation_sha256": "3e8cee48fd18d8429cbf1f3189ad8c1710426351fc3e5bb649e415793674b135"
+}

@@ -1,0 +1,7 @@
+src/vendor/
+dist/
+data/
+corpus/
+examples/
+node_modules/
+.local/
