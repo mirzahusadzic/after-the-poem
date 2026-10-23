@@ -358,6 +358,31 @@ try {
       await page.locator('#preview-workspace').waitFor({ state: 'hidden' });
     }
   }
+
+  // A phone has no Escape key, so every full-window preview carries a close button.
+  const framed = artefacts.find((id) => report.artefacts[id].kind === 'browser');
+  await page.locator('[data-run="' + framed + '"]').click();
+  await page.locator('#tab-artefact').click();
+  await page.locator('#open-preview').click();
+  assert.match(await page.locator('#preview-status').textContent(), /Press Esc to exit/);
+  await page.locator('#preview-close').click();
+  await page.locator('#preview-workspace').waitFor({ state: 'hidden' });
+  if (engine === 'chromium') {
+    const phone = await browser.newContext({
+      viewport: { width: 390, height: 844 },
+      isMobile: true,
+      hasTouch: true,
+      reducedMotion: 'reduce'
+    });
+    const handset = await phone.newPage();
+    await handset.goto(base + '#run=' + framed);
+    await handset.locator('#tab-artefact').click();
+    await handset.locator('#open-preview').click();
+    assert.match(await handset.locator('#preview-status').textContent(), /Tap × to exit/);
+    await handset.locator('#preview-close').tap();
+    await handset.locator('#preview-workspace').waitFor({ state: 'hidden' });
+    await phone.close();
+  }
   await page.locator('#tab-reading').click();
 
   // Editorial notes.

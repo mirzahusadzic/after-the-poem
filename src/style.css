@@ -67,6 +67,11 @@ body.preview-full-window{overflow:hidden}
 .preview-workspace.is-full-window{position:fixed;inset:0;z-index:80;display:flex;flex-direction:column;padding:0;background:var(--bg);overflow:hidden}
 #preview-status:not([hidden]){animation:preview-notice-in .18s ease-out,preview-notice-out .45s ease-in 2.55s forwards}
 .preview-workspace.is-full-window #preview-status{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));left:50%;z-index:90;transform:translateX(-50%);margin:0;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:var(--panel);color:var(--text);box-shadow:0 6px 24px rgba(0,0,0,.22);font-size:12px;line-height:1.4;pointer-events:none;max-width:calc(100vw - 24px);text-align:center}
+/* Phones have no Escape key: a close button sits in the corner of every full-window preview. */
+.preview-close{display:none}
+.preview-workspace.is-full-window .preview-close{display:grid;place-items:center;position:fixed;top:calc(10px + env(safe-area-inset-top,0px));right:calc(10px + env(safe-area-inset-right,0px));z-index:91;width:44px;height:44px;padding:0;border:1px solid var(--line);border-radius:50%;background:var(--panel);color:var(--text);box-shadow:0 6px 24px rgba(0,0,0,.22);font-size:24px;line-height:1;cursor:pointer}
+.preview-workspace.is-full-window .preview-close:hover{filter:brightness(1.12)}
+.preview-workspace.is-full-window .console-shortcuts{padding-right:52px}
 @keyframes preview-notice-in{from{opacity:0;transform:translate(-50%,-4px)}to{opacity:1;transform:translate(-50%,0)}}
 @keyframes preview-notice-out{to{opacity:0;visibility:hidden}}
 .preview-handoff{margin:auto;max-width:440px;padding:28px;text-align:center;border:1px solid var(--line);border-radius:6px;background:var(--panel)}.preview-handoff p{margin:0 0 18px}.preview-handoff .fine{margin:18px 0 0;color:var(--muted)}.preview-handoff .button{display:inline-block;padding:10px 16px;border-radius:3px;background:var(--action);color:var(--action-ink);font-weight:600}.preview-handoff .button:hover{color:var(--action-ink);filter:brightness(1.08)}

@@ -2,7 +2,7 @@
 
 The workbench shows each world's preserved sources, its inspection image and an explicit preview control. Opening a preview runs a fresh copy of the world; viewing, building or validating the page never executes a candidate. Nothing a preview does changes a reading or the preserved sources.
 
-A preview fills the browser window with the work itself, without operating-system fullscreen. A short "Press Esc to exit" notice fades after three seconds, Escape closes the preview, and reopening it starts a fresh session.
+A preview fills the browser window with the work itself, without operating-system fullscreen. A close button sits in its top corner, and Escape also closes it. A short notice says how to leave, "Tap × to exit" on a touch screen and "Press Esc to exit" with a keyboard, and fades after three seconds. Reopening a preview starts a fresh session.
 
 ## How each world opens
 

@@ -116,6 +116,11 @@
       }, 0);
   }
 
+  // A touch screen has no Escape key; it gets the close button in the corner instead.
+  function exitHint() {
+    return window.matchMedia && window.matchMedia('(hover: none)').matches ? 'Tap × to exit' : 'Press Esc to exit';
+  }
+
   function closePreview() {
     const wasOpen = !$('preview-workspace').hidden;
     generation += 1;
@@ -278,7 +283,7 @@
       $('artefact-frame').setAttribute('sandbox', 'allow-scripts allow-forms allow-downloads');
       $('artefact-frame').src = entry.preview;
       $('artefact-frame').hidden = false;
-      showPreviewNotice('Press Esc to exit', false);
+      showPreviewNotice(exitHint(), false);
       $('artefact-frame').focus();
       return;
     }
@@ -286,7 +291,7 @@
       session = REPLAY;
       mountTerminal(true);
       await execute(entry.initial_command);
-      showPreviewNotice('Press Esc to exit', false);
+      showPreviewNotice(exitHint(), false);
       return;
     }
     if (!localServer) {
@@ -327,7 +332,7 @@
         $('artefact-frame').hidden = false;
         $('artefact-frame').focus();
       }
-      showPreviewNotice('Press Esc to exit', false);
+      showPreviewNotice(exitHint(), false);
     } catch (error) {
       if (generation === requestGeneration) {
         stopSession();
@@ -426,6 +431,7 @@
     }
   });
   $('open-preview').addEventListener('click', openPreview);
+  $('preview-close').addEventListener('click', closePreview);
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape' && fullWindow && !$('preview-workspace').hidden) {
       event.preventDefault();
