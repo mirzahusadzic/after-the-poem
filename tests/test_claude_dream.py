@@ -214,19 +214,9 @@ class ClaudeDreamTests(unittest.TestCase):
 
     def test_the_profile_must_name_the_cohort_prompt(self):
         data = json.loads(self.profile_path.read_text())
-        self.profile_path.write_text(
-            json.dumps(
-                dict(
-                    data,
-                    prompt='corpus/prompts/'
-                    + next(
-                        path.name
-                        for path in (self.project / 'corpus/prompts').iterdir()
-                        if not path.name.startswith('7e785c')
-                    ),
-                )
-            )
-        )
+        own = Path(data['prompt']).name
+        other = sorted(path.name for path in (self.project / 'corpus/prompts').iterdir() if path.name != own)[0]
+        self.profile_path.write_text(json.dumps(dict(data, prompt='corpus/prompts/' + other)))
         with self.assertRaisesRegex(bundles.BundleError, 'not the cohort prompt'):
             claude_dream.cohort_of(self.profile())
 
