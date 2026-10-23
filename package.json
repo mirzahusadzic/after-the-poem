@@ -17,14 +17,14 @@
     "check": "python3 scripts/atlas.py validate",
     "test": "python3 -m unittest discover -s tests -v",
     "verify": "npm run format:check && npm test && npm run check && npm run build && npm run evaluate -- validate-contract tests/fixtures/evaluation/attribution && npm run test:ui && npm run test:page && npm run test:release",
-    "test:ui": "python3 scripts/atlas.py build --view full && node tests/ui-smoke.mjs; status=$?; python3 scripts/atlas.py build >/dev/null; exit $status",
+    "test:ui": "python3 scripts/atlas.py build --view full && python3 tests/test_ci_build_restore.py -- node tests/ui-smoke.mjs",
     "test:page": "python3 scripts/atlas.py build && node tests/page-smoke.mjs",
     "test:preview": "node tests/preview-smoke.mjs",
     "dev": "python3 scripts/atlas.py serve --previews",
     "dev:full": "python3 scripts/atlas.py serve --view full --previews",
     "preview": "python3 scripts/atlas.py serve --previews",
-    "test:release": "python3 scripts/atlas.py build --target pages && node tests/release-smoke.mjs; status=$?; python3 scripts/atlas.py build >/dev/null; exit $status",
-    "test:engines": "python3 scripts/atlas.py build --target pages && PLAYWRIGHT_BROWSER=webkit node tests/release-smoke.mjs && PLAYWRIGHT_BROWSER=firefox node tests/release-smoke.mjs; status=$?; python3 scripts/atlas.py build >/dev/null; exit $status",
+    "test:release": "python3 scripts/atlas.py build --target pages && python3 tests/test_ci_build_restore.py -- node tests/release-smoke.mjs",
+    "test:engines": "python3 scripts/atlas.py build --target pages && python3 tests/test_ci_build_restore.py -- sh -c \"PLAYWRIGHT_BROWSER=webkit node tests/release-smoke.mjs && PLAYWRIGHT_BROWSER=firefox node tests/release-smoke.mjs\"",
     "format": "prettier --write \"src/*.js\" \"tests/*.mjs\" \"scripts/*.mjs\"",
     "format:check": "prettier --check \"src/*.js\" \"tests/*.mjs\" \"scripts/*.mjs\""
   },
@@ -32,5 +32,8 @@
     "playwright": "1.64.0",
     "prettier": "3.3.3"
   },
-  "license": "SEE LICENSE IN LICENSING.md"
+  "license": "SEE LICENSE IN LICENSING.md",
+  "engines": {
+    "node": "22"
+  }
 }

@@ -4,10 +4,10 @@ name: Pages
 on:
   workflow_dispatch:
 
+# Least privilege: only the deploy job can publish; the build job, which runs npm and the
+# browser download, reads the repository and the Pages configuration and nothing more.
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: pages
@@ -16,11 +16,27 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
+    env:
+      PLAYWRIGHT_CHANNEL: chromium
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.9'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      # Release gate: every check below runs in this job, on this checkout,
+      # so the deployed artifact is built from the exact SHA that passed them.
+      - run: npm ci
+      - run: npm test
+      - run: npm run check
+      - run: npm run format:check
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:release
       - run: python3 scripts/atlas.py validate
       # The static site: native artefacts appear as screenshots; their runner stays local.
       - run: python3 scripts/atlas.py build --target pages
@@ -32,6 +48,9 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
