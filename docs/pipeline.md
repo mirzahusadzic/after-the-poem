@@ -72,7 +72,7 @@ Every flag is listed in [Commands](commands.md). For a complete example, see [On
 You need:
 
 - **Python 3.9 or later.** The study uses only the standard library, so there is nothing to install.
-- **Node.js**, for screenshots and the browser tests. Run `npm install`, then `npx playwright install chromium`.
+- **Node.js 22**, for screenshots, formatting checks and the browser tests only; the build, serve and validation steps need only Python. See [Environment](environment.md#playwright-install) for the Playwright install.
 
 For readings and Codex dreams:
 
@@ -168,7 +168,7 @@ Then check your setup, rehearse, and run:
 
 ```sh
 python3 scripts/evaluate.py doctor-dream-profile PROFILE.json             # both models, router and budget; no model call
-python3 scripts/evaluate.py run-dream-profile PROFILE.json --dry-run      # the whole path with synthetic answers; never admitted
+python3 scripts/evaluate.py run-dream-profile PROFILE.json --dry-run      # the generation alone, with synthetic answers in OUTPUT.dry-run; never admitted
 python3 scripts/evaluate.py run-dream-profile PROFILE.json --accept-run   # dream, admit, read
 ```
 
@@ -364,19 +364,19 @@ Good to know:
 
 ## Workbench
 
-The *research view* (`npm run dev:full`) shows every admitted world and every reading, straight away. The *release page*, the public one, shows only the worlds you list.
+The *research view* (`npm run dev:full`) shows every admitted world and every reading, straight away. The *release page*, the public one, shows only the worlds you list, each with its latest `-muse-v5-1` reading. See [Release](release.md) for what each view holds, the reader generations and the flat-reader caveat.
 
 To put a world on the release page:
 
-1. **Read it with the page's reader.** The page shows one reader, set under `reader` in the [presentation settings](../data/presentation.json): Muse Spark 1.3 Contributor, three sessions, and an evaluation ID ending in `-muse-v5-1`. Both dream commands read new worlds this way, and so do the profiles in `examples/rescore-muse/`. If a world has more than one such reading, the latest is shown.
+1. **Read it with the page's reader.** The page shows one reader, set under `reader` in the [presentation settings](../data/presentation.json): Muse Spark 1.3 Contributor, three sessions, and an evaluation ID ending in `-muse-v5-1` (the current v5 prompt; earlier `-muse-v4-1` readings and the `static-*` reviews stay visible only in the research view). Both dream commands read new worlds this way, and so do the profiles in `examples/rescore-muse/`. If a world has more than one such reading, the latest is shown.
 2. **Look at it** in the research view, and run `npm run check`.
 3. **Name it.** A Claude Code world takes its label from the profile and its title from its own files. A Codex world starts out labelled with the model ID and titled with its run ID; give it a proper `label` and `title` in its entry in `data/runs.json`.
 4. **Give it a preview.** A browser world already has one from admission. A Zsh, Python or Ruby world needs:
    - its console or server entry in the [preview runner](../scripts/previews.py) and the [preview registry](../data/artefacts.json) (see [Previews](previews.md#native-worlds));
    - a screenshot of its console in `assets/artefacts/RUN.png`, registered in `data/artefacts.json` with its hash;
-   - a [recording](#record-a-console-for-the-static-site) for the static site.
-5. **List it.** Add its run ID to `shown_runs` in `data/presentation.json`. `npm run build` prints every world that is not listed yet.
-6. **Check and build.** `npm run verify` checks everything without calling a model. `npm run build:pages` builds the static site, and the Pages workflow publishes it when you start it by hand.
+   - for a Zsh or Python console world, a [recording](#record-a-console-for-the-static-site) for the static site; a Ruby server world shows its screenshot there instead.
+5. **List it.** Add its run ID to `shown_runs` in `data/presentation.json`. `npm run build` prints every world that is not listed yet; [Release](release.md#nine-shown-ten-retained) explains the one retained run kept off the page.
+6. **Check and build.** `npm run verify` checks everything without calling a model; [Environment](environment.md#fast-checks-vs-the-full-gate) lists the faster checks and what the full gate runs. `npm run build:pages` builds the static site, and the Pages workflow publishes it when you start it by hand.
 
 ### Record a console for the static site
 

@@ -1,6 +1,6 @@
 # After the Poem
 
-A study of what happens when a model receives a poem, **The Programmer and the Glory Portal**, as a conjecture and continues it as a material world. The meaning is worked out in dialogue with Sol; Sol compiled it into the poem. Nine preserved worlds made from that poem share one workbench, where each can be opened, inspected and compared.
+A study of what happens when a model receives a poem, **The Programmer and the Glory Portal**, as a conjecture and continues it as a material world. The meaning is worked out in dialogue with Sol; Sol compiled it into the poem. Nine preserved worlds share one workbench, where each can be opened, inspected and compared; a tenth run is retained in the data but hidden from the page (see [Release](docs/release.md)).
 
 Open the workbench at [mirzahusadzic.github.io/after-the-poem](https://mirzahusadzic.github.io/after-the-poem/).
 
@@ -22,7 +22,7 @@ Each model receives the poem with an empty world and a short invitation: *make t
 
 The first seven come from Codex. The two Claude worlds come from Claude Code, with a prompt that names Claude Code in its first line and is otherwise identical. Dreamy Sol, the earliest, is a chronological reference on the workbench, never an answer key.
 
-Every world is read by one critic, Muse Spark 1.3 Contributor at xhigh reasoning, in three independent sessions, on eight questions from core recognition to expressive coherence. Each level, 0 to 4, cites exact lines in the world and a passage of the poem. There is no total, no ranking by polygon area and no winner; `null` means unassessed. See [Reading a continuation](docs/study.md).
+Every shown world is read by one critic, Muse Spark 1.3 Contributor at xhigh reasoning, in three independent sessions, on eight questions from core recognition to expressive coherence. The release page shows only the current v5 reading per world (evaluation IDs ending `-muse-v5-1`); the research view (`npm run dev:full`) keeps every reading, including earlier v4 sessions and static reviews. Each level, 0 to 4, cites exact lines in the world and a passage of the poem. There is no total, no ranking by polygon area and no winner; `null` means unassessed. See [Reading a continuation](docs/study.md).
 
 ## How it works
 
@@ -30,18 +30,18 @@ Every step is a command: dream with Codex through the [router](https://github.co
 
 ## Open it
 
-The page itself needs only Python 3.9+, with no hosted services, analytics or external fonts.
+The page needs only Python 3.9+ and its standard library, with no hosted services, analytics or external fonts.
 
 ```sh
-npm install           # Playwright and Prettier, for screenshots, tests and formatting
-npm run dev           # builds and serves http://127.0.0.1:4317
+python3 scripts/atlas.py serve --previews               # builds and serves http://127.0.0.1:4317 (release view; npm run dev)
+python3 scripts/atlas.py serve --view full --previews   # research view: every retained run and reading (npm run dev:full)
 ```
 
-Browser worlds open in sandboxed frames. On macOS, `npm run dev` also opens the Zsh, Python and Ruby worlds as disposable copies in the isolated local runner. `npm run dev:full` serves the research view, with every reading in the repository. See [Previews](docs/previews.md).
+Browser worlds open in sandboxed frames. On macOS, both commands also open the Zsh, Python and Ruby worlds as disposable copies in the isolated local runner (the full view is required for the preview smoke test). See [Previews](docs/previews.md) and [Environment](docs/environment.md).
 
 ```sh
-npm run build:pages   # the static site, as GitHub Pages serves it
-npm run serve:pages   # http://127.0.0.1:4318
+python3 scripts/atlas.py build --target pages               # the static site, as GitHub Pages serves it (npm run build:pages)
+python3 scripts/atlas.py serve --target pages --port 4318   # http://127.0.0.1:4318 (npm run serve:pages)
 ```
 
 On the static site, console worlds replay a recording and server worlds show a screenshot.
@@ -59,13 +59,16 @@ Live readings and dreams call models and run only with `--accept-run`, within th
 ## Check
 
 ```sh
-npm run verify   # formatting, tests, evidence validation, the build and browser tests; no model calls
+npm test          # fast: Python unit tests, no model calls
+npm run check     # fast: validate records, hashes and citations, writes nothing
+npm run build     # fast: build the local site into dist/
+npm run verify    # full gate: formatting, tests, checks, build and browser smoke tests; no model calls
 ```
 
-Browser tests need `npm install` and `npx playwright install chromium`.
+The npm scripts need Node.js 22 and `npm install`; the browser tests also need a Playwright browser. [Environment](docs/environment.md) has the install steps and the Python commands behind each script.
 
 ---
 
-[Study](docs/study.md) · [Pipeline](docs/pipeline.md) · [Commands](docs/commands.md) · [Previews](docs/previews.md) · [Records](docs/records.md) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) · [Licensing](LICENSING.md)
+[Study](docs/study.md) · [Pipeline](docs/pipeline.md) · [Commands](docs/commands.md) · [Concepts](docs/concepts.md) · [Environment](docs/environment.md) · [Release](docs/release.md) · [Troubleshooting](docs/troubleshooting.md) · [Previews](docs/previews.md) · [Records](docs/records.md) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) · [Licensing](LICENSING.md)
 
 Original README text © 2026 Mirza Husadzic, licensed under CC BY 4.0. Separately attributed material retains its own terms.

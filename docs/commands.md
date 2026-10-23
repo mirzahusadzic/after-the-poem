@@ -1,6 +1,6 @@
 # Commands
 
-Seven programs in `scripts/` run the study. Run each from the repository root as `python3 scripts/PROGRAM.py COMMAND [FLAGS]`. `--help` on a program or on any of its commands prints the text the tables below repeat.
+Eight programs in `scripts/` run the study: `evaluate.py`, `claude_dream.py`, `pipeline.py`, `load_bearing.py`, `reading_controls.py`, `record_consoles.py`, `atlas.py` and `bundles.py`. Run each from the repository root as `python3 scripts/PROGRAM.py COMMAND [FLAGS]`. `--help` on a program or on any of its commands prints the text the tables below repeat.
 
 Live work calls models, which cost money, and refuses without `--accept-run`; every other command calls no model. See [Safety](#safety) before a first live run, and [Pipeline](pipeline.md) for the order in which the commands are used.
 
@@ -29,12 +29,12 @@ Live work calls models, which cost money, and refuses without `--accept-run`; ev
 | `test:page` | Builds the site and runs `tests/page-smoke.mjs` | No |
 | `test:release` | Builds the static site, runs `tests/release-smoke.mjs`, then rebuilds the local site | No |
 | `test:engines` | The release smoke test in WebKit and Firefox | No |
-| `test:preview` | `tests/preview-smoke.mjs` against a running `npm run dev` | No |
+| `test:preview` | `tests/preview-smoke.mjs` against a running `npm run dev:full` on macOS (`PREVIEW_URL=http://127.0.0.1:4317`) | No |
 | `format` | Formats the JavaScript with Prettier | No |
 | `format:check` | Checks the JavaScript formatting | No |
 | `verify` | `format:check`, `test`, `check`, `build`, a contract validation, `test:ui`, `test:page` and `test:release` | No |
 
-The browser tests need Playwright; `PLAYWRIGHT_MODULE_PATH` can point at an existing installation.
+The browser tests need Node.js 22 and Playwright; see [Environment](environment.md#playwright-install). `test:engines` and `test:preview` are opt-in and are not part of `verify`.
 
 ## evaluate.py
 
@@ -694,11 +694,56 @@ python3 scripts/bundles.py {validate,import} bundle [--project PROJECT]
 | `bundle` | path | Run bundle directory |
 | `--project` | `PROJECT` | Study directory (default: this repository) |
 
+## pipeline.py
+
+Prepares and runs local Codex generation/review campaigns, then admits their records. This is the older local-campaign path: `evaluate.py plan`, `run`, `resume`, `status`, `validate` and `admit` are the newer campaign commands, while `pipeline.py prepare`, `run` and `admit` freeze, execute and import a `pipeline.py` campaign. The `pipeline` npm script is this program. Nothing here executes an archived candidate.
+
+```sh
+python3 scripts/pipeline.py prepare config --output DIR [--project DIR] [--catalog FILE] [--router-profile FILE] [--capabilities FILE] [--router-url URL] [--dry-run]
+python3 scripts/pipeline.py run CAMPAIGN [--accept-run]
+python3 scripts/pipeline.py admit CAMPAIGN [--project DIR]
+```
+
+| Command | Effect |
+| --- | --- |
+| `prepare` | Freeze inputs and queue jobs into a new campaign directory; never calls a model |
+| `run` | Execute or resume the queued jobs without repeating finished ones; calls a model only with `--accept-run` on a live campaign |
+| `admit` | Import the campaign's retained bundles and reviews into the study; calls no model |
+
+`prepare`:
+
+| Flag | Values | Effect |
+| --- | --- | --- |
+| `config` | path | Campaign config JSON (positional, required) |
+| `--output` | `DIR`, required | New campaign directory; it must not exist yet |
+| `--project` | `DIR` | Study directory (default: this repository) |
+| `--catalog` | `FILE` | Codex model catalog (default: models.json in CODEX_HOME, ~/.codex) |
+| `--router-profile` | `FILE` | Codex config for the router (default: unified-openrouter.config.toml in CODEX_HOME) |
+| `--capabilities` | `FILE` | Model capability registry (default: `data/model-capabilities.json`) |
+| `--router-url` | `URL` | Local model router; only http://127.0.0.1 is accepted (default: http://127.0.0.1:18766/v1) |
+| `--dry-run` | — | Freeze a synthetic campaign; running it calls no model |
+
+`run`:
+
+| Flag | Values | Effect |
+| --- | --- | --- |
+| `campaign` | path | Campaign directory made by `prepare` (positional, required) |
+| `--accept-run` | — | Allow model calls, which cost money; a live campaign refuses without it |
+
+`admit`:
+
+| Flag | Values | Effect |
+| --- | --- | --- |
+| `campaign` | path | Finished campaign directory (positional, required) |
+| `--project` | `DIR` | Study directory (default: this repository) |
+
+`prepare --dry-run` and `run` without `--accept-run` call no model. Rerunning `run` on the same campaign resumes without repeating jobs that have a receipt. A retained receipt is reused only when its requested model, reasoning, time allowance, prompt and instruction identities still match the frozen plan; a stale receipt stops the resume with an actionable error. See [Pipeline](pipeline.md) for where this path fits and [Troubleshooting](troubleshooting.md) for resuming and budget failures.
+
 ## Safety
 
-Live work is a model call: reading, scoring, extracting, generating a world or reviewing one. It costs money on the operator's own accounts, so it refuses without `--accept-run`. The commands that can call a model are `evaluate.py` `run-profile`, `run-profiles`, `run-dream-profile`, `score`, `run-evaluation`, `extract`, and `run` or `resume` on a live campaign; `claude_dream.py run`; and `load_bearing.py run`.
+Live work is a model call: reading, scoring, extracting, generating a world or reviewing one. It costs money on the operator's own accounts, so it refuses without `--accept-run`. The commands that can call a model are `evaluate.py` `run-profile`, `run-profiles`, `run-dream-profile`, `score`, `run-evaluation`, `extract`, and `run` or `resume` on a live campaign; `pipeline.py run` on a live campaign; `claude_dream.py run`; and `load_bearing.py run`.
 
-`-n`/`--dry-run` rehearses the same path with synthetic answers and calls no model. A profile's rehearsal writes to `OUTPUT.dry-run` beside the live output, and nothing synthetic is admitted. `doctor-profile`, `doctor-dream-profile`, `doctor` and `claude_dream.py check` check a setup before a live run, also without a model call.
+`-n`/`--dry-run` rehearses with synthetic answers and calls no model. A profile's rehearsal writes to `OUTPUT.dry-run` beside the live output, and nothing synthetic is admitted. One exception: `run-dream-profile --dry-run` rehearses the generation alone in `OUTPUT.dry-run`, not the whole dream-plus-reading path. `doctor-profile`, `doctor-dream-profile`, `doctor` and `claude_dream.py check` check a setup before a live run, also without a model call.
 
 ### Budget flags
 
