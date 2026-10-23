@@ -49,6 +49,8 @@
   --bg: #ded6ea;
   --panel: #fbf8fc;
   --panel2: #e0d4ed;
+  /* Run chips sit on the page, where --panel2 nearly matches --bg; the card surface keeps them visible. */
+  --chip-bg: var(--panel);
   --heading-bg: #cdb9df;
   --title-color: #492c61;
   --assessment-bg: #f3edf8;
@@ -113,6 +115,8 @@
   --action-fill: #ffa19c;
   --action-ink: #481e2e;
   --action-wash: #7c3549;
+  /* The wash nearly matches the run chips here (--panel2), so hovering a chip uses a lighter berry. */
+  --chip-hover: #8a3f56;
   --source-accent: #ffb4b0;
   --source-bg: #642b44;
   --source-text: #d1f5dc;

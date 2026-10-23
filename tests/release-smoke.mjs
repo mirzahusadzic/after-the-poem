@@ -255,6 +255,11 @@ try {
     await returning.close();
   }
   await page.locator('#run-picker [data-run]').first().waitFor();
+  assert.equal(await page.locator('#footer-rubric').textContent(), 'Rubric v0.1.0 · Muse v5');
+  assert.match(
+    await page.locator('#reader-caveat').textContent(),
+    /^One reader, Muse Spark 1\.3 Contributor, gave every reading on this page\./
+  );
   // One reader: no reading switcher and no "original" label; the earliest run shows its date.
   assert.equal(await page.locator('.reading-button').count(), 0);
   const picker = await page.locator('#run-picker').textContent();
@@ -340,7 +345,11 @@ try {
     if (kind === 'server' || (kind === 'console' && !recorded))
       assert.match(await page.locator('#preview-availability').textContent(), /local copy/);
     if (recorded) {
-      assert.match(await page.locator('#preview-availability').textContent(), /runs nothing/);
+      assert.match(
+        await page.locator('#preview-availability').textContent(),
+        /runs nothing/,
+        'Recorded console availability for ' + id
+      );
       await page.locator('#open-preview').click();
       await page.locator('.xterm-screen').waitFor({ timeout: 10000 });
       const opening = recorded.entries.find((entry) => entry.command === report.artefacts[id].initial_command);

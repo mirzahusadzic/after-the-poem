@@ -1,5 +1,6 @@
 'use strict';
 (function () {
+  if (!window.POEM_REPORT || !window.POEM_REPORT.artefacts) return;
   const report = window.POEM_REPORT;
   const $ = function (id) {
     return document.getElementById(id);
@@ -50,7 +51,7 @@
     });
   }
   const NOT_RECORDED =
-    'Not recorded. This page replays a recording and runs nothing; to try your own commands, clone the repository and run npm run dev on macOS.';
+    'Not recorded. This page replays a recording and runs nothing; to try your own commands, clone the repository and run npm run dev for a local copy.';
   // The language a native world runs in; registrations name it, and the first native worlds were Zsh and Ruby.
   function medium(entry) {
     return entry.medium || { console: 'Zsh', server: 'Ruby' }[entry.kind];
@@ -60,7 +61,7 @@
       (entry.kind === 'console'
         ? 'This world runs in ' + medium(entry)
         : 'This world runs on its own ' + medium(entry) + ' server') +
-      ', so it opens only from a local copy of this study: clone the repository and run npm run dev on macOS, ' +
+      ', so it opens only from a local copy of this study: clone the repository and run npm run dev, ' +
       'where a sandboxed runner starts a fresh copy. The image shows such a copy.'
     );
   }
@@ -97,6 +98,8 @@
     noticeTimer = null;
     status.textContent = text;
     status.hidden = false;
+    // The notice hides on a timer in every motion setting; reduced motion only
+    // removes the fade animation (see the stylesheet), never the information.
     if (!persistent)
       noticeTimer = setTimeout(function () {
         status.hidden = true;
@@ -121,6 +124,58 @@
     return window.matchMedia && window.matchMedia('(hover: none)').matches ? 'Tap × to exit' : 'Press Esc to exit';
   }
 
+  let previewReturn = null;
+  function previewTitle() {
+    const run = report.runs.find(function (r) {
+      return r.id === currentRun;
+    });
+    return run ? 'Artefact preview \u00b7 ' + run.title : 'Artefact preview';
+  }
+  function previewFocusables() {
+    const root = $('preview-workspace');
+    return Array.from(
+      root.querySelectorAll('button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"]), iframe')
+    ).filter(function (node) {
+      if (node.disabled || node.hidden) return false;
+      if (node.tagName === 'IFRAME' && node.hidden) return false;
+      return node.offsetParent !== null || node === document.activeElement;
+    });
+  }
+  function trapPreviewTab(event) {
+    const items = previewFocusables();
+    if (!items.length) {
+      event.preventDefault();
+      $('preview-close').focus({ preventScroll: true });
+      return;
+    }
+    const at = items.indexOf(document.activeElement);
+    let next = null;
+    if (event.shiftKey) next = at <= 0 ? items[items.length - 1] : items[at - 1];
+    else next = at < 0 || at >= items.length - 1 ? items[0] : items[at + 1];
+    event.preventDefault();
+    next.focus({ preventScroll: true });
+  }
+  // Background landmarks around the modal preview. The dialog itself lives inside
+  // .shell, so inertness applies to its neighbours, never to one of its ancestors.
+  function previewBackground() {
+    return [
+      document.querySelector('.masthead'),
+      document.querySelector('footer'),
+      document.querySelector('.lobby-toolbar'),
+      document.querySelector('.widget-heading'),
+      document.querySelector('.radar-panel'),
+      document.querySelector('.workspace-tabs'),
+      document.querySelector('#view-reading'),
+      document.querySelector('#view-scores'),
+      document.querySelector('#view-sources'),
+      document.querySelector('#view-method')
+    ].filter(Boolean);
+  }
+  function setPreviewInert(on) {
+    previewBackground().forEach(function (node) {
+      node.inert = on;
+    });
+  }
   function closePreview() {
     const wasOpen = !$('preview-workspace').hidden;
     generation += 1;
@@ -131,10 +186,12 @@
     setFullWindow(false);
     $('artefact-frame').removeAttribute('src');
     $('artefact-frame').hidden = true;
+    $('artefact-frame').title = 'Artefact preview';
     $('console-panel').hidden = true;
     $('preview-handoff').hidden = true;
     $('preview-handoff-link').removeAttribute('href');
     $('preview-workspace').hidden = true;
+    setPreviewInert(false);
     $('open-preview').disabled = false;
     $('preview-status').hidden = true;
     $('preview-status').textContent = '';
@@ -144,7 +201,18 @@
       fit = null;
     }
     $('terminal').replaceChildren();
-    if (wasOpen) $('open-preview').focus({ preventScroll: true });
+    if (wasOpen) {
+      const target =
+        previewReturn && !previewReturn.disabled && document.contains(previewReturn)
+          ? previewReturn
+          : $('open-preview');
+      previewReturn = null;
+      try {
+        target.focus({ preventScroll: true });
+      } catch (_) {
+        /* The opener may be gone; the preview already returned focus. */
+      }
+    }
   }
 
   function redraw() {
@@ -187,7 +255,35 @@
     }
   }
 
-  function mountTerminal(replay) {
+  // The terminal library loads once, on first use, in its declared order; a failed load can be retried.
+  let terminalAssets = null;
+  function loadTerminal() {
+    if (!terminalAssets)
+      terminalAssets = Array.from($('terminal-assets').content.children).reduce(function (ready, declared) {
+        return ready.then(function () {
+          return new Promise(function (resolve, reject) {
+            const asset = document.createElement(declared.tagName.toLowerCase());
+            if (asset.tagName === 'LINK') {
+              asset.rel = 'stylesheet';
+              asset.href = declared.getAttribute('href');
+            } else asset.src = declared.getAttribute('src');
+            asset.onload = resolve;
+            asset.onerror = function () {
+              terminalAssets = null;
+              reject(new Error('The terminal could not load. Reload the report and try again.'));
+            };
+            document.head.append(asset);
+          });
+        });
+      }, Promise.resolve());
+    return terminalAssets;
+  }
+
+  // Resolves false when the preview closed while the terminal was loading.
+  async function mountTerminal(replay) {
+    const mountGeneration = generation;
+    await loadTerminal();
+    if (mountGeneration !== generation) return false;
     $('console-panel').hidden = false;
     terminal = new Terminal({
       fontSize: 14,
@@ -265,6 +361,7 @@
       $('console-shortcuts').append(button);
     });
     terminal.focus();
+    return true;
   }
 
   async function openPreview() {
@@ -272,15 +369,21 @@
     const requestGeneration = generation,
       entry = report.artefacts[currentRun];
     if (entry.kind === 'none') return;
+    previewReturn = document.activeElement;
     $('preview-workspace').hidden = false;
+    $('preview-title').textContent = previewTitle();
+    $('artefact-frame').title = previewTitle();
     setFullWindow(true);
-    $('preview-workspace').focus({ preventScroll: true });
+    // The open preview is modal: the lobby behind it stays visible but inert.
+    setPreviewInert(true);
+    $('preview-close').focus({ preventScroll: true });
     if (entry.kind === 'browser') {
       if (location.protocol === 'file:') {
         showPreviewNotice(browserServerNotice, true);
         return;
       }
       $('artefact-frame').setAttribute('sandbox', 'allow-scripts allow-forms allow-downloads');
+      $('artefact-frame').title = previewTitle();
       $('artefact-frame').src = entry.preview;
       $('artefact-frame').hidden = false;
       showPreviewNotice(exitHint(), false);
@@ -289,19 +392,29 @@
     }
     if (entry.kind === 'console' && recording()) {
       session = REPLAY;
-      mountTerminal(true);
+      try {
+        if (!(await mountTerminal(true))) return;
+      } catch (error) {
+        showPreviewNotice(error.message, true);
+        return;
+      }
       await execute(entry.initial_command);
       showPreviewNotice(exitHint(), false);
       return;
     }
     if (!localServer) {
-      showPreviewNotice('This preview needs the local runner. Run npm run dev, then open http://127.0.0.1:4317.', true);
+      showPreviewNotice(
+        'This preview needs the local runner. Run npm run dev for a local copy, then open the local report.',
+        true
+      );
       return;
     }
     $('open-preview').disabled = true;
     showPreviewNotice('Opening a fresh local copy…', true);
     try {
-      const response = await fetch('/_preview/status');
+      // The page sends no referrer, and old Safari sends no Fetch Metadata: this one same-origin request
+      // carries its referrer so the local runner can recognise the report it serves.
+      const response = await fetch('/_preview/status', { referrerPolicy: 'same-origin' });
       if (!response.ok) throw new Error('Restart the local report with npm run dev to enable previews.');
       const status = await response.json();
       token = status.token;
@@ -313,7 +426,7 @@
       }
       session = result.session;
       if (entry.kind === 'console') {
-        mountTerminal();
+        if (!(await mountTerminal())) return;
         await execute(entry.initial_command);
       } else {
         const url = new URL(result.url);
@@ -328,6 +441,7 @@
           return;
         }
         $('artefact-frame').setAttribute('sandbox', 'allow-scripts allow-forms allow-same-origin allow-downloads');
+        $('artefact-frame').title = previewTitle();
         $('artefact-frame').src = result.url;
         $('artefact-frame').hidden = false;
         $('artefact-frame').focus();
@@ -357,7 +471,7 @@
           : recording()
             ? 'Recorded in the isolated local runner on ' +
               recordedDate(recording()) +
-              '. This page replays those answers and runs nothing; to try your own commands, clone the repository and run npm run dev on macOS.'
+              '. This page replays those answers and runs nothing; to try your own commands, clone the repository and run npm run dev for a local copy.'
             : nativeOnly
               ? nativeNotice(entry)
               : 'Opens here in your browser when the local preview runner is available.';
@@ -408,8 +522,9 @@
       link.href = picture.path;
       link.target = '_blank';
       link.rel = 'noopener';
+      link.setAttribute('aria-label', picture.caption + ' (opens the image)');
       img.src = picture.path;
-      img.alt = picture.caption;
+      img.alt = '';
       img.loading = 'lazy';
       link.append(img);
       figure.append(link, node('figcaption', picture.caption));
@@ -428,6 +543,33 @@
         )
       );
       $('artefact-images').append(document);
+    }
+  });
+  if ($('open-preview') && $('preview-availability'))
+    $('open-preview').setAttribute('aria-describedby', 'preview-availability');
+  // A preview must never carry the study to another origin: block external form posts here,
+  // while the frame sandbox (no top navigation) contains the framed world itself.
+  document.addEventListener(
+    'submit',
+    function (event) {
+      const form = event.target;
+      if (!form || form.tagName !== 'FORM' || form.id === 'console-form') return;
+      const action = form.getAttribute('action');
+      if (!action || action.startsWith('#')) return;
+      let url = null;
+      try {
+        url = new URL(action, location.href);
+      } catch (_) {
+        return;
+      }
+      if (url.origin !== location.origin) event.preventDefault();
+    },
+    true
+  );
+  $('preview-workspace').addEventListener('keydown', function (event) {
+    if (event.key === 'Tab' && !$('preview-workspace').hidden) {
+      event.preventDefault();
+      trapPreviewTab(event);
     }
   });
   $('open-preview').addEventListener('click', openPreview);

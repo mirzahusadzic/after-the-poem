@@ -134,9 +134,68 @@ try {
   });
   await page.goto(url);
   await page.locator('[data-run="sol56-max"]').waitFor();
-  await page.locator('#palette-study summary').click();
-  for (const palette of ['dusk', 'daylight', 'play']) {
+  assert.equal(await page.locator('#footer-rubric').textContent(), 'Rubric v0.1.0 · Muse v5');
+  // A new palette reloads the page in place, because browsers tint their window from the page only as it loads.
+  const pickPalette = async (palette) => {
+    const reloads = (await page.evaluate(() => document.documentElement.dataset.palette)) !== palette;
+    await page.locator('#palette-study summary').click();
+    const loaded = reloads ? page.waitForEvent('load') : null;
     await page.locator('.palette-option[data-palette="' + palette + '"]').click();
+    if (loaded) {
+      await loaded;
+      await page.locator('[data-run="sol56-max"]').waitFor();
+    }
+    return reloads;
+  };
+  // The open view and its scroll position come back with the run, axis and pins.
+  await page.locator('#tab-sources').click();
+  assert.equal(await pickPalette('play'), true);
+  assert.equal(await page.locator('#tab-sources').getAttribute('aria-selected'), 'true');
+  await page.locator('#tab-reading').click();
+  await page.locator('#view-reading').evaluate((pane) => {
+    pane.scrollTop = 160;
+  });
+  const readingScroll = await page.locator('#view-reading').evaluate((pane) => pane.scrollTop);
+  assert.ok(readingScroll > 0, 'The reading pane did not scroll');
+  assert.equal(await pickPalette('daylight'), true);
+  assert.equal(await page.locator('#view-reading').evaluate((pane) => pane.scrollTop), readingScroll);
+  assert.equal(await pickPalette('daylight'), false, 'Choosing the current palette reloads the page');
+  // The palette and window tint are in place before the app script runs, so a reload never flashes the default.
+  const earlyPage = await context.newPage();
+  await earlyPage.route(/app\.js/, async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, 1200));
+    await route.continue();
+  });
+  const early = earlyPage.goto(new URL('?palette=play', url).href);
+  await earlyPage.waitForSelector('#observatory', { state: 'attached' });
+  assert.deepEqual(
+    await earlyPage.evaluate(() => [
+      document.documentElement.dataset.palette,
+      document.querySelector('meta[name="theme-color"]').content,
+      typeof window.POEM_REPORT
+    ]),
+    ['play', '#3f1c2b', 'object']
+  );
+  await early;
+  await earlyPage.close();
+  for (const palette of ['dusk', 'daylight', 'play']) {
+    await pickPalette(palette);
+    assert.equal(
+      await page.locator('#palette-study').evaluate((menu) => menu.open),
+      false,
+      'The colour menu stays open after choosing ' + palette
+    );
+    const tint = await page.evaluate(() => ({
+      tags: document.querySelectorAll('meta[name="theme-color"]').length,
+      content: document.querySelector('meta[name="theme-color"]').content,
+      page: getComputedStyle(document.body).backgroundColor
+    }));
+    assert.equal(tint.tags, 1, 'One window tint tag');
+    assert.deepEqual(
+      tint.content.match(/[0-9a-f]{2}/g).map((channel) => parseInt(channel, 16)),
+      tint.page.match(/\d+/g).slice(0, 3).map(Number),
+      'The window tint does not follow ' + palette
+    );
     const themeSurfaces = await page.evaluate(() => {
       const color = (selector) => getComputedStyle(document.querySelector(selector)).backgroundColor;
       const foreground = (selector) => getComputedStyle(document.querySelector(selector)).color;
@@ -185,8 +244,7 @@ try {
       'Footer contrast is below 4.5 under ' + palette
     );
   }
-  await page.locator('.palette-option[data-palette="dusk"]').click();
-  await page.locator('#palette-study summary').click();
+  await pickPalette('dusk');
   await page.locator('.cohort-button').nth(1).click();
   await page.locator('#tab-sources').click();
   await page.locator('#brand-home').click();
@@ -208,6 +266,31 @@ try {
   assert.ok(
     await page.evaluate(() => document.documentElement.scrollHeight <= innerHeight),
     'Desktop card growth introduces page scroll'
+  );
+  // The page loads a slim copy of report.json: reviews named by ID, presentations by identity and status, no
+  // carriage records. The public report keeps everything, and the page restores its own copy of each review.
+  const pageData = (await readFile(resolve(root, 'dist/report-data.js'), 'utf8')).replace(
+    /^window\.POEM_REPORT = |;\s*$/g,
+    ''
+  );
+  const pagePayload = JSON.parse(pageData),
+    publicReport = JSON.parse(await readFile(resolve(root, 'dist/report.json'), 'utf8'));
+  assert.ok(Object.values(pagePayload.active_reviews).every((id) => typeof id === 'string'));
+  assert.equal('carriage' in pagePayload, false);
+  assert.ok(
+    Object.values(pagePayload.presentations).every(
+      (item) => Object.keys(item).sort().join() === 'presentation_id,status'
+    )
+  );
+  assert.ok(Object.values(publicReport.presentations).every((item) => Array.isArray(item.criteria)));
+  assert.deepEqual(
+    await page.evaluate(() => window.POEM_REPORT.active_reviews['sol56-max']),
+    publicReport.active_reviews['sol56-max']
+  );
+  assert.equal(
+    await page.evaluate(() => window.POEM_REPORT.reviews.includes(window.POEM_REPORT.active_reviews['sol56-max'])),
+    false,
+    'The active review must be its own copy, as report.json carries it'
   );
   assert.deepEqual(
     await page.evaluate(() => Object.keys(window.POEM_REPORT.presentations).sort()),
@@ -243,8 +326,10 @@ try {
   assert.equal(await page.locator('polygon.selected-polygon').count(), 1);
   const expected = await page.evaluate(() => {
     const report = window.POEM_REPORT;
-    const selected = report.active_reviews['sol56-max'];
-    const baseline = report.active_reviews[report.baseline];
+    const selected = report.active_reviews['sol56-max-muse-v5-1'];
+    const baseline =
+      report.reviews.find((review) => review.id === report.baseline_review_id) ||
+      report.active_reviews[report.baseline];
     return {
       touch: selected.scores.touch.value,
       touchQuote: selected.scores.touch.citations[0].quote,
@@ -253,9 +338,26 @@ try {
         return report.evidence_text['sol56-max/' + citation.path + ':' + citation.start + '-' + citation.end] || null;
       })(),
       relationsRationale: report.active_reviews['sol-original'].scores.relations.rationale,
-      differences: report.rubric.axes.map((axis) => selected.scores[axis.id].value - baseline.scores[axis.id].value)
+      // A split reading is compared through its sessions' mean, as the page shows it.
+      differences: report.rubric.axes.map((axis) => {
+        const record = (report.reading_details['sol56-max-muse-v5-1'] || {})[axis.id];
+        const value =
+          record && record.sessions > 1 && record.levels.length === record.sessions
+            ? record.levels.reduce((sum, level) => sum + level, 0) / record.sessions
+            : selected.scores[axis.id].value;
+        return value - baseline.scores[axis.id].value;
+      })
     };
   });
+  const thirds = (value) => {
+    const whole = Math.floor(value + 1e-9),
+      part = Math.round((value - whole) * 3);
+    return part === 0
+      ? String(whole)
+      : part === 3
+        ? String(whole + 1)
+        : (whole || '') + (part === 1 ? '\u2153' : '\u2154');
+  };
   for (const id of ['sol-original', 'astra-garden', 'sol56-max', 'sol61-max', 'astra-max']) {
     await page.locator('[data-run="' + id + '"]').click();
     assert.equal(await page.locator('[data-run="' + id + '"]').getAttribute('aria-pressed'), 'true');
@@ -268,6 +370,32 @@ try {
   );
   assert.equal(await page.locator('#chart-caption .chart-caption-context').count(), 0);
   assert.deepEqual(await page.locator('#radar .ring-number').allTextContents(), ['0', '1', '2', '3', '4']);
+  await page.locator('[data-run="sol-original"]').click();
+  // The full research view opens each artefact on its authored review; choose
+  // the v5 evaluation reading explicitly to inspect session spread.
+  await page.locator('.reading-button[data-reading="sol-original-muse-v5-1"]').click();
+  await page.locator('#radar [data-axis="fidelity"]').click();
+  const fidelitySplit = await page.evaluate(() => {
+    const report = window.POEM_REPORT;
+    return (report.reading_details['sol-original-muse-v5-1'] || {}).fidelity?.levels || null;
+  });
+  assert.deepEqual(fidelitySplit.slice().sort(), [2, 3, 3]);
+  const fidelityCell = await page
+    .locator('#score-table tbody tr')
+    .filter({ hasText: 'Fidelity through change' })
+    .locator('td')
+    .nth(2)
+    .textContent();
+  // A split is drawn and tabulated as the sessions' mean in thirds; the level named stays the quorum.
+  assert.equal(fidelityCell.trim(), '2\u2154');
+  assert.match(await page.locator('#axis-values').textContent(), /2\u2154 \/ 4/);
+  assert.match(await page.locator('#score-anchor').textContent(), /Level 3/i);
+  assert.match(await page.locator('#chart-caption').textContent(), /mean of the three sessions/);
+  const agreementTitle = await page.locator('#radar .agreement-label title').first().textContent();
+  assert.match(agreementTitle, /the point is their mean/);
+  assert.match(await page.locator('#score-table caption').textContent(), /thirds is the mean/);
+  await page.locator('[data-run="sol56-max"]').click();
+  await page.locator('.reading-button[data-reading="sol56-max-muse-v5-1"]').click();
   await page.locator('#radar [data-axis="touch"]').focus();
   await page.keyboard.press('Enter');
   assert.equal(await page.locator('#axis-title').textContent(), 'Consequential touch');
@@ -283,7 +411,9 @@ try {
   );
   assert.deepEqual(
     rowValues.map((row) => row[2]),
-    expected.differences.map((value) => (value === 0 ? 'Same' : value > 0 ? '+' + value : String(value)))
+    expected.differences.map((value) =>
+      Math.abs(value) < 1e-9 ? 'Same' : (value > 0 ? '+' : '-') + thirds(Math.abs(value))
+    )
   );
   const evidenceHref = await page.locator('#evidence .citation a').first().getAttribute('href');
   await access(resolve(root, 'dist', decodeURI(evidenceHref.split('#')[0])));
@@ -306,6 +436,28 @@ try {
   await page.locator('#open-preview').click();
   await page.locator('#preview-workspace').waitFor({ state: 'visible' });
   assert.ok(await page.locator('#preview-workspace.is-full-window').count());
+  assert.equal(await page.locator('#preview-workspace').getAttribute('role'), 'dialog');
+  assert.equal(await page.locator('#preview-workspace').getAttribute('aria-modal'), 'true');
+  assert.equal(await page.locator('#preview-workspace').getAttribute('aria-labelledby'), 'preview-title');
+  assert.match(await page.locator('#artefact-frame').getAttribute('title'), /The Hand Remains/);
+  assert.equal(await page.locator('#open-preview').getAttribute('aria-describedby'), 'preview-availability');
+  assert.equal(await page.evaluate(() => document.querySelector('.masthead').inert), true);
+  await page.locator('#preview-close').focus();
+  for (let step = 0; step < 10; step++) {
+    await page.keyboard.press('Tab');
+    assert.equal(
+      await page.evaluate(() => document.querySelector('#preview-workspace').contains(document.activeElement)),
+      true,
+      'Focus left the preview dialog on Tab ' + step
+    );
+  }
+  await page.keyboard.press('Escape');
+  await page.locator('#preview-workspace').waitFor({ state: 'hidden' });
+  assert.equal(await page.evaluate(() => document.querySelector('.masthead').inert), false);
+  assert.equal(await page.evaluate(() => document.activeElement.id), 'open-preview');
+  await page.locator('#open-preview').click();
+  await page.locator('#preview-workspace').waitFor({ state: 'visible' });
+  assert.ok(await page.locator('#preview-workspace.is-full-window').count());
   const windowFill = await page.locator('#preview-workspace').evaluate((element) => {
     const box = element.getBoundingClientRect();
     return { left: box.left, top: box.top, width: box.width, height: box.height, viewport: [innerWidth, innerHeight] };
@@ -321,19 +473,58 @@ try {
   await page.locator('#preview-workspace').waitFor({ state: 'hidden' });
   assert.equal(await page.locator('body').evaluate((body) => body.classList.contains('preview-full-window')), false);
   await page.locator('[data-run="sol56-max"]').click();
+  await page.locator('.reading-button[data-reading="sol56-max-muse-v5-1"]').click();
   await page.locator('#tab-reading').click();
+  assert.ok(
+    await page.locator('meta[http-equiv="Content-Security-Policy"]').count(),
+    'A content security policy is declared'
+  );
+  assert.doesNotMatch(
+    await page.locator('meta[http-equiv="Content-Security-Policy"]').getAttribute('content'),
+    /(?:^|\s)file:/,
+    'The production report CSP does not allow file: resources'
+  );
+  assert.equal(await page.locator('#score-table-wrap').getAttribute('role'), 'region');
+  assert.equal(await page.locator('#score-table').getAttribute('tabindex'), null);
+  assert.equal(await page.locator('#source-record-panel').getAttribute('role'), 'region');
+  assert.equal(await page.locator('#source-list').getAttribute('tabindex'), null);
+  const axisTabSize = await page
+    .locator('.axis-tab')
+    .first()
+    .evaluate((button) => {
+      const box = button.getBoundingClientRect();
+      return { height: box.height, title: button.title, label: button.getAttribute('aria-label') };
+    });
+  assert.ok(axisTabSize.height >= 24, 'Axis tabs meet the 24px target size: ' + axisTabSize.height);
+  assert.match(axisTabSize.title, /\u00b7 Core recognition$/);
+  assert.equal(axisTabSize.label, '1 of 8 \u00b7 Core recognition');
+  // The research view keeps several readers, so it never claims a single one.
+  assert.equal(await page.locator('#reader-caveat').isHidden(), true);
+  assert.match(await page.locator('#other-levels').textContent(), /displayed verdict/);
+  await page.locator('[data-run="astra-garden"]').click();
+  await page.locator('.reading-button[data-reading="astra-garden-muse-v5-1"]').click();
+  assert.equal(await page.locator('#alternatives-wrap').isHidden(), false);
+  assert.match(await page.locator('#alternatives-heading').textContent(), /Alternative readings retained/);
+  assert.ok((await page.locator('#alternatives-list li').count()) >= 1);
+  await page.locator('[data-run="sol56-max"]').click();
+  await page.locator('.reading-button[data-reading="sol56-max-muse-v5-1"]').click();
   await page.locator('#show-score-table').click();
   assert.equal(await page.locator('#tab-scores').getAttribute('aria-selected'), 'true');
   await page.locator('#tab-reading').click();
   assert.equal(await page.locator('#review-studio').count(), 0);
-  assert.equal(await page.locator('#anchors-list li').count(), 5);
+  // The awarded level is named in the verdict; the scale beside it lists the other four.
+  assert.equal(await page.locator('#anchors-list li').count(), 4);
   assert.match(
     await page.locator('#score-anchor').textContent(),
     new RegExp('Level ' + expected.touch + '|Unassessed')
   );
   if (expected.touchEvidence)
     assert.equal(await page.locator('#evidence .evidence-text').first().textContent(), expected.touchEvidence);
-  assert.equal(await page.locator('#evidence .evidence-text').count(), Number(Boolean(expected.touchEvidence)));
+  if (expected.touchEvidence)
+    assert.ok(
+      (await page.locator('#evidence .evidence-text').count()) > 0,
+      'Readable selected citations render inert evidence excerpts'
+    );
   assert.equal(await page.locator('#evidence details').count(), 0);
   assert.equal(await page.locator('#evidence .markdown').count(), 0);
   assert.equal(await page.locator('#rubric-guide tbody tr').count(), 8);
@@ -906,7 +1097,7 @@ try {
   await page.locator('[data-run="sol-original"]').click();
   assert.equal(await page.locator('.run-button').count(), mainCohortRuns);
   assert.equal(await page.locator('.cohort-button').count(), 3);
-  assert.equal(await page.locator('#footer-rubric').textContent(), 'Rubric next-fixture');
+  assert.equal(await page.locator('#footer-rubric').textContent(), 'Rubric vnext-fixture · Muse v5');
   await page.locator('.cohort-button').last().click();
   assert.equal(await page.locator('.run-button').count(), 1);
   assert.equal(await page.locator('[data-run="future-run-fixture"]').getAttribute('aria-pressed'), 'true');
@@ -943,9 +1134,57 @@ try {
     await page.locator('[data-run="sol-original"]').click();
     const sizes = await page.evaluate(() => ({ view: innerWidth, width: document.documentElement.scrollWidth }));
     assert.ok(sizes.width <= sizes.view, 'Horizontal page overflow at ' + width + ': ' + JSON.stringify(sizes));
+    assert.equal(await page.locator('#run-facts-details').isVisible(), true);
+    assert.match(await page.locator('#run-facts-mobile').textContent(), /Retained text/);
+    const noticeMotion = await page.evaluate(() => {
+      const probe = document.createElement('p');
+      probe.id = 'preview-status';
+      document.body.append(probe);
+      const animation = getComputedStyle(probe).animationName;
+      probe.remove();
+      return animation;
+    });
+    assert.ok(noticeMotion === 'none' || noticeMotion === '', 'Preview notice animates under reduced motion');
     await page.evaluate(() => scrollTo(0, 0));
     await page.screenshot({ path: resolve(artifacts, 'mobile-' + width + '.png'), fullPage: true });
   }
+  await page.setViewportSize({ width: 1440, height: 1050 });
+  // The preview host keeps forms inside the preview. The fixture is served from the report origin with no
+  // policy of its own, so only the injected host stands between a form and another origin.
+  // The local runner hands its token only to its own report; browsers without Fetch Metadata need this request's
+  // same-origin referrer, which the page's no-referrer default would otherwise strip.
+  assert.match(
+    await readFile(resolve(root, 'src/previews.js'), 'utf8'),
+    /fetch\('\/_preview\/status', \{ referrerPolicy: 'same-origin' \}\)/
+  );
+  const reportRoot = new URL('/', url).href;
+  const formPage = await context.newPage();
+  const leaving = [];
+  formPage.on('request', (request) => {
+    if (!request.url().startsWith(reportRoot)) leaving.push(request.url());
+  });
+  await formPage.route(reportRoot + '__form-fixture.html', (route) =>
+    route.fulfill({
+      contentType: 'text/html',
+      body:
+        '<!doctype html><html><head><script src="previews/sol-original/preview-host.js"></script></head><body>' +
+        '<form id="button-away" action="__form-sink.html"><button formaction="https://evil.invalid/a">Away</button></form>' +
+        '<form id="script-away" action="https://evil.invalid/b"></form>' +
+        '<form id="stay" action="__form-sink.html"><button>Stay</button></form></body></html>'
+    })
+  );
+  await formPage.route(reportRoot + '__form-sink.html', (route) =>
+    route.fulfill({ contentType: 'text/html', body: '<!doctype html><title>sink</title>' })
+  );
+  await formPage.goto(reportRoot + '__form-fixture.html');
+  await formPage.locator('#button-away button').click();
+  await formPage.evaluate(() => document.getElementById('script-away').submit());
+  await formPage.waitForTimeout(300);
+  assert.equal(formPage.url(), reportRoot + '__form-fixture.html', 'An external form submit left the preview');
+  assert.deepEqual(leaving, [], 'An external form submit reached the network');
+  await formPage.locator('#stay button').click();
+  await formPage.waitForURL(/__form-sink\.html/);
+  await formPage.close();
   const baseReport = await page.evaluate(() => structuredClone(window.POEM_REPORT));
   const makeVariant = (source, requestedAxes, nextScale) => {
     const data = structuredClone(source);
@@ -995,7 +1234,10 @@ try {
   assert.equal(await variantPage.locator('#radar .axis-control').count(), 5);
   assert.equal(await variantPage.locator('#radar .ring-number').count(), 7);
   assert.equal(await variantPage.locator('#score-table tbody tr').count(), 5);
-  assert.equal(await variantPage.locator('#anchors-list li').count(), 7);
+  assert.equal(
+    await variantPage.locator('#anchors-list li').count(),
+    (await variantPage.locator('#score-anchor .anchor-level').count()) ? 6 : 7
+  );
   assert.match(await variantPage.locator('#scale-title').textContent(), /0–6/);
   assert.match(await variantPage.locator('#axis-values small').first().textContent(), /\/ 6/);
   await variantPage.screenshot({ path: resolve(artifacts, 'variable-profile-five-axis-1440.png'), fullPage: true });

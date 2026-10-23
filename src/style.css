@@ -71,9 +71,12 @@ body.preview-full-window{overflow:hidden}
 .preview-close{display:none}
 .preview-workspace.is-full-window .preview-close{display:grid;place-items:center;position:fixed;top:calc(10px + env(safe-area-inset-top,0px));right:calc(10px + env(safe-area-inset-right,0px));z-index:91;width:44px;height:44px;padding:0;border:1px solid var(--line);border-radius:50%;background:var(--panel);color:var(--text);box-shadow:0 6px 24px rgba(0,0,0,.22);font-size:24px;line-height:1;cursor:pointer}
 .preview-workspace.is-full-window .preview-close:hover{filter:brightness(1.12)}
+.preview-workspace:focus-visible,.preview-workspace.is-full-window:focus-visible,#preview-close:focus-visible,.sheet:focus-visible,.sheet-close:focus-visible,#sheet-body:focus-visible{outline:2px solid var(--action);outline-offset:3px}
+#score-table-wrap:focus-visible,#source-record-panel:focus-visible{outline:2px solid var(--action);outline-offset:4px}
 .preview-workspace.is-full-window .console-shortcuts{padding-right:52px}
 @keyframes preview-notice-in{from{opacity:0;transform:translate(-50%,-4px)}to{opacity:1;transform:translate(-50%,0)}}
 @keyframes preview-notice-out{to{opacity:0;visibility:hidden}}
+@media (prefers-reduced-motion: reduce){#preview-status:not([hidden]){animation:none}}
 .preview-handoff{margin:auto;max-width:440px;padding:28px;text-align:center;border:1px solid var(--line);border-radius:6px;background:var(--panel)}.preview-handoff p{margin:0 0 18px}.preview-handoff .fine{margin:18px 0 0;color:var(--muted)}.preview-handoff .button{display:inline-block;padding:10px 16px;border-radius:3px;background:var(--action);color:var(--action-ink);font-weight:600}.preview-handoff .button:hover{color:var(--action-ink);filter:brightness(1.08)}
 .preview-workspace.is-full-window #artefact-frame{flex:1 1 0;width:100%;height:auto;min-height:0}
 .preview-workspace.is-full-window #console-panel{display:flex;flex:1 1 0;flex-direction:column;min-height:0;padding:18px;padding-top:calc(18px + env(safe-area-inset-top,0px));padding-bottom:calc(18px + env(safe-area-inset-bottom,0px))}
@@ -81,10 +84,13 @@ body.preview-full-window{overflow:hidden}
 .preview-workspace.is-full-window .console-shortcuts{max-height:24vh;overflow:auto;flex-shrink:0}
 @media(max-width:520px){.preview-workspace.is-full-window #console-panel{padding:10px;padding-top:calc(10px + env(safe-area-inset-top,0px));padding-bottom:calc(10px + env(safe-area-inset-bottom,0px))}#preview-status{font-size:12px}}
 
+/* The root carries the palette too: browsers tint their window and overscroll from it, not only from body. */
+html{background:var(--bg)}
 /* The run lobby: one comparison surface, compact controls, readable content. */
-html{scroll-padding-bottom:calc(var(--footer-height,64px) + 16px)}
-body.cockpit{padding-bottom:var(--footer-height,64px)}
-.cockpit .shell{padding:0 clamp(22px,3vw,80px);min-height:calc(100vh - var(--footer-height,64px));display:flex;flex-direction:column}
+/* Layout fallbacks match the measured desktop chrome, so the first paint already sits where the page settles. */
+html{scroll-padding-bottom:calc(var(--footer-height,42px) + 16px)}
+body.cockpit{padding-bottom:var(--footer-height,42px)}
+.cockpit .shell{padding:0 clamp(22px,3vw,80px);min-height:calc(100vh - var(--footer-height,42px));display:flex;flex-direction:column}
 .cockpit #observatory{flex:1;display:flex;flex-direction:column;justify-content:center;min-width:0;padding-bottom:24px}
 .cockpit .masthead{flex-shrink:0;min-height:92px;height:auto;padding:20px 0;gap:28px}
 .cockpit .brand{font-size:13px;letter-spacing:1.8px;flex-shrink:0}
@@ -113,9 +119,9 @@ body.cockpit{padding-bottom:var(--footer-height,64px)}
 .cockpit .radar-panel{position:static;align-self:start;border:0;border-right:1px solid var(--line);border-radius:0;background:var(--assessment-bg);padding:56.3px 17px 16px;min-width:0}
 .cockpit .legend{gap:9px 15px;margin:0 0 -16px;font-size:12px;min-height:34px;align-content:start}
 .cockpit .radar{width:100%;max-width:none;margin:6px auto 0}
-.cockpit .chart-caption{display:grid;gap:5px;font-size:13px;line-height:1.55;margin:34.15px 0 12px;min-height:60px}
+.cockpit .chart-caption{display:grid;gap:5px;font-size:13px;line-height:1.55;margin:34.15px 0 12px;min-height:64px}
 .chart-caption-cue{font:italic 400 14px/1.5 var(--serif);color:var(--muted);letter-spacing:.05px}
-.chart-caption-context{font:11px/1.55 var(--mono);color:var(--faint);letter-spacing:.02em}
+.chart-caption-context{font:12px/1.55 var(--mono);color:var(--faint);letter-spacing:.02em}
 .cockpit .chart-tools{margin:0 0 16px}.cockpit .chart-tools button{font-size:12px}
 .cockpit .assessment-note{display:block;border:0;border-top:1px solid var(--line);padding:14px 2px 0}
 .cockpit .assessment-note p{font-size:14px;line-height:1.7;margin:0 0 8px}
@@ -209,7 +215,7 @@ body.cockpit{padding-bottom:var(--footer-height,64px)}
 /* Palette studies: colour planes replace the old ruled grid. */
 html { scroll-padding-top: calc(var(--header-height,64px) + 14px); }
 body.cockpit { padding-top: var(--header-height,64px); }
-.cockpit .shell { min-height: calc(100dvh - var(--header-height,64px) - var(--footer-height,64px)); }
+.cockpit .shell { min-height: calc(100dvh - var(--header-height,64px) - var(--footer-height,42px)); }
 .cockpit .masthead {
   position: fixed; inset: 0 0 auto; z-index: 20; min-height: 64px;
   padding: 10px clamp(22px,3vw,80px); gap: 24px;
@@ -242,12 +248,12 @@ body.cockpit { padding-top: var(--header-height,64px); }
 .level-marker { color: var(--assessment); border: 0; background: var(--panel2); }
 .original-marker { color: var(--chart-baseline); }
 .workspace { background: var(--assessment-bg); }
-.workspace[data-view="artefact"], .workspace[data-view="sources"] { background: var(--panel); }
 .workspace-tabs { border: 0; padding-top: 3px; }
 .workspace-tabs button { padding-top: 10px; padding-bottom: 9px; border-radius: 5px 5px 0 0; }
 .workspace-view { padding-top: 16px; padding-bottom: 18px; }
-.cockpit .run-button { border-color: transparent; background: var(--panel2); border-radius: 7px; }
-.cockpit .run-button:hover { background: var(--action-wash); }
+.cockpit .run-button { border-color: transparent; background: var(--chip-bg, var(--panel2)); border-radius: 7px; }
+/* A hovered chip gets the same action ring as the dimension tabs, so it shows in every palette. */
+.cockpit .run-button:hover { background: var(--chip-hover, var(--action-wash)); box-shadow: inset 0 0 0 1.5px var(--action); }
 .cockpit .run-button[aria-pressed=true] { background: var(--action-fill); color: var(--action-ink); }
 .cockpit .run-button[aria-pressed=true] .run-name,
 .cockpit .run-button[aria-pressed=true] .run-effort { color: var(--action-ink); }
@@ -306,6 +312,9 @@ input, textarea, select { border-color: var(--line); }
 .palette-options { display: grid; gap: 7px; }
 .palette-option { padding: 10px 12px; display: flex; align-items: center; gap: 12px; border: 0; border-radius: 7px; color: var(--text); background: var(--panel2); text-align: left; font-size: 14px; }
 .palette-option[aria-pressed=true] { outline: 2px solid var(--action); outline-offset: 1px; }
+/* The palette menu answers the pointer like the run chips do. */
+.palette-option:hover { background: var(--chip-hover, var(--action-wash)); box-shadow: inset 0 0 0 1.5px var(--action); }
+.palette-study>summary:hover, .palette-study>summary:hover .palette-label { color: var(--action); }
 .palette-option small { display: block; font-size: 12px; color: var(--muted); }
 .palette-option .palette-swatches { gap: 3px; flex-shrink: 0; }
 .palette-option .palette-swatches i { margin: 0; }
@@ -584,7 +593,7 @@ input, textarea, select { border-color: var(--line); }
 
 @media(max-width:520px) {
   .cockpit .legend { min-height: 50px; }
-  .cockpit .chart-caption { min-height: 76px; }
+  .cockpit .chart-caption { min-height: 82px; }
 }
 
 
@@ -688,17 +697,18 @@ input, textarea, select { border-color: var(--line); }
 .cockpit .run-picker .run-button[aria-pressed=true]:focus-visible { outline-color: var(--action-ink); }
 #run-title:focus, #run-title:focus-visible { outline: none; }
 .cockpit .run-picker > .run-button > span { line-height: 20px; }
-.run-group { display: flex; align-items: center; gap: 4px; flex-shrink: 0; padding: 3px 3px 3px 11px; border-radius: 8px; background: var(--panel2); scroll-snap-align: start; }
+.run-group { display: flex; align-items: center; gap: 4px; flex-shrink: 0; padding: 3px 3px 3px 11px; border-radius: 8px; background: var(--chip-bg, var(--panel2)); scroll-snap-align: start; }
 .cockpit .run-group .run-button { scroll-snap-align: none; }
 .run-group-name { font-size: 13px; color: var(--text); white-space: nowrap; margin-right: 4px; }
 .cockpit .run-group .run-button { flex: 0 0 auto; gap: 6px; padding: 4px 9px; border-radius: 6px; background: transparent; }
 .cockpit .run-group .run-button .run-name { font-size: 13px; white-space: nowrap; overflow-wrap: normal; }
 .cockpit .run-group .run-button > span { line-height: 20px; }
-.cockpit .run-group .run-button:hover { background: var(--action-wash); }
+.cockpit .run-group .run-button:hover { background: var(--chip-hover, var(--action-wash)); box-shadow: inset 0 0 0 1.5px var(--action); }
 .cockpit .run-group .run-button[aria-pressed=true] { background: var(--action-fill); }
 @media (max-width: 800px) {
   .cockpit .run-picker { max-width: 100%; }
 }
+#score-table-wrap,.source-record{scrollbar-gutter:stable}
 
 /* Readings of one artefact share its legend line: a small switcher, no extra row. */
 #selected-legend { min-width: 0; max-width: 100%; }
@@ -763,6 +773,18 @@ input, textarea, select { border-color: var(--line); }
 .pinned-strip .pin-verdict { color: var(--muted); display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
 @media (max-width: 520px) { .pinned-strip li button { grid-template-columns: 22px minmax(0, 1fr) 1.6em 2em; } .pinned-strip .pin-verdict { display: none; } }
 
+/* Provenance facts stay reachable on phones through a disclosure; hidden on desktop. */
+.run-facts-details{display:none;border:1px solid var(--line);border-radius:7px;background:var(--panel);padding:6px 14px;margin:0 0 12px}
+.run-facts-details>summary{min-height:44px;display:flex;align-items:center;font-size:14px}
+.run-facts-mobile{display:grid;gap:8px;padding:4px 0 10px;font-size:13px;color:var(--muted)}
+.run-facts-mobile b{display:block;font-size:14px;color:var(--text)}
+.data-failure{border:1px solid var(--line);border-radius:7px;background:var(--panel);padding:14px 18px;margin:12px 0;font-size:14px}
+.alternatives{margin:12px 0 0;padding:10px 14px;border-left:2px solid var(--chart-baseline);background:var(--panel2);border-radius:0 6px 6px 0}
+.alternatives h3{font:500 12px/1.5 var(--mono);letter-spacing:1px;color:var(--muted);margin:0 0 6px}
+.alternatives ul{margin:0;padding-left:20px;font-size:14px;color:var(--muted)}
+.alternatives li{margin:4px 0;line-height:1.6}
+.reader-caveat{margin:10px 0 0}
+.preview-title{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 /* Method opens with the three movements; the comparison card keeps its height for the plot and reading. */
 .cockpit .method-triad { margin: 22px 0 28px; padding-block: 18px; border-radius: 8px; }
 
@@ -801,12 +823,14 @@ td.delta-up, td.delta-down { color: var(--muted); }
 .cockpit .verdict .axis-values { flex: none; display: flex; gap: 22px; margin: 0; padding: 0; border: 0; }
 .cockpit .verdict .axis-values > div { background: none; padding: 0; min-width: 0; border: 0; box-shadow: none; }
 .cockpit .verdict .axis-value { font: 400 48px/1.2 var(--serif); }
+.cockpit .verdict .axis-value.is-unassessed { font-size: 16px; line-height: 36px; }
 .cockpit .verdict .axis-value small { font: 14px var(--sans); color: var(--faint); }
+.axis-value-third { font-size: .58em; margin-left: .04em; }
 .cockpit .verdict .axis-value-label { display: block; margin-top: 6px; font: 11px/1.3 var(--mono); color: var(--faint); max-width: 14em; overflow-wrap: anywhere; }
 .verdict-text { min-width: 0; }
 .cockpit #view-reading #score-anchor { font: 15px/1.5 var(--sans); color: var(--text); margin: 0 0 6px; }
 .anchor-level { font: 11px var(--mono); letter-spacing: 1.2px; text-transform: uppercase; color: var(--chart-selected); }
-.cockpit #view-reading #score-byline { margin: 0; font-size: 12px !important; line-height: 1.5; color: var(--faint); }
+.cockpit #view-reading #score-byline { margin: 0; font-size: 13px !important; line-height: 1.5; color: var(--faint); }
 
 .cockpit #view-reading .pinned-strip { margin: 0 0 18px; }
 .cockpit #view-reading .score-explanation { margin: 0; }
@@ -1039,15 +1063,59 @@ body.is-arriving .radar .pinned-polygon, body.is-arriving .radar .score-dot { an
   .sheet-body.is-material .sheet-text { font-size: 11.5px; }
   body.sheet-open .field-sentence { opacity: 0; }
 }
-.other-levels{font-size:13px;line-height:1.8;color:var(--muted);margin:2px 0 0}.other-levels b{font:12px var(--mono);letter-spacing:1px;color:var(--faint);font-weight:400;margin-right:8px}
+.other-levels{font-size:14px;line-height:1.75;color:var(--muted);margin:2px 0 0}.other-levels b{display:block;font:12px var(--mono);letter-spacing:1px;color:var(--faint);font-weight:400;margin:0 0 2px}
 .standing{margin-top:18px;border-top:1px solid var(--line);padding-top:12px}.standing dl{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:4px 14px;margin:8px 0 6px;font-size:13px;line-height:1.6}.standing dt{color:var(--text)}.standing dd{margin:0;color:var(--muted);overflow-wrap:anywhere}
 .radar .agreement-label{font:11px var(--mono);fill:var(--muted)}
 .radar .ring-number{opacity:.4}.radar .agreement-label{fill:var(--text);paint-order:stroke;stroke:var(--assessment-bg);stroke-width:4px;stroke-linejoin:round}
-.cockpit .verdict .score-scale{flex:none;align-self:flex-start;position:relative;margin:0 0 0 auto;padding:0;border:0}
-.cockpit .score-scale>summary{font-size:12px;min-height:0;padding:2px 0;color:var(--action);white-space:nowrap;list-style-position:inside}
-.cockpit .score-scale ol{position:absolute;right:0;top:calc(100% + 6px);z-index:6;width:min(420px,70vw);margin:0;padding:12px 14px 12px 34px;border:0;border-radius:8px;background:var(--panel);box-shadow:0 12px 32px rgba(0,0,0,.35);font-size:13px;color:var(--muted)}
-.cockpit .score-scale li{padding:2px 0;line-height:1.5}
-@media(max-width:640px){.verdict{flex-wrap:wrap;align-items:flex-start}.verdict-text{flex:1 1 100%}.cockpit .verdict .score-scale{margin:0;flex:1 1 100%}.cockpit .score-scale ol{position:static;width:auto;box-shadow:none;background:none;padding:6px 0 0 22px}}
+/* Beside the verdict, the other levels of the scale read in full, one per line: never a popup and never
+   truncated. Where the row has no room for both, they wrap beneath the verdict at full width. */
+.cockpit .verdict{flex-wrap:wrap;align-items:flex-start}
+.cockpit .verdict .score-scale{flex:1 1 260px;min-width:0;margin:0;padding:0;border:0}
+#score-byline .byline-line{display:block}#score-byline .byline-joint{display:none}
+.cockpit .score-scale ol{margin:0;padding:0;list-style:none;font-size:13px;color:var(--muted)}
+.cockpit .score-scale li{position:relative;display:flex;align-items:baseline;gap:6px;min-width:0;margin:0 0 2px;padding:1px 6px;border:1px solid transparent;border-radius:4px;line-height:1.5}
+.cockpit .score-scale .scale-level{flex:none;font:12px var(--mono);color:var(--faint)}
+.cockpit .score-scale .scale-text{flex:0 1 auto;min-width:0}
+.cockpit .score-scale li.is-baseline{border:1px dashed var(--chart-baseline)}
+.cockpit .score-scale .scale-pin{flex:none;width:7px;height:7px;border-radius:50%}
+.cockpit .score-scale .scale-pin.pin-1{background:var(--pin-1)}.cockpit .score-scale .scale-pin.pin-2{background:var(--pin-2)}.cockpit .score-scale .scale-pin.pin-3{background:var(--pin-3)}
+@media(max-width:640px){.verdict{align-items:flex-start}.verdict-text{flex:1 1 100%}}
 /* Method is the same for every world, so it stands apart at the end of the row. */
 .workspace-tabs #tab-method{margin-left:auto}
 .footer-rubric{color:var(--faint)}
+
+/* The preserved-sources region scrolls as one labelled region; the list inside never traps focus. */
+#source-record-panel{overflow:auto;max-height:420px}
+#source-record-panel .source-list{max-height:none;overflow:visible}
+@media(max-width:520px){#source-record-panel{max-height:60vh}}
+
+@media(max-width:520px){.run-facts-details{display:block}}
+
+/* Where the pane scrolls under fixed tabs, a washed stripe beneath them fades the content out instead of letting it
+   run into the tab row. It appears only once the pane has scrolled, so the resting layout is untouched. */
+@media (min-width: 1101px) {
+  .workspace-tabs { position: relative; z-index: 2; }
+  .workspace-tabs::after { content: ''; position: absolute; left: 0; right: 0; top: 100%; height: 26px; background: linear-gradient(var(--assessment-bg) 20%, transparent); pointer-events: none; opacity: 0; transition: opacity .15s; }
+  .workspace.is-scrolled .workspace-tabs::after { opacity: 1; }
+}
+
+/* Until the runs render, an invisible chip gives the run row its final height: the lobby is centred as a group,
+   so a row that grows after load would push the comparison down. */
+.run-placeholder { visibility: hidden; pointer-events: none; }
+/* The comparison keeps its space but stays unpainted until the report has rendered into it (see render()). */
+.comparison-widget:not(.is-rendered) { visibility: hidden; }
+
+/* Every control answers the pointer. Chip-like controls take the action ring, text controls an underline,
+   toggles the action colour. Colour marks carry a hairline in the palette's line colour, so a swatch that
+   matches the surface it sits on (the berry swatch in Watermelon & mint, lavender in Paper & iris) still reads. */
+.cockpit .run-button.is-pinned:hover { box-shadow: inset 0 -2px 0 var(--chip-pin), inset 0 0 0 1.5px var(--action); }
+.pin-toggle:hover { border-color: var(--action); color: var(--action); }
+.pin-toggle[aria-pressed=true]:hover { box-shadow: inset 0 0 0 1.5px var(--action-ink); }
+.artefact-panel button.primary:hover, .preview-handoff .button:hover { box-shadow: inset 0 0 0 2px var(--action-ink); }
+.chart-tools button:hover, .text-button:hover, .source-list a:hover, .footer-downloads:hover, .footer-licenses a:hover, td button:hover { text-decoration: underline; text-underline-offset: 3px; }
+.footer-licenses a:hover, td button:hover, .cockpit .brand:hover { color: var(--action); }
+.review-history>summary:hover, .history-entry summary:hover, .run-facts-details>summary:hover { color: var(--action); }
+.palette-swatches i, .palette-roles i { box-shadow: 0 0 0 1px var(--line); }
+.radar .axis-control:hover .axis-hit { stroke: var(--action); }
+.radar .axis-control:not([aria-pressed="true"]):hover .axis-hit { fill: var(--action-wash); }
+.pinned-strip li button:hover { box-shadow: inset 0 0 0 1.5px var(--action); }

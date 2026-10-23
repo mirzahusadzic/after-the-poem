@@ -1340,7 +1340,7 @@ def _build(root=ROOT, view='release', target='home'):
 
 def _render_dist(data, root, out, target):
     out.mkdir(parents=True, exist_ok=True)
-    for name in ['index.html', 'palette.css', 'style.css', 'source.css', 'app.js']:
+    for name in ['index.html', 'palette.css', 'style.css', 'source.css', 'palette-early.js', 'app.js']:
         shutil.copyfile(root / 'src' / name, out / name)
     if (root / 'src/vendor').exists():
         shutil.copytree(root / 'src/vendor', out / 'vendor')
@@ -1690,9 +1690,22 @@ def _render_dist(data, root, out, target):
     (out / 'prompt.txt').write_text(primary_prompt, encoding='utf-8')
     payload = json.dumps(report, ensure_ascii=False, sort_keys=True, indent=2)
     (out / 'report.json').write_text(payload + '\n', encoding='utf-8')
+    # The page loads less than the public report.json: each run's active review by ID (the page copies it out of
+    # reviews), of each presentation only its identity and status (the records are published in presentations/),
+    # and no carriage records, whose alternatives arrive precomputed.
+    page_report = dict(
+        report,
+        active_reviews={rid: review['id'] for rid, review in report['active_reviews'].items()},
+        presentations={
+            rid: {'presentation_id': presentation['presentation_id'], 'status': presentation['status']}
+            for rid, presentation in report['presentations'].items()
+        },
+    )
+    page_report.pop('carriage', None)
+    page_payload = json.dumps(page_report, ensure_ascii=False, sort_keys=True, separators=(',', ':'))
     (out / 'report-data.js').write_text(
         'window.POEM_REPORT = '
-        + payload.replace('<', '\\u003c').replace('\u2028', '\\u2028').replace('\u2029', '\\u2029')
+        + page_payload.replace('<', '\\u003c').replace('\u2028', '\\u2028').replace('\u2029', '\\u2029')
         + ';\n',
         encoding='utf-8',
     )
@@ -1714,6 +1727,7 @@ def _render_dist(data, root, out, target):
         'vendor/xterm.css',
         'palette.css',
         'style.css',
+        'palette-early.js',
         'report-data.js',
         'vendor/xterm.js',
         'vendor/addon-fit.js',

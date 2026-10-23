@@ -38,25 +38,43 @@ async function runCommand(command, submit) {
   );
   return result.output;
 }
-async function assertMaxAndEscape() {
+async function assertMaxAndEscape(expectedTitle) {
   await page.locator('#preview-workspace').waitFor({ state: 'visible' });
   assert.ok(await page.locator('#preview-workspace.is-full-window').count());
+  assert.equal(await page.locator('#preview-workspace').getAttribute('role'), 'dialog');
+  assert.equal(await page.locator('#preview-workspace').getAttribute('aria-modal'), 'true');
+  assert.equal(await page.locator('#preview-workspace').getAttribute('aria-labelledby'), 'preview-title');
+  assert.match(await page.locator('#artefact-frame').getAttribute('title'), expectedTitle);
+  assert.equal(await page.evaluate(() => document.querySelector('.masthead').inert), true);
+  // Tab stays inside the modal: focus cycles within the preview, never back to the lobby.
+  await page.locator('#preview-close').focus();
+  for (let step = 0; step < 10; step++) {
+    await page.keyboard.press('Tab');
+    assert.equal(
+      await page.evaluate(() => document.querySelector('#preview-workspace').contains(document.activeElement)),
+      true,
+      'Focus left the preview dialog on Tab ' + step
+    );
+  }
   assert.equal(await page.locator('#preview-status').textContent(), 'Press Esc to exit');
   assert.equal(await page.locator('.preview-toolbar').count(), 0);
   await page.keyboard.press('Escape');
   await page.locator('#preview-workspace').waitFor({ state: 'hidden' });
+  assert.equal(await page.evaluate(() => document.querySelector('.masthead').inert), false);
+  assert.equal(await page.evaluate(() => document.activeElement.id), 'open-preview');
 }
 try {
   await page.goto(base);
   await page.locator('#tab-artefact').click();
-  for (const [id, selector] of [
-    ['sol-original', '#materialList .material-card'],
-    ['sol61-max', 'h1']
+  for (const [id, selector, title] of [
+    ['sol-original', '#materialList .material-card', /The Hand Remains/],
+    ['sol61-max', 'h1', /The Clearing/]
   ]) {
     await page.locator(`[data-run="${id}"]`).click();
     await page.locator('#open-preview').click();
     const frame = page.frameLocator('#artefact-frame');
     await frame.locator(selector).first().waitFor({ timeout: 15000 });
+    assert.match(await page.locator('#artefact-frame').getAttribute('title'), title);
     assert.ok(await page.locator('#preview-workspace.is-full-window').count());
     const previewFrame = page
       .frames()
@@ -83,26 +101,34 @@ try {
       console.log('Clearing snapshot opened.');
     }
     await page.locator('#preview-workspace').screenshot({ path: resolve('.local/browser', id + '-preview.png') });
-    await assertMaxAndEscape();
+    await assertMaxAndEscape(title);
   }
   const consoles = {
-    'astra-garden': { change: 'step', look: 'inspect', shows: /water=2.*beds=1/ },
+    'astra-garden': {
+      change: 'step',
+      look: 'inspect',
+      shows: /water=2.*beds=1/,
+      title: /A garden that can be resumed/
+    },
     'astra-max': {
       change: 'ask browser-test "A question from the in-browser console"',
       look: 'status',
-      shows: /browser-test/
+      shows: /browser-test/,
+      title: /A place for questions/
     },
     'dream-claude-fable51-20261022': {
       change: 'probe "Does this world remember a visitor?"',
       look: 'log -n 1',
       shows: /remember a visitor/,
-      verify: 'status'
+      verify: 'status',
+      title: /Tendora dream world/
     },
     'dream-claude-opus55-v2-20261022': {
       change: 'probe worlds/jugs.world "big == 4" --why "a visitor asks"',
       look: 'receipts --last 1',
       shows: /a visitor asks/,
-      verify: 'receipts --verify'
+      verify: 'receipts --verify',
+      title: /Tendora Workbench/
     }
   };
   for (const [id, steps] of Object.entries(consoles)) {
@@ -129,7 +155,7 @@ try {
     });
 
     await page.locator('#preview-workspace').screenshot({ path: resolve('.local/browser', id + '-console.png') });
-    await assertMaxAndEscape();
+    await assertMaxAndEscape(steps.title);
   }
   await page.locator('[data-run="sol56-max"]').click();
   await page.locator('#open-preview').click();
@@ -146,7 +172,7 @@ try {
   );
 
   await page.locator('#preview-workspace').screenshot({ path: resolve('.local/browser', 'sol56-live.png') });
-  await assertMaxAndEscape();
+  await assertMaxAndEscape(/Twenty-four connected places/);
   // A world that forbids framing runs unmodified in its own tab; Escape here stops its session.
   await page.locator('[data-run="dream-deepseek-20261021-deepseek-s1"]').click();
   await page.locator('#tab-artefact').click();

@@ -1,6 +1,25 @@
 'use strict';
 (function () {
+  const failureBox = document.getElementById('data-failure');
+  function showDataFailure() {
+    if (failureBox) failureBox.hidden = false;
+    const widget = document.querySelector('.comparison-widget');
+    if (widget) widget.hidden = true;
+  }
+  if (!window.POEM_REPORT || !window.POEM_REPORT.rubric || !window.POEM_REPORT.runs) {
+    showDataFailure();
+    return;
+  }
   const report = window.POEM_REPORT;
+  // The page data names each run's active review by ID; each run gets its own copy, as report.json carries it.
+  Object.keys(report.active_reviews).forEach(function (rid) {
+    const named = report.active_reviews[rid];
+    if (typeof named !== 'string') return;
+    const review = report.reviews.find(function (item) {
+      return item.id === named;
+    });
+    report.active_reviews[rid] = review && JSON.parse(JSON.stringify(review));
+  });
   const axes = report.rubric.axes;
   const scaleValues = report.rubric.scale.slice();
   const scaleMin = scaleValues[0],
@@ -91,6 +110,10 @@
       }, 0) / record.sessions
     );
   }
+  // The build collects each run's supported alternative readings, with host paths withheld.
+  function alternativesFor(id) {
+    return ((report.alternatives && report.alternatives[id]) || []).slice();
+  }
   function spreadCaption(id) {
     return axes.some(function (a) {
       const v = shownScore(id, a.id);
@@ -173,6 +196,21 @@
   };
   const baselineLabel = function () {
     return runById(baselineId()).label + ' · original';
+  };
+  const museGeneration = function () {
+    const suffixes = [report.reader && report.reader.evaluation_suffix];
+    (report.reviews || []).forEach(function (review) {
+      suffixes.push(review.provenance && review.provenance.evaluation_id, review.id);
+    });
+    const versions = suffixes
+      .map(function (value) {
+        const match = /(?:^|-)muse-v(\d+)(?:-|$)/.exec(value || '');
+        return match ? Number(match[1]) : null;
+      })
+      .filter(function (value) {
+        return value !== null;
+      });
+    return versions.length ? Math.max.apply(null, versions) : null;
   };
   const baselineReview = function () {
     return (
@@ -308,6 +346,9 @@
   }
   function choosePalette(id, remember) {
     document.documentElement.dataset.palette = id;
+    document.querySelector('meta[name="theme-color"]').content = getComputedStyle(document.documentElement)
+      .getPropertyValue('--bg')
+      .trim();
     document.querySelectorAll('.palette-option').forEach(function (button) {
       button.setAttribute('aria-pressed', String(button.dataset.palette === id));
     });
@@ -338,9 +379,43 @@
   choosePalette(palettes.includes(requestedPalette) ? requestedPalette : 'dusk', false);
   document.querySelectorAll('.palette-option').forEach(function (button) {
     button.addEventListener('click', function () {
+      const changed = button.dataset.palette !== document.documentElement.dataset.palette;
       choosePalette(button.dataset.palette, true);
+      // Choosing a study ends the errand: the menu closes and focus returns to its toggle.
+      closePalette();
+      $('palette-study').querySelector('summary').focus({ preventScroll: true });
+      // Browsers tint their window from the page only as it loads, so a new study reloads the page in place.
+      if (changed) reloadInPlace();
     });
   });
+  // The URL keeps the run, axis and pins; the open view and both scroll positions ride along for this tab only.
+  const RETURN_KEY = 'after-the-poem-return';
+  const VIEWS = ['reading', 'artefact', 'scores', 'sources', 'method'];
+  function reloadInPlace() {
+    const view = document.querySelector('.workspace').dataset.view;
+    try {
+      sessionStorage.setItem(
+        RETURN_KEY,
+        JSON.stringify({ view: view, pane: $('view-' + view).scrollTop, page: scrollY })
+      );
+    } catch (_) {
+      /* Without storage the reload still keeps the run, axis and pins. */
+    }
+    location.reload();
+  }
+  function returnInPlace() {
+    let place = null;
+    try {
+      place = JSON.parse(sessionStorage.getItem(RETURN_KEY) || 'null');
+      sessionStorage.removeItem(RETURN_KEY);
+    } catch (_) {
+      return;
+    }
+    if (!place || VIEWS.indexOf(place.view) < 0 || !$('field').hidden) return;
+    showView(place.view);
+    $('view-' + place.view).scrollTop = Number(place.pane) || 0;
+    scrollTo(0, Number(place.page) || 0);
+  }
   function closePalette() {
     $('palette-study').open = false;
   }
@@ -362,8 +437,18 @@
       button.tabIndex = active ? 0 : -1;
       $('view-' + button.dataset.view).hidden = !active;
     });
+    markScrolled();
     document.dispatchEvent(new CustomEvent('poem:view', { detail: id }));
   }
+  // The washed stripe under the tabs appears once the open pane has scrolled beneath them.
+  function markScrolled() {
+    const workspace = document.querySelector('.workspace'),
+      pane = $('view-' + workspace.dataset.view);
+    workspace.classList.toggle('is-scrolled', Boolean(pane && pane.scrollTop > 0));
+  }
+  document.querySelectorAll('.workspace-view').forEach(function (pane) {
+    pane.addEventListener('scroll', markScrolled, { passive: true });
+  });
   document.querySelectorAll('.workspace-tabs [data-view]').forEach(function (button, index, buttons) {
     button.addEventListener('click', function () {
       showView(button.dataset.view);
@@ -386,6 +471,16 @@
     });
   });
 
+  // A chip chosen from elsewhere slides into view within its own strip; the page itself never moves.
+  function revealInStrip(control) {
+    const strip = control.closest('.run-picker, #selected-label');
+    if (!strip || strip.scrollWidth <= strip.clientWidth) return;
+    const box = control.getBoundingClientRect(),
+      bounds = strip.getBoundingClientRect(),
+      margin = 12;
+    if (box.left < bounds.left + margin) strip.scrollLeft -= bounds.left + margin - box.left;
+    else if (box.right > bounds.right - margin) strip.scrollLeft += box.right - bounds.right + margin;
+  }
   function selectRun(id) {
     if (id !== selected && crossing.assembled && !crossing.announced) {
       crossing.announced = true;
@@ -400,6 +495,7 @@
     const control =
       document.querySelector('.reading-button[data-reading="' + id + '"]') ||
       $('run-picker').querySelector('[data-run="' + artefactOf(runById(id)).id + '"]');
+    revealInStrip(control);
     control.focus({ preventScroll: true });
     updateLocation();
   }
@@ -470,18 +566,6 @@
     $('run-title').focus({ preventScroll: true });
   }
   $('brand-home').addEventListener('click', resetExploration);
-  // The scale opens as a small panel; a click elsewhere or Escape closes it.
-  document.addEventListener('click', function (event) {
-    const scale = document.querySelector('.score-scale');
-    if (scale && scale.open && !scale.contains(event.target)) scale.open = false;
-  });
-  document.addEventListener('keydown', function (event) {
-    const scale = document.querySelector('.score-scale');
-    if (event.key === 'Escape' && scale && scale.open) {
-      scale.open = false;
-      scale.querySelector('summary').focus();
-    }
-  });
 
   function renderCohort() {
     const count = cohort().runs.length;
@@ -503,7 +587,9 @@
       : reference.label +
         '’s original is the historical comparison reference across cohorts, not an answer key or a perfect score.';
     $('baseline-label').textContent = baselineLabel() + ' · ' + reference.effort;
-    $('footer-rubric').textContent = 'Rubric ' + report.rubric.version;
+    const generation = museGeneration();
+    $('footer-rubric').textContent =
+      'Rubric v' + report.rubric.version + (generation === null ? '' : ' · Muse v' + generation);
     $('exact-prompt').href = 'prompts/' + encodeURIComponent(promptCohort()) + '.txt';
     $('seed-nav').href = promptUrl();
     $('seed-nav').textContent = report.threshold
@@ -826,13 +912,13 @@
     return group.runs.length > 1 && sameEffort === 1 ? r.effort : '';
   }
 
-  function runButton(r, text) {
+  function runButton(r, text, note) {
     const isBaseline = r.id === baselineId();
     const b = el('button', undefined, 'run-button' + (isBaseline ? ' is-baseline' : ''));
     b.type = 'button';
     b.setAttribute('aria-pressed', String(r.id === artefactOf(runById(selected)).id));
     // Release view: the earliest run is marked only by its date, not as an "original".
-    const mark = isBaseline ? (pinMode ? r.date : 'original') : '';
+    const mark = isBaseline ? (pinMode ? r.date : 'original') : note || '';
     b.setAttribute('aria-label', r.label + ' · ' + r.effort + (mark ? ' · ' + mark : ''));
     b.dataset.run = r.id;
     b.title = r.title + ' · ' + r.effort + ' · ' + r.date;
@@ -848,10 +934,10 @@
   function renderPicker() {
     $('run-picker').replaceChildren();
     runGroups().forEach(function (group) {
-      // A family of one shows its name; a run whose label adds to its family (a harness, a sample) is shown,
-      // like a larger family, as the family's name with that run beside it.
-      if (group.runs.length === 1 && !chipLabel(group.runs[0], group)) {
-        $('run-picker').append(runButton(group.runs[0], group.name));
+      // A family of one is a single chip, with whatever its label adds (a harness, a sample) set small beside the
+      // name, as the earliest run's date is; only a family of several runs becomes a group.
+      if (group.runs.length === 1) {
+        $('run-picker').append(runButton(group.runs[0], group.name, chipLabel(group.runs[0], group)));
         return;
       }
       const container = el('div', undefined, 'run-group');
@@ -1174,6 +1260,8 @@
         const button = el('button');
         button.type = 'button';
         button.dataset.axis = a.id;
+        button.title = i + 1 + ' \u00b7 ' + a.label + ' \u00b7 level ' + scoreLabel(shownScore(selected, a.id));
+        button.setAttribute('aria-label', i + 1 + ' of ' + axes.length + ' \u00b7 ' + a.label);
         button.setAttribute('aria-pressed', String(a.id === axisId));
         button.append(el('span', String(i + 1)), document.createTextNode(a.label));
         key.append(button);
@@ -1246,6 +1334,26 @@
     box.append(seed);
   }
 
+  // On the release page one reader gave every reading: say so where the level is read, not only in Method.
+  // The research view keeps several readers, so it makes no such claim.
+  function renderReaderCaveat() {
+    const box = $('reader-caveat');
+    box.hidden = !report.reader;
+    box.textContent = report.reader
+      ? 'One reader, ' + report.reader.label + ', gave every reading on this page. Treat close levels as provisional.'
+      : '';
+  }
+  function renderAlternatives() {
+    const wrap = $('alternatives-wrap'),
+      list = $('alternatives-list');
+    if (!wrap || !list) return;
+    const items = alternativesFor(selected);
+    wrap.hidden = !items.length;
+    list.replaceChildren();
+    items.forEach(function (text) {
+      list.append(el('li', text));
+    });
+  }
   function renderAxis() {
     const a = axes.find(function (v) {
       return v.id === axisId;
@@ -1261,7 +1369,8 @@
     axes.forEach(function (axis, i) {
       const button = el('button', String(i + 1), 'axis-tab');
       button.type = 'button';
-      button.setAttribute('aria-label', axis.label);
+      button.title = i + 1 + ' \u00b7 ' + axis.label;
+      button.setAttribute('aria-label', i + 1 + ' of ' + axes.length + ' \u00b7 ' + axis.label);
       button.setAttribute('aria-pressed', String(axis.id === axisId));
       button.addEventListener('click', function () {
         selectAxis(axis.id);
@@ -1285,7 +1394,11 @@
         ]
     ).forEach(function (item) {
       const d = el('div');
-      const score = el('span', scoreLabel(item[1]), 'axis-value ' + item[2]);
+      // A third sits smaller beside the whole level, so 2⅔ reads as two and a bit, not as a third digit.
+      const label = scoreLabel(item[1]),
+        third = /[⅓⅔]$/.test(label);
+      const score = el('span', third ? label.slice(0, -1) : label, 'axis-value ' + item[2]);
+      if (third) score.append(el('span', label.slice(-1), 'axis-value-third'));
       if (item[1] === null) score.classList.add('is-unassessed');
       if (item[1] !== null) score.append(el('small', ' / ' + scaleMax));
       d.append(score, el('span', item[0], 'axis-value-label'));
@@ -1328,7 +1441,11 @@
     const other = s.value === null ? null : details(selected, axisId)?.other_levels;
     $('other-levels').hidden = !other;
     $('other-levels').replaceChildren();
-    if (other) $('other-levels').append(el('b', 'What would move it'), document.createTextNode(' ' + other));
+    if (other) {
+      const mover = el('b', 'What would move it \u00b7 from the displayed verdict session');
+      mover.title = 'From the displayed verdict: ' + readerLabel(review) + ' \u00b7 ' + review.date;
+      $('other-levels').append(mover, document.createTextNode(' ' + other));
+    }
     $('score-anchor').replaceChildren();
     if (s.value === null) $('score-anchor').textContent = 'Unassessed · no level awarded.';
     else
@@ -1336,8 +1453,14 @@
         el('span', 'Level ' + s.value, 'anchor-level'),
         document.createTextNode(' · ' + a.anchors[scaleIndex(s.value)])
       );
-    $('score-byline').textContent =
-      readerLabel(review) + ' · ' + review.status + ' · ' + review.date + ' · ' + confidenceText(s);
+    // Two lines: who read it and when, then how sure. The joining dot stays in the text, hidden from view.
+    $('score-byline').replaceChildren(
+      el('span', readerLabel(review) + ' · ' + review.status + ' · ' + review.date, 'byline-line'),
+      el('span', ' · ', 'byline-joint'),
+      el('span', confidenceText(s), 'byline-line')
+    );
+    renderReaderCaveat();
+    renderAlternatives();
     $('inspect-original').hidden = pinMode || selected === baselineId();
     $('inspect-original').textContent = 'Inspect ' + baselineLabel() + ' ↗';
     $('evidence').replaceChildren(el('p', 'In the world', 'passage-label'));
@@ -1370,18 +1493,29 @@
     if (!unreviewed && STANDING_AXES.indexOf(axisId) >= 0) renderStanding();
     $('anchors-list').replaceChildren();
     $('anchors-list').start = String(scaleMin);
-    $('scale-title').textContent = 'The scale · what earns ' + scaleMin + '–' + scaleMax + '?';
+    $('scale-title').textContent = 'The other levels of the ' + scaleMin + '–' + scaleMax + ' scale';
+    // The awarded level is already named in the verdict, so the scale beside it lists the others in full,
+    // one per line. Markers that are only drawn (the original's outline, pin dots) are spelled out for
+    // screen readers and in each tooltip.
     a.anchors.forEach(function (text, i) {
-      const level = scaleValues[i];
-      const item = el('li', text, s.value === level ? 'current' : '');
-      if (s.value === level) item.append(el('span', 'Awarded', 'level-marker'));
-      if (!pinMode && b.value === level && selected !== baselineId())
-        item.append(el('span', baselineLabel(), 'level-marker original-marker'));
+      const level = scaleValues[i],
+        notes = [];
+      if (s.value === level) return;
+      const item = el('li');
+      item.append(el('span', String(level), 'scale-level'), el('span', text, 'scale-text'));
+      if (!pinMode && b.value === level && selected !== baselineId()) {
+        notes.push(baselineLabel());
+        item.classList.add('is-baseline');
+        item.append(el('span', baselineLabel(), 'level-marker original-marker visually-hidden'));
+      }
       if (pinMode)
         shownPins().forEach(function (id) {
-          if (report.active_reviews[id].scores[axisId].value === level)
-            item.append(el('span', pinName(id), 'level-marker pin-marker'));
+          if (report.active_reviews[id].scores[axisId].value !== level) return;
+          notes.push(pinName(id));
+          item.append(el('i', undefined, 'scale-pin ' + pinClass(id)));
+          item.append(el('span', pinName(id), 'level-marker pin-marker visually-hidden'));
         });
+      item.title = [level + ' · ' + text].concat(notes).join(' · ');
       $('anchors-list').append(item);
     });
   }
@@ -1586,6 +1720,14 @@
       d.append(el('b', v[0]), document.createTextNode(v[1]));
       $('run-facts').append(d);
     });
+    // Provenance facts stay available on phones: mirror them into the mobile disclosure.
+    const mobile = $('run-facts-mobile');
+    if (mobile) {
+      mobile.replaceChildren();
+      Array.from($('run-facts').children).forEach(function (child) {
+        mobile.append(child.cloneNode(true));
+      });
+    }
     $('run-timing-note').hidden = !run.timing;
     $('run-timing-note').textContent = run.timing
       ? 'Timing: ' +
@@ -1639,13 +1781,15 @@
     document.dispatchEvent(new CustomEvent('poem:run', { detail: selected }));
     themeDocumentLinks();
     blankDocumentLinks();
+    // The comparison stays invisible until its first render, so its empty frame never paints and then moves.
+    document.querySelector('.comparison-widget').classList.add('is-rendered');
   }
 
   document.querySelector('.source-record-heading').addEventListener(
     'wheel',
     function (event) {
       if (event.ctrlKey || event.shiftKey || !event.deltaY) return;
-      const list = $('source-list');
+      const list = $('source-record-panel') || $('source-list');
       const delta = event.deltaY * (event.deltaMode === 1 ? 20 : event.deltaMode === 2 ? list.clientHeight : 1);
       const canScroll = delta > 0 ? list.scrollTop + list.clientHeight < list.scrollHeight - 1 : list.scrollTop > 0;
       if (canScroll) {
@@ -1661,7 +1805,7 @@
   });
   $('show-score-table').addEventListener('click', function () {
     showView('scores');
-    $('score-table').focus?.();
+    ($('score-table-wrap') || $('score-table')).focus?.();
   });
   $('export-radar').addEventListener('click', function () {
     const sourceSvg = $('radar').querySelector('svg');
@@ -1775,7 +1919,14 @@
       .style.setProperty('--pane-scrollbar', (pane.offsetWidth - pane.clientWidth) / 2 + 'px');
   }).observe(document.querySelector('.widget-body'));
   new ResizeObserver(sizeRadarText).observe($('radar'));
-  [$('pinned-legend'), $('run-picker'), document.querySelector('.workspace-tabs')].forEach(function (row) {
+  [
+    $('pinned-legend'),
+    $('run-picker'),
+    document.querySelector('.workspace-tabs'),
+    $('score-table-wrap'),
+    $('source-record-panel')
+  ].forEach(function (row) {
+    if (!row) return;
     new ResizeObserver(function () {
       markOverflow(row);
     }).observe(row);
@@ -2454,7 +2605,15 @@
     });
     $('sheet-close').addEventListener('click', closeSheet);
     $('field').addEventListener('keydown', function (event) {
-      if (event.key === 'Escape' && !$('sheet').hidden) closeSheet();
+      if (event.key === 'Escape' && !$('sheet').hidden) {
+        event.preventDefault();
+        closeSheet();
+        return;
+      }
+      if (event.key === 'Tab' && !$('sheet').hidden) trapSheetTab(event);
+    });
+    $('sheet').addEventListener('keydown', function (event) {
+      if (event.key === 'Tab') trapSheetTab(event);
     });
   }
   function renderFieldJournal() {
@@ -2544,6 +2703,9 @@
     }
     $('sheet').hidden = false;
     document.body.classList.add('sheet-open');
+    // The open page is modal: the pieces behind it stay visible but inert.
+    $('field-artefacts').inert = true;
+    document.querySelector('.field-shape').inert = true;
     // The page eases in two frames later; closing before then cancels it, so a quick Escape never leaves it open.
     sheetFrame = requestAnimationFrame(function () {
       sheetFrame = requestAnimationFrame(function () {
@@ -2577,6 +2739,28 @@
       return crossing.seen.indexOf(key) >= 0;
     });
   }
+  function sheetFocusables() {
+    const body = $('sheet-body');
+    return Array.from($('sheet').querySelectorAll('button, [href], input, [tabindex]:not([tabindex="-1"])')).filter(
+      function (node) {
+        return node !== body && !node.disabled && node.offsetParent !== null;
+      }
+    );
+  }
+  function trapSheetTab(event) {
+    const items = sheetFocusables();
+    // The page body itself is the reading surface; keep Tab cycling through its controls.
+    const order = [$('sheet-body')].concat(items);
+    const current = document.activeElement;
+    const at = order.indexOf(current);
+    let next = null;
+    if (event.shiftKey) next = at <= 0 ? order[order.length - 1] : order[at - 1];
+    else next = at < 0 || at >= order.length - 1 ? order[0] : order[at + 1];
+    if (next) {
+      event.preventDefault();
+      next.focus({ preventScroll: true });
+    }
+  }
   function closeSheet() {
     cancelAnimationFrame(sheetFrame);
     sheetFrame = 0;
@@ -2586,6 +2770,8 @@
     }
     $('sheet').classList.remove('is-open');
     document.body.classList.remove('sheet-open');
+    $('field-artefacts').inert = false;
+    document.querySelector('.field-shape').inert = false;
     setTimeout(
       function () {
         if (!$('sheet').classList.contains('is-open')) $('sheet').hidden = true;
@@ -2855,6 +3041,24 @@
     else if (godmode()) enterWorkbench();
     else openField();
   }
+  returnInPlace();
+  document.addEventListener(
+    'submit',
+    function (event) {
+      const form = event.target;
+      if (!form || form.tagName !== 'FORM') return;
+      const action = form.getAttribute('action');
+      if (!action || action.startsWith('#')) return;
+      let url = null;
+      try {
+        url = new URL(action, location.href);
+      } catch (_) {
+        return;
+      }
+      if (url.origin !== location.origin) event.preventDefault();
+    },
+    true
+  );
   blankDocumentLinks();
   new MutationObserver(function () {
     blankDocumentLinks();

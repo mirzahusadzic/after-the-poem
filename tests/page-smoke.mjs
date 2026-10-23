@@ -69,6 +69,11 @@ try {
   assert.equal(await page.locator('table tbody tr').count(), 3);
   assert.match(await page.locator('.status').textContent(), /unresolved.*No score awarded/);
   assert.equal(await page.locator('script').count(), 0);
+  assert.ok(await page.locator('meta[http-equiv="Content-Security-Policy"]').count(), 'CSP declared');
+  assert.equal(await page.locator('.table-scroll').getAttribute('tabindex'), '0');
+  assert.match((await page.locator('.table-scroll').getAttribute('aria-label')) || '', /scrollable/);
+  const externalForms = await page.locator('form[action^="http"]').count();
+  assert.equal(externalForms, 0, 'No external form navigation');
   assert.deepEqual(errors, []);
   assert.deepEqual(external, []);
   for (const width of [1440, 800, 390, 320]) {
