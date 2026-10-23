@@ -17,6 +17,7 @@ from pathlib import Path
 
 import atlas
 import bundles
+import fsutil
 import previews
 from bundles import load_json, require
 
@@ -40,6 +41,17 @@ def commands_for(entry):
     return list(dict.fromkeys(command for command in ordered if command))
 
 
+def scrub_output(output, world, command, run_id):
+    """The answer a recording keeps: the copy's own folder named as such, and no other host path.
+
+    A world may print where its copy lives; that is the runner's temporary folder, not the world's answer.
+    """
+    for place in sorted({str(world), str(Path(world).resolve())}, key=len, reverse=True):
+        output = output.replace(place, COPY)
+    require(not bundles.HOST_PATH.search(output), 'A host path appears in the answer to ' + command + ' in ' + run_id)
+    return output
+
+
 def record(project, run_id, today):
     entry = load_json(project / 'data/artefacts.json')[run_id]
     run = next(item for item in load_json(project / 'data/runs.json')['runs'] if item['id'] == run_id)
@@ -47,18 +59,10 @@ def record(project, run_id, today):
     entries = []
     try:
         session = manager.create(run_id)['session']
-        # A world may print where its copy lives; that is the runner's temporary folder, not the world's answer.
         world = manager.sessions[session]['world']
-        places = sorted({str(world), str(Path(world).resolve())}, key=len, reverse=True)
         for command in commands_for(entry):
             result = manager.execute(session, command)
-            output = result['output'].rstrip('\n')
-            for place in places:
-                output = output.replace(place, COPY)
-            require(
-                not bundles.HOST_PATH.search(output),
-                'A host path appears in the answer to ' + command + ' in ' + run_id,
-            )
+            output = scrub_output(result['output'].rstrip('\n'), world, command, run_id)
             entries.append({'command': command, 'output': output, 'exit_code': result['exit_code']})
     finally:
         manager.close()
@@ -109,9 +113,7 @@ def main():
     (project / 'data/recordings').mkdir(exist_ok=True)
     for run_id in run_ids:
         value = record(project, run_id, today)
-        (project / 'data/recordings' / (run_id + '.json')).write_text(
-            json.dumps(value, indent=2, ensure_ascii=False) + '\n', encoding='utf-8'
-        )
+        fsutil.write_json_atomic(project / 'data/recordings' / (run_id + '.json'), value)
         print('Recorded %s: %d commands' % (run_id, len(value['entries'])))
 
 

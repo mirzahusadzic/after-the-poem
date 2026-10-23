@@ -162,11 +162,12 @@ def read_answer(answer_path, identity):
 
 def validate_record(project, review):
     require(atlas.safe_id(review.get('id')), 'Invalid review ID')
-    inspect_metadata(review, 'review')
+    inspect_metadata(atlas.review_metadata(review), 'review')
     existing = project / 'data/reviews' / (review['id'] + '.json')
     if existing.exists():
+        # Already stored, perhaps by an interrupted admission: atlas.add_review finishes it and
+        # validates the whole study, so only the bytes are compared here.
         require(load_json(existing) == review, 'Existing review differs from the retained answer')
-        atlas.validate(project)
     else:
         selections = dict(atlas.validate(project)['selections'])
         if review.get('supersedes') == selections.get(review['run_id']):
@@ -311,11 +312,7 @@ def main():
                 args.context,
                 args.supersedes,
             )
-            existing = args.project / 'data/reviews' / (review['id'] + '.json')
-            if not existing.exists():
-                atlas.add_review(args.project, review, select=args.select)
-            elif args.select:
-                atlas.select_review(args.project, review['id'])
+            atlas.add_review(args.project, review, select=args.select)
             print(
                 'Admitted provisional editorial review '
                 + review['id']

@@ -3,6 +3,7 @@
 
 import argparse
 import datetime as dt
+import fsutil
 import hashlib
 import json
 import os
@@ -310,10 +311,26 @@ def projection(relative, data):
 
 
 def atomic_json(path, value):
-    path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_name('.' + path.name + '.tmp')
-    temporary.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    os.replace(temporary, path)
+    fsutil.write_json_atomic(path, value)
+
+
+def _write_new_bytes(path, data, label):
+    """Stage a new file atomically; a retry resumes identical content or raises BundleError.
+
+    The existence check comes first so a retry after an interrupted import can
+    never surface a raw FileExistsError, and the write itself goes through the
+    atomic temp-file writer so readers never see a half-written record.
+    """
+    if path.exists():
+        try:
+            existing = path.read_bytes()
+        except OSError as read_error:
+            raise BundleError(label + ' already exists and cannot be re-read: ' + str(read_error))
+        if existing == data:
+            return False
+        raise BundleError(label + ' already exists with different content; clear the partial import before retrying')
+    fsutil.write_bytes_atomic(path, data)
+    return True
 
 
 def unreviewed_record(data, rubric, rubric_hash, date):
@@ -474,21 +491,20 @@ def import_bundle(bundle, project=ROOT):
     try:
         prompt_path.parent.mkdir(parents=True, exist_ok=True)
         if not prompt_path.exists():
-            prompt_path.write_bytes(data['prompt'])
+            fsutil.write_bytes_atomic(prompt_path, data['prompt'])
             created.append(prompt_path)
         else:
             require(prompt_path.read_bytes() == data['prompt'], 'Prompt hash collision')
         corpus_path.parent.mkdir(parents=True, exist_ok=True)
-        with corpus_path.open('x', encoding='utf-8') as stream:
-            stream.write(corpus_bytes.decode('utf-8'))
-        created.append(corpus_path)
-        with review_path.open('x', encoding='utf-8') as stream:
-            stream.write(json.dumps(review, ensure_ascii=False, indent=2) + '\n')
-        created.append(review_path)
+        if _write_new_bytes(corpus_path, corpus_bytes, 'Corpus record'):
+            created.append(corpus_path)
+        review_bytes = (json.dumps(review, ensure_ascii=False, indent=2) + '\n').encode('utf-8')
+        if _write_new_bytes(review_path, review_bytes, 'Review record'):
+            created.append(review_path)
         retained_bundle.mkdir(parents=True, exist_ok=True)
-        retained_run.write_bytes((Path(bundle) / 'run.json').read_bytes())
-        retained_manifest.write_bytes((Path(bundle) / 'manifest.json').read_bytes())
-        retained_observations.write_bytes((Path(bundle) / 'observations.json').read_bytes())
+        fsutil.write_bytes_atomic(retained_run, (Path(bundle) / 'run.json').read_bytes())
+        fsutil.write_bytes_atomic(retained_manifest, (Path(bundle) / 'manifest.json').read_bytes())
+        fsutil.write_bytes_atomic(retained_observations, (Path(bundle) / 'observations.json').read_bytes())
         created.extend([retained_run, retained_manifest, retained_observations])
         if cohort_record['baseline']:
             registry['cohorts'].append(cohort)
@@ -500,14 +516,30 @@ def import_bundle(bundle, project=ROOT):
         atomic_json(selection_path, selection)
         atomic_json(evidence_path, evidence_registry)
         validate_project(project)
-    except Exception:
+    except Exception as original:
         for path in created:
-            if path.exists():
-                path.unlink()
-        if retained_bundle.exists() and not any(retained_bundle.iterdir()):
-            retained_bundle.rmdir()
+            try:
+                if path.exists():
+                    path.unlink()
+            except OSError:
+                pass
+        if retained_bundle.exists():
+            try:
+                if not any(retained_bundle.iterdir()):
+                    retained_bundle.rmdir()
+            except OSError:
+                pass
+        restore_errors = []
         for path, payload in snapshots.items():
-            path.write_bytes(payload)
+            try:
+                fsutil.write_bytes_atomic(path, payload)
+            except Exception as restore_error:
+                restore_errors.append(str(path) + ': ' + str(restore_error))
+        if restore_errors:
+            try:
+                original.add_note('Snapshot restore failed: ' + '; '.join(restore_errors))
+            except Exception:
+                pass
         raise
     return dict(
         run_id=run_id,

@@ -207,7 +207,13 @@ def add_budget(parser, title=LIVE_BUDGET):
 
 
 def budget_from(args):
-    """Return the command-line budget, or None when no budget flag was given."""
+    """Return the command-line budget, or None when no budget flag was given.
+
+    A command-line budget is all-or-none: passing any budget flag without the
+    full --max-turns, --max-input-tokens and --max-output-tokens trio is a
+    partial budget override and fails here, before any session starts, instead
+    of surfacing later as a generic missing-token error.
+    """
     prices = [args.price_input, args.price_cached_input, args.price_output]
     values = {
         'max_turns': args.max_turns,
@@ -218,6 +224,20 @@ def budget_from(args):
     }
     if all(value is None for value in list(values.values()) + prices):
         return None
+    core = ['max_turns', 'max_input_tokens', 'max_output_tokens']
+    missing = [key for key in core if values[key] is None]
+    if missing:
+        raise ValueError(
+            'Partial budget override: '
+            + ', '.join('--' + key.replace('_', '-') for key in missing)
+            + ' missing. A command-line budget is all-or-none: either pass no budget flag, '
+            + 'or pass all of --max-turns, --max-input-tokens and --max-output-tokens together.'
+        )
+    if any(price is None for price in prices) and any(price is not None for price in prices):
+        raise ValueError(
+            'Partial budget override: pricing is all-or-none. Pass all of --price-input, '
+            + '--price-cached-input and --price-output together, or none of them.'
+        )
     budget = {key: value for key, value in values.items() if value is not None}
     if any(price is not None for price in prices):
         budget['pricing'] = {
@@ -313,6 +333,19 @@ def main():
     )
     profile_parser.add_argument('profile', type=Path, help='Evaluation profile JSON')
     add_project(profile_parser)
+    profile_parser.add_argument(
+        '--repairs',
+        type=int,
+        default=None,
+        metavar='N',
+        help="Repair turns per reading task after an invalid answer (default: the profile's)",
+    )
+    profile_parser.add_argument(
+        '--layout',
+        choices=scoring_pipeline.LAYOUTS,
+        default=None,
+        help="compact asks every axis in one turn; per-axis asks one turn each (default: the profile's)",
+    )
     add_safety(profile_parser, 'Rehearse with synthetic answers in a separate OUTPUT.dry-run; calls no model')
     add_router(profile_parser)
     add_budget(profile_parser, "budget (any flag here replaces the profile's whole budget)")
@@ -875,6 +908,8 @@ def main():
                     router_profile=args.router_profile,
                     capabilities=args.capabilities,
                     budget=budget_from(args),
+                    repairs=args.repairs,
+                    layout=args.layout,
                 )
         elif args.command == 'reconcile-generation':
             if args.verify_only:

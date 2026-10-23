@@ -1,4 +1,6 @@
 dist/
+dist-*/
+dist.previous/
 .local/
 __pycache__/
 *.pyc
@@ -6,3 +8,5 @@ __pycache__/
 .build.lock
 .evaluation-admission.lock
 node_modules/
+# Staged by scripts/fsutil.py; removed on any failure, but a hard kill can leave one behind.
+.*.tmp

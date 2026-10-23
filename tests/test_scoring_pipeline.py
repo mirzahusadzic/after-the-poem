@@ -360,24 +360,32 @@ class ScoringPipelineTests(unittest.TestCase):
     def test_carriage_must_account_for_every_seed_element(self):
         import evaluation_contract as contracts
 
+        # Seed readings share the 6-to-20 bound enforced by both contract and pipeline.
+        names = ['a', 'b', 'c', 'd', 'e', 'f']
         reading = {
             'elements': [
                 {'id': name, 'kind': 'role', 'statement': 's', 'seed_span': [1, 1], 'ambiguity': None}
-                for name in ['a', 'b', 'c']
+                for name in names
             ],
             'alternatives': [],
         }
         ids = contracts.validate_seed_reading(reading)
         lost = [{'element': name, 'status': 'lost', 'note': 'n', 'citations': []} for name in ['a', 'b']]
-        with self.assertRaisesRegex(ValueError, 'missing c'):
+        with self.assertRaisesRegex(ValueError, 'missing'):
             contracts.validate_carriage(lost, ids)
         with self.assertRaisesRegex(ValueError, 'name no seed element'):
             contracts.validate_carriage(
-                lost + [{'element': 'c', 'status': 'introduced', 'note': 'n', 'citations': []}], ids
+                lost + [{'element': 'zzz-unknown', 'status': 'introduced', 'note': 'n', 'citations': []}], ids
             )
         with self.assertRaisesRegex(ValueError, 'Invalid carriage citations'):
             contracts.validate_carriage(
-                lost + [{'element': 'c', 'status': 'carried', 'note': 'n', 'citations': []}], ids
+                lost
+                + [
+                    {'element': name, 'status': 'lost', 'note': 'n', 'citations': []}
+                    for name in ['c', 'd', 'e']
+                ]
+                + [{'element': 'f', 'status': 'carried', 'note': 'n', 'citations': []}],
+                ids,
             )
 
     def test_control_seed_reading_is_recorded_but_never_admitted(self):
@@ -441,6 +449,32 @@ class ScoringPipelineTests(unittest.TestCase):
         answer.write_text(answer.read_text().replace('"low"', '"high"'), encoding='utf-8')
         with self.assertRaisesRegex(ValueError, 'answer changed'):
             scoring_pipeline.validate_output(ROOT, self.root / 'evaluation')
+
+
+
+    def test_seed_bounds_match_contract_six_to_twenty(self):
+        import evaluation_contract as contracts
+
+        self.assertEqual((contracts.SEED_ELEMENT_MIN, contracts.SEED_ELEMENT_MAX), (6, 20))
+        # Pipeline synthetic carriage uses the minimum; contract accepts it.
+        self.assertEqual(len(contracts.validate_seed_reading(
+            {'elements': [{'id': 'e-%02d' % i, 'kind': 'role', 'statement': 's', 'seed_span': [1, 1], 'ambiguity': None} for i in range(6)],
+             'alternatives': []}
+        )), 6)
+        with self.assertRaisesRegex(ValueError, '6 to 20'):
+            contracts.validate_seed_reading(
+                {'elements': [{'id': 'e-%02d' % i, 'kind': 'role', 'statement': 's', 'seed_span': [1, 1], 'ambiguity': None} for i in range(5)],
+                 'alternatives': []}
+            )
+
+    def test_evidence_text_helpers_withhold_paths_and_dedup(self):
+        from evidence_text import normalize_alternatives, withhold_host_paths
+
+        self.assertEqual(withhold_host_paths('see /Users/mirza/secret for x'), 'see [a path on the dreaming machine] for x')
+        self.assertEqual(
+            normalize_alternatives(['B /Users/mirza/a', 'A reading.', 'B /Users/mirza/a']),
+            ['B [a path on the dreaming machine]', 'A reading.'],
+        )
 
 
 if __name__ == '__main__':

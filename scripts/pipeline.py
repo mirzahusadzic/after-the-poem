@@ -166,6 +166,63 @@ def load_plan(root):
     return plan
 
 
+def _receipt_instruction_sha(runtime_snapshot, role):
+    """Strongest available instruction identity inside a frozen runtime snapshot."""
+    if not isinstance(runtime_snapshot, dict):
+        return None
+    key = role + '_instructions_sha256'
+    if isinstance(runtime_snapshot.get(key), str):
+        return runtime_snapshot[key]
+    hashes = runtime_snapshot.get('instruction_hashes')
+    if isinstance(hashes, dict) and isinstance(hashes.get(role), str):
+        return hashes[role]
+    return None
+
+
+def verify_resumed_receipt(name, receipt, *, job, prompt, runtime, role):
+    """Refuse a retained receipt that no longer matches the requested job.
+
+    Campaign resume never repeats a finished job, so a receipt whose model,
+    reasoning, time allowance, prompt bytes, mode or instructions differ from
+    what the current plan requests is stale: keeping it would silently admit
+    work done under different conditions. Refuse it and tell the operator to
+    retain it and prepare a new campaign, or remove the stale job directory
+    to rerun that job.
+    """
+    require(isinstance(receipt, dict), 'Retained receipt is not a record: ' + str(name))
+    problems = []
+    requested = receipt.get('requested')
+    if isinstance(requested, dict):
+        for key in ['id', 'model', 'reasoning', 'seconds']:
+            if key in job and requested.get(key) != job[key]:
+                problems.append(
+                    'requested ' + key + ' is ' + repr(requested.get(key)) + ', plan wants ' + repr(job[key])
+                )
+    else:
+        problems.append('receipt names no requested job')
+    if receipt.get('prompt_sha256') != sha(prompt):
+        problems.append('prompt bytes differ from the frozen prompt')
+    if 'dry_run' in receipt and receipt.get('dry_run') != runtime.get('dry_run'):
+        problems.append('receipt mode differs from the frozen campaign mode')
+    current_instructions = _receipt_instruction_sha(runtime, role)
+    retained_instructions = _receipt_instruction_sha(receipt.get('runtime'), role)
+    if (
+        current_instructions is not None
+        and retained_instructions is not None
+        and retained_instructions != current_instructions
+    ):
+        problems.append(role + ' instructions differ from the frozen runtime')
+    if problems:
+        raise ValueError(
+            'Stale receipt for '
+            + str(name)
+            + ': '
+            + '; '.join(problems)
+            + '. Retain it and prepare a new campaign, or remove the stale job directory to rerun it.'
+        )
+    return True
+
+
 def write_bundle(output, plan, job, run_id, receipt, baseline):
     snapshot = load_json(output / 'candidate-snapshot.json')
     content = {key: value for key, value in snapshot.items() if key != 'sha256'}
@@ -309,6 +366,14 @@ def execute(root, *, accept_run=False):
                         'Interrupted job without receipt; retain it and prepare a new campaign',
                     )
                     receipt = load_json(output / 'receipt.json')
+                    verify_resumed_receipt(
+                        output.name,
+                        receipt,
+                        job=job,
+                        prompt=(root / 'prompt.txt').read_bytes(),
+                        runtime=plan['runtime'],
+                        role='generation',
+                    )
                 else:
                     print('Generate ' + run_id, flush=True)
                     receipt = worker.run_job(
@@ -344,6 +409,9 @@ def execute(root, *, accept_run=False):
                         'Interrupted review without receipt; retain it and prepare a new campaign',
                     )
                     receipt = load_json(output / 'receipt.json')
+                    verify_resumed_receipt(
+                        output.name, receipt, job=job, prompt=prompt, runtime=plan['runtime'], role='review'
+                    )
                 else:
                     print('Review ' + run_id + ' with ' + judge['id'], flush=True)
                     fixture = reviews.synthetic_result(atlas.validate(project)['rubric']) if dry_run else None
@@ -372,11 +440,8 @@ def execute(root, *, accept_run=False):
                         review = reviews.validate_answer(
                             project, final, identity, review_id, reviewer, receipt, dry_run=dry_run
                         )
-                        existing = project / 'data/reviews' / (review_id + '.json')
-                        if existing.exists():
-                            require(load_json(existing) == review, 'Admitted review changed')
-                        else:
-                            atlas.add_review(project, review, select=judge['id'] == config['display_reviewer'])
+                        # Idempotent: finishes an interrupted admission, refuses changed bytes.
+                        atlas.add_review(project, review, select=judge['id'] == config['display_reviewer'])
                         worker.write_json(output / 'review.json', review)
                         result['status'] = 'admitted'
                     except (ValueError, OSError, TypeError, KeyError) as error:
@@ -419,11 +484,7 @@ def admit(root, project=ROOT):
                 project, answer, identity, review['id'], review['reviewer'], receipt
             )
             require(validated_review == review, 'Exported review differs from the validated answer')
-            existing = project / 'data/reviews' / (review['id'] + '.json')
-            if existing.exists():
-                require(load_json(existing) == review, 'Existing review differs')
-            else:
-                atlas.add_review(project, review)
+            atlas.add_review(project, review)
         selections = atlas.validate(root / 'report')['selections']
         data = atlas.validate(project)
         for run_id, active in data['active_reviews'].items():
@@ -439,7 +500,19 @@ def main():
     prepare_parser.add_argument('config', type=Path)
     prepare_parser.add_argument('--output', type=Path, required=True)
     prepare_parser.add_argument('--project', type=Path, default=ROOT)
-    prepare_parser.add_argument('--catalog', type=Path)
+    prepare_parser.add_argument('--catalog', type=Path, metavar='FILE', help='Codex model catalog')
+    prepare_parser.add_argument(
+        '--router-profile',
+        type=Path,
+        metavar='FILE',
+        help='Codex config for the router (default: unified-openrouter.config.toml in CODEX_HOME)',
+    )
+    prepare_parser.add_argument(
+        '--capabilities',
+        type=Path,
+        metavar='FILE',
+        help='Model capability registry (default: data/model-capabilities.json)',
+    )
     prepare_parser.add_argument('--router-url', default='http://127.0.0.1:18766/v1')
     prepare_parser.add_argument('--dry-run', action='store_true')
     run_parser = commands.add_parser('run', help='Execute or resume the queue without repeating finished jobs')
@@ -458,6 +531,8 @@ def main():
                 dry_run=args.dry_run,
                 router_url=args.router_url,
                 catalog=args.catalog,
+                router_profile=args.router_profile,
+                capabilities=args.capabilities,
             )
             print(
                 'Prepared '

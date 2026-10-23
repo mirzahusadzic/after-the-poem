@@ -15,6 +15,7 @@ import sys
 from pathlib import Path
 
 import codex_worker as worker
+import fsutil
 import evaluation_contract as contracts
 import extraction_pipeline
 import session_flow
@@ -1039,7 +1040,7 @@ def _finish(project, output, plan, stored, evaluation_id, *, recovered=False):
         ):
             require(stored_carriage == carriage, 'Session carriage differs from carriage.json')
         else:
-            carriage_path.write_text(json.dumps(carriage, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+            fsutil.write_json_atomic(carriage_path, carriage)
     extraction_path = output / 'extraction.json'
     if plan.supplied is None:
         if extraction_path.exists():
@@ -1048,7 +1049,7 @@ def _finish(project, output, plan, stored, evaluation_id, *, recovered=False):
             extraction['extractor']['pipeline_sha256'] = stored_extraction['extractor']['pipeline_sha256']
             require(stored_extraction == extraction, 'Session extraction differs from extraction.json')
         else:
-            extraction_path.write_text(json.dumps(extraction, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+            fsutil.write_json_atomic(extraction_path, extraction)
     policy_bytes = (output / 'scoring-policy.json').read_bytes()
     receipts = [receipt for receipts in receipts_by_session for receipt in receipts]
     record = build_record(
@@ -1075,14 +1076,9 @@ def _finish(project, output, plan, stored, evaluation_id, *, recovered=False):
 
 
 def _write(output, record, status):
-    def write(name, value):
-        temporary = output / ('.' + name + '.tmp')
-        temporary.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-        temporary.replace(output / name)
-
-    write('evaluation.json', record)
+    fsutil.write_json_atomic(output / 'evaluation.json', record)
     status['evaluation_sha256'] = sha((output / 'evaluation.json').read_bytes())
-    write('status.json', status)
+    fsutil.write_json_atomic(output / 'status.json', status)
     return status
 
 
@@ -1155,21 +1151,16 @@ def run(
         require(not (output / 'evaluation.json').exists(), 'Evaluation already completed; validate it instead')
     else:
         output.mkdir(parents=True, mode=0o700)
-        shutil.copyfile(policy_path, output / 'scoring-policy.json')
+        fsutil.write_bytes_atomic(output / 'scoring-policy.json', Path(policy_path).read_bytes(), mode=0o400)
         if supplied is not None:
-            shutil.copyfile(extraction_path, output / 'extraction.json')
+            fsutil.write_bytes_atomic(output / 'extraction.json', Path(extraction_path).read_bytes())
         if control is not None:
-            (output / 'control-seed.txt').write_text(control, encoding='utf-8')
-            (output / 'control-seed.txt').chmod(0o400)
+            fsutil.write_text_atomic(output / 'control-seed.txt', control, mode=0o400)
         if masked is not None:
-            (output / 'masked-terms.json').write_bytes(canonical(masked) + b'\n')
-            (output / 'masked-terms.json').chmod(0o400)
+            fsutil.write_bytes_atomic(output / 'masked-terms.json', canonical(masked) + b'\n', mode=0o400)
         if ablated is not None:
-            (output / 'ablated-ranges.json').write_bytes(canonical(ablated) + b'\n')
-            (output / 'ablated-ranges.json').chmod(0o400)
-        (output / 'plan.json').write_bytes(canonical(stored) + b'\n')
-        for name in ['plan.json', 'scoring-policy.json']:
-            (output / name).chmod(0o400)
+            fsutil.write_bytes_atomic(output / 'ablated-ranges.json', canonical(ablated) + b'\n', mode=0o400)
+        fsutil.write_bytes_atomic(output / 'plan.json', canonical(stored) + b'\n', mode=0o400)
     job = {'model': model, 'reasoning': reasoning, 'seconds': 900 if not dry_run else 120}
     runtime = worker.freeze_runtime(
         output,

@@ -55,6 +55,79 @@ class CampaignTests(unittest.TestCase):
         with mock.patch.object(worker, 'run_job', side_effect=AssertionError('A finished job must never run again')):
             self.assertTrue(pipeline.execute(self.campaign)['all_succeeded'])
 
+    def test_resume_refuses_receipts_from_another_job_identity(self):
+        self.config['reviewers'] = self.config['reviewers'][:1]
+        self.config_file.write_text(json.dumps(self.config))
+        self.prepare()
+        first = pipeline.execute(self.campaign)
+        self.assertTrue(first['all_succeeded'])
+        generation_receipt = self.campaign / 'jobs/generation-0001/receipt.json'
+        original_generation = bundles.load_json(generation_receipt)
+        try:
+            tampered = copy.deepcopy(original_generation)
+            tampered['requested']['model'] = 'other/model'
+            worker.write_json(generation_receipt, tampered)
+            with self.assertRaisesRegex(ValueError, 'Stale receipt'):
+                pipeline.execute(self.campaign)
+            tampered = copy.deepcopy(original_generation)
+            tampered['runtime']['generation_instructions_sha256'] = '0' * 64
+            worker.write_json(generation_receipt, tampered)
+            with self.assertRaisesRegex(ValueError, 'Stale receipt'):
+                pipeline.execute(self.campaign)
+        finally:
+            worker.write_json(generation_receipt, original_generation)
+        review_receipt = self.campaign / 'jobs/review-0001-01/receipt.json'
+        original_review = bundles.load_json(review_receipt)
+        try:
+            tampered = copy.deepcopy(original_review)
+            tampered['requested']['reasoning'] = 'max' if original_review['requested']['reasoning'] != 'max' else 'low'
+            worker.write_json(review_receipt, tampered)
+            with self.assertRaisesRegex(ValueError, 'Stale receipt'):
+                pipeline.execute(self.campaign)
+            tampered = copy.deepcopy(original_review)
+            tampered['prompt_sha256'] = '0' * 64
+            worker.write_json(review_receipt, tampered)
+            with self.assertRaisesRegex(ValueError, 'Stale receipt'):
+                pipeline.execute(self.campaign)
+        finally:
+            worker.write_json(review_receipt, original_review)
+        resumed = pipeline.execute(self.campaign)
+        self.assertTrue(resumed['all_succeeded'])
+        self.assertEqual(
+            [item['job'] for item in resumed['jobs']], [item['job'] for item in first['jobs']]
+        )
+
+    def test_prepare_cli_accepts_router_profile_and_capabilities_flags(self):
+        registry = ROOT / 'data/model-capabilities.json'
+        self.assertTrue(registry.is_file())
+        router_profile = self.root / 'router-profile.toml'
+        router_profile.write_text('model_provider = "fixture"\n', encoding='utf-8')
+        output = self.root / 'campaign-cli-flags'
+        result = subprocess.run(
+            [
+                sys.executable,
+                str(ROOT / 'scripts/pipeline.py'),
+                'prepare',
+                str(self.config_file),
+                '--output',
+                str(output),
+                '--dry-run',
+                '--router-profile',
+                str(router_profile),
+                '--capabilities',
+                str(registry),
+            ],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        plan = bundles.load_json(output / 'campaign.json')
+        self.assertTrue(plan['runtime']['dry_run'])
+        self.assertEqual(
+            plan['runtime']['capability_registry_sha256'], bundles.sha(registry.read_bytes())
+        )
+
     def test_synthetic_campaign_cannot_be_admitted(self):
         self.prepare()
         with self.assertRaisesRegex(ValueError, 'Synthetic'):

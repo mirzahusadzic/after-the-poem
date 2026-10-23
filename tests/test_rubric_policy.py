@@ -155,6 +155,35 @@ class FullRubricPolicyTests(unittest.TestCase):
         (package / '.DS_Store').write_bytes(b'finder')
         atlas.validate(self.root)
 
+    def test_conformance_hook_rejects_tampered_policy(self):
+        policy = rubric_policy.build(self.rubric)
+        rubric_policy.validate_conformance(policy, self.rubric)
+        bad = json.loads(json.dumps(policy))
+        bad['nodes'][1]['criterion'] = 'Tampered criterion.'
+        self.assertFalse(rubric_policy.matches_rubric(bad, self.rubric))
+        with self.assertRaisesRegex(ValueError, 'does not encode'):
+            rubric_policy.validate_conformance(bad, self.rubric)
+        with self.assertRaisesRegex(ValueError, 'does not encode'):
+            contracts.validate_rubric_conformance(bad, self.rubric)
+
+    def test_legacy_sol_original_still_validates_byte_for_byte(self):
+        import evaluation_contract as contracts
+
+        data = atlas.validate(ROOT)
+        rubric = json.loads((ROOT / 'data/rubric.json').read_text())
+        for name in ['sol-original-muse-v5-1', 'sol-original-muse-v4-1']:
+            package = ROOT / ('data/evaluations/' + name)
+            if not package.exists():
+                continue
+            evaluation = json.loads((package / 'evaluation.json').read_text())
+            policy = json.loads((package / 'scoring-policy.json').read_text())
+            review = json.loads((package / 'review.json').read_text())
+            source_texts = {
+                f['path']: f['text'] for f in data['corpora'][evaluation['run_id']]['files'] if f['text'] is not None
+            }
+            scores, axes = contracts.review_projection(evaluation, policy, rubric, source_texts)
+            self.assertEqual(review['scores'], scores, 'The projection must stay byte-for-byte for ' + name)
+            self.assertEqual(review['provenance'].get('axis_outcomes'), axes)
 
 if __name__ == '__main__':
     unittest.main()

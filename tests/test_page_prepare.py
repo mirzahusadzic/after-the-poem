@@ -3,6 +3,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -140,6 +141,87 @@ class PagePreparationTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'Presentation file changed'):
                 page_prepare.validate_output(ROOT, page_dir)
 
+    def test_failed_preparation_leaves_no_partial_output(self):
+        with tempfile.TemporaryDirectory(prefix='after-poem-page-failure-') as temporary:
+            root = Path(temporary)
+            evaluation_dir = self.make_evaluation(root)
+            page_dir = root / 'page'
+            with mock.patch.object(page_prepare, 'render_html', side_effect=RuntimeError('injected render failure')):
+                with self.assertRaisesRegex(RuntimeError, 'injected render failure'):
+                    page_prepare.prepare_page(ROOT, evaluation_dir, page_dir)
+            self.assertFalse(page_dir.exists())
+            self.assertEqual(sorted(path.name for path in root.glob('.page.*')), [])
+
+
+
+    def test_alternatives_are_preserved_and_rendered(self):
+        import evaluation_contract as contracts
+
+        with tempfile.TemporaryDirectory(prefix='after-poem-page-alt-') as temporary:
+            root = Path(temporary)
+            evaluation_dir = self.make_evaluation(root)
+            evaluation = json.loads((evaluation_dir / 'evaluation.json').read_text(encoding='utf-8'))
+            extraction = json.loads((evaluation_dir / 'extraction.json').read_text(encoding='utf-8'))
+            policy = json.loads((evaluation_dir / 'scoring-policy.json').read_text(encoding='utf-8'))
+            carriage = {
+                'schema_version': 1,
+                'evaluation_id': evaluation['evaluation_id'],
+                'run_id': evaluation['run_id'],
+                'readings': [
+                    {
+                        'sample': 1,
+                        'answer_sha256': '0' * 64,
+                        'seed_reading': {
+                            'elements': [
+                                {'id': 'e-%02d' % i, 'kind': 'role', 'statement': 's', 'seed_span': [1, 1], 'ambiguity': None}
+                                for i in range(6)
+                            ],
+                            'alternatives': ['Second reading with /Users/mirza/secret path.', 'First reading.'],
+                        },
+                        'carriage': [
+                            {'element': 'e-%02d' % i, 'status': 'lost', 'note': 'n', 'citations': []}
+                            for i in range(6)
+                        ],
+                    }
+                ],
+            }
+            presentation = page_prepare.build_presentation(
+                evaluation,
+                extraction,
+                policy,
+                evaluation_sha256=page_prepare.sha((evaluation_dir / 'evaluation.json').read_bytes()),
+                extraction_sha256=page_prepare.sha((evaluation_dir / 'extraction.json').read_bytes()),
+                scoring_policy_sha256=page_prepare.sha((evaluation_dir / 'scoring-policy.json').read_bytes()),
+                source_texts=page_prepare._source_texts(ROOT, 'sol-original'),
+                carriage=carriage,
+            )
+            # Order preserved, host paths withheld, old records without the field still validate.
+            self.assertEqual(len(presentation['alternatives']), 2)
+            self.assertNotIn('/Users/mirza/secret', json.dumps(presentation['alternatives']))
+            page = page_prepare.render_html(presentation)
+            self.assertIn('Alternative readings', page)
+            self.assertIn('First reading.', page)
+            # Backward compatible: record without alternatives validates.
+            legacy = json.loads(json.dumps(presentation))
+            del legacy['alternatives']
+            page_prepare.validate_presentation(legacy, evaluation=evaluation)
+
+    def test_provenance_shas_are_returned_and_tamper_detected(self):
+        with tempfile.TemporaryDirectory(prefix='after-poem-page-prov-') as temporary:
+            root = Path(temporary)
+            evaluation_dir = self.make_evaluation(root)
+            page_dir = root / 'page'
+            result = page_prepare.prepare_page(ROOT, evaluation_dir, page_dir)
+            for key in ['evaluation_sha256', 'extraction_sha256', 'scoring_policy_sha256', 'presentation_sha256']:
+                self.assertIn(key, result)
+            self.assertEqual(result['evaluation_sha256'], page_prepare.sha((page_dir / 'evaluation.json').read_bytes()))
+            # Tamper with the presentation file and revalidation must fail.
+            presentation_path = page_dir / 'presentation.json'
+            doc = json.loads(presentation_path.read_text(encoding='utf-8'))
+            doc['title'] += ' tampered'
+            presentation_path.write_text(json.dumps(doc, indent=2) + '\n', encoding='utf-8')
+            with self.assertRaisesRegex(ValueError, 'Presentation (file changed|identity differs|title differs)'):
+                page_prepare.validate_output(ROOT, page_dir)
 
 if __name__ == '__main__':
     unittest.main()

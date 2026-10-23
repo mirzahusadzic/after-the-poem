@@ -125,7 +125,20 @@ def dry_run_output(output):
 
 
 def run_profile(project, path, **options):
+    """Run one evaluation profile; explicit repairs/layout/budget override the profile.
+
+    Repairs and the budget are execution limits, not session identity, so raising
+    them on a resume is safe: preserved turns are replayed, never re-run. The
+    layout belongs to the stored plan, so a resume with another layout is refused.
+    """
     profile = load_profile(project, path)
+    repairs = options.pop('repairs', None)
+    layout = options.pop('layout', None)
+    require(
+        repairs is None or type(repairs) is int and repairs >= 0,
+        'Repairs must be a non-negative integer',
+    )
+    require(layout is None or layout in scoring_pipeline.LAYOUTS, 'Invalid layout override')
     return run(
         project,
         profile['run_id'],
@@ -141,8 +154,8 @@ def run_profile(project, path, **options):
         reviewer=profile['reviewer'],
         repetitions=profile['repetitions'],
         minimum_agreement=profile['minimum_agreement'],
-        repairs=profile['repairs'],
-        layout=profile['layout'],
+        repairs=profile['repairs'] if repairs is None else repairs,
+        layout=profile['layout'] if layout is None else layout,
         budget=options.pop('budget', None) or profile['budget'],
         **options,
     )
@@ -321,9 +334,21 @@ def review_from_evaluation(project, evaluation_directory, *, review_id, evaluati
         for source in data['corpora'][evaluation['run_id']]['files']
         if source['text'] is not None
     }
+    # The projection refuses a policy that no longer encodes the rubric, so a stale policy cannot produce a review.
     scores, axis_outcomes = contracts.review_projection(evaluation, policy, rubric, source_texts)
     receipts = _evaluation_receipts(evaluation_directory)
     sessions = validated['sessions']
+    # Preserve supported alternative readings alongside the scores so normalized
+    # report structures keep ambiguity instead of collapsing to one verdict.
+    carriage_path = evaluation_directory / 'carriage.json'
+    if carriage_path.is_file():
+        try:
+            carriage_doc = contracts.load_json(carriage_path)
+            alternatives = contracts.collect_alternatives(carriage_doc.get('readings'))
+        except Exception:
+            alternatives = []
+    else:
+        alternatives = []
     return {
         'schema_version': 1,
         'id': review_id,
@@ -347,6 +372,7 @@ def review_from_evaluation(project, evaluation_directory, *, review_id, evaluati
             'evaluation_sha256': validated['evaluation_sha256'],
             'extraction_sha256': evaluation['identities']['extraction_sha256'],
             'scoring_policy_sha256': evaluation['identities']['scoring_policy_sha256'],
+            'alternatives': alternatives,
             'sample_count': validated['judgment_samples'],
             'criteria': validated['criteria'],
             'axis_outcomes': axis_outcomes,

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "files": {
+    "astra-garden-static-20261019-v1": "7c5aeaed1aa0b173105c1aafacfaf7a9aea4012bf3206f13c77dacf02a0e8358",
+    "astra-max-static-20261019-v1": "933a660ebc21a0452696df7009b87667ebed9b73682e1f957acb2fabdb54a266",
+    "deepseek-flash-max-pilot-editorial-20261021-v1": "b50aa9e36f9a4e61f5fcd8364454d7d9c3d969114c1054f513963b08258e4bf4",
+    "deepseek-flash-max-pilot-unreviewed-v1": "c8eff55f6ecd4a766a0bf6a1d3bd2e07d25604ff330f9b03a39f688567bbb0bc",
+    "dream-claude-fable51-20261022-unreviewed-v1": "608aee8498f77464ab3c5037242b78b9398bdeee032f6c147d37d69f06ab9629",
+    "dream-claude-opus55-v2-20261022-unreviewed-v1": "29c385fb826fc85a438dd6cc55a4c6f14289e0c6ceb6937aa2c8ad3f93c14ede",
+    "dream-deepseek-20261021-deepseek-s1-unreviewed-v1": "91357d534f1f886b74b87381a75e896b117c08d226eee0eec4d880a74d82494e",
+    "dream-deepseek-v2-20261021-deepseek-s1-unreviewed-v1": "aeee9f2bc0fa3b362f5ecf7ca4df54487e21d795235f5b0d62fcfb2fc95a2fe8",
+    "sol-original-static-20261019-v1": "c16abe3e570796ffcf42de909ed74b0617abe4341798fb17222dee9f124d2547",
+    "sol-original-static-20261019-v2": "fdec1eb1b344b831f0cc15bc7b242acac1118459ec8819ad3d844d46084024bb",
+    "sol56-max-static-20261019-v1": "5e5e6fd69b25ae27992a387ff7ef56be4ed413c92a29e2a70886c80b6ae56786",
+    "sol61-max-static-20261019-v1": "0eba7b2a3a22d4de9f751ce3df7dbe65b90fd34b9253fd88b6ea18f2cb6c6cdd"
+  }
+}

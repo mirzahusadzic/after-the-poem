@@ -177,5 +177,102 @@ class EvaluationContractTests(unittest.TestCase):
                 contracts.validate_directory(root)
 
 
+
+
+class DataIntegrityHookTests(unittest.TestCase):
+    """Cover each changed invariant and its tamper case; schema stays backward compatible."""
+
+    def test_rubric_conformance_hook_accepts_match_and_rejects_tamper(self):
+        import rubric_policy
+
+        rubric = json.loads((ROOT / 'data/rubric.json').read_text())
+        policy = rubric_policy.build(rubric)
+        # Hook is reusable from both modules and passes for a matching pair.
+        contracts.validate_rubric_conformance(policy, rubric)
+        rubric_policy.validate_conformance(policy, rubric)
+        self.assertTrue(rubric_policy.matches_rubric(policy, rubric))
+        tampered = copy.deepcopy(rubric)
+        tampered['axes'][0]['anchors'][0] = 'Tampered anchor.'
+        self.assertFalse(rubric_policy.matches_rubric(policy, tampered))
+        with self.assertRaisesRegex(ValueError, 'does not encode'):
+            contracts.validate_rubric_conformance(policy, tampered)
+        with self.assertRaisesRegex(ValueError, 'does not encode'):
+            rubric_policy.validate_conformance(policy, tampered)
+        # The review projection, which every admission uses, refuses a policy that no longer encodes the rubric.
+        import atlas
+
+        package = ROOT / 'data/evaluations/sol-original-muse-v5-1'
+        evaluation = contracts.load_json(package / 'evaluation.json')
+        policy_doc = contracts.load_json(package / 'scoring-policy.json')
+        data = atlas.validate(ROOT)
+        source_texts = {
+            f['path']: f['text'] for f in data['corpora'][evaluation['run_id']]['files'] if f['text'] is not None
+        }
+        contracts.review_projection(evaluation, policy_doc, rubric, source_texts)
+        with self.assertRaisesRegex(ValueError, 'does not encode'):
+            contracts.review_projection(evaluation, policy_doc, tampered, source_texts)
+
+    def test_seed_element_bounds_are_shared_six_to_twenty(self):
+        self.assertEqual((contracts.SEED_ELEMENT_MIN, contracts.SEED_ELEMENT_MAX), (6, 20))
+
+        def reading(n):
+            return {
+                'elements': [
+                    {'id': 'e-%02d' % i, 'kind': 'role', 'statement': 's', 'seed_span': [1, 1], 'ambiguity': None}
+                    for i in range(n)
+                ],
+                'alternatives': [],
+            }
+
+        contracts.validate_seed_reading(reading(6))
+        contracts.validate_seed_reading(reading(20))
+        with self.assertRaisesRegex(ValueError, '6 to 20'):
+            contracts.validate_seed_reading(reading(5))
+        with self.assertRaisesRegex(ValueError, '6 to 20'):
+            contracts.validate_seed_reading(reading(21))
+        # Tamper: the old 3-element shape is now rejected in both contract and pipeline ranges.
+        with self.assertRaisesRegex(ValueError, '6 to 20'):
+            contracts.validate_seed_reading(reading(3))
+
+    def test_projection_reproduces_committed_package_reviews(self):
+        import atlas as _atlas
+
+        data = _atlas.validate(ROOT)
+        rubric = json.loads((ROOT / 'data/rubric.json').read_text())
+        pkg = ROOT / 'data/evaluations/sol-original-muse-v5-1'
+        evaluation = contracts.load_json(pkg / 'evaluation.json')
+        policy = contracts.load_json(pkg / 'scoring-policy.json')
+        review = json.loads((pkg / 'review.json').read_text())
+        source_texts = {
+            f['path']: f['text'] for f in data['corpora'][evaluation['run_id']]['files'] if f['text'] is not None
+        }
+        scores, axes = contracts.review_projection(evaluation, policy, rubric, source_texts)
+        self.assertEqual(review['scores'], scores)
+        self.assertEqual(review['provenance'].get('axis_outcomes'), axes)
+        # Split sessions keep the host's agreement note on the shortest verdict, as every committed review does.
+        self.assertTrue(any('Agreement:' in entry['rationale'] for entry in scores.values()))
+
+    def test_candidate_identity_must_match_the_extraction(self):
+        extraction = contracts.load_json(FIXTURE / 'extraction.json')
+        tampered = copy.deepcopy(contracts.load_json(FIXTURE / 'evaluation.json'))
+        tampered['identities']['candidate_sha256'] = '0' * 64
+        with self.assertRaisesRegex(ValueError, 'Evaluation and extraction identities differ'):
+            contracts.validate_evaluation(
+                tampered,
+                extraction=extraction,
+                extraction_sha256=contracts.sha((FIXTURE / 'extraction.json').read_bytes()),
+                policy=contracts.load_json(FIXTURE / 'scoring-policy.json'),
+                scoring_policy_sha256=contracts.sha((FIXTURE / 'scoring-policy.json').read_bytes()),
+            )
+
+    def test_collect_alternatives_dedups_and_preserves_order(self):
+        readings = [
+            {'seed_reading': {'alternatives': ['B reading.', 'A reading.']}},
+            {'seed_reading': {'alternatives': ['A reading.', 'C reading.']}},
+        ]
+        self.assertEqual(contracts.collect_alternatives(readings), ['B reading.', 'A reading.', 'C reading.'])
+        self.assertEqual(contracts.collect_alternatives([]), [])
+
+
 if __name__ == '__main__':
     unittest.main()

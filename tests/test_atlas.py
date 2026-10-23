@@ -384,10 +384,13 @@ class PipelineTests(unittest.TestCase):
             atlas.validate(self.root)
 
     def test_build_does_not_normalise_or_recalculate_authored_scores(self):
-        review_path = self.root / 'data/reviews/sol-original-static-20261019-v2.json'
-        review = json.loads(review_path.read_text())
-        review['scores']['touch']['value'] = 1
-        review_path.write_text(json.dumps(review, indent=2) + '\n')
+        # Committed review bytes are pinned, so a changed reading arrives as a new
+        # review through add-review; the build must still publish it verbatim.
+        current = atlas.validate(self.root)['active_reviews']['sol-original']
+        successor = copy.deepcopy(current)
+        successor.update(id='human-score-passthrough', supersedes=current['id'], reviewer='Test reviewer')
+        successor['scores']['touch']['value'] = 1
+        atlas.add_review(self.root, successor)
         atlas.build(self.root)
         report = json.loads((self.root / 'dist/report.json').read_text())
         self.assertEqual(report['active_reviews']['sol-original']['scores']['touch']['value'], 1)

@@ -5,13 +5,17 @@ import argparse
 import html
 import json
 import math
+import os
 import re
 import shutil
 import sys
+import tempfile
 from pathlib import Path
 
 import evaluation_contract as contracts
+import fsutil
 from bundles import canonical, inspect_metadata, require, sha
+from evidence_text import normalize_alternatives
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -36,6 +40,10 @@ def public_quote(citation, source_texts):
     return dict(quoted, quote=HOST_PATH_TEXT.sub(WITHHELD_PATH, quoted['quote']))
 
 
+# Additive optional presentation fields: old records without them still validate.
+OPTIONAL_PRESENTATION_FIELDS = {'alternatives'}
+
+
 def build_presentation(
     evaluation,
     extraction,
@@ -46,8 +54,14 @@ def build_presentation(
     scoring_policy_sha256,
     source_texts=None,
     presentation_id=None,
+    carriage=None,
+    alternatives=None,
 ):
-    """Project an evaluation into PresentationRecord v1; schema-2 citations get their quotes resolved."""
+    """Project an evaluation into PresentationRecord v1; schema-2 citations get their quotes resolved.
+
+    Supported seed alternative readings, given directly or collected from a carriage record, are kept in
+    the additive optional ``alternatives`` field. Every sample is shown, whichever one a review chose.
+    """
     nodes, outgoing, incoming = contracts.validate_policy(policy)
     if evaluation['schema_version'] == 2:
         require(source_texts is not None, 'Schema-2 evaluations need source texts to resolve quotes')
@@ -121,6 +135,16 @@ def build_presentation(
     scored = [criterion['outcome'] for criterion in criteria if criterion['outcome']['status'] == 'scored']
     presentation_status = 'scored' if len(scored) == len(criteria) else 'unresolved'
     presentation_score = None
+    if alternatives is None:
+        alternatives = contracts.collect_alternatives(carriage.get('readings')) if carriage else []
+    # Withhold host-specific paths from public alternatives without touching sources.
+    alternatives = normalize_alternatives(alternatives)
+    require(
+        isinstance(alternatives, list) and len(alternatives) <= 32,
+        'Presentation alternatives must be a bounded list',
+    )
+    for alternative in alternatives:
+        contracts.bounded_text(alternative, 'presentation alternative', 2000)
     presentation = {
         'schema_version': 1,
         'presentation_id': presentation_id or _presentation_id(evaluation),
@@ -140,6 +164,9 @@ def build_presentation(
         'findings': list(evaluation['presentation']['findings']),
         'usage': dict(evaluation['usage']),
     }
+    if alternatives:
+        # Additive optional field: old records without it still validate.
+        presentation['alternatives'] = list(alternatives)
     validate_presentation(presentation, evaluation=evaluation)
     return presentation
 
@@ -219,30 +246,46 @@ def historical_presentation(run, review, rubric, rubric_sha256, corpus_sha256):
         'findings': findings,
         'usage': {'calls': 0, 'input_tokens': None, 'output_tokens': None, 'cost': None},
     }
+    # Historical records preserve the alternatives shape explicitly, even when empty,
+    # so normalized presentation structures always carry the field forward.
+    if 'alternatives' not in record:
+        record['alternatives'] = []
     validate_presentation(record)
     return record
 
 
 def validate_presentation(record, *, evaluation=None):
-    contracts.exact_fields(
-        record,
-        [
-            'schema_version',
-            'presentation_id',
-            'evaluation_id',
-            'run_id',
-            'identities',
-            'label',
-            'title',
-            'summary',
-            'status',
-            'score',
-            'criteria',
-            'findings',
-            'usage',
-        ],
-        'presentation',
+    allowed_presentation = {
+        'schema_version',
+        'presentation_id',
+        'evaluation_id',
+        'run_id',
+        'identities',
+        'label',
+        'title',
+        'summary',
+        'status',
+        'score',
+        'criteria',
+        'findings',
+        'usage',
+    }
+    extra_presentation = set(record) - allowed_presentation
+    require(
+        extra_presentation <= OPTIONAL_PRESENTATION_FIELDS,
+        'Presentation has undeclared fields: ' + ', '.join(sorted(extra_presentation)),
     )
+    require(
+        allowed_presentation <= set(record),
+        'Presentation is missing fields: ' + ', '.join(sorted(allowed_presentation - set(record))),
+    )
+    if 'alternatives' in record:
+        require(
+            isinstance(record['alternatives'], list) and len(record['alternatives']) <= 32,
+            'Presentation alternatives must be a bounded list',
+        )
+        for alternative in record['alternatives']:
+            contracts.bounded_text(alternative, 'presentation alternative', 2000)
     require(record['schema_version'] == 1, 'Unsupported presentation schema')
     contracts.safe_id(record['presentation_id'], 'presentation_id')
     contracts.safe_id(record['evaluation_id'], 'evaluation_id')
@@ -395,6 +438,7 @@ def render_html(presentation):
     criteria = presentation['criteria']
     rows = []
     details = []
+    alternatives = list(presentation.get('alternatives', []) or [])
     for criterion in criteria:
         for sample in criterion['samples']:
             rows.append(
@@ -426,6 +470,15 @@ def render_html(presentation):
             if sample['counter_citations']:
                 details.append('<h4>Counter-evidence</h4><ul>' + _citations_html(sample['counter_citations']) + '</ul>')
             details.append('</section>')
+    if alternatives:
+        alternatives_html = (
+            '<p>Supported alternative readings preserved from the seed reading; '
+            'neither is an answer key.</p><ul>'
+            + ''.join('<li>' + html.escape(item) + '</li>' for item in alternatives)
+            + '</ul>'
+        )
+    else:
+        alternatives_html = '<p>No supported alternative readings were recorded.</p>'
     score = 'No score awarded' if presentation['score'] is None else str(presentation['score'])
     return '''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -442,6 +495,7 @@ def render_html(presentation):
 <section><h2>Repeated judgments</h2><p>The table is the primary comparison. Every sample remains visible; agreement is not correctness.</p>
 <div class="table-scroll" tabindex="0" aria-label="Repeated judgment samples, horizontally scrollable on narrow screens"><table><caption>Judgment samples and outcomes</caption><thead><tr><th>Criterion</th><th>Sample</th><th>Outcome</th><th>Rationale</th><th>Citations</th></tr></thead><tbody>{rows}</tbody></table></div></section>
 <section><h2>Evidence</h2>{details}</section>
+<section><h2>Alternative readings</h2>{alternatives}</section>
 <section><h2>Terminal result</h2><p>Declared scale: <strong>{scale}</strong></p><p>Aggregation: <strong>{aggregation}</strong> · agreement {agreement} · distinct outcomes {distinct}</p><p>{outcome}</p></section>
 <footer>No candidate code was executed to prepare this page. Missing or conflicting evidence remains unresolved. Presentation identity <code>{presentation_id}</code>.</footer>
 </main></body></html>
@@ -462,6 +516,7 @@ def render_html(presentation):
         distinct=html.escape(', '.join(criteria[0]['aggregation']['distinct_outcomes'])),
         outcome=html.escape(criteria[0]['outcome']['rationale']),
         presentation_id=html.escape(presentation['presentation_id']),
+        alternatives=alternatives_html,
     )
 
 
@@ -482,6 +537,14 @@ def prepare_page(project, evaluation_directory, output, *, presentation_id=None)
     evaluation = contracts.load_json(evaluation_directory / 'evaluation.json')
     extraction = contracts.load_json(evaluation_directory / 'extraction.json')
     policy = contracts.load_json(evaluation_directory / 'scoring-policy.json')
+    # Example and material policies need not encode the current rubric, so page preparation checks none.
+    carriage = None
+    carriage_path = evaluation_directory / 'carriage.json'
+    if carriage_path.is_file():
+        try:
+            carriage = contracts.load_json(carriage_path)
+        except (OSError, ValueError):
+            carriage = None
     presentation = build_presentation(
         evaluation,
         extraction,
@@ -490,25 +553,33 @@ def prepare_page(project, evaluation_directory, output, *, presentation_id=None)
         extraction_sha256=sha(extraction_bytes),
         scoring_policy_sha256=sha(policy_bytes),
         source_texts=source_texts,
+        carriage=carriage,
     )
     if presentation_id:
         require(contracts.SAFE_ID.fullmatch(presentation_id), 'Invalid presentation ID')
         presentation['presentation_id'] = presentation_id
         validate_presentation(presentation, evaluation=evaluation)
-    output.mkdir(parents=True, mode=0o700)
-    shutil.copyfile(evaluation_directory / 'evaluation.json', output / 'evaluation.json')
-    shutil.copyfile(evaluation_directory / 'extraction.json', output / 'extraction.json')
-    shutil.copyfile(evaluation_directory / 'scoring-policy.json', output / 'scoring-policy.json')
-    (output / 'presentation.json').write_text(
-        json.dumps(presentation, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
-    )
-    (output / 'index.html').write_text(render_html(presentation), encoding='utf-8')
-    manifest = {
-        'schema_version': 1,
-        'files': {name: sha((output / name).read_bytes()) for name in sorted(PRESENTATION_FILES)},
-    }
-    (output / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    return validate_output(project, output)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    staging = Path(tempfile.mkdtemp(prefix='.' + output.name + '.', dir=str(output.parent)))
+    staging.chmod(0o700)
+    try:
+        fsutil.write_bytes_atomic(staging / 'evaluation.json', (evaluation_directory / 'evaluation.json').read_bytes())
+        fsutil.write_bytes_atomic(staging / 'extraction.json', (evaluation_directory / 'extraction.json').read_bytes())
+        fsutil.write_bytes_atomic(staging / 'scoring-policy.json', (evaluation_directory / 'scoring-policy.json').read_bytes())
+        fsutil.write_json_atomic(staging / 'presentation.json', presentation)
+        fsutil.write_text_atomic(staging / 'index.html', render_html(presentation))
+        manifest = {
+            'schema_version': 1,
+            'files': {name: sha((staging / name).read_bytes()) for name in sorted(PRESENTATION_FILES)},
+        }
+        fsutil.write_json_atomic(staging / 'manifest.json', manifest)
+        result = validate_output(project, staging)
+        require(not output.exists(), 'Presentation output already exists; use a new directory')
+        os.replace(staging, output)
+        return result
+    except BaseException:
+        shutil.rmtree(staging, ignore_errors=True)
+        raise
 
 
 def _source_texts(project, run_id, data=None):
@@ -542,15 +613,12 @@ def validate_output(project, directory, *, data=None):
     presentation = contracts.load_json(directory / 'presentation.json')
     evaluation = contracts.load_json(directory / 'evaluation.json')
     result = validate_presentation(presentation, evaluation=evaluation)
-    require(
-        presentation['identities']
-        == {
-            'evaluation_sha256': sha((directory / 'evaluation.json').read_bytes()),
-            'extraction_sha256': sha((directory / 'extraction.json').read_bytes()),
-            'scoring_policy_sha256': sha((directory / 'scoring-policy.json').read_bytes()),
-        },
-        'Presentation identity differs from its inputs',
-    )
+    identities = {
+        'evaluation_sha256': sha((directory / 'evaluation.json').read_bytes()),
+        'extraction_sha256': sha((directory / 'extraction.json').read_bytes()),
+        'scoring_policy_sha256': sha((directory / 'scoring-policy.json').read_bytes()),
+    }
+    require(presentation['identities'] == identities, 'Presentation identity differs from its inputs')
     manifest = contracts.load_json(directory / 'manifest.json')
     contracts.exact_fields(manifest, ['schema_version', 'files'], 'presentation manifest')
     require(manifest['schema_version'] == 1, 'Unsupported presentation manifest')
@@ -558,10 +626,13 @@ def validate_output(project, directory, *, data=None):
     for name, expected in manifest['files'].items():
         contracts.digest(expected)
         require(sha((directory / name).read_bytes()) == expected, 'Presentation file changed: ' + name)
+    # The input hashes are echoed so a caller can recheck them without rehashing.
     result.update(
         presentation_id=presentation['presentation_id'],
         presentation_sha256=sha((directory / 'presentation.json').read_bytes()),
         html_sha256=sha((directory / 'index.html').read_bytes()),
+        record_sha256=sha(contracts.canonical(presentation)),
+        **identities,
     )
     return result
 

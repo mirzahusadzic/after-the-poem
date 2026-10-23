@@ -226,3 +226,40 @@ def extract_readable(path, value):
         return _finish(value.splitlines())
     cleaned = _clean(value)
     return cleaned if _readable(cleaned) else None
+
+
+# A world may write the path it was dreamed in into its own files. Normalized
+# presentation quotes withhold that path; the preserved source keeps every byte.
+HOST_PATH_TEXT = re.compile(
+    r'(?<![\w./-])/(?:Users|home|private|var/folders|tmp)/[^\s"\'<>`]*?(?=[.,;:)]*(?:[\s"\'<>`]|$))'
+)
+WITHHELD_PATH = '[a path on the dreaming machine]'
+
+
+def withhold_host_paths(value):
+    """Replace host-specific filesystem paths with a stable placeholder.
+
+    Page preparation applies this to public quotes and alternative readings so
+    private machine paths never leak into normalized presentation structures
+    while the frozen sources retain every byte.
+    """
+    return HOST_PATH_TEXT.sub(WITHHELD_PATH, str(value))
+
+
+def normalize_alternatives(alternatives):
+    """Preserve supported alternative readings for normalized presentation.
+
+    Order is preserved, exact duplicates are removed, host paths are withheld,
+    and entries are capped so alternative readings stay displayable without
+    collapsing ambiguity to a single verdict.
+    """
+    seen, ordered = set(), []
+    for alternative in alternatives or []:
+        cleaned = withhold_host_paths(_clean(alternative))
+        if not cleaned or cleaned in seen:
+            continue
+        seen.add(cleaned)
+        ordered.append(cleaned)
+        if len(ordered) >= 32:
+            break
+    return ordered

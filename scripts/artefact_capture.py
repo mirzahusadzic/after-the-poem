@@ -11,6 +11,7 @@ from datetime import date
 from pathlib import Path
 
 import atlas
+import fsutil
 from bundles import load_json, require, sha
 
 
@@ -20,9 +21,7 @@ IMAGE_LIMIT = 10 * 1024 * 1024
 
 
 def _write_atomic(path, value):
-    temporary = path.with_suffix(path.suffix + '.tmp')
-    temporary.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    os.replace(temporary, path)
+    fsutil.write_json_atomic(path, value)
 
 
 def _description(source_texts, entry_path, override=None):
@@ -132,9 +131,16 @@ def ensure(project, run_id, *, description=None, capture_page=None):
             'Capture returned an unexpected screenshot path',
         )
         payload = _png_dimensions(image_path)
-    except Exception:
-        artefacts_path.write_bytes(prior_bytes)
-        atlas.build(project)
+    except Exception as original:
+        try:
+            fsutil.write_bytes_atomic(artefacts_path, prior_bytes)
+            atlas.build(project)
+        except Exception as rollback_error:
+            try:
+                original.add_note('Artefact rollback failed: ' + str(rollback_error))
+            except Exception:
+                pass
+            raise original from rollback_error
         raise
     today = date.today()
     registered['images'] = [

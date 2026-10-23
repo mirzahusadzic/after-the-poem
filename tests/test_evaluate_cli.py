@@ -305,6 +305,110 @@ class EvaluationCliTests(unittest.TestCase):
             self.assertIn('budget', result.stderr)
             self.assertFalse(output.exists())
 
+    def test_partial_budget_override_fails_early_with_an_all_or_none_message(self):
+        with tempfile.TemporaryDirectory(prefix='after-poem-cli-partial-budget-') as temporary:
+            output = Path(temporary) / 'extraction'
+            for extra in (
+                ['--max-turns', '3'],
+                ['--max-turns', '3', '--max-input-tokens', '1000'],
+                ['--max-turns', '3', '--max-input-tokens', '1000', '--max-output-tokens', '80000', '--price-input', '1.0'],
+            ):
+                result = subprocess.run(
+                    [
+                        sys.executable,
+                        str(ROOT / 'scripts/evaluate.py'),
+                        'extract',
+                        'sol-original',
+                        '--output',
+                        str(output),
+                        '--model',
+                        'deepseek/deepseek-v4.1-flash-1017',
+                        '--extraction-id',
+                        'sol-original-cli-partial-budget',
+                        '--dry-run',
+                        *extra,
+                    ],
+                    cwd=ROOT,
+                    capture_output=True,
+                    text=True,
+                )
+                self.assertEqual(result.returncode, 1, extra)
+                self.assertIn('Partial budget', result.stderr)
+                self.assertIn('all-or-none', result.stderr)
+                self.assertFalse(output.exists())
+            complete = self.run_cli(
+                'extract',
+                'sol-original',
+                '--output',
+                str(output),
+                '--model',
+                'deepseek/deepseek-v4.1-flash-1017',
+                '--extraction-id',
+                'sol-original-cli-full-budget',
+                '--dry-run',
+                '--max-turns',
+                '3',
+                '--max-input-tokens',
+                '300000',
+                '--max-output-tokens',
+                '80000',
+            )
+            self.assertEqual(complete['status'], 'completed')
+
+    def test_run_profile_repairs_and_layout_overrides_reach_the_scoreflow(self):
+        with tempfile.TemporaryDirectory(prefix='after-poem-cli-profile-overrides-') as temporary:
+            root = Path(temporary)
+            for name in ['corpus', 'data', 'src', 'assets']:
+                shutil.copytree(ROOT / name, root / name, ignore=EDITORIAL)
+            shutil.rmtree(root / 'data/evaluations', ignore_errors=True)
+            for name in ['LICENSE', 'LICENSE-CONTENT', 'LICENSING.md', 'THIRD_PARTY_NOTICES.md']:
+                shutil.copyfile(ROOT / name, root / name)
+            profile = json.loads((ROOT / 'examples/rescore-deepseek/sol-original.json').read_text(encoding='utf-8'))
+            profile.update(output='.local/evaluation-runs/cli-override-check')
+            profile_path = root / 'profile.json'
+            profile_path.write_text(json.dumps(profile), encoding='utf-8')
+            result = self.run_cli(
+                'run-profile',
+                str(profile_path),
+                '--project',
+                str(root),
+                '--dry-run',
+                '--repairs',
+                '0',
+                '--layout',
+                'per-axis',
+                '--max-turns',
+                '60',
+                '--max-input-tokens',
+                '20000000',
+                '--max-output-tokens',
+                '2000000',
+            )
+            self.assertEqual(result['status'], 'completed')
+            self.assertEqual(result['integration_status'], 'skipped-synthetic')
+            stored = json.loads((Path(result['output']) / 'evaluation/plan.json').read_text(encoding='utf-8'))
+            self.assertEqual(stored['layout'], 'per-axis')
+            profile.update(output='.local/evaluation-runs/cli-override-rejected')
+            profile_path.write_text(json.dumps(profile), encoding='utf-8')
+            rejected = subprocess.run(
+                [
+                    sys.executable,
+                    str(ROOT / 'scripts/evaluate.py'),
+                    'run-profile',
+                    str(profile_path),
+                    '--project',
+                    str(root),
+                    '--dry-run',
+                    '--repairs',
+                    '99',
+                ],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+            )
+            self.assertEqual(rejected.returncode, 1)
+            self.assertIn('repairs', rejected.stderr)
+
     def test_run_dream_profile_cli_dry_run_creates_a_new_campaign_run(self):
         with tempfile.TemporaryDirectory(prefix='after-poem-cli-dream-') as temporary:
             root = Path(temporary)

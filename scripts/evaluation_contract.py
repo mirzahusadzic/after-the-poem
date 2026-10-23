@@ -637,6 +637,12 @@ def validate_evaluation(record, *, extraction, extraction_sha256, policy, scorin
 
 # A stance is how the seed asks to be read: its frame, turn, and what it leaves open (prompt version 5).
 SEED_KINDS = {'role', 'relation', 'condition', 'conjecture', 'stance'}
+# Seed-reading bounds are shared by contract validation and the scoring pipeline:
+# every reading needs 6 to 20 elements so a stance can be recorded without
+# turning the seed into an inventory. The pipeline enforces the same interval.
+SEED_ELEMENT_MIN = 6
+SEED_ELEMENT_MAX = 20
+SEED_ALTERNATIVES_MAX = 10
 CARRIAGE_STATUSES = {'carried', 'transformed', 'lost', 'introduced'}
 STANDING_KINDS = {'person', 'intelligence', 'successor', 'material', 'other'}
 GESTURES = {'question', 'constraint', 'invariant', 'boundary', 'rehearsal', 'receipt', 'accept', 'withdraw'}
@@ -646,7 +652,10 @@ def validate_seed_reading(reading, *, seed_line_count=None):
     """A reader's own decomposition of the seed: roles, relations, conditions and conjectures."""
     exact_fields(reading, ['elements', 'alternatives'], 'seed reading')
     elements = reading['elements']
-    require(isinstance(elements, list) and 3 <= len(elements) <= 40, 'Seed reading needs 3 to 40 elements')
+    require(
+        isinstance(elements, list) and SEED_ELEMENT_MIN <= len(elements) <= SEED_ELEMENT_MAX,
+        'Seed reading needs ' + str(SEED_ELEMENT_MIN) + ' to ' + str(SEED_ELEMENT_MAX) + ' elements',
+    )
     ids = set()
     for element in elements:
         exact_fields(element, ['id', 'kind', 'statement', 'seed_span', 'ambiguity'], 'seed element')
@@ -669,8 +678,8 @@ def validate_seed_reading(reading, *, seed_line_count=None):
             'Invalid seed element ambiguity',
         )
     require(
-        isinstance(reading['alternatives'], list) and len(reading['alternatives']) <= 10,
-        'Seed alternatives must be a list of at most 10 readings',
+        isinstance(reading['alternatives'], list) and len(reading['alternatives']) <= SEED_ALTERNATIVES_MAX,
+        'Seed alternatives must be a list of at most ' + str(SEED_ALTERNATIVES_MAX) + ' readings',
     )
     for alternative in reading['alternatives']:
         bounded_text(alternative, 'seed alternative', 2000)
@@ -756,6 +765,33 @@ def validate_carriage_record(record, *, source_texts=None, seed_line_count=None)
     return record
 
 
+def validate_rubric_conformance(policy, rubric):
+    """Raise unless the scoring policy encodes the current rubric's axes, anchors and scale.
+
+    Review projection and evaluation admission call this, so a stale policy cannot produce a review.
+    The rule itself is :func:`rubric_policy.validate_conformance`, shared with atlas.
+    """
+    import rubric_policy
+
+    rubric_policy.validate_conformance(policy, rubric)
+
+
+def collect_alternatives(readings):
+    """Collect distinct seed alternative readings across carriage readings.
+
+    Order is preserved and duplicates are removed so normalized presentation and
+    report structures can preserve every supported alternative without repetition.
+    """
+    seen, ordered = set(), []
+    for reading in readings or []:
+        seed_reading = reading.get('seed_reading', {}) if isinstance(reading, dict) else {}
+        for alternative in seed_reading.get('alternatives', []) or []:
+            if alternative not in seen:
+                seen.add(alternative)
+                ordered.append(alternative)
+    return ordered
+
+
 CONFIDENCE_ORDER = ['low', 'medium', 'high']
 
 
@@ -771,6 +807,7 @@ def review_projection(evaluation, policy, rubric, source_texts):
     independent sessions disagree, and unresolved axes carry no citations.
     """
     nodes, outgoing, _ = validate_policy(policy)
+    validate_rubric_conformance(policy, rubric)
     groups = {}
     for judgment in evaluation['judgments']:
         groups.setdefault(judgment['node_id'], []).append(judgment)

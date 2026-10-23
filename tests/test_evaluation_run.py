@@ -213,6 +213,23 @@ class EndToEndEvaluationTests(unittest.TestCase):
         self.assertEqual(len(receipts), 3)
         self.assertEqual({receipt['requested']['model'] for receipt in receipts}, {'deepseek/deepseek-v4.1-flash-1017'})
 
+    def test_admitted_review_keeps_the_alternative_readings(self):
+        output = self.root / '.local/alternatives-record'
+        # A rubric-generated policy, so the review matches the 8-axis rubric.
+        evaluation_run.run(self.root, 'sol-original', None, output, **self.arguments())
+        admissible(self.root, output / 'evaluation', 'sol-original-alternatives')
+        review = evaluation_run.review_from_evaluation(
+            self.root, output / 'evaluation', review_id='r-alternatives', evaluation_run_id='run-alternatives'
+        )
+        self.assertIsInstance(review['provenance']['alternatives'], list)
+        self.assertNotIn('representative_policy', review['provenance'])
+
+    def test_candidate_identity_is_the_extraction_identity(self):
+        output = self.root / '.local/candidate-derived'
+        evaluation_run.run(self.root, 'sol-original', None, output, **self.arguments())
+        evaluation = json.loads((output / 'evaluation/evaluation.json').read_text())
+        extraction = json.loads((output / 'evaluation/extraction.json').read_text())
+        self.assertEqual(evaluation['identities']['candidate_sha256'], extraction['identities']['candidate_sha256'])
 
 if __name__ == '__main__':
     unittest.main()

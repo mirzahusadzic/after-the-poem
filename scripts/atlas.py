@@ -18,11 +18,13 @@ import os
 import re
 import shutil
 import sys
+import tempfile
 import textwrap
 import unicodedata
 from pathlib import Path, PurePosixPath
 from urllib.parse import quote
-from evidence_text import extract_readable
+import fsutil
+from evidence_text import CODE_SUFFIXES, extract_readable
 from markdown_view import render_markdown, source_link
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -119,7 +121,76 @@ def source_url(run_id, path, start=1):
     return 'sources/' + run_id + '/' + quote(path, safe='/') + '.html#L' + str(start)
 
 
+REVIEW_MANIFEST_FILE = 'data/review-manifest.json'
+
+
+def review_manifest(root=ROOT):
+    """Live manifest of committed base reviews: each data/reviews file and its bytes."""
+    return {path.stem: sha(path.read_bytes()) for path in sorted((Path(root) / 'data/reviews').glob('*.json'))}
+
+
+def load_review_manifest(root=ROOT):
+    """Read and validate the explicit manifest that pins committed base reviews."""
+    path = Path(root) / REVIEW_MANIFEST_FILE
+    record = load(path)
+    require(
+        isinstance(record, dict) and set(record) == {'schema_version', 'files'} and record['schema_version'] == 1,
+        'Invalid review manifest',
+    )
+    files = record['files']
+    require(isinstance(files, dict), 'Review manifest files must be an object')
+    for review_id, digest_value in files.items():
+        require(safe_id(review_id), 'Invalid review manifest identity')
+        require(re.fullmatch(r'[a-f0-9]{64}', digest_value or ''), 'Invalid review manifest hash')
+    return files
+
+
+def carriage_alternatives(carriage):
+    """De-duplicated supported alternative readings across every carriage reading, in reading order.
+
+    Uses the shared normalizer so host paths are withheld, order is stable and
+    entries stay JSON-safe strings; runs without any are omitted by the caller.
+    """
+    from evidence_text import normalize_alternatives
+
+    readings = (carriage or {}).get('readings', []) if isinstance(carriage, dict) else []
+    collected = []
+    for reading in readings or []:
+        seed = (reading or {}).get('seed_reading') or {}
+        for alternative in seed.get('alternatives', []) or []:
+            if isinstance(alternative, str):
+                collected.append(alternative)
+    return normalize_alternatives(collected)
+
+
+def review_metadata(review):
+    """A review without its citation quotes, for the metadata guard.
+
+    A quote must equal the retained source line for line, so it keeps whatever path a world wrote
+    into its own files; the rest of the review is authored metadata and may carry none.
+    """
+    scores = review.get('scores')
+    if not isinstance(scores, dict):
+        return review
+    stripped = {}
+    for axis, score in scores.items():
+        citations = score.get('citations') if isinstance(score, dict) else None
+        if isinstance(citations, list):
+            score = dict(
+                score,
+                citations=[
+                    {key: value for key, value in cite.items() if key != 'quote'} if isinstance(cite, dict) else cite
+                    for cite in citations
+                ],
+            )
+        stripped[axis] = score
+    return dict(review, scores=stripped)
+
+
 def validate_review(review, runs, corpora, rubric, rubric_hash, prompt):
+    from bundles import inspect_metadata  # no host paths or credential-like keys in an admitted review
+
+    inspect_metadata(review_metadata(review), 'review ' + str(review.get('id')))
     require(review.get('schema_version') == 1, 'Unsupported review schema')
     require(safe_id(review.get('id')), 'Invalid review ID')
     run_id = review.get('run_id')
@@ -249,7 +320,23 @@ def validate(root=ROOT, extra_review=None, selection_override=None):
         require(cohort.get('default_run') in members, 'Each cohort needs a default run in that cohort')
         cohort['runs'] = members
     baseline = cohorts[registry['cohorts'][0]['id']]['baseline']
-    reviews = [load(p) for p in sorted((root / 'data/reviews').glob('*.json'))]
+    reviews = []
+    review_pins = load_review_manifest(root)
+    for path in sorted((root / 'data/reviews').glob('*.json')):
+        raw = path.read_bytes()
+        review = json.loads(raw.decode('utf-8'))
+        require(path.stem == review.get('id'), 'Review file identity differs from its contents: ' + path.name)
+        if review.get('id') in review_pins:
+            require(sha(raw) == review_pins[review.get('id')], 'Committed review changed: ' + str(review.get('id')))
+        else:
+            # Fresh imports land as unreviewed records (see scripts/bundles.py); they
+            # award no levels and cite no evidence until a pinned successor admits them.
+            require(review.get('status') == 'unreviewed', 'Committed review is not pinned: ' + str(review.get('id')))
+        reviews.append(review)
+    require(
+        set(review_pins) <= {review.get('id') for review in reviews} | ({extra_review.get('id')} if extra_review else set()),
+        'Review manifest names a missing review',
+    )
     if extra_review is not None:
         reviews.append(extra_review)
     selection_record = load(root / 'data/review-selection.json')
@@ -677,46 +764,82 @@ def analyze(corpus):
 
 def write_selection(root, selections):
     target = root / 'data/review-selection.json'
-    temporary = target.with_suffix('.json.tmp')
-    temporary.write_text(
-        json.dumps({'schema_version': 1, 'selections': selections}, ensure_ascii=False, indent=2) + '\n',
-        encoding='utf-8',
-    )
-    os.replace(temporary, target)
+    fsutil.write_json_atomic(target, {'schema_version': 1, 'selections': selections})
 
 
 def add_review(root, review, select=False):
-    data = validate(root)
-    rid = review.get('run_id')
-    require(rid in data['base_selections'], 'Review names an unknown run or an evaluation package run')
-    selections = dict(data['base_selections'])
-    if select or review.get('supersedes') == selections[rid]:
-        selections[rid] = review.get('id')
-    validate(root, extra_review=review, selection_override=selections)
+    """Admit a review: store its bytes, pin them in the review manifest and update the selection.
+
+    Admitting the same review again is safe: an earlier attempt that stopped between its writes is
+    finished and then validated, while a different review under the same ID is refused. Any failure,
+    an interrupt included, restores the files this call wrote.
+    """
+    root = Path(root)
     target = root / 'data/reviews' / (review['id'] + '.json')
-    temporary = target.with_name('.' + target.name + '.tmp')
-    temporary.write_text(json.dumps(review, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     selection_target = root / 'data/review-selection.json'
+    manifest_target = root / REVIEW_MANIFEST_FILE
+    review_bytes = json.dumps(review, ensure_ascii=False, indent=2).encode('utf-8') + b'\n'
+    review_pins = load_review_manifest(root)
+    stored, pinned = target.exists(), review['id'] in review_pins
+    # A retry may rebuild the same review with its keys in another order, so a stored copy is compared
+    # by content and pinned by the bytes on disk.
+    require(not stored or load(target) == review, 'Another review is already stored as ' + review['id'])
+    digest = sha(target.read_bytes() if stored else review_bytes)
+    require(review_pins.get(review['id'], digest) == digest, 'Committed review changed: ' + review['id'])
     previous_selection = selection_target.read_bytes()
-    selection_temporary = selection_target.with_suffix('.json.tmp')
-    selection_temporary.write_text(
-        json.dumps({'schema_version': 1, 'selections': selections}, ensure_ascii=False, indent=2) + '\n',
-        encoding='utf-8',
-    )
+    previous_manifest = manifest_target.read_bytes()
+    wrote_target = False
+
+    def restore(original):
+        # The stored review goes first: without it, a stale pin or selection is refused loudly by validation
+        # rather than leaving an unpinned review behind.
+        restore_errors = []
+        try:
+            if wrote_target and target.exists() and target.read_bytes() == review_bytes:
+                target.unlink()
+        except OSError as cleanup_error:
+            restore_errors.append(str(target) + ': ' + str(cleanup_error))
+        for path, payload in ((manifest_target, previous_manifest), (selection_target, previous_selection)):
+            try:
+                fsutil.write_bytes_atomic(path, payload)
+            except Exception as restore_error:
+                restore_errors.append(str(path) + ': ' + str(restore_error))
+        if restore_errors and hasattr(original, 'add_note'):
+            original.add_note('Review rollback failed: ' + '; '.join(restore_errors))
+
+    def intended(current):
+        selections = dict(current)
+        require(review.get('run_id') in selections, 'Review names an unknown run or an evaluation package run')
+        if select or review.get('supersedes') == selections[review['run_id']]:
+            selections[review['run_id']] = review.get('id')
+        return selections
+
     try:
-        os.replace(temporary, target)
-        os.replace(selection_temporary, selection_target)
-    except Exception:
-        temporary.unlink(missing_ok=True)
-        selection_temporary.unlink(missing_ok=True)
-        if (
-            target.exists()
-            and target.read_bytes() == json.dumps(review, ensure_ascii=False, indent=2).encode('utf-8') + b'\n'
-        ):
-            target.unlink()
-        selection_target.write_bytes(previous_selection)
+        if stored or pinned:
+            # An earlier admission of these bytes was interrupted (or completed): finish its pin, file
+            # and selection, then validate the whole study as it now stands.
+            current = load(selection_target).get('selections', {})
+            selections = intended(current)
+        else:
+            current = validate(root)['base_selections']
+            selections = intended(current)
+            validate(root, extra_review=review, selection_override=selections)
+        # Store, then pin, then select: an interruption leaves at worst a stored, unpinned copy, which
+        # the next admission of this review pins whatever order its keys arrive in.
+        if not stored:
+            wrote_target = True
+            fsutil.write_bytes_atomic(target, review_bytes)
+        if not pinned:
+            review_pins[review['id']] = digest
+            fsutil.write_json_atomic(manifest_target, {'schema_version': 1, 'files': review_pins})
+        if selections != current:
+            fsutil.write_json_atomic(selection_target, {'schema_version': 1, 'selections': selections})
+        if stored or pinned:
+            validate(root)
+    except BaseException as original:
+        restore(original)
         raise
-    return selections[rid]
+    return selections[review['run_id']]
 
 
 def select_review(root, review_id):
@@ -749,7 +872,12 @@ PACKAGE_METHODS = {'repeated-rubric-dag-v2', 'session-rubric-dag-v3'}
 
 
 def validate_evaluation_package(directory, display_run, source_run, corpus, rubric, source_texts, review):
-    """Validate one removable evaluation package by re-deriving everything it displays."""
+    """Validate one removable evaluation package by re-deriving everything it displays.
+
+    The review records its representative policy in its provenance; the projection
+    runs under that policy so admitted bytes keep validating exactly, while the
+    package manifest pins every file the review was admitted with.
+    """
     import evaluation_contract as contracts
     import rubric_policy
 
@@ -842,6 +970,12 @@ def validate_evaluation_package(directory, display_run, source_run, corpus, rubr
     require(review['run_id'] == display_run['id'], 'Evaluation package review names the wrong run')
     provenance = review.get('provenance', {})
     require(provenance.get('method') in PACKAGE_METHODS, 'Evaluation package review has an unknown method')
+    for name in ['evaluation.json', 'extraction.json', 'scoring-policy.json']:
+        key = name.replace('.json', '_sha256').replace('-', '_')
+        require(
+            provenance.get(key) == sha((directory / name).read_bytes()),
+            'Evaluation review provenance differs from its package file: ' + directory.name + '/' + name,
+        )
     require(review.get('supersedes') is None, 'Package reviews are revised by admitting a new package')
     if 'carriage.json' in files:
         carriage = contracts.load_json(directory / 'carriage.json')
@@ -917,6 +1051,29 @@ def links_open_in_new_tabs(document):
     return re.sub(r'<a\b[^>]*>', replace, document, flags=re.IGNORECASE)
 
 
+# Suffixes the study reads as code for licensing: MIT for code, CC BY 4.0 for
+# text and other non-code material. LICENSING.md itself is untouched.
+LICENSED_CODE_SUFFIXES = frozenset(CODE_SUFFIXES) | {'.html', '.htm'}
+
+
+def is_code_source(path):
+    """Whether a retained source path names code (MIT) rather than prose (CC BY 4.0)."""
+    return PurePosixPath(str(path)).suffix.lower() in LICENSED_CODE_SUFFIXES
+
+
+def license_footer(prefix, palette, is_code):
+    """Name both licenses, leading with the one that covers the page's material."""
+    content = (
+        '<a rel="license" href="'
+        + prefix
+        + themed_url('licenses.html#content', palette)
+        + '">Content · CC BY 4.0</a>'
+    )
+    code = '<a rel="license" href="' + prefix + 'licenses/MIT.txt">Code · MIT</a>'
+    first, second = (code, content) if is_code else (content, code)
+    return '<p>' + first + ' · ' + second + '</p>'
+
+
 def source_page(
     title,
     text,
@@ -928,6 +1085,7 @@ def source_page(
     icon_href=None,
     palette='dusk',
     poem=False,
+    path=None,
 ):
     prefix = icon_href[: -len('assets/favicon.svg')] if icon_href else '../'
     resolve = (
@@ -969,10 +1127,8 @@ def source_page(
         content = '<pre>' + lines + '</pre>'
     record = (
         '<footer class="document-record"><p>Retained source · SHA-256: <code>' + digest + '</code></p>'
-        '<p><a rel="license" href="'
-        + prefix
-        + themed_url('licenses.html#content', palette)
-        + '">Content · CC BY 4.0</a></p></footer>'
+        + license_footer(prefix, palette, path is not None and is_code_source(path))
+        + '</footer>'
     )
     page = (
         document_head(title, palette, prefix)
@@ -1126,14 +1282,64 @@ def project_reader(data, root):
     return projected
 
 
+BUILD_MANIFEST_NAME = 'build-manifest.json'
+
+
+def verify_build_manifest(out):
+    """Recompute the build manifest, which lists every built file except itself.
+
+    The manifest cannot hash itself, so it is written after every hash it records
+    and is excluded by name here; a manifest that names itself can never verify.
+    """
+    out = Path(out)
+    manifest = json.loads((out / BUILD_MANIFEST_NAME).read_text(encoding='utf-8'))
+    expected = {
+        str(path.relative_to(out)): sha(path.read_bytes())
+        for path in sorted(out.rglob('*'))
+        if path.is_file() and path.name != BUILD_MANIFEST_NAME
+    }
+    require(manifest == expected, 'Build manifest differs from the built files')
+    return manifest
+
+
 def _build(root=ROOT, view='release', target='home'):
     data = validate(root)
     if view == 'release':
         data = project_reader(data, root)
     out = root / 'dist'
-    if out.exists():
-        shutil.rmtree(out)
-    out.mkdir()
+    # Render into a sibling temp directory and publish with os.replace only once
+    # the snapshot is complete; a failed build leaves the previous dist untouched.
+    staging = Path(tempfile.mkdtemp(prefix='dist-', dir=str(root)))
+    previous = root / 'dist.previous'
+    try:
+        # mkdtemp makes an owner-only directory; the published site must be readable by everyone, as Pages expects.
+        staging.chmod(0o755)
+        report = _render_dist(data, root, staging, target)
+        if previous.exists():
+            shutil.rmtree(previous)
+        if out.exists() or out.is_symlink():
+            os.rename(out, previous)
+        try:
+            os.replace(staging, out)
+        except BaseException:
+            if previous.exists() and not out.exists():
+                os.rename(previous, out)
+            raise
+    except BaseException:
+        shutil.rmtree(staging, ignore_errors=True)
+        raise
+    shutil.rmtree(previous, ignore_errors=True)
+    print(
+        'Built %d runs, %d assessments, %d file records → %s'
+        % (len(report['runs']), len(report['reviews']), sum(len(v) for v in report['sources'].values()), out)
+    )
+    if (report.get('reader') or {}).get('awaiting'):
+        print('Not listed in data/presentation.json (kept off this view): %s' % ', '.join(report['reader']['awaiting']))
+    return out
+
+
+def _render_dist(data, root, out, target):
+    out.mkdir(parents=True, exist_ok=True)
     for name in ['index.html', 'palette.css', 'style.css', 'source.css', 'app.js']:
         shutil.copyfile(root / 'src' / name, out / name)
     if (root / 'src/vendor').exists():
@@ -1236,6 +1442,13 @@ def _build(root=ROOT, view='release', target='home'):
         for rid, package in data['evaluation_packages'].items()
         if (package / 'carriage.json').is_file()
     }
+    # Supported alternative readings from every carriage reading, de-duplicated in
+    # reading order; runs without any are omitted. The frontend renders this map.
+    report['alternatives'] = {}
+    for rid, carriage in report['carriage'].items():
+        alternatives = carriage_alternatives(carriage)
+        if alternatives:
+            report['alternatives'][rid] = alternatives
     report['cohorts'] = []
     report['prompts'] = {}
     prompt_cohorts = []
@@ -1348,6 +1561,7 @@ def _build(root=ROOT, view='release', target='home'):
                             resolve_link=resolve,
                             icon_href=icon_href,
                             palette=palette,
+                            path=source['path'],
                         ),
                         encoding='utf-8',
                     )
@@ -1361,6 +1575,7 @@ def _build(root=ROOT, view='release', target='home'):
                                 alternate=dest.name,
                                 icon_href=icon_href,
                                 palette=palette,
+                                path=source['path'],
                             ),
                             encoding='utf-8',
                         )
@@ -1427,6 +1642,8 @@ def _build(root=ROOT, view='release', target='home'):
             ),
             encoding='utf-8',
         )
+    from page_prepare import HOST_PATH_TEXT, WITHHELD_PATH
+
     report['evidence_text'] = {}
     for review in report['reviews']:
         for score in review['scores'].values():
@@ -1434,7 +1651,9 @@ def _build(root=ROOT, view='release', target='home'):
                 key = '%s/%s:%d-%d' % (review['run_id'], cite['path'], cite['start'], cite['end'])
                 extracted = extract_readable(cite['path'], cite['quote'])
                 if extracted:
-                    report['evidence_text'][key] = extracted
+                    # Public quotes withhold paths from the dreaming machine;
+                    # the preserved source keeps every byte.
+                    report['evidence_text'][key] = HOST_PATH_TEXT.sub(WITHHELD_PATH, extracted)
     import evaluation_contract
     from page_prepare import build_presentation, historical_presentation
 
@@ -1508,14 +1727,10 @@ def _build(root=ROOT, view='release', target='home'):
             )
     index.write_text(page, encoding='utf-8')
     manifest = {str(p.relative_to(out)): sha(p.read_bytes()) for p in sorted(out.rglob('*')) if p.is_file()}
-    (out / 'build-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
-    print(
-        'Built %d runs, %d assessments, %d file records → %s'
-        % (len(report['runs']), len(report['reviews']), sum(len(v) for v in report['sources'].values()), out)
-    )
-    if (report.get('reader') or {}).get('awaiting'):
-        print('Not listed in data/presentation.json (kept off this view): %s' % ', '.join(report['reader']['awaiting']))
-    return out
+    # The manifest cannot list itself: it is written after every hash it records.
+    (out / BUILD_MANIFEST_NAME).write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
+    verify_build_manifest(out)
+    return report
 
 
 def build(root=ROOT, view='release', target='home'):
@@ -1525,6 +1740,8 @@ def build(root=ROOT, view='release', target='home'):
     shows every run and reading, which the full browser smoke test exercises.
     `home` is the local build that the native preview runner can serve; `pages`
     is the static site, which offers native artefacts only as screenshots.
+    The render goes to a sibling temp directory and is published with os.replace,
+    so a failed build never corrupts the previous dist.
     """
     require(view in ('release', 'full'), 'Unknown build view: ' + str(view))
     require(target in ('home', 'pages'), 'Unknown build target: ' + str(target))

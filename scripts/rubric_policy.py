@@ -163,4 +163,19 @@ def matches_rubric(policy, rubric):
             terminal = terminals.get(axis['id'] + '-level-' + label)
             if terminal is None or terminal['result'] != {'status': 'scored', 'score': value, 'label': anchor}:
                 return False
+        # No extra scored terminals beyond the rubric scale: the policy must not invent levels.
+        scored = [
+            node_id
+            for node_id, terminal in terminals.items()
+            if node_id.startswith(axis['id'] + '-level-') and terminal['result']['status'] == 'scored'
+        ]
+        if len(scored) != len(rubric['scale']):
+            return False
+        if len(axis['anchors']) != len(rubric['scale']):
+            return False
     return True
+
+
+def validate_conformance(policy, rubric):
+    """Raise unless the policy encodes the rubric: the raising form of :func:`matches_rubric`."""
+    require(matches_rubric(policy, rubric), 'Scoring policy does not encode the current rubric')

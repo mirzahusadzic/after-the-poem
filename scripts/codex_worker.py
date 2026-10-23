@@ -15,6 +15,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 from urllib.request import HTTPRedirectHandler, ProxyHandler, build_opener
 
+import fsutil
 import sealed_run as sealed
 from bundles import canonical, require, sha, load_json
 
@@ -57,9 +58,7 @@ Follow the supplied rubric and return only the requested JSON object.
 
 
 def write_json(path, value):
-    temporary = path.with_name('.' + path.name + '.tmp')
-    temporary.write_bytes(canonical(value) + b'\n')
-    temporary.replace(path)
+    fsutil.write_bytes_atomic(path, canonical(value) + b'\n')
 
 
 class RejectRedirects(HTTPRedirectHandler):
@@ -220,15 +219,9 @@ def freeze_runtime(
     payload = canonical(catalog)
     if transport is not None:
         private_config = output / 'transport.config.toml'
-        if private_config.exists():
-            private_config.chmod(0o600)
-        private_config.write_bytes(transport)
-        private_config.chmod(0o400)
+        fsutil.write_bytes_atomic(private_config, transport, mode=0o400)
     catalog_path = output / 'catalog.json'
-    if catalog_path.exists():
-        catalog_path.chmod(0o600)
-    catalog_path.write_bytes(payload)
-    catalog_path.chmod(0o400)
+    fsutil.write_bytes_atomic(catalog_path, payload, mode=0o400)
     instruction_hashes = {
         'generation': sha(GENERATION_INSTRUCTIONS.encode()),
         'review': sha(REVIEW_INSTRUCTIONS.encode()),
@@ -371,8 +364,7 @@ def job_environment(job, scratch, control, catalog, runtime, world):
         environment['CODEX_HOME'] = str(home)
         return environment
     home.mkdir(mode=0o700)
-    config.write_bytes(transport)
-    config.chmod(0o400)
+    fsutil.write_bytes_atomic(config, transport, mode=0o400)
     # Codex may add its own project-trust entry to this private home after it
     # starts. The immutable transport source remains pinned; this derived
     # worker config is allowed to receive only that one known addition.
@@ -532,10 +524,8 @@ def _execute(
     if instructions_path.exists():
         require(sha(instructions_path.read_bytes()) == instruction_hash, 'Session instructions changed')
     else:
-        instructions_path.write_text(instruction_text, encoding='utf-8')
-        instructions_path.chmod(0o400)
-    (artefacts / 'prompt.txt').write_bytes(prompt)
-    (artefacts / 'prompt.txt').chmod(0o400)
+        fsutil.write_text_atomic(instructions_path, instruction_text, mode=0o400)
+    fsutil.write_bytes_atomic(artefacts / 'prompt.txt', prompt, mode=0o400)
     started = time.monotonic()
     check_runtime = None
     try:
@@ -544,7 +534,7 @@ def _execute(
             receipt['isolation'] = {'status': 'synthetic; no isolation claim'}
             receipt['runtime_checks']['status'] = 'synthetic; no runtime claim'
             fake = artefacts / 'fake-result.txt'
-            fake.write_text(fake_result or 'Synthetic continuation; no inference.', encoding='utf-8')
+            fsutil.write_text_atomic(fake, fake_result or 'Synthetic continuation; no inference.')
             command = [
                 sys.executable,
                 str(Path(__file__).resolve()),
@@ -560,8 +550,7 @@ def _execute(
             binary = str(Path(binary).resolve(strict=True))
             worker_catalog = control / 'catalog.json'
             if not worker_catalog.exists():
-                worker_catalog.write_bytes(catalog.read_bytes())
-                worker_catalog.chmod(0o400)
+                fsutil.write_bytes_atomic(worker_catalog, catalog.read_bytes(), mode=0o400)
             environment = job_environment(job, scratch, control, catalog, runtime, world)
             transport_source = (catalog.parent / 'transport.config.toml').read_bytes()
             pinned = [
@@ -637,7 +626,7 @@ def _execute(
     except Exception as error:
         receipt['status'] = 'failed'
         receipt['error'] = type(error).__name__
-        (notes / 'failure.txt').write_text(str(error), encoding='utf-8')
+        fsutil.write_text_atomic(notes / 'failure.txt', str(error))
     finally:
         if check_runtime:
             try:
@@ -645,7 +634,7 @@ def _execute(
             except Exception as error:
                 if receipt['status'] != 'cancelled':
                     receipt.update(status='failed', error='runtime-integrity-failed')
-                (notes / 'integrity-failure.txt').write_text(str(error), encoding='utf-8')
+                fsutil.write_text_atomic(notes / 'integrity-failure.txt', str(error))
         if snapshot:
             try:
                 candidate = sealed.inspect_candidate(world)
