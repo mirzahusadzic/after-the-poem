@@ -734,6 +734,9 @@ input, textarea, select { border-color: var(--line); }
 .pinned-legend .line-swatch { width: 16px; }
 .pinned-legend .pin-name:hover, .pinned-legend .pin-name:focus-visible { color: var(--text); }
 .pinned-legend .pin-remove { opacity: .65; }
+/* Both pin controls meet the 24px target size (WCAG 2.5.8): the name stands 24px tall and the × gets a square. */
+.pinned-legend .pin-name { min-height: 24px; }
+.pinned-legend .pin-remove { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; min-height: 24px; }
 .pinned-legend .pin-remove:hover, .pinned-legend .pin-remove:focus-visible { opacity: 1; color: var(--text); }
 .line-swatch { width: 22px; height: 6px; flex: none; overflow: visible; }
 .pin-line { fill: none; stroke-width: 1.8; stroke-linecap: round; }
