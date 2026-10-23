@@ -29,11 +29,14 @@ const server = createServer(async (request, response) => {
     const relative = decodeURIComponent(url.pathname).replace(/^\/+/, '') || entry;
     const path = resolve(root, relative);
     if (path !== root && !path.startsWith(root + sep)) throw new Error('Outside preview root');
+    // No directory listings: only exact files are served; anything else (including
+    // directories, which make readFile fail) falls through to the 404 below.
     const body = await readFile(path);
     response.writeHead(200, {
       'Content-Type': mime[extname(path).toLowerCase()] || 'application/octet-stream',
       'Cache-Control': 'no-store',
       'X-Content-Type-Options': 'nosniff',
+      'Referrer-Policy': 'no-referrer',
       // Same-origin resources only: no outbound fetch, WebSocket, frame or form target.
       'Content-Security-Policy':
         "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob:; " +
@@ -41,7 +44,11 @@ const server = createServer(async (request, response) => {
     });
     response.end(body);
   } catch (_) {
-    response.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+    response.writeHead(404, {
+      'Content-Type': 'text/plain; charset=utf-8',
+      'X-Content-Type-Options': 'nosniff',
+      'Referrer-Policy': 'no-referrer'
+    });
     response.end('Not found');
   }
 });
@@ -67,6 +74,28 @@ const context = await browser.newContext({
   serviceWorkers: 'block'
 });
 const page = await context.newPage();
+// Injected form-submit interception: the capture frame must not navigate to
+// external URLs. Same-origin submits proceed; anything else is cancelled
+// before navigation (pairs with `form-action 'none'` in the CSP above).
+await page.addInitScript(() => {
+  window.addEventListener(
+    'submit',
+    (event) => {
+      const form = event.target && event.target.closest ? event.target.closest('form') : null;
+      const target = form ? form.getAttribute('action') || location.href : location.href;
+      try {
+        if (new URL(target, location.href).origin !== location.origin) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+        }
+      } catch (_) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      }
+    },
+    true
+  );
+});
 const errors = [];
 const external = [];
 page.on('pageerror', (error) => errors.push(String(error)));

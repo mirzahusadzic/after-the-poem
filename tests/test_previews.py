@@ -74,6 +74,16 @@ class BrowserPreviewTests(unittest.TestCase):
         injected = previews._inject_native_host('<html><head><title>x</title></head><body></body></html>', 'index.html')
         self.assertIn('<script src="__after_poem_preview_host.js"></script>', injected)
         self.assertLess(injected.index('__after_poem_preview_host.js'), injected.index('</head>'))
+        # Server pages get no response headers from us, so the form-action limit travels in the page itself,
+        # ahead of anything it governs.
+        policy = '<meta http-equiv="Content-Security-Policy" content="form-action \'self\'">'
+        self.assertLess(injected.index('<head>'), injected.index(policy))
+        self.assertLess(injected.index(policy), injected.index('<title>'))
+        for page in ('<html><body><form></form></body></html>', '<head><title>x</title>'):
+            with self.subTest(page=page):
+                injected = previews._inject_native_host(page, 'index.html')
+                self.assertLess(injected.index(policy), injected.index('<title>' if '<title>' in page else '<form>'))
+                self.assertIn('__after_poem_preview_host.js', injected)
         self.assertIn('after-the-poem:escape', previews.BROWSER_HOST)
 
     def test_browser_host_blocks_external_navigation_and_storage(self):
@@ -173,6 +183,42 @@ class NativePreviewBoundaryTests(unittest.TestCase):
                 self.skipTest('The outer test sandbox does not permit nested sandbox-exec.')
             self.assertNotEqual(result.returncode, 0)
             self.assertNotIn('escaped', result.stdout)
+
+
+class PreviewStatusSignalTests(unittest.TestCase):
+    def test_status_token_needs_a_strong_same_origin_signal(self):
+        manager = previews.PreviewManager(Path('/tmp'), False)
+        host = '127.0.0.1:4317'
+        code, allowed = previews._preview_status_payload(
+            manager, previews._preview_status_allowed({'Sec-Fetch-Site': 'same-origin'}, host)
+        )
+        self.assertEqual(code, 200)
+        self.assertIn('token', allowed)
+        # Legitimate same-origin fetch without Fetch Metadata falls back to Origin.
+        self.assertTrue(
+            previews._preview_status_allowed({'Origin': 'http://' + host}, host)
+        )
+        code, denied = previews._preview_status_payload(
+            manager, previews._preview_status_allowed({}, host)
+        )
+        self.assertEqual(code, 403)
+        self.assertNotIn('token', denied)
+
+    def test_status_denied_for_navigation_and_cross_site_signals(self):
+        host = '127.0.0.1:4317'
+        for headers in (
+            {'Sec-Fetch-Site': 'none'},
+            {'Sec-Fetch-Site': 'cross-site'},
+            {'Sec-Fetch-Site': 'same-origin', 'Origin': 'http://evil.invalid'},
+            {'Origin': 'http://evil.invalid'},
+        ):
+            with self.subTest(headers=headers):
+                manager = previews.PreviewManager(Path('/tmp'), False)
+                allowed = previews._preview_status_allowed(headers, host)
+                self.assertFalse(allowed, headers)
+                code, payload = previews._preview_status_payload(manager, allowed)
+                self.assertEqual(code, 403)
+                self.assertNotIn('token', payload)
 
 
 if __name__ == '__main__':

@@ -25,6 +25,10 @@ BROWSER_POLICY = (
     "img-src 'self' data:; connect-src 'none'; worker-src 'none'; object-src 'none'; "
     "base-uri 'none'; form-action 'none'; navigate-to 'none'"
 )
+# Server worlds serve their own pages, so no response header can be added; each HTML file in the
+# disposable copy carries this policy instead. It limits only where forms may submit, so the world's
+# own scripts, styles and requests are untouched.
+NATIVE_POLICY = "form-action 'self'"
 BROWSER_EXTENSIONS = {'.html', '.css', '.js', '.svg', '.json', '.webmanifest', '.png', '.jpg', '.jpeg', '.gif', '.webp'}
 MAX_PROCESS_GROUP = 64
 BROWSER_HOST = '''(function () {
@@ -50,6 +54,23 @@ BROWSER_HOST = '''(function () {
     const anchor = event.target && event.target.closest ? event.target.closest('a[href]') : null;
     if (anchor && !samePreview(anchor.href)) { event.preventDefault(); event.stopImmediatePropagation(); }
   }, true);
+  // Form submits that would leave the preview are cancelled, whether the target comes from the
+  // form or from the button that submits it; form.submit() fires no submit event, so it is
+  // guarded too. This is defence in depth: the enforced limit is the form-action policy
+  // (BROWSER_POLICY for browser worlds, NATIVE_POLICY for server pages). Scripted navigation
+  // such as location assignment is not intercepted here.
+  function formTarget(form, submitter) {
+    const override = submitter && submitter.getAttribute ? submitter.getAttribute('formaction') : null;
+    return override || (form && form.getAttribute('action')) || location.href;
+  }
+  window.addEventListener('submit', function (event) {
+    const form = event.target && event.target.closest ? event.target.closest('form') : null;
+    if (!samePreview(formTarget(form, event.submitter))) { event.preventDefault(); event.stopImmediatePropagation(); }
+  }, true);
+  const submitForm = HTMLFormElement.prototype.submit;
+  HTMLFormElement.prototype.submit = function () {
+    if (samePreview(formTarget(this, null))) submitForm.call(this);
+  };
   window.addEventListener('keydown', function (event) {
     if (event.key === 'Escape' && window.parent !== window) {
       window.parent.postMessage({type: 'after-the-poem:escape'}, '*');
@@ -89,14 +110,18 @@ def _inject_browser_host(text, path):
 
 
 def _inject_native_host(text, path):
+    policy = '<meta http-equiv="Content-Security-Policy" content="' + NATIVE_POLICY + '">'
     tag = '<script src="__after_poem_preview_host.js"></script>'
+    opening = re.search(r'<head(?:\s[^>]*)?>', text, re.IGNORECASE)
+    if opening:
+        # The policy goes first so it governs every form that follows; the host script keeps its place.
+        text = text[: opening.end()] + policy + text[opening.end() :]
     match = re.search(r'</head\s*>', text, re.IGNORECASE)
     if match:
         return text[: match.start()] + tag + text[match.start() :]
-    match = re.search(r'<head(?:\s[^>]*)?>', text, re.IGNORECASE)
-    if match:
-        return text[: match.end()] + tag + text[match.end() :]
-    return tag + text
+    if opening:
+        return text[: opening.end() + len(policy)] + tag + text[opening.end() + len(policy) :]
+    return policy + tag + text
 
 
 def browser_preview_sources(run_id, entry, corpus):
@@ -341,6 +366,85 @@ def kill_process(process):
         process.wait(timeout=5)
 
 
+# Console output keeps newline/tab and SGR colour (ESC [ ... m) so the host prompt
+# stays readable. Everything else that could drive the terminal -- OSC hyperlink
+# and control strings, non-SGR CSI sequences, lone escapes and C0/C1 controls --
+# is stripped before the output is returned.
+_OSC_RE = re.compile(r'\x1b\][^\x07\x1b]*(?:\x07|\x1b\\)')
+_C1_OSC_RE = re.compile(r'\x9d[^\x07\x9c]*(?:\x07|\x9c)')
+_CSI_RE = re.compile(r'\x1b\[[0-?]*[ -/]*[@-~]')
+_C1_CSI_RE = re.compile(r'\x9b[0-?]*[ -/]*[@-~]')
+_SGR_RE = re.compile(r'\A\x1b\[[0-9;]*m\Z')
+_LONE_ESCAPE_RE = re.compile(r'\x1b(?!\[[0-9;]*m)')
+_CONTROL_RE = re.compile(r'[\x00-\x08\x0b\x0c\x0e-\x1a\x1c-\x1f\x7f\x80-\x9f]')
+_UNTERMINATED_OSC_RE = re.compile(r'\x1b\][^\x07\x1b]*$')
+_C1_UNTERMINATED_OSC_RE = re.compile(r'\x9d[^\x07\x9c]*$')
+
+
+def _sanitize_console_output(text):
+    """Remove unsafe terminal CSI/OSC sequences, keeping newline/tab and SGR colour."""
+    text = _OSC_RE.sub('', text)
+    text = _C1_OSC_RE.sub('', text)
+    # A truncated OSC without a terminator would otherwise let the terminal
+    # swallow following text; drop the dangling introducer to the end of output.
+    text = _UNTERMINATED_OSC_RE.sub('', text)
+    text = _C1_UNTERMINATED_OSC_RE.sub('', text)
+
+    def _csi(match):
+        return match.group(0) if _SGR_RE.match(match.group(0)) else ''
+
+    def _c1_csi(match):
+        candidate = '\x1b[' + match.group(0)[1:]
+        return candidate if _SGR_RE.match(candidate) else ''
+
+    text = _CSI_RE.sub(_csi, text)
+    text = _C1_CSI_RE.sub(_c1_csi, text)
+    text = _LONE_ESCAPE_RE.sub('', text)
+    return _CONTROL_RE.sub('', text)
+
+
+# GET /_preview/status carries the bearer token, so it needs a strong
+# same-origin browser signal -- never CORS. Modern same-origin fetch sends
+# `Sec-Fetch-Site: same-origin`; clients without Fetch Metadata (Safari before
+# 16.4) fall back to an exact Origin/Referer match against this host, which is
+# why src/previews.js asks for this one request with `referrerPolicy:
+# 'same-origin'` despite the page's no-referrer default. Navigations
+# (`Sec-Fetch-Site: none`), cross-site sends and bare requests with no signal
+# get no token.
+def _preview_status_allowed(headers, host):
+    expected = 'http://' + host
+    origin = headers.get('Origin')
+    site = headers.get('Sec-Fetch-Site')
+    if site is not None:
+        if site != 'same-origin':
+            return False
+        return origin is None or origin == expected
+    if origin is not None:
+        return origin == expected
+    referer = headers.get('Referer')
+    if referer is not None:
+        return referer == expected or referer.startswith(expected + '/')
+    return False
+
+
+def _preview_status_payload(manager, allowed):
+    full = manager.status()
+    if allowed:
+        return 200, full
+    redacted = {key: value for key, value in full.items() if key != 'token'}
+    redacted['error'] = 'Preview status needs a same-origin request.'
+    return 403, redacted
+
+
+# Hardening headers for the local static server. The report is same-origin
+# only, so `no-referrer` plus `nosniff` are always safe; static responses keep
+# `frame-ancestors 'self'` out of the candidate preview policies defined above.
+STATIC_HEADERS = (
+    ('X-Content-Type-Options', 'nosniff'),
+    ('Referrer-Policy', 'no-referrer'),
+)
+
+
 class PreviewManager:
     def __init__(self, root, enabled):
         self.root = root
@@ -514,18 +618,49 @@ class PreviewManager:
                     time.sleep(0.025)
                 output.seek(0)
                 text = output.read(65537).decode('utf-8', errors='replace')[:65536]
-            text = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]', '', text)
+            text = _sanitize_console_output(text)
             output_path.unlink(missing_ok=True)
             return {'output': text, 'exit_code': process.returncode}
 
 
-def serve(root, out, port, previews):
+def make_server(root, out, port, previews):
+    """The local report server and its preview manager, bound to 127.0.0.1 but not yet serving."""
     manager = PreviewManager(root, previews)
-    allowed_hosts = {'127.0.0.1:%d' % port, 'localhost:%d' % port}
+    allowed_hosts = set()
 
     class Handler(http.server.SimpleHTTPRequestHandler):
+        # Expected iframe sandbox attributes (set by the report frontend in
+        # src/previews.js, documented here because this module owns the host
+        # policy they pair with):
+        #   browser artefact: "allow-scripts allow-forms allow-downloads"
+        #     (opaque origin: no allow-same-origin, so the candidate cannot
+        #     reach the report origin; downloads stay permitted).
+        #   server artefact:  "allow-scripts allow-forms allow-same-origin allow-downloads"
+        #     (the running copy is its own local origin and needs
+        #     same-origin for its own resources; it is still fenced off from
+        #     the report origin by the origin check in openPreview).
+        BROWSER_SANDBOX = 'allow-scripts allow-forms allow-downloads'
+        SERVER_SANDBOX = 'allow-scripts allow-forms allow-same-origin allow-downloads'
+
         def __init__(self, *args, **kwargs):
             super().__init__(*args, directory=str(out), **kwargs)
+
+        def end_headers(self):
+            existing = (
+                b'\r\n'.join(self._headers_buffer).decode('latin-1').lower()
+                if hasattr(self, '_headers_buffer')
+                else ''
+            )
+            for name, value in STATIC_HEADERS:
+                if name.lower() not in existing:
+                    self.send_header(name, value)
+            super().end_headers()
+
+        def list_directory(self, path):
+            # Directory listings are disabled: browsing a folder must not
+            # reveal the report tree.
+            self.send_error(404, 'Not found')
+            return None
 
         def json_response(self, code, value):
             payload = json.dumps(value).encode()
@@ -534,15 +669,23 @@ def serve(root, out, port, previews):
             self.send_header('Content-Length', str(len(payload)))
             self.send_header('Cache-Control', 'no-store')
             self.send_header('X-Content-Type-Options', 'nosniff')
+            self.send_header('Referrer-Policy', 'no-referrer')
             self.end_headers()
             self.wfile.write(payload)
 
         def do_GET(self):
-            if self.headers.get('Host') not in allowed_hosts:
+            host = self.headers.get('Host')
+            if host not in allowed_hosts:
                 self.send_error(403)
                 return
             if urlsplit(self.path).path == '/_preview/status':
-                self.json_response(200, manager.status())
+                # Same-origin fetch keeps working (Sec-Fetch-Site, or the
+                # same-origin Referer src/previews.js requests); anything
+                # without that signal gets the status without the bearer
+                # token. No CORS involved.
+                allowed = _preview_status_allowed(self.headers, host)
+                code, payload = _preview_status_payload(manager, allowed)
+                self.json_response(code, payload)
             else:
                 super().do_GET()
 
@@ -575,7 +718,15 @@ def serve(root, out, port, previews):
             except (ValueError, OSError, TypeError, AttributeError) as error:
                 self.json_response(400, {'error': str(error)})
 
-    with http.server.ThreadingHTTPServer(('127.0.0.1', port), Handler) as server:
+    server = http.server.ThreadingHTTPServer(('127.0.0.1', port), Handler)
+    bound = server.server_address[1]
+    allowed_hosts.update({'127.0.0.1:%d' % bound, 'localhost:%d' % bound})
+    return server, manager
+
+
+def serve(root, out, port, previews):
+    server, manager = make_server(root, out, port, previews)
+    with server:
         print(
             'Local: http://127.0.0.1:%d · native previews %s' % (port, 'enabled' if manager.enabled else 'disabled'),
             flush=True,
