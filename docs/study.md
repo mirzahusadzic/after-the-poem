@@ -118,12 +118,37 @@ The runner records the first rule that applies:
 
 **Outside scope** is never inferred. A plan would have to declare that a question does not require the distinction, and why.
 
-The findings:
+The first test's findings, which [round 1](#gadfly-round-1) supersedes for the two decisions it repeats:
 
 - **Dreamy Sol · open continuation is carried.** Its level falls from 3 to 2 in all three sessions when the passages it rests on are blanked: the lines its sessions cite, and the stored thread, visit history, saved gestures and receipts the reader falls back on without them (206 lines). It holds at 3 under repeat, masking and an equal sham. Blanking only the lines its sessions cite moves one session of three, so the world carries its continuation in several places.
 - **Sol 5.6 · mutual consent (1) and core recognition (3) are cooled.** Every session reads the same level with the cited lines blanked. With them gone, the consent sessions cite other places for the same level; the support for both is spread through the world, and an ablation suits a located mechanism better than a whole-world question.
 
 What the test shows about the method: a single session is too unstable to anchor a test, so anchors come from the baseline sessions' own citations. A three-session level on a boundary between two levels cannot show a one-level change. One ablation reads redundancy as cooled; a cumulative ablation separates the two.
+
+#### Gadfly round 1
+
+Round 1 repeats the test through [Gadfly](pipeline.md#gadfly-checks), with the same reader, the same reading prompt and three sessions per trial. Renaming the poem's words takes the place of masking. Two trials are new:
+
+- The **control** blanks every line the reading cites on any question. If the level holds even then, the reader has not been shown to move at all, and the verdict is unresolved: the reader cannot tell.
+- The **cumulative** cut blanks the cited lines and the fallback passages together, as the first test did for Dreamy Sol.
+
+The predictions were written before the first call. The sessions ran through Codex CLI 0.166.0 and a later router revision; the published readings used Codex CLI 0.163.0. Each finding stands beside the first test's, as a separate record:
+
+| Decision | First test | Round 1 | What the trials read |
+| --- | --- | --- | --- |
+| Dreamy Sol · open continuation (3) | Carried | Unresolved: the reader cannot tell | The same 206-line cumulative cut that moved all three sessions to 2 left all three at 3. Blanking the cited lines moved one session of three, as before. The control, 692 of about 3,100 lines, moved one session too and held at 3. |
+| Sol 5.6 · mutual consent (1) | Cooled | Unresolved: no agreed level | The ablation and the sham held at 1, as before. The renamed world split three ways (1, 2 and 3), and with every cited line blanked two sessions of three read 2. Two of the six baseline and repeat sessions read 2. |
+| Claude Fable 5.1 · core recognition (3) | Not tested | Unresolved: the reader cannot tell | Every trial read 3, the control's 517 blanked lines included. |
+
+What round 1 shows:
+
+- No level here is shown to rest on the evidence its reading cites, nor shown not to. Where the control holds too, the test cannot separate a world that carries the relation in many places from a reader that holds its level for reasons the cut does not reach.
+- The first test's "carried" did not repeat with the same reader, prompt and cut. The runs differ in Codex CLI, router revision and sessions, and the test cannot say which mattered.
+- An ablation that leaves the level, with no control beside it, says less than "cooled" suggested. Sol 5.6's core recognition was not repeated, so its first-test finding stands on its own, with this caveat.
+- One prediction of three named the right category: Sol 5.6 consent, unresolved, though for another reason (the control was expected to hold at 1).
+- Every frame leaves one check open: no bypass trial was declared.
+
+Two second readers ran the same kind of trials under one shared instruction, one call per reading, and their levels never reach the page ([Second readers](pipeline.md#second-readers)). Gemma 4 could not tell on any of the three decisions it could hold. Muse in a single call left Dreamy Sol and Sol 5.6 unresolved. It read Claude Fable 5.1's core recognition as carried, with an open check: the control removes those lines and more, yet the level held. Removing the lines cited for Astra's garden · consequential touch raised its level, which makes it coupled but misaligned.
 
 ## Limits
 

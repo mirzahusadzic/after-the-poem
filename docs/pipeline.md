@@ -76,7 +76,7 @@ You need:
 
 For readings and Codex dreams:
 
-- **The Codex CLI**, tested with 0.163.0.
+- **The Codex CLI**, tested with 0.163.0 (the published readings) and 0.166.0 (Gadfly round 1).
 - **The Unified Model Router**, installed as [its README](https://github.com/mirzahusadzic/codex-unified-model-router#install) describes. The installer puts the router's Codex profile (`unified-openrouter`) and its model catalog in `~/.codex`, which is where this study looks by default.
 - The router listens on `http://127.0.0.1:18766/v1`. If your setup differs, pass `--router-url`, `--catalog` and `--router-profile`.
 
@@ -535,7 +535,7 @@ python3 scripts/gadfly_bridge.py report .local/gadfly/round-1 --spec examples/ga
 
 Good to know:
 
-- Round 1 has three frames and 57 calls: Dreamy Sol · open continuation, Sol 5.6 · mutual consent and Claude Fable 5.1 · core recognition.
+- Round 1 has three frames and 57 calls: Dreamy Sol · open continuation, Sol 5.6 · mutual consent and Claude Fable 5.1 · core recognition. It has run once, for about $0.53, and its verdicts are on the Study page ([Gadfly round 1](study.md#gadfly-round-1)).
 - A frame is never changed. A new reading, new code, another router revision or another midwife release gives a new frame with a new hash, so build into a new folder.
 - If a run stops, run it again: a kept record is never read twice. `--only TRIAL` runs one trial.
 - The round reads with `carriage: listed`. A category is named at once, and the checks it leaves open, such as the missing bypass trial, are listed beside it.

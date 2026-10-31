@@ -93,6 +93,16 @@ class DocumentationTests(unittest.TestCase):
             self.assertIn('3⅓', text, name)
             self.assertNotIn('tick', text, name)
 
+    def test_every_codex_release_a_finding_ran_through_is_in_the_tested_matrix(self):
+        # Gadfly round 1 read through a later Codex CLI than the published readings; the docs name both.
+        study = (ROOT / 'docs/study.md').read_text(encoding='utf-8')
+        named = set(re.findall(r'Codex CLI (\d+\.\d+\.\d+)', study))
+        self.assertTrue({'0.163.0', '0.166.0'} <= named, named)
+        for name in ('docs/environment.md', 'docs/pipeline.md'):
+            text = (ROOT / name).read_text(encoding='utf-8')
+            for version in named:
+                self.assertIn(version, text, '%s does not name Codex CLI %s' % (name, version))
+
     def test_review_manifest_is_documented(self):
         records = (ROOT / 'docs/records.md').read_text(encoding='utf-8')
         release = (ROOT / 'docs/release.md').read_text(encoding='utf-8')
