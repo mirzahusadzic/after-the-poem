@@ -1,0 +1,23 @@
+version = 1
+revision = 3
+requires-python = ">=3.13"
+
+[[package]]
+name = "after-the-poem"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "midwife" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "midwife", specifier = "==0.1.2" }]
+
+[[package]]
+name = "midwife"
+version = "0.1.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/c8/9b/be92e49e295e5331b85be1dc87c49f856bee3978bb2e3610b05d45811398/midwife-0.1.2.tar.gz", hash = "sha256:07d2dfd566052320fcd05a956ec85460e4b519a870a7371bbb55ff5b61fa22ce", size = 500926, upload-time = "2026-10-31T20:31:44.605Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/8d/c8/2ab8828dc012bcdccdbd587192c98c2461131e3ad96c652684d58b5e0fdc/midwife-0.1.2-py3-none-any.whl", hash = "sha256:8abd312acc204e0cbce61453332b75ea4c0d58b9b99ff8524c0883c432994c76", size = 56708, upload-time = "2026-10-31T20:31:43.151Z" },
+]

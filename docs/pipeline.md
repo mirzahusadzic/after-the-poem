@@ -71,7 +71,7 @@ Every flag is listed in [Commands](commands.md). For a complete example, see [On
 
 You need:
 
-- **Python 3.9 or later.** The study uses only the standard library, so there is nothing to install.
+- **Python 3.13 or later, and [uv](https://docs.astral.sh/uv/).** `uv run` installs the one Python package the study pins, Gadfly, from `uv.lock`; the npm scripts already use it.
 - **Node.js 22**, for screenshots, formatting checks and the browser tests only; the build, serve and validation steps need only Python. See [Environment](environment.md#playwright-install) for the Playwright install.
 
 For readings and Codex dreams:
@@ -499,3 +499,80 @@ What the output holds:
 - `OUT/readings/RUN_ID`: the plain readings.
 - `OUT/cases/CASE/TRIAL`: each case's trials, with the blanked and sham line ranges beside them.
 - `OUT/findings.json`: each case's category and reason; every trial's level, agreement, per-session results and evaluation hash; and the plan's hash.
+
+### Gadfly checks
+
+[Gadfly](https://github.com/mirzahusadzic/gadfly) runs the load-bearing test as a published package, `midwife`, pinned in `uv.lock`. Its verdict rules are the ones above, with `rules: 2`. Here it tests the levels the release page shows, as they stand: each frame is built from one published reading, and no scratch study is needed.
+
+A frame names one world and one question. Every trial comes from that reading and the frozen world alone:
+
+| Trial | What the reader sees |
+| --- | --- |
+| Baseline, repeat | The world as preserved. |
+| Ablation | The lines the three sessions cite for the question, blanked. |
+| Cumulative | Those lines and the fallback passages the round names, blanked. Optional. |
+| Sham | As many uncited lines, in blocks of the same sizes, blanked. |
+| Presentation | The poem's distinctive words renamed to neutral tokens in the world. |
+| Control | Every line the reading cites on any question, blanked. It shows whether the reader can move at all. |
+
+The reader is the study's own. Each call is one v5 session, through the reading prompt the published reading used; the frame pins that prompt's hash. A blanked line keeps its number. The frame also names the code that runs the reader (`pipeline_sha256`). That code has changed since the published readings; their reading prompt has not.
+
+A round is a spec in `examples/gadfly/`. It lists the frames and, for each one, the predictions, written before the first call.
+
+It takes four steps:
+
+1. **Build** the frames. `build` derives them from the published readings and pins the reader, the code and the midwife release.
+2. **Plan.** `plan` prints each frame's trials and its number of calls, without calling a model.
+3. **Run.** A dry run reads every trial with synthetic sessions and calls no model. A live run needs frames built against the live router (`--router-revision live`), `--accept-run`, a total cap and a cap per call.
+4. **Report.** `report` reads the verdicts from the kept records, without calling a model, and shows the predictions beside them.
+
+```sh
+python3 scripts/gadfly_bridge.py build examples/gadfly/round-1.json --output .local/gadfly/round-1
+python3 scripts/gadfly_bridge.py plan .local/gadfly/round-1
+python3 scripts/gadfly_bridge.py run .local/gadfly/round-1 --dry-run
+python3 scripts/gadfly_bridge.py report .local/gadfly/round-1 --spec examples/gadfly/round-1.json --dry-run
+```
+
+Good to know:
+
+- Round 1 has three frames and 57 calls: Dreamy Sol · open continuation, Sol 5.6 · mutual consent and Claude Fable 5.1 · core recognition.
+- A frame is never changed. A new reading, new code, another router revision or another midwife release gives a new frame with a new hash, so build into a new folder.
+- If a run stops, run it again: a kept record is never read twice. `--only TRIAL` runs one trial.
+- The round reads with `carriage: listed`. A category is named at once, and the checks it leaves open, such as the missing bypass trial, are listed beside it.
+
+#### Second readers
+
+A round can also be read by Gemma 4 on this machine, through [eGemma](https://github.com/mirzahusadzic/egemma) and Gadfly's own eGemma battery. It costs no money, and its level never reaches the page (`materialized: false`). It asks a different question: does the evidence the published reading cites carry the level for another reader too?
+
+- The same decisions get the same trials. Only the reader changes, so each frame is new, with predictions of its own.
+- The reader's instructions hold the seed, the author's declared reading, the v5 rules that apply to one answer, and the question with its anchors. The seed stays whole in every trial; renaming reaches the world only.
+- A removed line is left out, its number with it, because Gadfly's battery sends the trial as Gadfly writes it.
+- eGemma reads about 32,000 tokens and refuses a reading that does not fit. `build` refuses such a world before any call, so round 1's Dreamy Sol and Sol 5.6 have no eGemma frame.
+- The key comes from `EGEMMA_API_KEY` or `EGEMMA_API_KEY_FILE`. A live run needs `--accept-run`, and no dollar caps.
+
+```sh
+python3 scripts/gadfly_bridge.py build examples/gadfly/round-1-egemma.json --output .local/gadfly/round-1-egemma
+python3 scripts/gadfly_bridge.py run .local/gadfly/round-1-egemma --accept-run
+python3 scripts/gadfly_bridge.py report .local/gadfly/round-1-egemma --spec examples/gadfly/round-1-egemma.json
+```
+
+The study's critic can be the second reader too. Muse Spark 1.3 Contributor then reads through the [router](https://github.com/mirzahusadzic/codex-unified-model-router) and Gadfly's unified battery: one call per reading, with no tools, under the same instructions as the eGemma round.
+
+- It is a different path from the published reading, which is a Codex session with the full v5 reading prompt, so its levels never reach the page either.
+- Muse holds about a million tokens, so every world fits.
+- Its contributor tier trains on what it reads, so the frame names it under `trainsOnInputs`. OpenRouter routes it only when the account allows endpoints that may train on inputs.
+- The frame pins the router's revision: build with `--router-revision live`, and a run refuses a router at another revision.
+- A live run needs `--accept-run`, a total cap and the prices. Before each call the runner sets aside the most that call can cost (its whole input and a full answer), and it counts what each call reports.
+
+```sh
+python3 scripts/gadfly_bridge.py build examples/gadfly/round-1-muse.json --output .local/gadfly/round-1-muse --router-revision live
+python3 scripts/gadfly_bridge.py run .local/gadfly/round-1-muse --accept-run --total-usd 1.00 --max-usd-per-call 0.03 \
+  --price-input 0.10 --price-cached-input 0.002 --price-output 0.20
+```
+
+What the output holds:
+
+- `OUT/round.json` and `OUT/frames/NAME.json`: the frames and their hashes.
+- `OUT/records/NAME.jsonl`: one Gadfly record per call.
+- `OUT/readings/HASH/call-N`: each call's session, an evaluation package marked as never admitted.
+- `OUT/report-midwife-VERSION.json`: each frame's verdict, levels, evidence and open checks, beside its predictions, as that midwife release's rules read them.

@@ -30,7 +30,9 @@ Model calls cost money and dreams use the operator's own accounts. Never start
 a paid reading, a dream, a push or a deployment without the operator's explicit
 go-ahead and a stated budget.
 
-Use Python's standard library and buildless browser JavaScript. The vendored
+Use Python 3.13's standard library and buildless browser JavaScript. The one
+Python package is Gadfly (midwife), pinned in uv.lock for load-bearing checks;
+depend on its PyPI release, never on a local Gadfly checkout. The vendored
 xterm.js terminal and fit addon keep their licenses and pinned package metadata.
 Check changes with npm test, npm run check, and npm run build. The UI smoke test
 can use an existing Playwright installation via PLAYWRIGHT_MODULE_PATH. Keep

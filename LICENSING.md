@@ -39,7 +39,7 @@ detailed per-path table is kept in [LICENSES-DATA.md](LICENSES-DATA.md).
 | Inspection images in `assets/artefacts/` (hashes and provenance in `data/artefacts.json`) and console recordings in `data/recordings/` | Operator captures of, or derived from, model-produced work; see "Screenshots and favicon" below |
 | Site artwork including `assets/favicon.svg` | Study image made for the site; CC BY 4.0 |
 | Control text `examples/controls/owl-and-the-pussy-cat.txt` | Public-domain control on the basis of its in-file attribution to Edward Lear, 1871 |
-| Vendored and test-only dependencies | Their own licenses; see [Third-party notices](THIRD_PARTY_NOTICES.md) |
+| Vendored and test-only dependencies, and the pinned Python package | Their own licenses; see [Third-party notices](THIRD_PARTY_NOTICES.md) |
 
 Candidate code and candidate prose may carry different rights from each other,
 and both may differ from the study's licenses. Treat them separately when

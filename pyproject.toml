@@ -1,8 +1,19 @@
-# Formatting only: the study's Python uses the standard library and needs no build.
+# The study needs no build. Its one Python dependency is Gadfly (the `midwife` package), pinned here
+# and in uv.lock, which load-bearing checks use; the Python floor is midwife's.
+[project]
+name = "after-the-poem"
+version = "0.1.0"
+description = "An evidence-led observatory for worlds continued from a poem."
+requires-python = ">=3.13"
+dependencies = ["midwife==0.1.2"]
+
+[tool.uv]
+package = false
+
 [tool.ruff]
 line-length = 120
-target-version = "py39"
-extend-exclude = ["src/vendor", "data", "corpus", "examples", "dist", ".local", "node_modules"]
+target-version = "py313"
+extend-exclude = ["src/vendor", "data", "corpus", "examples", "dist", ".local", "node_modules", ".venv"]
 
 [tool.ruff.format]
 quote-style = "preserve"

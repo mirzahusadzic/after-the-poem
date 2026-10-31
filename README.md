@@ -30,7 +30,7 @@ Every step is a command: dream with Codex through the [router](https://github.co
 
 ## Open it
 
-The page needs only Python 3.9+ and its standard library, with no hosted services, analytics or external fonts.
+The page needs Python 3.13 or later, with no hosted services, analytics or external fonts. In the commands below, `python3` means Python 3.13 or later; `uv run python` gives you one, with the one Python package the study pins (Gadfly, for the load-bearing checks).
 
 ```sh
 python3 scripts/atlas.py serve --previews               # builds and serves http://127.0.0.1:4317 (release view; npm run dev)

@@ -7,6 +7,8 @@ crash or a failed write never leaves a half-written file behind. Readers
 either see the previous valid file or the new complete file.
 """
 
+import python_floor  # noqa: F401  (first: an interpreter below the floor stops here, with a reason)
+
 import json
 import os
 import stat

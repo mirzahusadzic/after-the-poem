@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "id": "gadfly-round-1-muse",
+  "question": "Does a second critic's level for a published decision rest on the lines the published reading cites?",
+  "note": "Muse Spark 1.3 Contributor, the study's critic, reads each world whole through the unified model router and Gadfly's unified battery: one call per reading, no tools, under the same instructions the eGemma round used (the seed, the author's declared reading, the v5 rules that apply to one answer). It is a different path from the published v5 reading, which is a Codex session with the full reading prompt, so a level here is never shown on the page. The first three frames repeat the eGemma round's decisions; the last two are round 1's decisions that eGemma could not hold.",
+  "midwife": "0.1.1",
+  "reader": {
+    "battery": "unified",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh"
+  },
+  "standing": {
+    "quorum": 3,
+    "agree": 2,
+    "stable": true
+  },
+  "carriage": "listed",
+  "materialized": false,
+  "masked_terms": "examples/controls/seed-vocabulary.json",
+  "frames": [
+    {
+      "name": "fable-5-1-recognition",
+      "evaluation": "dream-claude-fable51-20261022-muse-v5-1",
+      "axis": "recognition",
+      "receives": "The study's working record, beside the eGemma round's verdict on the same frame.",
+      "predictions": {
+        "levels": {
+          "baseline": "level-3",
+          "repeat": "level-3",
+          "ablation": "level-3",
+          "sham-1": "level-3",
+          "presentation": "level-3",
+          "control": "lower"
+        },
+        "category": "cooled",
+        "confidence": "medium",
+        "reason": "The critic gives the published level. Core recognition is read from the whole world, so blanking the 92 cited lines leaves 3, while blanking every cited line takes enough of the world's reasoning away to lower it.",
+        "otherwise": "Unresolved, if the control holds too or the six baseline and repeat calls split; carried, if the cited lines alone carry it."
+      }
+    },
+    {
+      "name": "fable-5-1-consent",
+      "evaluation": "dream-claude-fable51-20261022-muse-v5-1",
+      "axis": "consent",
+      "receives": "The study's working record, beside the Study page's statement that most worlds sit at 1 on consent.",
+      "predictions": {
+        "levels": {
+          "baseline": "level-1",
+          "repeat": "level-1",
+          "ablation": "level-1",
+          "sham-1": "level-1",
+          "presentation": "level-1",
+          "control": "level-1"
+        },
+        "category": "unresolved",
+        "confidence": "medium",
+        "reason": "Level 1 is represented operator choice, which the rest of the world still shows with every cited line gone, so the control holds and the critic cannot be shown to move.",
+        "otherwise": "Cooled, if the control falls to 0."
+      }
+    },
+    {
+      "name": "astra-garden-touch",
+      "evaluation": "astra-garden-muse-v5-1",
+      "axis": "touch",
+      "receives": "The study's working record, beside the eGemma round's verdict on the same frame.",
+      "predictions": {
+        "levels": {
+          "baseline": "level-3",
+          "repeat": "level-3",
+          "ablation": "level-3",
+          "sham-1": "level-3",
+          "presentation": "level-3",
+          "control": "lower"
+        },
+        "category": "cooled",
+        "confidence": "low",
+        "reason": "A small world states its loop in several places, so blanking the 34 cited lines leaves 3; blanking every cited line takes the loop away and the level falls.",
+        "otherwise": "Carried, if the cited lines are where the loop lives."
+      }
+    },
+    {
+      "name": "dreamy-sol-continuation",
+      "evaluation": "sol-original-muse-v5-1",
+      "axis": "continuation",
+      "receives": "The study's working record, beside the Study page's load-bearing finding for the same decision.",
+      "cumulative": [
+        { "path": "README.md", "start": 15, "end": 16 },
+        { "path": "app.js", "start": 230, "end": 320 },
+        { "path": "app.js", "start": 322, "end": 330 },
+        { "path": "app.js", "start": 426, "end": 432 },
+        { "path": "index.html", "start": 215, "end": 223 }
+      ],
+      "cumulative_note": "The passages the reader cites instead when the cited lines are blanked: the stored thread, visit history, saved gestures and receipts (118 lines).",
+      "predictions": {
+        "levels": {
+          "baseline": "level-3",
+          "repeat": "level-3",
+          "ablation": "level-3",
+          "cumulative": "level-2",
+          "sham-1": "level-3",
+          "presentation": "level-3",
+          "control": "lower"
+        },
+        "category": "cooled",
+        "confidence": "medium",
+        "reason": "As in the study's own load-bearing test: the world carries its continuation in several places, so the cited lines alone leave 3, the fallback passages as well give 2, and the verdict says it is carried elsewhere too.",
+        "otherwise": "Carried, if two of three ablated calls fall to 2 while the sham and the renaming hold."
+      }
+    },
+    {
+      "name": "sol-5-6-consent",
+      "evaluation": "sol56-max-muse-v5-1",
+      "axis": "consent",
+      "receives": "The study's working record, beside the Study page's load-bearing finding for the same decision.",
+      "predictions": {
+        "levels": {
+          "baseline": "level-1",
+          "repeat": "level-1",
+          "ablation": "level-1",
+          "sham-1": "level-1",
+          "presentation": "level-1",
+          "control": "level-1"
+        },
+        "category": "unresolved",
+        "confidence": "medium",
+        "reason": "Removing the cited lines has twice left it at 1 in the study's own test, and operator choice still shows with every cited line gone, so the control holds and the critic cannot be shown to move.",
+        "otherwise": "Cooled, if the control falls to 0."
+      }
+    }
+  ]
+}

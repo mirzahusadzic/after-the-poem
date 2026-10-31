@@ -1,6 +1,6 @@
 # Commands
 
-Eight programs in `scripts/` run the study: `evaluate.py`, `claude_dream.py`, `pipeline.py`, `load_bearing.py`, `reading_controls.py`, `record_consoles.py`, `atlas.py` and `bundles.py`. Run each from the repository root as `python3 scripts/PROGRAM.py COMMAND [FLAGS]`. `--help` on a program or on any of its commands prints the text the tables below repeat.
+Nine programs in `scripts/` run the study: `evaluate.py`, `claude_dream.py`, `pipeline.py`, `load_bearing.py`, `gadfly_bridge.py`, `reading_controls.py`, `record_consoles.py`, `atlas.py` and `bundles.py`. Run each from the repository root as `python3 scripts/PROGRAM.py COMMAND [FLAGS]`, where `python3` is Python 3.13 or later (`uv run python` gives you one). `--help` on a program or on any of its commands prints the text the tables below repeat.
 
 Live work calls models, which cost money, and refuses without `--accept-run`; every other command calls no model. See [Safety](#safety) before a first live run, and [Pipeline](pipeline.md) for the order in which the commands are used.
 
@@ -10,13 +10,13 @@ Live work calls models, which cost money, and refuses without `--accept-run`; ev
 
 | Script | What it does | Calls a model? |
 | --- | --- | --- |
-| `evaluate` | `python3 scripts/evaluate.py` | Only a live command with `--accept-run` |
-| `dream:claude` | `python3 scripts/claude_dream.py` | Only `run --accept-run` |
+| `evaluate` | `uv run python scripts/evaluate.py` | Only a live command with `--accept-run` |
+| `dream:claude` | `uv run python scripts/claude_dream.py` | Only `run --accept-run` |
 | `doctor:deepseek` | `evaluate.py doctor-profile` on `examples/evaluation-profile-deepseek.json` | No |
 | `evaluation:deepseek` | `evaluate.py run-profile` on the same profile | Only with `-- --accept-run` |
 | `doctor:deepseek-dream` | `evaluate.py doctor-dream-profile` on `examples/dream-profile-deepseek.json` | No |
 | `evaluation:deepseek-dream` | `evaluate.py run-dream-profile` on the same profile | Only with `-- --accept-run` |
-| `pipeline` | `python3 scripts/pipeline.py`: the campaign steps `prepare`, `run` and `admit`, as in `evaluate.py plan`, `run` and `admit` | Only `run --accept-run` on a live campaign |
+| `pipeline` | `uv run python scripts/pipeline.py`: the campaign steps `prepare`, `run` and `admit`, as in `evaluate.py plan`, `run` and `admit` | Only `run --accept-run` on a live campaign |
 | `build` | `atlas.py build`: the local site in `dist/` | No |
 | `build:pages` | `atlas.py build --target pages`: the static site in `dist/` | No |
 | `serve:pages` | `atlas.py serve --target pages --port 4318` | No |
@@ -601,6 +601,63 @@ python3 scripts/load_bearing.py findings PLAN.json --output .local/load-bearing/
 
 Everything after a bare `--` is each trial's budget, passed to `evaluate.py score`. Write it as `FLAG VALUE` pairs, not `FLAG=VALUE`: `--max-turns`, `--max-input-tokens`, `--max-output-tokens`, and `--max-usd` with `--price-input`, `--price-cached-input` and `--price-output`; `--max-seconds` is optional. `--max-usd` caps each trial and `--total-usd` caps them all: before a trial starts, the runner reserves its cap plus one turn's margin against the total.
 
+## gadfly_bridge.py
+
+Builds, plans, runs and reports Gadfly checks on the levels the release page shows: does a published level rest on the lines its sessions cite? Each call is one session by the study's v5 reader, kept under the round's output and never admitted. See [Gadfly checks](pipeline.md#gadfly-checks).
+
+```sh
+python3 scripts/gadfly_bridge.py build spec --output DIR [--router-revision HEX|live]
+python3 scripts/gadfly_bridge.py plan DIR [--frame NAME]
+python3 scripts/gadfly_bridge.py run DIR (--dry-run | --accept-run --total-usd USD --max-usd-per-call USD PRICES) [--frame NAME] [--only TRIAL]
+python3 scripts/gadfly_bridge.py report DIR [--spec FILE] [--dry-run] [--frame NAME]
+```
+
+```sh
+python3 scripts/gadfly_bridge.py build examples/gadfly/round-1.json --output .local/gadfly/round-1-live --router-revision live
+python3 scripts/gadfly_bridge.py run .local/gadfly/round-1-live --accept-run --total-usd 1.00 \
+  --max-usd-per-call 0.03 --price-input 0.10 --price-cached-input 0.002 --price-output 0.20
+python3 scripts/gadfly_bridge.py report .local/gadfly/round-1-live --spec examples/gadfly/round-1.json
+```
+
+| Command | Effect |
+| --- | --- |
+| `build` | Build a round's frames from its spec into a new folder; calls no model |
+| `plan` | Print each frame's trials and calls; calls no model |
+| `run` | Read every planned trial, one session per call; resumes from kept records |
+| `report` | Read the verdicts from kept records, with the predictions beside them; calls no model |
+
+`build`:
+
+| Flag | Values | Effect |
+| --- | --- | --- |
+| `spec` | path | Round spec, such as `examples/gadfly/round-1.json` |
+| `--output` | `DIR`, required | New folder for the frames and `round.json` |
+| `--router-revision` | `HEX` or `live` | Pin the router revision in every frame; a live run needs it |
+| `--router-url` | URL | Router to ask for `live` (default: `http://127.0.0.1:18766/v1`) |
+
+`run`:
+
+| Flag | Values | Effect |
+| --- | --- | --- |
+| `DIR` | path | A built round |
+| `--dry-run` | — | Synthetic sessions; no model call |
+| `--accept-run` | — | Allow model calls, which cost money; a live run refuses without it |
+| `--total-usd` | `USD` | Estimated dollars allowed across the round's calls, earlier calls included |
+| `--max-usd-per-call` | `USD` | Cap for one session; a call starts only when it and one turn's margin fit the total |
+| `--price-input`, `--price-cached-input`, `--price-output` | USD per million tokens | The reader's prices, for the caps |
+| `--max-output-tokens` | `N` | Output cap per call, reasoning included (default: 100000 for the study's reader, 32000 through the router, 512 for eGemma) |
+| `--max-input-tokens` | `N` | Input cap per call (default: 400000) |
+| `--max-seconds` | `N` | Optional time cap per call |
+| `--egemma-url` | URL | eGemma for frames read by Gemma 4 (default: `http://127.0.0.1:8000`) |
+| `--egemma-timeout` | seconds | Time for one eGemma reading (default: 600) |
+| `--unified-timeout` | seconds | Time for one reading through the router (default: 900) |
+| `--frame` | `NAME` | Only this frame; may repeat |
+| `--only` | `TRIAL` | Only this trial, such as `baseline`; may repeat |
+
+The dollar flags are needed when a frame is read by the study's own reader or through the router. A frame read through the router pins the router's revision (`build --router-revision live`) and is refused at another one. A frame read by eGemma needs `--accept-run` and the eGemma key in `EGEMMA_API_KEY` or `EGEMMA_API_KEY_FILE`.
+
+`report` writes `report-midwife-VERSION.json` (or `dry-report-midwife-VERSION.json`) beside the records, named by the midwife release whose rules read them. A later release reads the same records into a file of its own, without a call.
+
 ## reading_controls.py
 
 Prepares a scratch copy of the study, with the authored decoy world imported as the control run `control-decoy-gestures`. Readings against the copy never reach the study.
@@ -741,7 +798,7 @@ python3 scripts/pipeline.py admit CAMPAIGN [--project DIR]
 
 ## Safety
 
-Live work is a model call: reading, scoring, extracting, generating a world or reviewing one. It costs money on the operator's own accounts, so it refuses without `--accept-run`. The commands that can call a model are `evaluate.py` `run-profile`, `run-profiles`, `run-dream-profile`, `score`, `run-evaluation`, `extract`, and `run` or `resume` on a live campaign; `pipeline.py run` on a live campaign; `claude_dream.py run`; and `load_bearing.py run`.
+Live work is a model call: reading, scoring, extracting, generating a world or reviewing one. It costs money on the operator's own accounts, so it refuses without `--accept-run`. The commands that can call a model are `evaluate.py` `run-profile`, `run-profiles`, `run-dream-profile`, `score`, `run-evaluation`, `extract`, and `run` or `resume` on a live campaign; `pipeline.py run` on a live campaign; `claude_dream.py run`; `load_bearing.py run`; and `gadfly_bridge.py run` with `--accept-run`.
 
 `-n`/`--dry-run` rehearses with synthetic answers and calls no model. A profile's rehearsal writes to `OUTPUT.dry-run` beside the live output, and nothing synthetic is admitted. One exception: `run-dream-profile --dry-run` rehearses the generation alone in `OUTPUT.dry-run`, not the whole dream-plus-reading path. `doctor-profile`, `doctor-dream-profile`, `doctor` and `claude_dream.py check` check a setup before a live run, also without a model call.
 

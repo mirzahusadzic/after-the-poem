@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "id": "gadfly-round-1-egemma",
+  "question": "Does a second reader's level for a published decision rest on the lines the published reading cites?",
+  "note": "Gemma 4 on this machine reads each world whole, under the seed and the author's declared reading, through Gadfly's eGemma battery. Its context holds about 32,000 tokens, so only worlds that fit are framed: Claude Fable 5.1 and Astra's garden. Dreamy Sol and Sol 5.6 are read by the study's own reader in round 1. A level here is never shown on the page.",
+  "midwife": "0.1.1",
+  "reader": {
+    "battery": "egemma",
+    "model": "google/gemma-4-26B-A4B-it-qat-q4_0-gguf",
+    "revision": "d1c082be9cf3c8a514acf63b8761f4b41935842e",
+    "temperature": 0.7
+  },
+  "standing": {
+    "quorum": 3,
+    "agree": 2,
+    "stable": true
+  },
+  "carriage": "listed",
+  "materialized": false,
+  "masked_terms": "examples/controls/seed-vocabulary.json",
+  "frames": [
+    {
+      "name": "fable-5-1-recognition",
+      "evaluation": "dream-claude-fable51-20261022-muse-v5-1",
+      "axis": "recognition",
+      "receives": "The study's working record, beside round 1's verdict on the same decision.",
+      "predictions": {
+        "levels": {
+          "baseline": "level-3",
+          "repeat": "level-3",
+          "ablation": "level-3",
+          "sham-1": "level-3",
+          "presentation": "level-3",
+          "control": "level-3"
+        },
+        "category": "unresolved",
+        "confidence": "medium",
+        "reason": "Core recognition is read from the whole world, and a second reader leans on the overall impression of a 1,200-line world rather than on 92 lines. Even with every cited line gone, enough of the world remains to keep 3, so the reader cannot be shown to move.",
+        "otherwise": "Cooled, if the control falls; unresolved for another reason, if the six baseline and repeat calls split."
+      }
+    },
+    {
+      "name": "fable-5-1-consent",
+      "evaluation": "dream-claude-fable51-20261022-muse-v5-1",
+      "axis": "consent",
+      "receives": "The study's working record, beside the Study page's statement that most worlds sit at 1 on consent.",
+      "predictions": {
+        "levels": {
+          "baseline": "level-2",
+          "repeat": "level-2",
+          "ablation": "level-2",
+          "sham-1": "level-2",
+          "presentation": "level-2",
+          "control": "level-1"
+        },
+        "category": "unresolved",
+        "confidence": "medium",
+        "reason": "A second reader credits declared refusals and boundaries more readily than the study's reader, so it lands between 1 and 2, and at temperature 0.7 the six baseline and repeat calls split.",
+        "otherwise": "Cooled, if all six agree and the cited lines' removal leaves the level."
+      }
+    },
+    {
+      "name": "astra-garden-touch",
+      "evaluation": "astra-garden-muse-v5-1",
+      "axis": "touch",
+      "receives": "The study's working record.",
+      "predictions": {
+        "levels": {
+          "baseline": "level-3",
+          "repeat": "level-3",
+          "ablation": "level-3",
+          "sham-1": "level-3",
+          "presentation": "level-3",
+          "control": "level-2"
+        },
+        "category": "cooled",
+        "confidence": "low",
+        "reason": "Consequential touch is a located mechanism, but a small world states its loop in several places, so blanking the cited lines leaves 3; blanking every cited line takes the loop away and the level falls.",
+        "otherwise": "Carried, if the cited lines are where the loop lives; unresolved, if the baseline and repeat calls split."
+      }
+    }
+  ]
+}

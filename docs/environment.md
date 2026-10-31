@@ -8,7 +8,8 @@ See [Commands](commands.md) for every flag and [Troubleshooting](troubleshooting
 
 | Piece | Tested | Notes |
 | --- | --- | --- |
-| Python | 3.9+ | Standard library only. Build, serve, validation, readings and dreams all run on it. |
+| Python | 3.13+ | Standard library, plus Gadfly (`midwife` 0.1.2) for load-bearing checks. Build, serve, validation, readings and dreams all run on it. |
+| uv | 0.11.6 | Installs the Python and the Gadfly release that `uv.lock` pins. The npm scripts run Python through `uv run`; CI sets `UV_LOCKED=1`, so a stale lock fails. |
 | Node.js | 22 | Needed only for browser smoke tests, formatting checks and screenshots. CI pins `node-version: 22`. |
 | Codex CLI | 0.163.0 | For Codex dreams and readings through the router. |
 | Claude Code | 2.1.308 | For Claude Code dreams (`claude` on `PATH`). |
@@ -17,13 +18,15 @@ See [Commands](commands.md) for every flag and [Troubleshooting](troubleshooting
 | Browsers | Chromium (CI), WebKit/Firefox opt-in | CI installs Chromium and sets `PLAYWRIGHT_CHANNEL=chromium`. |
 | Native previews | macOS | Zsh, Python and Ruby worlds run only in the macOS sandbox; no fallback elsewhere. |
 
-Python and Node versions are floors and pins respectively: newer Python 3 releases work through the standard library; Node follows CI.
+Python's version is a floor, and it is Gadfly's: on an older Python every script stops with a reason. Node's version is a pin and follows CI.
+
+In these docs, `python3` means Python 3.13 or later. If yours is older, write `uv run python` instead.
 
 ## Prerequisites
 
 | Goal | Needs |
 | --- | --- |
-| Build, serve, validate | Python 3.9+ only: `python3 scripts/atlas.py build`, `serve` and `validate`. Their npm shortcuts (`npm run build`, `npm run dev`, `npm run check`) need Node only to start them. |
+| Build, serve, validate | Python 3.13+ (or uv): `python3 scripts/atlas.py build`, `serve` and `validate`. Their npm shortcuts (`npm run build`, `npm run dev`, `npm run check`) need Node only to start them. |
 | Browser tests, screenshots, formatting | Node.js 22 plus `npm install`. Then a Playwright browser (below). |
 | Readings, Codex dreams | Codex CLI, the router, a catalog entry and a capability entry per model, plus `--accept-run` and an explicit budget. |
 | Claude Code dreams | `claude` on `PATH` plus `CLAUDE_CODE_OAUTH_TOKEN`, `CLAUDE_DREAM_TOKEN_FILE` (mode 600) or `ANTHROPIC_API_KEY` with `--max-usd`. |
@@ -48,9 +51,9 @@ Each fast check calls no model, and each npm script is a shortcut for a Python c
 
 | Command | Python command | What it does |
 | --- | --- | --- |
-| `npm test` | `python3 -m unittest discover -s tests -v` | Python unit tests |
-| `npm run check` | `python3 scripts/atlas.py validate` | Records, hashes, citations; writes nothing |
-| `npm run build` | `python3 scripts/atlas.py build` | Local site into `dist/` |
+| `npm test` | `uv run python -m unittest discover -s tests -v` | Python unit tests |
+| `npm run check` | `uv run python scripts/atlas.py validate` | Records, hashes, citations; writes nothing |
+| `npm run build` | `uv run python scripts/atlas.py build` | Local site into `dist/` |
 
 The full gate needs Node and browsers but still calls no model:
 

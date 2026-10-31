@@ -10,3 +10,4 @@ __pycache__/
 node_modules/
 # Staged by scripts/fsutil.py; removed on any failure, but a hard kill can leave one behind.
 .*.tmp
+.venv/

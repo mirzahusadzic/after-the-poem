@@ -4,7 +4,7 @@ Thanks for helping with the study. It reads preserved worlds as evidence, so mos
 
 ## Development
 
-Python 3.9+ builds, serves and checks the study with its standard library alone; the page is buildless browser JavaScript. Node.js 22 (the tested version) is needed only for the browser tests, formatting checks and screenshots; the `npm run` scripts below are shortcuts for Python commands. See [Environment](docs/environment.md).
+Python 3.13 or later builds, serves and checks the study with its standard library. The one Python package is Gadfly (`midwife`), pinned in `uv.lock` and used by the load-bearing checks; [uv](https://docs.astral.sh/uv/) installs it, and the `npm run` scripts run Python through `uv run`. The page is buildless browser JavaScript. Node.js 22 (the tested version) is needed only for the browser tests, formatting checks and screenshots; the `npm run` scripts below are shortcuts for Python commands. See [Environment](docs/environment.md).
 
 ```sh
 npm test         # fast: Python unit tests; no model calls
@@ -43,6 +43,7 @@ Scripts you run:
 | `scripts/bundles.py` | Validate and import a run bundle. |
 | `scripts/reading_controls.py` | Prepare a scratch study with the decoy world. |
 | `scripts/load_bearing.py` | Declare, run and summarize load-bearing trials. |
+| `scripts/gadfly_bridge.py` | Build, run and report Gadfly checks on the levels the release page shows. |
 | `scripts/record_consoles.py` | Record console worlds for the static site, on macOS. |
 
 The other modules in `scripts/` are helpers these programs import. Every flag is in [Commands](docs/commands.md).
@@ -58,7 +59,7 @@ The other modules in `scripts/` are helpers these programs import. Every flag is
 - **Render sources inertly** as escaped text or inert Markdown, and preserve original bytes through hashes.
 - **Keep private material out.** No raw inference events, private conversations, credentials or host paths in any record.
 - **Ask before spending.** Readings and dreams cost money on the operator's own accounts. Never start one, or push or deploy, without the operator's explicit go-ahead and a stated budget.
-- **Stay small.** Python's standard library and buildless browser JavaScript; the vendored xterm.js files keep their licenses and pinned package metadata.
+- **Stay small.** Python's standard library, Gadfly (`midwife`) pinned in `uv.lock`, and buildless browser JavaScript; the vendored xterm.js files keep their licenses and pinned package metadata.
 - **Keep it usable.** Mobile and keyboard navigation work, and every chart has a table equivalent: the radar (`#radar`) always ships beside the score table (`#score-table`), which is the primary presentation when fewer than three dimensions are shown. See [Concepts](docs/concepts.md).
 
 ## Making changes

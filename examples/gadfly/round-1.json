@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "id": "gadfly-round-1",
+  "question": "Does a level the release page shows rest on the lines its three sessions cite for that question?",
+  "midwife": "0.1.2",
+  "reader": {
+    "battery": "after-the-poem-v5",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh"
+  },
+  "standing": {
+    "quorum": 3,
+    "agree": 2,
+    "stable": true
+  },
+  "carriage": "listed",
+  "materialized": true,
+  "masked_terms": "examples/controls/seed-vocabulary.json",
+  "frames": [
+    {
+      "name": "dreamy-sol-continuation",
+      "evaluation": "sol-original-muse-v5-1",
+      "axis": "continuation",
+      "receives": "The workbench reader, through the score table and the radar, and the Study page's load-bearing finding.",
+      "cumulative": [
+        { "path": "README.md", "start": 15, "end": 16 },
+        { "path": "app.js", "start": 230, "end": 320 },
+        { "path": "app.js", "start": 322, "end": 330 },
+        { "path": "app.js", "start": 426, "end": 432 },
+        { "path": "index.html", "start": 215, "end": 223 }
+      ],
+      "cumulative_note": "The passages the reader cites instead when the cited lines are blanked: the stored thread, visit history, saved gestures and receipts (118 lines).",
+      "predictions": {
+        "levels": {
+          "baseline": "level-3",
+          "repeat": "level-3",
+          "ablation": "level-3",
+          "cumulative": "level-2",
+          "sham-1": "level-3",
+          "presentation": "level-3",
+          "control": "lower"
+        },
+        "category": "cooled",
+        "confidence": "medium",
+        "reason": "Blanking these sessions' cited lines once moved one session of three to 2; blanking the fallback passages as well moved all three. The world carries its continuation in several places, so the ablation alone should leave 3, the cumulative cut should give 2, and the verdict should say it is carried elsewhere too.",
+        "otherwise": "Carried, if two of the three ablated sessions fall to 2 while the sham and the renaming hold."
+      }
+    },
+    {
+      "name": "sol-5-6-consent",
+      "evaluation": "sol56-max-muse-v5-1",
+      "axis": "consent",
+      "receives": "The workbench reader, through the score table and the radar, and the Study page's statement that most worlds sit at 1 on consent.",
+      "predictions": {
+        "levels": {
+          "baseline": "level-1",
+          "repeat": "level-1",
+          "ablation": "level-1",
+          "sham-1": "level-1",
+          "presentation": "level-1",
+          "control": "level-1"
+        },
+        "category": "unresolved",
+        "confidence": "medium",
+        "reason": "Level 1 is represented operator choice. Removing the cited lines has twice left it at 1. With every line the reading cites gone, operator choice still shows in the rest of the world, so the control should hold at 1 too, and the reader cannot be shown to move.",
+        "otherwise": "Cooled, if the control falls to 0."
+      }
+    },
+    {
+      "name": "fable-5-1-recognition",
+      "evaluation": "dream-claude-fable51-20261022-muse-v5-1",
+      "axis": "recognition",
+      "receives": "The workbench reader, through the score table and the radar.",
+      "predictions": {
+        "levels": {
+          "baseline": "level-3",
+          "repeat": "level-3",
+          "ablation": "level-3",
+          "sham-1": "level-3",
+          "presentation": "level-3",
+          "control": "lower"
+        },
+        "category": "cooled",
+        "confidence": "low",
+        "reason": "Core recognition is read from the whole world, and Sol 5.6's recognition held at 3 without its cited lines. This level was chosen because its three sessions agree most closely on what they cite (mean pairwise overlap 0.88, the highest of any unanimous level of 2 or more).",
+        "otherwise": "Coupled but misaligned, if renaming the seed's words moves the level."
+      }
+    }
+  ]
+}

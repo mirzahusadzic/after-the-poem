@@ -71,12 +71,13 @@ class DocumentationTests(unittest.TestCase):
 
     def test_commands_reference_includes_every_runnable_program(self):
         text = (ROOT / 'docs/commands.md').read_text(encoding='utf-8')
-        self.assertIn('Eight programs', text)
+        self.assertIn('Nine programs', text)
         for name in [
             'evaluate.py',
             'claude_dream.py',
             'pipeline.py',
             'load_bearing.py',
+            'gadfly_bridge.py',
             'reading_controls.py',
             'record_consoles.py',
             'atlas.py',

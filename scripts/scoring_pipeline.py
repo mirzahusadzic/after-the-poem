@@ -626,6 +626,7 @@ class Plan:
         control_seed=None,
         masked_terms=None,
         ablated_ranges=None,
+        evidence_lines=None,
     ):
         require(layout in LAYOUTS, 'Layout must be one of: ' + ', '.join(LAYOUTS))
         # The version 5 reading is one compact answer; per-axis sessions keep the version 4 prompts.
@@ -657,6 +658,15 @@ class Plan:
         self.ablated_ranges = ablated_ranges
         if ablated_ranges is not None:
             self.prepared = ablate_evidence(self.prepared, ablated_ranges)
+        # A Gadfly trial hands the reader the evidence as that trial left it: removed lines blank, renamed words
+        # renamed. The battery checks it against the frozen sources; here it must keep their shape. Never admitted.
+        self.evidence_lines = evidence_lines
+        if evidence_lines is not None:
+            require(
+                control_seed is None and masked_terms is None and ablated_ranges is None,
+                'Supplied evidence lines stand alone: no control seed, masking or ablation beside them',
+            )
+            self.prepared = supply_evidence(self.prepared, evidence_lines)
         self.run = self.prepared['run']
         self.supplied = supplied_extraction
         self.extraction_id = supplied_extraction['extraction_id'] if supplied_extraction else run_id + '-extraction'
@@ -768,6 +778,11 @@ class Plan:
                 if self.ablated_ranges is not None
                 else {}
             )
+            | (
+                {'evidence_lines_sha256': sha(canonical(self.evidence_lines))}
+                if self.evidence_lines is not None
+                else {}
+            )
         )
 
 
@@ -793,6 +808,27 @@ def mask_evidence(prepared, terms):
     return dict(
         prepared,
         sources=[dict(source, lines=[mask(line) for line in source['lines']]) for source in prepared['sources']],
+    )
+
+
+def supply_evidence(prepared, lines):
+    """Replace each source's lines with supplied ones of the same count (a Gadfly trial's evidence).
+
+    Source IDs and line counts must match the frozen sources, so line numbers and citations keep their meaning;
+    the frozen source texts stay whole.
+    """
+    sources = {source['source_id']: source for source in prepared['sources']}
+    require(isinstance(lines, dict) and set(lines) == set(sources), 'Supplied evidence must name every source once')
+    for source_id, given in lines.items():
+        require(
+            isinstance(given, list)
+            and len(given) == len(sources[source_id]['lines'])
+            and all(isinstance(line, str) and '\n' not in line and '\r' not in line for line in given),
+            'Supplied evidence must keep the line count of ' + source_id,
+        )
+    return dict(
+        prepared,
+        sources=[dict(source, lines=list(lines[source['source_id']])) for source in prepared['sources']],
     )
 
 
@@ -1007,6 +1043,7 @@ def _load_plan(project, output, *, data=None):
     control = (output / 'control-seed.txt').read_text(encoding='utf-8') if 'control_seed_sha256' in stored else None
     masked = load_json(output / 'masked-terms.json') if 'masked_terms_sha256' in stored else None
     ablated = load_json(output / 'ablated-ranges.json') if 'ablated_ranges_sha256' in stored else None
+    supplied_lines = load_json(output / 'evidence-lines.json') if 'evidence_lines_sha256' in stored else None
     plan = Plan(
         project,
         policy,
@@ -1019,6 +1056,7 @@ def _load_plan(project, output, *, data=None):
         control_seed=control,
         masked_terms=masked,
         ablated_ranges=ablated,
+        evidence_lines=supplied_lines,
     )
     plan.fake = None
     expected = plan.record(model=stored['model'], reasoning=stored['reasoning'])
@@ -1072,6 +1110,8 @@ def _finish(project, output, plan, stored, evaluation_id, *, recovered=False):
         status['control'] = 'masked evidence; never admitted'
     if plan.ablated_ranges is not None:
         status['control'] = 'ablated evidence; never admitted'
+    if plan.evidence_lines is not None:
+        status['control'] = 'supplied trial evidence; never admitted'
     return record, status
 
 
@@ -1105,6 +1145,7 @@ def run(
     control_seed_path=None,
     masked_terms_path=None,
     ablated_ranges_path=None,
+    evidence_lines=None,
 ):
     """Run or resume a scoreflow. Without `extraction_path`, session 1 also makes the evidence inventory.
 
@@ -1140,6 +1181,7 @@ def run(
         control_seed=control,
         masked_terms=masked,
         ablated_ranges=ablated,
+        evidence_lines=evidence_lines,
     )
     # Repairs and budget are execution limits, not identity: a resume may raise them.
     stored = plan.record(model=model, reasoning=reasoning)
@@ -1160,6 +1202,8 @@ def run(
             fsutil.write_bytes_atomic(output / 'masked-terms.json', canonical(masked) + b'\n', mode=0o400)
         if ablated is not None:
             fsutil.write_bytes_atomic(output / 'ablated-ranges.json', canonical(ablated) + b'\n', mode=0o400)
+        if evidence_lines is not None:
+            fsutil.write_bytes_atomic(output / 'evidence-lines.json', canonical(evidence_lines) + b'\n', mode=0o400)
         fsutil.write_bytes_atomic(output / 'plan.json', canonical(stored) + b'\n', mode=0o400)
     job = {'model': model, 'reasoning': reasoning, 'seconds': 900 if not dry_run else 120}
     runtime = worker.freeze_runtime(
