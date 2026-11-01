@@ -726,7 +726,7 @@ python3 scripts/gadfly_bridge.py report \
 | `--dry-run` | Synthetic sessions; no model call |
 | `--accept-run` | Allow model calls, which cost money; a live run refuses without it |
 | `--total-usd USD` | Estimated dollars allowed across the round's calls, earlier calls included |
-| `--max-usd-per-call USD` | Cap for one session by the study's reader; such a call starts only when the cap and one turn's margin fit the total |
+| `--max-usd-per-call USD` | Cap for one session by the study's reader, needed only when the round has such frames; such a call starts only when the cap and one turn's margin fit the total |
 | `--price-input USD`, `--price-cached-input USD`, `--price-output USD` | The reader's prices in US dollars per million tokens, for the caps |
 | `--max-output-tokens N` | Output cap per call, reasoning included (default: 100000 for the study's reader, 32000 through the router, 512 for eGemma) |
 | `--max-input-tokens N` | Input cap per call by the study's reader (default: 400000) |
@@ -740,7 +740,7 @@ python3 scripts/gadfly_bridge.py report \
 
 What a live run needs depends on the frame's reader:
 
-- **Dollar flags:** `--total-usd`, `--max-usd-per-call` and the three prices are needed when a frame is read by the study's own reader or through the router. Through the router, a call starts only when the most it can cost, its whole input and a full answer, fits the total.
+- **Dollar flags:** `--total-usd` and the three prices are needed when a frame is read by the study's own reader or through the router, and `--max-usd-per-call` only for the study's reader. Through the router, a call starts only when the most it can cost, its whole input and a full answer, fits the total.
 - **Router revision:** a frame read by the study's reader or through the router pins the router's revision (`build --router-revision live`), and a live run refuses it at another one.
 - **eGemma:** a frame read by eGemma needs `--accept-run` and the eGemma key in `EGEMMA_API_KEY` or `EGEMMA_API_KEY_FILE`.
 
@@ -963,7 +963,7 @@ Three programs cap spending their own way:
 
 - **`claude_dream.py run --max-usd`:** a different cap, which Claude Code enforces inside the dream session.
 - **`load_bearing.py run`:** `--total-usd` for all trials, and the budget flags above, after `--`, for each one.
-- **`gadfly_bridge.py run`:** `--total-usd` for the round and `--max-usd-per-call` for each session, with the reader's prices.
+- **`gadfly_bridge.py run`:** `--total-usd` for the round and the reader's prices, with `--max-usd-per-call` for each session of the study's reader.
 
 ---
 
@@ -982,15 +982,14 @@ Three programs cap spending their own way:
 | Code | Meaning |
 | --- | --- |
 | `0` | Success. |
-| `1` | An error, explained on stderr. For `evaluate.py` and `pipeline.py run`, also a run that did not complete; its JSON on stdout says how far it got. |
+| `1` | An error, explained on stderr. For `evaluate.py` and `pipeline.py run`, also a run that did not complete; its JSON on stdout says how far it got. For `gadfly_bridge.py run`, also a run that stopped before its last planned call, as when the total cap leaves no room. |
 | `2` | Invalid usage, such as an unknown flag or a missing argument; the usage line says which. |
 | `130` | Interrupted with Ctrl-C. Preserved work stays where it is. |
 
-Three programs differ from the table:
+Two programs differ from the table:
 
 - **`atlas.py serve`:** treats Ctrl-C as its normal stop and exits with `0`.
 - **`evaluate.py`:** treats a termination signal like Ctrl-C.
-- **`gadfly_bridge.py`:** exits with `2` on every error it explains, and with `1` when `run` stops before every planned call is made, as when the total cap leaves no room.
 
 ---
 

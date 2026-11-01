@@ -740,7 +740,7 @@ A round can also be read by Gemma 4 on your own machine, through [eGemma](https:
 - **Key and caps.** The key comes from `EGEMMA_API_KEY` or `EGEMMA_API_KEY_FILE`. A live run needs `--accept-run`, and no dollar caps.
 
 > [!NOTE]
-> Both second-reader specs name midwife 0.1.1, the release they ran with. `build` refuses a spec that names another release than the pinned 0.1.2, so rebuilding these rounds needs specs that name it; `report` still reads the records they kept.
+> Both second-reader specs name midwife 0.1.1, the release they ran with, and keep it as their record. `build` refuses a spec that names another release than the pinned 0.1.2: a new live run is a new round, with a new spec and its own predictions. `report` still reads the records they kept.
 
 To build, run and report the eGemma round:
 
@@ -761,7 +761,7 @@ The study's critic can be the second reader too. Muse Spark 1.3 Contributor then
 - **Context.** Muse holds about a million tokens, so every world fits.
 - **Training.** Its contributor tier trains on what it reads, so the frame names it under `trainsOnInputs`. OpenRouter routes it only when the account allows endpoints that may train on inputs.
 - **Router revision.** The frame pins the router's revision: build with `--router-revision live`, and a run refuses a router at another revision.
-- **Live run.** A live run needs `--accept-run`, a total cap, a cap per call and the prices. Before each call the runner sets aside the most that call can cost (its whole input and a full answer), and it counts what each call reports.
+- **Live run.** A live run needs `--accept-run`, a total cap and the prices; the per-call cap is the study's reader's only. Before each call the runner sets aside the most that call can cost (its whole input and a full answer), and it counts what each call reports.
 
 To build and run the Muse round:
 
@@ -772,7 +772,6 @@ python3 scripts/gadfly_bridge.py build \
   --router-revision live
 python3 scripts/gadfly_bridge.py run \
   .local/gadfly/round-1-muse --accept-run \
-  --total-usd 1.00 --max-usd-per-call 0.03 \
-  --price-input 0.10 --price-cached-input 0.002 \
-  --price-output 0.20
+  --total-usd 1.00 --price-input 0.10 \
+  --price-cached-input 0.002 --price-output 0.20
 ```

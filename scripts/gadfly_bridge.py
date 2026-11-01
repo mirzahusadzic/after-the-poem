@@ -705,7 +705,9 @@ def command_build(args):
     require(spec.get('schema_version') == 1, 'Unsupported round spec')
     require(
         spec.get('midwife') == midwife.__version__,
-        'The spec names midwife %s; this is %s' % (spec.get('midwife'), midwife.__version__),
+        'The spec names midwife %s, the release it ran under; this is %s. A spec keeps its release, and its'
+        ' records re-read under this one with `report`; to build under this one, write a new spec with its own'
+        ' predictions' % (spec.get('midwife'), midwife.__version__),
     )
     require(not (out / 'round.json').exists(), 'This round is built already; build into a new directory')
     for entry in spec['frames']:
@@ -767,7 +769,10 @@ def command_run(args):
     kinds = {frame.battery['kind'] for _, frame in chosen}
     budget, pricing = None, None
     if not args.dry_run and kinds & {KIND, UNIFIED}:
-        for flag in ('total_usd', 'max_usd_per_call', 'price_input', 'price_cached_input', 'price_output'):
+        # The per-call cap caps one session of the study's reader; a router call reserves its whole input and a
+        # full answer instead, so a round read only through the router needs no per-call cap.
+        needed = ['total_usd', 'price_input', 'price_cached_input', 'price_output']
+        for flag in needed + (['max_usd_per_call'] if KIND in kinds else []):
             require(getattr(args, flag) is not None, 'A live run needs --' + flag.replace('_', '-'))
         pricing = {
             'input_per_million': args.price_input,
@@ -958,7 +963,11 @@ def main(argv=None):
     execute.add_argument('--dry-run', action='store_true', help='synthetic sessions, no model call')
     execute.add_argument('--accept-run', action='store_true')
     execute.add_argument('--total-usd', type=float)
-    execute.add_argument('--max-usd-per-call', type=float)
+    execute.add_argument(
+        '--max-usd-per-call',
+        type=float,
+        help="cap for one session of the study's reader; a router call reserves its whole input and a full answer",
+    )
     execute.add_argument('--price-input', type=float)
     execute.add_argument('--price-cached-input', type=float)
     execute.add_argument('--price-output', type=float)
@@ -987,7 +996,7 @@ def main(argv=None):
         return args.func(args)
     except (ValueError, OSError, KeyError) as error:
         print('Gadfly bridge stopped: ' + withhold_host_paths(str(error)), file=sys.stderr)
-        return 2
+        return 1
 
 
 if __name__ == '__main__':

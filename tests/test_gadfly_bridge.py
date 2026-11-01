@@ -33,6 +33,24 @@ def current_copy(spec_path, directory):
 
 
 CATEGORIES = {'carried', 'coupled but misaligned', 'cooled', 'unresolved', 'outside scope'}
+PRICES = ['--price-input', '0.10', '--price-cached-input', '0.002', '--price-output', '0.20']
+
+
+def fake_battery(served, usage):
+    """A battery that reads level-3 without a call; a router one reports `usage` as its spend."""
+
+    class Fake:
+        def __init__(self, *args, **kwargs):
+            self.name = served
+
+        def check(self, frame):
+            pass
+
+        def observe(self, frame, prompt, max_output_tokens):
+            paid = usage if served == bridge.UNIFIED else {}
+            return bridge.Observation(label='level-3', raw='fake', usage=paid, served=served)
+
+    return Fake
 
 
 def span_lines(span):
@@ -460,7 +478,7 @@ class EGemmaRoundTests(unittest.TestCase):
             kept = bridge.load_records(out / 'dry-records' / 'astra-garden-touch.jsonl')
             self.assertEqual(len(kept), 18)
             self.assertEqual({record['served'] for record in kept}, {'synthetic'})
-            self.assertEqual(bridge.main(['run', str(out), '--frame', 'astra-garden-touch']), 2)
+            self.assertEqual(bridge.main(['run', str(out), '--frame', 'astra-garden-touch']), 1)
             # A reading under other rules keeps its own file: a later release never overwrites it.
             earlier = out / 'dry-report-midwife-0.0.0.json'
             earlier.write_text('{"midwife": "0.0.0"}\n')
@@ -524,7 +542,7 @@ class SecondCriticTests(unittest.TestCase):
             spec = current_copy(self.SPEC, temporary)
             built = bridge.main(['build', str(spec), '--output', str(out), '--router-revision', self.REVISION])
             self.assertEqual(built, 0)
-            self.assertEqual(bridge.main(['run', str(out), '--accept-run', '--frame', 'astra-garden-touch']), 2)
+            self.assertEqual(bridge.main(['run', str(out), '--accept-run', '--frame', 'astra-garden-touch']), 1)
             self.assertFalse((out / 'records' / 'astra-garden-touch.jsonl').exists())
             self.assertEqual(bridge.main(['run', str(out), '--dry-run', '--frame', 'astra-garden-touch']), 0)
 
@@ -560,35 +578,65 @@ class SecondCriticTests(unittest.TestCase):
             calls = next(item['calls'] for item in manifest['frames'] if item['name'] == 'astra-garden-touch')
             total = (calls - 0.5) * each + reserve  # every router call fits; a further reserve would not
 
-            def reader(served):
-                class Fake:
-                    def __init__(self, *args, **kwargs):
-                        self.name = served
-
-                    def check(self, frame):
-                        pass
-
-                    def observe(self, frame, prompt, max_output_tokens):
-                        paid = usage if served == bridge.UNIFIED else {}
-                        return bridge.Observation(label='level-3', raw='fake', usage=paid, served=served)
-
-                return Fake
-
             health = {'revision': self.REVISION}
             with (
                 mock.patch.object(bridge.worker, 'router_health', return_value=health),
-                mock.patch.object(bridge, 'Unified', reader(bridge.UNIFIED)),
-                mock.patch.object(bridge, 'EGemma', reader(bridge.EGEMMA)),
+                mock.patch.object(bridge, 'Unified', fake_battery(bridge.UNIFIED, usage)),
+                mock.patch.object(bridge, 'EGemma', fake_battery(bridge.EGEMMA, usage)),
             ):
-                flags = ['--price-input', '0.10', '--price-cached-input', '0.002', '--price-output', '0.20']
                 status = bridge.main(
-                    ['run', str(out), '--accept-run', '--total-usd', repr(total), '--max-usd-per-call', '0.03']
-                    + flags
+                    ['run', str(out), '--accept-run', '--total-usd', repr(total)]
+                    + PRICES
                     + ['--frame', 'astra-garden-touch', '--frame', 'gemma-astra']
                 )
             self.assertEqual(len(bridge.load_records(out / 'records' / 'astra-garden-touch.jsonl')), calls)
             self.assertEqual(len(bridge.load_records(out / 'records' / 'gemma-astra.jsonl')), free['calls'])
             self.assertEqual(status, 0)
+
+    def test_the_per_call_cap_is_asked_only_where_it_caps_something(self):
+        # It caps a session of the study's reader; a router call reserves its whole input and a full answer.
+        import contextlib
+        import io
+        from unittest import mock
+
+        with tempfile.TemporaryDirectory(prefix='after-poem-gadfly-percall-') as temporary:
+            routed, studied = Path(temporary) / 'routed', Path(temporary) / 'studied'
+            muse = current_copy(self.SPEC, temporary)
+            self.assertEqual(bridge.main(['build', str(muse), '--output', str(routed), '--router-revision', self.REVISION]), 0)
+            health = {'revision': self.REVISION}
+            usage = {'input_tokens': 1000, 'output_tokens': 1000}
+            with (
+                mock.patch.object(bridge.worker, 'router_health', return_value=health),
+                mock.patch.object(bridge, 'Unified', fake_battery(bridge.UNIFIED, usage)),
+            ):
+                live = ['--accept-run', '--total-usd', '1.00'] + PRICES
+                status = bridge.main(['run', str(routed)] + live + ['--frame', 'astra-garden-touch'])
+            self.assertEqual(status, 0)
+            self.assertEqual(len(bridge.load_records(routed / 'records' / 'astra-garden-touch.jsonl')), 18)
+
+            ours = current_copy(SPEC, temporary)
+            self.assertEqual(bridge.main(['build', str(ours), '--output', str(studied), '--router-revision', 'f' * 64]), 0)
+            told = io.StringIO()
+            with contextlib.redirect_stderr(told):
+                self.assertEqual(bridge.main(['run', str(studied)] + live + ['--frame', 'fable-5-1-recognition']), 1)
+            self.assertIn('--max-usd-per-call', told.getvalue())
+            self.assertFalse((studied / 'records' / 'fable-5-1-recognition.jsonl').exists())
+
+    def test_a_refusal_exits_1_and_a_bad_argument_2(self):
+        import contextlib
+        import io
+
+        with tempfile.TemporaryDirectory(prefix='after-poem-gadfly-exit-') as temporary:
+            told = io.StringIO()
+            with contextlib.redirect_stderr(told):
+                self.assertEqual(bridge.main(['build', str(self.SPEC), '--output', str(Path(temporary) / 'r')]), 1)
+                self.assertEqual(bridge.main(['plan', str(Path(temporary) / 'missing')]), 1)
+                with self.assertRaises(SystemExit) as usage:
+                    bridge.main(['run'])
+            self.assertEqual(usage.exception.code, 2)
+            # A spec that ran under another release says why it is refused and what to do instead.
+            self.assertIn('the release it ran under', told.getvalue())
+            self.assertIn('write a new spec with its own predictions', told.getvalue())
 
     def test_the_cap_counts_what_each_call_reported(self):
         pricing = {'input_per_million': 0.10, 'cached_input_per_million': 0.002, 'output_per_million': 0.20}
