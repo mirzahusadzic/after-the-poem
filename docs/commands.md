@@ -4,7 +4,9 @@ Nine programs in `scripts/` run the study: `evaluate.py`, `claude_dream.py`, `pi
 
 Live work calls models, which cost money, and refuses without `--accept-run`; every other command calls no model. See [Safety](#safety) before a first live run, and [Pipeline](pipeline.md) for the order in which the commands are used.
 
-## npm scripts
+---
+
+### npm scripts
 
 `npm run NAME` is a shorter way to run some of these. Flags after `--` pass through, as in `npm run evaluate -- status CAMPAIGN`.
 
@@ -36,7 +38,9 @@ Live work calls models, which cost money, and refuses without `--accept-run`; ev
 
 The browser tests need Node.js 22 and Playwright; see [Environment](environment.md#playwright-install). `test:engines` and `test:preview` are opt-in and are not part of `verify`.
 
-## evaluate.py
+---
+
+### evaluate.py
 
 Reads worlds against the rubric, dreams new ones and admits both, through Codex and the local model router. Each command prints its result as JSON on stdout.
 
@@ -52,7 +56,7 @@ python3 scripts/evaluate.py doctor-profile examples/evaluation-profile-deepseek.
 
 The commands are listed from most to least common; campaign commands come last, from `doctor` on.
 
-### Shared flags
+#### Shared flags
 
 Most commands take `--project`. Commands that reach Codex take the Codex and router flags. Commands that call a model also take `-n`/`--dry-run`, `--accept-run` and the [budget flags](#budget-flags).
 
@@ -73,7 +77,7 @@ Codex and router flags:
 
 `--reasoning` and its variants take `none`, `low`, `medium`, `high`, `xhigh` or `max`.
 
-### run-profile
+#### run-profile
 
 Read a world as a JSON profile describes, then admit it; rerunning resumes.
 
@@ -89,7 +93,7 @@ python3 scripts/evaluate.py run-profile profile [FLAGS]
 
 Also: `--project`, the Codex and router flags, and the budget flags. Any budget flag here replaces the profile's whole budget.
 
-### run-profiles
+#### run-profiles
 
 Run several evaluation profiles at once, each as its own session and package.
 
@@ -106,7 +110,7 @@ python3 scripts/evaluate.py run-profiles profile [profile ...] [FLAGS]
 
 Also: `--project`. Each profile runs under its own budget.
 
-### doctor-profile
+#### doctor-profile
 
 Check a profile, Codex, the router, the catalog and reasoning support; calls no model.
 
@@ -120,7 +124,7 @@ python3 scripts/evaluate.py doctor-profile profile [FLAGS]
 
 Also: `--project` and the Codex and router flags.
 
-### run-dream-profile
+#### run-dream-profile
 
 Generate a new world from a dream profile, read it and admit both; rerunning resumes.
 
@@ -142,7 +146,7 @@ python3 scripts/evaluate.py run-dream-profile profile [FLAGS]
 
 Also: `--project`, the Codex and router flags, and the budget flags for the reading. Any budget flag here replaces the profile's `evaluation_budget`.
 
-### doctor-dream-profile
+#### doctor-dream-profile
 
 Check a dream profile's runner and scorer, Codex and the router; calls no model.
 
@@ -160,7 +164,7 @@ python3 scripts/evaluate.py doctor-dream-profile profile [FLAGS]
 
 Also: `--project` and the Codex and router flags.
 
-### generate-policy
+#### generate-policy
 
 Write the full-rubric scoring policy from data/rubric.json; calls no model.
 
@@ -176,7 +180,7 @@ python3 scripts/evaluate.py generate-policy --output FILE [FLAGS]
 
 Also: `--project`.
 
-### score
+#### score
 
 Read the evidence once per session, answer every judgment and aggregate them; rerunning resumes.
 
@@ -209,7 +213,7 @@ Controls and trials, never admitted:
 | `--mask-terms` | `FILE` | JSON list of the seed's words to mask in the evidence |
 | `--ablate` | `FILE` | JSON list of {path, start, end} line ranges to blank in the evidence |
 
-### validate-evaluation
+#### validate-evaluation
 
 Validate a scoreflow output against its world; calls no model.
 
@@ -221,7 +225,7 @@ python3 scripts/evaluate.py validate-evaluation directory [--project DIR]
 | --- | --- | --- |
 | `directory` | path | Scoreflow output directory |
 
-### recover-score
+#### recover-score
 
 Finish a scoreflow whose sessions completed but whose record was not written; calls no model.
 
@@ -236,7 +240,7 @@ python3 scripts/evaluate.py recover-score directory [FLAGS]
 
 Also: `--project`.
 
-### integrate-evaluation
+#### integrate-evaluation
 
 Admit a validated evaluation as its own run package and rebuild the site.
 
@@ -255,7 +259,7 @@ python3 scripts/evaluate.py integrate-evaluation --evaluation DIR --review-id ID
 
 Also: `--project`.
 
-### run-evaluation
+#### run-evaluation
 
 Extract, score, admit and rebuild for one world, every option on the command line; rerunning resumes.
 
@@ -285,7 +289,7 @@ python3 scripts/evaluate.py run-evaluation run_id --output DIR --model MODEL --e
 
 Also: `--project`, the Codex and router flags, and the budget flags.
 
-### prepare-page
+#### prepare-page
 
 Prepare presentation JSON and static HTML for an evaluation; calls no model.
 
@@ -301,7 +305,7 @@ python3 scripts/evaluate.py prepare-page --evaluation DIR --output DIR [FLAGS]
 
 Also: `--project`.
 
-### validate-presentation
+#### validate-presentation
 
 Validate a prepared presentation and its manifest; calls no model.
 
@@ -313,7 +317,7 @@ python3 scripts/evaluate.py validate-presentation directory [--project DIR]
 | --- | --- | --- |
 | `directory` | path | Presentation directory |
 
-### capture-artefact
+#### capture-artefact
 
 Register a browser world and capture its screenshot in a sandboxed browser.
 
@@ -328,7 +332,7 @@ python3 scripts/evaluate.py capture-artefact run_id [FLAGS]
 
 Also: `--project`. The capture needs Playwright.
 
-### doctor
+#### doctor
 
 Check a campaign config, the study, Codex and the router; calls no model.
 
@@ -343,7 +347,7 @@ python3 scripts/evaluate.py doctor config [FLAGS]
 
 Also: `--project` and the Codex and router flags.
 
-### plan
+#### plan
 
 Freeze a campaign config into a new campaign directory; calls no model.
 
@@ -359,7 +363,7 @@ python3 scripts/evaluate.py plan config --output DIR [FLAGS]
 
 Also: `--project` and the Codex and router flags.
 
-### run
+#### run
 
 Start a prepared campaign: generate and review every queued job.
 
@@ -372,7 +376,7 @@ python3 scripts/evaluate.py run campaign [--accept-run]
 | `campaign` | path | Campaign directory made by plan |
 | `--accept-run` | — | Allow model calls, which cost money; a live campaign refuses without it |
 
-### resume
+#### resume
 
 Continue an interrupted campaign; jobs that have a receipt are not repeated.
 
@@ -385,7 +389,7 @@ python3 scripts/evaluate.py resume campaign [--accept-run]
 | `campaign` | path | Campaign directory made by plan |
 | `--accept-run` | — | Allow model calls, which cost money; a live campaign refuses without it |
 
-### status
+#### status
 
 Show a campaign's queue and job states; calls no model.
 
@@ -397,7 +401,7 @@ python3 scripts/evaluate.py status campaign
 | --- | --- | --- |
 | `campaign` | path | Campaign directory |
 
-### validate
+#### validate
 
 Validate a campaign's report and bundles and count its reviews; calls no model.
 
@@ -409,7 +413,7 @@ python3 scripts/evaluate.py validate campaign
 | --- | --- | --- |
 | `campaign` | path | Campaign directory |
 
-### validate-contract
+#### validate-contract
 
 Validate a normalized evaluation contract directory; calls no model.
 
@@ -421,7 +425,7 @@ python3 scripts/evaluate.py validate-contract directory
 | --- | --- | --- |
 | `directory` | path | Contract directory |
 
-### admit
+#### admit
 
 Admit a completed live campaign's bundles and reviews into the study.
 
@@ -433,7 +437,7 @@ python3 scripts/evaluate.py admit campaign [--project DIR]
 | --- | --- | --- |
 | `campaign` | path | Campaign directory |
 
-### reconcile-generation
+#### reconcile-generation
 
 Admit a finished generation that failed only the after-process transport check, as a separate reconciled bundle.
 
@@ -451,7 +455,7 @@ python3 scripts/evaluate.py reconcile-generation job --cohort ID --label TEXT --
 
 Also: `--project`.
 
-### extract
+#### extract
 
 Extract source-only evidence for one world in its own session (score extracts by itself).
 
@@ -472,7 +476,7 @@ python3 scripts/evaluate.py extract run_id --output DIR --model MODEL [FLAGS]
 
 Also: `--project`, the Codex and router flags, and the budget flags.
 
-### validate-extraction
+#### validate-extraction
 
 Validate an extraction record against its world; calls no model.
 
@@ -484,7 +488,7 @@ python3 scripts/evaluate.py validate-extraction extraction [--project DIR]
 | --- | --- | --- |
 | `extraction` | path | extraction.json to validate |
 
-### recover-extraction
+#### recover-extraction
 
 Finish an extraction whose session completed but whose record was not written; calls no model.
 
@@ -496,7 +500,9 @@ python3 scripts/evaluate.py recover-extraction directory [--project DIR]
 | --- | --- | --- |
 | `directory` | path | Extraction output directory |
 
-## claude_dream.py
+---
+
+### claude_dream.py
 
 Dreams a new world with Claude Code, then packs, admits and, with `--read`, reads it. The session runs in an isolated home and world with a sandboxed shell and no network for its tools; canaries check that isolation before the dream begins.
 
@@ -547,7 +553,9 @@ Credentials come from the environment and are never recorded:
 | `CLAUDE_DREAM_TOKEN_FILE` | Private file (`chmod 600`) that holds that token |
 | `ANTHROPIC_API_KEY` | Used when no token is set; it bills per token, so `run` then needs `--max-usd` |
 
-## load_bearing.py
+---
+
+### load_bearing.py
 
 Declares, runs and summarizes load-bearing trials: does a reading's level rest on the evidence it cites? Trials run against a scratch study and are never admitted.
 
@@ -601,7 +609,9 @@ python3 scripts/load_bearing.py findings PLAN.json --output .local/load-bearing/
 
 Everything after a bare `--` is each trial's budget, passed to `evaluate.py score`. Write it as `FLAG VALUE` pairs, not `FLAG=VALUE`: `--max-turns`, `--max-input-tokens`, `--max-output-tokens`, and `--max-usd` with `--price-input`, `--price-cached-input` and `--price-output`; `--max-seconds` is optional. `--max-usd` caps each trial and `--total-usd` caps them all: before a trial starts, the runner reserves its cap plus one turn's margin against the total.
 
-## gadfly_bridge.py
+---
+
+### gadfly_bridge.py
 
 Builds, plans, runs and reports Gadfly checks on the levels the release page shows: does a published level rest on the lines its sessions cite? Each call is one session by the study's v5 reader, kept under the round's output and never admitted. See [Gadfly checks](pipeline.md#gadfly-checks).
 
@@ -658,7 +668,9 @@ The dollar flags are needed when a frame is read by the study's own reader or th
 
 `report` writes `report-midwife-VERSION.json` (or `dry-report-midwife-VERSION.json`) beside the records, named by the midwife release whose rules read them. A later release reads the same records into a file of its own, without a call.
 
-## reading_controls.py
+---
+
+### reading_controls.py
 
 Prepares a scratch copy of the study, with the authored decoy world imported as the control run `control-decoy-gestures`. Readings against the copy never reach the study.
 
@@ -681,7 +693,9 @@ python3 scripts/evaluate.py score --project .local/scratch-study --run-id contro
 | --- | --- | --- |
 | `OUT` | path | New directory for the scratch study; it must not exist |
 
-## record_consoles.py
+---
+
+### record_consoles.py
 
 Records the console worlds' answers for the static site, where nothing can run. Recording starts each world in the isolated local runner on macOS, plays `help`, its opening command and its shortcuts, and writes `data/recordings/RUN.json`. See [Previews](previews.md).
 
@@ -701,7 +715,9 @@ python3 scripts/record_consoles.py RUN_ID   # record one world again
 | `--project` | `DIR` | Study directory (default: this repository) |
 | `--list` | — | Print the console worlds that would be recorded and exit; starts nothing |
 
-## atlas.py
+---
+
+### atlas.py
 
 Validates the study, builds its site into `dist/` and serves it locally. Validation and the build read the preserved worlds and never run them.
 
@@ -736,7 +752,9 @@ python3 scripts/atlas.py serve --previews
 
 `build` and `serve` take `--view` and `--target`; `serve` also takes `--port` and `--previews`. `add-review` takes `REVIEW_JSON` and `--select`, and `select-review` takes `REVIEW_ID`.
 
-## bundles.py
+---
+
+### bundles.py
 
 Validates a Run Bundle v1 directory, or imports it into the study as unreviewed evidence, without executing it.
 
@@ -751,7 +769,9 @@ python3 scripts/bundles.py {validate,import} bundle [--project PROJECT]
 | `bundle` | path | Run bundle directory |
 | `--project` | `PROJECT` | Study directory (default: this repository) |
 
-## pipeline.py
+---
+
+### pipeline.py
 
 Prepares and runs local Codex generation/review campaigns, then admits their records. This is the older local-campaign path: `evaluate.py plan`, `run`, `resume`, `status`, `validate` and `admit` are the newer campaign commands, while `pipeline.py prepare`, `run` and `admit` freeze, execute and import a `pipeline.py` campaign. The `pipeline` npm script is this program. Nothing here executes an archived candidate.
 
@@ -796,13 +816,15 @@ python3 scripts/pipeline.py admit CAMPAIGN [--project DIR]
 
 `prepare --dry-run` and `run` without `--accept-run` call no model. Rerunning `run` on the same campaign resumes without repeating jobs that have a receipt. A retained receipt is reused only when its requested model, reasoning, time allowance, prompt and instruction identities still match the frozen plan; a stale receipt stops the resume with an actionable error. See [Pipeline](pipeline.md) for where this path fits and [Troubleshooting](troubleshooting.md) for resuming and budget failures.
 
-## Safety
+---
+
+### Safety
 
 Live work is a model call: reading, scoring, extracting, generating a world or reviewing one. It costs money on the operator's own accounts, so it refuses without `--accept-run`. The commands that can call a model are `evaluate.py` `run-profile`, `run-profiles`, `run-dream-profile`, `score`, `run-evaluation`, `extract`, and `run` or `resume` on a live campaign; `pipeline.py run` on a live campaign; `claude_dream.py run`; `load_bearing.py run`; and `gadfly_bridge.py run` with `--accept-run`.
 
 `-n`/`--dry-run` rehearses with synthetic answers and calls no model. A profile's rehearsal writes to `OUTPUT.dry-run` beside the live output, and nothing synthetic is admitted. One exception: `run-dream-profile --dry-run` rehearses the generation alone in `OUTPUT.dry-run`, not the whole dream-plus-reading path. `doctor-profile`, `doctor-dream-profile`, `doctor` and `claude_dream.py check` check a setup before a live run, also without a model call.
 
-### Budget flags
+#### Budget flags
 
 A live reading needs a budget: `--max-turns`, `--max-input-tokens` and `--max-output-tokens` at least, from the flags or from the profile. Any budget flag on the command line replaces the profile's whole budget rather than adding to it. A budget below the planned minimum is refused before the first call.
 
@@ -821,11 +843,15 @@ Work stops before the next turn once any limit is reached, so the turn in progre
 
 `claude_dream.py run --max-usd` is a different cap: Claude Code enforces it inside the dream session. `load_bearing.py run` takes `--total-usd` for all trials and the budget flags above, after `--`, for each one.
 
-## Output
+---
+
+### Output
 
 `evaluate.py` prints each command's result as one JSON document on stdout and its progress, messages and errors on stderr, so `> result.json` keeps only the result. The other programs print short progress lines and summaries on stdout; `atlas.py analyze` prints JSON and `record_consoles.py --list` prints one run ID per line. Errors always go to stderr.
 
-## Exit codes
+---
+
+### Exit codes
 
 | Code | Meaning |
 | --- | --- |
@@ -836,7 +862,9 @@ Work stops before the next turn once any limit is reached, so the turn in progre
 
 `atlas.py serve` treats Ctrl-C as its normal stop and exits with `0`. `evaluate.py` treats a termination signal like Ctrl-C.
 
-## Resuming
+---
+
+### Resuming
 
 Rerunning a command with the same arguments continues it from what is preserved. In `run-profile`, `run-dream-profile`, `run-evaluation`, `score` and `extract`, a reading replays its preserved turns and continues from the first missing answer, and a run stopped by its budget continues with the same command and a larger budget. `resume` continues a campaign without repeating any job that has a receipt. `claude_dream.py run` reuses a finished dream, and `load_bearing.py run` keeps every finished trial.
 

@@ -84,7 +84,7 @@ class DocumentationTests(unittest.TestCase):
             'bundles.py',
         ]:
             self.assertIn('`' + name + '`', text)
-        self.assertIn('## pipeline.py', text)
+        self.assertIn('### pipeline.py', text)
 
     def test_docs_describe_split_sessions_as_the_page_draws_them(self):
         # The page plots a split as the sessions' mean in thirds and names the quorum level beside it.
@@ -128,6 +128,32 @@ class DocumentationTests(unittest.TestCase):
                 self.assertIn(labels[axis], line, axis)
             else:
                 self.assertNotIn(labels[axis], line, axis)
+
+    def test_doc_pages_keep_the_house_heading_shape(self):
+        # GitHub underlines # and ##: the title is #, each section is ### under a --- rule, subsections go deeper,
+        # and some text always sits between two headings.
+        pages = sorted(ROOT.glob('*.md')) + sorted((ROOT / 'docs').glob('*.md'))
+        self.assertGreater(len(pages), 10)
+        for page in pages:
+            lines, fence, failures = page.read_text(encoding='utf-8').split('\n'), False, []
+            for i, line in enumerate(lines):
+                if line.startswith('```'):
+                    fence = not fence
+                if fence or not line.startswith('#'):
+                    continue
+                level = len(line) - len(line.lstrip('#'))
+                if i == 0:
+                    if level != 1:
+                        failures.append('the title is not #')
+                    continue
+                if level < 3:
+                    failures.append('line %d: a section heading above ###' % (i + 1))
+                if level == 3 and lines[max(i - 2, 0) : i] != ['---', '']:
+                    failures.append('line %d: no --- rule above the section' % (i + 1))
+                previous = next((lines[j] for j in range(i - 1, -1, -1) if lines[j].strip() not in ('', '---')), '')
+                if previous.startswith('#'):
+                    failures.append('line %d: two headings with no text between' % (i + 1))
+            self.assertEqual(failures, [], page.name)
 
     def test_review_manifest_is_documented(self):
         records = (ROOT / 'docs/records.md').read_text(encoding='utf-8')

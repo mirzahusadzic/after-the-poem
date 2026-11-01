@@ -4,7 +4,9 @@ A study of what happens when a model receives a poem, **The Programmer and the G
 
 Open the workbench at [mirzahusadzic.github.io/after-the-poem](https://mirzahusadzic.github.io/after-the-poem/).
 
-## What is here
+---
+
+### What is here
 
 Each model receives the poem with an empty world and a short invitation: *make this world capable of continuing after this cognition ends.* Nothing tells it to take the poem apart, choose roles or build a particular thing.
 
@@ -24,11 +26,15 @@ The first seven come from Codex. The two Claude worlds come from Claude Code, wi
 
 Every shown world is read by one critic, Muse Spark 1.3 Contributor at xhigh reasoning, in three independent sessions, on eight questions from core recognition to expressive coherence. The release page shows only the current v5 reading per world (evaluation IDs ending `-muse-v5-1`); the research view (`npm run dev:full`) keeps every reading, including earlier v4 sessions and static reviews. Each level, 0 to 4, cites exact lines in the world and a passage of the poem. There is no total, no ranking by polygon area and no winner; `null` means unassessed. See [Reading a continuation](docs/study.md).
 
-## How it works
+---
+
+### How it works
 
 Every step is a command: dream with Codex through the [router](https://github.com/mirzahusadzic/codex-unified-model-router) or with Claude Code, admit the world, read it, and put it on the workbench. The seed, the reader, the rubric and the pipeline stay fixed, so a world from a newer model lands beside the earlier ones and can be read against them. See [Pipeline](docs/pipeline.md).
 
-## Open it
+---
+
+### Open it
 
 The page needs Python 3.13 or later, with no hosted services, analytics or external fonts. In the commands below, `python3` means Python 3.13 or later; `uv run python` gives you one, with the one Python package the study pins (Gadfly, for the load-bearing checks).
 
@@ -46,7 +52,9 @@ python3 scripts/atlas.py serve --target pages --port 4318   # http://127.0.0.1:4
 
 On the static site, console worlds replay a recording and server worlds show a screenshot.
 
-## Read or add a world
+---
+
+### Read or add a world
 
 ```sh
 python3 scripts/evaluate.py run-profile PROFILE.json --accept-run         # read a preserved world
@@ -56,7 +64,9 @@ python3 scripts/claude_dream.py run PROFILE.json --accept-run --read      # drea
 
 Live readings and dreams call models and run only with `--accept-run`, within the budget their profile or flags set. Codex runs go through the [Codex Unified Model Router](https://github.com/mirzahusadzic/codex-unified-model-router). A new world reaches the release page once it is read and listed in `shown_runs` in `data/presentation.json`: see [Workbench](docs/pipeline.md#workbench).
 
-## Check
+---
+
+### Check
 
 ```sh
 npm test          # fast: Python unit tests, no model calls

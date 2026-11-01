@@ -6,7 +6,9 @@ This repository holds two kinds of material: the study, which the author made,
 and the records it studies, which models produced. They are licensed
 differently.
 
-## The study
+---
+
+### The study
 
 The website text, rubric, method, documentation, editorial notes, images made
 for the site, and the poem are shared under
@@ -21,7 +23,9 @@ are available under the [MIT License](LICENSE).
 
 Suggested credit: **After the Poem — Mirza Husadzic**.
 
-## Artifact map
+---
+
+### Artifact map
 
 The table below maps repository artifacts to their rights regime as recorded
 in this repository. It describes repository evidence only and makes no legal
@@ -47,7 +51,9 @@ reusing a world. Where a preserved file carries, quotes, or reproduces
 third-party content under its own notice, that notice is preserved and remains
 in force; this repository's licenses do not replace it.
 
-## Screenshots and favicon
+---
+
+### Screenshots and favicon
 
 Inspection images under `assets/artefacts/` are operator-made captures taken
 through the sandboxed preview inspection or the isolated local runner, as
@@ -67,7 +73,9 @@ The favicon (`assets/favicon.svg`) is different: it is site artwork made for
 the study, not a capture of model work, and it is shared under CC BY 4.0 with
 the rest of the study's non-code material.
 
-## Model-generated records
+---
+
+### Model-generated records
 
 The worlds in `corpus/runs/` and `data/bundles/`, their screenshots in
 `assets/artefacts/`, and the model readings in `data/evaluations/` and
@@ -93,7 +101,9 @@ summarised here; where a provider's terms restrict training, reuse, or
 publication, those restrictions are not waived by preservation in this
 repository.
 
-## Footer copyright scope
+---
+
+### Footer copyright scope
 
 The site footer line "© 2026 Mirza Husadzic" (see `src/index.html`) asserts the
 author's copyright in the study and its presentation only. It does not assert
@@ -103,7 +113,9 @@ carries its own notice. The footer's license links ("Content: CC BY 4.0",
 "Code: MIT") likewise describe the study's material, not the rights status of
 model-generated records or third-party content.
 
-## Reuse and endorsement
+---
+
+### Reuse and endorsement
 
 Using, adapting or extending this work does not imply the author's
 endorsement. That includes running the pipeline with a different seed or
@@ -118,7 +130,9 @@ practicable (Section 3(a)(3)).
 To report material in this repository for review or removal, write to the
 author at [mirza.husadzic@proton.me](mailto:mirza.husadzic@proton.me).
 
-## Third-party material
+---
+
+### Third-party material
 
 Existing licenses and credits remain in force for material that carries its
 own notice. Bundled dependencies are covered by their respective licenses,

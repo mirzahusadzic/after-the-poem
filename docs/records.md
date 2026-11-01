@@ -2,7 +2,9 @@
 
 The study keeps three kinds of record apart: the preserved worlds, the readings of them, and the editorial choices about what the page shows. Records pin what they depend on by hash. Public metadata carries no credential, private conversation, raw inference event or host path; a preserved candidate source can still contain a path it wrote itself, because the source keeps its original bytes.
 
-## Where records live
+---
+
+### Where records live
 
 | Path | Holds |
 | --- | --- |
@@ -22,7 +24,9 @@ The study keeps three kinds of record apart: the preserved worlds, the readings 
 
 Local work (sessions, transcripts, campaign directories and scratch studies) stays under `.local/`, which git ignores.
 
-## Run bundles
+---
+
+### Run bundles
 
 A run bundle is how a world enters the study. It has exactly five entries:
 
@@ -56,7 +60,9 @@ The validator never imports modules, invokes candidate files or runs a build fro
 
 The placeholder review is not a score and cannot cite interpreted evidence. A world opts into a browser preview only through a separate entry in `data/artefacts.json`.
 
-## Evaluation packages
+---
+
+### Evaluation packages
 
 Each reading is admitted as its own package under `data/evaluations/EVALUATION/`, with nine files:
 
@@ -78,13 +84,17 @@ A package is the whole removable unit: delete its directory and rebuild, and onl
 
 The turns, prompts, answers and receipts behind a package stay under `.local/evaluation-runs/`. `python3 scripts/evaluate.py validate-evaluation DIRECTORY` re-derives an evaluation from its preserved turns without inference.
 
-## Revisions
+---
+
+### Revisions
 
 A package review has `supersedes: null`; a new reading is a new package, and independent readings of one world coexist. A correction to any other review is a separate record that names its predecessor in `supersedes`. Nothing is silently overwritten, merged or averaged. A package review's rationale is the shortest verdict among the sessions that gave its level, followed by the host's agreement note when they split; the presentation keeps every session's own verdict and evidence.
 
 `data/review-selection.json` and `data/presentation.json` choose what is displayed; they never delete, merge or average other readings. A new rubric needs new, explicitly comparable readings, and old scores keep their original meaning.
 
-## Hashes
+---
+
+### Hashes
 
 - Each preserved file has a SHA-256 in the bundle manifest and the corpus record.
 - A bundle's digest combines the exact bytes of `run.json`, `manifest.json`, `observations.json` and `prompt.txt`.
@@ -95,14 +105,18 @@ A package review has `supersedes: null`; a new reading is a new package, and ind
 
 `npm run check` (`python3 scripts/atlas.py validate`) validates the study's records, hashes and citations without inference.
 
-## What never goes into records
+---
+
+### What never goes into records
 
 - **Raw inference events.** Event streams, stderr and final messages of a model session stay private under `.local/`; records keep their hashes and the validated answers.
 - **Private conversations.** Transcripts of a dream or reading are never copied into the study.
 - **Credentials.** The validator rejects credential-like metadata keys. The router token lives only in a local run's private transport configuration, and only its hash enters a record; a Claude token stays in its private file or environment.
 - **Host paths.** Bundle validation rejects host-specific absolute paths, and public metadata carries none. A preserved candidate source may keep a path the world wrote into its own bytes; generated source pages preserve it, while the report's extracted evidence text withholds it as "[a path on the dreaming machine]". A console recording replaces its copy's temporary folder with "[the disposable copy]" and stops on any other host path.
 
-## Schemas
+---
+
+### Schemas
 
 The JSON shapes are in the [schemas](schemas/). The validators are authoritative for the privacy, path and cross-file checks a schema cannot express.
 

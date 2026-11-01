@@ -1,12 +1,18 @@
 # Security policy
 
-## Reporting a vulnerability
+How to report a vulnerability privately, and which parts of the study this policy covers.
+
+---
+
+### Reporting a vulnerability
 
 Report vulnerabilities privately through GitHub: open the repository's **Security** tab and choose **Report a vulnerability** ([direct link](https://github.com/mirzahusadzic/after-the-poem/security/advisories/new)). Do not open a public issue for a vulnerability.
 
 Include the affected commit, your platform and the steps to reproduce. Never include real API keys, router or Claude tokens, transcripts or session files; use synthetic values instead.
 
-## Scope
+---
+
+### Scope
 
 In scope:
 
@@ -21,7 +27,9 @@ Out of scope:
 - Attacks that require running code as the same user or as an administrator. The runner is a local single-user tool.
 - A world misbehaving inside its own sandbox. That is expected; escaping the sandbox is in scope.
 
-## Security model
+---
+
+### Security model
 
 - Preserved worlds are untrusted code. Import, analysis, validation and build never execute them, and no candidate runs in its preserved directory.
 - Browser worlds run as copies in sandboxed frames with opaque origins. A content policy blocks connections, workers, objects, forms and cross-origin navigation, and the host adapter keeps storage in memory. The frame is defense in depth, not an operating-system firewall.

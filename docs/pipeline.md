@@ -6,7 +6,9 @@ Every step is a command. You can repeat the whole study with Codex and the [Unif
 
 The seed, the reader, the rubric and the pipeline stay the same from run to run. So when a newer model dreams a world, that world lands next to the earlier ones, and you can read them side by side.
 
-## Overview
+---
+
+### Overview
 
 **Key:** 🔵 record · 🟡 a model at work · 🟢 host code · 🟠 the page
 
@@ -67,7 +69,9 @@ Model calls cost money on your own accounts. A command that calls a model refuse
 
 Every flag is listed in [Commands](commands.md). For a complete example, see [One run, start to finish](#one-run-start-to-finish).
 
-## Setup
+---
+
+### Setup
 
 You need:
 
@@ -94,7 +98,9 @@ Two more things to know:
 - Every model must be known in two places: the router's catalog and the study's [model descriptors](../data/model-capabilities.json). A model missing from either fails before any call.
 - The reader, Muse Spark 1.3 Contributor, runs on Meta's contributor tier, which trains on what it receives. That is fine for the public worlds here; don't send it anything private.
 
-## Dream
+---
+
+### Dream
 
 **Key:** 🔵 record · 🟡 the dreamer at work · 🟢 host code
 
@@ -151,7 +157,7 @@ Both paths start from the same seed: the cohort's exact prompt and an empty worl
 
 Host code captures whatever the dreamer leaves behind, including failed and unfinished attempts.
 
-### Through Codex via Unified Model Router
+#### Through Codex via Unified Model Router
 
 A dream is described by a small JSON file, the *dream profile*. Start from the [DeepSeek dream profile](../examples/dream-profile-deepseek.json). It names:
 
@@ -184,7 +190,7 @@ Good to know:
 - Each attempt is a full, paid dream, so only one is made. `--generation-attempts N` (up to 5) allows a new attempt after an ordinary failure, such as a dropped connection. Integrity failures, cancellations and invalid output never retry.
 - If a run stops, run the same command again. It picks up the preserved dream and reading.
 
-### In Claude Code
+#### In Claude Code
 
 Claude Code is a different harness from Codex, with its own system prompt and tools. So a Claude Code dream is recorded as a separate condition, `claude-code-dream-v1`.
 
@@ -224,7 +230,9 @@ Afterwards:
 - If a run stops, run the same command again. It resumes from whatever finished. `--retry` sets an unfinished dream aside as `OUTPUT.attempt-N` and starts a new one.
 - The reading uses the reader's budget from the profile. To add a cost cap, pass the whole budget through `--read-arg`; [Commands](commands.md#claude_dreampy) shows the full line.
 
-## Admission
+---
+
+### Admission
 
 Admission turns what the dreamer left into a *world*: a frozen, hashed record that nothing runs. Host code does it right after the dream, in three steps.
 
@@ -234,7 +242,9 @@ Admission turns what the dreamer left into a *world*: a frozen, hashed record th
 
 From here on, a world only ever runs as a disposable copy, in a preview. [Records](records.md) describes the bundle and the corpus in full, and [Previews](previews.md) the sandboxes.
 
-## Reading
+---
+
+### Reading
 
 **Key:** 🔵 evidence · 🟡 the reader at work · 🟢 host code · 🟠 the reading
 
@@ -314,7 +324,7 @@ Then host code takes over:
 
 What the reader is asked, and why, is in [Reading a continuation](study.md).
 
-### Read a world again
+#### Read a world again
 
 Both dream commands read the new world for you. To read a world that is already admitted, write a *reading profile*.
 
@@ -362,7 +372,9 @@ Good to know:
 - If a run stops, run the same command again. It replays the preserved turns and continues from the first missing answer. A reading stopped by its budget continues with a larger one.
 - To read several worlds at once, pass their profiles to `run-profiles` with `--parallel N`.
 
-## Workbench
+---
+
+### Workbench
 
 The *research view* (`npm run dev:full`) shows every admitted world and every reading, straight away. The *release page*, the public one, shows only the worlds you list, each with its latest `-muse-v5-1` reading. See [Release](release.md) for what each view holds, the reader generations and the flat-reader caveat.
 
@@ -378,7 +390,7 @@ To put a world on the release page:
 5. **List it.** Add its run ID to `shown_runs` in `data/presentation.json`. `npm run build` prints every world that is not listed yet; [Release](release.md#nine-shown-ten-retained) explains the one retained run kept off the page.
 6. **Check and build.** `npm run verify` checks everything without calling a model; [Environment](environment.md#fast-checks-vs-the-full-gate) lists the faster checks and what the full gate runs. `npm run build:pages` builds the static site, and the Pages workflow publishes it when you start it by hand.
 
-### Record a console for the static site
+#### Record a console for the static site
 
 The static site cannot run anything native, so a console world there replays a recording instead. Record it on macOS:
 
@@ -393,7 +405,9 @@ Recording starts the world in the isolated local runner, just as `npm run dev` d
 - The build checks each recording against its world and uses it only for the static site.
 - Recordings are presentation, not evidence for a reading. Record again whenever a world's console or shortcuts change.
 
-## One run, start to finish
+---
+
+### One run, start to finish
 
 Here is a real run: Claude Fable 5.1's world, made on 22 October 2026 with [its dream profile](../examples/dream-profile-claude-fable.json).
 
@@ -423,11 +437,13 @@ Every question reached a quorum. On shared agency, two sessions gave 1 and one g
 
 Through Codex via the Unified Model Router, the same run starts with `run-dream-profile` and a profile that names the dreamer. Every step after the dream is the same.
 
-## Checks on the reading
+---
+
+### Checks on the reading
 
 These checks ask whether a reading's levels follow the poem, or only a world's structure; [Checks](study.md#checks) explains why that matters. They run on a scratch copy of the study, and nothing they produce is admitted.
 
-### Controls
+#### Controls
 
 A control reads a world against deliberately changed evidence. First, prepare a scratch study and a scoring policy:
 
@@ -453,7 +469,7 @@ For the other two controls, use a preserved world's run ID (`--run-id RUN_ID`) a
 | Masked evidence | `--mask-terms examples/controls/seed-vocabulary.json` | The poem's distinctive words become neutral tokens in the evidence; a level that falls only here is carried by echo. |
 | Unrelated seed | `--control-seed examples/controls/owl-and-the-pussy-cat.txt` | The world is read against an unrelated poem; recognition and fidelity should fall, and the dimensions that hold read the world itself. |
 
-### Load-bearing trials
+#### Load-bearing trials
 
 A load-bearing trial asks whether a reading's level actually rests on the evidence it cites. It looks at one question in one world at a time ([The load-bearing test](study.md#the-load-bearing-test)).
 
@@ -500,7 +516,7 @@ What the output holds:
 - `OUT/cases/CASE/TRIAL`: each case's trials, with the blanked and sham line ranges beside them.
 - `OUT/findings.json`: each case's category and reason; every trial's level, agreement, per-session results and evaluation hash; and the plan's hash.
 
-### Gadfly checks
+#### Gadfly checks
 
 [Gadfly](https://github.com/mirzahusadzic/gadfly) runs the load-bearing test as a published package, `midwife`, pinned in `uv.lock`. Its verdict rules are the ones above, with `rules: 2`. Here it tests the levels the release page shows, as they stand: each frame is built from one published reading, and no scratch study is needed.
 
@@ -551,7 +567,7 @@ Good to know:
 - If a run stops, run it again: a kept record is never read twice. `--only TRIAL` runs one trial.
 - The round reads with `carriage: listed`. A category is named at once, and the checks it leaves open, such as the missing bypass trial, are listed beside it.
 
-#### Second readers
+##### Second readers
 
 A round can also be read by Gemma 4 on this machine, through [eGemma](https://github.com/mirzahusadzic/egemma) and Gadfly's own eGemma battery. It costs no money, and its level never reaches the page (`materialized: false`). It asks a different question: does the evidence the published reading cites carry the level for another reader too?
 

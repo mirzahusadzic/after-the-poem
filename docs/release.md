@@ -4,7 +4,9 @@ What the public page shows, what the research view keeps, and how a world gets p
 
 See [Pipeline](pipeline.md#workbench) for the step-by-step order and [Concepts](concepts.md) for the vocabulary.
 
-## Two views
+---
+
+### Two views
 
 | View | Command | Shows |
 | --- | --- | --- |
@@ -13,7 +15,9 @@ See [Pipeline](pipeline.md#workbench) for the step-by-step order and [Concepts](
 
 `atlas.py serve` defaults to the release view on port 4317; `serve:pages` serves the static build on port 4318.
 
-## Reader generations
+---
+
+### Reader generations
 
 The release reader is pinned under `reader` in `data/presentation.json`: Muse Spark 1.3 Contributor, three sessions, `evaluation_suffix: -muse-v5-1`.
 
@@ -27,7 +31,9 @@ The release reader is pinned under `reader` in `data/presentation.json`: Muse Sp
 
 A world can carry several readings at once; `data/review-selection.json` and `data/presentation.json` choose what each view displays without deleting the rest. The page also shows supported seed alternatives when a reading's carriage retains them. `data/review-manifest.json` pins each admitted authored review's bytes so a valid-looking edit cannot silently replace earlier history.
 
-## The flat-reader caveat
+---
+
+### The flat-reader caveat
 
 The release page is deliberately flat: one world, one reader, one reading. That flattening hides real structure:
 
@@ -38,7 +44,9 @@ The release page is deliberately flat: one world, one reader, one reading. That 
 
 Compare readings in the research view before citing a level.
 
-## Nine shown, ten retained
+---
+
+### Nine shown, ten retained
 
 `data/runs.json` retains ten runs; `shown_runs` lists nine. The tenth is `deepseek-flash-max-pilot`, the sole member of the hidden cohort `dream-workspace-result-v1`:
 
@@ -48,7 +56,9 @@ Compare readings in the research view before citing a level.
 
 `npm run build` prints every retained world that is not listed yet, so nothing goes public by accident.
 
-## Checklist: publish a world
+---
+
+### Checklist: publish a world
 
 1. Read it with the page's reader (a `-muse-v5-1` package, three sessions). Both dream commands do this; admitted worlds use the `examples/rescore-muse/` profiles.
 2. Open it in the research view and run `npm run check`.

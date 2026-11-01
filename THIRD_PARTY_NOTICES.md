@@ -12,7 +12,9 @@ recorded beside each vendored component in `src/vendor/*-package.json`.
 These licenses cover the terminal components; they do not change the rights
 or provenance of the preserved experimental artefacts.
 
-## Test-only tooling
+---
+
+### Test-only tooling
 
 These packages are development dependencies used only by checks and tests.
 They are not shipped in the static report.
@@ -26,14 +28,18 @@ They are not shipped in the static report.
   `tests/*.mjs`, and `scripts/*.mjs` files. It is not shipped in the static
   report and does not change the rights of the material it formats.
 
-## Python package
+---
+
+### Python package
 
 - **midwife 0.1.2** (Gadfly), Apache License 2.0; its essay is under CC BY 4.0.
   [Project](https://github.com/mirzahusadzic/gadfly). It is installed from PyPI at
   the version and hashes in `uv.lock`, is used only by the load-bearing checks, and
   is not shipped in the static report.
 
-## Preserved third-party content
+---
+
+### Preserved third-party content
 
 Candidate worlds and model readings are preserved as produced and may quote,
 reproduce, or build on third-party content under its own notice. Where a

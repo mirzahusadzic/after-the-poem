@@ -7,7 +7,9 @@ provenance fields the validators check. It makes no legal conclusion about
 originality, ownership, or third-party rights. Where an artifact carries its
 own notice, that notice controls.
 
-## How to read this table
+---
+
+### How to read this table
 
 - **Study (CC BY 4.0, non-code)** means the author's study material, shared
   under [CC BY 4.0](LICENSE-CONTENT) to the extent the author holds rights.
@@ -21,7 +23,9 @@ own notice, that notice controls.
   placeholders, selections, presentation choices). Host records describe the
   study's handling, not a model's claim.
 
-## Artifact table
+---
+
+### Artifact table
 
 | Path | What it holds (per repository records) | Regime recorded here |
 | --- | --- | --- |
@@ -45,7 +49,9 @@ own notice, that notice controls.
 | `examples/controls/owl-and-the-pussy-cat.txt` | Control text attributed in-file to Edward Lear, 1871 | Public-domain control on the basis of that attribution |
 | `src/vendor/*`, `src/vendor/*-package.json`, `src/vendor/*-LICENSE` | Vendored terminal builds with pinned version, tarball URL, and integrity | Their own licenses (see THIRD_PARTY_NOTICES.md) |
 
-## Cautions
+---
+
+### Cautions
 
 - No provider grant is given or implied. Fields such as `model`,
   `generator_model`, `evaluator_model`, and `gateway` identify a producer or

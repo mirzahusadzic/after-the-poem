@@ -4,7 +4,9 @@ The words the study uses, the path a world takes, the files behind the page, and
 
 See [Pipeline](pipeline.md) for the commands in order, [Records](records.md) for what is kept, and [Release](release.md) for what the public page shows.
 
-## Terminology
+---
+
+### Terminology
 
 | Term | Meaning |
 | --- | --- |
@@ -24,7 +26,9 @@ See [Pipeline](pipeline.md) for the commands in order, [Records](records.md) for
 | Recording | Saved console answers for the static site in `data/recordings/RUN.json`. Presentation, never evidence. |
 | Presentation | The editorial choices in `data/presentation.json` and `data/review-selection.json`: which reader, which runs, which review per run. |
 
-## Lifecycle
+---
+
+### Lifecycle
 
 1. **Seed.** The cohort's exact prompt and an empty world.
 2. **Dream.** A dreamer works for a fixed wall time. The capture keeps whatever it left, including failures.
@@ -34,7 +38,9 @@ See [Pipeline](pipeline.md) for the commands in order, [Records](records.md) for
 
 Revisions are new records with explicit supersession; readings are never silently overwritten. `null` is unassessed and never becomes zero.
 
-## The `src/` file map
+---
+
+### The `src/` file map
 
 The page is buildless browser JavaScript; `scripts/atlas.py` copies `src/` into `dist/` with the preserved sources.
 
@@ -50,7 +56,9 @@ The page is buildless browser JavaScript; `scripts/atlas.py` copies `src/` into 
 
 `src/vendor/` keeps its licenses and pinned metadata. Formatting covers `src/*.js` (`npm run format`); Python tooling never rewrites `src/`.
 
-## Chart/table invariant
+---
+
+### Chart/table invariant
 
 Every chart has a table equivalent, and the table is authoritative.
 

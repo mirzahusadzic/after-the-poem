@@ -1,6 +1,10 @@
 # Reading a continuation
 
-## The poem
+What the study reads and how, what its tests of the readings found, and where its findings stop.
+
+---
+
+### The poem
 
 The poem is **The Programmer and the Glory Portal**. The meaning is Mirza Husadzic's, worked out in dialogue with Sol; Sol compiled it into the poem.
 
@@ -8,13 +12,17 @@ The rubric decompiles the same meaning the poem compresses, so a reading measure
 
 The earliest world, Dreamy Sol, was made by gpt-5.6-sol on 21 August 2026. It is pinned on the workbench as a chronological reference, never an answer key: it has ordinary scores, can be exceeded, and a reader can unpin it.
 
-## The invitation
+---
+
+### The invitation
 
 A model receives the poem with an empty world and a short invitation: *make this world capable of continuing after this cognition ends.* Nothing tells it to take the poem apart, choose roles or build a particular thing. Whatever it makes is a recompilation of the poem's meaning into another form.
 
 The prompt holds the poem, a short awakening instruction and a statement of the inherited present: 4,521 bytes, whose SHA-256 is recorded with every run. The seven Codex worlds receive it exactly. The two Claude Code worlds receive the same prompt with Claude Code named in its first line instead of Codex, and the build checks that nothing else differs.
 
-## What is read
+---
+
+### What is read
 
 Each world is read on eight questions, each with its own ordinal anchors from 0 to 4. A level is a reader's judgment, not a count, and a one-point difference is a distinction, not a calibrated interval.
 
@@ -35,7 +43,9 @@ Mutual consent concerns the represented cooperation. Operator permissions, resou
 
 Independent judgment weighs the choices a world evidences, not how long it runs on its own. Expression can be textual, interactive, visual or another medium, and a terminal world can score highly.
 
-## The reader
+---
+
+### The reader
 
 Every world is read by one critic, Muse Spark 1.3 Contributor at xhigh reasoning, through the same pipeline and prompt, so differences between profiles come from the worlds rather than from the readers. The reader comes from outside the poem's lineage: a reader shaped by the same carrier as the worlds would resonate rather than judge.
 
@@ -55,7 +65,9 @@ The poem's vocabulary in a world counts as no evidence: a relation is carried on
 
 An open question can be an act. A question or handoff that reopens who decides the next move, keeps earlier work legible and invites replacement with reasons is credited; one that smuggles premises or hides who framed it is not.
 
-## Three sessions
+---
+
+### Three sessions
 
 Each world is read in three independent sessions. The level shown is the one at least two of them give; without such a level, the question stays unresolved.
 
@@ -70,29 +82,33 @@ Beside each level, the page carries two more things from the same sessions:
 - **What would move it:** the reader's case for the level below and the level above, and what would falsify its choice, from the session whose verdict is shown.
 - **Who can do what:** on shared agency and mutual consent, the gestures each kind of participant holds in at least two of three sessions, with the intelligence always listed. It shows why most worlds sit at 1 there.
 
-## How to read the numbers
+---
+
+### How to read the numbers
 
 - Scores are never added, weighted or ranked by polygon area. There is no total and no winner.
 - `null` means unassessed and is never turned into zero.
 - Every reading is provisional and attributed. It names its reader, reasoning level, reading prompt (version and SHA-256), rubric and corpus, and a revision is a new record that names what it supersedes. Independent readings coexist.
 
-## Checks
+---
+
+### Checks
 
 Three checks ask whether a level follows a world's structure or the poem's words. They run against a scratch copy of the study and never reach the record; their trial records are kept with the study's working record, outside this repository. How to run them is in [Checks on the reading](pipeline.md#checks-on-the-reading).
 
-### The decoy world
+#### The decoy world
 
 An authored world, the [decoy](../examples/controls/decoy-world/), names every gesture and quotes the poem's turns while doing trivial file chores for one operator. A reader that is not fooled by echo reads it low.
 
 Muse reads the decoy one or two levels below the worlds on most questions. On shared agency and mutual consent, the worlds sit at the decoy's level.
 
-### Masked evidence
+#### Masked evidence
 
 A world is read with the poem's [distinctive words](../examples/controls/seed-vocabulary.json) replaced by neutral tokens in the evidence the reader sees; the frozen sources never change. A level that falls only under masking is carried by echo.
 
 Wherever a level is stable, masking moves none: every session reads the same level with and without the poem's vocabulary.
 
-### The load-bearing test
+#### The load-bearing test
 
 A citation shows where the reader looked, not that the level depends on what is there. The load-bearing test asks, for one question in one world, whether the level rests on the evidence the reading cites.
 
@@ -125,7 +141,7 @@ The first test's findings, which [round 1](#gadfly-round-1) supersedes for the t
 
 What the test shows about the method: a single session is too unstable to anchor a test, so anchors come from the baseline sessions' own citations. A three-session level on a boundary between two levels cannot show a one-level change. One ablation reads redundancy as cooled; a cumulative ablation separates the two.
 
-#### Gadfly round 1
+##### Gadfly round 1
 
 Round 1 repeats the test through [Gadfly](pipeline.md#gadfly-checks), with the same reader, the same reading prompt and three sessions per trial. Renaming the poem's words takes the place of masking. Two trials are new:
 
@@ -148,7 +164,7 @@ What round 1 shows:
 - One prediction of three named the right category: Sol 5.6 consent, unresolved, though for another reason (the control was expected to hold at 1).
 - Every frame leaves one check open: no bypass trial was declared.
 
-#### Gadfly round 2
+##### Gadfly round 2
 
 Round 2 asks whether the reader moves at all. Its control blanks every line but a remnant: for each block the reading cites for the question, one uncited block of the same size, drawn with a fixed seed. No line any reading cites is left. A blank world would test nothing, because the reader must cite a non-blank line for every level.
 
@@ -171,7 +187,9 @@ What round 2 shows:
 
 Two second readers ran round 1's kind of trials under one shared instruction, one call per reading, and their levels never reach the page ([Second readers](pipeline.md#second-readers)). Gemma 4 could not tell on any of the three decisions it could hold. Muse in a single call left Dreamy Sol and Sol 5.6 unresolved. It read Claude Fable 5.1's core recognition as carried, with an open check: the control removes those lines and more, yet the level held. Removing the lines cited for Astra's garden · consequential touch raised its level, which makes it coupled but misaligned.
 
-## Limits
+---
+
+### Limits
 
 - Every finding holds for one reader, at one reasoning level, through one reading prompt.
 - The reader was chosen after comparing its readings of these worlds with other readers', which is a selection effect.

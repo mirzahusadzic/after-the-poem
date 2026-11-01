@@ -4,7 +4,9 @@ Failures grouped by cause, with the command that diagnoses each one. No step her
 
 See [Commands](commands.md) for every flag, [Environment](environment.md) for the tested setup and [Pipeline](pipeline.md) for the order of operations.
 
-## Router and Codex setup
+---
+
+### Router and Codex setup
 
 The router is local and loopback-only. Anything else is refused before any call.
 
@@ -16,11 +18,15 @@ The router is local and loopback-only. Anything else is refused before any call.
 | Wrong model name | The requested model must match the catalog exactly, including any `openrouter/` prefix. |
 | Setup doubt | Run the matching doctor first: `evaluate.py doctor-profile`, `doctor-dream-profile` or `doctor --dry-run`. Doctors call no model. |
 
-## Model capabilities
+---
+
+### Model capabilities
 
 Every model must be known in two places: the router's catalog and the study's `data/model-capabilities.json`. A model missing from either fails before any call — add it to both (a docs-adjacent data change, outside these pages) or pick a listed model. Rescore profiles in `examples/rescore-muse/` name the release reader exactly.
 
-## Budgets
+---
+
+### Budgets
 
 Live work refuses without `--accept-run` and without an explicit budget, and stops before the turn that would pass a limit.
 
@@ -31,7 +37,9 @@ Live work refuses without `--accept-run` and without an explicit budget, and sto
 - `load_bearing.py run` takes `--total-usd` for all trials plus each trial's budget after a bare `--`; a trial that does not fit its reservation stays unresolved and is never estimated.
 - A run stopped by its budget resumes with the same command and a larger budget; nothing completed is repeated.
 
-## Resuming interrupted work
+---
+
+### Resuming interrupted work
 
 Rerun the same command with the same arguments: `run-profile`, `run-dream-profile`, `run-evaluation`, `score` and `extract` replay preserved turns and continue from the first missing answer. Campaigns resume with `evaluate.py resume` (or `pipeline.py run` again), which skips jobs that have a receipt.
 
@@ -42,7 +50,9 @@ Rerun the same command with the same arguments: `run-profile`, `run-dream-profil
 | Campaign refuses after a code change | The runner froze the pipeline hash at `plan`/`prepare`; plan a new campaign rather than forcing the old one. |
 | Dry run admitted nothing | Expected: `OUTPUT.dry-run` rehearsals use synthetic answers and are never admitted. Note `run-dream-profile --dry-run` rehearses the generation alone. |
 
-## Native sandbox and previews
+---
+
+### Native sandbox and previews
 
 Native worlds run only on macOS through the isolated local runner, and only from the research or release home target — never on the static site and never with a fallback to unrestricted execution.
 
@@ -52,7 +62,9 @@ Native worlds run only on macOS through the isolated local runner, and only from
 - The boundary tests deny host reads and candidate-supplied executables; they skip only when an outer sandbox forbids nested `sandbox-exec`.
 - Console worlds need entries in `CONSOLES`/`COMMANDS` in `scripts/previews.py` plus `data/artefacts.json`; server worlds live in `SERVERS`. Recordings come from `python3 scripts/record_consoles.py` on macOS.
 
-## Browser installs and smoke tests
+---
+
+### Browser installs and smoke tests
 
 Install Node.js 22 and a Playwright browser as in [Environment](environment.md#playwright-install).
 

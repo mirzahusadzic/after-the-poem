@@ -4,7 +4,9 @@ What is tested, what each step needs, and which steps stay Python-only.
 
 See [Commands](commands.md) for every flag and [Troubleshooting](troubleshooting.md) when a check fails.
 
-## Tested matrix
+---
+
+### Tested matrix
 
 | Piece | Tested | Notes |
 | --- | --- | --- |
@@ -22,7 +24,9 @@ Python's version is a floor, and it is Gadfly's: on an older Python every script
 
 In these docs, `python3` means Python 3.13 or later. If yours is older, write `uv run python` instead.
 
-## Prerequisites
+---
+
+### Prerequisites
 
 | Goal | Needs |
 | --- | --- |
@@ -32,7 +36,9 @@ In these docs, `python3` means Python 3.13 or later. If yours is older, write `u
 | Claude Code dreams | `claude` on `PATH` plus `CLAUDE_CODE_OAUTH_TOKEN`, `CLAUDE_DREAM_TOKEN_FILE` (mode 600) or `ANTHROPIC_API_KEY` with `--max-usd`. |
 | Native previews, console recordings | macOS with `sandbox-exec`; the research view (`npm run dev:full`). |
 
-## Playwright install
+---
+
+### Playwright install
 
 ```sh
 npm install
@@ -45,7 +51,9 @@ npx playwright install --with-deps chromium            # Linux (CI)
 - Serve over HTTP (`npm run dev`, `npm run dev:full`, `npm run serve:pages`). Opened from `file:`, sandboxed frames cannot load their assets and the page shows how to start a server instead.
 - `npx playwright install --with-deps` needs OS package installation; on a locked-down Linux host, prefer `PLAYWRIGHT_MODULE_PATH` or run only the fast checks.
 
-## Fast checks vs the full gate
+---
+
+### Fast checks vs the full gate
 
 Each fast check calls no model, and each npm script is a shortcut for a Python command:
 
