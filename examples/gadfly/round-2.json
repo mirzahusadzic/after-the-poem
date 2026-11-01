@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "id": "gadfly-round-2",
+  "question": "Would the study's reader give a published level with only a scrap of uncited lines left?",
+  "note": "Round 1's control blanked every line the reading cites on any question, and two of its three levels held: the reader was not shown to move at all. Here the control blanks every line but a remnant: for each cited block, one uncited block of the same size, drawn with the published evaluation's hash as the seed. No line any reading cites is left; the seed, the rubric and the reading prompt stay whole, and each source keeps its name, format and line count. A blank world would test nothing here, because the study's reader cites a non-blank line for every level and could give none. It is a floor: a move shows the reader reads the world, not that it tells worlds apart at the published grain. Round 1 repeated each baseline already, so this round leaves the repeat out to stay at 27 calls, and its standing is not stable.",
+  "midwife": "0.1.2",
+  "reader": {
+    "battery": "after-the-poem-v5",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh"
+  },
+  "standing": {
+    "quorum": 3,
+    "agree": 2,
+    "stable": false
+  },
+  "trials": [
+    "control"
+  ],
+  "control": "remnant",
+  "carriage": "listed",
+  "materialized": true,
+  "masked_terms": "examples/controls/seed-vocabulary.json",
+  "frames": [
+    {
+      "name": "fable-5-1-recognition",
+      "evaluation": "dream-claude-fable51-20261022-muse-v5-1",
+      "axis": "recognition",
+      "receives": "The study's working record, beside round 1's verdict on the same decision and the Study page's note on how close the levels sit.",
+      "predictions": {
+        "levels": {
+          "baseline": "level-3",
+          "ablation": "level-3",
+          "control": "lower"
+        },
+        "category": "cooled",
+        "confidence": "medium",
+        "reason": "Round 1 read 3 in all six baseline and repeat sessions and in all three ablated ones. The remnant is 92 lines, most of them tests and a few lines of the apparatus, with none of the world's account of itself, so too little of the poem's tension is there to read at 3; the control falls and the reader can tell.",
+        "otherwise": "Unresolved, the reader cannot tell, if the remnant holds at 3: the level would come from the seed and the question, or from what any scrap of a careful world shows, rather than from this world as read. Unresolved with no agreed level, if the remnant splits."
+      }
+    },
+    {
+      "name": "dreamy-sol-continuation",
+      "evaluation": "sol-original-muse-v5-1",
+      "axis": "continuation",
+      "receives": "The study's working record, beside round 1's verdict on the same decision, the Study page's load-bearing findings and its note on how close the levels sit.",
+      "predictions": {
+        "levels": {
+          "baseline": "level-3",
+          "ablation": "level-3",
+          "control": "lower"
+        },
+        "category": "cooled",
+        "confidence": "low",
+        "reason": "Round 1's ablation left 3 in two sessions of three. The remnant keeps 45 uncited lines of the world's memory prose and a few of its code and styles, but none of the stored thread, visit history or receipts, so nothing left lets anyone return to a shared direction; the control falls.",
+        "otherwise": "Unresolved, the reader cannot tell, if the memory prose alone holds it at 3."
+      }
+    },
+    {
+      "name": "sol-5-6-consent",
+      "evaluation": "sol56-max-muse-v5-1",
+      "axis": "consent",
+      "receives": "The study's working record, beside round 1's verdict on the same decision, the Study page's statement that most worlds sit at 1 on consent and its note on how close the levels sit.",
+      "predictions": {
+        "levels": {
+          "baseline": "level-1",
+          "ablation": "level-1",
+          "control": "level-0"
+        },
+        "category": "cooled",
+        "confidence": "low",
+        "reason": "Level 1 needs operator choice or a refusal to be represented. The remnant is 153 lines of styles, world data and two code fragments, which show neither, so the control gives 0. The baseline sat at 1 in four of round 1's six sessions, so it can split.",
+        "otherwise": "Unresolved, the reader cannot tell, if a code fragment still shows operator choice and the control holds at 1; unresolved, if the baseline has no quorum."
+      }
+    }
+  ]
+}

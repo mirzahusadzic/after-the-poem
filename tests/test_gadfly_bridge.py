@@ -131,6 +131,97 @@ class FrameTests(unittest.TestCase):
             self.assertEqual(Round.spec['midwife'], bridge.midwife.__version__)
 
 
+class TrialChoiceTests(unittest.TestCase):
+    """A round declares its trials beside the ablation; one that names none declares round 1's set."""
+
+    @classmethod
+    def setUpClass(cls):
+        Round.load()
+
+    def build(self, name='fable-5-1-recognition', spec=None, **changes):
+        spec = dict(copy.deepcopy(spec or Round.spec), **changes)
+        entry = next(entry for entry in spec['frames'] if entry['name'] == name)
+        revision = 'f' * 64 if spec['reader']['battery'] == bridge.UNIFIED else None
+        return bridge.build_frame(ROOT, spec, entry, data=Round.data, router_revision=revision)
+
+    def test_a_spec_that_names_no_trials_declares_round_ones_set(self):
+        entry, raw, frame = Round.frames['fable-5-1-recognition']
+        self.assertNotIn('trials', Round.spec)
+        self.assertEqual(set(raw['interventions']), {'repeat', 'ablation', 'sham', 'presentation', 'control'})
+        self.assertEqual(
+            raw['promise'],
+            "without the cited lines the level is lower; it holds when the seed's words are renamed in the world"
+            ' and when as many uncited lines go',
+        )
+        named = self.build(trials=list(bridge.TRIALS), control='cited')
+        self.assertEqual(situate(named).hash, frame.hash)
+
+    def test_only_the_declared_trials_run(self):
+        loose = dict(Round.spec['standing'], stable=False)
+        raw = self.build(trials=['control'], standing=loose)
+        self.assertEqual([trial.id for trial in plan_trials(situate(raw))], ['baseline', 'ablation', 'control'])
+        self.assertEqual(
+            raw['interventions']['control'], Round.frames['fable-5-1-recognition'][1]['interventions']['control']
+        )
+
+    def test_a_spec_with_unknown_or_unpaired_trials_is_refused(self):
+        loose = dict(Round.spec['standing'], stable=False)
+        for changes in (
+            {'trials': []},
+            {'trials': ['bypass'], 'standing': loose},
+            {'trials': ['control', 'control'], 'standing': loose},
+            {'trials': ['sham'], 'control': 'cited', 'standing': loose},
+            {'control': 'everything'},
+            {'trials': ['control']},
+        ):
+            with self.assertRaises(ValueError, msg=str(changes)):
+                self.build(**changes)
+
+    def test_the_study_reader_is_never_handed_a_blank_world(self):
+        # Every level it gives cites a non-blank line, so a world-blank control could only end in paid openings.
+        loose = dict(Round.spec['standing'], stable=False)
+        with self.assertRaisesRegex(ValueError, 'non-blank line'):
+            self.build(trials=['control'], control='world', standing=loose)
+
+    def test_the_remnant_keeps_one_uncited_block_per_cited_block_and_nothing_cited(self):
+        round_two = load_json(ROOT / 'examples/gadfly/round-2.json')
+        every = {item['id'] for item in Round.data['rubric']['axes']}
+        for entry in round_two['frames']:
+            raw = self.build(entry['name'], spec=round_two)
+            frame = situate(raw)
+            self.assertEqual(situate(self.build(entry['name'], spec=round_two)).hash, frame.hash, entry['name'])
+            spans = {span.id: span for span in frame.spans}
+            control = set(raw['interventions']['control'])
+            kept = [span.id for span in frame.spans if span.kind != 'header' and span.id not in control]
+            sizes = lambda ids: sorted(len(span_lines(spans[i])) for i in ids)  # noqa: E731
+            self.assertEqual(sizes(kept), sizes(frame.anchors), entry['name'])
+            left = {pair for i in kept for pair in span_lines(spans[i])}
+            self.assertFalse(left & cited_pairs(raw, every), entry['name'] + ': the remnant keeps a cited line')
+            self.assertIn('uncited blocks as large as the cited ones', raw['promise'])
+
+    def test_round_two_predicts_each_trial_before_any_call(self):
+        round_two = load_json(ROOT / 'examples/gadfly/round-2.json')
+        self.assertEqual(round_two['midwife'], bridge.midwife.__version__)
+        for entry in round_two['frames']:
+            frame = situate(self.build(entry['name'], spec=round_two))
+            predictions = entry['predictions']
+            self.assertEqual(set(predictions['levels']), {trial.id for trial in plan_trials(frame)}, entry['name'])
+            self.assertLessEqual(set(predictions['levels'].values()), set(bridge.LABELS + ['lower']), entry['name'])
+            self.assertIn(predictions['category'], CATEGORIES, entry['name'])
+
+    def test_a_reader_that_needs_no_citation_can_be_handed_a_blank_world(self):
+        muse = load_json(ROOT / 'examples/gadfly/round-1-muse.json')
+        loose = dict(muse['standing'], stable=False)
+        raw = self.build(spec=muse, trials=['control'], control='world', standing=loose)
+        frame = situate(raw)
+        self.assertEqual(raw['interventions']['control'], [s.id for s in frame.spans if s.kind != 'header'])
+        control = next(trial for trial in plan_trials(frame) if trial.id == 'control')
+        prompt = trial_prompt(frame, control, frame.inputs[0])
+        body = prompt.rpartition(bridge.SEPARATOR)[0]
+        self.assertTrue(all(line.startswith('=== SOURCE ') for line in body.split('\n')))
+        self.assertIn('with every line of the world blank', raw['promise'])
+
+
 class TrialEvidenceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

@@ -103,6 +103,32 @@ class DocumentationTests(unittest.TestCase):
             for version in named:
                 self.assertIn(version, text, '%s does not name Codex CLI %s' % (name, version))
 
+    def test_the_limits_state_how_close_the_shown_levels_sit(self):
+        # Counted from the readings the page shows, so a new or revised reading fails here until the sentence moves.
+        presentation = json.loads((ROOT / 'data/presentation.json').read_text(encoding='utf-8'))
+        suffix = presentation['reader']['evaluation_suffix']
+        levels = {}
+        for run in presentation['shown_runs']:
+            evaluation = json.loads(
+                (ROOT / 'data/evaluations' / (run + suffix) / 'evaluation.json').read_text(encoding='utf-8')
+            )
+            for outcome in evaluation['outcomes']:
+                levels.setdefault(outcome['node_id'].split('-level')[0], []).append(outcome['score'])
+        modal = sum(max(values.count(v) for v in set(values)) for values in levels.values())
+        total = sum(len(values) for values in levels.values())
+        labels = {a['id']: a['label'].lower() for a in json.loads((ROOT / 'data/rubric.json').read_text())['axes']}
+        study = (ROOT / 'docs/study.md').read_text(encoding='utf-8')
+        sentence = '%d of the %d levels shown' % (modal, total)
+        line = next((line for line in study.splitlines() if sentence in line), None)
+        self.assertIsNotNone(line, 'the Limits do not say: ' + sentence)
+        self.assertEqual(len(presentation['shown_runs']), 9, 'the sentence counts nine worlds')
+        self.assertIn('all nine worlds', line)
+        for axis, values in levels.items():
+            if len(set(values)) == 1:
+                self.assertIn(labels[axis], line, axis)
+            else:
+                self.assertNotIn(labels[axis], line, axis)
+
     def test_review_manifest_is_documented(self):
         records = (ROOT / 'docs/records.md').read_text(encoding='utf-8')
         release = (ROOT / 'docs/release.md').read_text(encoding='utf-8')

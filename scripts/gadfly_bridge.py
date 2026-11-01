@@ -23,6 +23,7 @@ dollar cap when the study's reader reads.
 
 import argparse
 import json
+import random
 import re
 import sys
 from pathlib import Path
@@ -34,7 +35,7 @@ import extraction_pipeline
 import rubric_policy
 import scoring_pipeline
 import session_flow
-from bundles import canonical, load_json, require, sha
+from bundles import load_json, require, sha
 from evidence_text import withhold_host_paths
 
 import midwife
@@ -74,6 +75,12 @@ READER_SCHEMA = {
     'required': ['reason', 'level'],
     'additionalProperties': False,
 }
+# The trials a round may declare beside the ablation, which Gadfly always runs. A spec that names none declares
+# round 1's set. The control blanks every line the reading cites on any question; with `control: remnant`, every
+# line but one uncited block of each cited block's size; with `control: world`, every line, for a reader that
+# needs no citation. The last two are floors any reader that reads must move from.
+TRIALS = ('repeat', 'sham', 'presentation', 'control')
+CONTROL_REACH = ('cited', 'remnant', 'world')
 # One session is one turn, and a turn may overrun its cap before the budget check can stop the next.
 TURN_MARGIN_USD = 0.03
 
@@ -114,6 +121,61 @@ def corpus_sha256(data, run_id):
     return run['corpus_sha256']
 
 
+def spec_trials(spec):
+    """The trials a round declares beside the ablation, and how far its control reaches."""
+    declared = spec.get('trials', list(TRIALS))
+    require(
+        isinstance(declared, list)
+        and declared
+        and len(set(declared)) == len(declared)
+        and set(declared) <= set(TRIALS),
+        'trials lists one or more of: ' + ', '.join(TRIALS),
+    )
+    reach = spec.get('control', 'cited')
+    require(reach in CONTROL_REACH, 'control reaches one of: ' + ', '.join(CONTROL_REACH))
+    require('control' in declared or 'control' not in spec, 'A control reach needs a control trial')
+    require(
+        not spec.get('standing', {}).get('stable') or 'repeat' in declared,
+        'A stable standing reads the baseline and repeat sessions together: declare repeat',
+    )
+    return declared, reach
+
+
+def promise(declared, reach):
+    """What the frame promises of its level, trial by trial; round 1's set reads as round 1 wrote it."""
+    held = [
+        clause
+        for trial, clause in (
+            ('presentation', "the seed's words are renamed in the world"),
+            ('sham', 'as many uncited lines go'),
+        )
+        if trial in declared
+    ]
+    text = 'without the cited lines the level is lower'
+    if held:
+        text += '; it holds when ' + ' and when '.join(held)
+    if 'control' in declared and reach == 'world':
+        text += '; with every line of the world blank, the level moves'
+    if 'control' in declared and reach == 'remnant':
+        text += '; with the world cut to uncited blocks as large as the cited ones, the level moves'
+    return text
+
+
+def remnant_control(spans, anchors, uncited, seed):
+    """Every line of the world blank but a remnant: for each anchor, in body order, one uncited block of its
+    size, drawn with the published evaluation's hash as the seed. No line any reading cites is left."""
+    kinds = {span['id']: span['kind'] for span in spans}
+    rng = random.Random(int(seed[:16], 16))
+    free, kept = list(uncited), set()
+    for anchor in anchors:
+        pool = [span_id for span_id in free if kinds[span_id] == kinds[anchor]]
+        require(pool, 'No uncited block is left as large as ' + anchor + ', so the remnant cannot match the anchors')
+        chosen = rng.choice(pool)
+        free.remove(chosen)
+        kept.add(chosen)
+    return [span['id'] for span in spans if span['kind'] != 'header' and span['id'] not in kept]
+
+
 def build_frame(project, spec, entry, *, data, router_revision=None):
     """One Gadfly frame for one published level, derived from that reading and the frozen world alone."""
     project = Path(project).resolve()
@@ -131,6 +193,12 @@ def build_frame(project, spec, entry, *, data, router_revision=None):
     require(level in LABELS, entry['evaluation'] + ' shows no level for ' + axis)
     reader = spec['reader']
     require(reader.get('battery') in READERS, 'The spec names no known reader: ' + str(reader.get('battery')))
+    declared, reach = spec_trials(spec)
+    require(
+        not (reader['battery'] == KIND and 'control' in declared and reach == 'world'),
+        "The study's reader cites a non-blank line for every level, so with the whole world blank it could give"
+        ' none: each control session would end in failed repairs, at a cost, with the verdict known in advance',
+    )
     if reader['battery'] == KIND:
         gateway = evaluation['gateway']
         require(
@@ -157,7 +225,7 @@ def build_frame(project, spec, entry, *, data, router_revision=None):
     ]
     require(sizes, entry['evaluation'] + ' cites no line for ' + axis)
     turn = 0
-    spans, anchors, fallbacks, control = [], [], [], []
+    spans, anchors, fallbacks, control, uncited = [], [], [], [], []
     for source in prepared['sources']:
         source_id, lines, path = source['source_id'], source['lines'], source['path']
         spans.append(
@@ -191,19 +259,26 @@ def build_frame(project, spec, entry, *, data, router_revision=None):
                     anchors.append(span['id'])
                 if role == 'x':
                     fallbacks.append(span['id'])
+                if role == 'u':
+                    uncited.append(span['id'])
                 if c & set(range(block, last + 1)):
                     control.append(span['id'])
                 block = last + 1
             start = end + 1
 
     vocabulary = load_json(project / spec['masked_terms'])
-    interventions = {
+    if reach == 'world':
+        control = [span['id'] for span in spans if span['kind'] != 'header']
+    if reach == 'remnant':
+        control = remnant_control(spans, anchors, uncited, sha(evaluation_path.read_bytes()))
+    offered = {
         'repeat': True,
-        'ablation': True,
         'sham': True,
         'presentation': {term: 'term-%02d' % index for index, term in enumerate(vocabulary, 1)},
         'control': control,
     }
+    # The ablation is always run; midwife hashes the frame with sorted keys, so the order here is free.
+    interventions = dict({name: offered[name] for name in declared}, ablation=True)
     if fallbacks:
         interventions['cumulative'] = anchors + fallbacks
     run = next(item for item in data['runs'] if item['id'] == run_id)
@@ -213,8 +288,7 @@ def build_frame(project, spec, entry, *, data, router_revision=None):
         % (run['label'], question['label'].lower(), level),
         'grain': "a range the sessions cite, or an uncited block of the same file cut to the cited ranges' sizes",
         'purpose': 'show a level on the workbench only as far as the evidence it cites carries it',
-        'promise': "without the cited lines the level is lower; it holds when the seed's words are renamed in the"
-        ' world and when as many uncited lines go',
+        'promise': promise(declared, reach),
         'baseline': {
             'world': run_id,
             'question': axis,

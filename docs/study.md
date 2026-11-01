@@ -148,13 +148,35 @@ What round 1 shows:
 - One prediction of three named the right category: Sol 5.6 consent, unresolved, though for another reason (the control was expected to hold at 1).
 - Every frame leaves one check open: no bypass trial was declared.
 
-Two second readers ran the same kind of trials under one shared instruction, one call per reading, and their levels never reach the page ([Second readers](pipeline.md#second-readers)). Gemma 4 could not tell on any of the three decisions it could hold. Muse in a single call left Dreamy Sol and Sol 5.6 unresolved. It read Claude Fable 5.1's core recognition as carried, with an open check: the control removes those lines and more, yet the level held. Removing the lines cited for Astra's garden · consequential touch raised its level, which makes it coupled but misaligned.
+#### Gadfly round 2
+
+Round 2 asks whether the reader moves at all. Its control blanks every line but a remnant: for each block the reading cites for the question, one uncited block of the same size, drawn with a fixed seed. No line any reading cites is left. A blank world would test nothing, because the reader must cite a non-blank line for every level.
+
+The round ran through the same reader, prompt, Codex CLI and router as round 1. It has no repeat (round 1 repeated these baselines), no sham and no renaming. The predictions were written before the first call. The round planned 27 calls; the cap stopped the last, an ablated Sol 5.6 session, so that trial has two.
+
+| Decision | Remnant | Round 2 | What the trials read |
+| --- | --- | --- | --- |
+| Claude Fable 5.1 · core recognition (3) | 92 lines, mostly tests | Cooled: the reader can tell | The ablation held at 3 in all three sessions. With only the remnant, two sessions of three read 2, from the probes, beams and receipts its tests still show. |
+| Dreamy Sol · open continuation (3) | 88 lines, half of them memory prose | Carried, with three checks open | The ablation read 3, 2 and 2 (round 1: 3, 3 and 2). With only the remnant, all three sessions read 1: an inspector and a lineage link, but no state to continue from. |
+| Sol 5.6 · mutual consent (1) | 153 lines of styles, world data and two code fragments | Unresolved: the reader cannot tell | Every session read 1, the remnant's included. They cite an `init --force` flag, port choices and a dependency guard: operator choice, which is what level 1 asks for. |
+
+What round 2 shows:
+
+- The reader reads the world. Cut to a scrap, open continuation fell two levels and core recognition one, and each session's reason names what the scrap still holds. The levels are not a fixed default.
+- The top of the scale is compressed: 92 lines of tests still read 2 on core recognition.
+- Level 1 on mutual consent asks only for operator choice, which almost any world with a command line shows. No control can move a level that low, and the close consent levels across worlds may come from the rubric's grain rather than from the reader.
+- Dreamy Sol's continuation now has three verdicts: carried in the first test, unresolved in round 1 and carried in round 2. Three of its six ablated sessions across the two Gadfly rounds read 2, so the level sits on the line between 3 and 2. One run of three sessions, with no sham, does not settle it.
+- A remnant is one draw; another could keep more or less of what a question needs.
+- One prediction of three named the right category: Claude Fable 5.1, cooled.
+
+Two second readers ran round 1's kind of trials under one shared instruction, one call per reading, and their levels never reach the page ([Second readers](pipeline.md#second-readers)). Gemma 4 could not tell on any of the three decisions it could hold. Muse in a single call left Dreamy Sol and Sol 5.6 unresolved. It read Claude Fable 5.1's core recognition as carried, with an open check: the control removes those lines and more, yet the level held. Removing the lines cited for Astra's garden · consequential touch raised its level, which makes it coupled but misaligned.
 
 ## Limits
 
 - Every finding holds for one reader, at one reasoning level, through one reading prompt.
 - The reader was chosen after comparing its readings of these worlds with other readers', which is a selection effect.
 - Where sessions split, a one-level difference is within the spread.
+- Under the v5 reading the levels sit close together: 68 of the 72 levels shown are their question's most common level, and core recognition, mutual consent, fidelity through change and open continuation read the same in all nine worlds. The reader moves when a world is cut to a scrap ([Gadfly round 2](#gadfly-round-2)), so this is not a fixed default; how much of it comes from the worlds and how much from the rubric's coarse levels is open.
 - The two DeepSeek worlds are the largest (about 250 KB and 7,000–8,000 lines each, against 33–176 KB for the others), and a reader may reward volume.
 - Each condition has one generation. Harnesses, tools, CLI versions and reasoning settings differ, and a model label does not pin a backend revision.
 - The reader sometimes notices blanked lines, in ablated and sham trials alike; where blanks fall inside a declared mechanism, it reads the mechanism as declared but not enacted.

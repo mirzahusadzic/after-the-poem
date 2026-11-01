@@ -519,6 +519,16 @@ The reader is the study's own. Each call is one v5 session, through the reading 
 
 A round is a spec in `examples/gadfly/`. It lists the frames and, for each one, the predictions, written before the first call.
 
+A spec can also choose its trials. `trials` lists any of `repeat`, `sham`, `presentation` and `control`; the ablation always runs. A spec that names none runs round 1's set. `control` says how far the control reaches:
+
+| `control` | What it blanks |
+| --- | --- |
+| `cited` | Every line the reading cites on any question. Round 1's control. |
+| `remnant` | Every line but one uncited block for each cited block, of the same size, drawn with the published evaluation's hash as the seed. No line any reading cites is left. |
+| `world` | Every line. Only for a second reader: the study's reader cites a non-blank line for every level, so `build` refuses it there. |
+
+A stable standing reads the baseline and repeat sessions together, so it needs `repeat`.
+
 It takes four steps:
 
 1. **Build** the frames. `build` derives them from the published readings and pins the reader, the code and the midwife release.
@@ -536,6 +546,7 @@ python3 scripts/gadfly_bridge.py report .local/gadfly/round-1 --spec examples/ga
 Good to know:
 
 - Round 1 has three frames and 57 calls: Dreamy Sol · open continuation, Sol 5.6 · mutual consent and Claude Fable 5.1 · core recognition. It has run once, for about $0.53, and its verdicts are on the Study page ([Gadfly round 1](study.md#gadfly-round-1)).
+- Round 2 asks the same three decisions whether the reader moves at all. Its control is a remnant, it has no repeat, and it plans 27 calls. It has run once, for about $0.21; the $0.25 cap stopped its last call. Its verdicts are on the Study page ([Gadfly round 2](study.md#gadfly-round-2)).
 - A frame is never changed. A new reading, new code, another router revision or another midwife release gives a new frame with a new hash, so build into a new folder.
 - If a run stops, run it again: a kept record is never read twice. `--only TRIAL` runs one trial.
 - The round reads with `carriage: listed`. A category is named at once, and the checks it leaves open, such as the missing bypass trial, are listed beside it.
