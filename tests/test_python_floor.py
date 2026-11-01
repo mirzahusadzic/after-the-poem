@@ -54,6 +54,22 @@ class PythonFloorTests(unittest.TestCase):
             self.assertNotRegex(command, r'(^|&& |-- )python3? ', name + ' runs an unpinned python')
         self.assertTrue(scripts['test'].startswith('uv run python '))
 
+    def test_node_scripts_that_start_python_run_under_uv(self):
+        # A smoke test that starts `python3` itself gets the venv's Python only when node runs under `uv run`,
+        # directly or through a script uv started; otherwise it finds whatever python3 the machine has.
+        scripts = json.loads(read('package.json'))['scripts']
+        starts_python = {
+            path.name for path in (ROOT / 'tests').glob('*.mjs') if re.search(r"['\"]python3?['\"]", path.read_text())
+        }
+        self.assertTrue(starts_python)
+        for name, command in scripts.items():
+            # Split at the top level only: an `&&` inside a quoted `sh -c` runs under whatever started the shell.
+            steps = re.split(r'&&(?=(?:[^"]*"[^"]*")*[^"]*$)', command)
+            for step in steps:
+                for script in re.findall(r'node tests/([\w-]+\.mjs)', step):
+                    if script in starts_python:
+                        self.assertTrue(step.strip().startswith('uv run '), '%s: %s' % (name, step.strip()))
+
     def test_workflows_use_the_floor_through_a_locked_uv(self):
         for path in ('.github/workflows/ci.yml', '.github/workflows/pages.yml'):
             text = read(path)

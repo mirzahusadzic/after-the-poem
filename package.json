@@ -18,7 +18,7 @@
     "test": "uv run python -m unittest discover -s tests -v",
     "verify": "npm run format:check && npm test && npm run check && npm run build && npm run evaluate -- validate-contract tests/fixtures/evaluation/attribution && npm run test:ui && npm run test:page && npm run test:release",
     "test:ui": "uv run python scripts/atlas.py build --view full && uv run python tests/test_ci_build_restore.py -- node tests/ui-smoke.mjs",
-    "test:page": "uv run python scripts/atlas.py build && node tests/page-smoke.mjs",
+    "test:page": "uv run python scripts/atlas.py build && uv run node tests/page-smoke.mjs",
     "test:preview": "node tests/preview-smoke.mjs",
     "dev": "uv run python scripts/atlas.py serve --previews",
     "dev:full": "uv run python scripts/atlas.py serve --view full --previews",
