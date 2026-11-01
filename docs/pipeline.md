@@ -662,7 +662,7 @@ What the output holds:
 
 #### Gadfly checks
 
-[Gadfly](https://github.com/mirzahusadzic/gadfly) runs the load-bearing test as a published package, `midwife`, pinned at 0.1.2 in `uv.lock`. Its verdict rules are the ones above, with `rules: 2`. Here it tests the levels the release page shows, as they stand: each frame is built from one published reading, and no scratch study is needed.
+[Gadfly](https://github.com/mirzahusadzic/gadfly) runs the load-bearing test as a published package, `midwife`, pinned at 0.6.0 in `uv.lock`. Its verdict rules are the ones above, with `rules: 2`. Here it tests the levels the release page shows, as they stand: each frame is built from one published reading, and no scratch study is needed.
 
 A frame names one world and one question. Every trial comes from that reading and the frozen world alone:
 
@@ -698,17 +698,19 @@ It takes four steps:
 3. **Run.** A dry run reads every trial with synthetic sessions and calls no model. A live run needs frames built against the live router (`--router-revision live`), `--accept-run`, a total cap, a cap per call and the reader's prices.
 4. **Report.** `report` reads the verdicts from the kept records, without calling a model, and shows the predictions beside them.
 
+Round 1's spec names midwife 0.1.2, the release it ran under. `build --dry-run` builds it under the pinned release for dry runs only.
+
 To build, plan, run and report round 1 dry, with no model call:
 
 ```sh
 python3 scripts/gadfly_bridge.py build \
   examples/gadfly/round-1.json \
-  --output .local/gadfly/round-1
-python3 scripts/gadfly_bridge.py plan .local/gadfly/round-1
-python3 scripts/gadfly_bridge.py run .local/gadfly/round-1 \
+  --output .local/gadfly/round-1-dry --dry-run
+python3 scripts/gadfly_bridge.py plan .local/gadfly/round-1-dry
+python3 scripts/gadfly_bridge.py run .local/gadfly/round-1-dry \
   --dry-run
 python3 scripts/gadfly_bridge.py report \
-  .local/gadfly/round-1 \
+  .local/gadfly/round-1-dry \
   --spec examples/gadfly/round-1.json --dry-run
 ```
 
@@ -717,7 +719,10 @@ Good to know:
 - **Round 1.** It has three frames and 57 calls: Dreamy Sol · open continuation, Sol 5.6 · mutual consent and Claude Fable 5.1 · core recognition. It has run once, for about $0.53, and its verdicts are on the Study page ([Gadfly round 1](study.md#gadfly-round-1)).
 - **Round 2.** It asks the same three decisions whether the reader moves at all. Beside the ablation it runs only a remnant control, with no repeat, sham or presentation: 27 calls in all. It has run once, for about $0.21, and the $0.25 cap stopped its last call; its verdicts are on the Study page ([Gadfly round 2](study.md#gadfly-round-2)).
 - **Frames never change.** A new reading, new code, another router revision or another midwife release gives a new frame with a new hash, so build into a new folder.
+- **Releases.** A spec keeps the release it ran under: rounds 1 and 2 name midwife 0.1.2, the second-reader rounds 0.1.1. Under another release `build` takes it only with `--dry-run`, and `run` refuses such a round live. A new live run is a new round, with a new spec and its own predictions.
+- **Re-reading.** `report` reads kept records under the pinned release. Every kept round reads the same under 0.6.0 as under the release it ran with: frame hashes, calls, each trial's input and level, and the verdicts.
 - **Resuming.** If a run stops, run it again: a kept record is never read twice. `--only TRIAL` runs one trial; repeat it for more.
+- **Settling.** `run --settle` makes no more calls for a trial whose level can no longer change, such as the third session after two agree. The verdict reads the same. The report then shows the two sessions that settled the trial, not how a third would have read. Under a stable standing, the baseline and repeat always run whole.
 - **Carriage.** The round reads with `carriage: listed`. A category is named at once, and the checks it leaves open, such as the missing bypass trial, are listed beside it.
 
 What the output holds:
@@ -739,10 +744,7 @@ A round can also be read by Gemma 4 on your own machine, through [eGemma](https:
 - **Context.** eGemma reads about 32,000 tokens and refuses a reading that does not fit. `build` refuses such a world before any call, so round 1's Dreamy Sol and Sol 5.6 have no eGemma frame.
 - **Key and caps.** The key comes from `EGEMMA_API_KEY` or `EGEMMA_API_KEY_FILE`. A live run needs `--accept-run`, and no dollar caps.
 
-> [!NOTE]
-> Both second-reader specs name midwife 0.1.1, the release they ran with, and keep it as their record. `build` refuses a spec that names another release than the pinned 0.1.2: a new live run is a new round, with a new spec and its own predictions. `report` still reads the records they kept.
-
-To build, run and report the eGemma round:
+The eGemma round ran with these commands, under midwife 0.1.1:
 
 ```sh
 python3 scripts/gadfly_bridge.py build \
@@ -763,7 +765,7 @@ The study's critic can be the second reader too. Muse Spark 1.3 Contributor then
 - **Router revision.** The frame pins the router's revision: build with `--router-revision live`, and a run refuses a router at another revision.
 - **Live run.** A live run needs `--accept-run`, a total cap and the prices; the per-call cap is the study's reader's only. Before each call the runner sets aside the most that call can cost (its whole input and a full answer), and it counts what each call reports.
 
-To build and run the Muse round:
+The Muse round ran with these commands, under midwife 0.1.1:
 
 ```sh
 python3 scripts/gadfly_bridge.py build \

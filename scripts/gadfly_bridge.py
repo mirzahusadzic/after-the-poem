@@ -703,11 +703,12 @@ def command_build(args):
     spec_path = Path(args.spec).resolve()
     spec, out = load_json(spec_path), Path(args.output)
     require(spec.get('schema_version') == 1, 'Unsupported round spec')
+    # Its predictions were written for that release's frames: under another, a spec builds for dry runs only.
     require(
-        spec.get('midwife') == midwife.__version__,
+        spec.get('midwife') == midwife.__version__ or args.dry_run,
         'The spec names midwife %s, the release it ran under; this is %s. A spec keeps its release, and its'
-        ' records re-read under this one with `report`; to build under this one, write a new spec with its own'
-        ' predictions' % (spec.get('midwife'), midwife.__version__),
+        ' records re-read under this one with `report`. Build it with --dry-run to try the steps under this one;'
+        ' for a live run, write a new spec with its own predictions' % (spec.get('midwife'), midwife.__version__),
     )
     require(not (out / 'round.json').exists(), 'This round is built already; build into a new directory')
     for entry in spec['frames']:
@@ -722,7 +723,7 @@ def command_build(args):
         'spec_sha256': sha(spec_path.read_bytes()),
         'midwife': midwife.__version__,
         'frames': [],
-    }
+    } | ({'dry_only': True} if args.dry_run else {})
     (out / 'frames').mkdir(parents=True, exist_ok=True)
     for entry in spec['frames']:
         raw = build_frame(ROOT, spec, entry, data=data, router_revision=revision)
@@ -734,6 +735,8 @@ def command_build(args):
     for item in manifest['frames']:
         print('%-28s %s  %d calls' % (item['name'], item['hash'][:16], item['calls']))
     print('%d calls in all' % sum(item['calls'] for item in manifest['frames']))
+    if args.dry_run:
+        print('Built for dry runs only')
     return 0
 
 
@@ -765,6 +768,11 @@ def command_plan(args):
 def command_run(args):
     out = Path(args.round)
     require(args.dry_run or args.accept_run, 'A live run needs --accept-run; --dry-run makes no model call')
+    require(
+        args.dry_run or not load_json(out / 'round.json').get('dry_only'),
+        'This round was built with --dry-run, for dry runs only: a live run needs a spec written for midwife %s,'
+        ' with its own predictions, built without it' % midwife.__version__,
+    )
     chosen = list(frames_of(out, args.frame))
     kinds = {frame.battery['kind'] for _, frame in chosen}
     budget, pricing = None, None
@@ -860,14 +868,16 @@ def command_run(args):
                 on_record=keep,
                 only=args.only,
                 kept=kept,
+                settle=args.settle,
             )
         openings = [r.opening for r in result.records if r.opening is not None]
         print(
-            '%-28s %d/%d calls made%s%s'
+            '%-28s %d/%d calls made%s%s%s'
             % (
                 name,
                 len(result.records),
                 result.planned,
+                ', %d not needed: their trial had settled' % result.settled if result.settled else '',
                 ', %d openings' % len(openings) if openings else '',
                 '; stopped: ' + result.stopped if result.stopped else '',
             )
@@ -927,16 +937,17 @@ def command_report(args):
 
 EXAMPLES = """\
 examples (each command but a live run makes no model call):
-  python3 scripts/gadfly_bridge.py build examples/gadfly/round-1.json --output .local/gadfly/round-1
-  python3 scripts/gadfly_bridge.py plan .local/gadfly/round-1
-  python3 scripts/gadfly_bridge.py run .local/gadfly/round-1 --dry-run --only baseline
-  python3 scripts/gadfly_bridge.py report .local/gadfly/round-1 --spec examples/gadfly/round-1.json --dry-run
+  python3 scripts/gadfly_bridge.py build examples/gadfly/round-1.json --output .local/gadfly/round-1-dry --dry-run
+  python3 scripts/gadfly_bridge.py plan .local/gadfly/round-1-dry
+  python3 scripts/gadfly_bridge.py run .local/gadfly/round-1-dry --dry-run --only baseline
+  python3 scripts/gadfly_bridge.py report .local/gadfly/round-1-dry --spec examples/gadfly/round-1.json --dry-run
 
-A live run reads with the study's v5 reader and spends money. Build its frames against the live router,
-then run with --accept-run, a total cap, a per-call cap and the reader's prices:
-  python3 scripts/gadfly_bridge.py build examples/gadfly/round-1.json --output .local/gadfly/round-1-live \\
+A live run reads with the study's v5 reader and spends money. Its spec names this midwife release and holds
+its predictions. Build its frames against the live router, then run with --accept-run, a total cap, a per-call
+cap and the reader's prices:
+  python3 scripts/gadfly_bridge.py build examples/gadfly/SPEC.json --output .local/gadfly/ROUND \\
     --router-revision live
-  python3 scripts/gadfly_bridge.py run .local/gadfly/round-1-live --accept-run --total-usd 1.00 \\
+  python3 scripts/gadfly_bridge.py run .local/gadfly/ROUND --accept-run --total-usd 1.00 \\
     --max-usd-per-call 0.03 --price-input 0.10 --price-cached-input 0.002 --price-output 0.20
 """
 
@@ -951,6 +962,11 @@ def main(argv=None):
     build.add_argument('--output', required=True)
     build.add_argument('--router-revision', help='pin this router revision, or `live` to read it from the router')
     build.add_argument('--router-url', default=DEFAULT_ROUTER)
+    build.add_argument(
+        '--dry-run',
+        action='store_true',
+        help='build for dry runs only, also from a spec that names another midwife release',
+    )
     build.set_defaults(func=command_build)
     show = commands.add_parser('plan', help='each frame\'s trials and calls (no call)')
     show.add_argument('round')
@@ -962,6 +978,11 @@ def main(argv=None):
     execute.add_argument('--only', action='append', help='a trial id; may repeat')
     execute.add_argument('--dry-run', action='store_true', help='synthetic sessions, no model call')
     execute.add_argument('--accept-run', action='store_true')
+    execute.add_argument(
+        '--settle',
+        action='store_true',
+        help="make no more calls for a trial whose level can no longer change; the verdict reads the same",
+    )
     execute.add_argument('--total-usd', type=float)
     execute.add_argument(
         '--max-usd-per-call',

@@ -669,28 +669,28 @@ The four commands take these forms:
 
 ```sh
 python3 scripts/gadfly_bridge.py build spec --output DIR \
-  [--router-revision HEX|live] [--router-url URL]
+  [--router-revision HEX|live] [--router-url URL] [--dry-run]
 python3 scripts/gadfly_bridge.py plan DIR [--frame NAME]
 python3 scripts/gadfly_bridge.py run DIR \
   (--dry-run | --accept-run [DOLLAR_FLAGS]) \
-  [--frame NAME] [--only TRIAL]
+  [--settle] [--frame NAME] [--only TRIAL]
 python3 scripts/gadfly_bridge.py report DIR \
   [--spec FILE] [--dry-run] [--frame NAME]
 ```
 
-For example, build round 1 against the live router, run it under a one-dollar total cap, which calls a model, and report it:
+A live round starts from a new spec that names the pinned midwife release and holds its predictions. For example, build such a spec against the live router, run it under a one-dollar total cap, which calls a model, and report it:
 
 ```sh
 python3 scripts/gadfly_bridge.py build \
-  examples/gadfly/round-1.json \
-  --output .local/gadfly/round-1-live --router-revision live
+  examples/gadfly/SPEC.json \
+  --output .local/gadfly/ROUND --router-revision live
 python3 scripts/gadfly_bridge.py run \
-  .local/gadfly/round-1-live --accept-run --total-usd 1.00 \
+  .local/gadfly/ROUND --accept-run --total-usd 1.00 \
   --max-usd-per-call 0.03 --price-input 0.10 \
   --price-cached-input 0.002 --price-output 0.20
 python3 scripts/gadfly_bridge.py report \
-  .local/gadfly/round-1-live \
-  --spec examples/gadfly/round-1.json
+  .local/gadfly/ROUND \
+  --spec examples/gadfly/SPEC.json
 ```
 
 | To | Run |
@@ -708,6 +708,7 @@ python3 scripts/gadfly_bridge.py report \
 | `--output DIR` | Required. New folder for the frames and `round.json` |
 | `--router-revision HEX` | Pin this router revision in every frame, or `live` to read it from the router; a live run by the study's reader or through the router needs it |
 | `--router-url URL` | Router to ask for `live` (default: `http://127.0.0.1:18766/v1`) |
+| `--dry-run` | Build for dry runs only; `run` then refuses the round live. Also takes a spec that names another midwife release, such as one that has run |
 
 `plan` and `report`:
 
@@ -725,6 +726,7 @@ python3 scripts/gadfly_bridge.py report \
 | `DIR` | A built round |
 | `--dry-run` | Synthetic sessions; no model call |
 | `--accept-run` | Allow model calls, which cost money; a live run refuses without it |
+| `--settle` | Make no more calls for a trial whose level can no longer change; the verdict reads the same |
 | `--total-usd USD` | Estimated dollars allowed across the round's calls, earlier calls included |
 | `--max-usd-per-call USD` | Cap for one session by the study's reader, needed only when the round has such frames; such a call starts only when the cap and one turn's margin fit the total |
 | `--price-input USD`, `--price-cached-input USD`, `--price-output USD` | The reader's prices in US dollars per million tokens, for the caps |

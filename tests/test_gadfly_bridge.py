@@ -146,7 +146,24 @@ class FrameTests(unittest.TestCase):
             for level in predictions['levels'].values():
                 self.assertIn(level, bridge.LABELS + ['lower'], name)
             self.assertIn(predictions['category'], CATEGORIES, name)
-            self.assertEqual(Round.spec['midwife'], bridge.midwife.__version__)
+
+
+# The specs that have run, and the release each ran under.
+RAN_UNDER = {
+    'round-1.json': '0.1.2',
+    'round-2.json': '0.1.2',
+    'round-1-egemma.json': '0.1.1',
+    'round-1-muse.json': '0.1.1',
+}
+
+
+class SpecReleaseTests(unittest.TestCase):
+    def test_a_spec_that_ran_keeps_its_release_and_a_new_one_names_the_pin(self):
+        # A spec's predictions were written for the frames of the release it names, so moving the pin never
+        # rewrites a spec that has run; one that has not yet run is written for the pinned release.
+        for path in sorted((ROOT / 'examples/gadfly').glob('*.json')):
+            named = load_json(path)['midwife']
+            self.assertEqual(named, RAN_UNDER.get(path.name, bridge.midwife.__version__), path.name)
 
 
 class TrialChoiceTests(unittest.TestCase):
@@ -219,7 +236,6 @@ class TrialChoiceTests(unittest.TestCase):
 
     def test_round_two_predicts_each_trial_before_any_call(self):
         round_two = load_json(ROOT / 'examples/gadfly/round-2.json')
-        self.assertEqual(round_two['midwife'], bridge.midwife.__version__)
         for entry in round_two['frames']:
             frame = situate(self.build(entry['name'], spec=round_two))
             predictions = entry['predictions']
@@ -487,6 +503,48 @@ class EGemmaRoundTests(unittest.TestCase):
             reading = load_json(out / ('dry-report-midwife-%s.json' % bridge.midwife.__version__))
             self.assertEqual(reading['midwife'], bridge.midwife.__version__)
             self.assertEqual([f['name'] for f in reading['frames']], ['astra-garden-touch'])
+
+    def test_a_settled_run_skips_only_calls_that_cannot_change_the_reading(self):
+        # Under a stable standing the baseline and repeat run whole; every other trial stops at its quorum.
+        with tempfile.TemporaryDirectory(prefix='after-poem-gadfly-settle-') as temporary:
+            spec = current_copy(self.SPEC, temporary)
+            readings = {}
+            for settle in (False, True):
+                out = Path(temporary) / ('settled' if settle else 'whole')
+                self.assertEqual(bridge.main(['build', str(spec), '--output', str(out)]), 0)
+                flags = ['--settle'] if settle else []
+                frame = ['--frame', 'astra-garden-touch']
+                self.assertEqual(bridge.main(['run', str(out), '--dry-run'] + frame + flags), 0)
+                self.assertEqual(bridge.main(['report', str(out), '--dry-run'] + frame), 0)
+                kept = bridge.load_records(out / 'dry-records' / 'astra-garden-touch.jsonl')
+                reading = load_json(out / ('dry-report-midwife-%s.json' % bridge.midwife.__version__))
+                readings[settle] = (len(kept), reading['frames'][0]['overall'], reading['frames'][0]['findings'])
+            frame = self.frames['astra-garden-touch'][2]
+            standing = self.spec['standing']
+            others = len(plan_trials(frame)) - 2
+            self.assertEqual(readings[False][0], 3 * (others + 2))
+            self.assertEqual(readings[True][0], 3 * 2 + standing['agree'] * others)
+            self.assertEqual(readings[True][1:], readings[False][1:])
+
+    def test_a_spec_of_another_release_builds_for_dry_runs_only(self):
+        # Its predictions were written for the frames of the release it names, so it never runs live under this one.
+        import contextlib
+        import io
+        from unittest import mock
+
+        self.assertNotEqual(self.spec['midwife'], bridge.midwife.__version__)
+        with tempfile.TemporaryDirectory(prefix='after-poem-gadfly-dry-build-') as temporary:
+            out = Path(temporary) / 'round'
+            self.assertEqual(bridge.main(['build', str(self.SPEC), '--output', str(out), '--dry-run']), 0)
+            self.assertIs(load_json(out / 'round.json')['dry_only'], True)
+            frame = ['--frame', 'astra-garden-touch']
+            told = io.StringIO()
+            with contextlib.redirect_stderr(told), mock.patch.object(bridge, 'EGemma', fake_battery(bridge.EGEMMA, {})):
+                self.assertEqual(bridge.main(['run', str(out), '--accept-run'] + frame), 1)
+            self.assertIn('for dry runs only', told.getvalue())
+            self.assertFalse((out / 'records').exists())
+            self.assertEqual(bridge.main(['run', str(out), '--dry-run'] + frame), 0)
+            self.assertEqual(len(bridge.load_records(out / 'dry-records' / 'astra-garden-touch.jsonl')), 18)
 
 
 class SecondCriticTests(unittest.TestCase):
