@@ -22,7 +22,7 @@ The router is local and loopback-only. Anything else is refused before any call.
 
 ### Model capabilities
 
-Every model must be known in two places: the router's catalog and the study's `data/model-capabilities.json`. A model missing from either fails before any call — add it to both (a docs-adjacent data change, outside these pages) or pick a listed model. Rescore profiles in `examples/rescore-muse/` name the release reader exactly.
+Every model must be known in two places: the router's catalog and the study's `data/model-capabilities.json`. A model missing from either fails before any call — add it to both (a data change these pages do not cover) or pick a listed model. Rescore profiles in `examples/rescore-muse/` name the release reader exactly.
 
 ---
 
@@ -72,4 +72,4 @@ Install Node.js 22 and a Playwright browser as in [Environment](environment.md#p
 - To reuse an existing Playwright copy, set `PLAYWRIGHT_MODULE_PATH` instead of installing.
 - `test:engines` repeats the release test under WebKit and Firefox (`PLAYWRIGHT_BROWSER`); `test:preview` needs the macOS runner above. Both are outside `verify`.
 - Serve over HTTP. From `file:`, sandboxed frames cannot load assets and the page explains how to start a server rather than relaxing the sandbox.
-- If the external-navigation probe fails the build, a preview attempted a non-loopback request: treat it as a world bug, not a test flaw.
+- If the external-navigation probe fails `test:ui`, a non-loopback navigation got out of a preview frame. The test plants that link itself, so treat it as a sandbox or host-adapter bug, not a world bug or a test flaw.

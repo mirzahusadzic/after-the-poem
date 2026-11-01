@@ -25,7 +25,7 @@ The release reader is pinned under `reader` in `data/presentation.json`: Muse Sp
 | --- | --- | --- |
 | v5 (current) | `*-muse-v5-1` | The fixed pipeline and prompt the release page shows. Sessions record a seed reading, carriage map and standing map; each judgment carries a lens, a reading and the case for neighbouring levels. Profiles live in `examples/rescore-muse/`. |
 | v4 (earlier) | `*-muse-v4-1` | The previous prompt generation, kept for comparison. Visible only in the research view. |
-| Static | `*-static-*-v1` | Codex static readings on retained artefacts (`basis: static-artifact`), including the revised `sol-original-static-20261019-v2` which supersedes v1. |
+| Static | `*-static-*` | Codex static readings on retained artefacts (`basis: static-artifact`), including the revised `sol-original-static-20261019-v2` which supersedes v1. |
 | Placeholders | `*-unreviewed-v1` | What bundle import creates: every dimension `null`, explicitly unreviewed. Never a score. |
 | Editorial | `deepseek-flash-max-pilot-editorial-20261021-v1` | The pilot's in-session editorial reading. |
 
@@ -54,7 +54,7 @@ Compare readings in the research view before citing a level.
 - It stays in the data, with its bundle, corpus record, v4 evaluation and editorial review — but `hidden_cohorts` keeps it off the release page, and the build refuses a `shown_runs` entry from a hidden cohort.
 - The research view shows it, and the browser smoke test asserts that it leads its own cohort while each evaluation package remains separately selectable.
 
-`npm run build` prints every retained world that is not listed yet, so nothing goes public by accident.
+`npm run build` prints every retained world outside a hidden cohort that is not listed yet, so nothing goes public by accident.
 
 ---
 

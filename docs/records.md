@@ -30,13 +30,13 @@ Local work (sessions, transcripts, campaign directories and scratch studies) sta
 
 A run bundle is how a world enters the study. It has exactly five entries:
 
-```text
-run.json            identity, condition, budgets and outcome
-prompt.txt          the exact delivered prompt
-candidate/          the returned files, frozen before inspection or repair
-manifest.json       relative path, byte count and SHA-256 per file
-observations.json   separately attributed checks and outcomes
-```
+| Entry | Holds |
+| --- | --- |
+| `run.json` | Identity, condition, budgets and outcome |
+| `prompt.txt` | The exact delivered prompt |
+| `candidate/` | The returned files, frozen before inspection or repair |
+| `manifest.json` | Relative path, byte count and SHA-256 per file |
+| `observations.json` | Separately attributed checks and outcomes |
 
 `run.json` keeps the run and seed identities, the exact prompt hash, the cohort and whether the run is its baseline, and an outcome (completed, failed, timed out, cancelled or partial). It also keeps start and end times, stop reason, errors and truncation, the requested and reported model and provider, router revision and routing policy, the harness, reasoning, tools and runtime, the isolation mode and network policy, explicit limits, and usage counters with their provenance.
 
@@ -44,9 +44,11 @@ A requested model must be explicit. A reported model stays `null` when the trans
 
 Every candidate path is relative, canonical, NFC-normalised, not a symlink and unique after case-folding, and the manifest's file set must equal the candidate's. An empty candidate is valid for a failed, timed-out, cancelled or partial run.
 
+Validation runs every check without changing the study; import admits the bundle:
+
 ```sh
-python3 scripts/bundles.py validate BUNDLE              # every check, without changing the study
-python3 scripts/bundles.py import BUNDLE --project .    # admit it
+python3 scripts/bundles.py validate BUNDLE
+python3 scripts/bundles.py import BUNDLE --project .
 ```
 
 The validator never imports modules, invokes candidate files or runs a build from the bundle. Import verifies the complete bundle before changing anything, then:
@@ -66,17 +68,17 @@ The placeholder review is not a score and cannot cite interpreted evidence. A wo
 
 Each reading is admitted as its own package under `data/evaluations/EVALUATION/`, with nine files:
 
-```text
-run.json            the reading's run record, linked to the world it reads by source_run_id
-evaluation.json     every session's judgments, the per-question quorum and the outcomes
-extraction.json     the evidence inventory, with exact line ranges
-carriage.json       each session's seed reading, carriage map and standing map
-scoring-policy.json the policy the host followed, generated from the rubric
-status.json         outcome, levels, counts and usage
-review.json         the displayed review, with concise verdicts and citations
-selection.json      the package's own display selection
-manifest.json       the SHA-256 of every other file
-```
+| File | Holds |
+| --- | --- |
+| `run.json` | The reading's run record, linked to the world it reads by `source_run_id` |
+| `evaluation.json` | Every session's judgments, the per-question quorum and the outcomes |
+| `extraction.json` | The evidence inventory, with exact line ranges |
+| `carriage.json` | Each session's seed reading, carriage map and standing map |
+| `scoring-policy.json` | The policy the host followed, generated from the rubric |
+| `status.json` | Outcome, levels, counts and usage |
+| `review.json` | The displayed review, with concise verdicts and citations |
+| `selection.json` | The package's own display selection |
+| `manifest.json` | The SHA-256 of every other file |
 
 Citations are exact ranges (`source_path`, `start`, `end`) without quoted text; quotes are resolved from the hash-pinned sources at admission and build. The `gateway` in `evaluation.json` records the router, model, reasoning, Codex version, router revision, pipeline hash and the reading prompt's version and SHA-256. Each judgment pins the SHA-256 of its raw answer and receipt.
 
@@ -88,7 +90,9 @@ The turns, prompts, answers and receipts behind a package stay under `.local/eva
 
 ### Revisions
 
-A package review has `supersedes: null`; a new reading is a new package, and independent readings of one world coexist. A correction to any other review is a separate record that names its predecessor in `supersedes`. Nothing is silently overwritten, merged or averaged. A package review's rationale is the shortest verdict among the sessions that gave its level, followed by the host's agreement note when they split; the presentation keeps every session's own verdict and evidence.
+A package review has `supersedes: null`; a new reading is a new package, and independent readings of one world coexist. A correction to any other review is a separate record that names its predecessor in `supersedes`. Nothing is silently overwritten, merged or averaged.
+
+A package review's rationale is the shortest verdict among the sessions that gave its level, followed by the host's agreement note when they split; the presentation keeps every session's own verdict and evidence.
 
 `data/review-selection.json` and `data/presentation.json` choose what is displayed; they never delete, merge or average other readings. A new rubric needs new, explicitly comparable readings, and old scores keep their original meaning.
 

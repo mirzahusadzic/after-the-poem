@@ -116,7 +116,7 @@ Each case is read five ways, each in three independent sessions. Only the eviden
 
 | Trial | What changes | Expected |
 | --- | --- | --- |
-| Baseline | Nothing | — |
+| Baseline | Nothing | The level the other trials are compared with |
 | Repeat | Nothing, in fresh sessions | Same level |
 | Masked | The poem's distinctive words replaced by neutral tokens | Same level |
 | Ablation | The lines the reading cites for that level, blanked | Lower level |
@@ -166,9 +166,13 @@ What round 1 shows:
 
 ##### Gadfly round 2
 
-Round 2 asks whether the reader moves at all. Its control blanks every line but a remnant: for each block the reading cites for the question, one uncited block of the same size, drawn with a fixed seed. No line any reading cites is left. A blank world would test nothing, because the reader must cite a non-blank line for every level.
+Round 2 asks whether the reader moves at all. Its control blanks every line but a remnant: for each block the reading cites for the question, one uncited block of the same size, drawn with a fixed seed.
 
-The round ran through the same reader, prompt, Codex CLI and router as round 1. It has no repeat (round 1 repeated these baselines), no sham and no renaming. The predictions were written before the first call. The round planned 27 calls; the cap stopped the last, an ablated Sol 5.6 session, so that trial has two.
+No line any reading cites is left. A blank world would test nothing, because the reader must cite a non-blank line for every level.
+
+The round ran through the same reader, prompt, Codex CLI and router as round 1. It has no repeat (round 1 repeated these baselines), no sham and no renaming.
+
+The predictions were written before the first call. The round planned 27 calls; the cap stopped the last, an ablated Sol 5.6 session, so that trial has two.
 
 | Decision | Remnant | Round 2 | What the trials read |
 | --- | --- | --- | --- |
@@ -185,7 +189,12 @@ What round 2 shows:
 - A remnant is one draw; another could keep more or less of what a question needs.
 - One prediction of three named the right category: Claude Fable 5.1, cooled.
 
-Two second readers ran round 1's kind of trials under one shared instruction, one call per reading, and their levels never reach the page ([Second readers](pipeline.md#second-readers)). Gemma 4 could not tell on any of the three decisions it could hold. Muse in a single call left Dreamy Sol and Sol 5.6 unresolved. It read Claude Fable 5.1's core recognition as carried, with an open check: the control removes those lines and more, yet the level held. Removing the lines cited for Astra's garden · consequential touch raised its level, which makes it coupled but misaligned.
+#### Second readers
+
+Two second readers ran round 1's kind of trials under one shared instruction, one call per reading, and their levels never reach the page ([Second readers](pipeline.md#second-readers)):
+
+- **Gemma 4** could not tell on any of the three decisions it could hold.
+- **Muse in a single call** left Dreamy Sol and Sol 5.6 unresolved. It read Claude Fable 5.1's core recognition as carried, with an open check: the control removes those lines and more, yet the level held. Removing the lines cited for Astra's garden · consequential touch raised its level, which makes it coupled but misaligned.
 
 ---
 

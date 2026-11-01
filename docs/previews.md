@@ -2,7 +2,13 @@
 
 The workbench shows each world's preserved sources, its inspection image and an explicit preview control. Opening a preview runs a fresh copy of the world; viewing, building or validating the page never executes a candidate. Nothing a preview does changes a reading or the preserved sources.
 
-A preview fills the browser window with the work itself, without operating-system fullscreen. A close button sits in its top corner, and Escape also closes it. A short notice says how to leave, "Tap × to exit" on a touch screen and "Press Esc to exit" with a keyboard, and fades after three seconds. Reopening a preview starts a fresh session.
+---
+
+### The preview window
+
+A preview fills the browser window with the work itself, without operating-system fullscreen. A close button sits in its top corner, and Escape also closes it.
+
+A short notice says how to leave, "Tap × to exit" on a touch screen and "Press Esc to exit" with a keyboard, and fades after three seconds. Reopening a preview starts a fresh session.
 
 ---
 
@@ -25,7 +31,12 @@ A preview fills the browser window with the work itself, without operating-syste
 
 Browser copies run in sandboxed frames with opaque origins. A world opts into a browser preview only through an explicit entry in the [preview registry](../data/artefacts.json); importing a bundle does not. The entry must be a retained HTML source inside that run's preview directory, and candidate files cannot replace the host adapter.
 
-During the build, every copied HTML document receives the same content policy and host adapter; a document without an explicit `<head>` is rejected rather than copied without a policy. The policy blocks resource connections, workers, objects, forms and ordinary cross-origin navigation. The adapter supplies memory-only browser storage, disables service-worker registration and blocks external link navigation and popups. Resetting or closing the frame discards its temporary state.
+During the build, every copied HTML document receives the same content policy and host adapter; a document without an explicit `<head>` is rejected rather than copied without a policy.
+
+- **The policy** blocks resource connections, workers, objects, forms and ordinary cross-origin navigation.
+- **The adapter** supplies memory-only browser storage, disables service-worker registration and blocks external link navigation and popups.
+
+Resetting or closing the frame discards its temporary state.
 
 Serve the page over HTTP, with `npm run dev` or a static host. Opened from disk, sandboxed frames cannot load `file:` assets, so the preview shows how to start a local server instead of relaxing the sandbox.
 
@@ -53,7 +64,9 @@ Commands receive a small environment and a temporary home inside `world/`. The m
 
 The console passes a bounded set of a world's own commands as arguments, never through a general shell, and quoted question text stays literal. Each process has a 15-second command timeout, a 20-second CPU limit, a 16-MiB file-size limit and 128 open files; the host monitors a 64-process session group, and output is limited to 64 KiB.
 
-The local API checks the host, the origin and a per-server token. Closing, resetting or switching worlds removes the previous session; sessions also expire after 30 minutes without a console command and are cleaned up when the server exits normally. At most six native sessions exist at once. A force-killed runner may leave a temporary directory for manual cleanup, and it never writes back to `corpus/`. No remote execution service or public shell endpoint exists.
+The local API checks the host, the origin and a per-server token. No remote execution service or public shell endpoint exists.
+
+Closing, resetting or switching worlds removes the previous session; sessions also expire after 30 minutes without a console command and are cleaned up when the server exits normally. At most six native sessions exist at once. A force-killed runner may leave a temporary directory for manual cleanup, and it never writes back to `corpus/`.
 
 ---
 

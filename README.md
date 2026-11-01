@@ -24,58 +24,137 @@ Each model receives the poem with an empty world and a short invitation: *make t
 
 The first seven come from Codex. The two Claude worlds come from Claude Code, with a prompt that names Claude Code in its first line and is otherwise identical. Dreamy Sol, the earliest, is a chronological reference on the workbench, never an answer key.
 
-Every shown world is read by one critic, Muse Spark 1.3 Contributor at xhigh reasoning, in three independent sessions, on eight questions from core recognition to expressive coherence. The release page shows only the current v5 reading per world (evaluation IDs ending `-muse-v5-1`); the research view (`npm run dev:full`) keeps every reading, including earlier v4 sessions and static reviews. Each level, 0 to 4, cites exact lines in the world and a passage of the poem. There is no total, no ranking by polygon area and no winner; `null` means unassessed. See [Reading a continuation](docs/study.md).
+Every shown world is read by one critic, Muse Spark 1.3 Contributor at xhigh reasoning, in three independent sessions, on eight questions from core recognition to expressive coherence. Each level, 0 to 4, cites exact lines in the world and a passage of the poem. [Reading a continuation](docs/study.md) has the method and the findings.
+
+- **No winner:** there is no total, no ranking by polygon area and no winner; `null` means unassessed.
+- **Release view:** the page shows only the current v5 reading per world, the evaluation IDs ending `-muse-v5-1`.
+- **Research view:** `npm run dev:full` keeps every reading, including earlier v4 sessions and static reviews.
 
 ---
 
 ### How it works
 
-Every step is a command: dream with Codex through the [router](https://github.com/mirzahusadzic/codex-unified-model-router) or with Claude Code, admit the world, read it, and put it on the workbench. The seed, the reader, the rubric and the pipeline stay fixed, so a world from a newer model lands beside the earlier ones and can be read against them. See [Pipeline](docs/pipeline.md).
+Every step is a command: dream with Codex through the [router](https://github.com/mirzahusadzic/codex-unified-model-router) or with Claude Code, admit the world, read it, and put it on the workbench. The seed, the reader, the rubric and the pipeline stay fixed, so a world from a newer model lands beside the earlier ones and can be read against them. [Pipeline](docs/pipeline.md) has every step.
+
+**Key:** 🔵 record · 🟡 a model at work · ⚪ host code · 🔴 the page
+
+The path a world takes, from the seed to the workbench:
+
+```mermaid
+---
+config:
+    layout: elk
+    look: neo
+    themeVariables:
+        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif'
+    flowchart:
+        wrappingWidth: 220
+        padding: 20
+    themeCSS: >-
+        foreignObject { overflow: visible; }
+        [data-look="neo"] * { filter: none !important; }
+        .node foreignObject, .node foreignObject *, .edgeLabel, .edgeLabel * {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif !important; line-height: 1.5 !important; }
+        .node foreignObject, .node foreignObject * { white-space: nowrap !important; }
+        code { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo,
+        Consolas, monospace; font-size: 0.9em; line-height: inherit;
+        color: inherit !important; text-shadow: none !important;
+        padding: 0 4px; border-radius: 4px;
+        background: color-mix(in srgb, currentColor 14%, transparent)
+        !important; }
+        .edgeLabel, .edgeLabel p, .edgeLabel span {
+        background: transparent !important; }
+        .edgeLabel rect { fill: transparent !important; }
+        .labelBkg { --knock: var(--vscode-editor-background,
+        var(--bgColor-default, rgb(from currentColor
+        clamp(30, (128 - r) * 100, 255) clamp(30, (128 - r) * 100, 255)
+        clamp(30, (128 - r) * 100, 255)))); --ring: var(--knock);
+        --fill: color-mix(in srgb, var(--ring) 30%, var(--knock));
+        background: var(--fill) !important; border-radius: 4px;
+        box-shadow: 0 0 0 5px var(--fill), 0 0 0 7px var(--ring); }
+        .edgeLabel p, .edgeLabel span, .edgeLabel text {
+        --halo: var(--fill, var(--vscode-editor-background,
+        var(--bgColor-default,
+        rgb(from currentColor clamp(0, (128 - r) * 100, 255)
+        clamp(0, (128 - r) * 100, 255) clamp(0, (128 - r) * 100, 255)))));
+        text-shadow: 1px 0 var(--halo), -1px 0 var(--halo),
+        0 1px var(--halo), 0 -1px var(--halo), 1px 1px var(--halo),
+        -1px -1px var(--halo), 1px -1px var(--halo), -1px 1px var(--halo),
+        0 0 3px var(--halo), 0 0 4px var(--halo); }
+
+---
+flowchart LR
+    SD["<b>Seed</b><br/>the poem,<br/>an empty world"]
+    DR["<b>Dream</b><br/>Codex or<br/>Claude Code"]
+    AD["<b>Admission</b><br/>bundle,<br/>corpus,<br/>preview"]
+    RD["<b>Reading</b><br/>three sessions,<br/>a quorum"]
+    WB["<b>Workbench</b><br/>listed<br/>by hand"]
+    SD --> DR --> AD --> RD --> WB
+
+    classDef default fill:#8a96a82e,stroke:#8a96a8,stroke-width:1px
+    classDef record fill:#4d6bfe4d,stroke:#4d6bfe,stroke-width:2px
+    classDef model fill:#e3a0084d,stroke:#e3a008,stroke-width:2px
+    classDef host fill:#b5bcc633,stroke:#b5bcc6,stroke-width:2px
+    classDef page fill:#c94a4a4d,stroke:#c94a4a,stroke-width:2px
+    class SD record
+    class DR,RD model
+    class AD host
+    class WB page
+```
 
 ---
 
-### Open it
+### Install
 
-The page needs Python 3.13 or later, with no hosted services, analytics or external fonts. In the commands below, `python3` means Python 3.13 or later; `uv run python` gives you one, with the one Python package the study pins (Gadfly, for the load-bearing checks).
+The page needs Python 3.13 or later and no hosted services, analytics or external fonts. [uv](https://docs.astral.sh/uv/) provides that Python with the one package the study pins, Gadfly, which the load-bearing checks use. In these docs, `python3` means Python 3.13 or later; `uv run python` gives you one.
 
-```sh
-python3 scripts/atlas.py serve --previews               # builds and serves http://127.0.0.1:4317 (release view; npm run dev)
-python3 scripts/atlas.py serve --view full --previews   # research view: every retained run and reading (npm run dev:full)
-```
-
-Browser worlds open in sandboxed frames. On macOS, both commands also open the Zsh, Python and Ruby worlds as disposable copies in the isolated local runner (the full view is required for the preview smoke test). See [Previews](docs/previews.md) and [Environment](docs/environment.md).
+Clone the repository and let uv install the pinned Python and package:
 
 ```sh
-python3 scripts/atlas.py build --target pages               # the static site, as GitHub Pages serves it (npm run build:pages)
-python3 scripts/atlas.py serve --target pages --port 4318   # http://127.0.0.1:4318 (npm run serve:pages)
+git clone https://github.com/mirzahusadzic/after-the-poem.git
+cd after-the-poem
+uv sync
 ```
 
-On the static site, console worlds replay a recording and server worlds show a screenshot.
+The npm scripts need Node.js 22 and `npm install`; the browser tests also need a Playwright browser. [Environment](docs/environment.md) has the install steps and the Python command behind each script.
 
 ---
 
-### Read or add a world
+### Use
 
-```sh
-python3 scripts/evaluate.py run-profile PROFILE.json --accept-run         # read a preserved world
-python3 scripts/evaluate.py run-dream-profile PROFILE.json --accept-run   # dream a world through Codex, then read it
-python3 scripts/claude_dream.py run PROFILE.json --accept-run --read      # dream in Claude Code (opt-in), then read it
-```
+Each command builds the page first, then serves or writes it:
 
-Live readings and dreams call models and run only with `--accept-run`, within the budget their profile or flags set. Codex runs go through the [Codex Unified Model Router](https://github.com/mirzahusadzic/codex-unified-model-router). A new world reaches the release page once it is read and listed in `shown_runs` in `data/presentation.json`: see [Workbench](docs/pipeline.md#workbench).
+| To | Run |
+| --- | --- |
+| Serve the release view at http://127.0.0.1:4317 | `npm run dev` |
+| Serve the research view, with every retained run and reading | `npm run dev:full` |
+| Build the static site as GitHub Pages serves it | `npm run build:pages` |
+| Serve that static site at http://127.0.0.1:4318 | `npm run serve:pages` |
 
----
+Browser worlds open in sandboxed frames. On macOS, `dev` and `dev:full` also open the Zsh, Python and Ruby worlds as disposable copies in the isolated local runner; on the static site, console worlds replay a recording and server worlds show a screenshot. [Previews](docs/previews.md) has the details.
 
-### Check
+#### Read or add a world
 
-```sh
-npm test          # fast: Python unit tests, no model calls
-npm run check     # fast: validate records, hashes and citations, writes nothing
-npm run build     # fast: build the local site into dist/
-npm run verify    # full gate: formatting, tests, checks, build and browser smoke tests; no model calls
-```
+Live readings and dreams call models, and run only with `--accept-run`, within the budget their profile or flags set:
 
-The npm scripts need Node.js 22 and `npm install`; the browser tests also need a Playwright browser. [Environment](docs/environment.md) has the install steps and the Python commands behind each script.
+| To | Run |
+| --- | --- |
+| Read a preserved world | `python3 scripts/evaluate.py run-profile PROFILE.json --accept-run` |
+| Dream a world through Codex, then read it | `python3 scripts/evaluate.py run-dream-profile PROFILE.json --accept-run` |
+| Dream in Claude Code (opt-in), then read it | `python3 scripts/claude_dream.py run PROFILE.json --accept-run --read` |
+
+A new world reaches the release page once it is read and listed in `shown_runs` in `data/presentation.json` ([Workbench](docs/pipeline.md#workbench)).
+
+#### Check
+
+None of these calls a model:
+
+| To | Run |
+| --- | --- |
+| Run the Python unit tests | `npm test` |
+| Validate records, hashes and citations, writing nothing | `npm run check` |
+| Build the local site into `dist/` | `npm run build` |
+| Run the full gate: formatting, tests, checks, build and browser smoke tests | `npm run verify` |
 
 ---
 
