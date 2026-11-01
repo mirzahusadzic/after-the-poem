@@ -125,7 +125,10 @@ class DreamRunTests(unittest.TestCase):
         events = []
 
         def ordered_validate(project):
-            return {'runs': [{'id': 'dream-order-test-deepseek-s1'}]}
+            return {
+                'runs': [{'id': 'dream-order-test-deepseek-s1'}],
+                'corpora': {'dream-order-test-deepseek-s1': {'files': [{'path': 'index.html', 'text': '<html>'}]}},
+            }
 
         def execute(campaign, accept_run=False):
             events.append(('execute', accept_run))
@@ -163,6 +166,45 @@ class DreamRunTests(unittest.TestCase):
         self.assertEqual(events[0][1], True)
         self.assertEqual(events[3][1:], (profile['evaluator_model'], profile['evaluator_reasoning']))
         self.assertEqual(result['run_id'], 'dream-order-test-deepseek-s1')
+
+    def test_a_world_without_a_page_is_read_without_a_screenshot(self):
+        # A Zsh, Python or Ruby world has no index.html to capture; it must still reach its reading.
+        profile = json.loads((ROOT / 'examples/dream-profile-deepseek.json').read_text(encoding='utf-8'))
+        profile.update(
+            campaign_id='dream-shell-test',
+            output='.local/dream-shell-test',
+            evaluation_id='dream-shell-evaluation',
+            review_id='dream-shell-review',
+        )
+        path = self.root / 'dream-profile.json'
+        path.write_text(json.dumps(profile), encoding='utf-8')
+        run_id = 'dream-shell-test-deepseek-s1'
+        events = []
+
+        def prepare(config_path, campaign_dir, project, **options):
+            campaign_dir.mkdir(parents=True)
+            return {'config': json.loads(config_path.read_text(encoding='utf-8'))}
+
+        def capture(project, run_id):
+            events.append('capture')
+            raise ValueError('Generated run has no top-level index.html; no screenshot registered')
+
+        def evaluate(*args, **kwargs):
+            events.append('evaluate')
+            return {'status': 'completed', 'integration_status': 'integrated', 'ui_url': 'index.html#run=' + run_id}
+
+        validated = {'runs': [{'id': run_id}], 'corpora': {run_id: {'files': [{'path': 'world.zsh', 'text': 'echo'}]}}}
+        with (
+            mock.patch.object(dream_run.atlas, 'validate', return_value=validated),
+            mock.patch.object(dream_run.pipeline, 'prepare', side_effect=prepare),
+            mock.patch.object(dream_run.pipeline, 'execute', return_value={'all_succeeded': True}),
+            mock.patch.object(dream_run.pipeline, 'admit'),
+            mock.patch.object(dream_run.artefact_capture, 'ensure', side_effect=capture),
+            mock.patch.object(dream_run.evaluation_run, 'run', side_effect=evaluate),
+        ):
+            result = dream_run.run(self.root, path, accept_run=True)
+        self.assertEqual(events, ['evaluate'])
+        self.assertIsNone(result['artefact_capture'])
 
     def test_transient_upstream_rejection_is_archived_and_retried_in_fresh_campaign(self):
         profile = json.loads((ROOT / 'examples/dream-profile-deepseek.json').read_text(encoding='utf-8'))
@@ -212,7 +254,12 @@ class DreamRunTests(unittest.TestCase):
             mock.patch.object(dream_run.pipeline, 'execute', side_effect=execute),
             mock.patch.object(dream_run.pipeline, 'admit'),
             mock.patch.object(
-                dream_run.atlas, 'validate', return_value={'runs': [{'id': 'dream-retry-test-deepseek-s1'}]}
+                dream_run.atlas,
+                'validate',
+                return_value={
+                    'runs': [{'id': 'dream-retry-test-deepseek-s1'}],
+                    'corpora': {'dream-retry-test-deepseek-s1': {'files': [{'path': 'index.html', 'text': '<html>'}]}},
+                },
             ),
             mock.patch.object(dream_run.artefact_capture, 'ensure', return_value={'status': 'captured'}),
             mock.patch.object(

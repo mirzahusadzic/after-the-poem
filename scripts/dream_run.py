@@ -331,11 +331,12 @@ def run(
     )
     pipeline.admit(campaign_dir, project)
     run_id = profile['campaign_id'] + '-' + profile['generator_id'] + '-s1'
-    require(
-        run_id in {run['id'] for run in atlas.validate(project)['runs']},
-        'Generated run was not imported into the project',
-    )
-    capture = artefact_capture.ensure(project, run_id)
+    validated = atlas.validate(project)
+    require(run_id in {run['id'] for run in validated['runs']}, 'Generated run was not imported into the project')
+    # Only a browser world has a screenshot to take; a Zsh, Python or Ruby world goes straight to its reading.
+    files = validated['corpora'][run_id]['files']
+    browser = any(source['path'] == 'index.html' and source['text'] is not None for source in files)
+    capture = artefact_capture.ensure(project, run_id) if browser else None
     evaluation = evaluation_run.run(
         project,
         run_id,
