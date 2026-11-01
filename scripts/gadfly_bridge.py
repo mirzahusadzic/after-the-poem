@@ -788,7 +788,7 @@ def command_run(args):
     reader.spent_usd = spent_before(readings, pricing)
     per_call = (args.max_usd_per_call or 0.0) + TURN_MARGIN_USD
     # The router's calls are counted from the usage each record reports; earlier calls in this round count too.
-    routed = {'spent': 0.0, 'reserve': 0.0}
+    routed = {'spent': 0.0, 'reserve': per_call}
     if pricing is not None:
         routed['spent'] = sum(
             record_usd(record, pricing)
@@ -798,11 +798,10 @@ def command_run(args):
         )
 
     def cancelled():
-        if pricing is None:
+        # Before each call, the most it can still cost: the frame's reserve, or none for eGemma, which is free.
+        if pricing is None or routed['reserve'] is None:
             return False
-        if routed['reserve']:
-            return reader.spent_usd + routed['spent'] + routed['reserve'] > args.total_usd
-        return reader.spent_usd + routed['spent'] + per_call > args.total_usd
+        return reader.spent_usd + routed['spent'] + routed['reserve'] > args.total_usd
 
     status = 0
     for name, frame in chosen:
@@ -814,6 +813,7 @@ def command_run(args):
                 else EGemma(args.egemma_url.rstrip('/') + '/judge', timeout=args.egemma_timeout)
             )
             cap = args.max_output_tokens or EGEMMA_ANSWER_TOKENS
+            routed['reserve'] = None
         elif frame.battery['kind'] == UNIFIED:
             reader.check_world(frame)
             cap = args.max_output_tokens or UNIFIED_ANSWER_TOKENS
@@ -836,7 +836,7 @@ def command_run(args):
                 )
         else:
             battery, cap = reader, args.max_output_tokens or 100000
-            routed['reserve'] = 0.0
+            routed['reserve'] = per_call
         path = records / (name + '.jsonl')
         kept = load_records(path)
         with path.open('a', encoding='utf-8') as sink:

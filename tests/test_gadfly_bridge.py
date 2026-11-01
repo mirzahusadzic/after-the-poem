@@ -528,6 +528,68 @@ class SecondCriticTests(unittest.TestCase):
             self.assertFalse((out / 'records' / 'astra-garden-touch.jsonl').exists())
             self.assertEqual(bridge.main(['run', str(out), '--dry-run', '--frame', 'astra-garden-touch']), 0)
 
+    def test_a_free_reader_after_a_router_frame_is_not_held_by_its_reserve(self):
+        # eGemma costs nothing, so a router frame's per-call reserve must not stop it near the cap.
+        from unittest import mock
+
+        with tempfile.TemporaryDirectory(prefix='after-poem-gadfly-mixed-') as temporary:
+            out, gemma = Path(temporary) / 'round', Path(temporary) / 'gemma'
+            muse = current_copy(self.SPEC, temporary)
+            self.assertEqual(bridge.main(['build', str(muse), '--output', str(out), '--router-revision', self.REVISION]), 0)
+            local = current_copy(ROOT / 'examples/gadfly/round-1-egemma.json', temporary)
+            self.assertEqual(bridge.main(['build', str(local), '--output', str(gemma)]), 0)
+            manifest = load_json(out / 'round.json')
+            free = next(item for item in load_json(gemma / 'round.json')['frames'] if item['name'] == 'astra-garden-touch')
+            (out / 'frames' / 'gemma-astra.json').write_bytes((gemma / 'frames' / 'astra-garden-touch.json').read_bytes())
+            manifest['frames'].append(dict(free, name='gemma-astra'))
+            (out / 'round.json').write_text(json.dumps(manifest), encoding='utf-8')
+
+            pricing = {'input_per_million': 0.10, 'cached_input_per_million': 0.002, 'output_per_million': 0.20}
+            routed = load_json(out / 'frames' / 'astra-garden-touch.json')
+            reserve = bridge.record_usd(
+                {
+                    'usage': {
+                        'input_tokens': routed['baseline']['estimated_input_tokens'],
+                        'output_tokens': bridge.UNIFIED_ANSWER_TOKENS,
+                    }
+                },
+                pricing,
+            )
+            usage = {'input_tokens': 1000, 'output_tokens': 1000}
+            each = bridge.record_usd({'usage': usage}, pricing)
+            calls = next(item['calls'] for item in manifest['frames'] if item['name'] == 'astra-garden-touch')
+            total = (calls - 0.5) * each + reserve  # every router call fits; a further reserve would not
+
+            def reader(served):
+                class Fake:
+                    def __init__(self, *args, **kwargs):
+                        self.name = served
+
+                    def check(self, frame):
+                        pass
+
+                    def observe(self, frame, prompt, max_output_tokens):
+                        paid = usage if served == bridge.UNIFIED else {}
+                        return bridge.Observation(label='level-3', raw='fake', usage=paid, served=served)
+
+                return Fake
+
+            health = {'revision': self.REVISION}
+            with (
+                mock.patch.object(bridge.worker, 'router_health', return_value=health),
+                mock.patch.object(bridge, 'Unified', reader(bridge.UNIFIED)),
+                mock.patch.object(bridge, 'EGemma', reader(bridge.EGEMMA)),
+            ):
+                flags = ['--price-input', '0.10', '--price-cached-input', '0.002', '--price-output', '0.20']
+                status = bridge.main(
+                    ['run', str(out), '--accept-run', '--total-usd', repr(total), '--max-usd-per-call', '0.03']
+                    + flags
+                    + ['--frame', 'astra-garden-touch', '--frame', 'gemma-astra']
+                )
+            self.assertEqual(len(bridge.load_records(out / 'records' / 'astra-garden-touch.jsonl')), calls)
+            self.assertEqual(len(bridge.load_records(out / 'records' / 'gemma-astra.jsonl')), free['calls'])
+            self.assertEqual(status, 0)
+
     def test_the_cap_counts_what_each_call_reported(self):
         pricing = {'input_per_million': 0.10, 'cached_input_per_million': 0.002, 'output_per_million': 0.20}
         record = {'usage': {'input_tokens': 20000, 'output_tokens': 5000}}
