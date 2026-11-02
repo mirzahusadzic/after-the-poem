@@ -18,6 +18,7 @@ from bundles import inspect_metadata, require
 ROOT = Path(__file__).resolve().parents[1]
 DIGEST = re.compile(r'[a-f0-9]{64}')
 SAFE_ID = re.compile(r'[a-z0-9][a-z0-9-]{0,99}')
+# The router's name when the first records were made; records and schemas keep it after the repository's rename.
 GATEWAY = 'codex-unified-model-router'
 REASONING = {'none', 'low', 'medium', 'high', 'xhigh', 'max'}
 ITEM_KINDS = {'claim', 'actor', 'relationship', 'condition', 'boundary', 'question', 'continuation', 'ambiguity'}

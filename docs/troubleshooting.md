@@ -13,7 +13,7 @@ The router is local and loopback-only. Anything else is refused before any call.
 | Symptom | Fix |
 | --- | --- |
 | Router URL refused | Use `http://127.0.0.1:18766/v1` (the default) or pass `--router-url` with another `http://127.0.0.1` address. Hostnames, HTTPS and remote hosts are rejected. |
-| Catalog missing | The study looks for `models.json` in `CODEX_HOME` (`~/.codex`). Pass `--catalog FILE` or follow the [router install](https://github.com/mirzahusadzic/codex-unified-model-router#install). |
+| Catalog missing | The study looks for `models.json` in `CODEX_HOME` (`~/.codex`). Pass `--catalog FILE` or follow the [router install](https://github.com/mirzahusadzic/unified-model-router#install). |
 | Router profile missing | The installer writes `unified-openrouter.config.toml` into `~/.codex`. Pass `--router-profile FILE` if yours lives elsewhere. |
 | Wrong model name | The requested model must match the catalog exactly, including any `openrouter/` prefix. |
 | Setup doubt | Run the matching doctor first: `evaluate.py doctor-profile`, `doctor-dream-profile` or `doctor --dry-run`. Doctors call no model. |

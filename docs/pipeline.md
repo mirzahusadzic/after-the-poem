@@ -1,6 +1,6 @@
 # Pipeline
 
-This page shows how a world travels from the seed to the workbench, and how to make that journey yourself. Every step is a command, so you can repeat the whole study with Codex and the [Unified Model Router](https://github.com/mirzahusadzic/codex-unified-model-router), or with Claude Code.
+This page shows how a world travels from the seed to the workbench, and how to make that journey yourself. Every step is a command, so you can repeat the whole study with Codex and the [Unified Model Router](https://github.com/mirzahusadzic/unified-model-router), or with Claude Code.
 
 The seed, the reader, the rubric and the pipeline stay the same from run to run. So when a newer model dreams a world, that world lands next to the earlier ones, and you can read them side by side.
 
@@ -103,7 +103,7 @@ You need:
 For readings and Codex dreams:
 
 - **The Codex CLI**, tested with 0.163.0 (the published readings) and 0.166.0 (Gadfly round 1).
-- **The Unified Model Router**, installed as [its README](https://github.com/mirzahusadzic/codex-unified-model-router#install) describes. The installer puts the router's Codex profile (`unified-openrouter`) and its model catalog in `~/.codex`. This study looks there by default, or in `CODEX_HOME` if you set it.
+- **The Unified Model Router**, installed as [its README](https://github.com/mirzahusadzic/unified-model-router#install) describes. The installer puts the router's Codex profile (`unified-openrouter`) and its model catalog in `~/.codex`. This study looks there by default, or in `CODEX_HOME` if you set it.
 - **The router's address**, `http://127.0.0.1:18766/v1`. If your setup differs, pass `--router-url`, `--catalog` and `--router-profile`.
 
 For Claude Code dreams:

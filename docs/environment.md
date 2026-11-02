@@ -15,7 +15,7 @@ See [Commands](commands.md) for every flag and [Troubleshooting](troubleshooting
 | Node.js | 22 | Needed only for browser smoke tests, formatting checks and screenshots. CI pins `node-version: 22`. |
 | Codex CLI | 0.163.0, 0.166.0 | For Codex dreams and readings through the router. The published readings used 0.163.0; Gadfly rounds 1 and 2 read through 0.166.0. |
 | Claude Code | 2.1.308 | For Claude Code dreams (`claude` on `PATH`). |
-| Model router | 127.0.0.1:18766/v1 | The [Unified Model Router](https://github.com/mirzahusadzic/codex-unified-model-router); only loopback URLs are accepted. |
+| Model router | 127.0.0.1:18766/v1 | The [Unified Model Router](https://github.com/mirzahusadzic/unified-model-router); only loopback URLs are accepted. |
 | Reader | Muse Spark 1.3 Contributor, xhigh | Fixed for the release page; other models need a catalog and capability entry. |
 | Browsers | Chromium (CI), WebKit/Firefox opt-in | CI installs Chromium and sets `PLAYWRIGHT_CHANNEL=chromium`. |
 | Native previews | macOS | Zsh, Python and Ruby worlds run only in the macOS sandbox; no fallback elsewhere. |

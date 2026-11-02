@@ -23,6 +23,7 @@ from bundles import canonical, require, sha, load_json
 ROOT = Path(__file__).resolve().parents[1]
 POLICY = 'preserve-model-v1'
 PROFILE = 'after-poem-campaign-v1'
+# The router's name when the first records were made; records and schemas keep it after the repository's rename.
 GATEWAY = 'codex-unified-model-router'
 MODEL_CAPABILITIES = ROOT / 'data/model-capabilities.json'
 # Off by default in Codex 0.163, but set explicitly as the router's installer does
@@ -104,12 +105,12 @@ def router_health(url, *, require_openrouter=True):
 
 
 def transport_config(profile, *, requires_openai_auth=True):
-    require(profile.is_file() and profile.stat().st_size <= 65536, 'The codex-unified-model-router profile is missing')
+    require(profile.is_file() and profile.stat().st_size <= 65536, 'The Unified Model Router profile is missing')
     tokens = re.findall(r'"X-Codex-Router-Token"\s*=\s*"([a-f0-9]{64})"', profile.read_text(encoding='utf-8'))
     require(len(tokens) == 1, 'Expected one installer-generated local router token in the router profile')
     return (
         '[model_providers.unified]\n'
-        'name = "Codex Unified Router"\n'
+        'name = "Unified Model Router"\n'
         'wire_api = "responses"\n'
         'requires_openai_auth = ' + ('true' if requires_openai_auth else 'false') + '\n'
         'supports_websockets = false\n'
@@ -316,7 +317,7 @@ def arguments(
         )
     require(
         isinstance(router_revision, str) and re.fullmatch(r'[a-f0-9]{64}', router_revision),
-        'All workers require a pinned codex-unified-model-router revision',
+        'All workers require a pinned Unified Model Router revision',
     )
     config = [
         'approval_policy="never"',

@@ -59,6 +59,15 @@ class DocumentationTests(unittest.TestCase):
                     failures.append('%s -> %s (missing anchor)' % (path.relative_to(ROOT), target))
         self.assertEqual(failures, [])
 
+    def test_router_links_use_its_current_repository(self):
+        # The router's repository was renamed; records keep its old name as their gateway, links don't.
+        stale = [
+            str(path.relative_to(ROOT))
+            for path in DOCS
+            if 'github.com/mirzahusadzic/codex-unified-model-router' in path.read_text(encoding='utf-8')
+        ]
+        self.assertEqual(stale, [])
+
     def test_documented_npm_scripts_exist(self):
         package = json.loads((ROOT / 'package.json').read_text(encoding='utf-8'))
         scripts = set(package['scripts'])

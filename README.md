@@ -34,7 +34,7 @@ Every shown world is read by one critic, Muse Spark 1.3 Contributor at xhigh rea
 
 ### How it works
 
-Every step is a command: dream with Codex through the [router](https://github.com/mirzahusadzic/codex-unified-model-router) or with Claude Code, admit the world, read it, and put it on the workbench. The seed, the reader, the rubric and the pipeline stay fixed, so a world from a newer model lands beside the earlier ones and can be read against them. [Pipeline](docs/pipeline.md) has every step.
+Every step is a command: dream with Codex through the [router](https://github.com/mirzahusadzic/unified-model-router) or with Claude Code, admit the world, read it, and put it on the workbench. The seed, the reader, the rubric and the pipeline stay fixed, so a world from a newer model lands beside the earlier ones and can be read against them. [Pipeline](docs/pipeline.md) has every step.
 
 **Key:** 🔵 record · 🟡 a model at work · ⚪ host code · 🔴 the page
 
