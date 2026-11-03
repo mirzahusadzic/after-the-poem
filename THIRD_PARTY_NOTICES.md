@@ -32,7 +32,7 @@ They are not shipped in the static report.
 
 ### Python package
 
-- **midwife 0.6.0** (Gadfly), Apache License 2.0; its essay is under CC BY 4.0.
+- **midwife 0.7.1** (Gadfly), Apache License 2.0; its essay is under CC BY 4.0.
   [Project](https://github.com/mirzahusadzic/gadfly). It is installed from PyPI at
   the version and hashes in `uv.lock`, is used only by the load-bearing checks, and
   is not shipped in the static report.

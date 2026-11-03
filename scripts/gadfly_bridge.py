@@ -26,6 +26,7 @@ import json
 import random
 import re
 import sys
+import warnings
 from pathlib import Path
 
 import atlas
@@ -42,6 +43,7 @@ import midwife
 from midwife.interventions import plan as plan_trials, prompt as trial_prompt, rename
 from midwife.batteries.egemma import EGemma
 from midwife.batteries.unified import TRAINS_ON_INPUTS, Unified
+from midwife.errors import GadflyWarning
 from midwife.pipeline import calls_needed, judge, overall, run as run_trials, situate
 from midwife.types import Budget, Observation
 
@@ -852,7 +854,9 @@ def command_run(args):
             routed['reserve'] = per_call
         path = records / (name + '.jsonl')
         kept = load_records(path)
-        with path.open('a', encoding='utf-8') as sink:
+        # The summary line says what midwife also warns of (openings, a stop), without the warning's host path.
+        with path.open('a', encoding='utf-8') as sink, warnings.catch_warnings():
+            warnings.simplefilter('ignore', GadflyWarning)
 
             def keep(record, sink=sink):
                 sink.write(json.dumps(record.as_dict(), ensure_ascii=False) + '\n')

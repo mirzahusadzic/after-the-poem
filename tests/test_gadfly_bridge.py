@@ -355,14 +355,14 @@ class ReaderTests(unittest.TestCase):
 
         [finding] = self.run_with(name, by_citation)
         self.assertEqual(finding.category, 'carried')
-        self.assertEqual(finding.obligations, ['no hidden fallback: no bypass trial was declared'])
+        self.assertEqual(finding.obligations, ['no hidden fallback (no bypass trial was declared)'])
 
         def constant(frame, lines, cap):
             return {'label': 'level-3', 'raw': '', 'usage': {}, 'served': 'test'}
 
         [finding] = self.run_with(name, constant)
         self.assertEqual(finding.category, 'unresolved')
-        self.assertIn('discrimination: the control left it at level-3 too', finding.obligations)
+        self.assertIn('discrimination (the control left it at level-3 too)', finding.obligations)
 
         def echo(frame, lines, cap):
             renamed = any('term-' in line.lower() for source in lines.values() for line in source)
@@ -650,6 +650,61 @@ class SecondCriticTests(unittest.TestCase):
             self.assertEqual(len(bridge.load_records(out / 'records' / 'astra-garden-touch.jsonl')), calls)
             self.assertEqual(len(bridge.load_records(out / 'records' / 'gemma-astra.jsonl')), free['calls'])
             self.assertEqual(status, 0)
+
+    def test_openings_and_a_stop_are_told_once_in_the_summary_line(self):
+        # midwife also warns of both, from the bridge's own line and with its host path; the summary line says it.
+        import contextlib
+        import io
+        import warnings
+        from unittest import mock
+
+        usage = {'input_tokens': 1000, 'output_tokens': 1000}
+
+        class Opens:
+            def __init__(self, *args, **kwargs):
+                self.name = bridge.UNIFIED
+
+            def check(self, frame):
+                pass
+
+            def observe(self, frame, prompt, max_output_tokens):
+                return bridge.Observation(label=None, opening='no answer', usage=usage, served=bridge.UNIFIED)
+
+        with tempfile.TemporaryDirectory(prefix='after-poem-gadfly-told-') as temporary:
+            out = Path(temporary) / 'round'
+            spec = current_copy(self.SPEC, temporary)
+            self.assertEqual(bridge.main(['build', str(spec), '--output', str(out), '--router-revision', self.REVISION]), 0)
+            pricing = {'input_per_million': 0.10, 'cached_input_per_million': 0.002, 'output_per_million': 0.20}
+            routed = load_json(out / 'frames' / 'astra-garden-touch.json')
+            reserve = bridge.record_usd(
+                {
+                    'usage': {
+                        'input_tokens': routed['baseline']['estimated_input_tokens'],
+                        'output_tokens': bridge.UNIFIED_ANSWER_TOKENS,
+                    }
+                },
+                pricing,
+            )
+            total = 2.5 * bridge.record_usd({'usage': usage}, pricing) + reserve  # three calls, then a stop
+            said, told = io.StringIO(), io.StringIO()
+            with (
+                mock.patch.object(bridge.worker, 'router_health', return_value={'revision': self.REVISION}),
+                mock.patch.object(bridge, 'Unified', Opens),
+                contextlib.redirect_stdout(said),
+                contextlib.redirect_stderr(told),
+                warnings.catch_warnings(record=True) as warned,
+            ):
+                warnings.simplefilter('always')
+                status = bridge.main(
+                    ['run', str(out), '--accept-run', '--total-usd', repr(total)]
+                    + PRICES
+                    + ['--frame', 'astra-garden-touch']
+                )
+            self.assertEqual(status, 1)
+            self.assertIn('3/18 calls made, 3 openings; stopped:', said.getvalue())
+            self.assertEqual([str(warning.message) for warning in warned], [])
+            self.assertNotIn('Warning', told.getvalue())
+            self.assertNotIn(str(ROOT), said.getvalue() + told.getvalue())
 
     def test_the_per_call_cap_is_asked_only_where_it_caps_something(self):
         # It caps a session of the study's reader; a router call reserves its whole input and a full answer.

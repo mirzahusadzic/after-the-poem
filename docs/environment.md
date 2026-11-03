@@ -10,7 +10,7 @@ See [Commands](commands.md) for every flag and [Troubleshooting](troubleshooting
 
 | Piece | Tested | Notes |
 | --- | --- | --- |
-| Python | 3.13+ | Standard library, plus Gadfly (`midwife` 0.6.0) for load-bearing checks. Build, serve, validation, readings and dreams all run on it. |
+| Python | 3.13+ | Standard library, plus Gadfly (`midwife` 0.7.1) for load-bearing checks. Build, serve, validation, readings and dreams all run on it. |
 | uv | 0.11.6 | Installs the Python and the Gadfly release that `uv.lock` pins. The npm scripts run Python through `uv run`; CI sets `UV_LOCKED=1`, so a stale lock fails. |
 | Node.js | 22 | Needed only for browser smoke tests, formatting checks and screenshots. CI pins `node-version: 22`. |
 | Codex CLI | 0.163.0, 0.166.0 | For Codex dreams and readings through the router. The published readings used 0.163.0; Gadfly rounds 1 and 2 read through 0.166.0. |
