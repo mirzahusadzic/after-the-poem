@@ -11,13 +11,13 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "midwife", specifier = "==0.8.0" }]
+requires-dist = [{ name = "midwife", specifier = "==0.9.0" }]
 
 [[package]]
 name = "midwife"
-version = "0.8.0"
+version = "0.9.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/0d/4e/2d5b8982e59ad1395b2d38a51eddeac9140ce410d59c5b52151841995e85/midwife-0.8.0.tar.gz", hash = "sha256:fe50099e692b4ed80b6b4e2a4b23ed1c5d36368b79fff377cbc7564f6361eb56", size = 723170, upload-time = "2026-11-03T01:36:08.04Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/1f/71/e8c5a6b2e1691ae721abe08f7c7daf89dbaa09cd7ff571b3ebba30518ad5/midwife-0.9.0.tar.gz", hash = "sha256:17a955f717c1faba8252c38013f0dac6dd4a8caa94187a4a909dc28f83257cc5", size = 918170, upload-time = "2026-11-03T22:02:02.389Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/57/d6/7f318b7be99e5010c6ee0b031e344a56008b1236ba380678b07704d9f072/midwife-0.8.0-py3-none-any.whl", hash = "sha256:6f9cd7d67bbf7d175a68b2c294ac1cfa6a70b3ed44dd000304bd228a21e3c6c6", size = 82655, upload-time = "2026-11-03T01:36:06.582Z" },
+    { url = "https://files.pythonhosted.org/packages/20/a1/2e95325a17d8634dfd75e532d5a1565d5b58c39fa9bc8009a2c74b1ddabe/midwife-0.9.0-py3-none-any.whl", hash = "sha256:e896b60c433e4f1d76dffe625914bd7a3e369ae742ca89f8d1e193609bfe2e53", size = 108116, upload-time = "2026-11-03T22:02:00.784Z" },
 ]

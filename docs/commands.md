@@ -751,7 +751,7 @@ What a live run needs depends on the frame's reader:
 
 `report` writes `report-midwife-VERSION.json` (or `dry-report-midwife-VERSION.json`) in the round's folder, named by the midwife release whose rules read the records. A later release reads the same records into a file of its own, without a call.
 
-`stats` needs a midwife with `midwife.stats`, which 0.8.0 on PyPI lacks. Nothing it reports changes a verdict:
+`stats` reads with `midwife.stats`, new in 0.9.0. Nothing it reports changes a verdict:
 
 | Argument | Effect |
 | --- | --- |

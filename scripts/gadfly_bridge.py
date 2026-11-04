@@ -40,7 +40,7 @@ from bundles import load_json, require, sha
 from evidence_text import withhold_host_paths
 
 import midwife
-from midwife import frame as midwife_frame
+from midwife import stats
 from midwife.interventions import plan as plan_trials, prompt as trial_prompt, rename
 from midwife.batteries.egemma import EGemma
 from midwife.batteries.unified import TRAINS_ON_INPUTS, Unified
@@ -270,10 +270,6 @@ def build_frame(project, spec, entry, *, data, router_revision=None):
         carriage = {'seed_lines': entry['seed'], 'carriage_sha256': carriage_sha256, 'rows': rows}
     provenance = spec.get('provenance', False)
     require(type(provenance) is bool, 'provenance is true or false')
-    require(
-        not provenance or 'source' in getattr(midwife_frame, 'SPAN_KEYS', ()),
-        'provenance needs a midwife whose spans name their source; midwife %s does not' % midwife.__version__,
-    )
     fallback = {}
     for item in entry.get('cumulative', []):
         fallback.setdefault(item['path'], set()).update(range(item['start'], item['end'] + 1))
@@ -1031,10 +1027,6 @@ def command_report(args):
 
 def command_stats(args):
     """How firm each trial and verdict is over kept records, beside the verdict, which it never changes."""
-    try:
-        from midwife import stats
-    except ImportError:
-        raise ValueError('stats needs a midwife with midwife.stats; midwife %s has none' % midwife.__version__)
     require(args.resamples >= 1, '--resamples is a whole number of draws, at least 1')
     out = Path(args.round)
     folder = 'dry-records' if args.dry_run else 'records'
@@ -1076,8 +1068,8 @@ def command_stats(args):
             print('  %s: %s; drawn again %d times: %s' % (x, verdicts.get(x), args.resamples, shares))
             for row in rows:
                 answers = ', '.join('%s %d' % (label, count) for label, count in row.answers.items())
-                # Calls that gave no level are counted apart from the levels (an older midwife folded them in).
-                if getattr(row, 'openings', 0):
+                # Calls that gave no level are counted apart from the levels.
+                if row.openings:
                     answers += ', %d opening%s' % (row.openings, '' if row.openings == 1 else 's')
                 moved = ', p %.2g (Holm %.2g)' % (row.moved, row.adjusted) if row.moved is not None else ''
                 held = ', at most %.0f%% differ' % (100 * row.differ) if row.differ is not None else ''

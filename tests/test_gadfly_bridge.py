@@ -18,7 +18,6 @@ from bundles import load_json, sha  # noqa: E402
 
 from midwife.interventions import plan as plan_trials, prompt as trial_prompt, rename  # noqa: E402
 from midwife.pipeline import calls_needed, judge, overall, run as run_trials, situate  # noqa: E402
-from midwife import frame as midwife_frame  # noqa: E402
 from midwife.types import Budget  # noqa: E402
 
 SPEC = ROOT / 'examples/gadfly/round-1.json'
@@ -758,13 +757,6 @@ class SecondCriticTests(unittest.TestCase):
         self.assertAlmostEqual(bridge.record_usd(record, pricing), 0.003)
 
 
-SOURCES = 'source' in getattr(midwife_frame, 'SPAN_KEYS', ())
-try:
-    from midwife import stats as midwife_stats  # noqa: F401
-except ImportError:
-    midwife_stats = None
-
-
 class CarriageRoundTests(unittest.TestCase):
     """A seed range crosses into the world through the reading's carriage map: its carried lines are cut, and
     lines only introduced rows cite are its shams."""
@@ -819,12 +811,6 @@ class CarriageRoundTests(unittest.TestCase):
             self.assertTrue(all('source' not in span for span in raw['body']['spans']))
             self.assertTrue(raw['promise'].startswith('without the cited lines the level is lower'), entry['name'])
 
-    @unittest.skipIf(SOURCES, 'this midwife takes a span source')
-    def test_provenance_is_refused_by_a_midwife_whose_spans_name_no_source(self):
-        with self.assertRaisesRegex(ValueError, 'spans name their source'):
-            self.build()
-
-    @unittest.skipUnless(SOURCES, 'needs a midwife whose spans name their source (Gadfly after 0.8.0)')
     def test_every_world_span_names_the_text_it_crossed_with_byte_for_byte(self):
         raw = self.build()
         situate(raw)
@@ -855,19 +841,6 @@ class StatsTests(unittest.TestCase):
         self.assertEqual(bridge.main(['run', str(out), '--dry-run', '--frame', 'astra-garden-touch']), 0)
         return out
 
-    @unittest.skipIf(midwife_stats is not None, 'this midwife has midwife.stats')
-    def test_stats_is_refused_by_a_midwife_without_it(self):
-        import contextlib
-        import io
-
-        with tempfile.TemporaryDirectory(prefix='after-poem-gadfly-nostats-') as temporary:
-            out = self.dry_round(temporary, 'one')
-            told = io.StringIO()
-            with contextlib.redirect_stderr(told):
-                self.assertEqual(bridge.main(['stats', str(out), '--dry-run']), 1)
-            self.assertIn('midwife.stats', told.getvalue())
-
-    @unittest.skipUnless(midwife_stats is not None, 'needs midwife.stats (Gadfly after 0.8.0)')
     def test_stats_reads_kept_records_and_pools_another_rounds_calls_on_the_same_prompts(self):
         import contextlib
         import io
@@ -897,7 +870,6 @@ class StatsTests(unittest.TestCase):
 class StatsOpeningsTests(unittest.TestCase):
     """A call that gave no level is counted beside the levels, not lost from the stats."""
 
-    @unittest.skipUnless(midwife_stats is not None, 'needs midwife.stats (Gadfly after 0.8.0)')
     def test_stats_counts_openings_beside_the_levels(self):
         import contextlib
         import io

@@ -5,7 +5,7 @@ name = "after-the-poem"
 version = "0.1.0"
 description = "An evidence-led observatory for worlds continued from a poem."
 requires-python = ">=3.13"
-dependencies = ["midwife==0.8.0"]
+dependencies = ["midwife==0.9.0"]
 
 [tool.uv]
 package = false
