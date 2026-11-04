@@ -692,6 +692,10 @@ A spec can also choose its trials: `trials` lists any of `repeat`, `sham`, `pres
 
 A stable standing reads the baseline and repeat sessions together, so it needs `repeat`.
 
+A frame can also start one step further back, from the seed. With `seed: [FIRST, LAST]`, its anchors are the world lines that each session's carriage map says carry those seed lines, carried or transformed; sessions name elements their own way, so the seed lines decide which rows belong. Its sham then cuts lines that only introduced rows cite, the world's own additions, and the frame records the carriage map's hash.
+
+With `provenance: true`, each span of world lines names the exact text it crossed with, in Gadfly's span `source`. Both need a midwife after 0.8.0, which PyPI does not have yet, and `build` says so.
+
 It takes four steps:
 
 1. **Build** the frames. `build` derives them from the published readings and pins the reader, the code and the midwife release.
@@ -725,6 +729,8 @@ Good to know:
 - **Resuming.** If a run stops, run it again: a kept record is never read twice. `--only TRIAL` runs one trial; repeat it for more.
 - **Settling.** `run --settle` makes no more calls for a trial whose level can no longer change, such as the third session after two agree. The verdict reads the same. The report then shows the two sessions that settled the trial, not how a third would have read. Under a stable standing, the baseline and repeat always run whole.
 - **The router.** Since 0.8.0 the second critic checks the router's `/health` before its first call and names in `served` the provider that answered. A model whose provider trains on what it reads runs only when the frame names it under `trainsOnInputs`, as the bridge does for Muse Spark 1.3 Contributor.
+- **Round 3.** It crosses the seed into the world: Dreamy Sol's continuation level against the world lines its carriage maps tie to the poem's open ending, seed lines 91 to 95. It has one frame and 9 calls, and has not run.
+- **Statistics.** `stats` says how firm each trial and verdict is over kept records, without a call: intervals, Fisher's p with Holm's adjustment, the chance a trial reaches a level, and how often the verdict holds when the calls are drawn again. `--pool` adds another round's calls on the same prompts; rounds 1 and 2 share theirs.
 - **Carriage.** The round reads with `carriage: listed`. A category is named at once, and the checks it leaves open, such as the missing bypass trial, are listed beside it.
 
 What the output holds:
@@ -733,6 +739,7 @@ What the output holds:
 - `OUT/records/NAME.jsonl`: one Gadfly record per call.
 - `OUT/readings/HASH/call-N`: each call's session, an evaluation package marked as never admitted.
 - `OUT/report-midwife-VERSION.json`: each frame's verdict, levels, evidence and open checks, beside its predictions, as that midwife release's rules read them.
+- `OUT/stats-midwife-VERSION.json`: from `stats`, how firm each trial and verdict is.
 
 A dry run keeps its own `dry-records`, `dry-readings` and `dry-report-midwife-VERSION.json` instead, apart from any live run's.
 

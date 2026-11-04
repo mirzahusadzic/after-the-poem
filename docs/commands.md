@@ -665,7 +665,7 @@ Everything after a bare `--` is each trial's budget, passed to `evaluate.py scor
 
 Builds, plans, runs and reports Gadfly checks on the levels the release page shows: does a published level rest on the lines its sessions cite? Each call is one session, by the study's v5 reader or by a second reader the round names, kept under the round's folder and never admitted. [Gadfly checks](pipeline.md#gadfly-checks) describes the method.
 
-The four commands take these forms:
+The five commands take these forms:
 
 ```sh
 python3 scripts/gadfly_bridge.py build spec --output DIR \
@@ -676,6 +676,8 @@ python3 scripts/gadfly_bridge.py run DIR \
   [--settle] [--frame NAME] [--only TRIAL]
 python3 scripts/gadfly_bridge.py report DIR \
   [--spec FILE] [--dry-run] [--frame NAME]
+python3 scripts/gadfly_bridge.py stats DIR \
+  [--pool DIR] [--resamples N] [--dry-run] [--frame NAME]
 ```
 
 A live round starts from a new spec that names the pinned midwife release and holds its predictions. For example, build such a spec against the live router, run it under a one-dollar total cap, which calls a model, and report it:
@@ -699,6 +701,7 @@ python3 scripts/gadfly_bridge.py report \
 | Print each frame's trials and calls; calls no model | `plan` |
 | Read every planned trial, one session per call; resumes from kept records | `run` |
 | Read the verdicts from kept records, with `--spec` the predictions beside them; calls no model | `report` |
+| Say how firm each trial and verdict is over kept records, pooling another round's identical calls; calls no model | `stats` |
 
 `build`:
 
@@ -747,6 +750,18 @@ What a live run needs depends on the frame's reader:
 - **eGemma:** a frame read by eGemma needs `--accept-run` and the eGemma key in `EGEMMA_API_KEY` or `EGEMMA_API_KEY_FILE`.
 
 `report` writes `report-midwife-VERSION.json` (or `dry-report-midwife-VERSION.json`) in the round's folder, named by the midwife release whose rules read the records. A later release reads the same records into a file of its own, without a call.
+
+`stats` needs a midwife with `midwife.stats`, which 0.8.0 on PyPI lacks. Nothing it reports changes a verdict:
+
+| Argument | Effect |
+| --- | --- |
+| `DIR` | A built round with kept records |
+| `--pool DIR` | Another round whose calls on this frame's exact prompts count too, by the same reader; may repeat |
+| `--resamples N` | Bootstrap draws of each verdict (default: 200) |
+| `--dry-run` | Read the dry run's records |
+| `--frame NAME` | Only this frame; may repeat |
+
+It prints, per frame, the reader's agreement, the chance a trial reaches a level at the round's quorum, each trial's answers with a 95% interval, Fisher's p against the baseline with Holm's adjustment, and how often the verdict comes out the same when the calls are drawn again. It writes `stats-midwife-VERSION.json` beside the report.
 
 ---
 

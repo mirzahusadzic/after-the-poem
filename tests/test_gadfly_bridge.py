@@ -18,6 +18,7 @@ from bundles import load_json, sha  # noqa: E402
 
 from midwife.interventions import plan as plan_trials, prompt as trial_prompt, rename  # noqa: E402
 from midwife.pipeline import calls_needed, judge, overall, run as run_trials, situate  # noqa: E402
+from midwife import frame as midwife_frame  # noqa: E402
 from midwife.types import Budget  # noqa: E402
 
 SPEC = ROOT / 'examples/gadfly/round-1.json'
@@ -755,3 +756,139 @@ class SecondCriticTests(unittest.TestCase):
         pricing = {'input_per_million': 0.10, 'cached_input_per_million': 0.002, 'output_per_million': 0.20}
         record = {'usage': {'input_tokens': 20000, 'output_tokens': 5000}}
         self.assertAlmostEqual(bridge.record_usd(record, pricing), 0.003)
+
+
+SOURCES = 'source' in getattr(midwife_frame, 'SPAN_KEYS', ())
+try:
+    from midwife import stats as midwife_stats  # noqa: F401
+except ImportError:
+    midwife_stats = None
+
+
+class CarriageRoundTests(unittest.TestCase):
+    """A seed range crosses into the world through the reading's carriage map: its carried lines are cut, and
+    lines only introduced rows cite are its shams."""
+
+    SPEC = ROOT / 'examples/gadfly/round-3-carriage.json'
+
+    @classmethod
+    def setUpClass(cls):
+        Round.load()
+        cls.spec = load_json(cls.SPEC)
+        cls.entry = cls.spec['frames'][0]
+
+    def build(self, **changes):
+        spec = dict(self.spec, **changes)
+        return bridge.build_frame(ROOT, spec, self.entry, data=Round.data)
+
+    def test_a_seed_range_crosses_by_its_seed_lines_not_by_element_names(self):
+        crossed, introduced, rows, digest = bridge.carried_lines(ROOT, self.entry)
+        carriage = ROOT / 'data/evaluations' / self.entry['evaluation'] / 'carriage.json'
+        self.assertEqual(digest, sha(carriage.read_bytes()))
+        # Each session names the open ending its own way; the seed lines find all three.
+        self.assertEqual({row['sample'] for row in rows}, {1, 2, 3})
+        self.assertEqual(len({row['element'] for row in rows}), 3)
+        for path, numbers in introduced.items():
+            self.assertFalse(numbers & crossed.get(path, set()), path)
+        self.assertTrue(crossed and introduced)
+        for seed in ([500, 510], [5], [9, 3], [0, 4], 'all'):
+            with self.subTest(seed=seed), self.assertRaises(ValueError):
+                bridge.carried_lines(ROOT, dict(self.entry, seed=seed))
+
+    def test_a_seed_frame_cuts_the_carried_lines_and_draws_its_shams_from_introduced_ones(self):
+        raw = self.build(provenance=False)
+        frame = situate(raw)
+        crossed, introduced, _, _ = bridge.carried_lines(ROOT, self.entry)
+        paths = {s['source_id']: s['path'] for s in extraction_pipeline.prepare_sources(ROOT, raw['baseline']['world'], data=Round.data)['sources']}
+        kinds = {span['id']: span['kind'] for span in raw['body']['spans']}
+        anchored = {(paths[s], n) for anchor in raw['anchors'] for s, n in span_lines(next(x for x in frame.spans if x.id == anchor))}
+        self.assertEqual(anchored, {(p, n) for p, numbers in crossed.items() for n in numbers})
+        for span in frame.spans:
+            if kinds[span.id] == 'introduced':
+                self.assertTrue(all(n in introduced[paths[s]] for s, n in span_lines(span)), span.id)
+        self.assertEqual(raw['interventions']['sham'], {'draws': 1, 'kind': {a: 'introduced' for a in raw['anchors']}})
+        self.assertEqual(raw['baseline']['carriage']['seed_lines'], [91, 95])
+        self.assertIn('carry seed lines 91-95', raw['relation'])
+        self.assertIn('only introduced rows cite', raw['promise'])
+        self.assertTrue(all('source' not in span for span in raw['body']['spans']))
+
+    def test_a_spec_without_a_seed_or_provenance_builds_as_before(self):
+        for entry, raw, _ in Round.frames.values():
+            self.assertNotIn('carriage', raw['baseline'])
+            self.assertFalse({span['kind'] for span in raw['body']['spans']} & {'introduced'})
+            self.assertTrue(all('source' not in span for span in raw['body']['spans']))
+            self.assertTrue(raw['promise'].startswith('without the cited lines the level is lower'), entry['name'])
+
+    @unittest.skipIf(SOURCES, 'this midwife takes a span source')
+    def test_provenance_is_refused_by_a_midwife_whose_spans_name_no_source(self):
+        with self.assertRaisesRegex(ValueError, 'spans name their source'):
+            self.build()
+
+    @unittest.skipUnless(SOURCES, 'needs a midwife whose spans name their source (Gadfly after 0.8.0)')
+    def test_every_world_span_names_the_text_it_crossed_with_byte_for_byte(self):
+        raw = self.build()
+        situate(raw)
+        for span in raw['body']['spans']:
+            if span['kind'] == 'header':
+                self.assertNotIn('source', span)
+                continue
+            self.assertEqual(span['source']['sha256'], sha(span['text'].encode('utf-8')))
+            first, last = span['id'].split(':')[1].split('-')
+            self.assertTrue(span['source']['from'].endswith('lines %s-%s' % (first, last)), span['id'])
+            self.assertNotIn('/Users/', span['source']['from'])
+        tampered = copy.deepcopy(raw)
+        anchor = next(span for span in tampered['body']['spans'] if span['id'] == tampered['anchors'][0])
+        anchor['text'] += ' '
+        with self.assertRaisesRegex(ValueError, 'does not hash to its source'):
+            situate(tampered)
+
+
+class StatsTests(unittest.TestCase):
+    """How firm each trial and verdict is, read from kept records with no call, and pooled across rounds."""
+
+    SPEC = ROOT / 'examples/gadfly/round-1-egemma.json'
+
+    def dry_round(self, directory, name):
+        out = Path(directory) / name
+        spec = current_copy(self.SPEC, directory)
+        self.assertEqual(bridge.main(['build', str(spec), '--output', str(out)]), 0)
+        self.assertEqual(bridge.main(['run', str(out), '--dry-run', '--frame', 'astra-garden-touch']), 0)
+        return out
+
+    @unittest.skipIf(midwife_stats is not None, 'this midwife has midwife.stats')
+    def test_stats_is_refused_by_a_midwife_without_it(self):
+        import contextlib
+        import io
+
+        with tempfile.TemporaryDirectory(prefix='after-poem-gadfly-nostats-') as temporary:
+            out = self.dry_round(temporary, 'one')
+            told = io.StringIO()
+            with contextlib.redirect_stderr(told):
+                self.assertEqual(bridge.main(['stats', str(out), '--dry-run']), 1)
+            self.assertIn('midwife.stats', told.getvalue())
+
+    @unittest.skipUnless(midwife_stats is not None, 'needs midwife.stats (Gadfly after 0.8.0)')
+    def test_stats_reads_kept_records_and_pools_another_rounds_calls_on_the_same_prompts(self):
+        import contextlib
+        import io
+
+        with tempfile.TemporaryDirectory(prefix='after-poem-gadfly-stats-') as temporary:
+            one, two = self.dry_round(temporary, 'one'), self.dry_round(temporary, 'two')
+            said = io.StringIO()
+            with contextlib.redirect_stdout(said):
+                self.assertEqual(bridge.main(['stats', str(one), '--dry-run', '--resamples', '20']), 0)
+                self.assertEqual(
+                    bridge.main(['stats', str(one), '--dry-run', '--resamples', '20', '--pool', str(two)]), 0
+                )
+            stored = load_json(one / ('dry-stats-midwife-%s.json' % bridge.midwife.__version__))
+            [frame] = stored['frames']
+            self.assertEqual((frame['name'], frame['records'], frame['pooled']), ('astra-garden-touch', 18, 18))
+            baseline = frame['trials']['touch'][0]
+            self.assertEqual((baseline['trial'], baseline['calls']), ('baseline', 6))
+            self.assertAlmostEqual(sum(frame['stability']['touch'].values()), 1.0)
+            self.assertIn('drawn again 20 times', said.getvalue())
+            self.assertIn('18 pooled in', said.getvalue())
+            with self.assertRaises(SystemExit), contextlib.redirect_stderr(io.StringIO()):
+                bridge.main(['stats', str(one), '--resamples', 'many'])
+            with contextlib.redirect_stderr(io.StringIO()):
+                self.assertEqual(bridge.main(['stats', str(one), '--dry-run', '--resamples', '0']), 1)

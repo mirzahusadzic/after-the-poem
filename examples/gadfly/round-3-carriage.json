@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "gadfly-round-3-carriage",
+  "question": "Does a published level rest on the world lines the reading's own carriage map says carry a range of the seed?",
+  "note": "Rounds 1 and 2 cut the lines a reading cites for its question. This round crosses one step further back: the v5 reading also maps the seed into the world, element by element, in carriage.json, and each row cites the world lines that carry its element. The frame takes a range of seed lines, finds every session's element that overlaps it, and cuts the world lines those rows cite when they call the element carried or transformed. Sessions name elements their own way, so the seed lines, not the names, say which rows belong. Its sham cuts as many lines that only introduced rows cite: the world's own additions, tied to no seed line. The seed itself stays whole in the instructions, as in every round; cutting it there is another kind of trial. Each world-line span names its source, so a frame cannot quote what the world did not hold. It needs a midwife whose spans take a source, which 0.8.0 on PyPI does not, so it builds only against Gadfly's main until that release.",
+  "midwife": "0.8.0",
+  "reader": {
+    "battery": "after-the-poem-v5",
+    "model": "openrouter/meta/muse-spark-1.3-contributor",
+    "reasoning": "xhigh"
+  },
+  "standing": {
+    "quorum": 3,
+    "agree": 2,
+    "stable": false
+  },
+  "trials": ["sham"],
+  "carriage": "listed",
+  "materialized": true,
+  "provenance": true,
+  "masked_terms": "examples/controls/seed-vocabulary.json",
+  "frames": [
+    {
+      "name": "dreamy-sol-open-ending",
+      "evaluation": "sol-original-muse-v5-1",
+      "axis": "continuation",
+      "seed": [91, 95],
+      "receives": "The study's working record, beside rounds 1 and 2 on Dreamy Sol's continuation level, as the first test across the seed-to-world crossing.",
+      "predictions": {
+        "levels": {
+          "baseline": "level-3",
+          "ablation": "lower",
+          "sham-1": "level-3"
+        },
+        "category": "carried",
+        "confidence": "low",
+        "reason": "All three sessions map the open ending into the world: two call it carried, through the living edge, the editable handoff and the next question kept open; one calls lines 87 to 95 transformed, through the constellation in app.js. Pooled over rounds 1 and 2, cutting the lines cited for continuation moved 3 to 2 in three calls of six (p 0.044), and the remnant fell to 1. These carried lines are where the world keeps its ending open, so cutting them should lower the level, while as many lines of the world's own additions should not.",
+        "otherwise": "Cooled, if the level holds at 3 without them: the reading would rest on lines its carriage map does not tie to the open ending. Unresolved, if the sham moves it as well, since then any cut of that size would."
+      }
+    }
+  ]
+}

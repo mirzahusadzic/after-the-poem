@@ -40,6 +40,7 @@ from bundles import load_json, require, sha
 from evidence_text import withhold_host_paths
 
 import midwife
+from midwife import frame as midwife_frame
 from midwife.interventions import plan as plan_trials, prompt as trial_prompt, rename
 from midwife.batteries.egemma import EGemma
 from midwife.batteries.unified import TRAINS_ON_INPUTS, Unified
@@ -99,6 +100,50 @@ def cited(evaluation, axes):
     return lines
 
 
+def carried_lines(project, entry):
+    """A seed range across into the world: {path: lines} that each session's carriage map cites for the seed
+    elements overlapping it, carried or transformed; {path: lines} its introduced rows cite, tied to no seed
+    element; each session's elements and statuses there; and carriage.json's hash. Sessions name elements
+    their own way, so the seed lines, not the names, say which rows belong."""
+    path = Path(project) / 'data/evaluations' / entry['evaluation'] / 'carriage.json'
+    require(path.is_file(), entry['evaluation'] + ' has no carriage map to read a seed range from')
+    seed = entry['seed']
+    require(
+        isinstance(seed, list) and len(seed) == 2 and all(type(n) is int and n >= 1 for n in seed) and seed[0] <= seed[1],
+        'seed is [first, last], a range of seed lines',
+    )
+    carriage = load_json(path)
+    crossed, introduced, rows = {}, {}, []
+    for reading in carriage['readings']:
+        spans = {element['id']: element['seed_span'] for element in reading['seed_reading']['elements']}
+        for row in reading['carriage']:
+            lines = {}
+            for citation in row['citations']:
+                lines.setdefault(citation['source_path'], set()).update(range(citation['start'], citation['end'] + 1))
+            span = spans.get(row['element'])
+            if row['status'] == 'introduced':
+                target = introduced
+            elif span and span[0] <= seed[1] and span[1] >= seed[0]:
+                rows.append({'sample': reading['sample'], 'element': row['element'], 'status': row['status']})
+                if row['status'] not in ('carried', 'transformed'):
+                    continue
+                target = crossed
+            else:
+                continue
+            for source_path, numbers in lines.items():
+                target.setdefault(source_path, set()).update(numbers)
+    require(crossed, 'No session carries seed lines %d-%d into the world' % tuple(seed))
+    for source_path, numbers in crossed.items():
+        if source_path in introduced:
+            introduced[source_path] -= numbers  # a line that carries the seed is no sham
+    return crossed, {p: n for p, n in introduced.items() if n}, rows, sha(path.read_bytes())
+
+
+def span_source(run_id, path, first, last, text):
+    """Where a span's world lines crossed from, held to their exact text (Gadfly's span `source`)."""
+    return {'sha256': sha(text.encode('utf-8')), 'from': 'world %s, %s lines %d-%d' % (run_id, path, first, last)}
+
+
 def _runs(numbers):
     """Sorted line numbers as contiguous (start, end) pairs."""
     runs = []
@@ -143,17 +188,17 @@ def spec_trials(spec):
     return declared, reach
 
 
-def promise(declared, reach):
+def promise(declared, reach, seeded=False):
     """What the frame promises of its level, trial by trial; round 1's set reads as round 1 wrote it."""
     held = [
         clause
         for trial, clause in (
             ('presentation', "the seed's words are renamed in the world"),
-            ('sham', 'as many uncited lines go'),
+            ('sham', 'as many lines only introduced rows cite go' if seeded else 'as many uncited lines go'),
         )
         if trial in declared
     ]
-    text = 'without the cited lines the level is lower'
+    text = ('without the lines that carry the seed range' if seeded else 'without the cited lines') + ' the level is lower'
     if held:
         text += '; it holds when ' + ' and when '.join(held)
     if 'control' in declared and reach == 'world':
@@ -217,10 +262,25 @@ def build_frame(project, spec, entry, *, data, router_revision=None):
     paths = {source['path'] for source in prepared['sources']}
     anchored = cited(evaluation, {axis})
     anywhere = cited(evaluation, {item['id'] for item in rubric['axes']})
+    # A seed range reads the carriage map: its anchors are the world lines the sessions say carry those seed
+    # lines, and the lines their introduced rows cite, tied to no seed element, are its shams.
+    introduced, carriage = {}, None
+    if 'seed' in entry:
+        anchored, introduced, rows, carriage_sha256 = carried_lines(project, entry)
+        carriage = {'seed_lines': entry['seed'], 'carriage_sha256': carriage_sha256, 'rows': rows}
+    provenance = spec.get('provenance', False)
+    require(type(provenance) is bool, 'provenance is true or false')
+    require(
+        not provenance or 'source' in getattr(midwife_frame, 'SPAN_KEYS', ()),
+        'provenance needs a midwife whose spans name their source; midwife %s does not' % midwife.__version__,
+    )
     fallback = {}
     for item in entry.get('cumulative', []):
         fallback.setdefault(item['path'], set()).update(range(item['start'], item['end'] + 1))
-    require(set(anchored) | set(fallback) <= paths, 'A cited or fallback path is not among the world\'s sources')
+    require(
+        set(anchored) | set(fallback) | set(introduced) <= paths,
+        'A cited, carried or fallback path is not among the world\'s sources',
+    )
     # Uncited stretches are cut to the anchors' sizes, in turn, so every anchor has shams of its own size.
     sizes = [
         end - start + 1 for source in prepared['sources'] for start, end in _runs(anchored.get(source['path'], ()))
@@ -238,7 +298,11 @@ def build_frame(project, spec, entry, *, data, router_revision=None):
             }
         )
         a, x, c = anchored.get(path, set()), fallback.get(path, set()), anywhere.get(path, set())
-        roles = ['a' if n in a else 'x' if n in x else 'c' if n in c else 'u' for n in range(1, len(lines) + 1)]
+        i = introduced.get(path, set())
+        roles = [
+            'a' if n in a else 'x' if n in x else 'i' if n in i else 'c' if n in c else 'u'
+            for n in range(1, len(lines) + 1)
+        ]
         start = 1
         while start <= len(lines):
             role, end = roles[start - 1], start
@@ -251,11 +315,14 @@ def build_frame(project, spec, entry, *, data, router_revision=None):
                     last = min(end, block + sizes[turn % len(sizes)] - 1)
                     turn += 1
                 count = last - block + 1
+                kind = {'x': 'fallback', 'i': 'introduced', 'c': 'cited'}.get(role, 'lines-%d' % count)
                 span = {
                     'id': '%s:%d-%d' % (source_id, block, last),
-                    'kind': 'lines-%d' % count if role in 'au' else ('fallback' if role == 'x' else 'cited'),
+                    'kind': kind,
                     'text': '\n'.join('%d|%s' % (n, lines[n - 1]) for n in range(block, last + 1)),
                 }
+                if provenance:
+                    span['source'] = span_source(run_id, path, block, last, span['text'])
                 spans.append(span)
                 if role == 'a':
                     anchors.append(span['id'])
@@ -273,9 +340,17 @@ def build_frame(project, spec, entry, *, data, router_revision=None):
         control = [span['id'] for span in spans if span['kind'] != 'header']
     if reach == 'remnant':
         control = remnant_control(spans, anchors, uncited, sha(evaluation_path.read_bytes()))
+    sham = True
+    if carriage is not None and 'sham' in declared:
+        # Each anchor's sham is drawn from the introduced lines, the world's own additions to the seed.
+        require(
+            any(span['kind'] == 'introduced' for span in spans),
+            'No session marks a line introduced, so a seed range has no sham to draw',
+        )
+        sham = {'draws': 1, 'kind': {anchor: 'introduced' for anchor in anchors}}
     offered = {
         'repeat': True,
-        'sham': True,
+        'sham': sham,
         'presentation': {term: 'term-%02d' % index for index, term in enumerate(vocabulary, 1)},
         'control': control,
     }
@@ -284,13 +359,27 @@ def build_frame(project, spec, entry, *, data, router_revision=None):
     if fallbacks:
         interventions['cumulative'] = anchors + fallbacks
     run = next(item for item in data['runs'] if item['id'] == run_id)
+    relation = "%s's published %s level (%s) rests on the lines its three sessions cite for that question" % (
+        run['label'],
+        question['label'].lower(),
+        level,
+    )
+    grain = "a range the sessions cite, or an uncited block of the same file cut to the cited ranges' sizes"
+    if carriage is not None:
+        relation = (
+            "%s's published %s level (%s) rests on the world lines its sessions' carriage maps say carry seed"
+            ' lines %d-%d' % (run['label'], question['label'].lower(), level, *entry['seed'])
+        )
+        grain = (
+            'a range a carriage row cites for those seed lines, a range only introduced rows cite, or an uncited'
+            " block of the same file cut to the carried ranges' sizes"
+        )
     frame = {
         'name': entry['name'],
-        'relation': "%s's published %s level (%s) rests on the lines its three sessions cite for that question"
-        % (run['label'], question['label'].lower(), level),
-        'grain': "a range the sessions cite, or an uncited block of the same file cut to the cited ranges' sizes",
+        'relation': relation,
+        'grain': grain,
         'purpose': 'show a level on the workbench only as far as the evidence it cites carries it',
-        'promise': promise(declared, reach),
+        'promise': promise(declared, reach, seeded=carriage is not None),
         'baseline': {
             'world': run_id,
             'question': axis,
@@ -303,7 +392,8 @@ def build_frame(project, spec, entry, *, data, router_revision=None):
             'corpus_sha256': corpus_sha256(data, run_id),
             'rubric_sha256': data['rubric_sha256'],
             'masked_terms_sha256': sha((project / spec['masked_terms']).read_bytes()),
-        },
+        }
+        | ({'carriage': carriage} if carriage is not None else {}),
         'body': {'spans': spans},
         'anchors': anchors,
         'interventions': interventions,
@@ -939,6 +1029,77 @@ def command_report(args):
     return 0
 
 
+def command_stats(args):
+    """How firm each trial and verdict is over kept records, beside the verdict, which it never changes."""
+    try:
+        from midwife import stats
+    except ImportError:
+        raise ValueError('stats needs a midwife with midwife.stats; midwife %s has none' % midwife.__version__)
+    require(args.resamples >= 1, '--resamples is a whole number of draws, at least 1')
+    out = Path(args.round)
+    folder = 'dry-records' if args.dry_run else 'records'
+    document = {'round': load_json(out / 'round.json')['spec'], 'midwife': midwife.__version__, 'frames': []}
+    for name, frame in frames_of(out, args.frame):
+        kept = load_records(out / folder / (name + '.jsonl'))
+        if not kept:
+            print('%s: no records yet' % name)
+            continue
+        # Another round's calls count here only where they are this frame's calls: same reader, same prompt.
+        others = []
+        for other in args.pool or []:
+            path = Path(other) / 'frames' / (name + '.json')
+            if path.is_file():
+                others.append((situate(load_json(path)), load_records(Path(other) / folder / (name + '.jsonl'))))
+        extra = stats.pooled(frame, others)
+        agreement = stats.agreement([kept])
+        power = stats.power(frame, agreement)
+        verdicts = stats.observed(frame, [kept])[0]
+        drawn = stats.stability(frame, [kept], resamples=args.resamples)[0]
+        compared = stats.compare(frame, [kept], extra)
+        print(
+            '%s (%s): %d calls%s; agreement %.0f%%; a trial reaches %d of %d %.0f%% of the time, all %d it needs %.0f%%'
+            % (
+                name,
+                frame.hash[:16],
+                len(kept),
+                ', %d pooled in' % len(extra) if extra else '',
+                100 * agreement,
+                frame.agree,
+                frame.quorum,
+                100 * power.trial,
+                power.trials,
+                100 * power.input,
+            )
+        )
+        for x, rows in compared.items():
+            shares = ', '.join('%s %.0f%%' % (category, 100 * share) for category, share in drawn.get(x, {}).items())
+            print('  %s: %s; drawn again %d times: %s' % (x, verdicts.get(x), args.resamples, shares))
+            for row in rows:
+                answers = ', '.join('%s %d' % (label, count) for label, count in row.answers.items())
+                moved = ', p %.2g (Holm %.2g)' % (row.moved, row.adjusted) if row.moved is not None else ''
+                held = ', at most %.0f%% differ' % (100 * row.differ) if row.differ is not None else ''
+                print(
+                    '    %-13s %3d calls  %s  top %.0f%% (%.0f-%.0f%%)%s%s'
+                    % (row.trial, row.calls, answers, 100 * row.share, 100 * row.low, 100 * row.high, moved, held)
+                )
+        document['frames'].append(
+            {
+                'name': name,
+                'hash': frame.hash,
+                'records': len(kept),
+                'pooled': len(extra),
+                'agreement': agreement,
+                'power': power.as_dict(),
+                'verdicts': verdicts,
+                'stability': drawn,
+                'trials': {x: [row.as_dict() for row in rows] for x, rows in compared.items()},
+            }
+        )
+    target = out / ('%sstats-midwife-%s.json' % ('dry-' if args.dry_run else '', midwife.__version__))
+    target.write_text(json.dumps(document, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    return 0
+
+
 EXAMPLES = """\
 examples (each command but a live run makes no model call):
   python3 scripts/gadfly_bridge.py build examples/gadfly/round-1.json --output .local/gadfly/round-1-dry --dry-run
@@ -1016,6 +1177,15 @@ def main(argv=None):
     report.add_argument('--spec', help='the round spec, to show predictions beside the levels')
     report.add_argument('--dry-run', action='store_true')
     report.set_defaults(func=command_report)
+    counted = commands.add_parser('stats', help='how firm each trial and verdict is over kept records (no call)')
+    counted.add_argument('round')
+    counted.add_argument('--frame', action='append')
+    counted.add_argument(
+        '--pool', action='append', metavar='ROUND', help="another round whose calls on this frame's prompts count too"
+    )
+    counted.add_argument('--resamples', type=int, default=200, help='bootstrap draws of each verdict')
+    counted.add_argument('--dry-run', action='store_true')
+    counted.set_defaults(func=command_stats)
     args = parser.parse_args(argv)
     try:
         return args.func(args)
