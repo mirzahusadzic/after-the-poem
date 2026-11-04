@@ -1115,6 +1115,12 @@ def _finish(project, output, plan, stored, evaluation_id, *, recovered=False):
     return record, status
 
 
+def reading_providers(output, sessions, router_url):
+    """Who served a reading's calls, asked of the router once its last session ends; kept outside the record's hash."""
+    homes = [_session_dir(output, session) / 'control/codex-home' for session in range(1, sessions + 1)]
+    return worker.served_by(homes, router_url, Path(output) / 'transport.config.toml')
+
+
 def _write(output, record, status):
     fsutil.write_json_atomic(output / 'evaluation.json', record)
     status['evaluation_sha256'] = sha((output / 'evaluation.json').read_bytes())
@@ -1248,6 +1254,8 @@ def run(
             extraction = accepted['extraction'][0]
     record, status = _finish(project, output, plan, stored, evaluation_id)
     status['estimate'] = planned
+    if not dry_run:
+        status['providers'] = reading_providers(output, plan.repetitions, router_url)
     if budget and budget.get('pricing'):
         status['cost_estimate_usd'] = session_flow.usage_totals(spent, budget['pricing'])['estimated_usd']
     return _write(output, record, status)

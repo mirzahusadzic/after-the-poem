@@ -146,6 +146,27 @@ def validate_run_record(record, prompt_hash):
         require(field in condition['reported'], 'Missing reported.' + field)
         value = condition['reported'][field]
         require(value is None or isinstance(value, str) and value.strip(), 'Invalid reported.' + field)
+    providers = condition['reported'].get('providers')
+    if providers is not None:
+        # Who served a Codex run's calls, as the router named them; null for a call it could not name.
+        require(
+            isinstance(providers, list)
+            and all(
+                isinstance(item, dict)
+                and set(item) == {'provider', 'calls'}
+                and (item['provider'] is None or isinstance(item['provider'], str) and item['provider'].strip())
+                and type(item['calls']) is int
+                and item['calls'] > 0
+                for item in providers
+            )
+            and len({item['provider'] for item in providers}) == len(providers),
+            'Invalid reported.providers',
+        )
+        names = {item['provider'] for item in providers}
+        require(
+            condition['reported']['provider'] == (next(iter(names)) if len(names) == 1 else None),
+            'reported.provider names a provider only when it served every call',
+        )
     require(
         condition['requested'].get('router_revision') is None
         or isinstance(condition['requested'].get('router_revision'), str),

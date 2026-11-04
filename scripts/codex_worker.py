@@ -11,9 +11,11 @@ import socket
 import subprocess
 import sys
 import time
+from collections import Counter
 from pathlib import Path
+from urllib.error import HTTPError
 from urllib.parse import urlsplit
-from urllib.request import HTTPRedirectHandler, ProxyHandler, build_opener
+from urllib.request import HTTPRedirectHandler, ProxyHandler, Request, build_opener
 
 import fsutil
 import sealed_run as sealed
@@ -101,6 +103,11 @@ def router_health(url, *, require_openrouter=True):
         and capabilities.get('revisionPrecondition') is True,
         'Update the router: preserve-model-v1, revision preconditions and a valid revision are required',
     )
+    reports = capabilities.get('reports')
+    require(
+        isinstance(reports, list) and 'provider' in reports and capabilities.get('generationLookup') is True,
+        'Update the router: it must report which provider served each call (reports: provider, generationLookup)',
+    )
     return {'policy': POLICY, 'revision': revision}
 
 
@@ -117,6 +124,102 @@ def transport_config(profile, *, requires_openai_auth=True):
         'http_headers = { "X-Codex-Router-Token" = "' + tokens[0] + '", '
         '"X-Codex-Routing-Policy" = "' + POLICY + '" }\n'
     ).encode()
+
+
+GENERATION_ID = re.compile(r'gen-[A-Za-z0-9-]{1,128}')
+# OpenRouter records a call's provider some seconds after it ends, often more than 20.
+LOOKUP_WAIT_SECONDS = 60
+# The router asks OpenRouter at most once every 5 seconds per generation.
+LOOKUP_GAP_SECONDS = 5
+
+
+def call_ids(homes):
+    """Each model call's response ID, once, from the token-usage records of the Codex session logs under `homes`."""
+    ids = []
+    for home in homes:
+        for path in sorted(Path(home).glob('sessions/**/rollout-*.jsonl')):
+            with path.open(encoding='utf-8') as lines:
+                for line in lines:
+                    if '"token_usage_record"' not in line:
+                        continue
+                    try:
+                        event = json.loads(line)
+                    except ValueError:  # a line cut short when the process was stopped
+                        continue
+                    if not isinstance(event, dict) or event.get('type') != 'token_usage_record':
+                        continue
+                    payload = event.get('payload')
+                    if isinstance(payload, dict) and isinstance(payload.get('response_id'), str):
+                        ids.append(payload['response_id'])
+    return list(dict.fromkeys(ids))
+
+
+def generation_provider(router_url, token, generation):
+    """The router's answer for one OpenRouter generation: ('resolved', name), ('pending', None) or ('unknown', None)."""
+    require(GENERATION_ID.fullmatch(generation), 'Invalid generation ID')
+    parsed = urlsplit(router_url)
+    request = Request(
+        '%s://%s/v1/generations/%s' % (parsed.scheme, parsed.netloc, generation),
+        headers={'X-Codex-Router-Token': token},
+    )
+    try:
+        with build_opener(ProxyHandler({}), RejectRedirects()).open(request, timeout=15) as response:
+            value = json.loads(response.read(4096))
+    except HTTPError as error:
+        if error.code == 404:  # a generation the router no longer holds, or never reported
+            return 'unknown', None
+        raise
+    if not isinstance(value, dict):
+        return 'unknown', None
+    provider = value.get('provider')
+    named = isinstance(provider, str) and 0 < len(provider) <= 100 and provider.isprintable()
+    if value.get('status') == 'resolved' and named:
+        return 'resolved', provider
+    return ('pending' if value.get('status') == 'pending' else 'unknown'), None
+
+
+def served_by(homes, router_url, transport, *, ask=None, sleep=None, clock=None):
+    """Which providers served the calls logged under `homes`, as [{'provider', 'calls'}], most calls first.
+
+    The provider is null for a call the router cannot name: one off OpenRouter, one it no longer holds, or one
+    still pending when the wait ends. Generation IDs stay in the session logs; the result holds only names.
+    """
+    ask, sleep, clock = ask or generation_provider, sleep or time.sleep, clock or time.monotonic
+    ids = call_ids(homes)
+    named, waiting = {}, [call for call in ids if GENERATION_ID.fullmatch(call)]
+    deadline = clock() + LOOKUP_WAIT_SECONDS
+    try:
+        if waiting:
+            text = Path(transport).read_text(encoding='utf-8')
+            tokens = re.findall(r'"X-Codex-Router-Token"\s*=\s*"([a-f0-9]{64})"', text)
+            require(len(tokens) == 1, 'Expected one router token in the frozen transport')
+        while waiting:
+            pending = []
+            for generation in waiting:
+                status, provider = ask(router_url, tokens[0], generation)
+                if status == 'pending':
+                    pending.append(generation)
+                else:
+                    named[generation] = provider
+            waiting = pending
+            if waiting and clock() + LOOKUP_GAP_SECONDS > deadline:
+                break
+            if waiting:
+                sleep(LOOKUP_GAP_SECONDS)
+    except (OSError, ValueError):
+        pass  # an unreachable router leaves the rest unnamed
+    counts = Counter(named.get(call) for call in ids)
+    return sorted(
+        ({'provider': name, 'calls': calls} for name, calls in counts.items()),
+        key=lambda item: (-item['calls'], item['provider'] is None, item['provider'] or ''),
+    )
+
+
+def reported(providers):
+    """A run's reported model and provider: the provider only when one named provider served every call."""
+    names = {item['provider'] for item in providers}
+    single = next(iter(names)) if len(names) == 1 else None
+    return {'model': None, 'provider': single, 'providers': providers}
 
 
 def load_model_capabilities(path=None):
@@ -341,6 +444,8 @@ def arguments(
         'model_providers.unified.base_url=' + json.dumps(router_url),
         'model_providers.unified.http_headers.X-Codex-Routing-Policy=' + json.dumps(POLICY),
         'model_providers.unified.http_headers.X-Codex-Router-Revision=' + json.dumps(router_revision),
+        # The router then keeps each OpenRouter call's generation, so `served_by` can name its provider.
+        'model_providers.unified.http_headers.X-Codex-Router-Report="provider"',
     ]
     for value in config:
         args += ['--config', value]
@@ -695,7 +800,7 @@ def run_job(
     instruction_text = instructions or (REVIEW_INSTRUCTIONS if review else GENERATION_INSTRUCTIONS)
     instruction_name = instruction_name or ('review' if review else 'generation')
     hashes = _instruction_hashes(runtime, instructions, instruction_name)
-    return _execute(
+    receipt = _execute(
         receipt=_new_receipt(job, prompt, runtime, dry_run),
         world=world,
         scratch=scratch,
@@ -714,6 +819,12 @@ def run_job(
         audit=lambda environment, binary: audit_isolation(world, scratch, control, review, environment, binary=binary),
         snapshot=not review,
     )
+    if not dry_run:
+        # After the process ends, while the router still holds each call's generation (a day).
+        homes = [control / 'codex-home']
+        receipt['reported'] = reported(served_by(homes, router_url, Path(catalog).parent / 'transport.config.toml'))
+        write_json(output / 'receipt.json', receipt)
+    return receipt
 
 
 def run_turn(

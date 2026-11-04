@@ -42,6 +42,8 @@ A run bundle is how a world enters the study. It has exactly five entries:
 
 A requested model must be explicit. A reported model stays `null` when the transport does not expose upstream identity, and a requested identity is never copied into the reported fields to make a record look verified.
 
+A live Codex run also lists in `reported.providers` who served its calls, by name and call count, as the router names them after the run. A call it cannot name counts under `null`, and `reported.provider` names a provider only when one served every call. The generation IDs behind them stay in the run's private session logs.
+
 Every candidate path is relative, canonical, NFC-normalised, not a symlink and unique after case-folding, and the manifest's file set must equal the candidate's. An empty candidate is valid for a failed, timed-out, cancelled or partial run.
 
 Validation runs every check without changing the study; import admits the bundle:
@@ -75,7 +77,7 @@ Each reading is admitted as its own package under `data/evaluations/EVALUATION/`
 | `extraction.json` | The evidence inventory, with exact line ranges |
 | `carriage.json` | Each session's seed reading, carriage map and standing map |
 | `scoring-policy.json` | The policy the host followed, generated from the rubric |
-| `status.json` | Outcome, levels, counts and usage |
+| `status.json` | Outcome, levels, counts and usage; for a live reading, the providers that served its calls |
 | `review.json` | The displayed review, with concise verdicts and citations |
 | `selection.json` | The package's own display selection |
 | `manifest.json` | The SHA-256 of every other file |

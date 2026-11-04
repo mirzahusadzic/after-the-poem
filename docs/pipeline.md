@@ -105,6 +105,7 @@ For readings and Codex dreams:
 - **The Codex CLI**, tested with 0.163.0 (the published readings) and 0.166.0 (Gadfly round 1).
 - **The Unified Model Router**, installed as [its README](https://github.com/mirzahusadzic/unified-model-router#install) describes. The installer puts the router's Codex profile (`unified-openrouter`) and its model catalog in `~/.codex`. This study looks there by default, or in `CODEX_HOME` if you set it.
 - **The router's address**, `http://127.0.0.1:18766/v1`. If your setup differs, pass `--router-url`, `--catalog` and `--router-profile`.
+- **Its provider report.** After a live Codex dream or reading, the study asks the router which providers served its calls, and waits up to a minute for OpenRouter to record the last one. The names go into the record ([Records](records.md)); a router that cannot report is refused before any call.
 
 For Claude Code dreams:
 

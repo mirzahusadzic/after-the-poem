@@ -109,7 +109,7 @@ class CodexTransportTests(unittest.TestCase):
                         'clientAuth': True,
                         'openrouter': True,
                         'revision': 'a' * 64,
-                        'capabilities': {'routingPolicies': [worker.POLICY], 'revisionPrecondition': True},
+                        'capabilities': {'routingPolicies': [worker.POLICY], 'revisionPrecondition': True, 'reports': ['provider'], 'generationLookup': True},
                     }
                 ).encode()
                 self.send_response(200)

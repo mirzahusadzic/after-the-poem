@@ -263,7 +263,7 @@ class WorkerTests(unittest.TestCase):
             'clientAuth': True,
             'openrouter': True,
             'revision': 'a' * 64,
-            'capabilities': {'routingPolicies': ['future-policy', worker.POLICY], 'revisionPrecondition': True},
+            'capabilities': {'routingPolicies': ['future-policy', worker.POLICY], 'revisionPrecondition': True, 'reports': ['provider'], 'generationLookup': True},
         }
         self.assertEqual(self.read_router_health(health), {'policy': worker.POLICY, 'revision': 'a' * 64})
 
@@ -272,7 +272,7 @@ class WorkerTests(unittest.TestCase):
             'clientAuth': True,
             'openrouter': False,
             'revision': 'a' * 64,
-            'capabilities': {'routingPolicies': [worker.POLICY], 'revisionPrecondition': True},
+            'capabilities': {'routingPolicies': [worker.POLICY], 'revisionPrecondition': True, 'reports': ['provider'], 'generationLookup': True},
         }
         with mock.patch.object(worker, 'build_opener') as opener:
             opener.return_value.open.return_value = io.BytesIO(json.dumps(health).encode())
@@ -286,7 +286,7 @@ class WorkerTests(unittest.TestCase):
             'clientAuth': True,
             'openrouter': True,
             'revision': 'a' * 64,
-            'capabilities': {'routingPolicies': [worker.POLICY], 'revisionPrecondition': True},
+            'capabilities': {'routingPolicies': [worker.POLICY], 'revisionPrecondition': True, 'reports': ['provider'], 'generationLookup': True},
         }
         for change in [
             {'capabilities': {}},
@@ -294,6 +294,10 @@ class WorkerTests(unittest.TestCase):
             {'capabilities': {'routingPolicies': [worker.POLICY]}},
             {'capabilities': {'routingPolicies': worker.POLICY}},
             {'capabilities': {'routingPolicies': ['unknown']}},
+            {'capabilities': {'routingPolicies': [worker.POLICY], 'revisionPrecondition': True}},
+            {'capabilities': dict(health['capabilities'], reports=[])},
+            {'capabilities': dict(health['capabilities'], reports='provider')},
+            {'capabilities': dict(health['capabilities'], generationLookup=False)},
             {'revision': 'x' * 64},
             {'revision': None},
             {'clientAuth': False},

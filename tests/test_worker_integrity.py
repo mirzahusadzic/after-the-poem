@@ -23,7 +23,12 @@ class RouterBoundaryTests(unittest.TestCase):
             'clientAuth': True,
             'openrouter': True,
             'revision': 'a' * 64,
-            'capabilities': {'routingPolicies': [worker.POLICY], 'revisionPrecondition': True},
+            'capabilities': {
+                'routingPolicies': [worker.POLICY],
+                'revisionPrecondition': True,
+                'reports': ['provider'],
+                'generationLookup': True,
+            },
         }
 
         class Target(BaseHTTPRequestHandler):
@@ -92,7 +97,7 @@ class RouterBoundaryTests(unittest.TestCase):
 
 
 class RuntimeIntegrityTests(unittest.TestCase):
-    def exercise(self, changed=None, phase='audit', *, review=False, interrupt=False):
+    def exercise(self, changed=None, phase='audit', *, review=False, interrupt=False, calls=(), answers=None):
         with tempfile.TemporaryDirectory() as temporary, contextlib.ExitStack() as stack:
             root = Path(temporary).resolve()
             binary = root / 'codex-real'
@@ -102,7 +107,7 @@ class RuntimeIntegrityTests(unittest.TestCase):
             catalog = root / 'catalog.json'
             catalog.write_bytes(b'{"models":[]}')
             transport = root / 'transport.config.toml'
-            transport.write_bytes(b'Synthetic private transport')
+            transport.write_bytes(b'Synthetic private transport\n"X-Codex-Router-Token" = "' + b'c' * 64 + b'"\n')
             output = root / 'job'
             runtime = {
                 'codex_version': 'fixture',
@@ -164,6 +169,14 @@ class RuntimeIntegrityTests(unittest.TestCase):
                     )
                 )
                 stderr.write_text('')
+                if calls:
+                    # Codex logs each model call's response ID in its session log; a stopped run can cut a line short.
+                    log = Path(environment['CODEX_HOME']) / 'sessions/2026/11/03/rollout-fixture.jsonl'
+                    log.parent.mkdir(parents=True)
+                    records = [{'type': 'session_meta', 'payload': {'id': 'fixture'}}] + [
+                        {'type': 'token_usage_record', 'payload': {'response_id': call}} for call in calls
+                    ]
+                    log.write_text('\n'.join(json.dumps(item) for item in records) + '\n{"type": "token_usage_rec')
                 if phase == 'process':
                     mutate()
                 if interrupt:
@@ -179,6 +192,12 @@ class RuntimeIntegrityTests(unittest.TestCase):
             )
             stack.enter_context(mock.patch.object(worker, 'audit_isolation', side_effect=audit))
             stack.enter_context(mock.patch.object(sealed_run, 'capture_process', side_effect=capture))
+            if answers is not None:
+                stack.enter_context(
+                    mock.patch.object(
+                        worker, 'generation_provider', side_effect=lambda _url, _token, call: answers[call]
+                    )
+                )
             receipt = worker.run_job(
                 output,
                 {'model': 'router/fixture', 'reasoning': 'max', 'seconds': 5},
@@ -188,7 +207,27 @@ class RuntimeIntegrityTests(unittest.TestCase):
                 'http://127.0.0.1:18766/v1',
                 review=review,
             )
+            self.stored = json.loads((output / 'receipt.json').read_text())
             return receipt, launched, audited, str(binary)
+
+    def test_a_finished_job_reports_who_served_its_calls_by_name_only(self):
+        answers = {
+            'gen-a1': ('resolved', 'DeepInfra'),
+            'gen-b2': ('resolved', 'DeepInfra'),
+            'gen-c3': ('unknown', None),
+        }
+        receipt, launched, _, _ = self.exercise(calls=['gen-a1', 'gen-b2', 'gen-c3', 'resp_native'], answers=answers)
+        self.assertEqual(receipt['status'], 'completed')
+        self.assertIn('model_providers.unified.http_headers.X-Codex-Router-Report="provider"', launched[0])
+        providers = [{'provider': 'DeepInfra', 'calls': 2}, {'provider': None, 'calls': 2}]
+        self.assertEqual(receipt['reported'], {'model': None, 'provider': None, 'providers': providers})
+        self.assertEqual(self.stored['reported'], receipt['reported'])
+        self.assertNotIn('gen-', json.dumps(self.stored))
+
+        receipt, _, _, _ = self.exercise(calls=['gen-a1', 'gen-b2'], answers=answers)
+        self.assertEqual(receipt['reported']['provider'], 'DeepInfra')
+        receipt, _, _, _ = self.exercise()
+        self.assertEqual(receipt['reported'], {'model': None, 'provider': None, 'providers': []})
 
     def test_runtime_changes_during_audit_or_at_launch_prevent_inference(self):
         for phase in ['audit', 'launch']:

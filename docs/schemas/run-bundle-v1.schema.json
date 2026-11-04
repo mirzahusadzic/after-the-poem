@@ -105,7 +105,19 @@
       "required": ["model", "provider"],
       "properties": {
         "model": {"type": ["string", "null"]},
-        "provider": {"type": ["string", "null"]}
+        "provider": {"type": ["string", "null"]},
+        "providers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["provider", "calls"],
+            "additionalProperties": false,
+            "properties": {
+              "provider": {"type": ["string", "null"], "minLength": 1},
+              "calls": {"type": "integer", "minimum": 1}
+            }
+          }
+        }
       }
     },
     "harness": {
