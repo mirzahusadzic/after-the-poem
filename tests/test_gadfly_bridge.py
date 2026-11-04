@@ -892,3 +892,43 @@ class StatsTests(unittest.TestCase):
                 bridge.main(['stats', str(one), '--resamples', 'many'])
             with contextlib.redirect_stderr(io.StringIO()):
                 self.assertEqual(bridge.main(['stats', str(one), '--dry-run', '--resamples', '0']), 1)
+
+
+class StatsOpeningsTests(unittest.TestCase):
+    """A call that gave no level is counted beside the levels, not lost from the stats."""
+
+    @unittest.skipUnless(midwife_stats is not None, 'needs midwife.stats (Gadfly after 0.8.0)')
+    def test_stats_counts_openings_beside_the_levels(self):
+        import contextlib
+        import io
+        from unittest import mock
+
+        calls = []
+
+        class Opens:
+            def __init__(self, *args, **kwargs):
+                self.name = bridge.EGEMMA
+
+            def check(self, frame):
+                pass
+
+            def observe(self, frame, prompt, max_output_tokens):
+                calls.append(prompt)
+                if len(calls) % 3 == 0:
+                    return bridge.Observation(label=None, opening='no level')
+                return bridge.Observation(label='level-3', raw='fake', served=bridge.EGEMMA)
+
+        with tempfile.TemporaryDirectory(prefix='after-poem-gadfly-openings-') as temporary:
+            out = Path(temporary) / 'round'
+            spec = current_copy(ROOT / 'examples/gadfly/round-1-egemma.json', temporary)
+            self.assertEqual(bridge.main(['build', str(spec), '--output', str(out)]), 0)
+            with mock.patch.object(bridge, 'EGemma', Opens), contextlib.redirect_stdout(io.StringIO()):
+                bridge.main(['run', str(out), '--accept-run', '--frame', 'astra-garden-touch'])
+            said = io.StringIO()
+            with contextlib.redirect_stdout(said):
+                self.assertEqual(bridge.main(['stats', str(out), '--resamples', '5']), 0)
+            stored = load_json(out / ('stats-midwife-%s.json' % bridge.midwife.__version__))
+        rows = stored['frames'][0]['trials']['touch']
+        opened = sum(row.get('openings', row['answers'].get('opening', 0)) for row in rows)
+        self.assertEqual(opened, 6)
+        self.assertEqual(said.getvalue().count('opening'), sum(1 for row in rows if row.get('openings')))

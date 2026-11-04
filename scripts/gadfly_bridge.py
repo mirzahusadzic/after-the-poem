@@ -1076,6 +1076,9 @@ def command_stats(args):
             print('  %s: %s; drawn again %d times: %s' % (x, verdicts.get(x), args.resamples, shares))
             for row in rows:
                 answers = ', '.join('%s %d' % (label, count) for label, count in row.answers.items())
+                # Calls that gave no level are counted apart from the levels (an older midwife folded them in).
+                if getattr(row, 'openings', 0):
+                    answers += ', %d opening%s' % (row.openings, '' if row.openings == 1 else 's')
                 moved = ', p %.2g (Holm %.2g)' % (row.moved, row.adjusted) if row.moved is not None else ''
                 held = ', at most %.0f%% differ' % (100 * row.differ) if row.differ is not None else ''
                 print(
