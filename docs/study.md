@@ -189,6 +189,28 @@ What round 2 shows:
 - A remnant is one draw; another could keep more or less of what a question needs.
 - One prediction of three named the right category: Claude Fable 5.1, cooled.
 
+##### Gadfly round 3
+
+Round 3 crosses one step further back, from the seed into the world. Each session's carriage map ties the poem's elements to the world lines that carry them. The frame takes the poem's open ending, seed lines 91 to 95, and blanks every world line a session says carries it, carried or transformed; the sessions name the element their own way, so the seed lines decide which rows belong.
+
+The ablation blanks 146 lines in six blocks: three lines of AGENTS.md, five of WORLD.md and four blocks of app.js. The sham blanks 94 lines in six blocks that only introduced rows cite, the world's own additions, tied to no seed line. There is no repeat, renaming or control, since round 2's remnant already showed this reader moves on this world.
+
+The round ran through the same reader, prompt, Codex CLI and router as rounds 1 and 2, under midwife 0.9.0. Every span names by hash the world text it crossed with. The predictions were written before the first call, and its 9 calls cost about $0.07.
+
+| Decision | Round 3 | What the trials read |
+| --- | --- | --- |
+| Dreamy Sol · open continuation (3) | Cooled, with three checks open | The baseline read 3 in all three sessions. Without the lines tied to the open ending it read 3, 2 and 3; the session that read 2 found editing the thread and inspecting its lineage broken. The sham read 3 in all three, though it blanked app.js 828 to 872, which all three published sessions cite. |
+
+The ablated sessions cite app.js 322 to 358 and 828 to 872 instead, and their reasons name stored state, visits, snapshots and the handoff thread. All three carriage maps count most of 828 to 872 as the world's own additions, and one ties six of its lines to the parable's stance. Two tie 322 to 331 to the parable's opening, within seed lines 13 to 18, and count most of 333 to 358 as additions.
+
+What round 3 shows:
+
+- The continuation level does not rest on the lines the reading's own carriage map ties to the open ending. It rests on state and handoff code that the same map counts as the world's additions, or ties to the parable's opening.
+- The axis asks whether a successor can recover the intention and change its direction; the carriage map asks where the poem's elements went. The level finds the first in the world's own mechanisms, so a cut along the second need not reach it.
+- No partial cut has yet moved this level reliably. The lines tied to the open ending, the lines its sessions cite (three of six sessions read 2 across rounds 1 and 2) and round 1's 206-line cumulative cut each left it at 3; only round 2's remnant moved it, to 1.
+- The verdict is not firm. Drawn again, it reads cooled 72% of the time and carried 28%, and one session either way would change it.
+- The prediction named the wrong category, carried; its alternative named this case. Two of three trial predictions held, the baseline's and the sham's.
+
 #### Second readers
 
 Two second readers ran round 1's kind of trials under one shared instruction, one call per reading, and their levels never reach the page ([Second readers](pipeline.md#second-readers)):

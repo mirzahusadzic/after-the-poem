@@ -154,6 +154,7 @@ RAN_UNDER = {
     'round-2.json': '0.1.2',
     'round-1-egemma.json': '0.1.1',
     'round-1-muse.json': '0.1.1',
+    'round-3-carriage.json': '0.9.0',
 }
 
 
