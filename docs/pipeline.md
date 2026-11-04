@@ -663,7 +663,7 @@ What the output holds:
 
 #### Gadfly checks
 
-[Gadfly](https://github.com/mirzahusadzic/gadfly) runs the load-bearing test as a published package, `midwife`, pinned at 0.7.1 in `uv.lock`. Its verdict rules are the ones above, with `rules: 2`. Here it tests the levels the release page shows, as they stand: each frame is built from one published reading, and no scratch study is needed.
+[Gadfly](https://github.com/mirzahusadzic/gadfly) runs the load-bearing test as a published package, `midwife`, pinned at 0.8.0 in `uv.lock`. Its verdict rules are the ones above, with `rules: 2`. Here it tests the levels the release page shows, as they stand: each frame is built from one published reading, and no scratch study is needed.
 
 A frame names one world and one question. Every trial comes from that reading and the frozen world alone:
 
@@ -721,9 +721,10 @@ Good to know:
 - **Round 2.** It asks the same three decisions whether the reader moves at all. Beside the ablation it runs only a remnant control, with no repeat, sham or presentation: 27 calls in all. It has run once, for about $0.21, and the $0.25 cap stopped its last call; its verdicts are on the Study page ([Gadfly round 2](study.md#gadfly-round-2)).
 - **Frames never change.** A new reading, new code, another router revision or another midwife release gives a new frame with a new hash, so build into a new folder.
 - **Releases.** A spec keeps the release it ran under: rounds 1 and 2 name midwife 0.1.2, the second-reader rounds 0.1.1. Under another release `build` takes it only with `--dry-run`, and `run` refuses such a round live. A new live run is a new round, with a new spec and its own predictions.
-- **Re-reading.** `report` reads kept records under the pinned release. Every kept round reads the same under 0.7.1 as under the release it ran with: frame hashes, calls, each trial's input and level, and the verdicts. Since 0.7.0 the findings beside a verdict are worded differently; they say the same.
+- **Re-reading.** `report` reads kept records under the pinned release. Every kept round reads the same under 0.8.0 as under the release it ran with: frame hashes, calls, each trial's input and level, and the verdicts. Since 0.7.0 the findings beside a verdict are worded differently; they say the same.
 - **Resuming.** If a run stops, run it again: a kept record is never read twice. `--only TRIAL` runs one trial; repeat it for more.
 - **Settling.** `run --settle` makes no more calls for a trial whose level can no longer change, such as the third session after two agree. The verdict reads the same. The report then shows the two sessions that settled the trial, not how a third would have read. Under a stable standing, the baseline and repeat always run whole.
+- **The router.** Since 0.8.0 the second critic checks the router's `/health` before its first call and names in `served` the provider that answered. A model whose provider trains on what it reads runs only when the frame names it under `trainsOnInputs`, as the bridge does for Muse Spark 1.3 Contributor.
 - **Carriage.** The round reads with `carriage: listed`. A category is named at once, and the checks it leaves open, such as the missing bypass trial, are listed beside it.
 
 What the output holds:
